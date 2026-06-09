@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./globals.css";
+import LanaChat from "@/components/LanaChat";
 
 export const metadata = {
   title: "Lux Agent | Offline AI Command Center",
@@ -46,11 +47,12 @@ export default function RootLayout({
               <div style={{ fontSize: 24, fontWeight: 800, color: '#fff', marginBottom: 8, background: 'linear-gradient(to right, #A275FF, #fff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                 Lux Agent
               </div>
-              <p style={{ color: 'var(--text-dim)', fontSize: 14 }}>The world's first offline AI command center.</p>
+              <p style={{ color: 'var(--text-dim)', fontSize: 14 }}>Your Private AI Business Team on a USB.</p>
             </div>
             <div style={{ display: 'flex', gap: 32 }}>
               <Link href="/about" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14 }}>About Us</Link>
-              <Link href="/store" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14 }}>USB Store</Link>
+              <Link href="/store" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14 }}>Pricing</Link>
+              <Link href="/custom-pack" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14 }}>Custom Pack</Link>
               <Link href="/privacy" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14 }}>Privacy Policy</Link>
               <Link href="/terms" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14 }}>Terms of Service</Link>
               <Link href="#" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14 }}>Contact</Link>
@@ -61,6 +63,7 @@ export default function RootLayout({
           </div>
         </footer>
 
+        <LanaChat />
       </body>
     </html>
   );

@@ -147,8 +147,8 @@ export default function MarketingPage() {
             { name: 'Finance Agent', role: 'Money & Operations', desc: 'Budgets, SOPs, pricing support, reports, money leaks, and operations planning.', accent: '#34D399', img: '/agent-finance.jpeg', value: '$5,500/mo' },
           ].map(agent => (
             <div key={agent.name} className="card" style={{ borderTop: `3px solid ${agent.accent}`, padding: 0, overflow: 'hidden' }}>
-              <div style={{ position: 'relative', height: 180, overflow: 'hidden' }}>
-                <img src={agent.img} alt={agent.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+              <div style={{ position: 'relative', height: 240, overflow: 'hidden' }}>
+                <img src={agent.img} alt={agent.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '40px 20px 14px', background: 'linear-gradient(to top, rgba(10,10,14,1) 10%, transparent)' }}>
                   <h3 style={{ fontSize: 20, marginBottom: 2 }}>{agent.name}</h3>
                   <p style={{ fontSize: 13, color: agent.accent, fontWeight: 600, margin: 0 }}>{agent.role}</p>

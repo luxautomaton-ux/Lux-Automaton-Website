@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import ScreenshotGallery from '@/components/ScreenshotGallery'
 
 export const metadata = {
   title: 'Lux Agent | Offline AI Command Center',
@@ -162,14 +161,6 @@ export default function MarketingPage() {
         </div>
       </section>
 
-      {/* INTERFACE GALLERY */}
-      <section className="container" style={{ paddingTop: 0 }}>
-        <h2 className="section-title">The Interface</h2>
-        <p style={{ textAlign: 'center', color: 'var(--text-dim)', marginBottom: 40, marginTop: -40 }}>
-          Take a look at the powerful, native offline dashboards included in Lux Agent. Click to expand.
-        </p>
-        <ScreenshotGallery />
-      </section>
 
       {/* BUY CTA */}
       <section id="buy" className="container" style={{ padding: '90px 20px' }}>

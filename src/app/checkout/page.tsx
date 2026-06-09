@@ -1,191 +1,187 @@
-import React from 'react';
-import { redirect } from 'next/navigation';
-import Link from 'next/link';
-import db from '@/lib/db';
+'use client'
 
-interface PageProps {
-  searchParams: Promise<{ product_id?: string }>;
+import React, { Suspense } from 'react'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+
+const PRODUCTS: Record<string, { name: string; price: string; type: string; accent: string; icon: string; desc: string; features: string[]; note?: string }> = {
+  prod_download: {
+    name: 'Digital Download', price: '$299', type: 'one-time', accent: '#60A5FA', icon: '💻',
+    desc: 'Lux Agent OS digital download — set it up yourself on your own USB drive or computer.',
+    features: ['Lux Agent OS digital download', 'LANA basic', 'Business HQ', 'CRM basic', 'Lux Vault basic', 'Training Workshop', 'Start Here Guide', 'Success Pack preview', 'Local/private mode', 'Setup instructions'],
+  },
+  prod_usb_starter: {
+    name: 'Preloaded USB', price: '$499', type: 'one-time', accent: '#A275FF', icon: '💾',
+    desc: 'Premium solid-state USB drive with Lux Agent OS pre-installed and ready to launch.',
+    features: ['Premium USB drive included', 'Lux Agent OS pre-installed', 'LANA basic', 'Business HQ', 'CRM basic', 'Lux Vault basic', 'Success Pack preview', 'Training Workshop', 'Start Here Guide', 'Privacy-first setup', 'Ready-to-launch folder structure'],
+    note: 'Ships within 3–5 business days.',
+  },
+  prod_usb_business: {
+    name: 'Business Setup', price: '$999', type: 'one-time', accent: '#2DD4BF', icon: '💼',
+    desc: 'Preloaded USB plus a guided setup session with custom Success Pack and CRM configuration.',
+    features: ['Everything in Preloaded USB', 'Custom Business HQ setup', 'One full Success Pack', 'CRM starter setup', 'Website starter setup', 'First 30-day business plan', 'Training walkthrough', 'Privacy settings walkthrough'],
+    note: 'Ships within 3–5 business days. Setup session scheduled after delivery.',
+  },
+  prod_usb_pro: {
+    name: 'Pro Setup', price: '$1,999', type: 'one-time', accent: '#FBBF24', icon: '🏆',
+    desc: 'Full done-with-you business system — built around your goals with 90-day support.',
+    features: ['Everything in Business Setup', 'Personalized Success Pack', 'Money Suite setup', 'Web Intelligence setup', 'Website & lead system setup', '90-day business plan', 'AI Team setup', 'Lux Budgeter setup', 'Lux WriteOff setup', 'Training session', 'Launch checklist'],
+    note: 'Ships within 3–5 business days. Includes onboarding session.',
+  },
+  sub_money_suite: {
+    name: 'Money Suite', price: '$79/mo', type: 'monthly', accent: '#34D399', icon: '💰',
+    desc: 'Take control of your business finances with AI-powered budgeting, write-off tracking, money leak detection, and CPA-ready reports.',
+    features: ['Lux Budgeter Pro', 'Money Leak Finder', 'Lux WriteOff Pro', 'Receipt Tracker', 'Business License Coach', 'Money Reports', 'Tax & Money Vault', 'CPA-ready export packet'],
+    note: 'Requires Lux Agent USB (any tier). Cancel anytime.',
+  },
+  sub_full_business: {
+    name: 'Full Business OS', price: '$149/mo', type: 'monthly', accent: '#A275FF', icon: '⚡',
+    desc: 'The complete AI-powered business operating system — Money Suite plus Web Intelligence, advanced lead research, competitor reports, and monthly business review workflows.',
+    features: ['Everything in Money Suite', 'Web Intelligence Pro', 'Advanced lead research', 'Competitor reports', 'Vendor/tool savings reports', 'Success Pack advanced execution', 'AI Team advanced reports', 'Monthly business review workflows'],
+    note: 'Requires Lux Agent USB (any tier). Cancel anytime. Best value for serious operators.',
+  },
+  addon_website: {
+    name: 'Website Setup', price: '$499–$2,500', type: 'add-on', accent: '#60A5FA', icon: '🌐',
+    desc: 'Dedicated website or landing page build powered by Lux Coder — LANA plans, Chuck Cole executes.',
+    features: ['Website planning with LANA', 'Landing page copy', 'Offer structure', 'Lead capture setup', 'Mobile-friendly design', 'Review before publish'],
+    note: 'Final price based on scope. Book a call to discuss your needs.',
+  },
 }
 
-export default async function CheckoutPage({ searchParams }: PageProps) {
-  const { product_id } = await searchParams;
-
-  if (!product_id) {
-    redirect('/');
-  }
-
-  // Fetch product details from DB
-  const product = db.prepare('SELECT * FROM products WHERE id = ? AND active = 1').get(product_id) as {
-    id: string;
-    sku: string;
-    name: string;
-    description: string;
-    price_cents: number;
-    type: string;
-  } | undefined;
+function CheckoutContent() {
+  const searchParams = useSearchParams()
+  const productId = searchParams.get('product_id') || ''
+  const product = PRODUCTS[productId]
 
   if (!product) {
     return (
-      <div style={{ paddingTop: 160, textAlign: 'center', color: '#fff' }}>
-        <h2>Product Not Found</h2>
-        <p style={{ color: 'var(--text-dim)' }}>The selected product could not be found.</p>
-        <Link href="/" className="btn btn-secondary" style={{ marginTop: 20, display: 'inline-block' }}>Return Home</Link>
-      </div>
-    );
+      <main style={{ paddingTop: 120, paddingBottom: 100 }}>
+        <section className="container" style={{ maxWidth: 600, textAlign: 'center' }}>
+          <div style={{ fontSize: 64, marginBottom: 20 }}>🛒</div>
+          <h1 style={{ fontSize: 36, marginBottom: 16 }}>Choose a Plan</h1>
+          <p style={{ fontSize: 17, color: 'var(--text-dim)', lineHeight: 1.7, marginBottom: 32 }}>
+            Visit our pricing page to see all available plans and pick the one that fits your business.
+          </p>
+          <Link href="/store" className="btn btn-primary">View Pricing</Link>
+        </section>
+      </main>
+    )
   }
 
-  const submitScript = `
-    async function handleCheckout(event) {
-      event.preventDefault();
-      
-      const email = document.getElementById('email').value;
-      const name = document.getElementById('name').value;
-      const btn = document.getElementById('btn-submit');
-      const text = document.getElementById('btn-submit-text');
-      const loader = document.getElementById('btn-submit-loader');
-
-      if (!email || !name) {
-        alert('Please fill out all fields.');
-        return;
-      }
-
-      btn.disabled = true;
-      text.style.opacity = '0';
-      loader.style.display = 'block';
-
-      try {
-        const res = await fetch('/api/checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            productId: '${product.id}',
-            email,
-            name
-          })
-        });
-
-        const data = await res.json();
-        if (data.url) {
-          window.location.href = data.url;
-        } else {
-          alert('Checkout initialization failed: ' + (data.error || 'Unknown error'));
-          btn.disabled = false;
-          text.style.opacity = '1';
-          loader.style.display = 'none';
-        }
-      } catch (e) {
-        alert('Connection error.');
-        btn.disabled = false;
-        text.style.opacity = '1';
-        loader.style.display = 'none';
-      }
-    }
-  `;
-
   return (
-    <main style={{ paddingTop: 140, paddingBottom: 100, minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-      <div style={{ position: 'absolute', top: '10%', left: '30%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(162,117,255,0.04) 0%, transparent 60%)', filter: 'blur(50px)', zIndex: 0, pointerEvents: 'none' }} />
+    <main style={{ paddingTop: 120, paddingBottom: 100 }}>
+      <div style={{ position: 'absolute', top: '8%', right: '5%', width: 400, height: 400, background: `radial-gradient(circle, ${product.accent}10 0%, transparent 70%)`, filter: 'blur(40px)', zIndex: 0, pointerEvents: 'none' }} />
 
-      <div className="container" style={{ maxWidth: 880, position: 'relative', zIndex: 1 }}>
-        <div className="grid grid-2" style={{ gap: 50 }}>
-          
-          {/* Cart & Product details */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <div>
-              <Link href="/" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14, fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 16 }}>
-                ← Back to catalog
-              </Link>
-              <h1 style={{ fontSize: 32, fontWeight: 800, color: '#fff', margin: 0 }}>Review Your Order</h1>
+      <section className="container" style={{ position: 'relative', zIndex: 1, maxWidth: 800 }}>
+
+        <div className="grid grid-2" style={{ gap: 40, alignItems: 'flex-start' }}>
+
+          {/* Product details */}
+          <div>
+            <Link href="/store" style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14, display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 24 }}>
+              ← Back to Pricing
+            </Link>
+            <div style={{ fontSize: 48, marginBottom: 12 }}>{product.icon}</div>
+            <h1 style={{ fontSize: 36, fontWeight: 800, marginBottom: 8 }}>{product.name}</h1>
+            <div style={{ marginBottom: 16 }}>
+              <span style={{ fontSize: 40, fontWeight: 800, color: product.accent }}>{product.price}</span>
+              {product.type === 'monthly' && <span style={{ fontSize: 16, color: 'var(--text-dim)', marginLeft: 4 }}>per month</span>}
+              {product.type === 'one-time' && <span style={{ fontSize: 16, color: 'var(--text-dim)', marginLeft: 4 }}>one-time</span>}
             </div>
+            <p style={{ fontSize: 16, color: 'var(--text-dim)', lineHeight: 1.7, marginBottom: 24 }}>{product.desc}</p>
 
-            <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--border)', borderRadius: 20, padding: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <div>
-                <span style={{ fontSize: 11, color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5 }}>Item Details</span>
-                <h2 style={{ fontSize: 20, fontWeight: 800, color: '#fff', margin: '4px 0 8px' }}>{product.name}</h2>
-                <p style={{ color: 'var(--text-dim)', fontSize: 14, lineHeight: 1.5, margin: 0 }}>{product.description}</p>
-              </div>
+            <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 12 }}>What&apos;s Included</h3>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20 }}>
+              {product.features.map(f => (
+                <li key={f} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', fontSize: 15 }}>
+                  <span style={{ color: product.accent, flexShrink: 0 }}>✓</span>
+                  <span style={{ color: 'var(--text-dim)' }}>{f}</span>
+                </li>
+              ))}
+            </ul>
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: 16, marginTop: 8 }}>
-                <span style={{ fontWeight: 600, color: 'var(--text-dim)' }}>Price</span>
-                <span style={{ fontWeight: 800, fontSize: 22, color: '#fff' }}>${(product.price_cents / 100).toFixed(2)}</span>
-              </div>
-            </div>
-
-            <div style={{ background: 'rgba(162,117,255,0.03)', border: '1px solid rgba(162,117,255,0.1)', borderRadius: 16, padding: 20, fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.5 }}>
-              📦 <strong>Digital Success Packs</strong> are delivered immediately via email. <br/>
-              🚚 <strong>Hardware USB setups</strong> are shipped within 24 hours via premium express courier (free international shipping).
-            </div>
+            {product.note && (
+              <p style={{ fontSize: 13, color: 'var(--text-dim)', opacity: 0.7, fontStyle: 'italic' }}>
+                ℹ️ {product.note}
+              </p>
+            )}
           </div>
 
-          {/* Billing Form */}
-          <div style={{ background: 'rgba(26,26,30,0.5)', border: '1px solid var(--border)', borderRadius: 24, padding: 36, display: 'flex', flexDirection: 'column', gap: 24, backdropFilter: 'blur(20px)' }}>
-            <h2 style={{ fontSize: 20, fontWeight: 800, color: '#fff', margin: 0 }}>Billing Details</h2>
-            
-            <form id="checkout-form" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <label htmlFor="name" style={{ fontSize: 12, color: 'var(--text-dim)', fontWeight: 500 }}>Full Name</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
-                  placeholder="John Doe" 
-                  required
-                  style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid var(--border)', padding: '12px 16px', borderRadius: 8, color: '#fff', fontSize: 14, outline: 'none' }}
-                />
+          {/* Order form */}
+          <div className="card" style={{ padding: 32, position: 'sticky', top: 100, borderTop: `3px solid ${product.accent}` }}>
+            <h2 style={{ fontSize: 22, marginBottom: 20 }}>Get {product.name}</h2>
+
+            <form
+              onSubmit={e => {
+                e.preventDefault()
+                const form = e.target as HTMLFormElement
+                const data = new FormData(form)
+                const name = data.get('name') as string
+                const email = data.get('email') as string
+                const phone = data.get('phone') as string
+                const business = data.get('business') as string
+
+                const subject = encodeURIComponent(`Order: ${product.name} (${product.price})`)
+                const body = encodeURIComponent(
+                  `New Order Request\n\nProduct: ${product.name}\nPrice: ${product.price}\nType: ${product.type}\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nBusiness: ${business}\n\nPlease send payment instructions.`
+                )
+                window.location.href = `mailto:luxagent@gmail.com?subject=${subject}&body=${body}`
+              }}
+              style={{ display: 'flex', flexDirection: 'column', gap: 14 }}
+            >
+              <div>
+                <label style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.7)', marginBottom: 6, display: 'block' }}>Full Name *</label>
+                <input name="name" required placeholder="Your name" style={{ width: '100%', padding: '12px 16px', borderRadius: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: 14, fontFamily: 'inherit', outline: 'none' }} />
+              </div>
+              <div>
+                <label style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.7)', marginBottom: 6, display: 'block' }}>Email *</label>
+                <input name="email" type="email" required placeholder="you@email.com" style={{ width: '100%', padding: '12px 16px', borderRadius: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: 14, fontFamily: 'inherit', outline: 'none' }} />
+              </div>
+              <div>
+                <label style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.7)', marginBottom: 6, display: 'block' }}>Phone</label>
+                <input name="phone" placeholder="(optional)" style={{ width: '100%', padding: '12px 16px', borderRadius: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: 14, fontFamily: 'inherit', outline: 'none' }} />
+              </div>
+              <div>
+                <label style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.7)', marginBottom: 6, display: 'block' }}>Business Name</label>
+                <input name="business" placeholder="Your business" style={{ width: '100%', padding: '12px 16px', borderRadius: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: 14, fontFamily: 'inherit', outline: 'none' }} />
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <label htmlFor="email" style={{ fontSize: 12, color: 'var(--text-dim)', fontWeight: 500 }}>Email Address</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  placeholder="john@example.com" 
-                  required
-                  style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid var(--border)', padding: '12px 16px', borderRadius: 8, color: '#fff', fontSize: 14, outline: 'none' }}
-                />
+              <div style={{ padding: '16px 0', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', margin: '4px 0' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 16, fontWeight: 700 }}>
+                  <span>Total</span>
+                  <span style={{ color: product.accent }}>{product.price}</span>
+                </div>
+                {product.type === 'monthly' && (
+                  <p style={{ fontSize: 12, color: 'var(--text-dim)', margin: '4px 0 0', opacity: 0.7 }}>Billed monthly. Cancel anytime.</p>
+                )}
               </div>
 
-              <button 
-                type="submit"
-                id="btn-submit"
-                style={{ 
-                  background: 'var(--primary)', 
-                  color: '#fff', 
-                  border: 'none', 
-                  padding: '14px 20px', 
-                  borderRadius: 10, 
-                  fontWeight: 700, 
-                  cursor: 'pointer', 
-                  fontSize: 15,
-                  marginTop: 10,
-                  position: 'relative',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }}
-              >
-                <span id="btn-submit-text">Proceed to Payment</span>
-                <span id="btn-submit-loader" style={{ display: 'none', width: '20px', height: '20px', border: '3px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+              <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: 14, fontSize: 16, textAlign: 'center' }}>
+                {product.type === 'monthly' ? `Subscribe — ${product.price}` : `Order — ${product.price}`}
               </button>
+
+              <p style={{ fontSize: 11, color: 'var(--text-dim)', textAlign: 'center', opacity: 0.5, margin: 0, lineHeight: 1.5 }}>
+                You&apos;ll receive payment instructions via email. Your information is private and never shared.
+              </p>
             </form>
           </div>
-
         </div>
-      </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-        input:focus {
-          border-color: var(--primary) !important;
-        }
-      ` }} />
-      <script dangerouslySetInnerHTML={{ __html: submitScript }} />
-      <script dangerouslySetInnerHTML={{ __html: `
-        document.getElementById('checkout-form').addEventListener('submit', handleCheckout);
-      ` }} />
+      </section>
     </main>
-  );
+  )
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={
+      <main style={{ paddingTop: 120, paddingBottom: 100 }}>
+        <section className="container" style={{ textAlign: 'center' }}>
+          <p style={{ color: 'var(--text-dim)' }}>Loading...</p>
+        </section>
+      </main>
+    }>
+      <CheckoutContent />
+    </Suspense>
+  )
 }

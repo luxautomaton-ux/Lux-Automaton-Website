@@ -3,13 +3,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 const SLIDES = [
-  { img: '/usb-slide-1.jpg', alt: 'Premium USB drive with smart LCD display' },
-  { img: '/usb-slide-2.jpg', alt: 'USB drive showing data transfer speeds' },
-  { img: '/usb-slide-3.jpg', alt: 'USB drive dual interface Type-A and Type-C' },
-  { img: '/usb-slide-4.jpg', alt: 'USB drive intelligent temperature management' },
-  { img: '/usb-slide-5.jpg', alt: 'USB drive premium zinc alloy construction' },
-  { img: '/usb-slide-6.jpg', alt: 'USB drive high speed data transfer' },
-  { img: '/usb-slide-7.jpg', alt: 'Premium USB drive product overview' },
+  { img: '/lux-agent-website/usb-slide-1.jpg', alt: 'Premium USB drive with smart LCD display' },
+  { img: '/lux-agent-website/usb-slide-2.jpg', alt: 'USB drive showing data transfer speeds' },
+  { img: '/lux-agent-website/usb-slide-3.jpg', alt: 'USB drive dual interface Type-A and Type-C' },
+  { img: '/lux-agent-website/usb-slide-4.jpg', alt: 'USB drive intelligent temperature management' },
+  { img: '/lux-agent-website/usb-slide-5.jpg', alt: 'USB drive premium zinc alloy construction' },
+  { img: '/lux-agent-website/usb-slide-6.jpg', alt: 'USB drive high speed data transfer' },
+  { img: '/lux-agent-website/usb-slide-7.jpg', alt: 'Premium USB drive product overview' },
 ]
 
 const FEATURES = [

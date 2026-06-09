@@ -3,18 +3,18 @@
 import React, { useState } from 'react'
 
 const IMAGES = [
-  '/screenshots/build.png',
-  '/screenshots/chat.png',
-  '/screenshots/vitals.png',
-  '/screenshots/braini.png',
-  '/screenshots/file.png',
-  '/screenshots/Screen Shot 2026-05-29 at 4.36.27 PM.png',
-  '/screenshots/Screen Shot 2026-05-29 at 4.37.56 PM.png',
-  '/screenshots/Screen Shot 2026-05-29 at 4.38.08 PM.png',
-  '/screenshots/Screen Shot 2026-05-29 at 4.38.15 PM.png',
-  '/screenshots/Screen Shot 2026-05-29 at 4.38.24 PM.png',
-  '/screenshots/Screen Shot 2026-05-29 at 4.38.36 PM.png',
-  '/screenshots/Screen Shot 2026-05-29 at 4.39.01 PM.png'
+  '/lux-agent-website/screenshots/build.png',
+  '/lux-agent-website/screenshots/chat.png',
+  '/lux-agent-website/screenshots/vitals.png',
+  '/lux-agent-website/screenshots/braini.png',
+  '/lux-agent-website/screenshots/file.png',
+  '/lux-agent-website/screenshots/Screen Shot 2026-05-29 at 4.36.27 PM.png',
+  '/lux-agent-website/screenshots/Screen Shot 2026-05-29 at 4.37.56 PM.png',
+  '/lux-agent-website/screenshots/Screen Shot 2026-05-29 at 4.38.08 PM.png',
+  '/lux-agent-website/screenshots/Screen Shot 2026-05-29 at 4.38.15 PM.png',
+  '/lux-agent-website/screenshots/Screen Shot 2026-05-29 at 4.38.24 PM.png',
+  '/lux-agent-website/screenshots/Screen Shot 2026-05-29 at 4.38.36 PM.png',
+  '/lux-agent-website/screenshots/Screen Shot 2026-05-29 at 4.39.01 PM.png'
 ]
 
 export default function ScreenshotGallery() {

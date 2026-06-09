@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 const SLIDES = [
   { img: '/usb-slide-1.jpg', alt: 'Premium USB drive with smart LCD display' },
@@ -23,21 +23,38 @@ const FEATURES = [
 
 export default function UsbSlideshow() {
   const [current, setCurrent] = useState(0)
-  const [paused, setPaused] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const next = useCallback(() => {
-    setCurrent(i => (i + 1) % SLIDES.length)
-  }, [])
+  function goTo(index: number) {
+    setCurrent(index)
+    resetTimer()
+  }
 
-  const prev = useCallback(() => {
-    setCurrent(i => (i - 1 + SLIDES.length) % SLIDES.length)
-  }, [])
+  function goNext() {
+    setCurrent(prev => (prev + 1) % SLIDES.length)
+    resetTimer()
+  }
+
+  function goPrev() {
+    setCurrent(prev => (prev - 1 + SLIDES.length) % SLIDES.length)
+    resetTimer()
+  }
+
+  function resetTimer() {
+    if (timerRef.current) clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => {
+      setCurrent(prev => (prev + 1) % SLIDES.length)
+    }, 4000)
+  }
 
   useEffect(() => {
-    if (paused) return
-    const timer = setInterval(next, 4000)
-    return () => clearInterval(timer)
-  }, [paused, next])
+    timerRef.current = setInterval(() => {
+      setCurrent(prev => (prev + 1) % SLIDES.length)
+    }, 4000)
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [])
 
   return (
     <div style={{ marginBottom: 80 }}>
@@ -47,17 +64,13 @@ export default function UsbSlideshow() {
         </div>
         <h2 style={{ fontSize: 34, fontWeight: 800, marginBottom: 12 }}>Built on a <span style={{ color: '#FBBF24' }}>Professional-Grade</span> USB Drive</h2>
         <p style={{ fontSize: 16, color: 'var(--text-dim)', maxWidth: 650, margin: '0 auto', lineHeight: 1.6 }}>
-          Every preloaded Lux Agent USB ships on a premium solid-state drive with a built-in smart display, AI temperature management, and 1090 MB/s transfer speeds. This is not a basic thumb drive.
+          Every preloaded Lux Agent USB ships on a premium solid-state drive with a built-in smart display, AI temperature management, and 1090 MB/s transfer speeds. This is not a basic thumb drive. Ships within 3–5 business days.
         </p>
       </div>
 
       {/* Slideshow */}
-      <div
-        style={{ position: 'relative', maxWidth: 800, margin: '0 auto 32px', borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(251,191,36,0.2)', background: '#111' }}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <div style={{ position: 'relative', aspectRatio: '1464/600', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', maxWidth: 800, margin: '0 auto 32px', borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(251,191,36,0.2)', background: '#111' }}>
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '1464/600', overflow: 'hidden' }}>
           {SLIDES.map((slide, i) => (
             <img
               key={slide.img}
@@ -67,40 +80,49 @@ export default function UsbSlideshow() {
                 position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
                 objectFit: 'cover',
                 opacity: i === current ? 1 : 0,
-                transition: 'opacity 0.6s ease-in-out',
+                transition: 'opacity 0.8s ease-in-out',
+                pointerEvents: 'none',
               }}
             />
           ))}
+
+          {/* Left arrow */}
+          <button
+            onClick={goPrev}
+            aria-label="Previous slide"
+            style={{
+              position: 'absolute', top: '50%', left: 14, transform: 'translateY(-50%)', zIndex: 10,
+              width: 44, height: 44, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)',
+              cursor: 'pointer', fontSize: 22, fontWeight: 700, lineHeight: 1,
+              background: 'rgba(0,0,0,0.65)', color: '#fff',
+              backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >‹</button>
+
+          {/* Right arrow */}
+          <button
+            onClick={goNext}
+            aria-label="Next slide"
+            style={{
+              position: 'absolute', top: '50%', right: 14, transform: 'translateY(-50%)', zIndex: 10,
+              width: 44, height: 44, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)',
+              cursor: 'pointer', fontSize: 22, fontWeight: 700, lineHeight: 1,
+              background: 'rgba(0,0,0,0.65)', color: '#fff',
+              backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >›</button>
         </div>
 
-        {/* Nav arrows */}
-        <button
-          onClick={prev}
-          style={{
-            position: 'absolute', top: '50%', left: 12, transform: 'translateY(-50%)',
-            width: 40, height: 40, borderRadius: '50%', border: 'none', cursor: 'pointer',
-            background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: 18,
-            backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}
-        >‹</button>
-        <button
-          onClick={next}
-          style={{
-            position: 'absolute', top: '50%', right: 12, transform: 'translateY(-50%)',
-            width: 40, height: 40, borderRadius: '50%', border: 'none', cursor: 'pointer',
-            background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: 18,
-            backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}
-        >›</button>
-
-        {/* Dots */}
-        <div style={{ position: 'absolute', bottom: 14, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 8 }}>
+        {/* Dot indicators */}
+        <div style={{ display: 'flex', gap: 8, justifyContent: 'center', padding: '14px 0', background: 'rgba(0,0,0,0.4)' }}>
           {SLIDES.map((_, i) => (
             <button
               key={i}
-              onClick={() => setCurrent(i)}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
               style={{
-                width: i === current ? 24 : 8, height: 8, borderRadius: 10, border: 'none', cursor: 'pointer',
+                width: i === current ? 28 : 10, height: 10, borderRadius: 10,
+                border: 'none', cursor: 'pointer', padding: 0,
                 background: i === current ? '#FBBF24' : 'rgba(255,255,255,0.3)',
                 transition: 'all 0.3s ease',
               }}

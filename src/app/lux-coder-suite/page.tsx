@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import ScreenshotGallery from '@/components/ScreenshotGallery';
 
 export const metadata = {
   title: 'Lux Coder Suite | Your Personal AI Programmer',
@@ -76,7 +75,7 @@ export default function LuxCoderSuitePage() {
             <div style={{ fontSize: 40, marginBottom: 16 }}>💰</div>
             <h3 style={{ fontSize: 22, fontWeight: 700, color: '#fff', marginBottom: 12 }}>Save Thousands</h3>
             <p style={{ fontSize: 15, color: 'var(--text-dim)', lineHeight: 1.6 }}>
-              Hiring a freelance developer can cost $5,000+ per project. Lux Coder builds unlimited projects for you for a small monthly subscription.
+              Hiring a freelance developer can cost $5,000+ per project. Lux Coder builds unlimited projects for you for a one-time purchase.
             </p>
           </div>
 
@@ -188,7 +187,7 @@ export default function LuxCoderSuitePage() {
             The interface is designed to look like a simple chat window, but it connects directly to your files.
           </p>
           <div style={{ maxWidth: 800, margin: '0 auto', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 20px 40px rgba(0,0,0,0.3)' }}>
-            <img src="/banner.png" alt="Lux Coder Interface Preview" style={{ width: '100%', display: 'block' }} />
+            <img src="/brand-banner.png" alt="Lux Coder Interface Preview" style={{ width: '100%', display: 'block' }} />
           </div>
         </div>
 

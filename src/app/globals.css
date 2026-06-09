@@ -84,7 +84,7 @@ body {
 .hero-bg {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('/Lana_Background.png');
+  background-image: url('/lux-agent-website/Lana_Background.png');
   background-size: cover;
   background-position: center;
   opacity: 0.6;
@@ -186,7 +186,7 @@ body {
 
 .global-footer {
   position: relative;
-  background: linear-gradient(180deg, rgba(13, 13, 15, 0.85) 0%, rgba(13, 13, 15, 0.98) 100%), url('/Bots.png') !important;
+  background: linear-gradient(180deg, rgba(13, 13, 15, 0.85) 0%, rgba(13, 13, 15, 0.98) 100%), url('/lux-agent-website/Bots.png') !important;
   background-size: cover !important;
   background-position: center !important;
   border-top: 1px solid var(--border);

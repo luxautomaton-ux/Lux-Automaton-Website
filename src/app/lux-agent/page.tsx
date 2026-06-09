@@ -10,7 +10,7 @@ const USE_CASES = [
   {
     title: 'The Doctor Who Never Misses a Follow-Up',
     subtitle: 'Dr. Torrey Dooley · Medical Practice',
-    img: '/pack-doctor.png',
+    img: '/lux-agent-website/pack-doctor.png',
     accent: '#2DD4BF',
     glyph: '⚕️',
     story: 'Before Lux Agent, patient follow-ups fell through the cracks. Now LANA sends automated recall reminders, compiles daily patient summaries, and drafts referral letters — all offline, all HIPAA-safe.',
@@ -26,7 +26,7 @@ const USE_CASES = [
   {
     title: 'The Label That Runs Like a Major',
     subtitle: 'Henry Taylor · No Sleep Entertainment',
-    img: '/pack-music.png',
+    img: '/lux-agent-website/pack-music.png',
     accent: '#A275FF',
     glyph: '🎵',
     story: 'Henry used to juggle artists, releases, and marketing across 6 different apps. Now his entire label operates from one USB drive — LANA handles release calendars, social media drafts, and royalty tracking.',
@@ -42,7 +42,7 @@ const USE_CASES = [
   {
     title: 'More Leads. More Estimates. More Jobs.',
     subtitle: 'Isaiah Holt · Epic Electric',
-    img: '/pack-electric.png',
+    img: '/lux-agent-website/pack-electric.png',
     accent: '#FBBF24',
     glyph: '⚡',
     story: 'Isaiah was leaving money on the table — missed estimates, forgotten follow-ups, no marketing. Now LANA generates estimates from job photos, sends follow-up sequences, and runs local SEO content on autopilot.',
@@ -58,7 +58,7 @@ const USE_CASES = [
   {
     title: 'Fill Tables. Build Regulars. Own the Block.',
     subtitle: 'Restaurant & Food Truck Pack',
-    img: '/pack-restaurant.png',
+    img: '/lux-agent-website/pack-restaurant.png',
     accent: '#FB7185',
     glyph: '🍽️',
     story: 'No more paying $300/month for reservation software. LANA manages your bookings locally, drafts daily specials for social media, and tracks your top customers — all from a USB you can carry between locations.',
@@ -74,7 +74,7 @@ const USE_CASES = [
   {
     title: 'Close More Deals. Work Fewer Hours.',
     subtitle: 'Real Estate Success Pack',
-    img: '/pack-realestate.png',
+    img: '/lux-agent-website/pack-realestate.png',
     accent: '#38BDF8',
     glyph: '🏠',
     story: 'Your CRM costs $200/month and you still forget to follow up. LANA builds comparative market analyses, drafts listing descriptions, and runs a drip campaign to your buyer list — all offline, all private.',
@@ -90,7 +90,7 @@ const USE_CASES = [
   {
     title: 'Turn Attention Into a Repeatable Business',
     subtitle: 'Content Creator Pack',
-    img: '/pack-creator.png',
+    img: '/lux-agent-website/pack-creator.png',
     accent: '#F472B6',
     glyph: '🎨',
     story: 'Stop winging it. LANA plans your content calendar, writes hooks and captions, structures your brand deals pipeline, and even drafts sponsorship pitch decks — so you can focus on creating.',

@@ -153,7 +153,7 @@ export default function LuxCoderPage() {
             <div style={{ position: 'relative', maxWidth: 360 }}>
               <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80%', height: '80%', background: '#60A5FA', filter: 'blur(60px)', opacity: 0.2, zIndex: 0 }} />
               <div style={{ position: 'relative', zIndex: 1, borderRadius: 20, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}>
-                <img src="/agent-chuck.jpeg" alt="Chuck Cole — AI Tech Specialist" style={{ width: '100%', display: 'block', aspectRatio: '1/1', objectFit: 'cover', objectPosition: 'top' }} />
+                <img src="/lux-agent-website/agent-chuck.jpeg" alt="Chuck Cole — AI Tech Specialist" style={{ width: '100%', display: 'block', aspectRatio: '1/1', objectFit: 'cover', objectPosition: 'top' }} />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 20, background: 'linear-gradient(to top, rgba(10,10,14,1), transparent)' }}>
                   <h3 style={{ fontSize: 22, fontWeight: 700 }}>Chuck Cole</h3>
                   <p style={{ color: '#60A5FA', fontWeight: 600, fontSize: 14 }}>AI Tech & Web Support Specialist</p>

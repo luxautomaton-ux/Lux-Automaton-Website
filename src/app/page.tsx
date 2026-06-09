@@ -7,15 +7,15 @@ export const metadata = {
 }
 
 const PACKS = [
-  { id: 'pack_doctor', name: 'Clinic / Medical Office Pack', tag: 'Spend more time with patients, less on paperwork.', price: 499, glyph: '⚕️', img: '/pack-doctor.png', accent: '#2DD4BF' },
-  { id: 'pack_music', name: 'Music & Entertainment Pack', tag: 'Run your label like a major — without the staff.', price: 499, glyph: '🎵', img: '/pack-music.png', accent: '#A275FF' },
-  { id: 'pack_electric', name: 'Electrician / Contractor Pack', tag: 'More leads, more estimates, more jobs.', price: 499, glyph: '⚡', img: '/pack-electric.png', accent: '#FBBF24' },
-  { id: 'pack_creator', name: 'Artist / Creator Pack', tag: 'Turn attention into a repeatable business.', price: 299, glyph: '🎨', img: '/pack-creator.png', accent: '#F472B6' },
-  { id: 'pack_restaurant', name: 'Food Business Pack', tag: 'Fill tables. Build regulars. Own the block.', price: 399, glyph: '🍽️', img: '/pack-restaurant.png', accent: '#FB7185' },
-  { id: 'pack_realestate', name: 'Real Estate Pack', tag: 'More listings. More leads. More closings.', price: 399, glyph: '🏠', img: '/pack-realestate.png', accent: '#38BDF8' },
-  { id: 'pack_aiconsultant', name: 'AI Consultant Pack', tag: 'Sell AI systems — with the systems to deliver.', price: 599, glyph: '🧠', img: '/pack-aiconsultant.png', accent: '#34D399' },
-  { id: 'pack_localservice', name: 'Local Service Business Pack', tag: 'Answer every lead. Chase every estimate.', price: 349, glyph: '🛠️', img: '/pack-localservice.jpg', accent: '#60A5FA' },
-  { id: 'pack_aimarketing', name: 'AI Marketing Mastery Pack', tag: 'Hooks, ads and funnels that convert — installed.', price: 199, glyph: '🚀', img: '/pack-aimarketing.jpg', accent: '#C084FC' },
+  { id: 'pack_doctor', name: 'Clinic / Medical Office Pack', tag: 'Spend more time with patients, less on paperwork.', price: 499, glyph: '⚕️', img: '/lux-agent-website/pack-doctor.png', accent: '#2DD4BF' },
+  { id: 'pack_music', name: 'Music & Entertainment Pack', tag: 'Run your label like a major — without the staff.', price: 499, glyph: '🎵', img: '/lux-agent-website/pack-music.png', accent: '#A275FF' },
+  { id: 'pack_electric', name: 'Electrician / Contractor Pack', tag: 'More leads, more estimates, more jobs.', price: 499, glyph: '⚡', img: '/lux-agent-website/pack-electric.png', accent: '#FBBF24' },
+  { id: 'pack_creator', name: 'Artist / Creator Pack', tag: 'Turn attention into a repeatable business.', price: 299, glyph: '🎨', img: '/lux-agent-website/pack-creator.png', accent: '#F472B6' },
+  { id: 'pack_restaurant', name: 'Food Business Pack', tag: 'Fill tables. Build regulars. Own the block.', price: 399, glyph: '🍽️', img: '/lux-agent-website/pack-restaurant.png', accent: '#FB7185' },
+  { id: 'pack_realestate', name: 'Real Estate Pack', tag: 'More listings. More leads. More closings.', price: 399, glyph: '🏠', img: '/lux-agent-website/pack-realestate.png', accent: '#38BDF8' },
+  { id: 'pack_aiconsultant', name: 'AI Consultant Pack', tag: 'Sell AI systems — with the systems to deliver.', price: 599, glyph: '🧠', img: '/lux-agent-website/pack-aiconsultant.png', accent: '#34D399' },
+  { id: 'pack_localservice', name: 'Local Service Business Pack', tag: 'Answer every lead. Chase every estimate.', price: 349, glyph: '🛠️', img: '/lux-agent-website/pack-localservice.jpg', accent: '#60A5FA' },
+  { id: 'pack_aimarketing', name: 'AI Marketing Mastery Pack', tag: 'Hooks, ads and funnels that convert — installed.', price: 199, glyph: '🚀', img: '/lux-agent-website/pack-aimarketing.jpg', accent: '#C084FC' },
 ]
 
 const BADGES = [
@@ -67,7 +67,7 @@ export default function MarketingPage() {
       <section id="demo" className="container" style={{ padding: '40px 20px' }}>
         <div style={{ borderRadius: 24, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 40px 80px rgba(0,0,0,0.5)' }}>
           <video
-            src="/aiMotion.mp4"
+            src="/lux-agent-website/aiMotion.mp4"
             autoPlay
             loop
             muted
@@ -94,7 +94,7 @@ export default function MarketingPage() {
           </div>
           <div style={{ order: 2 }}>
             <img
-              src="/banner-usb.jpg"
+              src="/lux-agent-website/banner-usb.jpg"
               alt="Lux Agent USB Drive"
               style={{ width: '100%', borderRadius: 24, border: '1px solid var(--border)', boxShadow: '0 20px 40px rgba(162,117,255,0.18)' }}
             />
@@ -139,12 +139,12 @@ export default function MarketingPage() {
         </div>
         <div className="grid grid-3">
           {[
-            { name: 'LANA', role: 'Business Operator', desc: 'Daily planning, reports, business guidance, task coordination, and memory.', accent: '#A275FF', img: '/lana-profile.png', value: '$4,500/mo' },
-            { name: 'Dre', role: 'Sales & Biz Dev', desc: 'Lead finding, outreach scripts, follow-ups, offers, and pipeline support.', accent: '#2DD4BF', img: '/agent-dre.jpeg', value: '$5,000/mo' },
-            { name: 'Tyrone', role: 'Marketing Coach', desc: 'Campaigns, ad hooks, social content, brand positioning, and promotion strategy.', accent: '#FBBF24', img: '/agent-tyrone.png', value: '$5,500/mo' },
-            { name: 'Andre Vaughn', role: 'Admin Assistant', desc: 'Email drafts, scheduling support, document organization, reminders, and checklists.', accent: '#F472B6', img: '/agent-andre.png', value: '$3,500/mo' },
-            { name: 'Chuck Cole', role: 'Tech & Web Support', desc: 'Website updates, Lux Coder support, troubleshooting, tool setup, and automation.', accent: '#60A5FA', img: '/agent-chuck.jpeg', value: '$6,000/mo' },
-            { name: 'Finance Agent', role: 'Money & Operations', desc: 'Budgets, SOPs, pricing support, reports, money leaks, and operations planning.', accent: '#34D399', img: '/agent-finance.jpeg', value: '$5,500/mo' },
+            { name: 'LANA', role: 'Business Operator', desc: 'Daily planning, reports, business guidance, task coordination, and memory.', accent: '#A275FF', img: '/lux-agent-website/lana-profile.png', value: '$4,500/mo' },
+            { name: 'Dre', role: 'Sales & Biz Dev', desc: 'Lead finding, outreach scripts, follow-ups, offers, and pipeline support.', accent: '#2DD4BF', img: '/lux-agent-website/agent-dre.jpeg', value: '$5,000/mo' },
+            { name: 'Tyrone', role: 'Marketing Coach', desc: 'Campaigns, ad hooks, social content, brand positioning, and promotion strategy.', accent: '#FBBF24', img: '/lux-agent-website/agent-tyrone.png', value: '$5,500/mo' },
+            { name: 'Andre Vaughn', role: 'Admin Assistant', desc: 'Email drafts, scheduling support, document organization, reminders, and checklists.', accent: '#F472B6', img: '/lux-agent-website/agent-andre.png', value: '$3,500/mo' },
+            { name: 'Chuck Cole', role: 'Tech & Web Support', desc: 'Website updates, Lux Coder support, troubleshooting, tool setup, and automation.', accent: '#60A5FA', img: '/lux-agent-website/agent-chuck.jpeg', value: '$6,000/mo' },
+            { name: 'Finance Agent', role: 'Money & Operations', desc: 'Budgets, SOPs, pricing support, reports, money leaks, and operations planning.', accent: '#34D399', img: '/lux-agent-website/agent-finance.jpeg', value: '$5,500/mo' },
           ].map(agent => (
             <div key={agent.name} className="card" style={{ borderTop: `3px solid ${agent.accent}`, padding: 0, overflow: 'hidden' }}>
               <div style={{ position: 'relative', height: 240, overflow: 'hidden' }}>

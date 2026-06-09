@@ -187,7 +187,7 @@ export default function LuxCoderSuitePage() {
             The interface is designed to look like a simple chat window, but it connects directly to your files.
           </p>
           <div style={{ maxWidth: 800, margin: '0 auto', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 20px 40px rgba(0,0,0,0.3)' }}>
-            <img src="/brand-banner.png" alt="Lux Coder Interface Preview" style={{ width: '100%', display: 'block' }} />
+            <img src="/lux-agent-website/brand-banner.png" alt="Lux Coder Interface Preview" style={{ width: '100%', display: 'block' }} />
           </div>
         </div>
 

@@ -64,14 +64,14 @@ export default function LanaChat() {
   }
 
   return (
-    <>
+    <div id="lana-chat-root" style={{ position: 'fixed', bottom: 0, right: 0, zIndex: 99999 }}>
       {/* Chat Window */}
       {open && (
         <div style={{
           position: 'fixed', bottom: 90, right: 20, width: 380, height: 520,
           background: '#0D0D0F', border: '1px solid rgba(162,117,255,0.3)',
           borderRadius: 20, display: 'flex', flexDirection: 'column',
-          zIndex: 9999, overflow: 'hidden',
+          zIndex: 99999, overflow: 'hidden',
           boxShadow: '0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(162,117,255,0.1)',
           animation: 'chatSlideUp 0.3s ease-out',
         }}>
@@ -133,10 +133,28 @@ export default function LanaChat() {
           {/* Quick Actions */}
           {messages.length <= 1 && (
             <div style={{ padding: '0 14px 8px', display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-              {['What is Lux Agent?', 'Show me pricing', 'Which pack is for me?', 'Tell me about LANA'].map(q => (
+              {['What is Lux Agent?', 'Show me pricing', 'Which pack is for me?'].map(q => (
                 <button
                   key={q}
-                  onClick={() => { setInput(q); setTimeout(sendMessage, 50) }}
+                  onClick={() => {
+                    const userMsg: Message = { role: 'user', content: q }
+                    const updated = [...messages, userMsg]
+                    setMessages(updated)
+                    setLoading(true)
+                    fetch('/api/lana-chat', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ messages: updated }),
+                    })
+                      .then(r => r.json())
+                      .then(data => {
+                        setMessages(prev => [...prev, { role: 'assistant', content: data.reply || 'Try again!' }])
+                      })
+                      .catch(() => {
+                        setMessages(prev => [...prev, { role: 'assistant', content: 'Connection issue — email luxagent@gmail.com!' }])
+                      })
+                      .finally(() => setLoading(false))
+                  }}
                   style={{
                     padding: '6px 12px', borderRadius: 20, fontSize: 12, cursor: 'pointer',
                     background: 'rgba(162,117,255,0.08)', border: '1px solid rgba(162,117,255,0.2)',
@@ -177,13 +195,14 @@ export default function LanaChat() {
 
       {/* Floating Button */}
       <button
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen(prev => !prev)}
+        aria-label="Chat with LANA"
         style={{
           position: 'fixed', bottom: 20, right: 20, width: 60, height: 60,
           borderRadius: '50%', border: '2px solid rgba(162,117,255,0.4)',
           background: 'linear-gradient(135deg, #A275FF, #7C3AED)',
           boxShadow: '0 8px 30px rgba(162,117,255,0.4), 0 0 15px rgba(162,117,255,0.2)',
-          cursor: 'pointer', zIndex: 9999,
+          cursor: 'pointer', zIndex: 99999,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontSize: open ? 20 : 24, color: '#fff', fontWeight: 700,
           transition: 'all 0.3s ease', transform: open ? 'scale(0.9)' : 'scale(1)',
@@ -208,6 +227,7 @@ export default function LanaChat() {
           40% { opacity: 1; }
         }
       `}</style>
-    </>
+    </div>
   )
 }
+

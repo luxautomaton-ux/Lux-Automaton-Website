@@ -1,9 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
+import UsbSlideshow from '@/components/UsbSlideshow'
 
 export const metadata = {
   title: 'Pricing | Lux Agent',
-  description: 'Choose how you want Lux Agent OS — digital download or preloaded MoveSpeed USB. Plans from $299.'
+  description: 'Choose how you want Lux Agent OS — digital download or preloaded USB drive. Plans from $299.'
 }
 
 const USB_TIERS = [
@@ -34,7 +35,7 @@ const USB_TIERS = [
     id: 'prod_usb_starter',
     name: 'Preloaded USB',
     price: 499,
-    tag: 'Best for beginners who want plug-and-launch convenience.',
+    tag: 'Best for beginners who want plug-and-launch convenience. Ships within 3–5 business days.',
     accent: '#A275FF',
     icon: '💾',
     badge: '⭐ Recommended',
@@ -58,7 +59,7 @@ const USB_TIERS = [
     id: 'prod_usb_business',
     name: 'Business Setup',
     price: 999,
-    tag: 'Best for business owners who want the USB plus setup help.',
+    tag: 'Best for business owners who want the USB plus setup help. Ships within 3–5 business days.',
     accent: '#2DD4BF',
     icon: '💼',
     badge: null,
@@ -79,7 +80,7 @@ const USB_TIERS = [
     id: 'prod_usb_pro',
     name: 'Pro Setup',
     price: 1999,
-    tag: 'Full done-with-you business system — built around your goals.',
+    tag: 'Full done-with-you business system — built around your goals. Ships within 3–5 business days.',
     accent: '#FBBF24',
     icon: '🏆',
     badge: null,
@@ -196,6 +197,9 @@ export default function StorePage() {
             Values are role-equivalent estimates for comparison only. Not a promise of income or guaranteed business results.
           </p>
         </div>
+
+        {/* USB DRIVE SLIDESHOW */}
+        <UsbSlideshow />
 
         {/* ONE-TIME PURCHASE TIERS */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20, marginBottom: 100 }}>

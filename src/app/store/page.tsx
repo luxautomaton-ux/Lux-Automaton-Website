@@ -171,6 +171,32 @@ export default function StorePage() {
           </p>
         </div>
 
+        {/* WHY IT IS WORTH IT */}
+        <div style={{ marginBottom: 80, padding: '44px 28px', borderRadius: 24, border: '1px solid var(--border)', background: 'linear-gradient(180deg, rgba(45,212,191,0.04), rgba(162,117,255,0.04))' }}>
+          <div style={{ textAlign: 'center', marginBottom: 28 }}>
+            <h2 style={{ fontSize: 28, fontWeight: 800, marginBottom: 8 }}>A Business Team Without the Full Payroll</h2>
+            <p style={{ fontSize: 15, color: 'var(--text-dim)', maxWidth: 640, margin: '0 auto', lineHeight: 1.6 }}>
+              Hiring sales, marketing, admin, finance, research, and tech support can cost thousands every month. Lux Agent USB gives you LANA and an AI business team that helps cover those roles from one portable system.
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
+            <div style={{ padding: '16px 28px', background: 'rgba(45,212,191,0.08)', border: '1px solid rgba(45,212,191,0.25)', borderRadius: 14, textAlign: 'center' }}>
+              <div style={{ fontSize: 12, color: 'var(--text-dim)', marginBottom: 2, fontWeight: 600 }}>Estimated role-equivalent value</div>
+              <div style={{ fontSize: 32, fontWeight: 800, color: '#2DD4BF' }}>$38,500<span style={{ fontSize: 14, fontWeight: 500 }}>/mo</span></div>
+            </div>
+            <div style={{ padding: '16px 28px', background: 'rgba(162,117,255,0.08)', border: '1px solid rgba(162,117,255,0.25)', borderRadius: 14, textAlign: 'center' }}>
+              <div style={{ fontSize: 12, color: 'var(--text-dim)', marginBottom: 2, fontWeight: 600 }}>Lux Agent USB starts at</div>
+              <div style={{ fontSize: 32, fontWeight: 800, color: 'var(--primary)' }}>$299<span style={{ fontSize: 14, fontWeight: 500 }}> one-time</span></div>
+            </div>
+          </div>
+          <p style={{ textAlign: 'center', fontSize: 15, fontWeight: 700, color: 'var(--text)', marginBottom: 4 }}>
+            You are not buying a USB. You are buying a private AI business team.
+          </p>
+          <p style={{ textAlign: 'center', fontSize: 11, color: 'var(--text-dim)', opacity: 0.5, maxWidth: 500, margin: '0 auto', lineHeight: 1.5 }}>
+            Values are role-equivalent estimates for comparison only. Not a promise of income or guaranteed business results.
+          </p>
+        </div>
+
         {/* ONE-TIME PURCHASE TIERS */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20, marginBottom: 100 }}>
           {USB_TIERS.map(tier => (

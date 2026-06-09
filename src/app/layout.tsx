@@ -28,8 +28,8 @@ export default function RootLayout({
             <Link href="/how-it-works" className="nav-link">How It Works</Link>
             <Link href="/features" className="nav-link">Features</Link>
             <Link href="/lux-agent" className="nav-link">Use Cases</Link>
-            <Link href="/lux-coder-suite" className="nav-link" style={{ color: '#2DD4BF' }}>Lux Coder</Link>
-            <Link href="/store" className="nav-link">USB Store</Link>
+            <Link href="/lux-coder" className="nav-link" style={{ color: '#2DD4BF' }}>Lux Coder</Link>
+            <Link href="/store" className="nav-link">Pricing</Link>
           </div>
           <div>
             <Link href="/#buy" className="btn btn-primary" style={{ padding: '8px 16px', fontSize: 13 }}>

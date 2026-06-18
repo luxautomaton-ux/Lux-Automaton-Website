@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { prefixPath } from "@/lib/prefix";
 
 export const metadata: Metadata = {
   title: "Partners — Lux Automaton",
@@ -68,7 +69,7 @@ export default function PartnersPage() {
         className="circuit-grid"
         style={{
           padding: "80px 24px 100px",
-          backgroundImage: "linear-gradient(to right, rgba(3, 5, 18, 0.92) 0%, rgba(3, 5, 18, 0.82) 60%, rgba(3, 5, 18, 0.55) 100%), url(/images/page-hero-cyber.jpg)",
+          backgroundImage: `linear-gradient(to right, rgba(3, 5, 18, 0.92) 0%, rgba(3, 5, 18, 0.82) 60%, rgba(3, 5, 18, 0.55) 100%), url(${prefixPath("/images/page-hero-cyber.jpg")})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           position: "relative",

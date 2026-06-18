@@ -3,6 +3,7 @@ import Image from "next/image";
 import { PRODUCTS } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import FeaturedSystems from "@/components/FeaturedSystems";
+import { prefixPath } from "@/lib/prefix";
 
 // ─────────────────────────────────────────────
 // HOME PAGE — Lux Automaton
@@ -38,7 +39,7 @@ function HeroSection() {
       {/* Real hero background image */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Image
-          src="/images/hero-bg.png"
+          src={prefixPath("/images/hero-bg.png")}
           alt="Lux Automaton AI background"
           fill
           priority
@@ -214,7 +215,7 @@ function HeroSection() {
             }}
           >
             <Image
-              src="/images/logo.png"
+              src={prefixPath("/images/logo.png")}
               alt="Lux Automaton"
               fill
               priority
@@ -438,7 +439,7 @@ function EcosystemSection() {
           }}
         >
           <Image
-            src="/images/ecosystem-diagram.png"
+            src={prefixPath("/images/ecosystem-diagram.png")}
             alt="Lux Automaton Ecosystem — AI tools connected"
             width={1200}
             height={630}
@@ -576,7 +577,7 @@ function FounderSection() {
                     }}
                   >
                     <Image
-                      src={member.image}
+                      src={prefixPath(member.image)}
                       alt={member.name}
                       fill
                       style={{ objectFit: "cover", objectPosition: "center top" }}

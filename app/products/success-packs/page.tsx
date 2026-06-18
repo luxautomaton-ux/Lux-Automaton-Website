@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { prefixPath } from "@/lib/prefix";
 import PageHero from "@/components/PageHero";
 import FiveWHSection from "@/components/FiveWHSection";
 import FeatureGrid from "@/components/FeatureGrid";
@@ -161,7 +162,7 @@ export default function SuccessPacksPage() {
               >
                 {/* Visual Banner at the Top */}
                 <div style={{ position: "relative", width: "100%", aspectRatio: "1.6", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
-                  <Image src={pack.img} alt={pack.title} fill style={{ objectFit: "cover" }} />
+                  <Image src={prefixPath(pack.img)} alt={pack.title} fill style={{ objectFit: "cover" }} />
                 </div>
                 {/* Info Section below image */}
                 <div style={{ padding: "32px", display: "flex", flexDirection: "column", flexGrow: 1 }}>

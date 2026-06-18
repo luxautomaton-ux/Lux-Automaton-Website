@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { prefixPath } from "@/lib/prefix";
 
 const BADGES = [
   "AI Operator",
@@ -177,7 +178,7 @@ export default function LanaProductPage() {
       {/* HERO SECTION */}
       <section style={{ position: "relative", minHeight: "680px", display: "flex", alignItems: "center", overflow: "hidden", borderBottom: "1px solid rgba(0, 229, 255, 0.1)" }}>
         {/* Background Image Overlay */}
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/images/page-hero-cyber.jpg)", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0, opacity: 0.2 }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${prefixPath("/images/page-hero-cyber.jpg")})`, backgroundSize: "cover", backgroundPosition: "center", zIndex: 0, opacity: 0.2 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(3,5,18,0.95) 0%, rgba(3,5,18,0.85) 60%, rgba(6,11,20,0.95) 100%)", zIndex: 1 }} />
         <div style={{ position: "absolute", top: "10%", right: "10%", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, rgba(128, 0, 255, 0.08) 50%, transparent 70%)", zIndex: 2, pointerEvents: "none", filter: "blur(40px)" }} />
         
@@ -219,7 +220,7 @@ export default function LanaProductPage() {
               <div style={{ position: "absolute", inset: "-30px", background: "radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none", filter: "blur(30px)" }} />
               <div style={{ width: "100%", maxWidth: "420px", height: "460px", position: "relative", zIndex: 1, borderRadius: "24px", overflow: "hidden", border: "1px solid rgba(255, 255, 255, 0.08)", boxShadow: "0 20px 50px rgba(0,0,0,0.6)" }}>
                 <Image
-                  src="/images/lana-blazer.png"
+                  src={prefixPath("/images/lana-blazer.png")}
                   alt="LANA AI Avatar"
                   fill
                   priority
@@ -259,7 +260,7 @@ export default function LanaProductPage() {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div style={{ width: "100%", maxWidth: "440px", height: "300px", position: "relative", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 229, 255, 0.15)", boxShadow: "0 10px 30px rgba(0, 229, 255, 0.05)" }}>
                 <Image
-                  src="/images/lana-bubbles.jpg"
+                  src={prefixPath("/images/lana-bubbles.jpg")}
                   alt="LANA guiding operations"
                   fill
                   style={{ objectFit: "cover" }}
@@ -474,7 +475,7 @@ export default function LanaProductPage() {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div style={{ width: "100%", maxWidth: "440px", height: "300px", position: "relative", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(168, 85, 247, 0.15)", boxShadow: "0 10px 30px rgba(168, 85, 247, 0.05)" }}>
                 <Image
-                  src="/images/lana-nametag.png"
+                  src={prefixPath("/images/lana-nametag.png")}
                   alt="LANA personality context"
                   fill
                   style={{ objectFit: "cover" }}
@@ -526,7 +527,7 @@ export default function LanaProductPage() {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div style={{ width: "100%", maxWidth: "440px", height: "300px", position: "relative", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 229, 255, 0.15)", boxShadow: "0 10px 30px rgba(0, 229, 255, 0.05)" }}>
                 <Image
-                  src="/images/lana-foodtruck.jpg"
+                  src={prefixPath("/images/lana-foodtruck.jpg")}
                   alt="LANA in food truck context"
                   fill
                   style={{ objectFit: "cover" }}

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { prefixPath } from "@/lib/prefix";
 
 
 const FOOTER_LINKS = {
@@ -95,7 +96,7 @@ export default function Footer() {
                 }}
               >
                 <Image
-                  src="/images/logo.png"
+                  src={prefixPath("/images/logo.png")}
                   alt="Lux Automaton"
                   fill
                   style={{ objectFit: "contain" }}

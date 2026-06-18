@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { prefixPath } from "@/lib/prefix";
 
 export interface PageHeroProps {
   eyebrow: string;
@@ -48,7 +49,7 @@ export default function PageHero({
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url(${bgImage})`,
+            backgroundImage: `url(${prefixPath(bgImage)})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             zIndex: 0,

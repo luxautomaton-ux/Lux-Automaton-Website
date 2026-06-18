@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { prefixPath } from "@/lib/prefix";
 
 export const metadata = {
   title: "Books by Asa Spade — Lux Automaton",
@@ -123,7 +124,7 @@ export default function BooksPage() {
             textAlign: "center",
             marginBottom: "80px",
             borderBottom: "1px solid rgba(0, 229, 255, 0.1)",
-            backgroundImage: "linear-gradient(to bottom, rgba(3, 5, 18, 0.65) 0%, rgba(3, 5, 18, 0.95) 100%), url(/images/page-hero-waves.png)",
+            backgroundImage: `linear-gradient(to bottom, rgba(3, 5, 18, 0.65) 0%, rgba(3, 5, 18, 0.95) 100%), url(${prefixPath("/images/page-hero-waves.png")})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             borderRadius: "16px",
@@ -254,7 +255,7 @@ export default function BooksPage() {
                       }}
                     >
                       <Image
-                        src={book.coverImage}
+                        src={prefixPath(book.coverImage)}
                         alt={book.title}
                         fill
                         style={{ objectFit: "cover" }}

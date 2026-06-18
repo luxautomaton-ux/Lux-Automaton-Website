@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { prefixPath } from "@/lib/prefix";
 import type { Metadata } from "next";
 import { PRODUCTS } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
@@ -32,7 +33,7 @@ function ProductsHero() {
     <section
       style={{
         padding: "90px 24px 100px",
-        backgroundImage: "linear-gradient(to right, rgba(3, 5, 18, 0.92) 0%, rgba(3, 5, 18, 0.82) 60%, rgba(3, 5, 18, 0.55) 100%), url(/images/page-hero-circuit.png)",
+        backgroundImage: `linear-gradient(to right, rgba(3, 5, 18, 0.92) 0%, rgba(3, 5, 18, 0.82) 60%, rgba(3, 5, 18, 0.55) 100%), url(${prefixPath("/images/page-hero-circuit.png")})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         position: "relative",
@@ -182,7 +183,7 @@ function ProductsHero() {
           className="products-hero-image"
         >
           <Image
-            src="/images/lux-coder-card.png"
+            src={prefixPath("/images/lux-coder-card.png")}
             alt="Lux Coder — AI coding suite"
             width={800}
             height={500}
@@ -478,7 +479,7 @@ function EcosystemValueSection() {
           }}
         >
           <Image
-            src="/images/ecosystem-value.png"
+            src={prefixPath("/images/ecosystem-value.png")}
             alt="Lux Automaton Ecosystem Value — development hours, build value, and estimated sale value"
             width={1280}
             height={720}

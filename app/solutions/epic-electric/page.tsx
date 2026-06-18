@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SOLUTIONS } from "@/lib/solutions";
+import { prefixPath } from "@/lib/prefix";
 
 export const metadata: Metadata = {
   title: "Epic Electric — Contractor Operations System | Lux Automaton",
@@ -43,7 +44,7 @@ export default function EpicElectricPage() {
           display: "flex",
           alignItems: "center",
           overflow: "hidden",
-          backgroundImage: "linear-gradient(to bottom, rgba(3, 5, 18, 0.78) 0%, rgba(3, 5, 18, 0.93) 100%), url(/images/epic-electric-hero.png)",
+          backgroundImage: `linear-gradient(to bottom, rgba(3, 5, 18, 0.78) 0%, rgba(3, 5, 18, 0.93) 100%), url(${prefixPath("/images/epic-electric-hero.png")})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "100px 24px 80px",

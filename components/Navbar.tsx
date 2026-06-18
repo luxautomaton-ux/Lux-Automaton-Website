@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { prefixPath } from "@/lib/prefix";
 
 const PRODUCTS_ITEMS = [
   { href: "/products/lux-agent-usb", name: "Lux Agent USB", icon: "💾", desc: "Portable AI Business OS" },
@@ -74,7 +75,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "12px" }}>
           <Image
-            src="/images/logo.png"
+            src={prefixPath("/images/logo.png")}
             alt="Lux Automaton Logo"
             width={44}
             height={44}

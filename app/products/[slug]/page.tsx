@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { prefixPath } from "@/lib/prefix";
 import { PRODUCTS } from "@/lib/products";
 import PageHero from "@/components/PageHero";
 import FiveWHSection from "@/components/FiveWHSection";
@@ -256,7 +257,7 @@ export default async function ProductDetailPage({ params }: Props) {
               {/* Left Side: Photo */}
               <div style={{ position: "relative", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 20px 50px rgba(0,0,0,0.5)" }}>
                 <Image
-                  src="/images/podcast-photo.jpg"
+                  src={prefixPath("/images/podcast-photo.jpg")}
                   alt="Lux Coder Podcast Cover"
                   width={600}
                   height={400}

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { prefixPath } from "@/lib/prefix";
 
 const VALUES = [
   {
@@ -47,7 +48,7 @@ export default function FoundersPage() {
       {/* HERO SECTION */}
       <section style={{ position: "relative", minHeight: "580px", display: "flex", alignItems: "center", overflow: "hidden", borderBottom: "1px solid rgba(0, 229, 255, 0.1)" }}>
         {/* Background Image Overlay */}
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "url(/images/partners-hero-bg.jpg)", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0, opacity: 0.15 }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${prefixPath("/images/partners-hero-bg.jpg")})`, backgroundSize: "cover", backgroundPosition: "center", zIndex: 0, opacity: 0.15 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(3,5,18,0.95) 0%, rgba(3,5,18,0.85) 60%, rgba(6,11,20,0.95) 100%)", zIndex: 1 }} />
         <div style={{ position: "absolute", top: "10%", right: "10%", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, transparent 70%)", zIndex: 2, pointerEvents: "none", filter: "blur(40px)" }} />
         
@@ -88,13 +89,13 @@ export default function FoundersPage() {
             <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: "20px", width: "180px", marginTop: "-20px" }}>
                 <div style={{ height: "200px", position: "relative", borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(0,229,255,0.2)", boxShadow: "0 10px 30px rgba(0,229,255,0.05)" }}>
-                  <Image src="/images/founder-asa.png" alt="Asa Pritchard" fill style={{ objectFit: "cover" }} />
+                  <Image src={prefixPath("/images/founder-asa.png")} alt="Asa Pritchard" fill style={{ objectFit: "cover" }} />
                 </div>
                 <div style={{ fontSize: "0.8rem", color: "var(--text-muted)", textAlign: "center", fontWeight: 600 }}>Asa Pritchard</div>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "20px", width: "180px", marginTop: "20px" }}>
                 <div style={{ height: "200px", position: "relative", borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(0,255,136,0.2)", boxShadow: "0 10px 30px rgba(0,255,136,0.05)" }}>
-                  <Image src="/images/partner-torrey.png" alt="Dr. Torrey Dooley" fill style={{ objectFit: "cover" }} />
+                  <Image src={prefixPath("/images/partner-torrey.png")} alt="Dr. Torrey Dooley" fill style={{ objectFit: "cover" }} />
                 </div>
                 <div style={{ fontSize: "0.8rem", color: "var(--text-muted)", textAlign: "center", fontWeight: 600 }}>Dr. Torrey Dooley</div>
               </div>
@@ -129,7 +130,7 @@ export default function FoundersPage() {
             {/* Left Column: Portrait & Badge */}
             <div>
               <div style={{ position: "relative", width: "100%", height: "420px", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 229, 255, 0.2)", boxShadow: "0 10px 40px rgba(0, 229, 255, 0.1)", marginBottom: "24px" }}>
-                <Image src="/images/founder-asa.png" alt="Asa Pritchard" fill style={{ objectFit: "cover" }} />
+                <Image src={prefixPath("/images/founder-asa.png")} alt="Asa Pritchard" fill style={{ objectFit: "cover" }} />
               </div>
               <div style={{ display: "inline-flex", color: "var(--cyan)", background: "rgba(0, 229, 255, 0.08)", border: "1px solid rgba(0, 229, 255, 0.2)", borderRadius: "4px", padding: "6px 14px", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "16px" }}>
                 Asa Pritchard
@@ -188,7 +189,7 @@ export default function FoundersPage() {
                 <div>
                   <h4 style={{ fontSize: "0.85rem", fontWeight: 800, color: "var(--cyan)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "16px" }}>Founder + Development Value</h4>
                   <div style={{ position: "relative", width: "100%", height: "480px", borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(0, 229, 255, 0.15)" }}>
-                    <Image src="/images/founder-dev-value.png" alt="Founder + Development Value" fill style={{ objectFit: "contain", background: "#050714" }} />
+                    <Image src={prefixPath("/images/founder-dev-value.png")} alt="Founder + Development Value" fill style={{ objectFit: "contain", background: "#050714" }} />
                   </div>
                 </div>
 
@@ -204,7 +205,7 @@ export default function FoundersPage() {
                     ].map((j, idx) => (
                       <div key={idx} style={{ position: "relative" }}>
                         <div style={{ position: "relative", width: "100%", height: "140px", borderRadius: "8px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
-                          <Image src={j.img} alt={j.caption} fill style={{ objectFit: "cover" }} />
+                          <Image src={prefixPath(j.img)} alt={j.caption} fill style={{ objectFit: "cover" }} />
                         </div>
                         <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "6px", textAlign: "center", fontWeight: 600 }}>{j.caption}</div>
                       </div>
@@ -224,7 +225,7 @@ export default function FoundersPage() {
             {/* Left Column: Portrait & Badge */}
             <div>
               <div style={{ position: "relative", width: "100%", height: "420px", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 255, 136, 0.2)", boxShadow: "0 10px 40px rgba(0, 255, 136, 0.1)", marginBottom: "24px" }}>
-                <Image src="/images/partner-torrey.png" alt="Dr. Torrey Dooley" fill style={{ objectFit: "cover" }} />
+                <Image src={prefixPath("/images/partner-torrey.png")} alt="Dr. Torrey Dooley" fill style={{ objectFit: "cover" }} />
               </div>
               <div style={{ display: "inline-flex", color: "var(--green)", background: "rgba(0, 255, 136, 0.08)", border: "1px solid rgba(0, 255, 136, 0.2)", borderRadius: "4px", padding: "6px 14px", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "16px" }}>
                 Dr. Torrey Dooley
@@ -300,7 +301,7 @@ export default function FoundersPage() {
                     ].map((j, idx) => (
                       <div key={idx} style={{ position: "relative" }}>
                         <div style={{ position: "relative", width: "100%", height: "140px", borderRadius: "8px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
-                          <Image src={j.img} alt={j.caption} fill style={{ objectFit: "cover" }} />
+                          <Image src={prefixPath(j.img)} alt={j.caption} fill style={{ objectFit: "cover" }} />
                         </div>
                         <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "6px", textAlign: "center", fontWeight: 600 }}>{j.caption}</div>
                       </div>

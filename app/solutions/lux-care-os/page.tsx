@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SOLUTIONS } from "@/lib/solutions";
+import { prefixPath } from "@/lib/prefix";
 
 export const metadata: Metadata = {
   title: "Lux Care OS — AI-Powered Care Operations | Lux Automaton",
@@ -42,7 +43,7 @@ export default function LuxCareOSPage() {
           display: "flex",
           alignItems: "center",
           overflow: "hidden",
-          backgroundImage: "linear-gradient(to bottom, rgba(3, 5, 18, 0.78) 0%, rgba(3, 5, 18, 0.93) 100%), url(/images/lux-care-os-hero.jpg)",
+          backgroundImage: `linear-gradient(to bottom, rgba(3, 5, 18, 0.78) 0%, rgba(3, 5, 18, 0.93) 100%), url(${prefixPath("/images/lux-care-os-hero.jpg")})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "100px 24px 80px",

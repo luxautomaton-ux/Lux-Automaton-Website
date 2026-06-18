@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SOLUTIONS } from "@/lib/solutions";
 import SolutionCard from "@/components/SolutionCard";
+import { prefixPath } from "@/lib/prefix";
 
 export const metadata: Metadata = {
   title: "Solutions — Lux Automaton",
@@ -31,7 +32,7 @@ function SolutionsHero() {
     <section
       style={{
         padding: "100px 24px 80px",
-        backgroundImage: "linear-gradient(to right, rgba(3, 5, 18, 0.92) 0%, rgba(3, 5, 18, 0.82) 60%, rgba(3, 5, 18, 0.55) 100%), url(/images/page-hero-waves.png)",
+        backgroundImage: `linear-gradient(to right, rgba(3, 5, 18, 0.92) 0%, rgba(3, 5, 18, 0.82) 60%, rgba(3, 5, 18, 0.55) 100%), url(${prefixPath("/images/page-hero-waves.png")})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         position: "relative",

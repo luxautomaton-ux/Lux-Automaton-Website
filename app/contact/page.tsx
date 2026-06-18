@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { prefixPath } from "@/lib/prefix";
 
 const INQUIRY_TYPES = [
   "General Question",
@@ -41,7 +42,7 @@ export default function ContactPage() {
         className="circuit-grid"
         style={{
           padding: "80px 24px 100px",
-          backgroundImage: "linear-gradient(to right, rgba(3, 5, 18, 0.92) 0%, rgba(3, 5, 18, 0.82) 60%, rgba(3, 5, 18, 0.55) 100%), url(/images/page-hero-circuit.png)",
+          backgroundImage: `linear-gradient(to right, rgba(3, 5, 18, 0.92) 0%, rgba(3, 5, 18, 0.82) 60%, rgba(3, 5, 18, 0.55) 100%), url(${prefixPath("/images/page-hero-circuit.png")})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           position: "relative",

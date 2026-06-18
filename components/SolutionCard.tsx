@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { Solution } from "@/lib/solutions";
+import { prefixPath } from "@/lib/prefix";
 
 interface SolutionCardProps {
   solution: Solution;
@@ -55,7 +56,7 @@ export default function SolutionCard({ solution, layout = "grid" }: SolutionCard
             style={{
               height: "200px",
               position: "relative",
-              backgroundImage: `linear-gradient(to bottom, rgba(3, 5, 18, 0.4) 0%, rgba(3, 5, 18, 0.95) 100%), url(${solution.bgImage})`,
+              backgroundImage: `linear-gradient(to bottom, rgba(3, 5, 18, 0.4) 0%, rgba(3, 5, 18, 0.95) 100%), url(${prefixPath(solution.bgImage)})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               padding: "24px 24px 16px",
@@ -247,7 +248,7 @@ export default function SolutionCard({ solution, layout = "grid" }: SolutionCard
         border: `1px solid color-mix(in srgb, ${solution.accentColor} 20%, transparent)`,
         transition: "border-color 0.3s ease, box-shadow 0.3s ease",
         backgroundImage: solution.bgImage 
-          ? `linear-gradient(to right, rgba(3, 5, 18, 0.96) 0%, rgba(3, 5, 18, 0.88) 45%, rgba(3, 5, 18, 0.25) 85%, rgba(3, 5, 18, 0.1) 100%), url(${solution.bgImage})` 
+          ? `linear-gradient(to right, rgba(3, 5, 18, 0.96) 0%, rgba(3, 5, 18, 0.88) 45%, rgba(3, 5, 18, 0.25) 85%, rgba(3, 5, 18, 0.1) 100%), url(${prefixPath(solution.bgImage)})` 
           : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",

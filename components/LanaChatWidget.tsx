@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { prefixPath } from "@/lib/prefix";
 
 interface Message {
   id: string;
@@ -326,7 +327,7 @@ export default function LanaChatWidget() {
           className="lana-trigger-btn"
         >
           <Image
-            src="/images/lana.png"
+            src={prefixPath("/images/lana.png")}
             alt="Lana Support Specialist"
             fill
             style={{
@@ -411,7 +412,7 @@ export default function LanaChatWidget() {
                 }}
               >
                 <Image
-                  src="/images/lana.png"
+                  src={prefixPath("/images/lana.png")}
                   alt="Lana Avatar"
                   fill
                   style={{ objectFit: "cover", objectPosition: "center top" }}

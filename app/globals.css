@@ -299,3 +299,28 @@ body {
   transform: scale(1.06);
 }
 
+/* ===== RESPONSIVE PRODUCT GRIDS ===== */
+.product-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.product-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .product-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .product-grid-3,
+  .product-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+

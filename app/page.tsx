@@ -353,9 +353,8 @@ function ProductsPreview() {
         </div>
 
         <div
+          className="product-grid-3"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
             gap: "20px",
           }}
         >

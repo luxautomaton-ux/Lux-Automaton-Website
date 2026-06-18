@@ -359,9 +359,8 @@ function LiveProductsSection({ products }: { products: ReturnType<typeof PRODUCT
         </div>
 
         <div
+          className="product-grid-2"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
             gap: "20px",
           }}
         >
@@ -401,9 +400,8 @@ function ComingSoonSection({ products }: { products: ReturnType<typeof PRODUCTS.
         </div>
 
         <div
+          className="product-grid-2"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
             gap: "20px",
           }}
         >

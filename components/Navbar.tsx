@@ -115,7 +115,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex" style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+        <nav className="desktop-nav" style={{ alignItems: "center", gap: "4px" }}>
           {/* Home */}
           <Link
             href="/"
@@ -427,7 +427,7 @@ export default function Navbar() {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden"
+          className="hamburger-btn"
           onClick={() => setMobileOpen((prev) => !prev)}
           aria-label="Toggle menu"
           style={{
@@ -436,7 +436,6 @@ export default function Navbar() {
             borderRadius: "6px",
             padding: "8px",
             cursor: "pointer",
-            display: "flex",
             flexDirection: "column",
             gap: "4px",
           }}
@@ -712,6 +711,20 @@ export default function Navbar() {
         }
         .nav-dropdown-item:hover .nav-dropdown-item-title {
           color: var(--cyan) !important;
+        }
+        .desktop-nav {
+          display: flex !important;
+        }
+        .hamburger-btn {
+          display: none !important;
+        }
+        @media (max-width: 1024px) {
+          .desktop-nav {
+            display: none !important;
+          }
+          .hamburger-btn {
+            display: flex !important;
+          }
         }
       `}</style>
     </header>

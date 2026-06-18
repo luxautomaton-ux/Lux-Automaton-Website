@@ -33,39 +33,24 @@ export default function PageHero({
   const statusConfig = status ? STATUS_CONFIG[status] : null;
 
   return (
-    <section
-      style={{
-        position: "relative",
-        minHeight: "520px",
-        display: "flex",
-        alignItems: "center",
-        overflow: "hidden",
-        background: "var(--bg-void)",
-      }}
-    >
+    <section className="hero-container">
       {/* Background image */}
       {bgImage && (
         <div
+          className="hero-bg-image"
           style={{
-            position: "absolute",
-            inset: 0,
             backgroundImage: `url(${prefixPath(bgImage)})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            zIndex: 0,
           }}
         />
       )}
 
       {/* Dark overlay */}
       <div
+        className="hero-overlay"
         style={{
-          position: "absolute",
-          inset: 0,
           background: bgImage
             ? "linear-gradient(to right, rgba(3,5,18,0.92) 0%, rgba(3,5,18,0.78) 60%, rgba(3,5,18,0.55) 100%)"
             : `linear-gradient(135deg, rgba(3,5,18,1) 0%, rgba(6,11,20,0.95) 100%)`,
-          zIndex: 1,
         }}
       />
 
@@ -111,17 +96,8 @@ export default function PageHero({
       />
 
       {/* Content */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 3,
-          width: "100%",
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "100px 24px 80px",
-        }}
-      >
-        <div style={{ maxWidth: "760px" }}>
+      <div className="hero-content-wrapper">
+        <div className="hero-text-block">
           {/* Status badge */}
           {statusConfig && (
             <div
@@ -162,6 +138,7 @@ export default function PageHero({
 
           {/* Eyebrow */}
           <div
+            className="hero-eyebrow"
             style={{
               fontSize: "0.7rem",
               fontWeight: 700,
@@ -206,7 +183,7 @@ export default function PageHero({
           </p>
 
           {/* CTAs */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "14px", alignItems: "center" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "14px", alignItems: "center" }} className="hero-ctas">
             <Link
               href={primaryCta.href}
               target={primaryCta.external ? "_blank" : undefined}
@@ -272,6 +249,80 @@ export default function PageHero({
           zIndex: 3,
         }}
       />
+      <style>{`
+        .hero-container {
+          position: relative;
+          min-height: 520px;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+          background: var(--bg-void);
+        }
+        .hero-bg-image {
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center;
+          z-index: 0;
+        }
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+        }
+        .hero-content-wrapper {
+          position: relative;
+          z-index: 3;
+          width: 100%;
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 100px 24px 80px;
+        }
+        .hero-text-block {
+          max-width: 760px;
+        }
+        @media (max-width: 768px) {
+          .hero-container {
+            flex-direction: column;
+            min-height: auto;
+            align-items: stretch;
+          }
+          .hero-bg-image {
+            position: relative;
+            height: 220px;
+            width: 100%;
+            inset: auto;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 2;
+            order: 2;
+            margin-top: 20px;
+            margin-bottom: 20px;
+          }
+          .hero-overlay {
+            background: linear-gradient(135deg, rgba(3,5,18,1) 0%, rgba(6,11,20,0.95) 100%) !important;
+            height: 100%;
+          }
+          .hero-content-wrapper {
+            padding: 60px 20px 20px;
+            order: 1;
+          }
+          .hero-text-block {
+            margin: 0 auto;
+            text-align: center;
+          }
+          .hero-text-block p {
+            margin: 0 auto 30px !important;
+          }
+          .hero-eyebrow {
+            justify-content: center !important;
+          }
+          .hero-ctas {
+            justify-content: center !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

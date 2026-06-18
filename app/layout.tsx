@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LanaChatWidget from "@/components/LanaChatWidget";
 
+import { prefixPath } from "@/lib/prefix";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -12,9 +14,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Lux Automaton — Private AI Systems for Builders & Founders",
-  description:
-    "Automate | Innovate | Accelerate. Build faster, automate smarter, and run your business from one connected AI ecosystem. Private AI systems for builders, founders, and small businesses.",
+  title: "Lux Automaton - Build Faster. Automate Smarter. Own Your Stack.",
+  description: "Build Faster. Automate Smarter. Own Your Stack.",
   keywords: [
     "AI automation",
     "private AI",
@@ -23,11 +24,34 @@ export const metadata: Metadata = {
     "founders",
     "small business AI",
   ],
-  openGraph: {
-    title: "Lux Automaton — Private AI Systems",
-    description: "Build faster. Automate smarter. Run your business from one AI ecosystem.",
-    type: "website",
+  icons: {
+    icon: [
+      { url: prefixPath("/images/logo-icon.svg"), type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: prefixPath("/images/logo.png") },
+    ]
   },
+  openGraph: {
+    title: "Lux Automaton - Build Faster. Automate Smarter. Own Your Stack.",
+    description: "Build Faster. Automate Smarter. Own Your Stack.",
+    type: "website",
+    url: "https://luxautomaton-ux.github.io/Lux-Automaton-Website/",
+    images: [
+      {
+        url: "https://luxautomaton-ux.github.io/Lux-Automaton-Website/images/ecosystem-value.png",
+        width: 1200,
+        height: 630,
+        alt: "Lux Automaton AI Ecosystem",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lux Automaton - Build Faster. Automate Smarter. Own Your Stack.",
+    description: "Build Faster. Automate Smarter. Own Your Stack.",
+    images: ["https://luxautomaton-ux.github.io/Lux-Automaton-Website/images/ecosystem-value.png"],
+  }
 };
 
 export default function RootLayout({

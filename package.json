@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "scrape-linkedin": "python3 lib/scripts/scrape_linkedin.py"
+    "scrape-linkedin": "python3 lib/scripts/scrape_linkedin.py",
+    "scrape-linkedin-interactive": "python3 lib/scripts/scrape_interactive.py"
   },
   "dependencies": {
     "next": "16.2.9",

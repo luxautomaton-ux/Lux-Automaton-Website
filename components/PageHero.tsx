@@ -33,7 +33,7 @@ export default function PageHero({
   const statusConfig = status ? STATUS_CONFIG[status] : null;
 
   return (
-    <section className="hero-container">
+    <section className="hero-container" style={{ "--hero-accent": accentColor } as React.CSSProperties}>
       {/* Background image */}
       {bgImage && (
         <div
@@ -188,22 +188,7 @@ export default function PageHero({
               href={primaryCta.href}
               target={primaryCta.external ? "_blank" : undefined}
               rel={primaryCta.external ? "noopener noreferrer" : undefined}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                background: `linear-gradient(135deg, ${accentColor} 0%, ${accentColor}bb 100%)`,
-                color: "#000",
-                fontWeight: 800,
-                fontSize: "0.85rem",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                padding: "14px 32px",
-                borderRadius: "8px",
-                textDecoration: "none",
-                boxShadow: `0 0 30px ${accentColor}44, 0 4px 20px rgba(0,0,0,0.4)`,
-                transition: "all 0.2s ease",
-              }}
+              className="hero-btn-primary"
             >
               {primaryCta.label}
               {primaryCta.external && <span style={{ fontSize: "0.9em" }}>↗</span>}
@@ -212,23 +197,7 @@ export default function PageHero({
             {secondaryCta && (
               <Link
                 href={secondaryCta.href}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  background: "rgba(255,255,255,0.04)",
-                  border: `1px solid ${accentColor}44`,
-                  color: "var(--text-primary)",
-                  fontWeight: 600,
-                  fontSize: "0.85rem",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  padding: "13px 28px",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  backdropFilter: "blur(8px)",
-                  transition: "all 0.2s ease",
-                }}
+                className="hero-btn-secondary"
               >
                 {secondaryCta.label}
               </Link>
@@ -281,36 +250,57 @@ export default function PageHero({
         .hero-text-block {
           max-width: 760px;
         }
+        .hero-btn-primary {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: var(--hero-accent);
+          color: var(--bg-void) !important;
+          font-weight: 800;
+          font-size: 0.85rem;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          padding: 14px 32px;
+          border-radius: 8px;
+          text-decoration: none;
+          box-shadow: 0 0 24px var(--hero-accent), 0 4px 20px rgba(0,0,0,0.4);
+          transition: all 0.2s ease;
+        }
+        .hero-btn-primary:hover {
+          opacity: 0.9;
+          transform: translateY(-1px);
+        }
+        .hero-btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid var(--hero-accent);
+          color: var(--text-primary) !important;
+          font-weight: 600;
+          font-size: 0.85rem;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          padding: 13px 28px;
+          border-radius: 8px;
+          text-decoration: none;
+          backdrop-filter: blur(8px);
+          transition: all 0.2s ease;
+        }
+        .hero-btn-secondary:hover {
+          background: rgba(255,255,255,0.08);
+          border-color: var(--text-primary);
+        }
         @media (max-width: 768px) {
           .hero-container {
-            flex-direction: column;
-            min-height: auto;
-            align-items: stretch;
-          }
-          .hero-bg-image {
-            position: relative;
-            height: 220px;
-            width: 100%;
-            inset: auto;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            z-index: 2;
-            order: 2;
-            margin-top: 20px;
-            margin-bottom: 20px;
-          }
-          .hero-overlay {
-            background: linear-gradient(135deg, rgba(3,5,18,1) 0%, rgba(6,11,20,0.95) 100%) !important;
-            height: 100%;
+            min-height: 480px;
           }
           .hero-content-wrapper {
-            padding: 60px 20px 20px;
-            order: 1;
+            padding: 80px 20px 60px;
+            text-align: center;
           }
           .hero-text-block {
             margin: 0 auto;
-            text-align: center;
           }
           .hero-text-block p {
             margin: 0 auto 30px !important;
@@ -320,6 +310,9 @@ export default function PageHero({
           }
           .hero-ctas {
             justify-content: center !important;
+          }
+          .hero-overlay {
+            background: linear-gradient(180deg, rgba(3,5,18,0.85) 0%, rgba(3,5,18,0.95) 100%) !important;
           }
         }
       `}</style>

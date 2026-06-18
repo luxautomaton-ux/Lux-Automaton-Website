@@ -27,6 +27,7 @@ const FOOTER_LINKS = {
     { label: "About", href: "/founders" },
     { label: "Partners", href: "/partners" },
     { label: "Books", href: "/books" },
+    { label: "Company News", href: "/news" },
     { label: "Contact", href: "/contact" },
     { label: "YouTube Channel", href: "https://www.youtube.com/channel/UCcYnAZw0QnS6dD1n-7vpwdA" },
     { label: "LinkedIn Company", href: "https://www.linkedin.com/company/lux-automaton-saas/" },

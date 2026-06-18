@@ -4,6 +4,8 @@ import { PRODUCTS } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import FeaturedSystems from "@/components/FeaturedSystems";
 import { prefixPath } from "@/lib/prefix";
+import { NEWS_STORIES } from "@/lib/news";
+
 
 // ─────────────────────────────────────────────
 // HOME PAGE — Lux Automaton
@@ -18,6 +20,7 @@ export default function HomePage() {
       <FeaturedSystems />
       <EcosystemSection />
       <FounderSection />
+      <LatestNewsSection />
       <CTABanner />
     </div>
   );
@@ -648,6 +651,195 @@ function FounderSection() {
           .team-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+function LatestNewsSection() {
+  const latestStories = NEWS_STORIES.slice(0, 3);
+
+  return (
+    <section
+      className="circuit-grid"
+      style={{
+        padding: "100px 24px",
+        background: "var(--bg-surface)",
+        borderTop: "1px solid var(--border-subtle)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+        
+        {/* Section Header */}
+        <div style={{ textAlign: "center", marginBottom: "60px" }}>
+          <div className="section-label" style={{ marginBottom: "16px", display: "inline-flex" }}>
+            LUX DISPATCH
+          </div>
+          <h2
+            style={{
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 900,
+              color: "var(--text-primary)",
+              letterSpacing: "-0.02em",
+              marginBottom: "16px",
+            }}
+          >
+            Latest News &{" "}
+            <span
+              style={{
+                background: "linear-gradient(135deg, var(--green) 0%, var(--cyan) 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Insights
+            </span>
+          </h2>
+          <p style={{ color: "var(--text-secondary)", fontSize: "1.05rem", maxWidth: "560px", margin: "0 auto", lineHeight: 1.6 }}>
+            Follow our progress and read updates from our active AI deployments and local-first systems.
+          </p>
+        </div>
+
+        {/* 3-Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {latestStories.map((story) => (
+            <article
+              key={story.slug}
+              className="glass-card"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+                borderRadius: "12px",
+                overflow: "hidden",
+                border: "1px solid rgba(255, 255, 255, 0.05)",
+              }}
+            >
+              {/* Cover Image */}
+              <div style={{ position: "relative", height: "180px", width: "100%" }}>
+                <Image
+                  src={prefixPath(story.image)}
+                  alt={story.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "12px",
+                    right: "12px",
+                    background: "rgba(2,4,8,0.85)",
+                    border: "1px solid var(--border-subtle)",
+                    color: "var(--text-secondary)",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    padding: "3px 8px",
+                    borderRadius: "4px",
+                  }}
+                >
+                  {story.date}
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div style={{ padding: "20px", flex: 1, display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "12px" }}>
+                  <span
+                    style={{
+                      fontSize: "0.7rem",
+                      fontWeight: 700,
+                      color: "var(--cyan)",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {story.category}
+                  </span>
+                  <span style={{ color: "var(--text-muted)", fontSize: "0.8rem" }}>•</span>
+                  <span
+                    style={{
+                      fontSize: "0.65rem",
+                      fontWeight: 700,
+                      background: "rgba(0, 229, 255, 0.08)",
+                      color: "var(--text-secondary)",
+                      padding: "1px 6px",
+                      borderRadius: "4px",
+                      border: "1px solid rgba(0, 229, 255, 0.15)",
+                    }}
+                  >
+                    {story.source}
+                  </span>
+                </div>
+
+                <h3
+                  style={{
+                    fontSize: "1.15rem",
+                    fontWeight: 800,
+                    color: "var(--text-primary)",
+                    lineHeight: 1.3,
+                    marginBottom: "12px",
+                  }}
+                >
+                  <Link href={`/news/${story.slug}`} className="hover:text-[var(--cyan)] transition-colors hover:underline">
+                    {story.title}
+                  </Link>
+                </h3>
+
+                <p
+                  style={{
+                    color: "var(--text-secondary)",
+                    fontSize: "0.88rem",
+                    lineHeight: 1.6,
+                    marginBottom: "20px",
+                    flex: 1,
+                  }}
+                >
+                  {story.summary}
+                </p>
+
+                {/* Footer info */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    paddingTop: "14px",
+                    borderTop: "1px solid rgba(255,255,255,0.05)",
+                    fontSize: "0.75rem",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <div style={{ position: "relative", width: "20px", height: "20px", borderRadius: "50%", overflow: "hidden" }}>
+                      <Image
+                        src={prefixPath(story.author.image)}
+                        alt={story.author.name}
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    </div>
+                    <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>{story.author.name}</span>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-muted)" }}>
+                    <span>👍 {story.likes}</span>
+                    <span>💬 {story.comments}</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* View All Button */}
+        <div style={{ textAlign: "center" }}>
+          <Link href="/news" className="btn-outline" style={{ fontSize: "0.9rem", padding: "14px 36px" }}>
+            View All News & Blog Posts →
+          </Link>
+        </div>
+
+      </div>
     </section>
   );
 }

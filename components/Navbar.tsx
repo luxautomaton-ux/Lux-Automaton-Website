@@ -375,6 +375,26 @@ export default function Navbar() {
             Founders
           </Link>
 
+          {/* News */}
+          <Link
+            href="/news"
+            style={{
+              padding: "8px 16px",
+              borderRadius: "6px",
+              fontSize: "0.85rem",
+              fontWeight: 600,
+              letterSpacing: "0.03em",
+              textDecoration: "none",
+              color: pathname.startsWith("/news") ? "var(--cyan)" : "var(--text-secondary)",
+              background: pathname.startsWith("/news") ? "rgba(0, 229, 255, 0.08)" : "transparent",
+              border: pathname.startsWith("/news") ? "1px solid rgba(0, 229, 255, 0.2)" : "1px solid transparent",
+              transition: "all 0.2s ease",
+            }}
+          >
+            News
+          </Link>
+
+
           {/* Contact */}
           <Link
             href="/contact"
@@ -638,6 +658,24 @@ export default function Navbar() {
           >
             Founders
           </Link>
+
+          {/* News */}
+          <Link
+            href="/news"
+            style={{
+              padding: "12px 16px",
+              borderRadius: "8px",
+              fontSize: "1rem",
+              fontWeight: 600,
+              textDecoration: "none",
+              color: pathname.startsWith("/news") ? "var(--cyan)" : "var(--text-secondary)",
+              background: pathname.startsWith("/news") ? "rgba(0, 229, 255, 0.08)" : "transparent",
+              display: "block",
+            }}
+          >
+            News
+          </Link>
+
 
           {/* Contact */}
           <Link

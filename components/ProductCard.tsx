@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import type { Product } from "@/lib/products";
+import { prefixPath } from "@/lib/prefix";
+
 
 interface ProductCardProps {
   product: Product;
@@ -45,7 +47,7 @@ export default function ProductCard({ product, featured = false }: ProductCardPr
             style={{
               position: "absolute",
               inset: 0,
-              backgroundImage: `url(${product.bgImage})`,
+              backgroundImage: `url(${prefixPath(product.bgImage)})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               transition: "transform 0.5s ease",

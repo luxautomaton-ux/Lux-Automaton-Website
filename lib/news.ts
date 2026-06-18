@@ -63,7 +63,7 @@ export const NEWS_STORIES: NewsStory[] = [
       "Unlike other platforms that sell your data or train external models on your financial history, LuxWriteOff operates in a private, secure environment. Your financial data stays yours, protected by our ecosystem's strict privacy rules.",
       "Start saving time and money on your taxes today. LuxWriteOff is now available as a core product in the Lux Automaton suite."
     ],
-    image: "/images/lux-budgeter-hero.jpg",
+    image: "/images/lux-write-off.jpg",
     linkedinUrl: "https://www.linkedin.com/company/lux-automaton-saas/posts/",
     source: "Company Update",
     likes: 89,
@@ -157,7 +157,7 @@ export const NEWS_STORIES: NewsStory[] = [
       "By packaging our lightweight business engines and specialized agent frameworks onto a hardware-encrypted USB drive, operators can run full client pipelines, document generation, and scheduling tools offline on any computer.",
       "Plug it in, run the secure sandbox, and start working immediately with your private local agent. It is enterprise intelligence, completely decoupled from the cloud."
     ],
-    image: "/images/lux-budgeter-hero.jpg",
+    image: "/images/lux-agent-usb.jpeg",
     linkedinUrl: "https://www.linkedin.com/company/lux-automaton-saas/posts/?feedView=all&viewAsMember=true",
     source: "Company Update",
     likes: 245,

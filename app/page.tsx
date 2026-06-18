@@ -141,7 +141,7 @@ function HeroSection() {
 
           <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "60px" }}>
             <Link href="/contact" className="btn-primary" style={{ fontSize: "0.9rem", padding: "14px 32px" }}>
-              Start Free Trial →
+              Get in Touch
             </Link>
             <Link href="/products" className="btn-outline" style={{ fontSize: "0.9rem", padding: "14px 32px" }}>
               Explore Products
@@ -717,7 +717,7 @@ function CTABanner() {
 
         <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
           <Link href="/contact" className="btn-primary" style={{ fontSize: "1rem", padding: "16px 40px" }}>
-            Start Free Trial →
+            Get in Touch
           </Link>
           <Link href="/contact" className="btn-outline" style={{ fontSize: "1rem", padding: "16px 40px" }}>
             Talk to a Human

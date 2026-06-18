@@ -399,7 +399,7 @@ export default function Navbar() {
             className="btn-primary"
             style={{ marginLeft: "8px", padding: "10px 22px", fontSize: "0.8rem" }}
           >
-            Get Started →
+            Get in Touch
           </Link>
         </nav>
 
@@ -657,7 +657,7 @@ export default function Navbar() {
           </Link>
 
           <Link href="/contact" className="btn-primary" style={{ marginTop: "12px", justifyContent: "center" }}>
-            Get Started →
+            Get in Touch
           </Link>
         </div>
       )}

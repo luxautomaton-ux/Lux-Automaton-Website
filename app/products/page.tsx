@@ -130,7 +130,7 @@ function ProductsHero() {
 
           <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "56px" }}>
             <Link href="/contact" className="btn-primary">
-              Start Free Trial →
+              Get in Touch
             </Link>
             <Link href="/contact" className="btn-outline">
               Book a Demo

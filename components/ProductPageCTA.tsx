@@ -110,7 +110,7 @@ export default function ProductPageCTA({
                 marginBottom: "28px",
               }}
             >
-              GET STARTED
+              GET IN TOUCH
             </div>
 
             <h2

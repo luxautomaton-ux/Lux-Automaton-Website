@@ -553,7 +553,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
       {/* 10. Product CTA */}
       <ProductPageCTA
-        headline={product.status === "coming-soon" ? "Get Early Access" : "Get Started Today"}
+        headline={product.status === "coming-soon" ? "Get Early Access" : "Get in Touch"}
         subheadline={product.status === "coming-soon" ? "Join the waitlist to receive priority access when launch begins." : "Deploy this solution and start accelerating your business workflows."}
         primaryCta={primaryCta}
         secondaryCta={secondaryCta}

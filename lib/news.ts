@@ -19,7 +19,9 @@ export interface NewsStory {
   featured?: boolean;
 }
 
-export const NEWS_STORIES: NewsStory[] = [
+import scrapedData from "./scraped-news.json";
+
+const STATIC_NEWS_STORIES: NewsStory[] = [
   {
     slug: "democratizing-ai-education-study-ai-courses",
     title: "Democratizing AI: Lux Automaton Launches 'Study AI Courses' Platform",
@@ -187,3 +189,113 @@ export const NEWS_STORIES: NewsStory[] = [
     comments: 28
   }
 ];
+
+interface ScrapedPost {
+  id?: string;
+  url?: string;
+  author?: string;
+  authorProfile?: string;
+  authorRole?: string;
+  time?: string;
+  content?: string;
+  reactions?: number;
+  comments?: number;
+  image?: string | null;
+  dateCollected?: string;
+}
+
+function mapScrapedPost(post: ScrapedPost): NewsStory {
+  const contentText = post.content || "";
+  const lines = contentText.split("\n").map((l: string) => l.trim()).filter((l: string) => l.length > 0);
+  
+  // Title: first line or a default title if empty
+  let title = "LinkedIn Update";
+  if (lines.length > 0) {
+    title = lines[0];
+    if (title.length > 80) {
+      title = title.substring(0, 77) + "...";
+    }
+  }
+
+  // Subtitle: second line or a summary of content
+  let subtitle = "Read the latest update from Lux Automaton.";
+  if (lines.length > 1) {
+    subtitle = lines[1];
+    if (subtitle.length > 120) {
+      subtitle = subtitle.substring(0, 117) + "...";
+    }
+  } else if (lines.length > 0 && lines[0].length > 80) {
+    subtitle = lines[0].substring(80, 200) + "...";
+  }
+
+  // Category detection based on content keywords
+  let category: "News" | "Insights" | "Product Launch" | "Case Study" = "Insights";
+  const contentLower = contentText.toLowerCase();
+  if (contentLower.includes("launch") || contentLower.includes("introducing") || contentLower.includes("now available")) {
+    category = "Product Launch";
+  } else if (contentLower.includes("case study") || contentLower.includes("client solution") || contentLower.includes("success pack")) {
+    category = "Case Study";
+  } else if (contentLower.includes("announcing") || contentLower.includes("press release") || contentLower.includes("we are excited")) {
+    category = "News";
+  }
+
+  // Author mapping matching known avatars
+  let authorImage = "/images/founder-asa.png"; // default
+  if (post.author && post.author.toLowerCase().includes("torrey")) {
+    authorImage = "/images/partner-torrey.png";
+  }
+
+  // Fallback category images if post has no photo
+  let image = post.image;
+  if (!image) {
+    if (category === "Product Launch") {
+      image = "/images/lux-coder-hero.png";
+    } else if (category === "Case Study") {
+      image = "/images/lux-care-os-hero.jpg";
+    } else if (category === "News") {
+      image = "/images/page-hero-circuit.png";
+    } else {
+      image = "/images/page-hero-cyber.jpg";
+    }
+  }
+
+  // Summary: first paragraph
+  const summary = lines.length > 0 ? lines.join(" ").substring(0, 180) + "..." : "LinkedIn Update";
+
+  return {
+    slug: post.id || "update",
+    title,
+    subtitle,
+    date: post.time || "Recently",
+    author: {
+      name: post.author || "Asa Spade",
+      role: post.authorRole || "Founder, Lux Automaton",
+      image: authorImage,
+    },
+    category,
+    summary,
+    content: lines.length > 0 ? lines : ["Read the full update on LinkedIn."],
+    image,
+    linkedinUrl: post.url || "https://www.linkedin.com/company/lux-automaton-saas/posts/",
+    source: (post.author && post.author.toLowerCase().includes("torrey")) ? "Company Update" : "Founder Insight",
+    likes: post.reactions || 0,
+    comments: post.comments || 0,
+  };
+}
+
+const scrapedStories: NewsStory[] = (scrapedData as ScrapedPost[]).map(mapScrapedPost);
+
+const combinedStories = [
+  ...scrapedStories,
+  ...STATIC_NEWS_STORIES
+];
+
+// Ensure exactly one story is featured (preferably the first scraped story, or fallback to static featured)
+if (combinedStories.length > 0) {
+  combinedStories.forEach(s => {
+    s.featured = false;
+  });
+  combinedStories[0].featured = true;
+}
+
+export const NEWS_STORIES: NewsStory[] = combinedStories;

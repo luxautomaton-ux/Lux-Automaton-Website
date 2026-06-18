@@ -159,13 +159,14 @@ export default async function NewsDetailPage({ params }: Props) {
             border: "1px solid var(--border-subtle)",
             boxShadow: "0 12px 40px rgba(0,0,0,0.5)",
             zIndex: 1,
+            background: "rgba(2, 4, 8, 0.4)",
           }}
         >
           <Image
             src={prefixPath(story.image)}
             alt={story.title}
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "contain" }}
             priority
           />
         </div>
@@ -199,11 +200,7 @@ export default async function NewsDetailPage({ params }: Props) {
           }}
           className="glass-card"
         >
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px", marginBottom: "12px", color: "var(--text-secondary)" }}>
-            <span>👍 {story.likes} Likes</span>
-            <span style={{ color: "var(--text-muted)" }}>•</span>
-            <span>💬 {story.comments} Comments</span>
-          </div>
+
 
           <h3 style={{ fontSize: "1.2rem", fontWeight: 800, color: "var(--text-primary)", marginBottom: "16px" }}>
             Join the conversation on LinkedIn

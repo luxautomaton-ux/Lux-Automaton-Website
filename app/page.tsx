@@ -718,12 +718,12 @@ function LatestNewsSection() {
               }}
             >
               {/* Cover Image */}
-              <div style={{ position: "relative", height: "180px", width: "100%" }}>
+              <div style={{ position: "relative", height: "180px", width: "100%", background: "rgba(2, 4, 8, 0.4)" }}>
                 <Image
                   src={prefixPath(story.image)}
                   alt={story.title}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "contain" }}
                 />
                 <div
                   style={{
@@ -821,10 +821,7 @@ function LatestNewsSection() {
                     <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>{story.author.name}</span>
                   </div>
 
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-muted)" }}>
-                    <span>👍 {story.likes}</span>
-                    <span>💬 {story.comments}</span>
-                  </div>
+
                 </div>
               </div>
             </article>

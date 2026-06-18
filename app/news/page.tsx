@@ -94,12 +94,12 @@ export default function NewsPage() {
             className="glass-card grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-10 mb-20 p-8 relative z-10"
           >
             {/* Featured Image */}
-            <div style={{ position: "relative", minHeight: "350px", borderRadius: "12px", overflow: "hidden" }} className="w-full">
+            <div style={{ position: "relative", minHeight: "350px", borderRadius: "12px", overflow: "hidden", background: "rgba(2, 4, 8, 0.4)" }} className="w-full">
               <Image
                 src={prefixPath(featuredStory.image)}
                 alt={featuredStory.title}
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "contain" }}
               />
               <div
                 style={{
@@ -195,15 +195,7 @@ export default function NewsPage() {
                   </div>
                 </div>
 
-                {/* Social engagement */}
-                <div className="flex items-center gap-4 text-[0.85rem] text-[var(--text-secondary)]">
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
-                    👍 {featuredStory.likes}
-                  </span>
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
-                    💬 {featuredStory.comments}
-                  </span>
-                  <Link
+                <Link
                     href={`/news/${featuredStory.slug}`}
                     style={{
                       display: "inline-flex",
@@ -225,7 +217,6 @@ export default function NewsPage() {
                   >
                     Read Article
                   </Link>
-                </div>
               </div>
             </div>
           </div>
@@ -340,12 +331,12 @@ export default function NewsPage() {
                     className="glass-card"
                   >
                     {/* Card Image */}
-                    <div style={{ position: "relative", height: "200px", width: "100%" }}>
+                    <div style={{ position: "relative", height: "200px", width: "100%", background: "rgba(2, 4, 8, 0.4)" }}>
                       <Image
                         src={prefixPath(story.image)}
                         alt={story.title}
                         fill
-                        style={{ objectFit: "cover" }}
+                        style={{ objectFit: "contain" }}
                       />
                       <div
                         style={{
@@ -443,11 +434,7 @@ export default function NewsPage() {
                           <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>{story.author.name}</span>
                         </div>
 
-                        {/* Social engagement */}
-                        <div style={{ display: "flex", alignItems: "center", gap: "10px", color: "var(--text-muted)" }}>
-                          <span>👍 {story.likes}</span>
-                          <span>💬 {story.comments}</span>
-                        </div>
+
                       </div>
                     </div>
                   </article>
@@ -517,7 +504,6 @@ export default function NewsPage() {
                   >
                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.7rem", color: "var(--text-muted)", marginBottom: "8px" }}>
                       <span>{item.date}</span>
-                      <span>👍 {item.likes}</span>
                     </div>
                     <h4 style={{ fontSize: "0.9rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "6px", lineHeight: 1.3 }}>
                       <Link href={`/news/${item.slug}`} className="hover:underline">

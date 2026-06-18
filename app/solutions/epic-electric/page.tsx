@@ -373,7 +373,7 @@ export default function EpicElectricPage() {
                 lineHeight: 1,
               }}
             >
-              "
+              &quot;
             </span>
             {solution.problem}
           </blockquote>
@@ -622,7 +622,7 @@ export default function EpicElectricPage() {
                 letterSpacing: "-0.02em",
               }}
             >
-              What's Inside Epic Electric
+              What&apos;s Inside Epic Electric
             </h2>
           </div>
 

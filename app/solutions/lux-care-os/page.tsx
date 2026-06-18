@@ -374,7 +374,7 @@ export default function LuxCareOSPage() {
                 lineHeight: 1,
               }}
             >
-              "
+              &quot;
             </span>
             {solution.problem}
           </blockquote>
@@ -623,7 +623,7 @@ export default function LuxCareOSPage() {
                 letterSpacing: "-0.02em",
               }}
             >
-              What's Inside Lux Care OS
+              What&apos;s Inside Lux Care OS
             </h2>
           </div>
 

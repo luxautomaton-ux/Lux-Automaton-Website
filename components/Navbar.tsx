@@ -40,12 +40,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setMobileOpen(false);
     setMobileProductsOpen(false);
     setMobileSolutionsOpen(false);
     setActiveDropdown(null);
-  }, [pathname]);
+  }
 
   return (
     <header

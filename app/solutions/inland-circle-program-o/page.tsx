@@ -373,7 +373,7 @@ export default function InlandCirclePage() {
                 lineHeight: 1,
               }}
             >
-              "
+              &quot;
             </span>
             {solution.problem}
           </blockquote>
@@ -622,7 +622,7 @@ export default function InlandCirclePage() {
                 letterSpacing: "-0.02em",
               }}
             >
-              What's Inside Program OS
+              What&apos;s Inside Program OS
             </h2>
           </div>
 

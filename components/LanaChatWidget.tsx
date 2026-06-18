@@ -12,16 +12,33 @@ interface Message {
   timestamp: Date;
 }
 
-export default function LanaChatWidget() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
+function generateId(): string {
+  return Math.random().toString(36).substring(7);
+}
+
+function createMessage(sender: "user" | "lana", text: string): Message {
+  return {
+    id: generateId(),
+    sender,
+    text,
+    timestamp: new Date(),
+  };
+}
+
+function getInitialMessages(): Message[] {
+  return [
     {
       id: "welcome",
       sender: "lana",
       text: "Hello! I'm Lana, your Lux Automaton Customer Service Assistant. How can I help you today? You can ask me about our products, solutions, custom options, or Asa Spade's books!",
       timestamp: new Date(),
     },
-  ]);
+  ];
+}
+
+export default function LanaChatWidget() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<Message[]>(getInitialMessages);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -46,12 +63,7 @@ export default function LanaChatWidget() {
   const handleSendMessage = (textToSend: string) => {
     if (!textToSend.trim()) return;
 
-    const userMessage: Message = {
-      id: Math.random().toString(36).substring(7),
-      sender: "user",
-      text: textToSend,
-      timestamp: new Date(),
-    };
+    const userMessage = createMessage("user", textToSend);
 
     setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
@@ -61,12 +73,7 @@ export default function LanaChatWidget() {
     // Simulate Lana typing and responding
     setTimeout(() => {
       const lanaResponseText = getLanaResponse(textToSend);
-      const lanaMessage: Message = {
-        id: Math.random().toString(36).substring(7),
-        sender: "lana",
-        text: lanaResponseText,
-        timestamp: new Date(),
-      };
+      const lanaMessage = createMessage("lana", lanaResponseText);
       setMessages((prev) => [...prev, lanaMessage]);
       setIsTyping(false);
     }, 1200);
@@ -167,19 +174,11 @@ export default function LanaChatWidget() {
     return "I want to make sure I give you the best information. Feel free to ask about our **products** (Lux Coder, Lux Agent, WriteOff), **solutions** (Care OS, Epic Electric, Program OS), or **Asa's books**. You can also reach out directly on our [Contact page](/contact).";
   };
 
-  // Helper to render markdown links
   const renderMessageText = (text: string) => {
-    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-    const boldRegex = /\*\*([^*]+)\*\*/g;
-    
-    let parts: React.ReactNode[] = [];
-    let lastIndex = 0;
-    let match;
-
     // A simple parser that handles bold and links
     // Replace markdown formatting with react elements
     const formattedText = text.split("\n").map((line, lineIdx) => {
-      let lineParts: React.ReactNode[] = [];
+      const lineParts: React.ReactNode[] = [];
       let tempIndex = 0;
       
       // Parse links and bold within this line
@@ -297,7 +296,7 @@ export default function LanaChatWidget() {
               <span style={{ width: "6px", height: "6px", background: "var(--green)", borderRadius: "50%", display: "inline-block" }}></span>
               Lana Online
             </div>
-            <div>Hi! Ask me anything about our AI systems, solutions, or Asa's books.</div>
+            <div>Hi! Ask me anything about our AI systems, solutions, or Asa&apos;s books.</div>
           </div>
         )}
 

@@ -13,10 +13,8 @@ interface ProductCardProps {
 function formatPrice(cents: number): string {
   return `$${(cents / 100).toFixed(0)}`;
 }
-
 export default function ProductCard({ product, featured = false }: ProductCardProps) {
   const monthlyPrice = product.prices.find((p) => p.interval === "month");
-  const isExternal = product.ctaHref.startsWith("http");
 
   return (
     <Link

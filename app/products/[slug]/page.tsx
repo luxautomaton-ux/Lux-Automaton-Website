@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { prefixPath } from "@/lib/prefix";
 import { PRODUCTS } from "@/lib/products";
 import PageHero from "@/components/PageHero";

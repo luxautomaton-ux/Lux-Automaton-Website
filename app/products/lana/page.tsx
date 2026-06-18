@@ -150,16 +150,22 @@ const COMMANDS = [
     response: "Success Pack 'Restaurant Operating Playbook' loaded. Active tasks: (1) Staff onboarding workflow checklist, (2) Inventory tracking templates, (3) Daily checkout report SOP. I've mapped these to your Monday-Wednesday pipeline. What should we tackle first?",
   },
 ];
-
 export default function LanaProductPage() {
   const [activeCommandIndex, setActiveCommandIndex] = useState<number | null>(null);
   const [typedResponse, setTypedResponse] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [prevActiveCommandIndex, setPrevActiveCommandIndex] = useState<number | null>(null);
+
+  if (activeCommandIndex !== prevActiveCommandIndex) {
+    setPrevActiveCommandIndex(activeCommandIndex);
+    if (activeCommandIndex !== null) {
+      setIsTyping(true);
+      setTypedResponse("");
+    }
+  }
 
   useEffect(() => {
     if (activeCommandIndex === null) return;
-    setIsTyping(true);
-    setTypedResponse("");
     const fullText = COMMANDS[activeCommandIndex].response;
     let idx = 0;
     const interval = setInterval(() => {

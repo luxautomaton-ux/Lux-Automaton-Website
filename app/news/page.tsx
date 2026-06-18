@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { NEWS_STORIES, NewsStory } from "@/lib/news";
+import { NEWS_STORIES } from "@/lib/news";
 import { prefixPath } from "@/lib/prefix";
 
 export default function NewsPage() {
@@ -15,29 +15,23 @@ export default function NewsPage() {
   const sources = ["All", "Founder Insight", "Company Update"];
 
   // Filter logic
-  const filteredStories = useMemo(() => {
-    return NEWS_STORIES.filter((story) => {
-      const matchesCategory =
-        selectedCategory === "All" || story.category === selectedCategory;
-      const matchesSource =
-        selectedSource === "All" || story.source === selectedSource;
-      const matchesSearch =
-        story.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        story.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        story.summary.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSource && matchesSearch;
-    });
-  }, [selectedCategory, selectedSource, searchQuery]);
+  const filteredStories = NEWS_STORIES.filter((story) => {
+    const matchesCategory =
+      selectedCategory === "All" || story.category === selectedCategory;
+    const matchesSource =
+      selectedSource === "All" || story.source === selectedSource;
+    const matchesSearch =
+      story.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      story.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      story.summary.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSource && matchesSearch;
+  });
 
   // Featured story
-  const featuredStory = useMemo(() => {
-    return NEWS_STORIES.find((story) => story.featured);
-  }, []);
+  const featuredStory = NEWS_STORIES.find((story) => story.featured);
 
   // Filtered stories excluding the featured one if it matches filters
-  const gridStories = useMemo(() => {
-    return filteredStories.filter((story) => story.slug !== featuredStory?.slug);
-  }, [filteredStories, featuredStory]);
+  const gridStories = filteredStories.filter((story) => story.slug !== featuredStory?.slug);
 
   return (
     <div style={{ paddingTop: "100px", minHeight: "100vh", background: "var(--bg-void)" }} className="circuit-grid">

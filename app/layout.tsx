@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     url: "https://luxautomaton-ux.github.io/Lux-Automaton-Website/",
     images: [
       {
-        url: "https://luxautomaton-ux.github.io/Lux-Automaton-Website/images/ecosystem-value.png",
+        url: "https://luxautomaton-ux.github.io/Lux-Automaton-Website/images/lux-automaton-saas.png",
         width: 1200,
         height: 630,
         alt: "Lux Automaton AI Ecosystem",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lux Automaton - Build Faster. Automate Smarter. Own Your Stack.",
     description: "Build Faster. Automate Smarter. Own Your Stack.",
-    images: ["https://luxautomaton-ux.github.io/Lux-Automaton-Website/images/ecosystem-value.png"],
+    images: ["https://luxautomaton-ux.github.io/Lux-Automaton-Website/images/lux-automaton-saas.png"],
   }
 };
 

@@ -169,8 +169,8 @@ export default function LanaProductPage() {
     const fullText = COMMANDS[activeCommandIndex].response;
     let idx = 0;
     const interval = setInterval(() => {
-      setTypedResponse((prev) => prev + fullText.charAt(idx));
       idx++;
+      setTypedResponse(fullText.substring(0, idx));
       if (idx >= fullText.length) {
         clearInterval(interval);
         setIsTyping(false);

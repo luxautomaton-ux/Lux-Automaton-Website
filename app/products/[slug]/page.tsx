@@ -256,7 +256,7 @@ export default async function ProductDetailPage({ params }: Props) {
               {/* Left Side: Photo */}
               <div style={{ position: "relative", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 20px 50px rgba(0,0,0,0.5)" }}>
                 <Image
-                  src={prefixPath("/images/podcast-photo.jpg")}
+                  src={prefixPath("/images/lux-coder-banner.png")}
                   alt="Lux Coder Podcast Cover"
                   width={600}
                   height={400}

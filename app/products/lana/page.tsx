@@ -189,7 +189,7 @@ export default function LanaProductPage() {
         <div style={{ position: "absolute", top: "10%", right: "10%", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, rgba(128, 0, 255, 0.08) 50%, transparent 70%)", zIndex: 2, pointerEvents: "none", filter: "blur(40px)" }} />
         
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "80px 24px", width: "100%", position: "relative", zIndex: 3 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "60px", alignItems: "center" }} className="hero-grid">
+          <div className="grid-split" style={{ gap: "60px", alignItems: "center" }}>
             <div>
               <div style={{ display: "inline-flex", gap: "10px", alignItems: "center", color: "var(--cyan)", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", background: "rgba(0, 229, 255, 0.08)", border: "1px solid rgba(0, 229, 255, 0.2)", borderRadius: "4px", padding: "5px 14px", marginBottom: "24px" }}>
                 <span>💜</span> LANA AI OPERATOR
@@ -241,7 +241,7 @@ export default function LanaProductPage() {
       {/* SECTION 1: WHAT IS LANA? */}
       <section id="meet-lana" style={{ padding: "100px 24px", background: "var(--bg-base)" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "60px", alignItems: "center" }} className="hero-grid">
+          <div className="grid-split" style={{ gap: "60px", alignItems: "center" }}>
             <div>
               <div style={{ fontSize: "8rem", fontWeight: 900, color: "rgba(0, 229, 255, 0.04)", lineHeight: 0.8, fontFamily: "monospace", userSelect: "none" }}>W</div>
               <div className="section-label" style={{ marginBottom: "24px" }}>What Is LANA?</div>
@@ -340,7 +340,7 @@ export default function LanaProductPage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "40px", alignItems: "stretch" }} className="hero-grid">
+          <div className="grid-split-rev" style={{ gap: "40px", alignItems: "stretch" }}>
             {/* Commands list */}
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {COMMANDS.map((c, i) => (
@@ -419,7 +419,7 @@ export default function LanaProductPage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "40px" }} className="hero-grid">
+          <div className="grid-split-rev" style={{ gap: "40px" }}>
             {/* Regular AI */}
             <div className="glass-card" style={{ padding: "40px", border: "1px solid rgba(239, 68, 68, 0.15)", borderRadius: "16px", background: "rgba(239, 68, 68, 0.01)" }}>
               <h3 style={{ fontSize: "1.3rem", fontWeight: 800, color: "#ef4444", marginBottom: "24px" }}>Regular AI Chatbots</h3>
@@ -476,7 +476,7 @@ export default function LanaProductPage() {
       {/* SECTION 6: LANA'S PERSONALITY */}
       <section style={{ padding: "100px 24px", background: "var(--bg-base)" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "60px", alignItems: "center" }} className="hero-grid">
+          <div className="grid-split-rev" style={{ gap: "60px", alignItems: "center" }}>
             {/* Visual */}
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div style={{ width: "100%", maxWidth: "440px", height: "300px", position: "relative", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(168, 85, 247, 0.15)", boxShadow: "0 10px 30px rgba(168, 85, 247, 0.05)" }}>
@@ -511,7 +511,7 @@ export default function LanaProductPage() {
       {/* SECTION 7: WHO LANA IS FOR */}
       <section style={{ padding: "100px 24px", background: "var(--bg-void)", borderTop: "1px solid var(--border-subtle)" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "60px", alignItems: "center" }} className="hero-grid">
+          <div className="grid-split" style={{ gap: "60px", alignItems: "center" }}>
             <div>
               <div className="section-label" style={{ marginBottom: "20px" }}>Target Audience</div>
               <h2 style={{ fontSize: "2.4rem", fontWeight: 900, marginBottom: "20px" }}>Who LANA Is For</h2>
@@ -519,7 +519,7 @@ export default function LanaProductPage() {
                 LANA is built for people who have ideas, responsibilities, and work to move forward. She is especially powerful for users who are talented but overloaded.
               </p>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+              <div className="grid-2col" style={{ gap: "14px" }}>
                 {AUDIENCES.map((a, i) => (
                   <div key={i} style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                     <span style={{ color: "var(--cyan)" }}>◆</span>
@@ -571,12 +571,12 @@ export default function LanaProductPage() {
       {/* SECTION 9: WHAT MAKES LANA POWERFUL */}
       <section style={{ padding: "100px 24px", background: "var(--bg-void)", borderTop: "1px solid var(--border-subtle)" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "60px", alignItems: "center" }} className="hero-grid">
+          <div className="grid-split" style={{ gap: "60px", alignItems: "center" }}>
             <div>
               <div className="section-label" style={{ marginBottom: "20px" }}>Key Strengths</div>
               <h2 style={{ fontSize: "2.4rem", fontWeight: 900, marginBottom: "24px" }}>What Makes LANA Powerful</h2>
               
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <div className="grid-2col" style={{ gap: "16px" }}>
                 {POWERFUL_BULLETS.map((b, i) => (
                   <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
                     <span style={{ color: "var(--cyan)", fontWeight: "bold" }}>✓</span>

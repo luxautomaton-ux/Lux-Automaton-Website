@@ -53,7 +53,7 @@ export default function FoundersPage() {
         <div style={{ position: "absolute", top: "10%", right: "10%", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, transparent 70%)", zIndex: 2, pointerEvents: "none", filter: "blur(40px)" }} />
         
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "80px 24px", width: "100%", position: "relative", zIndex: 3 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "60px", alignItems: "center" }} className="hero-grid">
+          <div className="grid-split" style={{ gap: "60px", alignItems: "center" }}>
             <div>
               <div style={{ display: "inline-flex", gap: "10px", alignItems: "center", color: "var(--cyan)", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", background: "rgba(0, 229, 255, 0.08)", border: "1px solid rgba(0, 229, 255, 0.2)", borderRadius: "4px", padding: "5px 14px", marginBottom: "24px" }}>
                 LUX AUTOMATON FOUNDERS
@@ -126,7 +126,7 @@ export default function FoundersPage() {
       {/* SECTION 2: ASA PRITCHARD */}
       <section style={{ padding: "100px 24px", background: "var(--bg-void)", borderTop: "1px solid var(--border-subtle)" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "60px", alignItems: "flex-start" }} className="hero-grid">
+          <div className="grid-bio" style={{ gap: "60px", alignItems: "flex-start" }}>
             {/* Left Column: Portrait & Badge */}
             <div>
               <div style={{ position: "relative", width: "100%", height: "420px", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 229, 255, 0.2)", boxShadow: "0 10px 40px rgba(0, 229, 255, 0.1)", marginBottom: "24px" }}>
@@ -161,7 +161,7 @@ export default function FoundersPage() {
               </div>
 
               {/* What Asa Leads */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px", marginBottom: "40px" }}>
+              <div className="grid-2col" style={{ gap: "32px", marginBottom: "40px" }}>
                 <div>
                   <h4 style={{ fontSize: "0.85rem", fontWeight: 800, color: "var(--cyan)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "16px" }}>What Asa Leads</h4>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", fontSize: "0.88rem" }}>
@@ -188,7 +188,7 @@ export default function FoundersPage() {
                 {/* Development value infographic */}
                 <div>
                   <h4 style={{ fontSize: "0.85rem", fontWeight: 800, color: "var(--cyan)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "16px" }}>Founder + Development Value</h4>
-                  <div style={{ position: "relative", width: "100%", height: "480px", borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(0, 229, 255, 0.15)" }}>
+                  <div style={{ position: "relative", width: "100%", height: "clamp(260px, 45vw, 480px)", borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(0, 229, 255, 0.15)" }}>
                     <Image src={prefixPath("/images/founder-dev-value.png")} alt="Founder + Development Value" fill style={{ objectFit: "contain", background: "#050714" }} />
                   </div>
                 </div>
@@ -221,7 +221,7 @@ export default function FoundersPage() {
       {/* SECTION 3: DR. TORREY DOOLEY */}
       <section style={{ padding: "100px 24px", background: "var(--bg-base)", borderTop: "1px solid var(--border-subtle)" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "60px", alignItems: "flex-start" }} className="hero-grid">
+          <div className="grid-bio" style={{ gap: "60px", alignItems: "flex-start" }}>
             {/* Left Column: Portrait & Badge */}
             <div>
               <div style={{ position: "relative", width: "100%", height: "420px", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 255, 136, 0.2)", boxShadow: "0 10px 40px rgba(0, 255, 136, 0.1)", marginBottom: "24px" }}>
@@ -256,7 +256,7 @@ export default function FoundersPage() {
               </div>
 
               {/* What Torrey Shapes */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px", marginBottom: "40px" }}>
+              <div className="grid-2col" style={{ gap: "32px", marginBottom: "40px" }}>
                 <div>
                   <h4 style={{ fontSize: "0.85rem", fontWeight: 800, color: "var(--green)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "16px" }}>What Torrey Shapes</h4>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", fontSize: "0.88rem" }}>
@@ -322,7 +322,7 @@ export default function FoundersPage() {
           <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "40px", maxWidth: "700px", margin: "0 auto 40px" }}>
             Lux Automaton is strongest because it combines technical building with real-world human needs.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", textAlign: "left" }} className="hero-grid">
+          <div className="grid-2col" style={{ gap: "24px", textAlign: "left" }}>
             <div className="glass-card" style={{ padding: "32px", border: "1px solid rgba(0, 229, 255, 0.15)", borderRadius: "16px", background: "rgba(0, 229, 255, 0.01)" }}>
               <span style={{ fontSize: "1.5rem" }}>⚙️</span>
               <h3 style={{ fontSize: "1.2rem", fontWeight: 800, margin: "16px 0 12px" }}>The Builder Engine</h3>

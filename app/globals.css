@@ -323,4 +323,36 @@ body {
   }
 }
 
+/* ===== RESPONSIVE GRID LAYOUT HELPERS ===== */
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.grid-split-rev {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.grid-bio {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+}
+
+@media (max-width: 1024px) {
+  .grid-2col,
+  .grid-split,
+  .grid-split-rev,
+  .grid-bio {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+
 

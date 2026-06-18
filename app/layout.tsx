@@ -16,6 +16,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Lux Automaton - Build Faster. Automate Smarter. Own Your Stack.",
   description: "Build Faster. Automate Smarter. Own Your Stack.",
+  applicationName: "Lux Automaton - Build Faster. Automate Smarter. Own Your Stack.",
   keywords: [
     "AI automation",
     "private AI",

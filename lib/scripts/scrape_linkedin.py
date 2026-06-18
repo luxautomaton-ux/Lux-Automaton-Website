@@ -77,7 +77,7 @@ def main():
     # Configurations
     # --------------------------------
     # Config from environment or fallbacks
-    user_profile_url = os.getenv("LINKEDIN_PROFILE_URL", "https://www.linkedin.com/company/lux-automaton-saas/posts/")
+    user_profile_url = os.getenv("LINKEDIN_PROFILE_URL", "https://www.linkedin.com/in/asapritchard/recent-activity/all/")
     cookies_file = os.getenv("LINKEDIN_COOKIES_FILE", "linkedin_cookies.txt")
     output_json_file = "lib/scraped-news.json"
     MAX_POSTS = int(os.getenv("LINKEDIN_MAX_POSTS", "10"))

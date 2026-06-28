@@ -24,8 +24,11 @@ export default function LanaChat() {
 
   useEffect(() => {
     if (open) {
-      setHasNewMessage(false)
-      setTimeout(() => inputRef.current?.focus(), 100)
+      const timer = setTimeout(() => {
+        setHasNewMessage(false)
+        inputRef.current?.focus()
+      }, 100)
+      return () => clearTimeout(timer)
     }
   }, [open])
 
@@ -230,4 +233,3 @@ export default function LanaChat() {
     </div>
   )
 }
-

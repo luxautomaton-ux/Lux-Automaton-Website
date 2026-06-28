@@ -56,7 +56,7 @@ export default function LuxCoderSuitePage() {
             Your Personal Programmer
           </h1>
           <p style={{ fontSize: 20, color: 'var(--text-dim)', maxWidth: 800, margin: '0 auto', lineHeight: 1.6 }}>
-            Have a brilliant app idea but don't know how to code? Lux Coder Suite listens to what you want in plain English, and builds the entire software for you automatically.
+            Have a brilliant app idea but don&apos;t know how to code? Lux Coder Suite listens to what you want in plain English, and builds the entire software for you automatically.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export default function LuxCoderSuitePage() {
             <div style={{ fontSize: 40, marginBottom: 16 }}>💬</div>
             <h3 style={{ fontSize: 22, fontWeight: 700, color: '#fff', marginBottom: 12 }}>No Experience Needed</h3>
             <p style={{ fontSize: 15, color: 'var(--text-dim)', lineHeight: 1.6 }}>
-              You don't need to learn complicated programming languages. Just type out what you want your app to do, and watch it come to life on your screen.
+              You don&apos;t need to learn complicated programming languages. Just type out what you want your app to do, and watch it come to life on your screen.
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export default function LuxCoderSuitePage() {
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
             <h2 style={{ fontSize: 36, fontWeight: 800, color: '#fff', marginBottom: 16 }}>The Lux Advantage</h2>
             <p style={{ fontSize: 16, color: 'var(--text-dim)', maxWidth: 600, margin: '0 auto' }}>
-              Why the world's most successful creators choose Lux Coder over standard AI tools.
+              Why the world&apos;s most successful creators choose Lux Coder over standard AI tools.
             </p>
           </div>
           
@@ -109,14 +109,14 @@ export default function LuxCoderSuitePage() {
             <div className="card" style={{ background: 'rgba(26, 26, 30, 0.6)', border: '1px solid rgba(255,255,255,0.05)', padding: 32, borderRadius: 16 }}>
               <h3 style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 12 }}>⚡ Never Get Blocked</h3>
               <p style={{ fontSize: 15, color: 'var(--text-dim)', lineHeight: 1.6 }}>
-                Our proprietary multi-account rotation ensures you never hit annoying "rate limits" or "usage caps" right when you're in the middle of a big project. You stay online, always.
+                Our proprietary multi-account rotation ensures you never hit annoying &ldquo;rate limits&rdquo; or &ldquo;usage caps&rdquo; right when you&apos;re in the middle of a big project. You stay online, always.
               </p>
             </div>
 
             <div className="card" style={{ background: 'rgba(26, 26, 30, 0.6)', border: '1px solid rgba(255,255,255,0.05)', padding: 32, borderRadius: 16 }}>
-              <h3 style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 12 }}>🧠 Access The World's Best Brains</h3>
+              <h3 style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 12 }}>🧠 Access The World&apos;s Best Brains</h3>
               <p style={{ fontSize: 15, color: 'var(--text-dim)', lineHeight: 1.6 }}>
-                Don't get locked into one AI. Lux Coder lets you seamlessly switch between the smartest models on the planet (like Claude Opus and DeepSeek) with a single click in our live Zen menu.
+                Don&apos;t get locked into one AI. Lux Coder lets you seamlessly switch between the smartest models on the planet (like Claude Opus and DeepSeek) with a single click in our live Zen menu.
               </p>
             </div>
 

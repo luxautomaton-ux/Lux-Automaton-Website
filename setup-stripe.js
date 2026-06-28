@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const Stripe = require('stripe');
 const fs = require('fs');
 const path = require('path');

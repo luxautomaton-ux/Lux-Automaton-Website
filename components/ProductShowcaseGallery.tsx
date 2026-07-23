@@ -3,13 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { prefixPath } from "@/lib/prefix";
-
-export type ProductPreview = {
-  image: string;
-  eyebrow: string;
-  title: string;
-  description: string;
-};
+import type { ProductPreview } from "@/lib/productPreviews";
 
 export default function ProductShowcaseGallery({
   productName,

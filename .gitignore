@@ -39,5 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-lux-website.db
-.env.local
+
+# scraper session data
+/lib/scripts/chrome_profile/
+
+# backups
+*.bak*
+
+# large media & mocks
+/public/videos/
+/company-website-mock/
+
+

@@ -334,8 +334,29 @@ function LanaWorkshopBuilder({ onCreated }: LanaBuilderProps) {
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [building, setBuilding] = useState(false);
+  const [generationElapsed, setGenerationElapsed] = useState(0);
   const [message, setMessage] = useState("");
   const [result, setResult] = useState<{ modules: number; lessons: number; lessonImagesGenerated: number } | null>(null);
+
+  useEffect(() => {
+    if (!building) return;
+    const timer = window.setInterval(() => setGenerationElapsed((seconds) => seconds + 1), 1000);
+    return () => window.clearInterval(timer);
+  }, [building]);
+
+  const estimatedSeconds = generateImages ? 300 : 180;
+  const generationPercent = result ? 100 : building ? Math.min(94, Math.max(2, Math.round((generationElapsed / estimatedSeconds) * 94))) : 0;
+  const remainingSeconds = Math.max(0, estimatedSeconds - generationElapsed);
+  const countdown = `${String(Math.floor(remainingSeconds / 60)).padStart(2, "0")}:${String(remainingSeconds % 60).padStart(2, "0")}`;
+  const generationStage = generationPercent < 16
+    ? "Reading source material"
+    : generationPercent < 32
+      ? "Transcribing and extracting ideas"
+      : generationPercent < 60
+        ? "Architecting modules and complete lessons"
+        : generationPercent < 88
+          ? "Creating original photos and diagrams"
+          : "Quality review and saving the draft";
 
   const uploadSource = async (file?: File) => {
     if (!file) return;
@@ -363,6 +384,7 @@ function LanaWorkshopBuilder({ onCreated }: LanaBuilderProps) {
     }
 
     setBuilding(true);
+    setGenerationElapsed(0);
     setResult(null);
     setMessage("LANA is reading the source, transcribing media, designing the curriculum, and creating the visual package. This may take several minutes.");
     try {
@@ -477,6 +499,29 @@ function LanaWorkshopBuilder({ onCreated }: LanaBuilderProps) {
           {building ? "LANA is building…" : "Build workshop with LANA"}
         </button>
       </div>
+
+      {(building || result) && (
+        <div className={`lana-generation-progress ${result ? "complete" : ""}`} aria-live="polite">
+          <div className="lana-progress-head">
+            <div>
+              <span>{result ? "Workshop complete" : generationStage}</span>
+              <small>{result ? "Saved as a private review draft" : "Estimated progress · actual time depends on source length and artwork"}</small>
+            </div>
+            <div className="lana-progress-numbers">
+              <b>{generationPercent}%</b>
+              <strong>{result ? "00:00" : countdown}</strong>
+            </div>
+          </div>
+          <div className="lana-progress-track"><span style={{ width: `${generationPercent}%` }} /></div>
+          <div className="lana-progress-stages">
+            <span className={generationPercent >= 2 ? "active" : ""}>Read</span>
+            <span className={generationPercent >= 16 ? "active" : ""}>Transcribe</span>
+            <span className={generationPercent >= 32 ? "active" : ""}>Curriculum</span>
+            <span className={generationPercent >= 60 ? "active" : ""}>Visuals</span>
+            <span className={generationPercent >= 88 ? "active" : ""}>Review</span>
+          </div>
+        </div>
+      )}
 
       {message && <div className={`lana-builder-message ${result ? "success" : ""}`} aria-live="polite"><span>{building ? "◌" : result ? "✓" : "i"}</span><p>{message}</p></div>}
       {result && <div className="lana-result-strip"><span><b>{result.modules}</b> modules</span><span><b>{result.lessons}</b> lessons</span><span><b>{result.lessonImagesGenerated}</b> lesson visuals</span><strong>Draft opened below</strong></div>}

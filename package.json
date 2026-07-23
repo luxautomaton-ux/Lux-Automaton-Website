@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "seed:kids-workshops": "node scripts/seedKidsWorkshops.mjs",
+    "import:founders-workshop": "node scripts/importFoundersWorkshop.mjs",
     "scrape-linkedin": "python3 lib/scripts/scrape_linkedin.py",
     "scrape-linkedin-interactive": "python3 lib/scripts/scrape_interactive.py"
   },

@@ -36,6 +36,7 @@ const FOOTER_LINKS = {
     { label: "Community", href: "/community" },
     { label: "Start Here", href: "/start-here" },
     { label: "Ask LANA", href: "/ask-lana" },
+    { label: "Who Is LANA?", href: "/who-is-lana" },
     { label: "Workshops Hub", href: "/workshops" },
     { label: "Problem Library", href: "/library" },
     { label: "Question Library", href: "/library" },

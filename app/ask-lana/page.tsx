@@ -1,22 +1,26 @@
 "use client";
 
 import { useState } from "react";
+import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, BookOpen, Search, ShieldCheck, Sparkles, Workflow, X } from "lucide-react";
+import { prefixPath } from "@/lib/prefix";
 
 interface ResultCard {
   title: string;
   type: "Product" | "Solution" | "Workshop" | "Library Guide";
   description: string;
   link: string;
-  icon: string;
+  icon: ReactNode;
 }
 
 const PRESET_QUERIES = [
-  { text: "I waste too much time on manual tasks", category: "productivity" },
-  { text: "I need a CRM to manage clients", category: "sales" },
-  { text: "Is my customer data safe with AI?", category: "security" },
-  { text: "How to automate client invoicing?", category: "finance" },
-  { text: "What is a private local model?", category: "technical" },
+  { text: "I waste too much time on manual tasks", category: "automation" },
+  { text: "I need a CRM to manage clients", category: "business" },
+  { text: "Is my customer data safe with AI?", category: "privacy" },
+  { text: "How do I turn a video into a workshop?", category: "workshops" },
+  { text: "What should I build first?", category: "strategy" },
 ];
 
 const SEARCH_DATABASE: { keywords: string[]; results: ResultCard[] }[] = [
@@ -26,23 +30,23 @@ const SEARCH_DATABASE: { keywords: string[]; results: ResultCard[] }[] = [
       {
         title: "LANA - The AI Operator",
         type: "Product",
-        description: "Your proactive AI coordinator that executes workflows, builds SOP playbooks, and automates tasks directly.",
+        description: "Your proactive AI coordinator for planning the day, writing SOPs, organizing tasks, and turning scattered work into execution.",
         link: "/products/lana",
-        icon: "💜",
+        icon: <Sparkles size={22} />,
       },
       {
-        title: "Build Your First AI Business",
+        title: "LANA Content Command Center",
         type: "Workshop",
-        description: "Learn to deploy autonomous systems to coordinate outreach, run intake, and free up 15+ hours weekly.",
+        description: "A guided workshop for building newsletters, blogs, video topics, launch calendars, and repeatable community rhythm.",
         link: "/workshops",
-        icon: "🎓",
+        icon: <BookOpen size={22} />,
       },
       {
-        title: "Success Packs & Business Recipes",
+        title: "Success Packs",
         type: "Solution",
-        description: "DFY workflow maps, templates, and triggers to run administrative tasks automatically.",
+        description: "Structured workflow recipes that LANA can help you run for operations, outreach, sales, and admin follow-up.",
         link: "/products/success-packs",
-        icon: "📦",
+        icon: <Workflow size={22} />,
       },
     ],
   },
@@ -52,16 +56,16 @@ const SEARCH_DATABASE: { keywords: string[]; results: ResultCard[] }[] = [
       {
         title: "Lux Business Hub",
         type: "Product",
-        description: "Run your entire pipeline: LLC setup, lead capture, CRM pipeline management, and payment triggers.",
+        description: "A business command layer for client files, CRM pipeline management, payments, tasks, and owner-approved execution.",
         link: "/products/lux-business",
-        icon: "🏢",
+        icon: <Workflow size={22} />,
       },
       {
-        title: "Contractor OS",
-        type: "Solution",
-        description: "A customized operations suite for job dispatch, estimate automation, and client feedback follow-ups.",
-        link: "/solutions/contractor-os",
-        icon: "🛠️",
+        title: "Private AI Business OS",
+        type: "Workshop",
+        description: "Learn how to replace scattered apps with one private operating layer that keeps business context close to the work.",
+        link: "/workshops",
+        icon: <BookOpen size={22} />,
       },
     ],
   },
@@ -69,63 +73,56 @@ const SEARCH_DATABASE: { keywords: string[]; results: ResultCard[] }[] = [
     keywords: ["data", "safe", "hipaa", "privacy", "secure", "gdpr", "local", "leak"],
     results: [
       {
-        title: "Lux Codex neural OS",
+        title: "Lux Codex",
         type: "Product",
-        description: "Private local database engine that runs open-source LLMs locally, ensuring zero data leaves your network.",
+        description: "The private memory and local AI core for storing approved context, documents, tasks, project history, and knowledge.",
         link: "/products/lux-codex",
-        icon: "🧠",
+        icon: <ShieldCheck size={22} />,
       },
       {
         title: "Lux Care OS",
         type: "Solution",
-        description: "A private, HIPAA-aware care operations system built for clinics, care programs, and patient support networks.",
+        description: "A private, HIPAA-aware operations system built for clinics, care programs, and patient support networks.",
         link: "/solutions/lux-care-os",
-        icon: "🏥",
-      },
-      {
-        title: "Why Local-First AI Matters",
-        type: "Library Guide",
-        description: "Understand the security pitfalls of standard cloud APIs and how non-custodial environments protect IP.",
-        link: "/library",
-        icon: "📖",
+        icon: <ShieldCheck size={22} />,
       },
     ],
   },
   {
-    keywords: ["invoice", "tax", "billing", "writeoff", "expense", "budget", "finance", "deduction"],
+    keywords: ["video", "youtube", "article", "workshop", "course", "lesson", "podcast", "generate"],
     results: [
       {
-        title: "Lux WriteOff",
-        type: "Product",
-        description: "AI-powered expense intelligence that scans receipts, auto-deducts write-offs, and prepares tax folders.",
-        link: "/products/lux-writeoff",
-        icon: "💰",
+        title: "Workshop Studio",
+        type: "Workshop",
+        description: "The admin tool where LANA reads a source, designs a curriculum, creates lesson content, and prepares thumbnail and visual prompts.",
+        link: "/admin",
+        icon: <Sparkles size={22} />,
       },
       {
-        title: "Lux Budgeter",
-        type: "Product",
-        description: "Interactive budgeting dashboard displaying business cash flow forecasts, variances, and milestones.",
-        link: "/products/lux-budgeter",
-        icon: "📊",
+        title: "Lux AI Kids Workshops",
+        type: "Workshop",
+        description: "Kid-friendly AI labs with modules, lessons, activities, safety framing, and Ace + LANA teaching guidance.",
+        link: "/lux-ai-kids/workshops",
+        icon: <BookOpen size={22} />,
       },
     ],
   },
   {
-    keywords: ["what", "local", "model", "llm", "how", "serverless", "non-custodial"],
+    keywords: ["first", "build", "idea", "start", "strategy", "plan", "launch"],
     results: [
       {
-        title: "AI Operating System Core Concepts",
+        title: "Start Here",
         type: "Library Guide",
-        description: "A NotebookLM-style guide explaining how private local servers can execute complex model queries offline.",
-        link: "/library",
-        icon: "📖",
+        description: "Choose a builder path and let LANA point you toward the right product, workshop, and launch sequence.",
+        link: "/start-here",
+        icon: <ArrowRight size={22} />,
       },
       {
-        title: "Lux Coder Suite",
-        type: "Product",
-        description: "VS Code extension incorporating multi-model neural engines and offline wiki indexing for developers.",
-        link: "/products/lux-coder",
-        icon: "💻",
+        title: "Who Is LANA?",
+        type: "Library Guide",
+        description: "Meet the AI operator behind the Lux Automaton ecosystem and learn why she was created.",
+        link: "/who-is-lana",
+        icon: <Sparkles size={22} />,
       },
     ],
   },
@@ -165,267 +162,110 @@ export default function AskLanaPage() {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "var(--bg-void)",
-        paddingTop: "120px",
-        paddingBottom: "80px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        position: "relative",
-        overflow: "hidden",
-      }}
-      className="circuit-grid"
-    >
-      <div
-        style={{
-          maxWidth: "760px",
-          width: "100%",
-          padding: "0 24px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <div style={{ textAlign: "center", marginBottom: "40px" }}>
-          <div className="section-label" style={{ marginBottom: "16px" }}>
-            LANA Intelligence Center
-          </div>
-          <h1
-            style={{
-              fontSize: "clamp(2rem, 4.5vw, 2.8rem)",
-              fontWeight: 900,
-              lineHeight: 1.15,
-              letterSpacing: "-0.01em",
-              marginBottom: "16px",
-              fontFamily: "var(--font-display)",
-              color: "var(--text-primary)",
-            }}
-          >
-            What are you trying to <span className="gradient-text">solve today?</span>
-          </h1>
-          <p style={{ color: "var(--text-secondary)", fontSize: "1rem", lineHeight: 1.5 }}>
-            Describe your business problem, security question, or automation challenge. LANA will locate the correct tool or guide.
-          </p>
-        </div>
-
-        {/* Search Console */}
-        <div
-          style={{
-            position: "relative",
-            marginBottom: "32px",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              left: "20px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              fontSize: "1.3rem",
-              pointerEvents: "none",
-            }}
-          >
-            🔍
-          </div>
-          <input
-            type="text"
-            placeholder="Type your challenge (e.g. 'I waste too much time' or 'data security')..."
-            value={query}
-            onChange={(e) => handleSearch(e.target.value)}
-            style={{
-              width: "100%",
-              background: "rgba(17, 24, 39, 0.7)",
-              border: "1px solid var(--border-active)",
-              borderRadius: "14px",
-              padding: "18px 24px 18px 56px",
-              fontSize: "1.05rem",
-              color: "var(--text-primary)",
-              fontFamily: "var(--font-body)",
-              outline: "none",
-              boxShadow: "0 0 20px rgba(108, 71, 255, 0.05)",
-              transition: "all 0.2s ease",
-            }}
-          />
-          {query && (
-            <button
-              onClick={() => handleSearch("")}
-              style={{
-                position: "absolute",
-                right: "20px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "transparent",
-                border: "none",
-                color: "var(--text-muted)",
-                fontSize: "1rem",
-                cursor: "pointer",
-              }}
-            >
-              ✕
-            </button>
-          )}
-        </div>
-
-        {/* Preset prompts */}
-        {!searched && (
-          <div style={{ marginBottom: "40px" }}>
-            <div
-              style={{
-                fontSize: "0.72rem",
-                fontWeight: 700,
-                color: "var(--text-muted)",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                marginBottom: "12px",
-                fontFamily: "var(--font-mono)",
-              }}
-            >
-              Common challenges to ask:
+    <main className="ask-lana-page">
+      <section className="ask-lana-hero">
+        <Image
+          src={prefixPath("/images/lana-executive-office.jpg")}
+          alt="LANA in the Lux Automaton executive office"
+          fill
+          priority
+          className="ask-lana-hero-image"
+        />
+        <div className="ask-lana-hero-shade" />
+        <div className="ask-lana-hero-inner">
+          <div className="ask-lana-copy">
+            <span className="section-label">LANA Intelligence Center</span>
+            <h1>Ask LANA what to build, fix, automate, or learn next.</h1>
+            <p>
+              Describe the business problem, workshop idea, product question, or AI safety concern. LANA routes you to the right Lux system,
+              guide, workshop, or next move.
+            </p>
+            <div className="ask-lana-actions">
+              <Link href="/who-is-lana" className="primary-button">
+                Who is LANA? <ArrowRight size={16} />
+              </Link>
+              <Link href="/admin" className="secondary-button">
+                Open Workshop Studio
+              </Link>
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              {PRESET_QUERIES.map((item, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleSearch(item.text)}
-                  style={{
-                    background: "rgba(255, 255, 255, 0.02)",
-                    border: "1px solid rgba(255, 255, 255, 0.06)",
-                    borderRadius: "8px",
-                    padding: "12px 18px",
-                    color: "var(--text-secondary)",
-                    textAlign: "left",
-                    fontSize: "0.9rem",
-                    cursor: "pointer",
-                    transition: "all 0.2s ease",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                  className="hover:scale-101 hover:border-active"
-                >
+          </div>
+          <div className="lana-status-panel" aria-label="LANA operating status">
+            <div>
+              <span>Mode</span>
+              <b>Operator</b>
+            </div>
+            <div>
+              <span>Focus</span>
+              <b>Workshops, products, strategy</b>
+            </div>
+            <div>
+              <span>Review</span>
+              <b>Human approved</b>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="ask-lana-console">
+        <div className="ask-lana-console-inner">
+          <div className="ask-lana-search">
+            <Search size={22} />
+            <input
+              type="text"
+              placeholder="Ask about automation, CRM, privacy, workshops, YouTube lessons, or what to build first..."
+              value={query}
+              onChange={(event) => handleSearch(event.target.value)}
+            />
+            {query && (
+              <button type="button" onClick={() => handleSearch("")} aria-label="Clear search">
+                <X size={18} />
+              </button>
+            )}
+          </div>
+
+          {!searched && (
+            <div className="ask-lana-prompts">
+              {PRESET_QUERIES.map((item) => (
+                <button key={item.text} type="button" onClick={() => handleSearch(item.text)}>
                   <span>{item.text}</span>
-                  <span style={{ fontSize: "0.75rem", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)" }}>
-                    {item.category}
-                  </span>
+                  <b>{item.category}</b>
                 </button>
               ))}
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Results section */}
-        {searched && (
-          <div style={{ animation: "fadeIn 0.3s ease-out" }}>
-            <div
-              style={{
-                fontSize: "0.72rem",
-                fontWeight: 700,
-                color: "var(--lux-cyan)",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                marginBottom: "20px",
-                fontFamily: "var(--font-mono)",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <span>Search Results</span>
-              <span>{results.length} system match{results.length !== 1 && "es"}</span>
+          {searched && (
+            <div className="ask-lana-results">
+              <div className="ask-lana-results-head">
+                <span>System Matches</span>
+                <b>{results.length}</b>
+              </div>
+
+              {results.length > 0 ? (
+                <div className="ask-lana-result-grid">
+                  {results.map((result) => (
+                    <Link key={result.title} href={result.link} className="ask-lana-result-card">
+                      <span className="ask-lana-result-icon">{result.icon}</span>
+                      <small>{result.type}</small>
+                      <h2>{result.title}</h2>
+                      <p>{result.description}</p>
+                      <em>
+                        Open recommendation <ArrowRight size={15} />
+                      </em>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div className="ask-lana-empty">
+                  <Sparkles size={28} />
+                  <h2>No exact match yet.</h2>
+                  <p>Try asking about workshops, CRM, private AI, invoices, videos, or what to build first.</p>
+                </div>
+              )}
             </div>
-
-            {results.length > 0 ? (
-              <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                {results.map((res, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      background: "rgba(17, 24, 39, 0.5)",
-                      border: "1px solid rgba(108, 71, 255, 0.12)",
-                      borderRadius: "12px",
-                      padding: "20px 24px",
-                      display: "flex",
-                      gap: "20px",
-                      alignItems: "flex-start",
-                      transition: "all 0.2s ease",
-                    }}
-                    className="hover:border-active"
-                  >
-                    <span style={{ fontSize: "2rem", flexShrink: 0 }}>{res.icon}</span>
-                    <div style={{ flexGrow: 1 }}>
-                      <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "6px" }}>
-                        <h3
-                          style={{
-                            fontSize: "1.05rem",
-                            fontWeight: 800,
-                            color: "var(--text-primary)",
-                            fontFamily: "var(--font-display)",
-                          }}
-                        >
-                          {res.title}
-                        </h3>
-                        <span
-                          style={{
-                            fontSize: "0.62rem",
-                            fontWeight: 700,
-                            padding: "2px 8px",
-                            borderRadius: "10px",
-                            background: "rgba(0, 212, 255, 0.08)",
-                            color: "var(--lux-cyan)",
-                            fontFamily: "var(--font-mono)",
-                            textTransform: "uppercase",
-                          }}
-                        >
-                          {res.type}
-                        </span>
-                      </div>
-                      <p style={{ color: "var(--text-secondary)", fontSize: "0.85rem", lineHeight: 1.5, marginBottom: "12px" }}>
-                        {res.description}
-                      </p>
-                      <Link
-                        href={res.link}
-                        style={{
-                          fontSize: "0.8rem",
-                          fontWeight: 700,
-                          color: "var(--lux-cyan)",
-                          textDecoration: "none",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "4px",
-                        }}
-                      >
-                        Explore Recommendation →
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div
-                style={{
-                  background: "rgba(17, 24, 39, 0.3)",
-                  border: "1px dashed var(--border-subtle)",
-                  borderRadius: "12px",
-                  padding: "48px 24px",
-                  textAlign: "center",
-                  color: "var(--text-muted)",
-                }}
-              >
-                <span style={{ fontSize: "2rem", display: "block", marginBottom: "12px" }}>🌌</span>
-                No specific matches. Try searching &quot;waste time&quot;, &quot;CRM&quot;, &quot;HIPAA&quot;, or &quot;invoices&quot;.
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(6px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
-    </div>
+          )}
+        </div>
+      </section>
+    </main>
   );
 }

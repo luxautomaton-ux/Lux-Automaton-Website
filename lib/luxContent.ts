@@ -51,6 +51,9 @@ export interface WorkshopProgram {
   prerequisites?: string[];
   safetyNotes?: string[];
   extensionActivities?: string[];
+  workbookPdfUrl?: string;
+  facilitatorDeckPdfUrl?: string;
+  fullGuidePdfUrl?: string;
 }
 
 export interface TvEpisode {
@@ -576,6 +579,9 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
     image: "/images/00_workshop_hero.png",
     thumbnail: "/images/01_workshop_thumbnail.png",
     brandLogo: "/images/lux-automaton-brand/lux-automaton-logo.png",
+    workbookPdfUrl: "/AI_Foundations_for_Founders_Participant_Workbook.pdf",
+    facilitatorDeckPdfUrl: "/AI_Foundations_for_Founders_Facilitator_Deck.pdf",
+    fullGuidePdfUrl: "/AI_Foundations_for_Founders_Full_Workshop_Guide.pdf",
     description: "A practical two-hour workshop that helps founders understand what AI is, find the best first automation opportunity, protect business data, write useful prompts with the Lux CRAFT framework, and leave with a responsible 30-day pilot plan.",
     outcome: "A complete Founder AI Pilot Blueprint containing a prioritized workflow, tool & data decision, CRAFT prompt, test & verification plan, human-approval controls, and a 30-day implementation roadmap.",
     materials: [

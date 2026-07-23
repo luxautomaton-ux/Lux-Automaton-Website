@@ -214,6 +214,25 @@ export default function WorkshopsPage() {
                   <b>Outcome</b>
                   <p>{selected.outcome}</p>
                 </div>
+                {(selected.workbookPdfUrl || selected.facilitatorDeckPdfUrl || selected.fullGuidePdfUrl) && (
+                  <div className="flex flex-wrap gap-3 mt-4">
+                    {selected.workbookPdfUrl && (
+                      <a href={prefixPath(selected.workbookPdfUrl)} download className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition-colors">
+                        Download Participant Workbook (PDF)
+                      </a>
+                    )}
+                    {selected.facilitatorDeckPdfUrl && (
+                      <a href={prefixPath(selected.facilitatorDeckPdfUrl)} download className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-purple-600 hover:bg-purple-500 text-white transition-colors">
+                        Download Facilitator Deck (PDF)
+                      </a>
+                    )}
+                    {selected.fullGuidePdfUrl && (
+                      <a href={prefixPath(selected.fullGuidePdfUrl)} download className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-colors">
+                        Download Full Workshop Guide (PDF)
+                      </a>
+                    )}
+                  </div>
+                )}
                 {!!selected.materials?.length && (
                   <div className="academy-materials">
                     {selected.materials.map((item) => <span key={item}>{item}</span>)}

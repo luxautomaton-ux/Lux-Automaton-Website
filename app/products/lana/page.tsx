@@ -4,6 +4,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { prefixPath } from "@/lib/prefix";
+import { PRODUCTS } from "@/lib/products";
+import { getProductPreviews } from "@/lib/productPreviews";
+import ProductShowcaseGallery from "@/components/ProductShowcaseGallery";
+
+const LANA_PRODUCT = PRODUCTS.find((product) => product.slug === "lana")!;
 
 const BADGES = [
   "AI Operator",
@@ -237,6 +242,12 @@ export default function LanaProductPage() {
           </div>
         </div>
       </section>
+
+      <ProductShowcaseGallery
+        productName="LANA"
+        accentColor="var(--cyan)"
+        previews={getProductPreviews(LANA_PRODUCT)}
+      />
 
       {/* SECTION 1: WHAT IS LANA? */}
       <section id="meet-lana" style={{ padding: "clamp(60px, 8vw, 100px) 24px", background: "var(--bg-base)" }}>

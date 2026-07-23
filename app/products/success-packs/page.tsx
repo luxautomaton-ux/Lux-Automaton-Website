@@ -8,6 +8,11 @@ import FiveWHSection from "@/components/FiveWHSection";
 import FeatureGrid from "@/components/FeatureGrid";
 import EcosystemBanner from "@/components/EcosystemBanner";
 import ProductPageCTA from "@/components/ProductPageCTA";
+import { PRODUCTS } from "@/lib/products";
+import { getProductPreviews } from "@/lib/productPreviews";
+import ProductShowcaseGallery from "@/components/ProductShowcaseGallery";
+
+const SUCCESS_PACKS_PRODUCT = PRODUCTS.find((product) => product.slug === "success-packs")!;
 
 const PACKS = [
   {
@@ -113,6 +118,12 @@ export default function SuccessPacksPage() {
         secondaryCta={{ label: "Explore Ecosystem", href: "/products" }}
         status="live"
         icon="📦"
+      />
+
+      <ProductShowcaseGallery
+        productName="Success Packs"
+        accentColor="var(--cyan)"
+        previews={getProductPreviews(SUCCESS_PACKS_PRODUCT)}
       />
 
       {/* 2. What It Is Section */}

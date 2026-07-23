@@ -70,7 +70,7 @@ const worlds = [
     workshopHref: "/workshops",
     media: "Lux TV Kids",
     mediaHref: "/lux-tv-kids",
-    image: "/images/lux-kids-world.png",
+    image: "/images/lux-kids-banner-bg.png",
     accent: "kids",
   },
 ];
@@ -155,7 +155,7 @@ export default function HomePage() {
         <header className="world-section-head"><div><p>03 / CHOOSE YOUR PATH</p><h2>There is a door<br /><em>for everyone.</em></h2></div></header>
         <div className="pathway-grid">{pathways.map((path) => <Link href={path.href} className={`pathway-card ${path.tone}`} key={path.label}><span>{path.label}</span><h3>{path.title}</h3><p>{path.copy}</p><b>Open pathway →</b></Link>)}</div>
         <Link href="/lux-ai-kids" className="kids-banner">
-          <Image src={prefixPath("/images/lux-kids-world.png")} alt="Lux AI Kids mascot in a colorful creative AI lab" fill sizes="100vw" />
+          <Image src={prefixPath("/images/lux-kids-banner-bg.png")} alt="Lux AI Kids mascot in a colorful creative AI lab" fill sizes="100vw" />
           <div className="kids-banner-shade" /><div className="kids-banner-copy"><span>NEW WORLD</span><h2>Lux AI Kids</h2><p>Where young creators learn AI, make stories, build robots, and solve real problems—safely.</p><b>Launch Kids World ↗</b></div>
         </Link>
       </section>

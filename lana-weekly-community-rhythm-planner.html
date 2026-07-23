@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LANA Weekly Community Rhythm Planner | Lux Automaton</title>
+  <style>
+    :root{--purple:#6c47ff;--cyan:#00bfe8;--teal:#00b98f;--ink:#111827;--muted:#5b6474;--line:#cbd5e1;--paper:#fff}
+    *{box-sizing:border-box}body{margin:0;background:#e9eef5;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.4}
+    .toolbar{position:sticky;top:0;z-index:4;background:#07101f;color:white;padding:12px 18px;display:flex;gap:12px;justify-content:center;align-items:center;border-bottom:1px solid rgba(255,255,255,.12)}
+    .toolbar button{border:0;border-radius:999px;padding:10px 17px;background:linear-gradient(90deg,var(--purple),var(--cyan));color:white;font-weight:800;cursor:pointer}
+    .sheet{width:min(8.5in,calc(100% - 24px));margin:20px auto;background:var(--paper);box-shadow:0 18px 60px rgba(15,23,42,.18);padding:.5in;min-height:11in}
+    header{display:grid;grid-template-columns:1fr 220px;gap:20px;align-items:start;border-bottom:4px solid var(--purple);padding-bottom:16px}
+    header img{width:220px;height:auto;justify-self:end;background:#070b14;border-radius:8px}
+    .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:var(--cyan)}
+    h1{font-size:34px;line-height:1.02;margin:5px 0 8px;letter-spacing:-.04em}
+    .subtitle{font-size:15px;color:var(--muted);margin:0}
+    .identity{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+    .line-box{border-bottom:1px solid var(--ink);min-height:28px;padding-top:8px;font-size:12px;color:var(--muted)}
+    section{margin-top:24px;page-break-inside:avoid}
+    h2{font-size:20px;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+    .num{width:30px;height:30px;border-radius:8px;display:inline-grid;place-items:center;color:white;background:linear-gradient(135deg,var(--purple),var(--cyan));font-size:13px}
+    .hint{font-size:12px;color:var(--muted);margin:-4px 0 12px}
+    table{width:100%;border-collapse:collapse;font-size:11px}
+    th,td{border:1px solid var(--line);padding:8px;vertical-align:top}
+    th{background:#eef4fb;text-align:left}
+    td.blank{height:38px}
+    .check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 16px}
+    .check{font-size:12px;border:1px solid var(--line);padding:9px;border-radius:8px}
+    .box{display:inline-block;width:14px;height:14px;border:1.5px solid var(--ink);margin-right:7px;vertical-align:-2px}
+    .section-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .section-card{border:1px solid var(--line);border-radius:10px;padding:11px;min-height:90px}
+    .section-card strong{display:block;color:var(--purple);font-size:12px;margin-bottom:6px}
+    .write-lines{background:repeating-linear-gradient(to bottom,transparent 0,transparent 23px,#cbd5e1 24px);min-height:96px;border:1px solid var(--line);border-radius:8px}
+    .bridge{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+    .bridge>div{border:1px solid var(--line);border-radius:10px;padding:9px;min-height:95px;text-align:center}
+    .bridge strong{display:block;color:var(--cyan);font-size:11px;margin-bottom:6px}
+    .week-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .week{border:1px solid var(--line);border-radius:10px;padding:12px}
+    .week h3{font-size:13px;color:var(--cyan);margin:0 0 7px}
+    .score{display:grid;grid-template-columns:1.6fr repeat(5,.55fr);font-size:11px;border:1px solid var(--line);border-bottom:0}
+    .score>div{padding:7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .score>div:nth-child(6n){border-right:0}
+    .footer-callout{margin-top:24px;border:1px solid var(--purple);border-radius:12px;padding:14px;text-align:center;font-weight:900;color:#2b145e;background:linear-gradient(90deg,rgba(108,71,255,.08),rgba(0,191,232,.08))}
+    .page-break{page-break-before:always}
+    @media(max-width:760px){header{grid-template-columns:1fr}header img{justify-self:start}.identity,.check-grid,.week-grid,.section-grid{grid-template-columns:1fr}.bridge{grid-template-columns:1fr}.sheet{padding:24px}}
+    @media print{@page{size:letter;margin:.35in}body{background:white}.toolbar{display:none}.sheet{width:auto;min-height:auto;margin:0;box-shadow:none;padding:0}header img{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+  </style>
+</head>
+<body>
+  <div class="toolbar"><span>Lux Automaton Newsletter Planner</span><button onclick="window.print()">Print / Save as PDF</button></div>
+  <main class="sheet">
+    <header>
+      <div>
+        <div class="eyebrow">Lux Automaton · LANA Weekly</div>
+        <h1>LANA Weekly Community Rhythm Planner</h1>
+        <p class="subtitle">Plan one useful note, recurring sections, a clear content bridge, and one next action for every issue.</p>
+      </div>
+      <img src="lux-automaton-logo.png" alt="Lux Automaton logo">
+    </header>
+
+    <div class="identity">
+      <div class="line-box">Issue owner:</div>
+      <div class="line-box">Issue date:</div>
+      <div class="line-box">Primary audience:</div>
+      <div class="line-box">Issue theme:</div>
+    </div>
+
+    <section>
+      <h2><span class="num">1</span> Define the one useful promise</h2>
+      <p class="hint">Complete this sentence before drafting: “By the end of this issue, the reader will…”</p>
+      <div class="write-lines"></div>
+    </section>
+
+    <section>
+      <h2><span class="num">2</span> Choose the week’s strongest signal</h2>
+      <div class="check-grid">
+        <div class="check"><span class="box"></span>Founder lesson or decision</div><div class="check"><span class="box"></span>Product update</div>
+        <div class="check"><span class="box"></span>Customer question</div><div class="check"><span class="box"></span>Customer win</div>
+        <div class="check"><span class="box"></span>Workshop topic</div><div class="check"><span class="box"></span>Lux TV conversation</div>
+        <div class="check"><span class="box"></span>Tool lesson</div><div class="check"><span class="box"></span>Community discussion</div>
+      </div>
+      <div class="line-box" style="margin-top:12px">The central idea connecting the issue:</div>
+    </section>
+
+    <section>
+      <h2><span class="num">3</span> Draft the recurring sections</h2>
+      <div class="section-grid">
+        <div class="section-card"><strong>Founder Note</strong>Context, story, decision, or question from Asa.</div>
+        <div class="section-card"><strong>Product Update</strong>What changed, why it matters, and what is still in progress.</div>
+        <div class="section-card"><strong>Tool Lesson</strong>One practical idea the reader can try now.</div>
+        <div class="section-card"><strong>Workshop Invite</strong>Where the reader can practice and ask questions.</div>
+        <div class="section-card"><strong>Customer Problem / Win</strong>A permission-based real story or challenge.</div>
+        <div class="section-card"><strong>Next Action</strong>One primary step that matches the reader’s stage.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">4</span> Map the content bridge</h2>
+      <p class="hint">Use only the steps that strengthen this issue. Do not add links simply to fill the row.</p>
+      <div class="bridge">
+        <div><strong>Blog Article</strong>Depth, examples, search value.</div>
+        <div><strong>LUX TV</strong>Conversation or demonstration.</div>
+        <div><strong>Workshop</strong>Practice and questions.</div>
+        <div><strong>Product Page</strong>The tool in action.</div>
+        <div><strong>Community</strong>Feedback, examples, wins.</div>
+      </div>
+    </section>
+
+    <section class="page-break">
+      <h2><span class="num">5</span> Build the weekly production rhythm</h2>
+      <table>
+        <thead><tr><th>Day / stage</th><th>Owner</th><th>Deliverable</th><th>Approval or dependency</th></tr></thead>
+        <tbody>
+          <tr><td>Collect signals</td><td class="blank"></td><td></td><td></td></tr>
+          <tr><td>Choose central idea</td><td class="blank"></td><td></td><td></td></tr>
+          <tr><td>Draft sections</td><td class="blank"></td><td></td><td></td></tr>
+          <tr><td>Review facts, links, and promises</td><td class="blank"></td><td></td><td></td></tr>
+          <tr><td>Publish and respond</td><td class="blank"></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2><span class="num">6</span> Choose one primary next action</h2>
+      <div class="check-grid">
+        <div class="check"><span class="box"></span>Read the full blog article</div><div class="check"><span class="box"></span>Watch LUX TV</div>
+        <div class="check"><span class="box"></span>Register for a workshop</div><div class="check"><span class="box"></span>Visit a product page</div>
+        <div class="check"><span class="box"></span>Try a workflow</div><div class="check"><span class="box"></span>Reply with a question</div>
+        <div class="check"><span class="box"></span>Join the community discussion</div><div class="check"><span class="box"></span>Share a customer win</div>
+      </div>
+      <div class="line-box" style="margin-top:12px">Primary CTA wording:</div>
+      <div class="line-box">Destination / link:</div>
+    </section>
+
+    <section>
+      <h2><span class="num">7</span> Measure useful movement</h2>
+      <p class="hint">Score each area from 1 (weak) to 5 (strong), then note what to improve next week.</p>
+      <div class="score">
+        <div><strong>Measure</strong></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+        <div>Clarity of the central idea</div><div>□</div><div>□</div><div>□</div><div>□</div><div>□</div>
+        <div>Replies and useful questions</div><div>□</div><div>□</div><div>□</div><div>□</div><div>□</div>
+        <div>Workshop registrations</div><div>□</div><div>□</div><div>□</div><div>□</div><div>□</div>
+        <div>Product or resource engagement</div><div>□</div><div>□</div><div>□</div><div>□</div><div>□</div>
+        <div>Community discussion quality</div><div>□</div><div>□</div><div>□</div><div>□</div><div>□</div>
+        <div>Ease of producing the issue</div><div>□</div><div>□</div><div>□</div><div>□</div><div>□</div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">8</span> Trust and quality checklist</h2>
+      <div class="check-grid">
+        <div class="check"><span class="box"></span>Product claims are accurate</div><div class="check"><span class="box"></span>Dates and links are verified</div>
+        <div class="check"><span class="box"></span>Customer stories have permission</div><div class="check"><span class="box"></span>Editorial and promotion are distinguishable</div>
+        <div class="check"><span class="box"></span>AI-assisted drafts received human review</div><div class="check"><span class="box"></span>The primary next action is clear</div>
+        <div class="check"><span class="box"></span>Language is welcoming and jargon-light</div><div class="check"><span class="box"></span>The issue makes no exaggerated promises</div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">9</span> Plan the next four issues</h2>
+      <div class="week-grid">
+        <div class="week"><h3>Issue 1</h3><div class="write-lines"></div></div>
+        <div class="week"><h3>Issue 2</h3><div class="write-lines"></div></div>
+        <div class="week"><h3>Issue 3</h3><div class="write-lines"></div></div>
+        <div class="week"><h3>Issue 4</h3><div class="write-lines"></div></div>
+      </div>
+    </section>
+
+    <div class="footer-callout">One useful note. Familiar sections. One clear next move. Let’s build it.</div>
+  </main>
+</body>
+</html>

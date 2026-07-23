@@ -30,7 +30,7 @@ featured_image: "01-thumbnail-lana-weekly-community-rhythm.png"
 - **02** [Use recurring sections](#use-recurring-sections)
 - **03** [Connect readers to workshops and products](#connect-readers-to-workshops-and-products)
 
-[Discuss in the community →](/community)
+[Discuss in the community →](#discuss-in-the-community)
 
 ![Asa and LANA plan a LANA Weekly issue in a futuristic Lux Automaton office using a holographic board with a founder note, tool lesson, workshop invite, customer win, and next action.](01-thumbnail-lana-weekly-community-rhythm.png)
 

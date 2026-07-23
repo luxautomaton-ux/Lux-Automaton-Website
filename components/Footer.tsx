@@ -32,6 +32,7 @@ const FOOTER_LINKS = {
     { label: "Lux TV", href: "/lux-tv" },
     { label: "Lux TV Kids", href: "/lux-tv-kids" },
     { label: "Blog", href: "/blog" },
+    { label: "Books by Asa Spade", href: "/books" },
     { label: "Community", href: "/community" },
     { label: "Start Here", href: "/start-here" },
     { label: "Ask LANA", href: "/ask-lana" },

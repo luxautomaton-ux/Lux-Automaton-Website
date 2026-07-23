@@ -383,7 +383,7 @@ export default function Navbar() {
             Ask LANA
           </Link>
 
-          {/* News */}
+          {/* Blog */}
           <Link
             href="/blog"
             style={{
@@ -400,6 +400,25 @@ export default function Navbar() {
             }}
           >
             Blog
+          </Link>
+
+          {/* Books */}
+          <Link
+            href="/books"
+            style={{
+              padding: "8px 12px",
+              borderRadius: "6px",
+              fontSize: "0.78rem",
+              fontWeight: 600,
+              letterSpacing: "0.03em",
+              textDecoration: "none",
+              color: pathname === "/books" ? "var(--lux-cyan)" : "var(--text-secondary)",
+              background: pathname === "/books" ? "rgba(0, 212, 255, 0.06)" : "transparent",
+              border: pathname === "/books" ? "1px solid rgba(0, 212, 255, 0.15)" : "1px solid transparent",
+              transition: "all 0.2s ease",
+            }}
+          >
+            Books
           </Link>
 
           {/* Community */}

@@ -962,7 +962,7 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
   "slug": "lana-content-command-center",
   "audience": "Lux Automaton",
   "title": "LANA Content Command Center",
-  "level": "Beginner to intermediate",
+  "level": "Intermediate",
   "ageBand": "Founders, consultants, coaches, creators, subject-matter experts, and small business teams",
   "duration": "90 minutes (90 min + 30 min Lab)",
   "image": "/images/workshops/lana-content-command-center/00_workshop_hero.png",

@@ -940,7 +940,7 @@ export type WorkshopCategory =
   | "family-projects"
   | "creative-lab";
 
-export interface WorkshopLesson {
+export interface KidsWorkshopLesson {
   title: string;
   duration: string;
   aceIntro: string;
@@ -962,7 +962,7 @@ export interface KidsWorkshop {
   description: string;
   learningGoals: string[];
   whatYouMake: string[];
-  lessons: WorkshopLesson[];
+  lessons: KidsWorkshopLesson[];
   materials: string[];
   safetyNotes: string[];
   extensionActivities: string[];

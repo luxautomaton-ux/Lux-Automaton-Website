@@ -46,12 +46,10 @@ next-env.d.ts
 # backups
 *.bak*
 
-# large media & mocks
-/public/videos/
-/company-website-mock/
-*.m4a
-*.mp4
-*.mov
+# media files
+!public/videos/*.mp4
+!public/videos/*.mov
+
 
 
 

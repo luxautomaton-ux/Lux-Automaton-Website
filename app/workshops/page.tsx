@@ -9,8 +9,20 @@ import { fetchWorkshops, workshopRowToProgram } from "@/lib/workshopDb";
 
 const tabs: Array<"All" | Audience> = ["All", "Lux Automaton", "Lux AI Kids"];
 
-function LessonCard({ lesson, index }: { lesson: WorkshopLesson; index: number }) {
+function LessonCard({ lesson, index }: { lesson: string | WorkshopLesson; index: number }) {
   const [expanded, setExpanded] = useState(false);
+
+  const normalized: WorkshopLesson = typeof lesson === "string"
+    ? {
+        title: lesson,
+        duration: "15-20 min",
+        overview: `Key lesson module: ${lesson}.`,
+        activity: "Guided practice and application.",
+        deliverable: "Completed worksheet or working draft.",
+        tips: ["Take your time to test each step", "Keep notes on what works best for your workflow"],
+        checkIn: "Ready for the next lesson step.",
+      }
+    : lesson;
 
   return (
     <div className="academy-lesson-card">
@@ -22,63 +34,73 @@ function LessonCard({ lesson, index }: { lesson: WorkshopLesson; index: number }
       >
         <span className="academy-lesson-num">{String(index + 1).padStart(2, "0")}</span>
         <div className="academy-lesson-info">
-          <h4>{lesson.title}</h4>
-          <small>{lesson.duration}</small>
+          <h4>{normalized.title}</h4>
+          <small>{normalized.duration}</small>
         </div>
         <span className="academy-lesson-toggle">{expanded ? "−" : "+"}</span>
       </button>
 
       {expanded && (
         <div className="academy-lesson-body">
-          {lesson.moduleTitle && <span className="academy-lesson-module">{lesson.moduleTitle}</span>}
-          {lesson.video && <video className="academy-lesson-media" src={prefixPath(lesson.video)} controls playsInline poster={lesson.image ? prefixPath(lesson.image) : undefined} />}
-          {!lesson.video && lesson.image && <Image className="academy-lesson-media" src={prefixPath(lesson.image)} alt={lesson.title} width={1200} height={675} />}
-          <p className="academy-lesson-overview">{lesson.overview}</p>
+          {normalized.moduleTitle && <span className="academy-lesson-module">{normalized.moduleTitle}</span>}
+          {normalized.video && <video className="academy-lesson-media" src={prefixPath(normalized.video)} controls playsInline poster={normalized.image ? prefixPath(normalized.image) : undefined} />}
+          {!normalized.video && normalized.image && <Image className="academy-lesson-media" src={prefixPath(normalized.image)} alt={normalized.title} width={1200} height={675} />}
+          {normalized.overview && <p className="academy-lesson-overview">{normalized.overview}</p>}
 
-          {lesson.content && (
+          {normalized.content && (
             <div className="academy-lesson-section academy-lesson-content">
               <h5>Full Lesson</h5>
-              {lesson.content.split("\n").filter(Boolean).map((paragraph, paragraphIndex) => <p key={paragraphIndex}>{paragraph}</p>)}
+              {normalized.content.split("\n").filter(Boolean).map((paragraph, paragraphIndex) => <p key={paragraphIndex}>{paragraph}</p>)}
             </div>
           )}
 
-          <div className="academy-lesson-section">
-            <h5>Learning Objectives</h5>
-            <ul>
-              {lesson.objectives?.map((obj) => (
-                <li key={obj}>{obj}</li>
-              ))}
-            </ul>
-          </div>
+          {!!normalized.objectives?.length && (
+            <div className="academy-lesson-section">
+              <h5>Learning Objectives</h5>
+              <ul>
+                {normalized.objectives.map((obj) => (
+                  <li key={obj}>{obj}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-          <div className="academy-lesson-section">
-            <h5>Activity</h5>
-            <p>{lesson.activity}</p>
-          </div>
+          {normalized.activity && (
+            <div className="academy-lesson-section">
+              <h5>Activity</h5>
+              <p>{normalized.activity}</p>
+            </div>
+          )}
 
-          <div className="academy-lesson-section">
-            <h5>Deliverable</h5>
-            <p className="academy-lesson-deliverable">{lesson.deliverable}</p>
-          </div>
+          {normalized.deliverable && (
+            <div className="academy-lesson-section">
+              <h5>Deliverable</h5>
+              <p className="academy-lesson-deliverable">{normalized.deliverable}</p>
+            </div>
+          )}
 
-          <div className="academy-lesson-section">
-            <h5>Tips</h5>
-            <ul className="academy-lesson-tips">
-              {lesson.tips.map((tip) => (
-                <li key={tip}>{tip}</li>
-              ))}
-            </ul>
-          </div>
+          {!!normalized.tips?.length && (
+            <div className="academy-lesson-section">
+              <h5>Tips</h5>
+              <ul className="academy-lesson-tips">
+                {normalized.tips.map((tip) => (
+                  <li key={tip}>{tip}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-          <div className="academy-lesson-checkin">
-            <strong>Check-in:</strong> {lesson.checkIn}
-          </div>
+          {normalized.checkIn && (
+            <div className="academy-lesson-checkin">
+              <strong>Check-in:</strong> {normalized.checkIn}
+            </div>
+          )}
 
-          {!!lesson.resources?.length && (
+          {!!normalized.resources?.length && (
             <div className="academy-lesson-section">
               <h5>Resources</h5>
               <div className="academy-lesson-resources">
-                {lesson.resources.map((resource) => <a key={`${resource.title}-${resource.url}`} href={resource.url} target="_blank" rel="noreferrer">{resource.title || "Open resource"}</a>)}
+                {normalized.resources.map((resource) => <a key={`${resource.title}-${resource.url}`} href={resource.url} target="_blank" rel="noreferrer">{resource.title || "Open resource"}</a>)}
               </div>
             </div>
           )}
@@ -165,117 +187,125 @@ export default function WorkshopsPage() {
           ))}
         </div>
 
-        <div className="academy-feature">
-          <div className="academy-player">
-            {selected.video ? (
-              <video src={prefixPath(selected.video)} poster={prefixPath(selected.image)} controls playsInline />
-            ) : (
-              <Image src={prefixPath(selected.image)} alt={selected.title} fill sizes="(max-width: 980px) 100vw, 58vw" />
-            )}
-            <div className="academy-player-shade" />
-            {selected.brandLogo && (
-              <div className={`academy-brand-lockup ${selected.audience === "Lux AI Kids" ? "kids" : "automaton"}`}>
-                <Image src={prefixPath(selected.brandLogo)} alt={selected.audience} fill sizes="260px" />
-              </div>
-            )}
-            {!selected.video && <button type="button" aria-label={`Preview ${selected.title}`}>Play</button>}
-            <span>{selected.duration}</span>
-          </div>
-          <article className="academy-detail">
-            <p>{selected.audience} / {selected.level}</p>
-            <h2>{selected.title}</h2>
-            <strong>{selected.ageBand}</strong>
-            <span>{selected.description}</span>
-            <div className="academy-outcome">
-              <b>Outcome</b>
-              <p>{selected.outcome}</p>
-            </div>
-            <div className="academy-materials">
-              {selected.materials.map((item) => <span key={item}>{item}</span>)}
-            </div>
-          </article>
-        </div>
-
-        <div className="academy-shelf">
-          {syncing && <span className="academy-syncing">Syncing newly published workshops…</span>}
-          {filtered.map((workshop) => (
-            <button
-              key={workshop.slug}
-              type="button"
-              className={selected.slug === workshop.slug ? "active" : ""}
-              onClick={() => setSelected(workshop)}
-            >
-              <span className="academy-thumb">
-                <Image src={prefixPath(workshop.thumbnail)} alt="" fill sizes="220px" />
-                {workshop.brandLogo && (
-                  <div className={`academy-thumb-lockup ${workshop.audience === "Lux AI Kids" ? "kids" : "automaton"}`}>
-                    <Image src={prefixPath(workshop.brandLogo)} alt={workshop.audience} fill sizes="145px" />
+        {selected && (
+          <>
+            <div className="academy-feature">
+              <div className="academy-player">
+                {selected.video ? (
+                  <video src={prefixPath(selected.video)} poster={prefixPath(selected.image)} controls playsInline />
+                ) : (
+                  <Image src={prefixPath(selected.image)} alt={selected.title} fill sizes="(max-width: 980px) 100vw, 58vw" />
+                )}
+                <div className="academy-player-shade" />
+                {selected.brandLogo && (
+                  <div className={`academy-brand-lockup ${selected.audience === "Lux AI Kids" ? "kids" : "automaton"}`}>
+                    <Image src={prefixPath(selected.brandLogo)} alt={selected.audience} fill sizes="260px" />
                   </div>
                 )}
-              </span>
-              <b>{workshop.title}</b>
-              <small>{workshop.level} / {workshop.duration}</small>
-            </button>
-          ))}
-        </div>
-
-        <div className="academy-curriculum">
-          <div>
-            <p>Full Curriculum</p>
-            <h2>{selected.title}</h2>
-          </div>
-          <div className="academy-lessons">
-            {selected.lessons.map((lesson, i) => (
-              <LessonCard key={lesson.title} lesson={lesson} index={i} />
-            ))}
-          </div>
-        </div>
-
-        <div className="academy-meta">
-          {selected.learningGoals.length > 0 && (
-            <div className="academy-meta-section">
-              <h3>Learning Goals</h3>
-              <ul>
-                {selected.learningGoals.map((goal) => (
-                  <li key={goal}>{goal}</li>
-                ))}
-              </ul>
+                {!selected.video && <button type="button" aria-label={`Preview ${selected.title}`}>Play</button>}
+                <span>{selected.duration}</span>
+              </div>
+              <article className="academy-detail">
+                <p>{selected.audience} / {selected.level}</p>
+                <h2>{selected.title}</h2>
+                <strong>{selected.ageBand}</strong>
+                <span>{selected.description}</span>
+                <div className="academy-outcome">
+                  <b>Outcome</b>
+                  <p>{selected.outcome}</p>
+                </div>
+                {!!selected.materials?.length && (
+                  <div className="academy-materials">
+                    {selected.materials.map((item) => <span key={item}>{item}</span>)}
+                  </div>
+                )}
+              </article>
             </div>
-          )}
 
-          {selected.prerequisites.length > 0 && (
-            <div className="academy-meta-section">
-              <h3>Prerequisites</h3>
-              <ul>
-                {selected.prerequisites.map((prereq) => (
-                  <li key={prereq}>{prereq}</li>
-                ))}
-              </ul>
+            <div className="academy-shelf">
+              {syncing && <span className="academy-syncing">Syncing newly published workshops…</span>}
+              {filtered.map((workshop) => (
+                <button
+                  key={workshop.slug}
+                  type="button"
+                  className={selected.slug === workshop.slug ? "active" : ""}
+                  onClick={() => setSelected(workshop)}
+                >
+                  <span className="academy-thumb">
+                    <Image src={prefixPath(workshop.thumbnail)} alt="" fill sizes="220px" />
+                    {workshop.brandLogo && (
+                      <div className={`academy-thumb-lockup ${workshop.audience === "Lux AI Kids" ? "kids" : "automaton"}`}>
+                        <Image src={prefixPath(workshop.brandLogo)} alt={workshop.audience} fill sizes="145px" />
+                      </div>
+                    )}
+                  </span>
+                  <b>{workshop.title}</b>
+                  <small>{workshop.level} / {workshop.duration}</small>
+                </button>
+              ))}
             </div>
-          )}
 
-          {selected.safetyNotes.length > 0 && (
-            <div className="academy-meta-section">
-              <h3>Safety Notes</h3>
-              <ul>
-                {selected.safetyNotes.map((note) => (
-                  <li key={note}>{note}</li>
-                ))}
-              </ul>
+            <div className="academy-curriculum">
+              <div>
+                <p>Full Curriculum</p>
+                <h2>{selected.title}</h2>
+              </div>
+              {!!selected.lessons?.length && (
+                <div className="academy-lessons">
+                  {selected.lessons.map((lesson, i) => (
+                    <LessonCard key={typeof lesson === "string" ? `${lesson}-${i}` : lesson.title} lesson={lesson} index={i} />
+                  ))}
+                </div>
+              )}
             </div>
-          )}
 
-          {selected.extensionActivities.length > 0 && (
-            <div className="academy-meta-section">
-              <h3>Extension Activities</h3>
-              <ul>
-                {selected.extensionActivities.map((activity) => (
-                  <li key={activity}>{activity}</li>
-                ))}
-              </ul>
+            <div className="academy-meta">
+              {!!selected.learningGoals?.length && (
+                <div className="academy-meta-section">
+                  <h3>Learning Goals</h3>
+                  <ul>
+                    {selected.learningGoals.map((goal) => (
+                      <li key={goal}>{goal}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {!!selected.prerequisites?.length && (
+                <div className="academy-meta-section">
+                  <h3>Prerequisites</h3>
+                  <ul>
+                    {selected.prerequisites.map((prereq) => (
+                      <li key={prereq}>{prereq}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {!!selected.safetyNotes?.length && (
+                <div className="academy-meta-section">
+                  <h3>Safety Notes</h3>
+                  <ul>
+                    {selected.safetyNotes.map((note) => (
+                      <li key={note}>{note}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {!!selected.extensionActivities?.length && (
+                <div className="academy-meta-section">
+                  <h3>Extension Activities</h3>
+                  <ul>
+                    {selected.extensionActivities.map((activity) => (
+                      <li key={activity}>{activity}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </>
+        )}
       </section>
     </main>
   );

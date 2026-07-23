@@ -39,18 +39,18 @@ export interface WorkshopProgram {
   level: "Beginner" | "Intermediate" | "Advanced";
   ageBand: string;
   duration: string;
-  lessons: WorkshopLesson[];
+  lessons: Array<string | WorkshopLesson>;
   image: string;
   thumbnail: string;
   brandLogo?: string;
   video?: string;
   outcome: string;
-  materials: string[];
+  materials?: string[];
   description: string;
-  learningGoals: string[];
-  prerequisites: string[];
-  safetyNotes: string[];
-  extensionActivities: string[];
+  learningGoals?: string[];
+  prerequisites?: string[];
+  safetyNotes?: string[];
+  extensionActivities?: string[];
 }
 
 export interface TvEpisode {

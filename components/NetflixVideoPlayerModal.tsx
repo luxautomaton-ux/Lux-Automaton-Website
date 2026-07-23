@@ -132,7 +132,7 @@ export default function NetflixVideoPlayerModal({ episode, onClose }: NetflixVid
             </div>
 
             <video
-              src={prefixPath(episode.video)}
+              src={prefixPath(episode.video || "/videos/lux-automaton-intro.mp4")}
               controls
               autoPlay
               className="cinema-video"

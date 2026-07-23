@@ -98,7 +98,7 @@ const founders = [
     kicker: "LUX AI KIDS & GENERATIONAL LEARNING",
     bio: "Dr. Torrey Dooley leads the Lux AI Kids initiative, empowering the next generation of creators to explore artificial intelligence with curiosity, creativity, and safety. Through project-based workshops, interactive puppet labs, and hands-on story challenges, Dr. Dooley turns 'How does AI work?' into 'Look what I made today!'",
     quote: "“We don't teach children to fear technology. We teach them to direct it with human kindness, ethics, and care.”",
-    image: "/images/lux-kids-world.png",
+    image: "/images/founder-torrey.jpg",
     pillars: [
       { title: "Safety-First Pedagogy", copy: "Teaching kids privacy, consent, and source verification." },
       { title: "Creative Confidence", copy: "Turning prompts into stories, art, videos, and robots." },

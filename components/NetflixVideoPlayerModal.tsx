@@ -107,7 +107,8 @@ export default function NetflixVideoPlayerModal({ episode, onClose }: NetflixVid
                   className="netflix-btn-story"
                   onClick={onClose}
                 >
-                  <span className="book-icon">📖</span> Read Real Story
+                  <span className="book-icon">{episode.storyUrl?.includes('/products/') || episode.storyUrl?.includes('/solutions/') ? '🚀' : '📖'}</span>{" "}
+                  {episode.storyUrl?.includes('/products/') || episode.storyUrl?.includes('/solutions/') ? 'Open Product Page' : 'Read Real Story'}
                 </Link>
               </div>
             </div>
@@ -129,7 +130,7 @@ export default function NetflixVideoPlayerModal({ episode, onClose }: NetflixVid
                 className="cinema-story-btn"
                 onClick={onClose}
               >
-                📖 Read Story
+                {episode.storyUrl?.includes('/products/') || episode.storyUrl?.includes('/solutions/') ? '🚀 Open Product Page' : '📖 Read Story'}
               </Link>
             </div>
 

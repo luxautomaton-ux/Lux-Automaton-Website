@@ -959,19 +959,267 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
     lessons: ["Pick a problem", "Package the offer", "Build the customer path", "Create the first content week", "Set up follow-up and delivery"],
   },
   {
-    slug: "lana-content-command-center",
-    audience: "Lux Automaton",
-    title: "LANA Content Command Center",
-    level: "Intermediate",
-    ageBand: "Business owners",
-    duration: "2.5 hours",
-    image: "/images/lana-banner.jpg",
-    thumbnail: "/images/lana-blazer.png",
-    description: "Use LANA to plan newsletters, blogs, video topics, and community prompts without losing your voice.",
-    outcome: "A 30-day content calendar with review-ready drafts.",
-    materials: ["Newsletter template", "Blog outline template", "Video topic bank"],
-    lessons: ["Define your content pillars", "Create a weekly publishing rhythm", "Draft without sounding generic", "Review and approve", "Repurpose into video and email"],
-  },
+  "slug": "lana-content-command-center",
+  "audience": "Lux Automaton",
+  "title": "LANA Content Command Center",
+  "level": "Beginner to intermediate",
+  "ageBand": "Founders, consultants, coaches, creators, subject-matter experts, and small business teams",
+  "duration": "90 minutes (90 min + 30 min Lab)",
+  "image": "/images/workshops/lana-content-command-center/00_workshop_hero.png",
+  "thumbnail": "/images/workshops/lana-content-command-center/01_workshop_thumbnail.png",
+  "brandLogo": "/images/workshops/lana-content-command-center/Lux_Automaton_Authentic_Logo.png",
+  "workbookPdfUrl": "/workshops/lana-content-command-center/downloads/LANA_Content_Command_Center_Participant_Workbook.pdf",
+  "facilitatorDeckPdfUrl": "/workshops/lana-content-command-center/downloads/LANA_Content_Command_Center_Facilitator_Deck.pdf",
+  "fullGuidePdfUrl": "/workshops/lana-content-command-center/downloads/LANA_Content_Command_Center_Full_Workshop_Guide.pdf",
+  "description": "Build a practical content operating system that turns your expertise into clear weekly publishing, preserves your voice, adds human review, and translates one strong idea into social posts, short-form video, and email.",
+  "outcome": "A complete one-week Content Command Center containing a three-pillar strategy, a 15-idea bank, a weekly publishing board, one approved anchor post, a short-form video script, an email draft, and a documented review and approval workflow.",
+  "materials": [
+    "Participant workbook, printed or digital",
+    "Laptop or tablet with a writing tool",
+    "Three recent customer questions, calls, or project notes",
+    "Two examples of content that sound like the learner at their best",
+    "One current offer, service, product, or topic to promote",
+    "Calendar or scheduling view",
+    "Optional AI writing assistant approved for the learner's data policy",
+    "Authentic Lux Automaton logo and supplied visual assets for the facilitator"
+  ],
+  "learningGoals": [
+    "Define three durable content pillars tied to audience needs and business goals.",
+    "Build a realistic weekly publishing rhythm with a clear job for each content touchpoint.",
+    "Create specific, evidence-rich drafts that retain the founder's natural voice.",
+    "Apply a repeatable human review and approval process before publication.",
+    "Translate one approved idea into a short-form video and an email without simple copy-and-paste repetition.",
+    "Leave with a ready-to-use one-week Content Command Center."
+  ],
+  "prerequisites": [
+    "No prior AI or content-strategy experience is required.",
+    "Bring a description of your audience, offer, or area of expertise.",
+    "Bring one topic you can teach from experience.",
+    "Teams should identify who can approve customer-facing content."
+  ],
+  "lessons": [
+    {
+      "title": "Choose the Three Conversations Your Brand Should Own",
+      "duration": "9 min",
+      "moduleTitle": "Module 1: Define Your Content Pillars",
+      "overview": "Separate durable content pillars from random topics and formats, then choose three conversations that connect audience needs, founder credibility, and business relevance.",
+      "content": "",
+      "objectives": [
+        "Distinguish a content pillar from a topic, format, or campaign.",
+        "Identify the intersection of audience need, credible expertise, and business relevance.",
+        "Write a clear purpose and boundary for three content pillars."
+      ],
+      "activity": "Complete the LANA Pillar Fit Map. Place candidate pillars in a three-circle test: audience need, credible expertise, and business relevance. Select the three with the strongest overlap and write their boundaries.",
+      "deliverable": "A three-pillar Content Strategy Card with purpose, audience need, business bridge, proof sources, and boundaries for each pillar.",
+      "tips": [
+        "Name pillars in customer language, not internal department language.",
+        "Choose conversations you can sustain for at least three months.",
+        "Make at least one pillar diagnostic and one pillar process-oriented.",
+        "Use boundaries to say no to attractive but distracting topics."
+      ],
+      "checkIn": "Could a teammate look at a new idea and place it in one pillar without asking you what you meant?",
+      "image": "/images/workshops/lana-content-command-center/02_lesson_01_choose_three_conversations.png"
+    },
+    {
+      "title": "Build an Evidence-Rich Idea Bank",
+      "duration": "9 min",
+      "moduleTitle": "Module 1: Define Your Content Pillars",
+      "overview": "Turn each pillar into a repeatable bank of questions, stories, proof, teaching points, and calls to action so weekly publishing does not begin from zero.",
+      "content": "",
+      "objectives": [
+        "Generate multiple content angles from one pillar.",
+        "Separate source material from finished content ideas.",
+        "Create an organized bank of at least fifteen evidence-rich ideas."
+      ],
+      "activity": "Build the 3 x 5 LANA Idea Bank: three pillars by five angle types. Select the strongest idea as the anchor for the rest of the workshop.",
+      "deliverable": "A 15-idea bank with source, reader shift, call to action, and publication status for every idea.",
+      "tips": [
+        "Capture the exact customer question before translating it into polished language.",
+        "Save proof and context with the idea so future drafting is easier.",
+        "Mark sensitive material before it reaches a writing tool.",
+        "Prefer ten strong ideas with evidence over fifty empty headlines."
+      ],
+      "checkIn": "Does your selected anchor idea include a real source and a clear reader shift, or is it only a topic?",
+      "image": "/images/workshops/lana-content-command-center/03_lesson_02_evidence_rich_idea_bank.png"
+    },
+    {
+      "title": "Give Every Publishing Day a Job",
+      "duration": "9 min",
+      "moduleTitle": "Module 2: Create a Weekly Publishing Rhythm",
+      "overview": "Design a sustainable weekly rhythm in which each touchpoint performs a distinct role: teach, prove, converse, invite, or deepen the relationship.",
+      "content": "",
+      "objectives": [
+        "Choose a realistic publishing frequency based on capacity.",
+        "Assign a strategic job to each weekly touchpoint.",
+        "Balance teaching, proof, conversation, and invitation."
+      ],
+      "activity": "Complete the LANA Weekly Rhythm Map. Build a three-, four-, or five-touch week and label the job, pillar, audience, owner, and approval deadline for each item.",
+      "deliverable": "A weekly publishing rhythm with distinct roles, realistic timing, and a documented minimum viable week.",
+      "tips": [
+        "Design around your actual approval capacity, not your idealized ambition.",
+        "Use one anchor idea to reduce context switching.",
+        "Separate invitations from value so every post does not feel like a pitch.",
+        "Leave at least one buffer window for revision or delayed approvals."
+      ],
+      "checkIn": "Can you explain the purpose of every item in your week in one verb?",
+      "image": "/images/workshops/lana-content-command-center/04_lesson_03_every_day_has_a_job.png"
+    },
+    {
+      "title": "Build the One-Source Production Flow",
+      "duration": "9 min",
+      "moduleTitle": "Module 2: Create a Weekly Publishing Rhythm",
+      "overview": "Connect source notes, drafting, review, scheduling, publication, and repurposing through one visible board so the team knows what is next.",
+      "content": "",
+      "objectives": [
+        "Map the content production stages from source to archive.",
+        "Assign clear status labels and ownership.",
+        "Build a single visible command board for the week."
+      ],
+      "activity": "Build the LANA Weekly Command Board for the current week. Move the selected anchor idea through the first three statuses and assign the next action.",
+      "deliverable": "A one-source weekly production board with status, owner, reviewer, deadlines, current file, next action, and learning field.",
+      "tips": [
+        "Use one current file link per asset.",
+        "Write next actions as verbs with one owner and one due time.",
+        "Keep approval separate from scheduling.",
+        "Archive the published link and learning, not just the draft."
+      ],
+      "checkIn": "At a glance, can every person tell what is blocked, who owns the next move, and when approval is due?",
+      "image": "/images/workshops/lana-content-command-center/05_lesson_04_one_source_production_flow.png"
+    },
+    {
+      "title": "Capture the Voice Before You Prompt",
+      "duration": "10 min",
+      "moduleTitle": "Module 3: Draft Without Sounding Generic",
+      "overview": "Identify the language, perspective, rhythm, evidence, and boundaries that make the founder recognizable before asking AI to draft.",
+      "content": "",
+      "objectives": [
+        "Recognize the signals that make a brand voice specific.",
+        "Create a reusable LANA Voice Card from real examples.",
+        "Define language and behaviors the draft should avoid."
+      ],
+      "activity": "Complete the LANA Voice Card and test it by rewriting one generic sentence in the founder's natural voice.",
+      "deliverable": "A reusable Voice Card containing perspective, language, rhythm, evidence, reader relationship, signature patterns, banned language, and truth boundaries.",
+      "tips": [
+        "Use transcripts because spoken explanations often reveal natural rhythm.",
+        "Describe voice with actions the writer can follow.",
+        "Include what must never be invented.",
+        "Keep examples short enough to reuse in future briefs."
+      ],
+      "checkIn": "Could another writer use your Voice Card and make a draft recognizably closer to you?",
+      "image": "/images/workshops/lana-content-command-center/06_lesson_05_capture_the_voice.png"
+    },
+    {
+      "title": "Draft with the LANA SIGNAL Brief",
+      "duration": "10 min",
+      "moduleTitle": "Module 3: Draft Without Sounding Generic",
+      "overview": "Use a six-part brief that gives a writing assistant approved source material, audience intent, grounding, natural voice, action, and limits.",
+      "content": "",
+      "objectives": [
+        "Build a complete SIGNAL drafting brief.",
+        "Generate a draft from approved source rather than empty instructions.",
+        "Revise the draft for specificity, usefulness, and natural voice."
+      ],
+      "activity": "Complete a SIGNAL Brief and produce one 250-450 word anchor post or equivalent long-form social draft.",
+      "deliverable": "A saved SIGNAL Brief, three candidate openings, and one revised anchor post linked to its approved source.",
+      "tips": [
+        "Ask for structure before prose when the idea is complex.",
+        "State the reader shift and content job explicitly.",
+        "Tell the tool to flag gaps instead of inventing details.",
+        "Revise the cause of generic writing, not just the adjective used to describe it."
+      ],
+      "checkIn": "Can you trace every story, fact, claim, or example in the draft back to an approved source or a clearly labeled teaching example?",
+      "image": "/images/workshops/lana-content-command-center/07_lesson_06_signal_brief.png"
+    },
+    {
+      "title": "Run the LANA CLEAR Editorial Review",
+      "duration": "8 min",
+      "moduleTitle": "Module 4: Review and Approve",
+      "overview": "Review the anchor draft through five separate passes: Correct, Legible, Evidence-backed, Aligned, and Responsible.",
+      "content": "",
+      "objectives": [
+        "Apply a structured review instead of vague taste-based editing.",
+        "Identify factual, voice, usefulness, and risk issues.",
+        "Produce a documented approval-ready version."
+      ],
+      "activity": "Use the CLEAR checklist to review the anchor post. Make at least one evidence improvement, one voice improvement, and one reader-usefulness improvement before approval.",
+      "deliverable": "An approval-ready anchor post with a completed CLEAR checklist and documented reviewer decision.",
+      "tips": [
+        "Review against the brief, not only personal taste.",
+        "Separate accuracy corrections from style preferences.",
+        "Pause when the source cannot support the claim.",
+        "Turn repeated review notes into reusable rules."
+      ],
+      "checkIn": "Would you be comfortable explaining the source and approval decision behind every claim in the draft?",
+      "image": "/images/workshops/lana-content-command-center/08_lesson_07_clear_review.png"
+    },
+    {
+      "title": "Create the Approval Lane",
+      "duration": "9 min",
+      "moduleTitle": "Module 4: Review and Approve",
+      "overview": "Define who writes, reviews, approves, schedules, and responds, then document a lightweight operating procedure for every customer-facing asset.",
+      "content": "",
+      "objectives": [
+        "Assign clear roles for creation and publication.",
+        "Define approval gates for different risk levels.",
+        "Create a practical content approval SOP."
+      ],
+      "activity": "Complete the LANA Approval Lane SOP for the selected anchor post and one sensitive-content scenario.",
+      "deliverable": "A one-page approval SOP containing roles, risk levels, deadlines, reapproval triggers, and post-publication checks.",
+      "tips": [
+        "Use role names even when one person fills every role.",
+        "Create a backup approver before an urgent situation occurs.",
+        "Define what counts as a material change.",
+        "Assign a response owner for content that invites conversation."
+      ],
+      "checkIn": "If the normal approver is unavailable tomorrow, does the system show exactly what can proceed and who can decide?",
+      "image": "/images/workshops/lana-content-command-center/09_lesson_08_approval_lane.png"
+    },
+    {
+      "title": "Translate the Anchor into Short-Form Video",
+      "duration": "8 min",
+      "moduleTitle": "Module 5: Repurpose into Video and Email",
+      "overview": "Adapt the approved anchor idea into a spoken, visual 45-90 second video rather than reading the written post word for word.",
+      "content": "",
+      "objectives": [
+        "Identify the single spoken idea for the video.",
+        "Write a concise hook-to-next-step script.",
+        "Create a simple shot, caption, and approval plan."
+      ],
+      "activity": "Create a 45-90 second script and simple shot list from the approved anchor post. Perform one read-through with a timer.",
+      "deliverable": "An approved short-form video script, shot list, caption plan, and link to the parent anchor asset.",
+      "tips": [
+        "Translate the insight; do not narrate the full post.",
+        "Use one idea and one next step.",
+        "Read aloud before recording.",
+        "Review on-screen text and background details as carefully as the spoken script."
+      ],
+      "checkIn": "Does the video have one memorable spoken idea, or is it trying to compress the entire pillar into sixty seconds?",
+      "image": "/images/workshops/lana-content-command-center/010_lesson_09_translate_to_video.png"
+    },
+    {
+      "title": "Deepen the Idea in Email",
+      "duration": "9 min",
+      "moduleTitle": "Module 5: Repurpose into Video and Email",
+      "overview": "Use email to add context, reflection, and a direct next step while keeping the message connected to the approved anchor idea.",
+      "content": "",
+      "objectives": [
+        "Translate the anchor insight into an email-native structure.",
+        "Write a clear subject line, opening, body, and call to action.",
+        "Complete the one-to-many repurposing map for the week."
+      ],
+      "activity": "Write a 300-500 word email from the approved anchor idea and complete the one-to-many Translation Map for post, video, email, and one optional derivative.",
+      "deliverable": "An approved email draft, delivery checklist, and completed repurposing map connected to the parent anchor asset.",
+      "tips": [
+        "Use email to deepen, not duplicate.",
+        "Make the subject accurate before making it clever.",
+        "Test every link and personalization field.",
+        "Turn replies into future source material with permission and privacy controls."
+      ],
+      "checkIn": "What new value does the email add that the public post and video do not?",
+      "image": "/images/workshops/lana-content-command-center/011_lesson_10_deepen_in_email.png"
+    }
+  ]
+},
   {
     slug: "lux-coder-prototype-lab",
     audience: "Lux Automaton",
@@ -2786,7 +3034,7 @@ export const LUX_TV_EPISODES: TvEpisode[] = [
     duration: "11m",
     rating: "Product",
     image: "/images/lux-agent-usb-lana.jpg",
-    video: "/videos/Initial_Scene_-_2026-07-22_202607220124.mp4",
+    video: "/videos/lux-agent-usb-trailer.mp4",
     storyUrl: "/products/lux-agent-usb",
     description: "Plug in, boot up, and operate: how Lux Agent USB gives founders an offline-first private AI workspace.",
     tags: ["Lux Agent USB", "Offline", "Agent OS"],
@@ -2825,7 +3073,7 @@ export const LUX_TV_EPISODES: TvEpisode[] = [
     duration: "17m",
     rating: "Operations",
     image: "/images/lux-care-os-hero.jpg",
-    video: "/videos/dr-dooley-smart-health-adventure-episode-1.mp4",
+    video: "/videos/lux-care-os-overview.mp4",
     storyUrl: "/solutions/lux-care-os",
     description: "Dr. Torrey Dooley and LANA demonstrate how clinics, care teams, and health organizations deploy HIPAA-compliant local AI workflows.",
     tags: ["Lux Care OS", "Healthcare", "Private AI", "Operations"],

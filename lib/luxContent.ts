@@ -129,7 +129,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "- **A lead-response assistant:** A narrow agent classifies inquiries, drafts replies, identifies missing details, and prepares the next step for approval.",
       "- **A knowledge-to-training kit:** Internal procedures become short explainers, examples, quizzes, and workshop material for the team.",
       "- **A mobile daily brief:** Important appointments, open tasks, customer context, and next actions are summarized for the owner or field team.",
-      "![Google Gemini Stack Small Business Overview Infographic](/images/05-google-gemini-stack-overview.png)",
       "## Quick-read overview and planner",
       "[Open the Gemini Update-to-Workflow Action Planner ⚡](/documents/gemini-update-to-workflow-action-planner.html)",
       "---",

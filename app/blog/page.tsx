@@ -222,7 +222,7 @@ export default function BlogPage() {
   return (
     <main className="editorial-world">
       <section className="editorial-hero">
-        <Image src={prefixPath("/images/blog-hero-backdrop.jpg")} alt="Lux Automaton Executive Team" fill priority sizes="100vw" />
+        <Image src={prefixPath("/images/lux-world-hero.png")} alt="Lux Automaton Executive Team" fill priority sizes="100vw" />
         <div className="editorial-hero-shade" />
         <div className="editorial-hero-copy">
           <p>LUX AUTOMATON // DISPATCH &amp; ALPHA</p>

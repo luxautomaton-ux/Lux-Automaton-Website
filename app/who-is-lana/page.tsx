@@ -50,7 +50,7 @@ export default function WhoIsLanaPage() {
           <span className="section-label">Who Is LANA?</span>
           <h1>LANA is the Lux Automaton operator.</h1>
           <p>
-            She is the guide, planner, curriculum builder, product navigator, and execution voice that helps turn Asa's ideas and the
+            She is the guide, planner, curriculum builder, product navigator, and execution voice that helps turn Asa&apos;s ideas and the
             Lux ecosystem into working systems people can actually use.
           </p>
           <div className="who-lana-actions">

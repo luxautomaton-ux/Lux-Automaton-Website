@@ -15,9 +15,11 @@ export default function NetflixVideoPlayerModal({ episode, onClose }: NetflixVid
   const [isPlayingFull, setIsPlayingFull] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  /* eslint-disable react-hooks/set-state-in-effect -- switching episodes intentionally resets the transient full-player mode */
   useEffect(() => {
     setIsPlayingFull(false);
   }, [episode]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

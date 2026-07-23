@@ -9,6 +9,7 @@ export default defineConfig([
     ".next/**",
     "out/**",
     "dist/**",
+    "lib/scripts/chrome_profile/**",
     "node_modules/**",
   ]),
 ]);

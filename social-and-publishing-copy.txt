@@ -1,82 +1,54 @@
-LUX AI KIDS — PUBLISHING COPY
-================================
+LUX AI KIDS — SOCIAL & PUBLISHING COPY
 
-TITLE
-Safe AI Learning Starts With Better Questions
+BLOG TITLE
+Five AI Video Projects Kids Can Make This Month
 
 SUBTITLE
-A parent-friendly framework for helping kids use AI with creativity, consent, and care.
-
-AUTHOR / DATE / READ TIME
-Lux Automaton Editorial · July 19, 2026 · 4 min read
-
-SLUG
-safe-ai-learning-starts-with-better-questions
+Simple creative challenges that teach storytelling, planning, and responsible AI use.
 
 SEO TITLE
-Safe AI Learning for Kids: Five Better Questions | LUX AI Kids
+Five AI Video Projects Kids Can Make This Month | LUX AI Kids
 
 META DESCRIPTION
-Help kids use AI more safely with five better questions about privacy, permission, fact-checking, impact, and creating projects that help people.
+Five simple AI video projects for kids that build storytelling, planning, revision, fact-checking, creative confidence, and responsible AI habits.
 
-EXCERPT
-Kids do not need fear-based AI education. They need a simple routine that helps them protect private information, check AI answers, ask permission, and create with care.
-
-PRIMARY KEY PHRASE
-safe AI learning for kids
-
-SECONDARY PHRASES
-responsible AI for families; AI privacy for children; AI fact-checking for kids; digital literacy; parent AI guide
-
-OPEN GRAPH / SOCIAL ALT TEXT
-LANA, Ace, and Dr. Torrey Dooley introduce five better questions for safer, creative, and responsible AI learning.
+SUGGESTED URL SLUG
+/five-ai-video-projects-kids-can-make-this-month
 
 EMAIL SUBJECT
-Five better questions for safer AI learning at home
+Five AI Video Projects Kids Can Make This Month 🎬
 
 EMAIL PREHEADER
-A practical parent guide to privacy, consent, fact-checking, and creating with care.
+Help young creators plan short scenes, check their work, and credit AI responsibly.
 
-INSTAGRAM / FACEBOOK
-Safe AI learning starts with better questions—not fear. 💡
+SOCIAL CAPTION — LONG
+🎬 Big ideas do not need a two-hour movie.
 
-Before kids prompt, upload, generate, or share, help them pause and ask:
-1. What am I making?
-2. What should stay private?
-3. Do I have permission?
-4. How will I check it?
-5. Who could this help—or affect?
+LUX AI Kids is sharing five simple AI video projects children can make this month: a neighborhood helper robot, a future weather report, a kindness commercial, a 60-second science explainer, and a mini problem-solving adventure.
 
-Creativity, consent, and care belong in every AI project.
+Every challenge teaches the same creator routine:
+Plan with a storyboard. Build short scenes. Review and revise. Check facts. Explain what AI helped create. Share with care.
+
+Which project should we turn into a step-by-step tutorial first?
 
 Learn AI. Build Tomorrow. Change the World.
 
-LINKEDIN
-Children need more than warnings about AI. They need a repeatable decision-making framework. Our newest LUX AI Kids parent guide introduces five questions that connect creativity with privacy, consent, source-checking, human judgment, and positive community impact.
+SOCIAL CAPTION — SHORT
+Five AI video projects. One month of big ideas. 🎥
 
-COMMUNITY DISCUSSION PROMPT
-What better question has helped your family make a safer or more thoughtful technology choice?
+Kids can practice storytelling, planning, revision, fact-checking, and responsible AI use—one short scene at a time.
+
+Plan. Create. Review. Share.
 
 HASHTAGS
-#LUXAIKids #ResponsibleAI #AISafetyForKids #DigitalLiteracy #ParentResources #AIForEducation #CreativityWithCare #LuxAutomaton
+#LuxAIKids #AIForKids #CreativeAI #DigitalStorytelling #ResponsibleAI #MediaLiteracy #KidsCreate #AIEducation #FutureReadyKids
 
-IMAGE CAPTIONS AND ALT TEXT
-1. Thumbnail
-Caption: Better questions help children use AI with creativity, consent, and care.
-Alt: LANA, Ace, and Dr. Torrey Dooley introduce safer AI learning through better questions.
+COMMUNITY QUESTION
+Which project should LUX AI Kids turn into a step-by-step video tutorial first—and why?
 
-2. Ask Before You Share
-Caption: Teach children to share only what an AI project truly needs.
-Alt: Ace and LANA help a young learner pause before sharing information with an AI tool.
-
-3. Check Sources Together
-Caption: Confident language is not proof; compare AI answers with trustworthy sources.
-Alt: Ace, LANA, and a learner compare an AI answer with trustworthy sources.
-
-4. Make Projects That Help People
-Caption: The strongest AI projects combine imagination with care for others.
-Alt: Ace, LANA, and a learner create a community project designed to help other people.
-
-5. Five Better Questions Overview
-Caption: A kid-friendly checklist to use before prompting, generating, or sharing.
-Alt: A colorful LUX AI Kids checklist showing five better questions to ask before using AI.
+IMAGE ORDER
+1. Blog thumbnail
+2. Start with a storyboard
+3. Use short scenes
+4. Explain what AI helped create
+5. Kid-friendly overview sheet

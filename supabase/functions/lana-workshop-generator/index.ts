@@ -140,6 +140,28 @@ function stringArray(value: unknown): string[] {
   return Array.isArray(value) ? value.map(String).map((item) => item.trim()).filter(Boolean) : [];
 }
 
+function completeLessonContent(lesson: any): string {
+  const section = (title: string, value: unknown) => {
+    if (!value) return "";
+    if (Array.isArray(value)) return value.length ? `${title}\n${value.map((item, index) => `${index + 1}. ${String(item)}`).join("\n")}` : "";
+    if (typeof value === "object") {
+      const question = (value as any).question ? `Question: ${(value as any).question}` : "";
+      const answer = (value as any).answer ? `Answer: ${(value as any).answer}` : "";
+      return question || answer ? `${title}\n${[question, answer].filter(Boolean).join("\n")}` : `${title}\n${JSON.stringify(value)}`;
+    }
+    return `${title}\n${String(value)}`;
+  };
+  return [
+    lesson.teaching || lesson.content,
+    section("CASE STUDY", lesson.caseStudy),
+    section("STEP-BY-STEP", lesson.steps),
+    section("COMMON MISTAKE", lesson.commonMistake),
+    section("KNOWLEDGE CHECK", lesson.knowledgeCheck),
+    section("FACILITATOR GUIDANCE", lesson.facilitatorGuidance),
+    section("ACCESSIBLE ALT TEXT", lesson.altText),
+  ].filter(Boolean).join("\n\n");
+}
+
 async function persistImage(supabaseAdmin: any, sourceUrl: string, path: string) {
   const response = await fetch(sourceUrl);
   if (!response.ok) throw new Error("Unable to preserve generated artwork.");
@@ -254,14 +276,17 @@ Lux Automaton brand direction:
 - Thumbnail composition: bold editorial hierarchy, subject on the right or center-right, usable negative space on the left for real headline and logo overlays, sophisticated high-contrast lighting.
 - Brand feeling: owner-controlled, intelligent, private, guided, operational, trustworthy. AI supports the human owner; it does not replace human judgment.
 - Leave a clean safe area for the real Lux Automaton logo overlay; do not invent or misspell logos or render text inside generated art.`;
-    const systemPrompt = `You are LANA, Lux Automaton's senior curriculum architect and AI director. Transform source material into a complete, original, practical workshop. Preserve factual accuracy, never copy long passages, and clearly distinguish source facts from your teaching examples. Return ONLY valid JSON with no markdown fences.`;
+    const systemPrompt = `You are LANA, Lux Automaton's senior curriculum architect, facilitator, and visual director. Transform source material into a complete, original, publication-ready workshop package at the quality level of AI Foundations for Founders: rigorous source analysis, five outcome-led modules, ten substantial lessons, facilitator-ready teaching, participant activities, concrete deliverables, knowledge checks, a cumulative final project, and a coherent original visual system. Preserve factual accuracy, never copy long passages, clearly label invented teaching examples, and return ONLY valid JSON with no markdown fences.`;
     const prompt = `Create a premium ${audience} workshop at ${level} level from the source below.
 
 Requirements:
-- 4 to 6 modules and 8 to 12 substantial lessons total.
-- Each lesson must contain an overview, 3 learning objectives, a hands-on activity, a concrete deliverable, 4 useful tips, a check-in question, and complete teaching content of 300-600 words.
+- Exactly 5 outcome-led modules and exactly 10 substantial lessons total unless the source clearly requires more.
+- Every module needs a description and measurable module outcome.
+- Each lesson must contain an overview, 3 learning objectives, 500-900 words of facilitator-ready teaching, an original fictional case study, 4-6 numbered steps, a hands-on activity, a concrete workbook deliverable, 4 useful tips, one common mistake, a check-in question, a knowledge-check question and answer, facilitator guidance, resources, image description, image prompt, and accessible alt text.
+- Every lesson deliverable must become part of one cumulative final project. Include the final project brief, required steps, expected deliverables, completion checklist, evaluation rubric, reflection questions, and advanced challenge.
+- Include delivery formats, participant materials, facilitator materials, safety/privacy controls, extension activities, and a short publishing package.
 - Include practical examples and age-appropriate safety guidance.
-- Create a cinematic thumbnail prompt and a distinct educational diagram/photo prompt for every lesson. Follow the exact brand direction below. Use no generated logos, no watermarks, and no text inside the artwork so the authentic brand lockup can be overlaid by the site.
+- Create a cinematic hero/thumbnail prompt and a distinct original educational photograph or diagram prompt for every lesson. At least 4 lesson visuals must be clean educational diagrams and the rest should be original cinematic teaching photographs. Follow the exact brand direction below. Use no generated logos, no watermarks, and no text inside the artwork so the authentic brand lockup can be overlaid by the site.
 - If the audience is Lux AI Kids, use encouraging language, avoid unsafe personal-data collection, and include parent/teacher guidance.
 
 ${kidsVisualDirection}
@@ -281,10 +306,29 @@ Return this exact JSON shape:
   "extensionActivities": [""],
   "sourceSummary": "",
   "thumbnailPrompt": "",
+  "deliveryFormats": [""],
+  "facilitatorMaterials": [""],
+  "finalProject": {
+    "title": "",
+    "brief": "",
+    "requiredSteps": [""],
+    "expectedDeliverables": [""],
+    "completionChecklist": [""],
+    "rubric": [""],
+    "reflectionQuestions": [""],
+    "advancedChallenge": ""
+  },
+  "publishingPackage": {
+    "seoTitle": "",
+    "metaDescription": "",
+    "catalogExcerpt": "",
+    "socialHooks": [""]
+  },
   "modules": [
     {
       "title": "",
       "description": "",
+      "outcome": "",
       "lessons": [
         {
           "title": "",
@@ -295,8 +339,16 @@ Return this exact JSON shape:
           "deliverable": "",
           "tips": [""],
           "checkIn": "",
-          "content": "",
-          "imagePrompt": ""
+          "teaching": "",
+          "caseStudy": "",
+          "steps": [""],
+          "commonMistake": "",
+          "knowledgeCheck": { "question": "", "answer": "" },
+          "facilitatorGuidance": "",
+          "resources": [{ "title": "", "url": "", "type": "" }],
+          "imageDescription": "",
+          "imagePrompt": "",
+          "altText": ""
         }
       ]
     }
@@ -375,7 +427,11 @@ ${sourceMaterial}`;
       learning_goals: stringArray(workshop.learningGoals),
       prerequisites: stringArray(workshop.prerequisites),
       safety_notes: stringArray(workshop.safetyNotes),
-      extension_activities: stringArray(workshop.extensionActivities),
+      extension_activities: [
+        ...stringArray(workshop.extensionActivities),
+        ...(workshop.finalProject?.title ? [`FINAL PROJECT — ${String(workshop.finalProject.title)}: ${String(workshop.finalProject.brief || "")}`] : []),
+        ...stringArray(workshop.finalProject?.completionChecklist).map((item) => `FINAL PROJECT CHECK — ${item}`),
+      ],
       status: "draft",
       created_by: authData.user.id,
       source_type: sourceType,
@@ -407,8 +463,9 @@ ${sourceMaterial}`;
           deliverable: String(lesson.deliverable || ""),
           tips: stringArray(lesson.tips),
           check_in: String(lesson.checkIn || ""),
-          content: String(lesson.content || ""),
+          content: completeLessonContent(lesson),
           image_url: lesson.imageUrl || null,
+          resources: Array.isArray(lesson.resources) ? lesson.resources : [],
           order_index: lessonIndex,
         })));
         if (lessonError) throw lessonError;

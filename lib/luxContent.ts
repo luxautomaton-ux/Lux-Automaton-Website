@@ -10,6 +10,7 @@ export interface BlogArticle {
   category: string;
   image: string;
   video?: string;
+  plannerUrl?: string;
   takeaways: string[];
   body: string[];
 }
@@ -65,6 +66,7 @@ export interface TvEpisode {
   rating: string;
   image: string;
   video?: string;
+  storyUrl?: string;
   description: string;
   tags: string[];
 }

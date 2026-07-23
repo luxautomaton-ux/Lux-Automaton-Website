@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LanaChatWidget from "@/components/LanaChatWidget";
 
 import { prefixPath } from "@/lib/prefix";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Lux Automaton - Private AI Systems for Builders and Founders",
@@ -57,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
+    <html lang="en" className="h-full">
       <body className="min-h-full flex flex-col antialiased" style={{ background: "var(--bg-base)" }}>
         <Navbar />
         <main className="flex-1">{children}</main>

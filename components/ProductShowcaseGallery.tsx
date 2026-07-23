@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import Image from "next/image";
 import { prefixPath } from "@/lib/prefix";
 import type { ProductPreview } from "@/lib/productPreviews";
@@ -20,7 +20,7 @@ export default function ProductShowcaseGallery({
   if (!active) return null;
 
   return (
-    <section className="product-preview-section" style={{ "--product-accent": accentColor } as React.CSSProperties}>
+    <section className="product-preview-section" style={{ "--product-accent": accentColor } as CSSProperties}>
       <div className="product-preview-heading">
         <div>
           <p>Product experience</p>

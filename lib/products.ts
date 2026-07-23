@@ -98,6 +98,8 @@ export const PRODUCTS: Product[] = [
     ctaLabel: "Start Lux Business",
     ctaHref: "/contact",
     pageHref: "/products/lux-business",
+    heroImage: "/images/lux-business-office.jpg",
+    bgImage: "/images/lux-business-office.jpg",
     fiveWH: {
       who: { headline: "For Builders, Founders, & Small Businesses", body: "For solo builders and small team business owners who want to automate administrative overhead and manage workflows in one place." },
       what: { headline: "All-in-One AI Business OS", body: "Lux Business integrates LLC formation, CRM, invoicing, tax deduction logs, and budget tracking under a single multi-agent system." },
@@ -184,8 +186,8 @@ export const PRODUCTS: Product[] = [
     ctaLabel: "Visit Lux Coder →",
     ctaHref: "https://luxautomaton-ux.github.io/lux-coder-website",
     pageHref: "/products/lux-coder",
-    heroImage: "/images/lux-coder-card.png",
-    bgImage: "/images/lux-coder-card.png",
+    heroImage: "/images/lana-coder-dev.jpg",
+    bgImage: "/images/lana-coder-dev.jpg",
     fiveWH: {
       who: {
         headline: "For Developers Who Refuse to Slow Down",

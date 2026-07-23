@@ -1,88 +1,82 @@
-LUX AI KIDS — SOCIAL & PUBLISHING COPY
+LUX AI KIDS — PUBLISHING COPY
+================================
 
-BLOG TITLE
-The Coolest AI Careers May Not Have Names Yet
+TITLE
+Safe AI Learning Starts With Better Questions
 
 SUBTITLE
-Kids can prepare for the future by learning creativity, judgment, communication, and systems thinking.
+A parent-friendly framework for helping kids use AI with creativity, consent, and care.
+
+AUTHOR / DATE / READ TIME
+Lux Automaton Editorial · July 19, 2026 · 4 min read
+
+SLUG
+safe-ai-learning-starts-with-better-questions
 
 SEO TITLE
-The Coolest AI Careers May Not Have Names Yet | LUX AI Kids
+Safe AI Learning for Kids: Five Better Questions | LUX AI Kids
 
 META DESCRIPTION
-A parent-friendly guide to the creativity, judgment, communication, and systems-thinking skills children can build for future AI careers—even when tomorrow’s job titles do not exist yet.
+Help kids use AI more safely with five better questions about privacy, permission, fact-checking, impact, and creating projects that help people.
 
-SUGGESTED URL SLUG
-/the-coolest-ai-careers-may-not-have-names-yet
+EXCERPT
+Kids do not need fear-based AI education. They need a simple routine that helps them protect private information, check AI answers, ask permission, and create with care.
+
+PRIMARY KEY PHRASE
+safe AI learning for kids
+
+SECONDARY PHRASES
+responsible AI for families; AI privacy for children; AI fact-checking for kids; digital literacy; parent AI guide
+
+OPEN GRAPH / SOCIAL ALT TEXT
+LANA, Ace, and Dr. Torrey Dooley introduce five better questions for safer, creative, and responsible AI learning.
 
 EMAIL SUBJECT
-The coolest AI career may not have a name yet 🚀
+Five better questions for safer AI learning at home
 
 EMAIL PREHEADER
-Help kids build the human skills that travel into any future: creativity, judgment, communication, and systems thinking.
+A practical parent guide to privacy, consent, fact-checking, and creating with care.
 
-SOCIAL CAPTION — LONG
-🚀 What if the most exciting AI career has not been named yet?
+INSTAGRAM / FACEBOOK
+Safe AI learning starts with better questions—not fear. 💡
 
-Some future roles may sound familiar: designer, teacher, developer, engineer. Others may be completely new—robot coach, prompt director, AI safety detective, synthetic media editor, or community automation guide.
+Before kids prompt, upload, generate, or share, help them pause and ask:
+1. What am I making?
+2. What should stay private?
+3. Do I have permission?
+4. How will I check it?
+5. Who could this help—or affect?
 
-Kids do not need to predict every job title. They can prepare by practicing four durable skills:
-
-✨ Creativity
-🛡️ Judgment
-💬 Communication
-🧩 Systems thinking
-
-LUX AI Kids turns those skills into projects where children ask better questions, test ideas, explain their choices, check their work, and build things that help people.
-
-What future career would your child invent?
+Creativity, consent, and care belong in every AI project.
 
 Learn AI. Build Tomorrow. Change the World.
 
-SOCIAL CAPTION — SHORT
-The coolest AI career may not have a name yet. 🚀
+LINKEDIN
+Children need more than warnings about AI. They need a repeatable decision-making framework. Our newest LUX AI Kids parent guide introduces five questions that connect creativity with privacy, consent, source-checking, human judgment, and positive community impact.
 
-Kids can prepare by learning to create, check, explain, collaborate, and understand how systems work.
-
-New tools. Durable human skills. Brighter futures.
-
-SOCIAL CAPTION — PARENT/CAREGIVER
-Your child does not need to guess the exact job titles of 2040.
-
-They need chances to practice creativity, judgment, communication, and systems thinking today. Our newest LUX AI Kids guide includes a family-friendly Future Career Lab for inventing a role that solves a real problem—while deciding what AI can assist with and what people must still decide.
-
-SOCIAL CAPTION — EDUCATOR
-Career exploration does not have to begin with a list of existing jobs.
-
-Invite students to identify a real problem, invent a future role, map the people and tools in the system, define AI’s appropriate role, and present a responsible prototype. The included LUX AI Kids activity sheet is designed for classrooms, clubs, workshops, and family learning.
+COMMUNITY DISCUSSION PROMPT
+What better question has helped your family make a safer or more thoughtful technology choice?
 
 HASHTAGS
-#LuxAIKids #AIForKids #FutureCareers #CareerExploration #FutureReadyKids #ResponsibleAI #SystemsThinking #DigitalLiteracy #STEMEducation #CreativeLearning #AIEducation
+#LUXAIKids #ResponsibleAI #AISafetyForKids #DigitalLiteracy #ParentResources #AIForEducation #CreativityWithCare #LuxAutomaton
 
-COMMUNITY QUESTION
-What future career would your child invent—and what real problem would it solve?
+IMAGE CAPTIONS AND ALT TEXT
+1. Thumbnail
+Caption: Better questions help children use AI with creativity, consent, and care.
+Alt: LANA, Ace, and Dr. Torrey Dooley introduce safer AI learning through better questions.
 
-DISCUSSION PROMPTS
-1. Which human skill will matter most in a future AI career: creativity, judgment, communication, or systems thinking?
-2. What should AI assist with in your invented career?
-3. What decision should always stay with a person?
-4. How would you know the career is genuinely helping people?
+2. Ask Before You Share
+Caption: Teach children to share only what an AI project truly needs.
+Alt: Ace and LANA help a young learner pause before sharing information with an AI tool.
 
-FEATURED IMAGE ALT TEXT
-Ace, LANA, and Dr. Torrey Dooley introduce future AI careers and the human skills kids can build today.
+3. Check Sources Together
+Caption: Confident language is not proof; compare AI answers with trustworthy sources.
+Alt: Ace, LANA, and a learner compare an AI answer with trustworthy sources.
 
-SUPPORTING IMAGE ALT TEXT
-02 — Ace, LANA, and Dr. Torrey Dooley introduce future careers that combine imagination with responsibility.
-03 — LANA and a young learner demonstrate how future creators explain goals, listen to feedback, and revise their ideas.
-04 — Ace and a student use a five-step learning loop: ask, try, check, explain, and improve.
-05 — A kid-friendly map of five possible future AI careers and four durable skills children can build today.
+4. Make Projects That Help People
+Caption: The strongest AI projects combine imagination with care for others.
+Alt: Ace, LANA, and a learner create a community project designed to help other people.
 
-IMAGE ORDER
-1. Blog thumbnail
-2. Future jobs blend creativity and responsibility
-3. Communication matters
-4. Learning how to learn is the real advantage
-5. Kid-friendly future skills map
-
-RECOMMENDED CTA
-Invent a future career with your child, share the idea with the LUX AI Kids community, and explain what people—not AI—must still decide.
+5. Five Better Questions Overview
+Caption: A kid-friendly checklist to use before prompting, generating, or sharing.
+Alt: A colorful LUX AI Kids checklist showing five better questions to ask before using AI.

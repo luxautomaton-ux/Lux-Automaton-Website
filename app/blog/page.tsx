@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BLOG_ARTICLES, type Audience, type BlogArticle } from "@/lib/luxContent";
 import { prefixPath } from "@/lib/prefix";
+import ArticleVisualAssetsDeck, { type VisualAssetItem, type ResourceDownloadItem } from "@/components/ArticleVisualAssetsDeck";
 
 const filters: Array<"All" | Audience> = ["All", "Lux Automaton", "Lux AI Kids"];
 
@@ -22,6 +23,172 @@ function StoryMedia({ article, sizes }: { article: BlogArticle; sizes: string })
   ) : (
     <Image src={prefixPath(article.image)} alt={article.title} fill sizes={sizes} />
   );
+}
+
+function renderArticleParagraph(paragraph: string, index: number) {
+  // Check for Markdown Image syntax ![alt](url)
+  const imageMatch = paragraph.match(/^!\[(.*?)\]\((.*?)\)$/);
+  if (imageMatch) {
+    const alt = imageMatch[1];
+    const src = prefixPath(imageMatch[2]);
+    return (
+      <figure key={index} className="my-8 rounded-2xl overflow-hidden border border-cyan-500/30 bg-slate-950/90 shadow-2xl">
+        <div className="relative w-full aspect-video">
+          <Image src={src} alt={alt || "Article illustration"} fill className="object-cover" sizes="(max-width: 1000px) 100vw, 900px" />
+        </div>
+        {alt && (
+          <figcaption className="p-3.5 text-center text-xs font-mono text-cyan-300 bg-slate-900/90 border-t border-cyan-500/20">
+            📷 {alt}
+          </figcaption>
+        )}
+      </figure>
+    );
+  }
+
+  // Heading 2
+  if (paragraph.startsWith("## ")) {
+    return (
+      <h2 key={index} className="text-2xl sm:text-3xl font-extrabold text-white mt-10 mb-4 tracking-tight">
+        {paragraph.replace(/^## /, "")}
+      </h2>
+    );
+  }
+
+  // Heading 3
+  if (paragraph.startsWith("### ")) {
+    return (
+      <h3 key={index} className="text-xl font-bold text-cyan-300 mt-8 mb-3">
+        {paragraph.replace(/^### /, "")}
+      </h3>
+    );
+  }
+
+  // Blockquote
+  if (paragraph.startsWith("> ")) {
+    const quoteText = paragraph.replace(/^> /, "").replaceAll('"', '');
+    return (
+      <blockquote key={index} className="my-6 pl-5 border-l-4 border-cyan-400 italic text-cyan-100 font-sans text-base sm:text-lg bg-cyan-950/20 py-3.5 pr-4 rounded-r-xl shadow-md">
+        “{quoteText}”
+      </blockquote>
+    );
+  }
+
+  // Standard paragraph
+  const formattedHtml = paragraph
+    .replace(/\*\*(.*?)\*\*/g, '<strong className="text-white font-bold">$1</strong>')
+    .replaceAll('src="/images/', `src="${prefixPath("/images/")}`)
+    .replaceAll('src="/videos/', `src="${prefixPath("/videos/")}`)
+    .replaceAll('href="/documents/', `href="${prefixPath("/documents/")}`);
+
+  return (
+    <p
+      key={index}
+      className="text-slate-300 leading-relaxed my-4 text-base sm:text-lg font-sans"
+      dangerouslySetInnerHTML={{ __html: formattedHtml }}
+    />
+  );
+}
+
+function getArticleVisualAssets(article: BlogArticle) {
+  const images: VisualAssetItem[] = [];
+  const downloads: ResourceDownloadItem[] = [];
+
+  if (article.slug === "the-lana-weekly-turning-ideas-into-a-community-rhythm") {
+    downloads.push({
+      title: "LANA Weekly Community Rhythm Planner",
+      subtitle: "Interactive digital & printable newsletter production planner",
+      url: "/lana-weekly-community-rhythm-planner.html",
+      type: "Printable Production Planner"
+    });
+    images.push(
+      { title: "LANA Weekly Strategy Overview Sheet", subtitle: "Complete format, recurring sections & content journey map", imageUrl: "/images/05-lana-weekly-overview.png", type: "Overview PNG" },
+      { title: "01 — Publish One Useful Note", subtitle: "Production workflow for weekly notes", imageUrl: "/images/02-photo-publish-one-useful-note.png", type: "Photo Blueprint" },
+      { title: "02 — Use Recurring Sections", subtitle: "Section structure breakdown", imageUrl: "/images/03-photo-use-recurring-sections.png", type: "Photo Blueprint" },
+      { title: "03 — Connect Readers to Workshops", subtitle: "Holographic learning journey map", imageUrl: "/images/04-photo-connect-readers-workshops-products.png", type: "Photo Blueprint" }
+    );
+  } else if (article.slug === "safe-ai-learning-starts-with-better-questions") {
+    downloads.push({
+      title: "Family Better Questions Activity Sheet",
+      subtitle: "Kid-friendly AI safety & creative checklist worksheet",
+      url: "/family-better-questions-activity-sheet.html",
+      type: "Interactive Activity Sheet"
+    });
+    images.push(
+      { title: "Five Better Questions Overview Sheet", subtitle: "Kid-friendly safety checklist overview PNG", imageUrl: "/images/05-kids-overview-five-better-questions.png", type: "Overview PNG" },
+      { title: "01 — Ask Before Sharing", subtitle: "Privacy & consent principles", imageUrl: "/images/02-photo-ask-before-sharing.png", type: "Photo Blueprint" },
+      { title: "02 — Check Sources Together", subtitle: "Fact-checking & verification guide", imageUrl: "/images/03-photo-check-sources-together.png", type: "Photo Blueprint" },
+      { title: "03 — Make Projects That Help", subtitle: "Community project principles", imageUrl: "/images/04-photo-make-projects-that-help.png", type: "Photo Blueprint" }
+    );
+  } else if (article.slug === "the-first-automation-map-every-small-business-should-draw") {
+    downloads.push({
+      title: "Small Business Automation Map Planner",
+      subtitle: "Interactive workflow mapping & handoff auditing workbook",
+      url: "/small-business-automation-map-planner.html",
+      type: "Interactive Workbook"
+    });
+    images.push(
+      { title: "First Automation Map Overview Sheet", subtitle: "5-step business workflow mapping framework", imageUrl: "/images/05-first-automation-map-overview.png", type: "Overview PNG" },
+      { title: "Infographic Part 1 — List Weekly Repeats", subtitle: "Inventorying core repeats", imageUrl: "/images/05-first-automation-map-infographic-1.jpg", type: "Infographic Card" },
+      { title: "Infographic Part 2 — Mark Handoff Breaks", subtitle: "Finding friction & broken steps", imageUrl: "/images/05-first-automation-map-infographic-2.jpg", type: "Infographic Card" },
+      { title: "Infographic Part 3 — Smallest Reliable Step", subtitle: "First reviewable automation candidate", imageUrl: "/images/05-first-automation-map-infographic-3.jpg", type: "Infographic Card" },
+      { title: "Infographic Part 4 — Operating Rhythm", subtitle: "Weekly review & scaling loop", imageUrl: "/images/05-first-automation-map-infographic-4.jpg", type: "Infographic Card" }
+    );
+  } else if (article.slug === "why-offline-ready-ai-still-matters") {
+    downloads.push({
+      title: "Offline-Ready AI Continuity Planner",
+      subtitle: "Local-first infrastructure & field team continuity checklist",
+      url: "/offline-ready-ai-continuity-planner.html",
+      type: "Continuity Planner"
+    });
+    images.push(
+      { title: "Offline-Ready AI Overview Map", subtitle: "Local-first architecture & continuity strategy", imageUrl: "/images/05-offline-ready-ai-overview.png", type: "Overview PNG" },
+      { title: "Continuity Guide Summary", subtitle: "Complete field team continuity guide", imageUrl: "/images/why-offline-ready-ai-infographic-guide.png", type: "Infographic Guide" },
+      { title: "01 — Reduce Cloud Dependency", subtitle: "Core offline task inventory", imageUrl: "/images/why-offline-ready-ai-infographic-card1.png", type: "Breakdown Card" },
+      { title: "02 — Keep Work Portable", subtitle: "Protected Lux Agent USB workspace", imageUrl: "/images/why-offline-ready-ai-infographic-card2.png", type: "Breakdown Card" },
+      { title: "03 — Field Team Continuity", subtitle: "Capture, work, review & sync pipeline", imageUrl: "/images/why-offline-ready-ai-infographic-card3.png", type: "Breakdown Card" }
+    );
+  } else if (article.slug === "five-ai-video-projects-kids-can-make-this-month") {
+    downloads.push({
+      title: "Kids AI Video Project Planner",
+      subtitle: "Storyboard & scene planning worksheet for young creators",
+      url: "/kids-ai-video-project-planner.html",
+      type: "Project Planner"
+    });
+    images.push(
+      { title: "Five AI Video Projects Overview", subtitle: "One-month video project roadmap overview PNG", imageUrl: "/images/05-kids-overview-five-ai-video-projects.png", type: "Overview PNG" },
+      { title: "Visual Breakdown 1 — Storyboard & Short Scenes", subtitle: "Four-box storyboard & clip formula", imageUrl: "/images/05-kids-overview-five-ai-video-projects-alt1.jpg", type: "Infographic Card" },
+      { title: "Visual Breakdown 2 — AI Assistance Credit", subtitle: "Responsible creation & credit guide", imageUrl: "/images/05-kids-overview-five-ai-video-projects-alt2.jpg", type: "Infographic Card" }
+    );
+  } else if (article.slug === "the-coolest-ai-careers-may-not-have-names-yet") {
+    downloads.push({
+      title: "Future AI Career Lab Activity Sheet",
+      subtitle: "Skill mix exploration & human judgment worksheet",
+      url: "/future-ai-career-lab-activity-sheet.html",
+      type: "Interactive Worksheet"
+    });
+    images.push(
+      { title: "Future AI Careers Overview", subtitle: "Human skills & future career mix overview PNG", imageUrl: "/images/05-kids-overview-future-ai-careers.png", type: "Overview PNG" },
+      { title: "01 — Creativity & Responsibility", subtitle: "Blending imagination with ethics", imageUrl: "/images/02-photo-creativity-and-responsibility.png", type: "Photo Blueprint" },
+      { title: "02 — Communication Matters", subtitle: "Explaining goals & revising work", imageUrl: "/images/03-photo-communication-matters.png", type: "Photo Blueprint" },
+      { title: "03 — Learning How to Learn", subtitle: "Durable human skills across changing tools", imageUrl: "/images/04-photo-learning-how-to-learn.png", type: "Photo Blueprint" }
+    );
+  } else if (article.slug === "asa-lana-the-story-remembers-ep1") {
+    images.push(
+      { title: "Series Set Preview", subtitle: "Production preview inside Lux Automaton Laboratory", imageUrl: "/images/00_Marketing_Set_Preview.jpg", type: "Poster" },
+      { title: "Asa & LANA Character Duo Poster", subtitle: "Official 4x5 character poster", imageUrl: "/images/05_Character_Duo_Poster_4x5.png", type: "Poster" },
+      { title: "Lux Codex Continuity Engine", subtitle: "Operating memory layer for AI video", imageUrl: "/images/06_Lux_Codex_Continuity_Engine_4x5.png", type: "Architecture Map" },
+      { title: "10-Episode Story Arc Overview", subtitle: "Complete narrative arc overview", imageUrl: "/images/07_Ten_Episode_Story_Arc_4x5.png", type: "Story Arc" }
+    );
+  } else if (article.slug === "private-ai-business-os") {
+    images.push(
+      { title: "Private AI Business OS Overview", subtitle: "Operating layer unifying files, SOPs, budgets & execution", imageUrl: "/images/05-private-ai-business-os.png", type: "Overview PNG" },
+      { title: "02 — Unify Scattered Context", subtitle: "Bringing customer files and SOPs together", imageUrl: "/images/02-photo-unify-scattered-business-context.png", type: "Photo Blueprint" },
+      { title: "03 — Owner Control & Privacy", subtitle: "Owner-controlled private files", imageUrl: "/images/03-photo-private-files-owner-control.png", type: "Photo Blueprint" },
+      { title: "04 — Guided Business Systems", subtitle: "Turn repeatable work into guided execution", imageUrl: "/images/04-photo-guided-business-systems.png", type: "Photo Blueprint" }
+    );
+  }
+
+  return { images, downloads };
 }
 
 export default function BlogPage() {
@@ -42,6 +209,8 @@ export default function BlogPage() {
       window.setTimeout(() => articleRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
     }
   };
+
+  const visualAssets = useMemo(() => getArticleVisualAssets(selected), [selected]);
 
   return (
     <main className="editorial-world">
@@ -211,13 +380,15 @@ export default function BlogPage() {
               <div className="editorial-image">
                 <StoryMedia article={selected} sizes="(max-width: 980px) 100vw, 800px" />
               </div>
-              {selected.body.map((paragraph, index) => {
-                const formattedHtml = paragraph
-                  .replaceAll('src="/images/', `src="${prefixPath("/images/")}`)
-                  .replaceAll('src="/videos/', `src="${prefixPath("/videos/")}`)
-                  .replaceAll('href="/documents/', `href="${prefixPath("/documents/")}`);
-                return <div key={index} dangerouslySetInnerHTML={{ __html: formattedHtml }} />;
-              })}
+              {selected.body.map((paragraph, index) => renderArticleParagraph(paragraph, index))}
+
+              {/* SPECIAL VISUAL ASSETS & DOWNLOADABLE KITS GALLERY DECK */}
+              <ArticleVisualAssetsDeck
+                heading="Visual Assets, Worksheets & Overview PNG Gallery"
+                subheading="Preview full-resolution overview graphics, architecture maps, and interactive worksheets associated with this dispatch."
+                images={visualAssets.images}
+                downloads={visualAssets.downloads}
+              />
             </article>
           </div>
         </section>

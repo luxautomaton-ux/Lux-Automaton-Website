@@ -362,7 +362,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "July 17, 2026",
     readTime: "5 min read",
     category: "Private AI Systems",
-    image: "/images/01-thumbnail-offline-ready-ai.png",
+    image: "/images/why-offline-ready-ai-infographic-header.png",
     takeaways: [
       "01 — Reduce cloud dependency",
       "02 — Keep sensitive work portable",
@@ -370,6 +370,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     ],
     plannerUrl: "/offline-ready-ai-continuity-planner.html",
     body: [
+      "![Why Offline-Ready AI Still Matters Infographic Header.](/images/why-offline-ready-ai-infographic-header.png)",
       "An offline-ready AI system is not nostalgia for old software. It is a continuity plan. Field teams, traveling founders, clinics, and small businesses all face moments when internet access is weak, privacy matters, a cloud service is unavailable, or a browser login is simply not enough.",
       "Lux Agent USB tells a clear product story: your assistant, curated memory packs, approved templates, and repeatable workflows can travel with you. It represents a larger Lux Automaton belief—that owners should understand where their tools live, what information they use, and how the work continues when a connection disappears.",
       "The cloud can still help. The point is choice. When a system is designed to work locally first for essential tasks, the business has more ways to keep moving without giving up human judgment, security rules, or the option to synchronize later.",
@@ -382,6 +383,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "Ask one useful question: if the internet disappeared for the next two hours, what work would still need to happen?",
       "> “Continuity begins when the team knows what must keep working—not when it buys another tool.” — Asa Pritchard",
       "![Asa works from a locally available Lux Automaton environment while a cloud connection is unavailable.](/images/02-photo-reduce-cloud-dependency.png)",
+      "![01 Reduce Cloud Dependency Breakdown Card.](/images/why-offline-ready-ai-infographic-card1.png)",
       "## 02 — Keep sensitive work portable",
       "Portability is valuable when it is controlled. An approved AI environment can move with an owner or team member while keeping the same working memory, terminology, forms, and process instructions available.",
       "Classify sensitive work, separate public references from internal procedures, and keep only the information required for the approved workflow. Define who may open, change, export, or synchronize it.",
@@ -390,6 +392,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "Imagine a founder traveling to a customer workshop. The connection is unreliable, but the approved outline, checklist, product notes, prompts, and follow-up template are available locally.",
       "> “Take the useful context with you, not every piece of information the business has ever created.” — LANA",
       "![LANA demonstrates a protected portable AI workspace containing approved files, templates, memory packs, and workflows.](/images/03-photo-keep-sensitive-work-portable.png)",
+      "![02 Keep Sensitive Work Portable Breakdown Card.](/images/why-offline-ready-ai-infographic-card2.png)",
       "## 03 — Give field teams continuity",
       "Field teams may work in basements, rural areas, warehouses, construction sites, or temporary spaces where connectivity changes constantly.",
       "An offline-ready workflow keeps the essential sequence available: open the assignment, review the checklist, capture notes, use approved guidance, complete a form, and mark the next action.",
@@ -397,10 +400,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "The review step matters. Conflicts can appear when two people edit the same record or an old template remains on a device. Use timestamps, version information, clear ownership, and a visible sync queue.",
       "Run a short continuity drill: disconnect one approved device for thirty minutes and ask a team member to complete a normal task.",
       "![A Lux Automaton field operator continues essential work with local tasks, forms, notes, and reports while connectivity is limited.](/images/04-photo-give-field-teams-continuity.png)",
+      "![03 Give Field Teams Continuity Breakdown Card.](/images/why-offline-ready-ai-infographic-card3.png)",
       "## Use the cloud by choice, not by default",
       "Local-first and cloud-enabled are not opposites. The cloud supports collaboration, processing, updates, backup, and team visibility. Local capability supports continuity, portability, ownership, and work that should remain close to the person responsible for it.",
       "Start with one continuity workflow. Choose the task that would hurt most if the connection disappeared.",
-      "![Lux Automaton overview showing the reasons offline-ready AI matters, the local-first stack, and a five-step continuity plan.](/images/05-offline-ready-ai-overview.png)"
+      "![Lux Automaton overview showing the reasons offline-ready AI matters, the local-first stack, and a five-step continuity plan.](/images/05-offline-ready-ai-overview.png)",
+      "![Offline-Ready AI Continuity Guide Summary Overview.](/images/why-offline-ready-ai-infographic-guide.png)"
     ],
   },
   {

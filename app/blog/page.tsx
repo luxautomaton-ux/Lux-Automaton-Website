@@ -145,6 +145,11 @@ export default function BlogPage() {
                     <span>{article.category}</span>
                     <span>{article.readTime}</span>
                   </div>
+                  {article.plannerUrl && (
+                    <span className="inline-flex items-center gap-1 my-1 text-[11px] font-bold text-cyan-400 bg-cyan-950/80 border border-cyan-500/40 px-2.5 py-0.5 rounded-full w-fit">
+                      📥 Free Download / Worksheet
+                    </span>
+                  )}
                   <h3>{article.title}</h3>
                   <p>{article.deck}</p>
                   <button type="button" onClick={() => chooseStory(article, true)}>Continue reading <span aria-hidden="true">→</span></button>
@@ -172,10 +177,37 @@ export default function BlogPage() {
               {selected.takeaways.map((takeaway, index) => (
                 <p key={takeaway}><b>{String(index + 1).padStart(2, "0")}</b>{takeaway}</p>
               ))}
+              {selected.plannerUrl && (
+                <a
+                  href={prefixPath(selected.plannerUrl)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 block text-center py-2.5 px-3 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-xs font-bold hover:bg-cyan-500/30 transition-colors shadow-sm"
+                >
+                  📥 Download Free Planner
+                </a>
+              )}
               <Link href="/community">Discuss in the community <span aria-hidden="true">→</span></Link>
             </aside>
 
             <article className="editorial-article news-full-article">
+              {selected.plannerUrl && (
+                <div className="mb-6 p-5 rounded-2xl bg-gradient-to-r from-cyan-950 via-purple-950 to-slate-900 border border-cyan-500/50 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div>
+                    <span className="text-xs uppercase font-extrabold tracking-wider text-cyan-400">🎁 Free Resource Included</span>
+                    <h4 className="text-lg font-bold text-white mt-1">Printable Activity Sheet &amp; Planner</h4>
+                    <p className="text-xs text-slate-300">Complete interactive PDF/HTML worksheet included with this story.</p>
+                  </div>
+                  <a
+                    href={prefixPath(selected.plannerUrl)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm transition-all shadow-lg hover:shadow-cyan-500/30 whitespace-nowrap"
+                  >
+                    📥 Download Free Planner <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              )}
               <div className="editorial-image">
                 <StoryMedia article={selected} sizes="(max-width: 980px) 100vw, 800px" />
               </div>

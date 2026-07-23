@@ -40,7 +40,7 @@ const worlds = [
     workshopHref: "/workshops",
     media: "Build Breakdowns on Lux TV",
     mediaHref: "/lux-tv",
-    image: "/images/lana-banner.jpg",
+    image: "/images/lux-agent-usb-lana.jpg",
     accent: "violet",
   },
   {
@@ -55,7 +55,7 @@ const worlds = [
     workshopHref: "/workshops",
     media: "System Walkthroughs on Lux TV",
     mediaHref: "/lux-tv",
-    image: "/images/lux-coder-card.png",
+    image: "/images/lana-executive-office.jpg",
     accent: "mint",
   },
   {

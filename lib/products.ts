@@ -64,6 +64,8 @@ export const PRODUCTS: Product[] = [
     ctaLabel: "Deploy Codex OS",
     ctaHref: "/contact",
     pageHref: "/products/lux-codex",
+    heroImage: "/images/lux-codex-dashboard.png",
+    bgImage: "/images/lux-codex-dashboard.png",
     fiveWH: {
       who: { headline: "For Builders & Enterprise Founders", body: "For technical leaders, security-focused founders, and growing enterprises who require secure, non-custodial AI setups." },
       what: { headline: "A Private Neural Operating System", body: "Lux Codex connects your files, schemas, and credentials to a private local runtime that runs AI models." },
@@ -129,7 +131,8 @@ export const PRODUCTS: Product[] = [
     ctaLabel: "Join Waitlist",
     ctaHref: "/contact",
     pageHref: "/products/lux-agent-usb",
-    bgImage: "/images/lux-agent-usb.jpeg",
+    heroImage: "/images/lana-executive-office.jpg",
+    bgImage: "/images/lana-executive-office.jpg",
     fiveWH: {
       who: {
         headline: "Built for Builders on the Move",
@@ -182,7 +185,7 @@ export const PRODUCTS: Product[] = [
     ctaHref: "https://luxautomaton-ux.github.io/lux-coder-website",
     pageHref: "/products/lux-coder",
     heroImage: "/images/lux-coder-card.png",
-    bgImage: "/images/lux-coder-hero.png",
+    bgImage: "/images/lux-coder-card.png",
     fiveWH: {
       who: {
         headline: "For Developers Who Refuse to Slow Down",
@@ -287,7 +290,8 @@ export const PRODUCTS: Product[] = [
     ctaLabel: "Meet LANA",
     ctaHref: "/products/lana",
     pageHref: "/products/lana",
-    bgImage: "/images/lana.png",
+    heroImage: "/images/lux-agent-usb-lana.jpg",
+    bgImage: "/images/lux-agent-usb-lana.jpg",
     fiveWH: {
       who: {
         headline: "For Builders, Founders, and Small Business Owners",

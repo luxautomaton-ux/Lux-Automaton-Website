@@ -49,5 +49,9 @@ next-env.d.ts
 # large media & mocks
 /public/videos/
 /company-website-mock/
+*.m4a
+*.mp4
+*.mov
+
 
 

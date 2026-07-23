@@ -80,7 +80,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "July 23, 2026",
     readTime: "9 min read",
     category: "AI News & Business Systems",
-    image: "/images/01-thumbnail-google-gemini-stack.png",
+    image: "/images/blog-hero-backdrop.jpg",
     takeaways: [
       "01 — Connect the creative stack: Use one approved brief to produce coordinated images, video, music, and review steps.",
       "02 — Give agents a narrow, reviewable job: Start with a bounded workflow rather than asking an agent to run the business.",

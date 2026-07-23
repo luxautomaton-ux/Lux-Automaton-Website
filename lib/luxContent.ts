@@ -351,6 +351,28 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     ],
   },
   {
+    slug: "coolest-ai-careers",
+    audience: "Lux AI Kids",
+    title: "The Coolest AI Careers May Not Have Names Yet",
+    deck: "Kids can prepare for the future by learning creativity, judgment, communication, and systems thinking.",
+    date: "July 13, 2026",
+    readTime: "4 min read",
+    category: "Career Exploration",
+    image: "/images/01-thumbnail-coolest-ai-careers.png",
+    takeaways: [
+      "Future roles blend creativity, responsibility, and human judgment",
+      "Key skills: Creativity, Judgment, Communication, Systems Thinking",
+      "Learning how to learn is the durable advantage across changing tools",
+      "Dr. Torrey Dooley, Ace, and LANA model ethics, technology, and care"
+    ],
+    plannerUrl: "/future-ai-career-lab-activity-sheet.html",
+    body: [
+      "Some future AI careers will sound familiar: designer, developer, teacher, engineer, filmmaker, nurse, or scientist. Others may be new: robot coach, prompt director, AI safety detective, synthetic media editor, or community automation guide.",
+      "Kids do not need to predict every job title. They need practice asking good questions, checking their work, explaining their ideas, and making things that help people.",
+      "LUX AI Kids turns that preparation into projects. Every workshop is a small rehearsal for a future where imagination and responsibility belong together."
+    ]
+  },
+  {
     slug: "the-coolest-ai-careers-may-not-have-names-yet",
     audience: "Lux AI Kids",
     title: "The Coolest AI Careers May Not Have Names Yet",
@@ -365,6 +387,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "Learning how to learn is the durable advantage across changing tools",
       "Dr. Torrey Dooley, Ace, and LANA model ethics, technology, and care"
     ],
+    plannerUrl: "/future-ai-career-lab-activity-sheet.html",
     body: [
       "<p style=\"font-size: 0.95rem; font-weight: 600; color: #a855f7; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 24px;\">Lux Automaton Editorial &nbsp;•&nbsp; LUX AI Kids</p>",
       "<h3>In this story</h3>",

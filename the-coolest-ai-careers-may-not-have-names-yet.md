@@ -4,7 +4,7 @@ subtitle: "Kids can prepare for the future by learning creativity, judgment, com
 author: "Lux Automaton Editorial"
 date: "2026-07-13"
 reading_time: "4 min read"
-slug: "the-coolest-ai-careers-may-not-have-names-yet"
+slug: "/the-coolest-ai-careers-may-not-have-names-yet"
 description: "A parent-friendly guide to the durable human skills children can build for future AI careers—even when tomorrow’s job titles do not exist yet."
 featured_image: "01-thumbnail-coolest-ai-careers.png"
 tags:
@@ -26,8 +26,6 @@ tags:
 1. [Future jobs blend creativity and responsibility](#future-jobs-blend-creativity-and-responsibility)
 2. [Communication matters](#communication-matters)
 3. [Learning how to learn is the real advantage](#learning-how-to-learn-is-the-real-advantage)
-
-[Discuss in the community →](/community)
 
 Some future AI careers will sound familiar: designer, developer, teacher, engineer, filmmaker, nurse, or scientist. Others may be new: robot coach, prompt director, AI safety detective, synthetic media editor, or community automation guide.
 
@@ -88,6 +86,8 @@ A child who can explain an idea clearly already has a future-ready advantage. St
 5. **What feedback improved the next version.**
 
 Communication also includes listening. A designer may hear that an app is confusing. A robot coach may learn that a user feels uncomfortable. A healthcare educator may discover that a technical explanation needs simpler language. Good work changes when people share useful feedback.
+
+That is one reason LUX AI Kids projects include presentations, captions, credits, reflection, and peer review. Children are not only making a product. They are learning to explain their choices and respond with respect.
 
 > “Clear ideas become stronger when we can explain them, hear another point of view, and revise.” — **LANA**
 
@@ -170,6 +170,6 @@ Children do not need a perfect forecast of the job market. They need repeated ch
 
 A project made today can be a rehearsal for a career that does not have a name yet. The child who learns to combine imagination with judgment—and technology with care—is already preparing to help build it.
 
-[Discuss in the community →](/community)
+**Discuss in the community →** What future career would your child invent, and what real problem would it solve?
 
 **Learn AI. Build Tomorrow. Change the World.**

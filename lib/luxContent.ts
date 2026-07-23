@@ -71,6 +71,38 @@ export interface TvEpisode {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "asa-lana-the-story-remembers-ep1",
+    audience: "Lux Automaton",
+    title: "ASA + LANA: The Story Remembers — Episode 1: Why Every AI Production Needs Memory",
+    deck: "One clip is just a seed. A series needs a soul. Welcome to the birth of Lux Codex and cinematic AI continuity.",
+    date: "July 22, 2026",
+    readTime: "6 min read",
+    category: "Lux Original Series",
+    image: "/images/04_YouTube_Thumbnail_16x9.png",
+    video: "/videos/Initial_Scene_-_2026-07-22_202607220124.mp4",
+    takeaways: [
+      "01 — One clip is just a seed; a series needs a connected soul.",
+      "02 — Solve AI filmmaking's greatest challenge: character and visual continuity.",
+      "03 — Move from random prompts to intentional directing with Lux Codex."
+    ],
+    body: [
+      "One clip is just a seed. A series needs a soul.",
+      "Welcome to the birth of Lux Codex. Join Asa and LANA inside the Lux Automaton Laboratory as they solve one of AI filmmaking’s greatest challenges: continuity. Across 10 episodes, they move from glitching identities and broken motion to a fully connected, directed cinematic production.",
+      "![ASA + LANA: The Story Remembers Series Preview](/images/00_Marketing_Set_Preview.jpg)",
+      "## 01 — Moving Beyond Random Generation",
+      "Traditional AI text-to-video tools excel at generating stunning isolated 4-second shots. But when you try to string three shots together into a coherent narrative, the character's face shifts, lighting shifts, and the world loses its rules.",
+      "In Episode 1 of *ASA + LANA: The Story Remembers*, Asa Pritchard and LANA demonstrate why raw prompting fails for long-form storytelling. Without a persistent memory engine, every frame is treated as a brand new universe.",
+      "![Character Duo Poster](/images/05_Character_Duo_Poster_4x5.png)",
+      "## 02 — The Lux Codex Continuity Engine",
+      "Lux Codex was engineered to act as an operating memory layer for creators. By establishing character seeds, environment anchors, and motion vectors, creators maintain absolute visual integrity across entire episodes.",
+      "> “We’re moving from random generation to intentional directing—one frame at a time.” — Asa Pritchard",
+      "![Lux Codex Continuity Engine Concept](/images/06_Lux_Codex_Continuity_Engine_4x5.png)",
+      "## 03 — The 10-Episode Cinematic Arc",
+      "Follow Asa and LANA as they test, debug, and push the boundaries of spatial consistency, voice alignment, and narrative pacing. Watch the full episode now on Lux TV and explore how you can build persistent AI workflows for your own productions.",
+      "![10-Episode Story Arc Overview](/images/07_Ten_Episode_Story_Arc_4x5.png)"
+    ],
+  },
+  {
     slug: "private-ai-business-os",
     audience: "Lux Automaton",
     title: "What a Private AI Business OS Actually Does",
@@ -154,27 +186,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     ],
   },
   {
-    slug: "lana-weekly-operating-rhythm",
-    audience: "Lux Automaton",
-    title: "The LANA Weekly: Turning Ideas Into a Community Rhythm",
-    deck: "How one newsletter can connect product updates, founder notes, workshops, and customer wins.",
-    date: "July 20, 2026",
-    readTime: "5 min read",
-    category: "Community & Publishing",
-    image: "/images/01-thumbnail-lana-weekly-community-rhythm.png",
-    takeaways: [
-      "01 — Publish one useful note every week",
-      "02 — Use recurring sections",
-      "03 — Connect readers to workshops and products"
-    ],
-    plannerUrl: "/lana-weekly-community-rhythm-planner.html",
-    body: [
-      "A strong newsletter does not need to be loud. It needs to be dependable. LANA Weekly can become the place where Lux Automaton explains what changed, what customers can learn, what Asa is building, and what the community should try next.",
-      "The format should be simple: one founder note, one tool lesson, one workshop invite, one customer problem, and one next action. That rhythm makes the newsletter useful even before the audience knows every product name.",
-      "For Lux Automaton, the newsletter is also a bridge. A reader can move from a blog article to Lux TV, from Lux TV to a workshop, and from the workshop to a product page that solves the exact problem they just learned about."
-    ],
-  },
-  {
     slug: "safe-ai-learning-starts-with-better-questions",
     audience: "Lux AI Kids",
     title: "Safe AI Learning Starts With Better Questions",
@@ -228,27 +239,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "4. **How will I check it?** Compare sources and ask for qualified help when needed.",
       "5. **Who could this help—or affect?** Create something useful, kind, accurate, and inclusive.",
       "![A kid-friendly LUX AI Kids checklist showing five better questions to ask before using AI.](/images/05-kids-overview-five-better-questions.png)"
-    ],
-  },
-  {
-    slug: "lux-ai-kids-safe-ai-learning",
-    audience: "Lux AI Kids",
-    title: "Safe AI Learning Starts With Better Questions",
-    deck: "A parent-friendly framework for helping kids use AI with creativity, consent, and care.",
-    date: "July 19, 2026",
-    readTime: "4 min read",
-    category: "AI Safety & Parents",
-    image: "/images/01-thumbnail-safe-ai-learning-better-questions.png",
-    takeaways: [
-      "01 — Ask before sharing personal information",
-      "02 — Check sources together",
-      "03 — Make projects that help people"
-    ],
-    plannerUrl: "/family-better-questions-activity-sheet.html",
-    body: [
-      "Kids do not need fear-based AI education. They need grounded, honest guidance. The safest starting point is a better question: What are we trying to make, who could it affect, and what should stay private?",
-      "Lux AI Kids teaches AI as a creative partner, not a magic answer machine. Students learn how prompts work, how images and text can be improved, and why human judgment still matters.",
-      "The best projects begin with care. A student can design a helper for a grandparent, a poster for a school event, or a story that teaches kindness. AI becomes a tool for imagination and service."
     ],
   },
   {
@@ -333,28 +323,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     ],
   },
   {
-    slug: "small-business-automation-map",
-    audience: "Lux Automaton",
-    title: "The First Automation Map Every Small Business Should Draw",
-    deck: "Before buying another tool, map the work that repeats every week.",
-    date: "July 18, 2026",
-    readTime: "7 min read",
-    category: "Business Automation",
-    image: "/images/01-thumbnail-first-automation-map.png",
-    takeaways: [
-      "01 — List the weekly repeats",
-      "02 — Mark where handoffs break",
-      "03 — Automate the smallest reliable step first"
-    ],
-    plannerUrl: "/small-business-automation-map-planner.html",
-    body: [
-      "Automation fails when it starts with software instead of work. The better starting point is a map: what happens when a lead arrives, what happens after a quote, what happens after payment, and what happens when someone forgets to follow up.",
-      "Once the repeated work is visible, AI has a job. It can draft replies, classify requests, build task checklists, summarize calls, and prepare the next action for review.",
-      "Lux Automaton treats automation as an operating habit. Start with one workflow. Make it dependable. Then connect the next one.",
-      "That first map does not have to be sophisticated. A sheet of paper, a whiteboard, or a simple document is enough. The purpose is to make the business visible before anyone adds another app, integration, or AI agent."
-    ],
-  },
-  {
     slug: "why-offline-ready-ai-still-matters",
     audience: "Lux Automaton",
     title: "Why Offline-Ready AI Still Matters",
@@ -406,27 +374,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "Start with one continuity workflow. Choose the task that would hurt most if the connection disappeared.",
       "![Lux Automaton overview showing the reasons offline-ready AI matters, the local-first stack, and a five-step continuity plan.](/images/05-offline-ready-ai-overview.png)",
       "![Offline-Ready AI Continuity Guide Summary Overview.](/images/why-offline-ready-ai-infographic-guide.png)"
-    ],
-  },
-  {
-    slug: "lux-agent-usb-offline-advantage",
-    audience: "Lux Automaton",
-    title: "Why Offline-Ready AI Still Matters",
-    deck: "Cloud tools are useful, but ownership and continuity matter when the work is sensitive.",
-    date: "July 17, 2026",
-    readTime: "5 min read",
-    category: "Private AI Systems",
-    image: "/images/01-thumbnail-offline-ready-ai.png",
-    takeaways: [
-      "01 — Reduce cloud dependency",
-      "02 — Keep sensitive work portable",
-      "03 — Give field teams continuity"
-    ],
-    plannerUrl: "/offline-ready-ai-continuity-planner.html",
-    body: [
-      "An offline-ready AI system is not nostalgia for old software. It is a continuity plan. Field teams, traveling founders, clinics, and small businesses all face moments where internet access is weak, privacy matters, or a browser login is not enough.",
-      "Lux Agent USB tells a clear product story: your assistant, memory packs, templates, and workflows travel with you. It is a practical symbol of the Lux Automaton belief that owners should keep control of their tools.",
-      "The cloud can still help. The point is choice. When the system is designed to work locally first, the business has more ways to keep moving."
     ],
   },
   {
@@ -490,27 +437,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     ],
   },
   {
-    slug: "kids-ai-video-projects",
-    audience: "Lux AI Kids",
-    title: "Five AI Video Projects Kids Can Make This Month",
-    deck: "Simple creative challenges that teach storytelling, planning, and responsible AI use.",
-    date: "July 16, 2026",
-    readTime: "5 min read",
-    category: "Kids Projects",
-    image: "/images/01-thumbnail-five-ai-video-projects.png",
-    takeaways: [
-      "01 — Start with a storyboard",
-      "02 — Use short scenes",
-      "03 — Explain what the AI helped create"
-    ],
-    plannerUrl: "/kids-ai-video-project-planner.html",
-    body: [
-      "AI video becomes less mysterious when kids build in small scenes. One character, one setting, one action, and one feeling are enough for a strong first project.",
-      "Try a neighborhood helper robot, a weather report from the future, a kindness commercial, a science explainer, or a mini adventure where a character solves a real problem.",
-      "The important lesson is not just the final video. Students learn to plan, revise, credit tools, and explain their choices."
-    ],
-  },
-  {
     slug: "success-packs-productized-services",
     audience: "Lux Automaton",
     title: "Success Packs Turn Services Into Repeatable Products",
@@ -541,28 +467,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "The first version does not need every integration. It needs the shape of the product, the customer promise, and the primary action.",
       "Once the surface works, deeper systems can follow. That keeps momentum high without hiding unfinished thinking behind more planning."
     ],
-  },
-  {
-    slug: "coolest-ai-careers",
-    audience: "Lux AI Kids",
-    title: "The Coolest AI Careers May Not Have Names Yet",
-    deck: "Kids can prepare for the future by learning creativity, judgment, communication, and systems thinking.",
-    date: "July 13, 2026",
-    readTime: "4 min read",
-    category: "Career Exploration",
-    image: "/images/01-thumbnail-coolest-ai-careers.png",
-    takeaways: [
-      "Future roles blend creativity, responsibility, and human judgment",
-      "Key skills: Creativity, Judgment, Communication, Systems Thinking",
-      "Learning how to learn is the durable advantage across changing tools",
-      "Dr. Torrey Dooley, Ace, and LANA model ethics, technology, and care"
-    ],
-    plannerUrl: "/future-ai-career-lab-activity-sheet.html",
-    body: [
-      "Some future AI careers will sound familiar: designer, developer, teacher, engineer, filmmaker, nurse, or scientist. Others may be new: robot coach, prompt director, AI safety detective, synthetic media editor, or community automation guide.",
-      "Kids do not need to predict every job title. They need practice asking good questions, checking their work, explaining their ideas, and making things that help people.",
-      "LUX AI Kids turns that preparation into projects. Every workshop is a small rehearsal for a future where imagination and responsibility belong together."
-    ]
   },
   {
     slug: "the-coolest-ai-careers-may-not-have-names-yet",
@@ -2682,6 +2586,19 @@ export const KIDS_WORKSHOPS: KidsWorkshop[] = [
 ];
 
 export const LUX_TV_EPISODES: TvEpisode[] = [
+  {
+    slug: "asa-lana-the-story-remembers-ep1",
+    audience: "Lux Automaton",
+    title: "ASA + LANA: The Story Remembers — Episode 1",
+    series: "ASA + LANA",
+    duration: "10m",
+    rating: "All builders",
+    image: "/images/04_YouTube_Thumbnail_16x9.png",
+    video: "/videos/Initial_Scene_-_2026-07-22_202607220124.mp4",
+    storyUrl: "/blog",
+    description: "One clip is just a seed. A series needs a soul. Welcome to the birth of Lux Codex and cinematic AI continuity.",
+    tags: ["Lux Codex", "Cinema", "Continuity"],
+  },
   {
     slug: "founder-notes-build-future",
     audience: "Lux Automaton",

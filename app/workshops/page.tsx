@@ -6,6 +6,7 @@ import Link from "next/link";
 import { WORKSHOP_PROGRAMS, type Audience, type WorkshopProgram, type WorkshopLesson } from "@/lib/luxContent";
 import { prefixPath } from "@/lib/prefix";
 import { fetchWorkshops, workshopRowToProgram } from "@/lib/workshopDb";
+import PdfPreviewDeckModal from "@/components/PdfPreviewDeckModal";
 
 const tabs: Array<"All" | Audience> = ["All", "Lux Automaton", "Lux AI Kids"];
 
@@ -215,23 +216,33 @@ export default function WorkshopsPage() {
                   <p>{selected.outcome}</p>
                 </div>
                 {(selected.workbookPdfUrl || selected.facilitatorDeckPdfUrl || selected.fullGuidePdfUrl) && (
-                  <div className="flex flex-wrap gap-3 mt-4">
-                    {selected.workbookPdfUrl && (
-                      <a href={prefixPath(selected.workbookPdfUrl)} download className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition-colors">
-                        Download Participant Workbook (PDF)
-                      </a>
-                    )}
-                    {selected.facilitatorDeckPdfUrl && (
-                      <a href={prefixPath(selected.facilitatorDeckPdfUrl)} download className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-purple-600 hover:bg-purple-500 text-white transition-colors">
-                        Download Facilitator Deck (PDF)
-                      </a>
-                    )}
-                    {selected.fullGuidePdfUrl && (
-                      <a href={prefixPath(selected.fullGuidePdfUrl)} download className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-colors">
-                        Download Full Workshop Guide (PDF)
-                      </a>
-                    )}
-                  </div>
+                  <PdfPreviewDeckModal
+                    heading="Workshop Resources & PDF Downloads"
+                    subheading="Preview or download the official participant workbooks, facilitator decks, and full workshop guides."
+                    resources={[
+                      ...(selected.workbookPdfUrl ? [{
+                        title: "Participant Workbook",
+                        subtitle: "Interactive digital & printable PDF workbook",
+                        pdfUrl: selected.workbookPdfUrl,
+                        type: "Participant Workbook",
+                        size: "PDF Document"
+                      }] : []),
+                      ...(selected.facilitatorDeckPdfUrl ? [{
+                        title: "Facilitator Slide Deck",
+                        subtitle: "Presentation deck for workshop leaders & educators",
+                        pdfUrl: selected.facilitatorDeckPdfUrl,
+                        type: "Facilitator Deck",
+                        size: "PDF Presentation"
+                      }] : []),
+                      ...(selected.fullGuidePdfUrl ? [{
+                        title: "Full Workshop Guide",
+                        subtitle: "Complete lesson plans, outcomes & exercises",
+                        pdfUrl: selected.fullGuidePdfUrl,
+                        type: "Full Guide",
+                        size: "PDF Master Guide"
+                      }] : [])
+                    ]}
+                  />
                 )}
                 {!!selected.materials?.length && (
                   <div className="academy-materials">

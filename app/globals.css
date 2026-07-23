@@ -2567,7 +2567,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   display: flex;
   align-items: flex-end;
-  padding: 150px clamp(1.5rem, 7vw, 7.5rem) 80px;
+  padding: 175px clamp(1.5rem, 7vw, 7.5rem) 80px;
   isolation: isolate;
 }
 
@@ -2614,10 +2614,11 @@ h1, h2, h3, h4, h5, h6 {
 .academy-hero-copy h1,
 .editorial-hero-copy h1,
 .tv-copy h1 {
-  margin: 22px 0 22px;
-  font: 850 clamp(3.3rem, 7vw, 7.6rem)/0.88 "Montserrat", sans-serif;
-  letter-spacing: -0.07em;
+  margin: 20px 0 20px;
+  font: 850 clamp(2.4rem, 5.5vw, 5.5rem)/0.98 "Montserrat", sans-serif;
+  letter-spacing: -0.05em;
   text-wrap: balance;
+  word-break: break-word;
 }
 
 .academy-hero-copy > span,
@@ -4388,5 +4389,488 @@ h1, h2, h3, h4, h5, h6 {
 
   .news-newsletter {
     padding: 30px 22px;
+  }
+}
+
+/* Ask LANA + Who Is LANA */
+.ask-lana-page,
+.who-lana-page {
+  min-height: 100vh;
+  background: #030712;
+  color: #f8fafc;
+}
+
+.ask-lana-hero,
+.who-lana-hero {
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+}
+
+.ask-lana-hero-image,
+.who-lana-hero-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.ask-lana-hero-shade,
+.who-lana-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(3, 7, 18, 0.97) 0%, rgba(3, 7, 18, 0.78) 44%, rgba(3, 7, 18, 0.35) 100%),
+    linear-gradient(0deg, #030712 0%, rgba(3, 7, 18, 0.22) 52%, rgba(3, 7, 18, 0.7) 100%);
+}
+
+.ask-lana-hero-inner,
+.who-lana-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 48px, 1280px);
+  margin: 0 auto;
+  padding: 132px 0 64px;
+}
+
+.ask-lana-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(280px, 380px);
+  gap: clamp(32px, 7vw, 92px);
+  align-items: end;
+}
+
+.ask-lana-copy h1,
+.who-lana-hero h1,
+.who-lana-story h2,
+.who-lana-capabilities h2 {
+  margin: 18px 0 22px;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 8.2rem);
+  font-weight: 950;
+  line-height: 0.92;
+  letter-spacing: 0;
+  max-width: 960px;
+}
+
+.who-lana-story h2,
+.who-lana-capabilities h2 {
+  font-size: clamp(2.8rem, 5.2vw, 5.8rem);
+}
+
+.ask-lana-copy p,
+.who-lana-hero p,
+.who-lana-story-copy p,
+.who-lana-capabilities p,
+.who-lana-workflow p,
+.who-lana-pillar p {
+  color: #b8c4d8;
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.ask-lana-copy p,
+.who-lana-hero p {
+  max-width: 720px;
+}
+
+.ask-lana-actions,
+.who-lana-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 52px;
+  padding: 0 22px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.primary-button {
+  border: 1px solid #36efff;
+  background: #16f4d0;
+  color: #020617;
+  box-shadow: 0 0 28px rgba(22, 244, 208, 0.18);
+}
+
+.secondary-button {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+}
+
+.lana-status-panel {
+  display: grid;
+  gap: 1px;
+  border: 1px solid rgba(54, 239, 255, 0.26);
+  background: rgba(2, 6, 23, 0.72);
+  backdrop-filter: blur(18px);
+}
+
+.lana-status-panel div {
+  display: grid;
+  gap: 7px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.lana-status-panel span,
+.ask-lana-results-head span,
+.ask-lana-result-card small {
+  color: #36efff;
+  font: 800 0.68rem/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lana-status-panel b {
+  color: #ffffff;
+  font-size: 0.96rem;
+}
+
+.ask-lana-console,
+.who-lana-band,
+.who-lana-story,
+.who-lana-capabilities,
+.who-lana-workflow {
+  width: min(100% - 48px, 1280px);
+  margin: 0 auto;
+}
+
+.ask-lana-console {
+  padding: clamp(3rem, 6vw, 6rem) 0 clamp(5rem, 8vw, 8rem);
+}
+
+.ask-lana-console-inner {
+  display: grid;
+  gap: 26px;
+}
+
+.ask-lana-search {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  min-height: 74px;
+  padding: 0 22px;
+  border: 1px solid rgba(54, 239, 255, 0.28);
+  background: linear-gradient(90deg, rgba(54, 239, 255, 0.1), rgba(139, 92, 246, 0.08));
+  color: #36efff;
+  box-shadow: 0 0 36px rgba(54, 239, 255, 0.08);
+}
+
+.ask-lana-search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #ffffff;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+}
+
+.ask-lana-search input::placeholder {
+  color: #8ea0ba;
+}
+
+.ask-lana-search button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.ask-lana-prompts,
+.ask-lana-result-grid,
+.who-lana-grid,
+.who-lana-workflow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ask-lana-prompts {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.ask-lana-prompts button,
+.ask-lana-result-card,
+.who-lana-pillar,
+.who-lana-workflow article {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.ask-lana-prompts button {
+  display: grid;
+  gap: 14px;
+  min-height: 132px;
+  padding: 18px;
+  color: #ffffff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ask-lana-prompts button span {
+  font-size: 0.98rem;
+  font-weight: 780;
+  line-height: 1.35;
+}
+
+.ask-lana-prompts button b {
+  align-self: end;
+  color: #36efff;
+  font: 800 0.68rem/1 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ask-lana-results {
+  display: grid;
+  gap: 18px;
+}
+
+.ask-lana-results-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ask-lana-results-head b {
+  color: #ffffff;
+  font-size: 1.3rem;
+}
+
+.ask-lana-result-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-height: 270px;
+  padding: 24px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.ask-lana-result-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(54, 239, 255, 0.42);
+  background: rgba(54, 239, 255, 0.07);
+}
+
+.ask-lana-result-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(54, 239, 255, 0.28);
+  color: #36efff;
+}
+
+.ask-lana-result-card h2,
+.ask-lana-empty h2,
+.who-lana-pillar h2,
+.who-lana-workflow h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.15;
+}
+
+.ask-lana-result-card p {
+  margin: 0;
+  color: #b8c4d8;
+  font-size: 0.94rem;
+  line-height: 1.58;
+}
+
+.ask-lana-result-card em {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: end;
+  color: #16f4d0;
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ask-lana-empty {
+  display: grid;
+  place-items: center;
+  gap: 12px;
+  min-height: 260px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  color: #36efff;
+  text-align: center;
+}
+
+.ask-lana-empty p {
+  max-width: 520px;
+  margin: 0;
+  color: #b8c4d8;
+}
+
+.who-lana-hero-inner {
+  min-height: 88vh;
+  display: grid;
+  align-content: end;
+}
+
+.who-lana-band,
+.who-lana-story,
+.who-lana-capabilities,
+.who-lana-workflow {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+.who-lana-pillar,
+.who-lana-workflow article {
+  display: grid;
+  gap: 16px;
+  padding: clamp(24px, 3vw, 36px);
+  color: #36efff;
+}
+
+.who-lana-pillar p,
+.who-lana-workflow p {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.who-lana-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
+  gap: clamp(32px, 6vw, 84px);
+  align-items: center;
+}
+
+.who-lana-story-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 26px;
+}
+
+.who-lana-story-list p,
+.who-lana-capability-list p {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 12px;
+  align-items: start;
+  margin: 0;
+}
+
+.who-lana-story-list svg,
+.who-lana-capability-list svg {
+  color: #16f4d0;
+  margin-top: 5px;
+}
+
+.who-lana-photo {
+  position: relative;
+  border: 1px solid rgba(54, 239, 255, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.who-lana-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.who-lana-capabilities {
+  width: 100%;
+  background:
+    linear-gradient(90deg, rgba(54, 239, 255, 0.1), transparent 42%),
+    linear-gradient(270deg, rgba(139, 92, 246, 0.16), transparent 50%),
+    #070d1a;
+}
+
+.who-lana-capabilities-inner {
+  width: min(100% - 48px, 1280px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1fr);
+  gap: clamp(32px, 6vw, 76px);
+  align-items: center;
+}
+
+.who-lana-capability-list {
+  display: grid;
+  gap: 18px;
+}
+
+@media (max-width: 1080px) {
+  .ask-lana-hero-inner,
+  .who-lana-story,
+  .who-lana-capabilities-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .lana-status-panel {
+    max-width: 520px;
+  }
+
+  .ask-lana-prompts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .ask-lana-result-grid,
+  .who-lana-grid,
+  .who-lana-workflow {
+    grid-template-columns: 1fr;
+  }
+
+  .ask-lana-prompts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .ask-lana-hero-inner,
+  .who-lana-hero-inner,
+  .ask-lana-console,
+  .who-lana-band,
+  .who-lana-story,
+  .who-lana-workflow,
+  .who-lana-capabilities-inner {
+    width: min(100% - 28px, 1280px);
+  }
+
+  .ask-lana-copy h1,
+  .who-lana-hero h1 {
+    font-size: 3rem;
+  }
+
+  .ask-lana-search {
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
   }
 }

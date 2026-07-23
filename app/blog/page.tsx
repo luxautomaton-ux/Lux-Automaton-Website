@@ -193,11 +193,6 @@ function getArticleVisualAssets(article: BlogArticle) {
       url: "/documents/gemini-update-to-workflow-action-planner.html",
       type: "Printable Action Planner"
     });
-    images.push(
-      { title: "01 — Connect the Creative Stack", subtitle: "Creative asset family workflow", imageUrl: "/images/02-photo-connect-creative-stack.png", type: "Photo Blueprint" },
-      { title: "02 — Give Agents a Narrow Job", subtitle: "Agentic workflow boundaries", imageUrl: "/images/03-photo-narrow-reviewable-agent.png", type: "Photo Blueprint" },
-      { title: "03 — Build an Adoption Rhythm", subtitle: "30-day pilot implementation plan", imageUrl: "/images/04-photo-build-ai-adoption-rhythm.png", type: "Photo Blueprint" }
-    );
   }
 
   return { images, downloads };

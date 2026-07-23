@@ -322,7 +322,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "The first automation map is not a technology diagram. It is a decision tool. It shows where the business repeats itself, where work gets lost, where AI can assist, and where people should continue to lead.",
       "Start with one workflow. Make the work visible. Find one broken handoff. Automate one reliable step. Then connect the next one.",
       "AI should work for you. Let’s build it.",
-      "![Lux Automaton overview showing the five-step first automation map framework.](/images/05-first-automation-map-overview.png)"
+      "![Lux Automaton overview showing the five-step first automation map framework.](/images/05-first-automation-map-overview.png)",
+      "![The First Automation Map Overview Breakdown 1.](/images/05-first-automation-map-infographic-1.jpg)",
+      "![The First Automation Map Overview Breakdown 2.](/images/05-first-automation-map-infographic-2.jpg)",
+      "![The First Automation Map Overview Breakdown 3.](/images/05-first-automation-map-infographic-3.jpg)",
+      "![The First Automation Map Overview Breakdown 4.](/images/05-first-automation-map-infographic-4.jpg)"
     ],
   },
   {

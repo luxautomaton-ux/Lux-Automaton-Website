@@ -2831,6 +2831,19 @@ export const LUX_TV_EPISODES: TvEpisode[] = [
 
 export const LUX_TV_KIDS_EPISODES: TvEpisode[] = [
   {
+    slug: "dr-dooleys-smart-health-adventure",
+    audience: "Lux AI Kids",
+    title: "Dr. Dooley’s Smart Health Adventure",
+    series: "Lux Kids TV",
+    duration: "8m",
+    rating: "Kids & Families",
+    image: "/images/01-thumbnail-dr-dooley-smart-health-adventure.png",
+    video: "/videos/dr-dooley-smart-health-adventure-episode-1.mp4",
+    storyUrl: "/blog",
+    description: "LANA and Ace explore a smart pharmacy, meet a wellness robot, and enter a holographic data garden with Dr. Torrey Dooley.",
+    tags: ["AI Safety", "Projects", "AI Basics", "Health"],
+  },
+  {
     slug: "what-is-ai",
     audience: "Lux AI Kids",
     title: "What Is AI?",

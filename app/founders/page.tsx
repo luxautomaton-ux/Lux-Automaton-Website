@@ -10,20 +10,20 @@ interface Episode {
   title: string;
   description: string;
   duration: string;
-  category: "AI Strategy" | "Development" | "Security" | "Product Deep Dive";
-  styleType: "Style 1 (Founder Focus)" | "Style 2 (LANA AI News)" | "Style 3 (Co-Pilot Session)";
+  category: "AI Strategy" | "Development" | "Security" | "Kids Education";
+  styleType: "Founder Focus" | "LANA AI News" | "Co-Pilot Session" | "Kids Studio";
   image: string;
-  youtubeUrl?: string;
+  videoUrl?: string;
 }
 
-const EPISODES: Episode[] = [
+const FOUNDER_EPISODES: Episode[] = [
   {
     id: "future-non-custodial",
     title: "The Future of Non-Custodial AI Operating Systems",
     description: "Asa Pritchard and LANA break down why custodial SaaS models expose business intelligence, and how local runtime solves lock-in.",
     duration: "24:15",
     category: "AI Strategy",
-    styleType: "Style 3 (Co-Pilot Session)",
+    styleType: "Co-Pilot Session",
     image: "/images/style3a.png",
   },
   {
@@ -32,7 +32,7 @@ const EPISODES: Episode[] = [
     description: "LANA covers the case study of Lux Care OS: setting up secure local boundaries so client health records never leave the private local server.",
     duration: "18:40",
     category: "Security",
-    styleType: "Style 2 (LANA AI News)",
+    styleType: "LANA AI News",
     image: "/images/style2.png",
   },
   {
@@ -41,7 +41,7 @@ const EPISODES: Episode[] = [
     description: "A developer walkthrough explaining how to connect open source LLMs inside your editor and build a compounding codebase context database.",
     duration: "32:10",
     category: "Development",
-    styleType: "Style 1 (Founder Focus)",
+    styleType: "Founder Focus",
     image: "/images/style1.jpg",
   },
   {
@@ -50,386 +50,367 @@ const EPISODES: Episode[] = [
     description: "Exploring the compounding returns of deploying unified AI systems that run CRM, invoicing, budgets, and scheduling in a singular database.",
     duration: "22:50",
     category: "AI Strategy",
-    styleType: "Style 3 (Co-Pilot Session)",
+    styleType: "Co-Pilot Session",
     image: "/images/style3b.png",
+  },
+  {
+    id: "dr-dooley-kids-safety",
+    title: "Dr. Torrey Dooley: Safe AI Learning Starts With Better Questions",
+    description: "Dr. Torrey Dooley introduces the Lux AI Kids safety framework: teaching children to ask critical questions before sharing personal info.",
+    duration: "15:20",
+    category: "Kids Education",
+    styleType: "Kids Studio",
+    image: "/images/lux-kids-world.png",
   },
   {
     id: "local-models-low-power",
     title: "Running Enterprise-Grade Local LLMs on Consumer Hardware",
-    description: "A technical analysis detailing how quantization allows developers to execute llama-3 parameters locally at near-zero operating costs.",
+    description: "A technical analysis detailing how quantization allows developers to execute local LLM parameters at near-zero operating costs.",
     duration: "28:35",
     category: "Development",
-    styleType: "Style 1 (Founder Focus)",
+    styleType: "Founder Focus",
     image: "/images/style1b.jpg",
   },
+];
+
+const founders = [
+  {
+    id: "asa-pritchard",
+    name: "Asa Spade Pritchard",
+    role: "Co-Founder & Chief Architect",
+    kicker: "SYSTEMS ARCHITECTURE & PRIVATE AI",
+    bio: "Asa Pritchard builds non-custodial, private AI operating systems because business owners shouldn't have to surrender their proprietary intelligence to stay modern. Subscription SaaS models harvest your client lists, financial records, and IP. Asa designs unified local-first runtimes where your business context remains 100% under your ownership.",
+    quote: "“Continuity begins when the team knows what must keep working—not when it buys another subscription.”",
+    image: "/images/founder-asa.png",
+    pillars: [
+      { title: "Local-First Architecture", copy: "Deploying AI models locally so data stays on site." },
+      { title: "Private Operating Systems", copy: "Replacing scattered apps with unified execution layers." },
+      { title: "Autonomous Agent Networks", copy: "Building self-correcting agents with human approval." }
+    ],
+    primaryAction: { label: "Explore ASA's Systems", href: "/products" },
+    secondaryAction: { label: "Read Asa's Field Notes", href: "/blog" },
+    tone: "cyan"
+  },
+  {
+    id: "dr-torrey-dooley",
+    name: "Dr. Torrey Dooley",
+    role: "Co-Founder & Chief Educator",
+    kicker: "LUX AI KIDS & GENERATIONAL LEARNING",
+    bio: "Dr. Torrey Dooley leads the Lux AI Kids initiative, empowering the next generation of creators to explore artificial intelligence with curiosity, creativity, and safety. Through project-based workshops, interactive puppet labs, and hands-on story challenges, Dr. Dooley turns 'How does AI work?' into 'Look what I made today!'",
+    quote: "“We don't teach children to fear technology. We teach them to direct it with human kindness, ethics, and care.”",
+    image: "/images/lux-kids-world.png",
+    pillars: [
+      { title: "Safety-First Pedagogy", copy: "Teaching kids privacy, consent, and source verification." },
+      { title: "Creative Confidence", copy: "Turning prompts into stories, art, videos, and robots." },
+      { title: "Future Careers Lab", copy: "Preparing kids for careers that don't even have names yet." }
+    ],
+    primaryAction: { label: "Explore Lux AI Kids", href: "/lux-ai-kids" },
+    secondaryAction: { label: "Kids Workshops", href: "/lux-ai-kids/workshops" },
+    tone: "kids"
+  }
 ];
 
 export default function FoundersPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeVideo, setActiveVideo] = useState<Episode | null>(null);
+  const [email, setEmail] = useState("");
+  const [joined, setJoined] = useState(false);
 
   const filteredEpisodes = selectedCategory === "All"
-    ? EPISODES
-    : EPISODES.filter(ep => ep.category === selectedCategory);
+    ? FOUNDER_EPISODES
+    : FOUNDER_EPISODES.filter(ep => ep.category === selectedCategory);
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "var(--bg-void)",
-        paddingTop: "120px",
-        paddingBottom: "80px",
-        position: "relative",
-        overflow: "hidden",
-      }}
-      className="circuit-grid"
-    >
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", position: "relative", zIndex: 1 }}>
-
-        {/* Founder Bio Hero */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.2fr 2fr",
-            gap: "48px",
-            alignItems: "center",
-            marginBottom: "80px",
-            background: "rgba(17, 24, 39, 0.45)",
-            border: "1px solid var(--border-subtle)",
-            borderRadius: "20px",
-            padding: "48px",
-            backdropFilter: "blur(10px)",
-          }}
-          className="founder-hero-grid"
+    <div className="lux-world">
+      {/* HERO SECTION */}
+      <section className="world-hero">
+        <video
+          className="world-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={prefixPath("/images/lux-world-hero.png")}
+          aria-label="Lux Automaton founders video introduction"
         >
-          <div style={{ position: "relative", width: "100%", aspectRatio: "1/1", borderRadius: "16px", overflow: "hidden", border: "2px solid var(--lux-indigo)" }}>
-            <Image
-              src={prefixPath("/images/founder-asa.png")}
-              alt="Asa Spade Pritchard - Founder of Lux Automaton"
-              fill
-              style={{ objectFit: "cover" }}
-            />
-          </div>
-          <div>
-            <div className="section-label" style={{ marginBottom: "16px" }}>
-              Our Founder
-            </div>
-            <h1
-              style={{
-                fontSize: "clamp(2rem, 4vw, 2.8rem)",
-                fontWeight: 900,
-                color: "var(--text-primary)",
-                fontFamily: "var(--font-display)",
-                marginBottom: "16px",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              Asa Spade <span className="gradient-text">Pritchard</span>
-            </h1>
-            <p style={{ color: "var(--text-secondary)", fontSize: "1.02rem", lineHeight: 1.7, marginBottom: "20px" }}>
-              I build private AI operating systems because I believe business owners shouldn&apos;t have to sell their competitive data to stay modern. Subscription sprawl and SaaS vendors harvest your client lists, your finances, and your IP.
-            </p>
-            <p style={{ color: "var(--text-muted)", fontSize: "0.92rem", lineHeight: 1.6, marginBottom: "28px" }}>
-              At Lux Automaton, we are building a unified ecosystem—a private suite where your tools share a single persistent memory window, and you retain complete ownership of your technology stack.
-            </p>
-            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-              <Link href="/start-here" className="btn-primary" style={{ textDecoration: "none" }}>
-                Begin OS Onboarding →
-              </Link>
-              <Link href="https://www.youtube.com/channel/UCcYnAZw0QnS6dD1n-7vpwdA" target="_blank" className="btn-outline" style={{ textDecoration: "none" }}>
-                Subscribe to Asa TV
-              </Link>
-            </div>
+          <source src={prefixPath("/videos/lux-automaton-intro.mp4")} type="video/mp4" />
+        </video>
+        <div className="world-hero-shade" />
+        <div className="world-orbit orbit-a" />
+        <div className="world-orbit orbit-b" />
+        
+        <div className="world-hero-content">
+          <p className="world-kicker"><span /> MEET THE FOUNDERS</p>
+          <h1>The Minds Behind<br /><em>Lux Automaton.</em></h1>
+          <p className="world-lede">
+            Asa Spade Pritchard and Dr. Torrey Dooley are building the private AI operating systems, educational workshops, and creative tools that give founders, families, and young creators complete ownership of their digital future.
+          </p>
+          <div className="world-actions">
+            <a className="world-button primary" href="#founders">Meet the Founders <b>↓</b></a>
+            <a className="world-button ghost" href="#episodes">Watch Asa &amp; Dr. Dooley TV</a>
           </div>
         </div>
+        <div className="world-status"><span>01</span><p>Scroll to explore</p><i /></div>
+      </section>
 
-        {/* Video Grid Section */}
-        <div>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "20px", marginBottom: "40px" }}>
-            <div>
-              <div className="section-label" style={{ marginBottom: "12px" }}>
-                Asa TV
-              </div>
-              <h2
-                style={{
-                  fontSize: "2rem",
-                  fontWeight: 800,
-                  color: "var(--text-primary)",
-                  fontFamily: "var(--font-display)",
-                }}
-              >
-                Episodes & Technical Walkthroughs
-              </h2>
-            </div>
-
-            {/* Category Filter */}
-            <div style={{ display: "flex", gap: "8px" }}>
-              {["All", "AI Strategy", "Development", "Security", "Product Deep Dive"].map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  style={{
-                    padding: "6px 16px",
-                    borderRadius: "20px",
-                    background: selectedCategory === cat ? "rgba(108, 71, 255, 0.12)" : "rgba(255, 255, 255, 0.02)",
-                    border: selectedCategory === cat ? "1px solid var(--lux-cyan)" : "1px solid rgba(255, 255, 255, 0.05)",
-                    color: selectedCategory === cat ? "var(--lux-cyan)" : "var(--text-secondary)",
-                    fontWeight: 700,
-                    fontSize: "0.8rem",
-                    cursor: "pointer",
-                    transition: "all 0.2s ease",
-                  }}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
+      {/* FOUNDERS DETAIL SECTION */}
+      <section id="founders" className="world-section">
+        <div className="world-section-head">
+          <div>
+            <p className="section-label">LEADERSHIP &amp; VISION</p>
+            <h2>Architects of Private AI &amp; Generational Learning</h2>
           </div>
+          <Link href="/contact">Get in touch with the team →</Link>
+        </div>
 
-          {/* Episode Grid */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-              gap: "24px",
-            }}
-          >
-            {filteredEpisodes.map((ep) => (
-              <div
-                key={ep.id}
-                style={{
-                  background: "rgba(17, 24, 39, 0.4)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: "14px",
-                  overflow: "hidden",
-                  display: "flex",
-                  flexDirection: "column",
-                  transition: "all 0.25s ease",
-                }}
-                className="hover:scale-102 hover:border-active"
-              >
-                {/* Thumbnail Layer */}
-                <div
-                  style={{
-                    position: "relative",
-                    aspectRatio: "16/9",
-                    width: "100%",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setActiveVideo(ep)}
-                >
-                  <Image
-                    src={prefixPath(ep.image)}
-                    alt={ep.title}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "rgba(6, 9, 19, 0.2)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      transition: "background 0.2s ease",
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = "rgba(6, 9, 19, 0.4)"}
-                    onMouseLeave={(e) => e.currentTarget.style.background = "rgba(6, 9, 19, 0.2)"}
-                  >
-                    <div
-                      style={{
-                        width: "48px",
-                        height: "48px",
-                        borderRadius: "50%",
-                        background: "rgba(0, 212, 255, 0.95)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        boxShadow: "0 0 16px rgba(0, 212, 255, 0.5)",
-                      }}
-                    >
-                      <span style={{ fontSize: "1.2rem", color: "#0b0f19", marginLeft: "3px" }}>▶</span>
+        <div style={{ display: "grid", gap: "60px" }}>
+          {founders.map((founder) => (
+            <div
+              key={founder.id}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1.3fr",
+                gap: "48px",
+                alignItems: "center",
+                background: "#0c101d",
+                border: "1px solid #202a40",
+                borderRadius: "24px",
+                padding: "48px",
+                overflow: "hidden",
+                boxShadow: "0 20px 50px rgba(0,0,0,0.4)"
+              }}
+              className="founder-card-grid"
+            >
+              <div style={{ position: "relative", width: "100%", aspectRatio: "4/5", borderRadius: "18px", overflow: "hidden", border: "2px solid rgba(67, 230, 255, 0.3)" }}>
+                <Image
+                  src={prefixPath(founder.image)}
+                  alt={`${founder.name} - ${founder.role}`}
+                  fill
+                  priority
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+
+              <div>
+                <span style={{ font: "700 0.65rem 'JetBrains Mono'", letterSpacing: "0.18em", color: "var(--world-cyan)", textTransform: "uppercase" }}>
+                  {founder.kicker}
+                </span>
+                <h2 style={{ font: "800 clamp(2.2rem, 4vw, 3.4rem)/1 'Montserrat'", letterSpacing: "-0.05em", margin: "12px 0 6px", color: "#ffffff" }}>
+                  {founder.name}
+                </h2>
+                <strong style={{ color: "#00ffa3", fontSize: "1rem", display: "block", marginBottom: "20px", fontFamily: "'JetBrains Mono', monospace" }}>
+                  {founder.role}
+                </strong>
+
+                <p style={{ color: "#bac5da", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: "24px" }}>
+                  {founder.bio}
+                </p>
+
+                <blockquote style={{ borderLeft: "3px solid var(--world-cyan)", paddingLeft: "18px", margin: "0 0 28px", color: "#e2e8f0", fontStyle: "italic", fontSize: "0.95rem" }}>
+                  {founder.quote}
+                </blockquote>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px", marginBottom: "32px" }}>
+                  {founder.pillars.map((p) => (
+                    <div key={p.title} style={{ background: "#070913", padding: "16px", borderRadius: "12px", border: "1px solid #1e2638" }}>
+                      <strong style={{ color: "#ffffff", fontSize: "0.82rem", display: "block", marginBottom: "4px" }}>{p.title}</strong>
+                      <span style={{ color: "#718096", fontSize: "0.72rem", lineHeight: 1.4, display: "block" }}>{p.copy}</span>
                     </div>
-                  </div>
-                  <div
-                    style={{
-                      position: "absolute",
-                      right: "10px",
-                      bottom: "10px",
-                      background: "rgba(11, 15, 25, 0.8)",
-                      border: "1px solid rgba(255, 255, 255, 0.1)",
-                      borderRadius: "4px",
-                      padding: "2px 6px",
-                      fontSize: "0.75rem",
-                      color: "var(--text-primary)",
-                      fontFamily: "var(--font-mono)",
-                    }}
-                  >
-                    {ep.duration}
-                  </div>
+                  ))}
                 </div>
 
-                {/* Content info */}
-                <div style={{ padding: "20px", display: "flex", flexDirection: "column", gap: "10px", flexGrow: 1 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <span
-                      style={{
-                        fontSize: "0.62rem",
-                        fontWeight: 700,
-                        color: "var(--lux-mint)",
-                        fontFamily: "var(--font-mono)",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {ep.category}
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "0.58rem",
-                        color: "var(--text-muted)",
-                        fontFamily: "var(--font-mono)",
-                      }}
-                    >
-                      {ep.styleType}
-                    </span>
-                  </div>
-                  <h3
-                    style={{
-                      fontSize: "1.05rem",
-                      fontWeight: 800,
-                      color: "var(--text-primary)",
-                      fontFamily: "var(--font-display)",
-                      lineHeight: 1.3,
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setActiveVideo(ep)}
-                  >
-                    {ep.title}
-                  </h3>
-                  <p style={{ color: "var(--text-secondary)", fontSize: "0.82rem", lineHeight: 1.5 }}>
-                    {ep.description}
-                  </p>
+                <div className="world-actions" style={{ marginTop: "0" }}>
+                  <Link className="world-button primary" href={founder.primaryAction.href}>
+                    {founder.primaryAction.label} <b>↗</b>
+                  </Link>
+                  <Link className="world-button ghost" href={founder.secondaryAction.href}>
+                    {founder.secondaryAction.label}
+                  </Link>
                 </div>
               </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* MANIFESTO / THESIS */}
+      <section id="vision" className="world-section world-manifesto">
+        <div className="world-index">02 / OUR PHILOSOPHY</div>
+        <div>
+          <h2>Technology Should Empower <em>Humans,</em><br />Not Replace Them.</h2>
+          <p>
+            Whether engineering local-first AI runtimes for business operations or guiding young builders through their first story prompt, Lux Automaton stands for privacy, agency, and creative confidence.
+          </p>
+        </div>
+        <div className="manifesto-stats">
+          <span><strong>100%</strong> Local-first option</span>
+          <span><strong>2</strong> Visionary founders</span>
+          <span><strong>0</strong> Data selling</span>
+        </div>
+      </section>
+
+      {/* ASA TV & MEDIA GRID */}
+      <section id="episodes" className="world-section">
+        <div className="world-section-head">
+          <div>
+            <p className="section-label">FOUNDERS TV &amp; BROADCASTS</p>
+            <h2>Asa TV &amp; Dr. Dooley Studio Walkthroughs</h2>
+          </div>
+          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+            {["All", "AI Strategy", "Development", "Security", "Kids Education"].map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setSelectedCategory(cat)}
+                style={{
+                  padding: "8px 18px",
+                  borderRadius: "20px",
+                  background: selectedCategory === cat ? "rgba(0, 212, 255, 0.2)" : "rgba(255, 255, 255, 0.04)",
+                  border: selectedCategory === cat ? "1px solid var(--world-cyan)" : "1px solid rgba(255, 255, 255, 0.1)",
+                  color: selectedCategory === cat ? "var(--world-cyan)" : "#a0aec0",
+                  fontWeight: 700,
+                  fontSize: "0.78rem",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                }}
+              >
+                {cat}
+              </button>
             ))}
           </div>
         </div>
 
-        {/* Video Player Modal */}
-        {activeVideo && (
-          <div
-            style={{
-              position: "fixed",
-              inset: 0,
-              background: "rgba(6, 9, 19, 0.85)",
-              backdropFilter: "blur(8px)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              zIndex: 9999,
-              padding: "24px",
-            }}
-            onClick={() => setActiveVideo(null)}
-          >
+        <div className="system-grid">
+          {filteredEpisodes.map((ep) => (
             <div
-              style={{
-                maxWidth: "800px",
-                width: "100%",
-                background: "var(--bg-base)",
-                border: "1px solid var(--border-active)",
-                borderRadius: "16px",
-                overflow: "hidden",
-                position: "relative",
-              }}
-              onClick={(e) => e.stopPropagation()}
+              key={ep.id}
+              className="system-card"
+              style={{ cursor: "pointer", minHeight: "420px" }}
+              onClick={() => setActiveVideo(ep)}
             >
-              <button
-                onClick={() => setActiveVideo(null)}
-                style={{
-                  position: "absolute",
-                  right: "16px",
-                  top: "16px",
-                  background: "rgba(0,0,0,0.5)",
-                  border: "none",
-                  color: "var(--text-primary)",
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "50%",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "1rem",
-                  zIndex: 2,
-                }}
-              >
-                ✕
-              </button>
-
-              <div style={{ position: "relative", aspectRatio: "16/9", background: "#000" }}>
-                {/* Simulated Player View */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--lux-cyan)",
-                  }}
-                >
-                  <span style={{ fontSize: "2.5rem", animation: "pulse 1.5s infinite" }}>▶</span>
-                  <div style={{ fontSize: "1rem", fontWeight: 700, marginTop: "12px", color: "var(--text-primary)" }}>
-                    Playing: {activeVideo.title}
-                  </div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "4px", fontFamily: "var(--font-mono)" }}>
-                    Length: {activeVideo.duration}
-                  </div>
-                </div>
+              <div className="system-card-image">
+                <Image src={prefixPath(ep.image)} alt={ep.title} fill sizes="(max-width: 900px) 100vw, 33vw" />
               </div>
-
-              <div style={{ padding: "24px" }}>
-                <span
-                  style={{
-                    fontSize: "0.65rem",
-                    fontWeight: 700,
-                    color: "var(--lux-cyan)",
-                    fontFamily: "var(--font-mono)",
-                    textTransform: "uppercase",
-                    display: "inline-block",
-                    marginBottom: "8px",
-                  }}
-                >
-                  {activeVideo.category}
-                </span>
-                <h3 style={{ fontSize: "1.3rem", fontWeight: 800, color: "var(--text-primary)", fontFamily: "var(--font-display)", marginBottom: "8px" }}>
-                  {activeVideo.title}
-                </h3>
-                <p style={{ color: "var(--text-secondary)", fontSize: "0.88rem", lineHeight: 1.5 }}>
-                  {activeVideo.description}
-                </p>
+              <div className="system-card-copy">
+                <span>{ep.category} · {ep.duration}</span>
+                <h3>{ep.title}</h3>
+                <p>{ep.description}</p>
+                <b>Watch Episode ▶</b>
               </div>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
+      </section>
 
-      </div>
-      <style>{`
-        @keyframes pulse {
-          0% { transform: scale(1); opacity: 0.8; }
-          50% { transform: scale(1.05); opacity: 1; }
-          100% { transform: scale(1); opacity: 0.8; }
-        }
-        @media (max-width: 768px) {
-          .founder-hero-grid {
-            grid-template-columns: 1fr !important;
-            padding: 24px !important;
-            gap: 24px !important;
-          }
-        }
-      `}</style>
+      {/* VIDEO MODAL */}
+      {activeVideo && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(6, 9, 19, 0.9)",
+            backdropFilter: "blur(12px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999,
+            padding: "24px",
+          }}
+          onClick={() => setActiveVideo(null)}
+        >
+          <div
+            style={{
+              maxWidth: "850px",
+              width: "100%",
+              background: "#090c18",
+              border: "1px solid var(--world-cyan)",
+              borderRadius: "20px",
+              overflow: "hidden",
+              position: "relative",
+              boxShadow: "0 25px 60px rgba(0,212,255,0.2)"
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setActiveVideo(null)}
+              style={{
+                position: "absolute",
+                right: "16px",
+                top: "16px",
+                background: "rgba(0,0,0,0.6)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                color: "#ffffff",
+                width: "38px",
+                height: "38px",
+                borderRadius: "50%",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "1.1rem",
+                zIndex: 10,
+              }}
+            >
+              ✕
+            </button>
+
+            <div style={{ position: "relative", aspectRatio: "16/9", background: "#000" }}>
+              <video
+                src={prefixPath("/videos/lux-automaton-intro.mp4")}
+                controls
+                autoPlay
+                className="cinema-video"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+
+            <div style={{ padding: "28px" }}>
+              <span style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--world-cyan)", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase" }}>
+                {activeVideo.category} · {activeVideo.duration}
+              </span>
+              <h3 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#ffffff", fontFamily: "'Montserrat', sans-serif", margin: "8px 0 10px" }}>
+                {activeVideo.title}
+              </h3>
+              <p style={{ color: "#a0aec0", fontSize: "0.95rem", lineHeight: 1.6 }}>
+                {activeVideo.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* NEWSLETTER */}
+      <section className="world-newsletter">
+        <div>
+          <p className="section-label">THE LUX DISPATCH</p>
+          <h2>Stay close to<br />what we&apos;re building.</h2>
+          <p style={{ color: "#a0aec0", marginTop: "16px", lineHeight: 1.6 }}>
+            Direct notes from Asa Spade Pritchard and Dr. Torrey Dooley. Architecture lessons, new workshops, and practical AI tools sent once a week.
+          </p>
+        </div>
+        <form onSubmit={(e) => { e.preventDefault(); if (email) setJoined(true); }}>
+          {joined ? (
+            <strong style={{ color: "var(--world-mint)" }}>Welcome! You are subscribed to the Lux Dispatch.</strong>
+          ) : (
+            <>
+              <label htmlFor="founder-newsletter-email">
+                <span>Email Address</span>
+                <input
+                  id="founder-newsletter-email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="founder@company.com"
+                />
+              </label>
+              <button type="submit">Join →</button>
+            </>
+          )}
+        </form>
+      </section>
     </div>
   );
 }
+

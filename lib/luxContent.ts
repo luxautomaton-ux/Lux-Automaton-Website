@@ -263,14 +263,267 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
     audience: "Lux Automaton",
     title: "AI Foundations for Founders",
     level: "Beginner",
-    ageBand: "Adults and founders",
-    duration: "2 hours",
-    image: "/images/lux-world-hero.png",
-    thumbnail: "/images/page-hero-circuit.png",
-    description: "Learn what AI can do, what it cannot do, and how to choose the first workflow worth automating.",
-    outcome: "A one-page AI opportunity map for your business.",
-    materials: ["Founder AI checklist", "Workflow map worksheet", "Prompt starter sheet"],
-    lessons: ["What AI is in plain language", "Where automation helps first", "Private versus public AI tools", "Writing useful prompts", "Choosing your first workflow"],
+    ageBand: "Founders, operators & business teams",
+    duration: "120 minutes (2 hrs)",
+    image: "/images/00_workshop_hero.png",
+    thumbnail: "/images/01_workshop_thumbnail.png",
+    brandLogo: "/images/lux-automaton-brand/lux-automaton-logo.png",
+    description: "A practical two-hour workshop that helps founders understand what AI is, find the best first automation opportunity, protect business data, write useful prompts with the Lux CRAFT framework, and leave with a responsible 30-day pilot plan.",
+    outcome: "A complete Founder AI Pilot Blueprint containing a prioritized workflow, tool & data decision, CRAFT prompt, test & verification plan, human-approval controls, and a 30-day implementation roadmap.",
+    materials: [
+      "Participant workbook (digital & printable PDF)",
+      "Facilitator slide deck (43-slide presentation)",
+      "Laptop or tablet for optional AI tool exercises",
+      "One-paragraph description of learner's business or idea",
+      "Sticky notes or digital whiteboard",
+      "Timer and markers",
+      "Synthetic or approved sample business content for prompt testing",
+      "Optional: current tool list, sample SOP, blank customer intake form"
+    ],
+    learningGoals: [
+      "Understand AI capabilities and limitations in business contexts.",
+      "Identify the highest-value automation opportunity in your business.",
+      "Create a practical AI implementation roadmap.",
+      "Distinguish public, business, and private AI tool environments.",
+      "Write and test a reusable prompt using the Lux CRAFT framework.",
+      "Apply privacy rules, human approval, verification, and stop conditions to an AI pilot."
+    ],
+    prerequisites: [
+      "No prior AI experience required.",
+      "Bring a description of your business or idea.",
+      "Bring one recurring workflow or operational frustration.",
+      "Do not bring or display unapproved confidential, regulated, or personally identifiable information."
+    ],
+    safetyNotes: [
+      "Never share proprietary business data with public AI tools without understanding and approving privacy implications.",
+      "Use synthetic, public, de-identified, or explicitly approved data during workshop exercises.",
+      "Always verify AI outputs before making or communicating business decisions.",
+      "Keep human oversight on all customer-facing communications and high-impact decisions.",
+      "Do not put passwords, access tokens, payment details, or identity documents into general AI prompts.",
+      "Review terms, data-use commitments, retention, permissions, and controls for the exact tool plan being used.",
+      "Assign a person with authority to pause or stop the pilot.",
+      "Escalate legal, compliance, privacy, security, employment, financial, or regulated questions to qualified professionals."
+    ],
+    extensionActivities: [
+      "Map three additional workflows for AI assistance or automation.",
+      "Research AI tools specific to your industry using workshop privacy and control questions.",
+      "Create and run a 30-day AI experiment plan.",
+      "Develop a team AI data rule card and approval process.",
+      "Build a small prompt library with owners, versions, test cases, and review dates.",
+      "Conduct a day-30 evidence review and decide to go, revise, or stop."
+    ],
+    lessons: [
+      {
+        title: "AI, Machine Learning, and Generative AI in Plain Language",
+        duration: "10 min",
+        moduleTitle: "Module 1: What AI Actually Is",
+        overview: "A founder-friendly explanation of the major AI categories and the input-model-output-human loop behind useful business applications.",
+        objectives: [
+          "Define AI in practical business language without treating it as magic or a person.",
+          "Distinguish rules-based automation, predictive AI, and generative AI.",
+          "Map one business task to the type of capability it actually requires."
+        ],
+        activity: "AI Landscape Card Sort: Sort common founder tasks into automation, predictive AI, generative AI, or human-led categories.",
+        deliverable: "A one-page Founder AI Landscape Map showing one real task, the capability required, the human reviewer, and the final action.",
+        tips: [
+          "Name the business output before naming a tool.",
+          "Separate content creation from business approval.",
+          "Use automation for known steps and AI for pattern-based assistance.",
+          "Treat every AI output as a draft, estimate, or recommendation until verified."
+        ],
+        checkIn: "Which part of your chosen task is pattern work, and which part requires human judgment?",
+        image: "/images/02_lesson_01_what_ai_is.png"
+      },
+      {
+        title: "What AI Can Do — and Where It Fails",
+        duration: "10 min",
+        moduleTitle: "Module 1: What AI Actually Is",
+        overview: "A practical capability-and-limitations map that helps founders use AI for assistance without surrendering verification, judgment, or accountability.",
+        objectives: [
+          "Recognize business tasks where AI is strong at transformation, patterning, and first drafts.",
+          "Identify failure modes such as fabricated facts, missing context, inconsistent reasoning, and overconfident language.",
+          "Choose an appropriate level of human review based on consequence and reversibility."
+        ],
+        activity: "Capability Boundary Map: Create two columns ('AI can assist' and 'Human must decide') and add a review rule for every AI-assisted step.",
+        deliverable: "A capability boundary map with at least three AI-assisted tasks, their risk level, required reviewer, and one explicit no-go boundary.",
+        tips: [
+          "Ask for options, not unquestioned final answers.",
+          "Require the model to identify missing information.",
+          "Verify facts against the original source, not another AI summary.",
+          "Keep high-impact decisions with qualified people."
+        ],
+        checkIn: "What is one output in your business that looks easy to draft but is expensive to get wrong?",
+        image: "/images/03_lesson_02_capabilities_limits.png"
+      },
+      {
+        title: "Find Repetition, Friction, and Delay",
+        duration: "12 min",
+        moduleTitle: "Module 2: Where Automation Helps First",
+        overview: "A workflow-discovery lesson that starts with operational pain rather than tools or trends.",
+        objectives: [
+          "Identify repeatable work, information bottlenecks, and handoff delays.",
+          "Distinguish a task, a workflow, and a business decision.",
+          "Document one workflow from trigger through outcome and exceptions."
+        ],
+        activity: "Friction Inventory Sprint: Map one workflow on sticky notes or workbook, highlighting repeated work, waiting, search, and rework.",
+        deliverable: "A current-state workflow map with trigger, inputs, steps, owners, outcome, friction points, baseline, and exceptions.",
+        tips: [
+          "Observe the real process instead of the ideal process.",
+          "Include manual work that happens outside official systems.",
+          "Ask where information is re-entered or reformatted.",
+          "Fix unclear ownership before adding automation."
+        ],
+        checkIn: "Where does your workflow spend more time waiting or searching than producing value?",
+        image: "/images/04_lesson_03_find_friction.png"
+      },
+      {
+        title: "Score Opportunities by Value, Risk, and Readiness",
+        duration: "13 min",
+        moduleTitle: "Module 2: Where Automation Helps First",
+        overview: "A practical scorecard for selecting an early AI opportunity that is useful, testable, and safe enough to learn from.",
+        objectives: [
+          "Evaluate AI opportunities across value, frequency, readiness, risk, and reversibility.",
+          "Compare a high-value long-term idea with a lower-risk first pilot.",
+          "Select a shortlist supported by observable workflow evidence."
+        ],
+        activity: "Opportunity Ranking Lab: Score three real workflows across six dimensions and compare top choice with a partner.",
+        deliverable: "A scored shortlist of three AI opportunities with evidence, reviewer availability, shadow-test feasibility, and a recommended first candidate.",
+        tips: [
+          "Use conservative scores when evidence is weak.",
+          "Treat high risk as a reason for stronger controls, not a reason to hide it.",
+          "Prefer workflows with a reviewer close to the output.",
+          "Choose a pilot that can be stopped without disrupting the business."
+        ],
+        checkIn: "Which score in your top opportunity is based on evidence, and which is still an assumption?",
+        image: "/images/05_lesson_04_score_opportunities.png"
+      },
+      {
+        title: "Public, Private, and Enterprise AI: What Changes?",
+        duration: "12 min",
+        moduleTitle: "Module 3: Private vs. Public AI Tools",
+        overview: "A tool-selection lesson focused on data flow, retention, access, administration, contractual commitments, and operational control.",
+        objectives: [
+          "Describe practical differences among public consumer, enterprise or business, and private AI environments.",
+          "Ask the vendor and policy questions that matter before sensitive use.",
+          "Match a workflow's data and consequence to an appropriate tool class."
+        ],
+        activity: "Tool Class Comparison: Compare a public consumer tool, an approved business environment, and a private deployment using seven control questions.",
+        deliverable: "A tool-class decision table for one workflow, including data type, required controls, approved environment, decision owner, and review date.",
+        tips: [
+          "Verify the terms for the exact plan, not the general brand.",
+          "Review plug-ins, connectors, and automations as part of the data path.",
+          "Use synthetic examples during early experimentation.",
+          "Revisit the decision when the tool, plan, integration, or workflow changes."
+        ],
+        checkIn: "Which vendor control would change your decision most: training use, retention, access, administration, or auditability?",
+        image: "/images/06_lesson_05_public_private.png"
+      },
+      {
+        title: "Classify Data Before You Prompt",
+        duration: "13 min",
+        moduleTitle: "Module 3: Private vs. Public AI Tools",
+        overview: "A simple four-level data-classification method and a one-page rule card for safer AI use.",
+        objectives: [
+          "Classify information as public, internal, confidential, or restricted.",
+          "Apply data minimization, de-identification, permission, and output-handling rules.",
+          "Create clear green, yellow, and red guidance for a team."
+        ],
+        activity: "Data Rule Card Workshop: Create a one-page AI data-handling card for your business with four classifications, examples, allowed environments, and prohibited inputs.",
+        deliverable: "A founder-approved AI data rule card covering input classification, minimization, de-identification, tool approval, output handling, and escalation.",
+        tips: [
+          "Classify the output as carefully as the input.",
+          "Remove identifiers even in an approved tool when they are unnecessary.",
+          "Keep credentials, secrets, and authentication codes out of prompts.",
+          "Give the team a named person to ask when the answer is unclear."
+        ],
+        checkIn: "What information does your workflow currently collect that the AI task does not actually need?",
+        image: "/images/07_lesson_06_data_rules.png"
+      },
+      {
+        title: "Write Useful Prompts with the Lux CRAFT Framework",
+        duration: "15 min",
+        moduleTitle: "Module 4: Writing Useful Prompts",
+        overview: "A five-part prompt framework that makes business instructions clear, bounded, and testable.",
+        objectives: [
+          "Use Context, Role, Assignment, Format plus Boundaries, and Test criteria in a prompt.",
+          "Convert a vague request into a specific business instruction.",
+          "Require the model to flag missing information instead of inventing it."
+        ],
+        activity: "CRAFT Prompt Build: Turn one vague request into a complete CRAFT prompt and exchange it with a partner to check all elements.",
+        deliverable: "A version-one reusable CRAFT prompt with title, owner, approved data class, source requirements, output format, boundaries, and test criteria.",
+        tips: [
+          "Put the task and source boundaries near the beginning.",
+          "Use examples to show the desired output when consistency matters.",
+          "Tell the model what not to invent.",
+          "Require visible questions or placeholders for missing information."
+        ],
+        checkIn: "Which CRAFT element was missing from the prompt you would normally write?",
+        image: "/images/08_lesson_07_craft_prompt.png"
+      },
+      {
+        title: "Test, Refine, Verify, and Save",
+        duration: "15 min",
+        moduleTitle: "Module 4: Writing Useful Prompts",
+        overview: "A prompt quality loop that converts a first draft into a controlled, reusable business asset.",
+        objectives: [
+          "Evaluate AI outputs for accuracy, completeness, usefulness, tone, and risk.",
+          "Improve prompts through controlled iteration and edge-case testing.",
+          "Save a prompt with versioning, ownership, approved data, and a verification checklist."
+        ],
+        activity: "Prompt Test Lab: Run or simulate three test cases, record results, revise one element, and complete a reusable prompt card plus verification checklist.",
+        deliverable: "A version-two prompt, a three-case test log, a verifier checklist, and an approval record for controlled use.",
+        tips: [
+          "Change one variable at a time during refinement.",
+          "Include at least one incomplete or conflicting test case.",
+          "Save failed examples because they reveal important boundaries.",
+          "Review the prompt whenever the business source or policy changes."
+        ],
+        checkIn: "What edge case would make your prompt produce a confident but wrong result?",
+        image: "/images/09_lesson_08_test_prompts.png"
+      },
+      {
+        title: "Select and Scope a Low-Risk First Workflow",
+        duration: "10 min",
+        moduleTitle: "Module 5: Choosing Your First Workflow",
+        overview: "A scoping method that turns the top opportunity into a narrow workflow with clear inputs, outputs, ownership, and exceptions.",
+        objectives: [
+          "Select a first workflow using the opportunity scorecard and privacy rules.",
+          "Define a narrow trigger, input, output, reviewer, and exception path.",
+          "Write explicit in-scope, out-of-scope, and stop conditions."
+        ],
+        activity: "First Workflow Canvas: Complete a one-page canvas with trigger, inputs, AI action, output, reviewer, destination, exceptions, boundaries, controls, and hypothesis.",
+        deliverable: "A fully scoped first-workflow canvas suitable for a controlled pilot.",
+        tips: [
+          "Start with one output and one reviewer.",
+          "Keep automatic sending or irreversible action out of the first pilot.",
+          "Route exceptions to a person instead of forcing completion.",
+          "Write out-of-scope items as clearly as in-scope items."
+        ],
+        checkIn: "What will your pilot refuse to do, even if the AI appears capable?",
+        image: "/images/10_lesson_09_choose_workflow.png"
+      },
+      {
+        title: "Build the 30-Day AI Pilot Roadmap",
+        duration: "10 min",
+        moduleTitle: "Module 5: Choosing Your First Workflow",
+        overview: "A practical implementation roadmap with phases, owners, measures, guardrails, review checkpoints, and go-or-stop criteria.",
+        objectives: [
+          "Plan a 30-day pilot across baseline, build, test, controlled use, and review phases.",
+          "Choose measures that capture speed, quality, rework, exceptions, and human confidence.",
+          "Set launch gates, incident handling, and go, revise, or stop decisions."
+        ],
+        activity: "30-Day Pilot Builder: Place workflow on a five-phase roadmap, choose measures, assign owners, and complete final decision criteria.",
+        deliverable: "A complete Founder AI Pilot Blueprint and 30-day implementation roadmap.",
+        tips: [
+          "Define success and stop conditions before testing.",
+          "Track reviewer effort, not just AI generation time.",
+          "Keep the first controlled-use volume intentionally small.",
+          "Treat revise or stop as valid, evidence-based outcomes."
+        ],
+        checkIn: "What evidence would convince you to stop or redesign the pilot, even if the team likes the tool?",
+        image: "/images/11_lesson_10_30_day_pilot.png"
+      }
+    ]
   },
   {
     slug: "build-your-first-ai-business",

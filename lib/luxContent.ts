@@ -80,7 +80,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "July 23, 2026",
     readTime: "6 min read",
     category: "AI, Health & Families",
-    image: "/images/01-thumbnail-dr-dooley-smart-health-adventure.png",
+    image: "/images/lux-care-os-hero.jpg",
     video: "/videos/dr-dooley-smart-health-adventure-episode-1.mp4",
     takeaways: [
       "01 — The smart pharmacy: AI can check; healthcare professionals decide.",
@@ -3017,7 +3017,7 @@ export const LUX_TV_KIDS_EPISODES: TvEpisode[] = [
     series: "Lux Kids TV",
     duration: "8m",
     rating: "Kids & Families",
-    image: "/images/01-thumbnail-dr-dooley-smart-health-adventure.png",
+    image: "/images/lux-care-os-hero.jpg",
     video: "/videos/dr-dooley-smart-health-adventure-episode-1.mp4",
     storyUrl: "/blog",
     description: "LANA and Ace explore a smart pharmacy, meet a wellness robot, and enter a holographic data garden with Dr. Torrey Dooley.",

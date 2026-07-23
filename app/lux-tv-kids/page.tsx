@@ -23,7 +23,7 @@ export default function LuxTvKidsPage() {
       <section className="tv-hero kids-tv-hero">
         <video
           className="world-hero-video"
-          src={prefixPath(featured.video)}
+          src={prefixPath(featured?.video || "/videos/lux-ai-kids-promo.mp4")}
           autoPlay
           loop
           muted

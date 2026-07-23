@@ -25,31 +25,20 @@ function StoryMedia({ article, sizes }: { article: BlogArticle; sizes: string })
   );
 }
 
-function renderArticleParagraph(paragraph: string, index: number, onImageClick?: (item: VisualAssetItem) => void) {
+function renderArticleParagraph(paragraph: string, index: number) {
   // Check for Markdown Image syntax ![alt](url)
   const imageMatch = paragraph.match(/^!\[(.*?)\]\((.*?)\)$/);
   if (imageMatch) {
     const alt = imageMatch[1];
-    const rawSrc = imageMatch[2];
-    const src = prefixPath(rawSrc);
+    const src = prefixPath(imageMatch[2]);
     return (
-      <figure
-        key={index}
-        className="my-8 rounded-2xl overflow-hidden border border-cyan-500/30 bg-slate-950/90 shadow-2xl group cursor-pointer"
-        onClick={() => onImageClick?.({ title: alt || "Article Photo", imageUrl: rawSrc, type: "Full-Res Article Photo" })}
-      >
+      <figure key={index} className="my-8 rounded-2xl overflow-hidden border border-cyan-500/30 bg-slate-950/90 shadow-2xl">
         <div className="relative w-full aspect-video">
-          <Image src={src} alt={alt || "Article illustration"} fill className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="(max-width: 1000px) 100vw, 900px" />
-          <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span className="px-4 py-2 rounded-xl bg-cyan-400 text-slate-950 font-bold text-xs shadow-lg">
-              🔍 Click to View Fullsize Floating Modal
-            </span>
-          </div>
+          <Image src={src} alt={alt || "Article illustration"} fill className="object-cover" sizes="(max-width: 1000px) 100vw, 900px" />
         </div>
         {alt && (
-          <figcaption className="p-3.5 text-center text-xs font-mono text-cyan-300 bg-slate-900/90 border-t border-cyan-500/20 flex items-center justify-center gap-2">
-            <span>📷 {alt}</span>
-            <span className="text-[10px] text-cyan-400/80 font-sans">(Click photo to expand)</span>
+          <figcaption className="p-3.5 text-center text-xs font-mono text-cyan-300 bg-slate-900/90 border-t border-cyan-500/20">
+            📷 {alt}
           </figcaption>
         )}
       </figure>
@@ -212,7 +201,6 @@ function getArticleVisualAssets(article: BlogArticle) {
 export default function BlogPage() {
   const [activeFilter, setActiveFilter] = useState<"All" | Audience>("All");
   const [selected, setSelected] = useState<BlogArticle>(BLOG_ARTICLES[0]);
-  const [activeLightboxImage, setActiveLightboxImage] = useState<VisualAssetItem | null>(null);
   const articleRef = useRef<HTMLElement>(null);
 
   const articles = useMemo(
@@ -399,7 +387,7 @@ export default function BlogPage() {
               <div className="editorial-image">
                 <StoryMedia article={selected} sizes="(max-width: 980px) 100vw, 800px" />
               </div>
-              {selected.body.map((paragraph, index) => renderArticleParagraph(paragraph, index, setActiveLightboxImage))}
+              {selected.body.map((paragraph, index) => renderArticleParagraph(paragraph, index))}
 
               {/* SPECIAL VISUAL ASSETS & DOWNLOADABLE KITS GALLERY DECK */}
               <ArticleVisualAssetsDeck
@@ -420,49 +408,6 @@ export default function BlogPage() {
           </div>
           <Link href="/community">Join the Lux community <span aria-hidden="true">→</span></Link>
         </section>
-
-        {/* FLOATING LIGHTBOX MODAL FOR INLINE BLOG PHOTOS */}
-        {activeLightboxImage && (
-          <div className="fixed inset-0 z-[99999] bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8" onClick={() => setActiveLightboxImage(null)}>
-            <div className="relative w-full max-w-5xl h-[88vh] bg-slate-900 border border-cyan-500/40 rounded-2xl overflow-hidden shadow-2xl flex flex-col" onClick={(e) => e.stopPropagation()}>
-              <div className="flex items-center justify-between px-6 py-4 bg-slate-950 border-b border-cyan-500/20">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">🖼️</span>
-                  <div>
-                    <h4 className="text-base sm:text-lg font-bold text-white leading-tight">{activeLightboxImage.title}</h4>
-                    <span className="text-xs font-mono text-cyan-400">{activeLightboxImage.type || "Full-Res Blog Photo"}</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <a
-                    href={prefixPath(activeLightboxImage.imageUrl)}
-                    download
-                    className="px-4 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs transition-all shadow-md"
-                  >
-                    ⬇️ Save PNG
-                  </a>
-                  <button
-                    type="button"
-                    className="w-9 h-9 rounded-full bg-slate-800 hover:bg-red-600 text-white font-bold text-base flex items-center justify-center transition-colors"
-                    onClick={() => setActiveLightboxImage(null)}
-                    aria-label="Close image lightbox"
-                  >
-                    ✕
-                  </button>
-                </div>
-              </div>
-              <div className="relative flex-1 bg-slate-950 flex items-center justify-center p-4">
-                <Image
-                  src={prefixPath(activeLightboxImage.imageUrl)}
-                  alt={activeLightboxImage.title}
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        )}
       </section>
     </main>
   );

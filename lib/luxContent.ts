@@ -73,54 +73,6 @@ export interface TvEpisode {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
-    slug: "asa-lana-the-story-remembers-ep1",
-    audience: "Lux Automaton",
-    title: "ASA + LANA: The Story Remembers — Episode 1: Why Every AI Production Needs Memory",
-    deck: "One clip is just a seed. A series needs a soul. Welcome to the birth of Lux Codex and cinematic AI continuity.",
-    date: "July 22, 2026",
-    readTime: "6 min read",
-    category: "Lux Original Series",
-    image: "/images/04_YouTube_Thumbnail_16x9.png",
-    video: "/videos/Initial_Scene_-_2026-07-22_202607220124.mp4",
-    takeaways: [
-      "01 — One clip is just a seed; a series needs a connected soul.",
-      "02 — Solve AI filmmaking's greatest challenge: character and visual continuity.",
-      "03 — Move from random prompts to intentional directing with Lux Codex."
-    ],
-    body: [
-      "One clip is just a seed. A series needs a soul.",
-      "Welcome to the birth of Lux Codex. Join Asa and LANA inside the Lux Automaton Laboratory as they solve one of AI filmmaking’s greatest challenges: continuity. Across 10 episodes, they move from glitching identities and broken motion to a fully connected, directed cinematic production.",
-      "![ASA + LANA: The Story Remembers Series Preview](/images/00_Marketing_Set_Preview.jpg)",
-      "## 01 — Moving Beyond Random Generation",
-      "Traditional AI text-to-video tools excel at generating stunning isolated 4-second shots. But when you try to string three shots together into a coherent narrative, the character's face shifts, lighting shifts, and the world loses its rules.",
-      "In Episode 1 of *ASA + LANA: The Story Remembers*, Asa Pritchard and LANA demonstrate why raw prompting fails for long-form storytelling. Without a persistent memory engine, every frame is treated as a brand new universe.",
-      "![Character Duo Poster](/images/05_Character_Duo_Poster_4x5.png)",
-      "## 02 — The Lux Codex Continuity Engine",
-      "Lux Codex was engineered to act as an operating memory layer for creators. By establishing character seeds, environment anchors, and motion vectors, creators maintain absolute visual integrity across entire episodes.",
-      "> “We’re moving from random generation to intentional directing—one frame at a time.” — Asa Pritchard",
-      "![Lux Codex Continuity Engine Concept](/images/06_Lux_Codex_Continuity_Engine_4x5.png)",
-      "## 03 — The 10-Episode Cinematic Arc",
-      "Follow Asa and LANA as they test, debug, and push the boundaries of spatial consistency, voice alignment, and narrative pacing. Watch the full episode now on Lux TV and explore how you can build persistent AI workflows for your own productions.",
-      "![10-Episode Story Arc Overview](/images/07_Ten_Episode_Story_Arc_4x5.png)"
-    ],
-  },
-  {
-    slug: "private-ai-business-os",
-    audience: "Lux Automaton",
-    title: "What a Private AI Business OS Actually Does",
-    deck: "A practical guide to replacing scattered apps with one intelligent operating layer.",
-    date: "July 21, 2026",
-    readTime: "6 min read",
-    category: "Private AI",
-    image: "/images/lux-world-hero.png",
-    takeaways: ["Unify scattered business context", "Keep private files under owner control", "Turn repeatable work into guided systems"],
-    body: [
-      "A private AI business OS is not a chatbot with a nicer dashboard. It is a working environment where customer files, product notes, SOPs, budgets, project history, and daily tasks live close enough together for AI to help with real execution.",
-      "The difference is context. A normal tool waits for a prompt. Lux Automaton is designed around repeatable work: intake a customer, draft the follow-up, prepare the invoice, organize the task list, and keep the next move visible.",
-      "The goal is not to replace the owner. The goal is to give the owner leverage. The human keeps judgment, taste, relationships, and final approval. The system carries memory, drafts, checklists, and operational rhythm."
-    ],
-  },
-  {
     slug: "dr-dooleys-smart-health-adventure",
     audience: "Lux AI Kids",
     title: "Dr. Dooley’s Smart Health Adventure: Three AI Healthcare Lessons for Kids",
@@ -128,7 +80,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "July 23, 2026",
     readTime: "6 min read",
     category: "AI, Health & Families",
-    image: "/images/lux-care-os-hero.jpg",
+    image: "/images/01-thumbnail-dr-dooley-smart-health-adventure.png",
     video: "/videos/dr-dooley-smart-health-adventure-episode-1.mp4",
     takeaways: [
       "01 — The smart pharmacy: AI can check; healthcare professionals decide.",
@@ -188,6 +140,54 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "### ⚠️ Important health and safety note",
       "This story and its activities are for general education only. They do not provide medical advice, diagnosis, or treatment. Never use an AI tool as a substitute for a qualified healthcare professional. For symptoms, medicines, diagnoses, or treatment decisions, speak with an appropriate licensed clinician or pharmacist. In an emergency, contact local emergency services."
     ]
+  },
+  {
+    slug: "asa-lana-the-story-remembers-ep1",
+    audience: "Lux Automaton",
+    title: "ASA + LANA: The Story Remembers — Episode 1: Why Every AI Production Needs Memory",
+    deck: "One clip is just a seed. A series needs a soul. Welcome to the birth of Lux Codex and cinematic AI continuity.",
+    date: "July 22, 2026",
+    readTime: "6 min read",
+    category: "Lux Original Series",
+    image: "/images/04_YouTube_Thumbnail_16x9.png",
+    video: "/videos/Initial_Scene_-_2026-07-22_202607220124.mp4",
+    takeaways: [
+      "01 — One clip is just a seed; a series needs a connected soul.",
+      "02 — Solve AI filmmaking's greatest challenge: character and visual continuity.",
+      "03 — Move from random prompts to intentional directing with Lux Codex."
+    ],
+    body: [
+      "One clip is just a seed. A series needs a soul.",
+      "Welcome to the birth of Lux Codex. Join Asa and LANA inside the Lux Automaton Laboratory as they solve one of AI filmmaking’s greatest challenges: continuity. Across 10 episodes, they move from glitching identities and broken motion to a fully connected, directed cinematic production.",
+      "![ASA + LANA: The Story Remembers Series Preview](/images/00_Marketing_Set_Preview.jpg)",
+      "## 01 — Moving Beyond Random Generation",
+      "Traditional AI text-to-video tools excel at generating stunning isolated 4-second shots. But when you try to string three shots together into a coherent narrative, the character's face shifts, lighting shifts, and the world loses its rules.",
+      "In Episode 1 of *ASA + LANA: The Story Remembers*, Asa Pritchard and LANA demonstrate why raw prompting fails for long-form storytelling. Without a persistent memory engine, every frame is treated as a brand new universe.",
+      "![Character Duo Poster](/images/05_Character_Duo_Poster_4x5.png)",
+      "## 02 — The Lux Codex Continuity Engine",
+      "Lux Codex was engineered to act as an operating memory layer for creators. By establishing character seeds, environment anchors, and motion vectors, creators maintain absolute visual integrity across entire episodes.",
+      "> “We’re moving from random generation to intentional directing—one frame at a time.” — Asa Pritchard",
+      "![Lux Codex Continuity Engine Concept](/images/06_Lux_Codex_Continuity_Engine_4x5.png)",
+      "## 03 — The 10-Episode Cinematic Arc",
+      "Follow Asa and LANA as they test, debug, and push the boundaries of spatial consistency, voice alignment, and narrative pacing. Watch the full episode now on Lux TV and explore how you can build persistent AI workflows for your own productions.",
+      "![10-Episode Story Arc Overview](/images/07_Ten_Episode_Story_Arc_4x5.png)"
+    ],
+  },
+  {
+    slug: "private-ai-business-os",
+    audience: "Lux Automaton",
+    title: "What a Private AI Business OS Actually Does",
+    deck: "A practical guide to replacing scattered apps with one intelligent operating layer.",
+    date: "July 21, 2026",
+    readTime: "6 min read",
+    category: "Private AI",
+    image: "/images/lux-world-hero.png",
+    takeaways: ["Unify scattered business context", "Keep private files under owner control", "Turn repeatable work into guided systems"],
+    body: [
+      "A private AI business OS is not a chatbot with a nicer dashboard. It is a working environment where customer files, product notes, SOPs, budgets, project history, and daily tasks live close enough together for AI to help with real execution.",
+      "The difference is context. A normal tool waits for a prompt. Lux Automaton is designed around repeatable work: intake a customer, draft the follow-up, prepare the invoice, organize the task list, and keep the next move visible.",
+      "The goal is not to replace the owner. The goal is to give the owner leverage. The human keeps judgment, taste, relationships, and final approval. The system carries memory, drafts, checklists, and operational rhythm."
+    ],
   },
   {
     slug: "the-lana-weekly-turning-ideas-into-a-community-rhythm",
@@ -3017,7 +3017,7 @@ export const LUX_TV_KIDS_EPISODES: TvEpisode[] = [
     series: "Lux Kids TV",
     duration: "8m",
     rating: "Kids & Families",
-    image: "/images/lux-care-os-hero.jpg",
+    image: "/images/01-thumbnail-dr-dooley-smart-health-adventure.png",
     video: "/videos/dr-dooley-smart-health-adventure-episode-1.mp4",
     storyUrl: "/blog",
     description: "LANA and Ace explore a smart pharmacy, meet a wellness robot, and enter a holographic data garden with Dr. Torrey Dooley.",

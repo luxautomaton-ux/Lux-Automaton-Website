@@ -49,7 +49,6 @@ export default async function ProductDetailPage({ params }: Props) {
             loop
             playsInline
             poster={prefixPath(previews[0]?.image || product.heroImage || "")}
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
           >
             <source src={prefixPath(product.videoHero)} type="video/mp4" />
           </video>

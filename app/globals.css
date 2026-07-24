@@ -63,7 +63,12 @@
   isolation: isolate;
 }
 
-.product-showcase-hero > img {
+.product-showcase-hero > img,
+.product-showcase-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: -3;
   object-fit: cover;
   object-position: center;

@@ -1,0 +1,108 @@
+{
+  "name": "Lux 10 Prompt Lenses",
+  "version": "1.0",
+  "description": "Reusable, unofficial prompt lenses based on the source video's ten power words. These are not official ChatGPT commands.",
+  "usage": "Choose one primary lens and optionally one supporting lens. Always include task, context, constraints, and output format.",
+  "lenses": [
+    {
+      "trigger": "FIRSTPRINCIPLES",
+      "purpose": "Break the problem into facts, assumptions, constraints, and fundamentals.",
+      "expansion": "Separate known facts, assumptions, non-negotiable constraints, and inherited conventions. Rebuild the simplest workable answer from the fundamentals.",
+      "risks": [
+        "May ignore historical evidence if used carelessly",
+        "Should not override law, safety, or customer reality"
+      ]
+    },
+    {
+      "trigger": "YCOMBINATOR",
+      "purpose": "Apply a rigorous early-stage startup and validation lens.",
+      "expansion": "Focus on a painful customer problem, narrow initial user, simple offer, fastest useful test, willingness to pay, and what should not be built yet.",
+      "risks": [
+        "Not affiliated with Y Combinator",
+        "Venture-growth logic may not fit a stable local business"
+      ]
+    },
+    {
+      "trigger": "GARYVEE",
+      "purpose": "Apply a high-energy, platform-aware content and audience-growth lens.",
+      "expansion": "Prioritize platform-native content, consistent publishing, fast repurposing, audience conversation, strong hooks, and a sustainable content rhythm. Do not imitate any individual's exact voice.",
+      "risks": [
+        "Volume can reduce quality",
+        "Name-based prompts may produce caricature"
+      ]
+    },
+    {
+      "trigger": "ELI10",
+      "purpose": "Explain complex material in simple language.",
+      "expansion": "Explain for an intelligent beginner using short sentences, one everyday analogy, no unexplained jargon, one practical example, and a short summary.",
+      "risks": [
+        "Simplification can remove important nuance",
+        "Preserve risks and exceptions"
+      ]
+    },
+    {
+      "trigger": "REDTEAM",
+      "purpose": "Challenge assumptions and identify failure modes.",
+      "expansion": "Find the weakest assumption, strongest objection, easiest failure path, most expensive risk, missing evidence, and one mitigation test.",
+      "risks": [
+        "Can create paralysis",
+        "End with tests and a decision path"
+      ]
+    },
+    {
+      "trigger": "LINDYMODE",
+      "purpose": "Favor durable principles and distinguish them from temporary trends.",
+      "expansion": "Separate long-tested principles, recent tactics with limited evidence, temporary trends, and genuinely new capabilities. Recommend a stable foundation plus one measured experiment.",
+      "risks": [
+        "Old does not automatically mean correct",
+        "New evidence still matters"
+      ]
+    },
+    {
+      "trigger": "80/20",
+      "purpose": "Prioritize the small number of actions likely to create most of the result.",
+      "expansion": "Identify the three highest-leverage actions, low-value work to pause, the critical dependency, one action for today, and one metric to track.",
+      "risks": [
+        "Heuristic, not a guarantee",
+        "Must not erase safety, accessibility, maintenance, or legal work"
+      ]
+    },
+    {
+      "trigger": "HUMAN",
+      "aliases": [
+        "/human"
+      ],
+      "purpose": "Make writing more natural and less formulaic.",
+      "expansion": "Use varied sentence length, specific examples, natural transitions, appropriate contractions, and no generic filler or invented personal experience.",
+      "risks": [
+        "Cannot guarantee undetectable AI text",
+        "Do not evade disclosure or impersonate people"
+      ]
+    },
+    {
+      "trigger": "ANTIADVICE",
+      "purpose": "Test common advice against the user's actual context.",
+      "expansion": "List common advice, explain when it works, when it fails, why it may not fit this situation, and replace it with a more specific recommendation.",
+      "risks": [
+        "Common advice is not automatically wrong",
+        "Use evidence and context"
+      ]
+    },
+    {
+      "trigger": "UNLEARN",
+      "purpose": "Identify assumptions or habits that may have become outdated.",
+      "expansion": "Identify the assumptions behind the current plan, which were once valid, which may now be outdated, what evidence would confirm that, and what to test before changing the system.",
+      "risks": [
+        "Do not discard experience for novelty",
+        "Update beliefs with evidence"
+      ]
+    }
+  ],
+  "lux_prompt_stack": {
+    "task": "What should the AI do?",
+    "context": "What background does it need?",
+    "lens": "How should it examine the task?",
+    "constraints": "What rules and boundaries apply?",
+    "output": "What should the result look like?"
+  }
+}

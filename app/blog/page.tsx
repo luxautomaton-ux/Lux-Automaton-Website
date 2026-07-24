@@ -121,7 +121,26 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "asa-lana-ep2-give-the-story-a-memory") {
+  if (article.slug === "10-chatgpt-power-words-better-answers-better-lenses") {
+    downloads.push(
+      {
+        title: "10 Prompt Lenses Practice Planner",
+        subtitle: "Interactive digital & printable two-page practice worksheet for prompt engineering",
+        url: "/documents/10-prompt-lenses-practice-planner.html",
+        type: "Interactive Planner"
+      },
+      {
+        title: "Lux 10 Prompt Lenses Configuration JSON",
+        subtitle: "Importable Lux Codex & LANA JSON configuration for all 10 prompt switches",
+        url: "/documents/lux-10-prompt-lenses.json",
+        type: "Config JSON"
+      }
+    );
+    images.push(
+      { title: "Prompt Engineering & Perspective Design Map", subtitle: "5-layer Lux Prompt Stack (Task, Context, Lens, Constraints, Output)", imageUrl: "/images/15_diagram_craft_prompt_framework.png", type: "Architecture Map" },
+      { title: "01 — Safe AI Learning & Better Questions", subtitle: "Building dependable AI prompt lenses for real business operations", imageUrl: "/images/01-thumbnail-safe-ai-learning-better-questions.png", type: "Header Thumbnail" }
+    );
+  } else if (article.slug === "asa-lana-ep2-give-the-story-a-memory") {
     downloads.push(
       {
         title: "Story Memory Blueprint",

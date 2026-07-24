@@ -205,8 +205,29 @@ export default function LuxAiKidsPage(){
       </div>
     </section>
 
-    <section className="kids-section kids-journal">
-      <header>
+    <section className="kids-section kids-journal" style={{ position: "relative", overflow: "hidden", isolation: "isolate" }}>
+      <video
+        className="kids-journal-bg-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster={prefixPath("/images/lux-kids-poster.png")}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -2,
+          opacity: 0.28,
+          pointerEvents: "none"
+        }}
+      >
+        <source src={prefixPath("/videos/ace-curiosity-journal-bg.mp4")} type="video/mp4" />
+      </video>
+      <div style={{ position: "absolute", inset: 0, zIndex: -1, background: "linear-gradient(180deg, rgba(255, 248, 236, 0.72) 0%, rgba(255, 248, 236, 0.88) 100%)", pointerEvents: "none" }} />
+      <header style={{ position: "relative", zIndex: 1 }}>
         <p>THE CURIOSITY JOURNAL</p>
         <h2>Big questions. Bright ideas.</h2>
       </header>

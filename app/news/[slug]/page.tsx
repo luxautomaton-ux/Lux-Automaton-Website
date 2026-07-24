@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { NEWS_STORIES } from "@/lib/news";
 import { prefixPath } from "@/lib/prefix";
+import ArticleVisualAssetsDeck, { type VisualAssetItem, type ResourceDownloadItem } from "@/components/ArticleVisualAssetsDeck";
 
 interface Props {
   params: Promise<{
@@ -33,6 +34,121 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+function renderArticleParagraph(paragraph: string, index: number) {
+  const imageMatch = paragraph.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
+  if (imageMatch) {
+    const alt = imageMatch[1];
+    const src = prefixPath(imageMatch[2]);
+    return (
+      <figure
+        key={index}
+        style={{
+          margin: "36px 0",
+          borderRadius: "16px",
+          overflow: "hidden",
+          border: "1px solid var(--border-subtle)",
+          boxShadow: "0 12px 32px rgba(0, 0, 0, 0.4)",
+          background: "rgba(10, 15, 30, 0.6)",
+        }}
+      >
+        <div style={{ position: "relative", width: "100%", height: "460px" }}>
+          <Image src={src} alt={alt || "Article illustration"} fill style={{ objectFit: "contain" }} sizes="(max-width: 1000px) 100vw, 800px" />
+        </div>
+        {alt && (
+          <figcaption
+            style={{
+              padding: "12px 18px",
+              fontSize: "0.85rem",
+              color: "var(--text-muted)",
+              textAlign: "center",
+              borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+              background: "rgba(0, 0, 0, 0.3)",
+              fontWeight: 600,
+            }}
+          >
+            {alt}
+          </figcaption>
+        )}
+      </figure>
+    );
+  }
+
+  if (paragraph.startsWith("## ")) {
+    return (
+      <h2 key={index} style={{ fontSize: "1.8rem", fontWeight: 900, color: "var(--text-primary)", marginTop: "44px", marginBottom: "18px", letterSpacing: "-0.02em" }}>
+        {paragraph.replace(/^## /, "")}
+      </h2>
+    );
+  }
+
+  if (paragraph.startsWith("### ")) {
+    return (
+      <h3 key={index} style={{ fontSize: "1.3rem", fontWeight: 800, color: "var(--cyan)", marginTop: "32px", marginBottom: "14px" }}>
+        {paragraph.replace(/^### /, "")}
+      </h3>
+    );
+  }
+
+  if (paragraph.startsWith("> ")) {
+    const quoteText = paragraph.replace(/^> /, "").replaceAll('"', '');
+    return (
+      <blockquote
+        key={index}
+        style={{
+          margin: "28px 0",
+          padding: "16px 20px",
+          borderLeft: "4px solid var(--cyan)",
+          background: "rgba(0, 229, 255, 0.06)",
+          borderRadius: "0 12px 12px 0",
+          color: "var(--cyan)",
+          fontStyle: "italic",
+          fontSize: "1.1rem",
+        }}
+      >
+        “{quoteText}”
+      </blockquote>
+    );
+  }
+
+  const formattedHtml = paragraph
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replaceAll('src="/images/', `src="${prefixPath("/images/")}`)
+    .replaceAll('src="/videos/', `src="${prefixPath("/videos/")}`)
+    .replaceAll('href="/documents/', `href="${prefixPath("/documents/")}`);
+
+  return (
+    <p
+      key={index}
+      style={{ marginBottom: "24px", lineHeight: 1.8 }}
+      dangerouslySetInnerHTML={{ __html: formattedHtml }}
+    />
+  );
+}
+
+function getNewsDetailVisualAssets(slug: string) {
+  const images: VisualAssetItem[] = [];
+  const downloads: ResourceDownloadItem[] = [];
+
+  if (slug === "lux-agent-usb-your-ai-assistant-anywhere" || slug === "lux-agent-usb-portable-operations") {
+    downloads.push({
+      title: "Lux Agent USB First Workflow Planner",
+      subtitle: "Interactive digital & printable first workflow planning worksheet",
+      url: "/documents/lux-agent-usb-first-workflow-planner.html",
+      type: "Interactive Planner"
+    });
+    images.push(
+      { title: "Asset-Set Preview — Complete Publishing Package", subtitle: "Full overview of all 5 visual assets, printable planner, and copy", imageUrl: "/images/00-asset-set-preview-lux-agent-usb.png", type: "Asset Set Preview" },
+      { title: "01 — Thumbnail Header", subtitle: "Lux Agent USB: Your AI Assistant Anywhere", imageUrl: "/images/01-thumbnail-lux-agent-usb.png", type: "Header Thumbnail" },
+      { title: "02 — Your Assistant in Your Pocket", subtitle: "Portable AI workspace with LANA, memory, and preloaded tools", imageUrl: "/images/02-photo-your-assistant-in-your-pocket.png", type: "Photo Blueprint" },
+      { title: "03 — Work Offline With Confidence", subtitle: "Fast, reliable file transfers without internet dependency", imageUrl: "/images/03-photo-work-offline-with-confidence.png", type: "Photo Blueprint" },
+      { title: "04 — Success Packs For Real Work", subtitle: "Industry-specific starters for restaurants, real estate, trade contractors & music", imageUrl: "/images/04-photo-success-packs-for-real-work.png", type: "Photo Blueprint" },
+      { title: "05 — Lux Agent USB System Overview", subtitle: "Complete system breakdown and portable operating specs", imageUrl: "/images/05-lux-agent-usb-overview.png", type: "Overview Infographic" }
+    );
+  }
+
+  return { images, downloads };
+}
+
 export default async function NewsDetailPage({ params }: Props) {
   const { slug } = await params;
   const story = NEWS_STORIES.find((s) => s.slug === slug);
@@ -40,6 +156,8 @@ export default async function NewsDetailPage({ params }: Props) {
   if (!story) {
     notFound();
   }
+
+  const { images, downloads } = getNewsDetailVisualAssets(slug);
 
   return (
     <div style={{ paddingTop: "100px", minHeight: "100vh", background: "var(--bg-void)" }} className="circuit-grid">
@@ -182,12 +300,20 @@ export default async function NewsDetailPage({ params }: Props) {
             zIndex: 1,
           }}
         >
-          {story.content.map((paragraph, index) => (
-            <p key={index} style={{ marginBottom: "24px" }}>
-              {paragraph}
-            </p>
-          ))}
+          {story.content.map(renderArticleParagraph)}
         </article>
+
+        {/* Visual Assets Deck & Downloadable Planner */}
+        {(images.length > 0 || downloads.length > 0) && (
+          <div style={{ marginBottom: "60px", position: "relative", zIndex: 1 }}>
+            <ArticleVisualAssetsDeck
+              heading="Lux Agent USB Visual Assets & First Workflow Planner"
+              subheading="Explore full-resolution blueprints, overview infographics, and interactive workflow planners included with this article."
+              images={images}
+              downloads={downloads}
+            />
+          </div>
+        )}
 
         {/* LinkedIn Engagement Widget */}
         <div
@@ -200,8 +326,6 @@ export default async function NewsDetailPage({ params }: Props) {
           }}
           className="glass-card"
         >
-
-
           <h3 style={{ fontSize: "1.2rem", fontWeight: 800, color: "var(--text-primary)", marginBottom: "16px" }}>
             Join the conversation on LinkedIn
           </h3>
@@ -248,76 +372,13 @@ export default async function NewsDetailPage({ params }: Props) {
                 fontSize: "0.85rem",
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
-                padding: "13px 28px",
+                padding: "14px 24px",
                 borderRadius: "8px",
                 textDecoration: "none",
-                transition: "all 0.2s ease",
               }}
-              className="hover:border-[var(--cyan)] hover:bg-[rgba(0,229,255,0.02)]"
             >
-              All Articles
+              More Articles
             </Link>
-          </div>
-        </div>
-
-        {/* Bottom CTA Block */}
-        <div
-          style={{
-            padding: "40px",
-            borderRadius: "16px",
-            border: "1px solid var(--border-subtle)",
-            background: "linear-gradient(135deg, rgba(10,18,32,0.6) 0%, rgba(6,11,20,0.8) 100%)",
-            position: "relative",
-            zIndex: 1,
-            overflow: "hidden",
-          }}
-        >
-          {/* Subtle radial glow */}
-          <div
-            style={{
-              position: "absolute",
-              top: "-50%",
-              right: "-50%",
-              width: "400px",
-              height: "400px",
-              background: "radial-gradient(circle at center, rgba(0, 255, 136, 0.08) 0%, transparent 70%)",
-              zIndex: 0,
-              pointerEvents: "none",
-            }}
-          />
-
-          <div style={{ position: "relative", zIndex: 1 }} className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div style={{ maxWidth: "500px" }}>
-              <h3 style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--text-primary)", marginBottom: "10px" }}>
-                Ready to deploy custom AI systems?
-              </h3>
-              <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", lineHeight: 1.5, margin: 0 }}>
-                Let&apos;s build secure, private, and localized workflows for your business operations. Book a diagnostic and onboarding call today.
-              </p>
-            </div>
-            <div>
-              <Link
-                href="/contact"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  background: "var(--green)",
-                  color: "#000",
-                  fontWeight: 800,
-                  fontSize: "0.85rem",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  padding: "14px 28px",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  boxShadow: "0 0 20px rgba(0,255,136,0.25)",
-                  transition: "all 0.2s ease",
-                }}
-                className="hover:opacity-90 whitespace-nowrap"
-              >
-                Get in Touch
-              </Link>
-            </div>
           </div>
         </div>
 

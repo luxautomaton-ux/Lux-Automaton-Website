@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Action-First AI Output Planner</title>
+<style>
+body{font-family:Arial;background:#06101f;color:#fff;margin:0;padding:26px}.page{max-width:900px;margin:0 auto 24px;background:#0b172a;padding:34px;border:2px solid #00d3ff;border-radius:18px;page-break-after:always}
+h1,h2{color:#00d3ff}.box{border:1px solid #8448ff;border-radius:12px;padding:16px;margin:14px 0}.line{height:31px;border-bottom:1px solid #74839b}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.check{margin:7px 0}button{padding:12px 18px;background:#8448ff;color:#fff;border:0;border-radius:8px}
+@media print{body{background:#fff;padding:0}.page{border:0;color:#000;background:#fff;page-break-after:always}button{display:none}h1,h2{color:#111}.box{border-color:#333}}
+</style></head><body>
+<div class="page"><button onclick="window.print()">Print / Save as PDF</button>
+<h1>Action-First AI Output Planner</h1><p>Test one agent, one user, and one repeated task.</p>
+<div class="box"><h2>1. User preference</h2><p>What makes an AI response easier to begin?</p><div class="line"></div><div class="line"></div>
+<div class="check">☐ Action first</div><div class="check">☐ Short sections</div><div class="check">☐ Numbered steps</div><div class="check">☐ Visible progress</div><div class="check">☐ Detailed explanation on request</div></div>
+<div class="box"><h2>2. Test task</h2><p>Agent:</p><div class="line"></div><p>Repeated task:</p><div class="line"></div><p>Safe test project:</p><div class="line"></div></div>
+<div class="grid"><div class="box"><h2>3. Default output</h2><p>Time to find the first action:</p><div class="line"></div><p>What caused friction?</p><div class="line"></div><div class="line"></div></div>
+<div class="box"><h2>4. Action-first output</h2><p>Time to find the first action:</p><div class="line"></div><p>What improved?</p><div class="line"></div><div class="line"></div></div></div>
+</div>
+<div class="page"><h1>Ten-Rule Review</h1>
+<div class="box"><div class="check">☐ 1. The first line is an action or answer.</div><div class="check">☐ 2. Each numbered step contains one bounded action.</div>
+<div class="check">☐ 3. The response ends with one next action.</div><div class="check">☐ 4. Tangents are saved instead of interrupting the issue.</div>
+<div class="check">☐ 5. Progress is restated visibly.</div><div class="check">☐ 6. Time estimates use concrete units.</div>
+<div class="check">☐ 7. Completed work is named clearly.</div><div class="check">☐ 8. Errors include location, cause, and fix.</div>
+<div class="check">☐ 9. Lists remain short or are divided into stages.</div><div class="check">☐ 10. Filler and repetitive closers are removed.</div></div>
+<div class="box"><h2>Safety and choice</h2><div class="check">☐ Destructive actions still require approval.</div><div class="check">☐ The user can ask for more explanation.</div>
+<div class="check">☐ The mode can be disabled.</div><div class="check">☐ No diagnosis is stored or inferred.</div><div class="check">☐ The user says the format helps.</div></div>
+<div class="box"><h2>Decision</h2><div class="check">☐ Keep on demand</div><div class="check">☐ Customize and retest</div><div class="check">☐ Make persistent for this user/project</div><div class="check">☐ Remove</div>
+<p>One improvement:</p><div class="line"></div><p>Next test:</p><div class="line"></div></div>
+<h2>Support the person. Do not define the person.</h2></div></body></html>

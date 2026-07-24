@@ -91,7 +91,28 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "lux-agent-usb-your-ai-assistant-anywhere") {
+  if (article.slug === "adhd-friendly-ai-put-the-next-action-first") {
+    downloads.push(
+      {
+        title: "Action-First AI Output Planner",
+        subtitle: "Two-page comparison planner for testing action-first agent responses",
+        url: "/documents/action-first-ai-output-planner.html",
+        type: "Interactive Planner"
+      },
+      {
+        title: "Action-First AI Output Workflow JSON",
+        subtitle: "Importable workflow template for LANA, Hermes, Codex, or Claude Code",
+        url: "/documents/action-first-ai-output-workflow.json",
+        type: "Workflow JSON"
+      }
+    );
+    images.push({
+      title: "Approved Hero Photograph — Dr. Torrey Dooley",
+      subtitle: "Dr. Torrey Dooley, DNP, RN — Healthcare Educator & Future Medicine Guide",
+      imageUrl: "/images/01-approved-dr-torrey-hero.jpg",
+      type: "Hero Photograph"
+    });
+  } else if (article.slug === "lux-agent-usb-your-ai-assistant-anywhere") {
     downloads.push({
       title: "Lux Agent USB First Workflow Planner",
       subtitle: "Interactive digital & printable first workflow planning worksheet",

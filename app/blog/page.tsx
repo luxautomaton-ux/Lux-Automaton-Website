@@ -27,19 +27,17 @@ function StoryMedia({ article, sizes }: { article: BlogArticle; sizes: string })
 
 function renderArticleParagraph(paragraph: string, index: number) {
   // Check for Markdown Image syntax ![alt](url)
-  const imageMatch = paragraph.match(/^!\[(.*?)\]\((.*?)\)$/);
+  const imageMatch = paragraph.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
   if (imageMatch) {
     const alt = imageMatch[1];
     const src = prefixPath(imageMatch[2]);
     return (
-      <figure key={index} className="my-8 rounded-2xl overflow-hidden border border-cyan-500/30 bg-slate-950/90 shadow-2xl">
-        <div className="relative w-full aspect-video">
-          <Image src={src} alt={alt || "Article illustration"} fill className="object-cover" sizes="(max-width: 1000px) 100vw, 900px" />
+      <figure key={index} className="article-inline-figure">
+        <div className="article-inline-media">
+          <Image src={src} alt={alt || "Article illustration"} fill sizes="(max-width: 1000px) 100vw, 900px" />
         </div>
         {alt && (
-          <figcaption className="p-3.5 text-center text-xs font-mono text-cyan-300 bg-slate-900/90 border-t border-cyan-500/20">
-            📷 {alt}
-          </figcaption>
+          <figcaption>{alt}</figcaption>
         )}
       </figure>
     );
@@ -75,7 +73,7 @@ function renderArticleParagraph(paragraph: string, index: number) {
 
   // Standard paragraph
   const formattedHtml = paragraph
-    .replace(/\*\*(.*?)\*\*/g, '<strong className="text-white font-bold">$1</strong>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replaceAll('src="/images/', `src="${prefixPath("/images/")}`)
     .replaceAll('src="/videos/', `src="${prefixPath("/videos/")}`)
     .replaceAll('href="/documents/', `href="${prefixPath("/documents/")}`);
@@ -221,20 +219,6 @@ export default function BlogPage() {
 
   return (
     <main className="editorial-world">
-      <section className="editorial-hero">
-        <Image src={prefixPath("/images/lux-world-hero.png")} alt="Lux Automaton Executive Team" fill priority sizes="100vw" />
-        <div className="editorial-hero-shade" />
-        <div className="editorial-hero-copy">
-          <p>LUX AUTOMATON // DISPATCH &amp; ALPHA</p>
-          <h1>Where Creators &amp; Builders Come to Get the Alpha.</h1>
-          <span>Field notes, architectural blueprints, and creative intelligence for founders, makers, and young builders pushing the edge of AI.</span>
-          <div>
-            <a href="#alpha-dispatch" onClick={(e) => { e.preventDefault(); articleRef.current?.scrollIntoView({ behavior: 'smooth' }); }}>Read Latest Alpha <span aria-hidden="true">↓</span></a>
-            <Link href="/lux-tv">Watch Lux TV <span aria-hidden="true">→</span></Link>
-          </div>
-        </div>
-      </section>
-
       <section id="alpha-dispatch" className="lux-newsroom" aria-label="Lux Automaton newsroom">
         <div className="news-ticker" aria-label="Latest Lux update">
           <b>ALPHA TICKER</b>
@@ -269,10 +253,6 @@ export default function BlogPage() {
 
         <div className="news-lead-grid">
           <article className="news-lead-story">
-            <button type="button" className="news-lead-media" onClick={() => chooseStory(selected, true)} aria-label={`Read ${selected.title}`}>
-              <StoryMedia article={selected} sizes="(max-width: 980px) 100vw, 70vw" />
-              <span className="news-media-label">{selected.video ? "Watch + read" : "Featured story"}</span>
-            </button>
             <div className="news-lead-copy">
               <div className="news-story-meta">
                 <span>{selected.category}</span>
@@ -384,9 +364,6 @@ export default function BlogPage() {
                   </a>
                 </div>
               )}
-              <div className="editorial-image">
-                <StoryMedia article={selected} sizes="(max-width: 980px) 100vw, 800px" />
-              </div>
               {selected.body.map((paragraph, index) => renderArticleParagraph(paragraph, index))}
 
               {/* SPECIAL VISUAL ASSETS & DOWNLOADABLE KITS GALLERY DECK */}

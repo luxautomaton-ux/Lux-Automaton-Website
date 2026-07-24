@@ -3756,7 +3756,7 @@ h1, h2, h3, h4, h5, h6 {
   --news-purple: #a66cff;
   width: min(1500px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 0 0 clamp(5rem, 10vw, 9rem);
+  padding: 118px 0 clamp(5rem, 10vw, 9rem);
 }
 
 .news-ticker {
@@ -3765,7 +3765,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 18px;
   min-height: 54px;
-  margin: 0 0 clamp(4rem, 8vw, 7rem);
+  margin: 0 0 clamp(2.5rem, 5vw, 4.5rem);
   padding: 0 18px 0 0;
   border: 1px solid rgba(255, 255, 255, 0.11);
   background: rgba(255, 255, 255, 0.035);
@@ -3882,6 +3882,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 8.6;
+  max-height: 520px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -3931,7 +3932,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .news-lead-copy {
-  padding: 28px 0 0;
+  padding: clamp(1.8rem, 4vw, 4rem) 0 0;
 }
 
 .news-story-meta {
@@ -3951,7 +3952,7 @@ h1, h2, h3, h4, h5, h6 {
 .news-lead-copy h3 {
   max-width: 1050px;
   margin: 17px 0 14px;
-  font: 850 clamp(2.1rem, 4.4vw, 5rem)/0.98 "Montserrat", sans-serif;
+  font: 850 clamp(2.6rem, 5.6vw, 6.2rem)/0.94 "Montserrat", sans-serif;
   letter-spacing: -0.055em;
 }
 
@@ -4239,6 +4240,41 @@ h1, h2, h3, h4, h5, h6 {
 .news-full-article .editorial-image {
   margin: 0 0 38px;
   background: #0b101a;
+  max-height: 520px;
+  overflow: hidden;
+}
+
+.article-inline-figure {
+  margin: clamp(2rem, 5vw, 4rem) 0;
+  overflow: hidden;
+  border: 1px solid rgba(67, 230, 255, 0.26);
+  background: #090f1b;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+}
+
+.article-inline-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 260px;
+}
+
+.article-inline-media img {
+  object-fit: cover;
+}
+
+.article-inline-figure figcaption {
+  padding: 14px 18px;
+  border-top: 1px solid rgba(67, 230, 255, 0.18);
+  background: rgba(6, 11, 22, 0.94);
+  color: #9fefff;
+  font: 750 0.78rem/1.45 "JetBrains Mono", monospace;
+  letter-spacing: 0.03em;
+}
+
+.news-full-article strong {
+  color: #ffffff;
+  font-weight: 850;
 }
 
 .news-full-article > div:not(.editorial-image) {

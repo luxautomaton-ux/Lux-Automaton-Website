@@ -220,13 +220,13 @@ export default function LuxAiKidsPage(){
           height: "100%",
           objectFit: "cover",
           zIndex: -2,
-          opacity: 0.28,
+          opacity: 0.65,
           pointerEvents: "none"
         }}
       >
         <source src={prefixPath("/videos/ace-curiosity-journal-bg.mp4")} type="video/mp4" />
       </video>
-      <div style={{ position: "absolute", inset: 0, zIndex: -1, background: "linear-gradient(180deg, rgba(255, 248, 236, 0.72) 0%, rgba(255, 248, 236, 0.88) 100%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, zIndex: -1, background: "linear-gradient(180deg, rgba(255, 248, 236, 0.35) 0%, rgba(255, 248, 236, 0.5) 100%)", pointerEvents: "none" }} />
       <header style={{ position: "relative", zIndex: 1 }}>
         <p>THE CURIOSITY JOURNAL</p>
         <h2>Big questions. Bright ideas.</h2>

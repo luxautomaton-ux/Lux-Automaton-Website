@@ -66,6 +66,17 @@ export default function BooksPage() {
     <div className="lux-world">
       {/* Hero Section matching Home Page Theme */}
       <section className="world-hero" style={{ minHeight: "75vh" }}>
+        <video
+          className="world-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={prefixPath("/images/book-cover-business-terms.jpg")}
+          aria-label="Asa's hands holding Lux Slate video"
+        >
+          <source src={prefixPath("/videos/books-hero-bg.mp4")} type="video/mp4" />
+        </video>
         <div className="world-hero-shade" />
         <div className="world-orbit orbit-a" />
         <div className="world-orbit orbit-b" />

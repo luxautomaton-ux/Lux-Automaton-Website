@@ -41,7 +41,21 @@ export default async function ProductDetailPage({ params }: Props) {
   return (
     <main className="product-showcase-world" style={{ "--product-accent": product.accentColor } as CSSProperties}>
       <section className="product-showcase-hero">
-        <Image src={prefixPath(previews[0].image)} alt="" fill priority sizes="100vw" />
+        {product.videoHero ? (
+          <video
+            className="product-showcase-hero-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={prefixPath(previews[0]?.image || product.heroImage || "")}
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+          >
+            <source src={prefixPath(product.videoHero)} type="video/mp4" />
+          </video>
+        ) : (
+          <Image src={prefixPath(previews[0].image)} alt="" fill priority sizes="100vw" />
+        )}
         <div className="product-showcase-hero-shade" />
         <div className="product-showcase-hero-grid" />
         <div className="product-showcase-hero-content">
@@ -128,10 +142,27 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {product.slug === "lux-coder" && (
+      {(product.videoOverview || product.slug === "lux-coder") && (
         <section className="product-showcase-demo">
-          <div><p>Product walkthrough</p><h2>Watch Lux Coder build.</h2><span>See the command center, persistent context, and development workflow inside VS Code.</span></div>
-          <div><iframe src="https://www.youtube.com/embed/LEdcHrIkzpg" title="Lux Coder product demonstration" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div>
+          <div>
+            <p>Product walkthrough</p>
+            <h2>Watch {product.name} in action.</h2>
+            <span>See the command center, persistent context, and operating workflow inside {product.name}.</span>
+          </div>
+          <div>
+            {product.videoOverview ? (
+              <video
+                controls
+                playsInline
+                poster={prefixPath(product.heroImage || previews[0]?.image || "")}
+                style={{ width: "100%", borderRadius: "16px", border: "1px solid rgba(67, 230, 255, 0.2)" }}
+              >
+                <source src={prefixPath(product.videoOverview)} type="video/mp4" />
+              </video>
+            ) : (
+              <iframe src="https://www.youtube.com/embed/LEdcHrIkzpg" title={`${product.name} product demonstration`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+            )}
+          </div>
         </section>
       )}
 

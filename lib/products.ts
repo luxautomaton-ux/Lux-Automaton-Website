@@ -38,6 +38,8 @@ export interface Product {
   logoImage?: string;
   heroImage?: string;
   bgImage?: string;
+  videoHero?: string;
+  videoOverview?: string;
   fiveWH: FiveWH;
 }
 
@@ -135,6 +137,8 @@ export const PRODUCTS: Product[] = [
     pageHref: "/products/lux-agent-usb",
     heroImage: "/images/lux-agent-usb-lana.jpg",
     bgImage: "/images/lux-agent-usb-lana.jpg",
+    videoHero: "/videos/lux-agent-usb-commercial.mp4",
+    videoOverview: "/videos/lux-agent-usb-commercial.mp4",
     fiveWH: {
       who: {
         headline: "Built for Builders on the Move",
@@ -188,6 +192,8 @@ export const PRODUCTS: Product[] = [
     pageHref: "/products/lux-coder",
     heroImage: "/images/lana-coder-dev.jpg",
     bgImage: "/images/lana-coder-dev.jpg",
+    videoHero: "/videos/lux-coder-hero-bg.mp4",
+    videoOverview: "/videos/lux-coder-overview.mp4",
     fiveWH: {
       who: {
         headline: "For Developers Who Refuse to Slow Down",

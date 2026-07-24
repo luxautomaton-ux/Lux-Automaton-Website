@@ -165,7 +165,7 @@ export default function AskLanaPage() {
       <section className="ask-lana-hero">
         <video
           className="ask-lana-hero-video"
-          src={prefixPath("/videos/ask-lana-background.mp4")}
+          src={prefixPath("/videos/ask-lana-hero-bg.mp4")}
           poster={prefixPath("/images/lana-executive-office.jpg")}
           autoPlay
           muted

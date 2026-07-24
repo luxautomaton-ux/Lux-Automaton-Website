@@ -266,6 +266,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "## How Lux Automaton can use the idea",
       "This project fits naturally into several Lux systems:",
       "- **LANA:** Offers an Action-First Mode that opens with the next move, limits active steps, and stores tangents separately.\n- **Hermes:** Loads the skill for selected users, projects, or sessions.\n- **Lux Codex:** Combines the style with current-step tracking, files changed, tests run, and approval state.\n- **Workshops:** Teaches participants how to request output formats matching how they work best.",
+      "![Dr. Torrey Dooley - AI Health Training & Communication Blueprint](/images/05-dr-torrey-ai-health-training-overview.png)",
       "## The takeaway",
       "An ADHD-friendly coding-agent skill does not diagnose, treat, or manage ADHD. It changes the communication layer. It puts the action before the preamble. It turns a wall of text into bounded steps. It makes progress visible. And it reminds AI builders that accessibility is about how the system helps a real person begin.",
       "> **“Smart tools should reduce friction without reducing the person.” — Dr. Torrey Dooley**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",

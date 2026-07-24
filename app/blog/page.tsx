@@ -172,14 +172,28 @@ function getArticleVisualAssets(article: BlogArticle) {
         subtitle: "Importable workflow template for LANA, Hermes, Codex, or Claude Code",
         url: "/documents/action-first-ai-output-workflow.json",
         type: "Workflow JSON"
+      },
+      {
+        title: "AI Health Training & Communication Infographic",
+        subtitle: "Full-resolution printable infographic blueprint by Dr. Torrey Dooley",
+        url: "/documents/dr-torrey-ai-health-training-infographic.jpg",
+        type: "Printable Infographic"
       }
     );
-    images.push({
-      title: "Approved Hero Photograph — Dr. Torrey Dooley",
-      subtitle: "Dr. Torrey Dooley, DNP, RN — Healthcare Educator & Future Medicine Guide",
-      imageUrl: "/images/01-approved-dr-torrey-hero.jpg",
-      type: "Hero Photograph"
-    });
+    images.push(
+      {
+        title: "Approved Hero Photograph — Dr. Torrey Dooley",
+        subtitle: "Dr. Torrey Dooley, DNP, RN — Healthcare Educator & Future Medicine Guide",
+        imageUrl: "/images/01-approved-dr-torrey-hero.jpg",
+        type: "Hero Photograph"
+      },
+      {
+        title: "05 — AI Health Training & Communication Blueprint",
+        subtitle: "Dr. Torrey Dooley's 3 big lessons, smart care workflow & learning journey",
+        imageUrl: "/images/05-dr-torrey-ai-health-training-overview.png",
+        type: "Overview Infographic"
+      }
+    );
   } else if (article.slug === "lux-agent-usb-your-ai-assistant-anywhere") {
     downloads.push({
       title: "Lux Agent USB First Workflow Planner",

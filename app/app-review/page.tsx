@@ -419,7 +419,7 @@ export default function AppReviewPage() {
               
               {/* Radar Chart & Score Box */}
               <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "16px", padding: "24px", backdropFilter: "blur(20px)" }}>
-                <div style={{ display: "flex", justifyBetween: "space-between", alignItems: "center", marginBottom: "16px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
                   <div>
                     <h3 style={{ fontSize: "1.05rem", fontWeight: 800, margin: 0, color: "#fff" }}>HOW THE LUX SCORE WORKS</h3>
                     <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>7-Dimensional Operational Evaluation Model</div>

@@ -133,8 +133,8 @@ export const PRODUCTS: Product[] = [
     ctaLabel: "Join Waitlist",
     ctaHref: "/contact",
     pageHref: "/products/lux-agent-usb",
-    heroImage: "/images/lana-executive-office.jpg",
-    bgImage: "/images/lana-executive-office.jpg",
+    heroImage: "/images/lux-agent-usb-lana.jpg",
+    bgImage: "/images/lux-agent-usb-lana.jpg",
     fiveWH: {
       who: {
         headline: "Built for Builders on the Move",

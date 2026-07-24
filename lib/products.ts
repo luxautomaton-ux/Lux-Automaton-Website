@@ -68,6 +68,8 @@ export const PRODUCTS: Product[] = [
     pageHref: "/products/lux-codex",
     heroImage: "/images/lux-codex-dashboard.png",
     bgImage: "/images/lux-codex-dashboard.png",
+    videoHero: "/videos/lux-codex-hero-bg.mp4",
+    videoOverview: "/videos/lux-codex-overview.mp4",
     fiveWH: {
       who: { headline: "For Builders & Enterprise Founders", body: "For technical leaders, security-focused founders, and growing enterprises who require secure, non-custodial AI setups." },
       what: { headline: "A Private Neural Operating System", body: "Lux Codex connects your files, schemas, and credentials to a private local runtime that runs AI models." },

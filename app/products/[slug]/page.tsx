@@ -129,6 +129,38 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
       </section>
 
+      {product.slug === "lux-coder" && (
+        <section className="product-showcase-capabilities" style={{ borderTop: "1px solid rgba(67, 230, 255, 0.18)", paddingTop: "60px" }}>
+          <header>
+            <div>
+              <p>System Blueprint & Workflow Guide</p>
+              <h2>Lux Coder + Lux Agent USB Complete Guide</h2>
+            </div>
+            <span>Explore the 5-part blueprint showing how Desktop Lux Coder and Travel Lux Agent USB work together anywhere.</span>
+          </header>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginTop: "32px" }}>
+            {[
+              { num: "01", title: "Overview & System Architecture", img: "/images/lux-coder-guide-page-1.jpg", desc: "Understanding Desktop Lux Coder, Travel USB sync, and key guide topics." },
+              { num: "02", title: "What Lux Coder Is", img: "/images/lux-coder-guide-page-2.jpg", desc: "Visual workspace, multi-model support, memory wiki, and client exports." },
+              { num: "03", title: "How Lux Agent USB Works", img: "/images/lux-coder-guide-page-3.jpg", desc: "Plug-and-play travel edition carrying your assistant, prompts, and context." },
+              { num: "04", title: "Desktop vs Travel Workflow", img: "/images/lux-coder-guide-page-4.jpg", desc: "Detailed comparison matrix and step-by-step mobile transition map." },
+              { num: "05", title: "How Customers Build a Business", img: "/images/lux-coder-guide-page-5.jpg", desc: "5-step customer journey for founders, agencies, solopreneurs, and teams." },
+            ].map((guide) => (
+              <article key={guide.num} style={{ background: "#080c18", border: "1px solid rgba(67, 230, 255, 0.22)", borderRadius: "16px", padding: "20px", display: "flex", flexDirection: "column", gap: "14px" }}>
+                <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 4", borderRadius: "10px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)" }}>
+                  <Image src={prefixPath(guide.img)} alt={guide.title} fill style={{ objectFit: "cover" }} sizes="400px" />
+                </div>
+                <div>
+                  <span style={{ fontSize: "0.75rem", fontFamily: "'JetBrains Mono', monospace", color: "var(--world-cyan)", letterSpacing: "0.12em" }}>PAGE {guide.num} / 05</span>
+                  <h3 style={{ fontSize: "1.25rem", color: "#ffffff", margin: "6px 0", fontWeight: 750 }}>{guide.title}</h3>
+                  <p style={{ fontSize: "0.88rem", color: "#aab6cb", lineHeight: 1.6, margin: 0 }}>{guide.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="product-showcase-journey">
         <header><p>Complete product story</p><h2>Who it serves. When it works. How it moves.</h2></header>
         <div>

@@ -40,7 +40,7 @@ const worlds = [
     workshopHref: "/workshops",
     media: "Build Breakdowns on Lux TV",
     mediaHref: "/lux-tv",
-    image: "/images/lux-agent-usb-lana.jpg",
+    image: "/images/lana-executive-office.jpg",
     accent: "violet",
   },
   {

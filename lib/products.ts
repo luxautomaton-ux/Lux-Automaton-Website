@@ -292,8 +292,8 @@ export const PRODUCTS: Product[] = [
     ctaLabel: "Meet LANA",
     ctaHref: "/products/lana",
     pageHref: "/products/lana",
-    heroImage: "/images/lux-agent-usb-lana.jpg",
-    bgImage: "/images/lux-agent-usb-lana.jpg",
+    heroImage: "/images/lana-executive-office.jpg",
+    bgImage: "/images/lana-executive-office.jpg",
     fiveWH: {
       who: {
         headline: "For Builders, Founders, and Small Business Owners",

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import type { ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Search, ShieldCheck, Sparkles, Workflow, X } from "lucide-react";
 import { prefixPath } from "@/lib/prefix";
@@ -164,12 +163,15 @@ export default function AskLanaPage() {
   return (
     <main className="ask-lana-page">
       <section className="ask-lana-hero">
-        <Image
-          src={prefixPath("/images/lana-executive-office.jpg")}
-          alt="LANA in the Lux Automaton executive office"
-          fill
-          priority
-          className="ask-lana-hero-image"
+        <video
+          className="ask-lana-hero-video"
+          src={prefixPath("/videos/ask-lana-background.mp4")}
+          poster={prefixPath("/images/lana-executive-office.jpg")}
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
         />
         <div className="ask-lana-hero-shade" />
         <div className="ask-lana-hero-inner">

@@ -253,6 +253,11 @@ export default function BlogPage() {
 
         <div className="news-lead-grid">
           <article className="news-lead-story">
+            <button type="button" className="news-lead-media" onClick={() => chooseStory(selected, true)} aria-label={`Read ${selected.title}`}>
+              <StoryMedia article={selected} sizes="(max-width: 900px) 100vw, 45vw" />
+              {selected.video && <span className="news-play-badge" aria-hidden="true">▶</span>}
+              <span className="news-media-label">Watch + Read</span>
+            </button>
             <div className="news-lead-copy">
               <div className="news-story-meta">
                 <span>{selected.category}</span>

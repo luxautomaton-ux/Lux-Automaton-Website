@@ -236,10 +236,13 @@ export default function PdfPreviewDeckModal({
         }
         .download-btn {
           background: #43e6ff;
-          color: #071019;
+          color: #071019 !important;
+          -webkit-text-fill-color: #071019;
         }
         .download-btn:hover {
           background: #8feeff;
+          color: #071019 !important;
+          -webkit-text-fill-color: #071019;
           box-shadow: 0 0 16px rgba(67, 230, 255, 0.4);
         }
 
@@ -311,7 +314,8 @@ export default function PdfPreviewDeckModal({
         }
         .pdf-modal-download-btn {
           background: #43e6ff;
-          color: #071019;
+          color: #071019 !important;
+          -webkit-text-fill-color: #071019;
         }
         .pdf-modal-close-btn {
           width: 36px;

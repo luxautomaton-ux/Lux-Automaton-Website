@@ -4175,9 +4175,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .news-reading-header h2 {
   margin: 21px 0 20px;
-  font: 850 clamp(2.5rem, 6vw, 6.5rem)/0.95 "Montserrat", sans-serif;
-  letter-spacing: -0.06em;
+  font: 850 clamp(2rem, 5.5vw, 6.5rem)/0.98 "Montserrat", sans-serif;
+  letter-spacing: -0.05em;
   text-wrap: balance;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+  max-width: 100%;
 }
 
 .news-reading-header > strong {
@@ -4257,6 +4261,29 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   border: 0;
   background: transparent;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.news-full-article p,
+.news-full-article h2,
+.news-full-article h3,
+.news-full-article h4,
+.news-full-article blockquote,
+.news-full-article li {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.news-full-article pre {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .news-full-article .editorial-image {
@@ -4442,11 +4469,16 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .news-reading-room {
-    padding-inline: 16px;
+    padding-inline: 14px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .news-reading-header h2 {
-    font-size: 2.75rem;
+    font-size: clamp(1.65rem, 7.5vw, 2.25rem);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
   }
 
   .news-newsletter {

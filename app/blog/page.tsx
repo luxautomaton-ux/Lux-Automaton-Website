@@ -26,18 +26,43 @@ function StoryMedia({ article, sizes }: { article: BlogArticle; sizes: string })
 }
 
 function renderArticleParagraph(paragraph: string, index: number) {
+  const trimmed = paragraph.trim();
+
+  // Code Block syntax ```lang ... ```
+  if (trimmed.startsWith("```")) {
+    const lines = trimmed.split("\n");
+    const firstLine = lines[0] || "";
+    const lang = firstLine.replace(/^```/, "").trim();
+    const isClosed = lines.length > 1 && lines[lines.length - 1].trim().startsWith("```");
+    const codeLines = lines.slice(1, isClosed ? -1 : undefined);
+    const codeContent = codeLines.join("\n");
+
+    return (
+      <div key={index} className="my-5 rounded-xl bg-slate-950/90 border border-cyan-500/30 overflow-hidden shadow-lg max-w-full">
+        {lang && (
+          <div className="px-3.5 py-1 bg-cyan-950/70 border-b border-cyan-500/20 text-[10px] uppercase font-mono font-bold tracking-widest text-cyan-400">
+            {lang}
+          </div>
+        )}
+        <pre className="p-3.5 text-cyan-200 font-mono text-xs sm:text-sm overflow-x-auto whitespace-pre leading-relaxed max-w-full -webkit-overflow-scrolling-touch">
+          <code>{codeContent || trimmed.replace(/^```[a-z]*\n?/, "").replace(/\n?```$/, "")}</code>
+        </pre>
+      </div>
+    );
+  }
+
   // Check for Markdown Image syntax ![alt](url)
-  const imageMatch = paragraph.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
+  const imageMatch = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
   if (imageMatch) {
     const alt = imageMatch[1];
     const src = prefixPath(imageMatch[2]);
     return (
-      <figure key={index} className="article-inline-figure">
+      <figure key={index} className="article-inline-figure max-w-full overflow-hidden">
         <div className="article-inline-media">
           <Image src={src} alt={alt || "Article illustration"} fill sizes="(max-width: 1000px) 100vw, 900px" />
         </div>
         {alt && (
-          <figcaption>{alt}</figcaption>
+          <figcaption className="break-words">{alt}</figcaption>
         )}
       </figure>
     );
@@ -46,7 +71,7 @@ function renderArticleParagraph(paragraph: string, index: number) {
   // Heading 2
   if (paragraph.startsWith("## ")) {
     return (
-      <h2 key={index} className="text-2xl sm:text-3xl font-extrabold text-white mt-10 mb-4 tracking-tight">
+      <h2 key={index} className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mt-10 mb-4 tracking-tight break-words [overflow-wrap:anywhere] max-w-full">
         {paragraph.replace(/^## /, "")}
       </h2>
     );
@@ -55,7 +80,7 @@ function renderArticleParagraph(paragraph: string, index: number) {
   // Heading 3
   if (paragraph.startsWith("### ")) {
     return (
-      <h3 key={index} className="text-xl font-bold text-cyan-300 mt-8 mb-3">
+      <h3 key={index} className="text-lg sm:text-xl font-bold text-cyan-300 mt-8 mb-3 break-words [overflow-wrap:anywhere] max-w-full">
         {paragraph.replace(/^### /, "")}
       </h3>
     );
@@ -65,15 +90,20 @@ function renderArticleParagraph(paragraph: string, index: number) {
   if (paragraph.startsWith("> ")) {
     const quoteText = paragraph.replace(/^> /, "").replaceAll('"', '');
     return (
-      <blockquote key={index} className="my-6 pl-5 border-l-4 border-cyan-400 italic text-cyan-100 font-sans text-base sm:text-lg bg-cyan-950/20 py-3.5 pr-4 rounded-r-xl shadow-md">
+      <blockquote key={index} className="my-6 pl-4 sm:pl-5 border-l-4 border-cyan-400 italic text-cyan-100 font-sans text-sm sm:text-base md:text-lg bg-cyan-950/20 py-3.5 pr-4 rounded-r-xl shadow-md break-words [overflow-wrap:anywhere] max-w-full">
         “{quoteText}”
       </blockquote>
     );
   }
 
-  // Standard paragraph
+  // Standard paragraph formatting
   const formattedHtml = paragraph
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    // Code tags `code`
+    .replace(/`(.*?)`/g, '<code class="px-1.5 py-0.5 rounded bg-cyan-950/90 border border-cyan-500/30 text-cyan-300 font-mono text-xs sm:text-sm break-all max-w-full inline-block my-0.5">$1</code>')
+    // Markdown links [text](url)
+    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noreferrer" class="text-cyan-400 underline font-medium hover:text-cyan-300 break-words">$1</a>')
+    // Bold **text**
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-bold">$1</strong>')
     .replaceAll('src="/images/', `src="${prefixPath("/images/")}`)
     .replaceAll('src="/videos/', `src="${prefixPath("/videos/")}`)
     .replaceAll('href="/documents/', `href="${prefixPath("/documents/")}`);
@@ -81,7 +111,7 @@ function renderArticleParagraph(paragraph: string, index: number) {
   return (
     <p
       key={index}
-      className="text-slate-300 leading-relaxed my-4 text-base sm:text-lg font-sans"
+      className="text-slate-300 leading-relaxed my-4 text-base sm:text-lg font-sans break-words [overflow-wrap:anywhere] max-w-full"
       dangerouslySetInnerHTML={{ __html: formattedHtml }}
     />
   );
@@ -414,7 +444,7 @@ export default function BlogPage() {
                     href={prefixPath(selected.plannerUrl)}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm transition-all shadow-lg hover:shadow-cyan-500/30 whitespace-nowrap"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm transition-all shadow-lg hover:shadow-cyan-500/30 w-full sm:w-auto justify-center text-center"
                   >
                     📥 Download Free Planner <span aria-hidden="true">→</span>
                   </a>

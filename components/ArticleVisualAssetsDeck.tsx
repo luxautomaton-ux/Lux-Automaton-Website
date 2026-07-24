@@ -503,6 +503,27 @@ export default function ArticleVisualAssetsDeck({
           height: 100%;
           border: none;
         }
+
+        @media (max-width: 640px) {
+          .article-assets-section {
+            padding: 18px 14px;
+            margin: 32px 0 16px;
+            border-radius: 16px;
+            max-width: 100%;
+            overflow-x: hidden;
+          }
+          .downloads-deck-grid,
+          .images-gallery-grid {
+            grid-template-columns: 1fr;
+          }
+          .download-card-actions {
+            flex-direction: column;
+          }
+          .assets-btn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
       `}</style>
     </section>
   );

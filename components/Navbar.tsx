@@ -383,6 +383,25 @@ export default function Navbar() {
             Ask LANA
           </Link>
 
+          {/* App Review */}
+          <Link
+            href="/app-review"
+            style={{
+              padding: "8px 12px",
+              borderRadius: "6px",
+              fontSize: "0.78rem",
+              fontWeight: 600,
+              letterSpacing: "0.03em",
+              textDecoration: "none",
+              color: pathname.startsWith("/app-review") ? "var(--lux-cyan)" : "var(--text-secondary)",
+              background: pathname.startsWith("/app-review") ? "rgba(0, 212, 255, 0.06)" : "transparent",
+              border: pathname.startsWith("/app-review") ? "1px solid rgba(0, 212, 255, 0.15)" : "1px solid transparent",
+              transition: "all 0.2s ease",
+            }}
+          >
+            App Review
+          </Link>
+
           {/* Blog */}
           <Link
             href="/blog"
@@ -712,6 +731,22 @@ export default function Navbar() {
             }}
           >
             Ask LANA
+          </Link>
+
+          <Link
+            href="/app-review"
+            style={{
+              padding: "12px 16px",
+              borderRadius: "8px",
+              fontSize: "0.95rem",
+              fontWeight: 600,
+              textDecoration: "none",
+              color: pathname.startsWith("/app-review") ? "var(--lux-cyan)" : "var(--text-secondary)",
+              background: pathname.startsWith("/app-review") ? "rgba(0, 212, 255, 0.06)" : "transparent",
+              display: "block",
+            }}
+          >
+            App Review
           </Link>
 
           <Link

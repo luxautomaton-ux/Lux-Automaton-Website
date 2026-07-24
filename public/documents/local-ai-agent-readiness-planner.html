@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Local AI Agent Readiness Planner</title>
+<style>
+body{font-family:Arial;background:#06101f;color:#fff;margin:0;padding:26px}
+.page{max-width:900px;margin:0 auto 24px;background:#0b172a;padding:34px;border:2px solid #00d2ff;border-radius:18px;page-break-after:always}
+h1,h2{color:#00d2ff}.box{border:1px solid #8448ff;border-radius:12px;padding:16px;margin:14px 0}
+.line{height:31px;border-bottom:1px solid #74839b}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.check{margin:7px 0}button{padding:12px 18px;background:#8448ff;color:#fff;border:0;border-radius:8px}
+@media print{body{background:#fff;padding:0}.page{border:0;color:#000;background:#fff;page-break-after:always}button{display:none}h1,h2{color:#111}.box{border-color:#333}}
+</style></head><body>
+<div class="page"><button onclick="window.print()">Print / Save as PDF</button>
+<h1>Local AI Agent Readiness Planner</h1>
+<p>Prepare one bounded Ollama agent workflow before expanding access.</p>
+<div class="box"><h2>1. Define the job</h2><p>The agent should help us:</p><div class="line"></div><div class="line"></div><p>The finished result should be:</p><div class="line"></div></div>
+<div class="grid">
+<div class="box"><h2>2. Choose the route</h2><div class="check">☐ Local model</div><div class="check">☐ Cloud model</div><div class="check">☐ Hybrid with web search</div><p>Reason:</p><div class="line"></div></div>
+<div class="box"><h2>3. Choose the model</h2><p>Model:</p><div class="line"></div><div class="check">☐ Tool support verified</div><div class="check">☐ Fits hardware</div><div class="check">☐ Context is sufficient</div><div class="check">☐ License reviewed</div></div>
+</div>
+<div class="box"><h2>4. Working directory</h2><p>Approved directory:</p><div class="line"></div><div class="check">☐ Test copy</div><div class="check">☐ No unnecessary secrets</div><div class="check">☐ Backup or version control</div><div class="check">☐ Easy to restore</div></div>
+<div class="box"><h2>5. Connected services</h2><p>Web search, APIs, cloud models, files, email, calendar, or other tools:</p><div class="line"></div><div class="line"></div></div>
+</div>
+<div class="page">
+<h1>Permission and Approval Gate</h1>
+<div class="grid">
+<div class="box"><h2>6. Permission level</h2><div class="check">☐ Read</div><div class="check">☐ Draft</div><div class="check">☐ Execute in sandbox</div><div class="check">☐ Publish with approval</div></div>
+<div class="box"><h2>7. Credentials</h2><div class="check">☐ Read-only where possible</div><div class="check">☐ Separate test account</div><div class="check">☐ Scoped permissions</div><div class="check">☐ Expiration / rotation</div></div>
+</div>
+<div class="box"><h2>8. Evidence required</h2><div class="check">☐ Files changed</div><div class="check">☐ Commands run</div><div class="check">☐ Tests completed</div><div class="check">☐ Sources used</div><div class="check">☐ Remaining uncertainty</div></div>
+<div class="box"><h2>9. Recovery</h2><div class="check">☐ Backup</div><div class="check">☐ Rollback command</div><div class="check">☐ Audit log</div><div class="check">☐ Kill switch</div><p>Named recovery owner:</p><div class="line"></div></div>
+<div class="box"><h2>10. Pilot result</h2><p>Time saved:</p><div class="line"></div><p>Errors and review burden:</p><div class="line"></div><p>Quality and business result:</p><div class="line"></div><p>Decision:</p><div class="check">☐ Stop</div><div class="check">☐ Improve and retest</div><div class="check">☐ Approve limited rollout</div></div>
+<h2>One directory. One task. One approval. Then expand.</h2>
+</div></body></html>

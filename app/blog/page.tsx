@@ -91,7 +91,22 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "adhd-friendly-ai-put-the-next-action-first") {
+  if (article.slug === "new-ollama-update-local-ai-moves-from-models-to-real-work") {
+    downloads.push({
+      title: "Local AI Agent Readiness Planner",
+      subtitle: "Interactive digital & printable two-page readiness worksheet for Ollama agent mode",
+      url: "/documents/local-ai-agent-readiness-planner.html",
+      type: "Interactive Planner"
+    });
+    images.push(
+      { title: "Asset-Set Preview — Complete Publishing Package", subtitle: "Full overview of all 5 visual assets, printable planner, and copy", imageUrl: "/images/00-asset-set-preview-ollama-agent-mode.png", type: "Asset Set Preview" },
+      { title: "01 — Ollama Local AI Workbench", subtitle: "Interactive agent experience for chat, coding, web research, and delegated work", imageUrl: "/images/01-thumbnail-ollama-local-ai-workbench.png", type: "Header Thumbnail" },
+      { title: "02 — One Command Opens Agent Mode", subtitle: "Starting from the job instead of just prompting a bare model", imageUrl: "/images/02-photo-one-command-opens-agent-mode.png", type: "Photo Blueprint" },
+      { title: "03 — Local & Cloud Choice", subtitle: "Intentional routing for private offline work vs. cloud scale", imageUrl: "/images/03-photo-local-cloud-choice.png", type: "Photo Blueprint" },
+      { title: "04 — Safe Agent Boundaries", subtitle: "Four permission levels: Read, Draft, Execute, and Publish", imageUrl: "/images/04-photo-safe-agent-boundaries.png", type: "Photo Blueprint" },
+      { title: "05 — Ollama Agent Mode System Overview", subtitle: "Complete system breakdown and operating specs for Ollama 0.32", imageUrl: "/images/05-ollama-agent-mode-overview.png", type: "Overview Infographic" }
+    );
+  } else if (article.slug === "adhd-friendly-ai-put-the-next-action-first") {
     downloads.push(
       {
         title: "Action-First AI Output Planner",

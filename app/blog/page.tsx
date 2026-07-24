@@ -121,7 +121,28 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "10-chatgpt-power-words-better-answers-better-lenses") {
+  if (article.slug === "top-5-github-apps-to-watch-this-week") {
+    downloads.push(
+      {
+        title: "Lux App Review — Top 5 GitHub Apps PDF",
+        subtitle: "Complete editorial review, scoring breakdown, risk audit, and ranking PDF",
+        url: "/documents/Lux_App_Review_Top_5_2026-07-24.pdf",
+        type: "Community PDF"
+      },
+      {
+        title: "Lux App Review — Subscriber Money Play PDF",
+        subtitle: "Insider & Operator business plays, pricing models, agent prompts & implementation guides",
+        url: "/documents/Lux_App_Review_Money_Play_2026-07-24.pdf",
+        type: "Insider Money Play PDF"
+      }
+    );
+    images.push(
+      { title: "Asset-Set Preview — Complete Publishing Package", subtitle: "Full overview of all visual assets, PDFs, and implementation guides", imageUrl: "/images/00-asset-set-preview-top-5-github-apps.png", type: "Asset Set Preview" },
+      { title: "01 — Top 5 GitHub Apps to Watch This Week", subtitle: "Header thumbnail featuring Hermes, OpenCut, OmniRoute, DeepTutor & OfficeCLI", imageUrl: "/images/01-thumbnail-top-5-github-apps.png", type: "Header Thumbnail" },
+      { title: "02 — Lux Score Radar & Category Profiles", subtitle: "100-point scoring breakdown across Usefulness, Health, Momentum & Safety", imageUrl: "/images/05-top-5-github-apps-overview.png", type: "Overview Infographic" },
+      { title: "03 — Lux App Review Editorial Workspace", subtitle: "Inside the testing lab evaluating open-source codebases and architecture", imageUrl: "/images/editorial-workspace.png", type: "Editorial Laboratory" }
+    );
+  } else if (article.slug === "10-chatgpt-power-words-better-answers-better-lenses") {
     downloads.push(
       {
         title: "10 Prompt Lenses Practice Planner",

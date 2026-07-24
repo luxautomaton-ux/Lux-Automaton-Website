@@ -1,0 +1,88 @@
+{
+  "project": {
+    "title": "",
+    "series_promise": "",
+    "audience": "",
+    "tone": "",
+    "visual_language": [
+      "dark navy",
+      "cyan",
+      "purple",
+      "teal"
+    ]
+  },
+  "characters": [
+    {
+      "id": "CHAR-001",
+      "name": "",
+      "role": "",
+      "appearance": "",
+      "wardrobe": "",
+      "voice": "",
+      "motivation": "",
+      "relationships": [],
+      "knowledge": [],
+      "emotional_state": "",
+      "physical_state": "",
+      "reference_assets": []
+    }
+  ],
+  "locations": [
+    {
+      "id": "LOC-001",
+      "name": "",
+      "layout": "",
+      "lighting": "",
+      "palette": [],
+      "required_objects": [],
+      "entry_points": [],
+      "reference_assets": []
+    }
+  ],
+  "props": [
+    {
+      "id": "PROP-001",
+      "name": "",
+      "current_holder": "",
+      "condition": "",
+      "last_seen_scene": "",
+      "must_appear_next": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "RULE-001",
+      "rule": "",
+      "reason": "",
+      "exceptions": []
+    }
+  ],
+  "timeline": [
+    {
+      "scene_id": "SCENE-001",
+      "order": 1,
+      "event": "",
+      "characters_present": [],
+      "location_id": "",
+      "changes": [],
+      "open_questions": []
+    }
+  ],
+  "next_scene": {
+    "purpose": "",
+    "starting_state": "",
+    "ending_state": "",
+    "required_memory": [],
+    "director_notes": ""
+  },
+  "continuity_check": {
+    "character_identity": 0,
+    "location_match": 0,
+    "prop_match": 0,
+    "timeline_logic": 0,
+    "story_purpose": 0,
+    "overall_score": 0,
+    "risks": [],
+    "director_approval": false
+  }
+}

@@ -121,7 +121,30 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "new-ollama-update-local-ai-moves-from-models-to-real-work") {
+  if (article.slug === "asa-lana-ep2-give-the-story-a-memory") {
+    downloads.push(
+      {
+        title: "Story Memory Blueprint",
+        subtitle: "Interactive digital & printable blueprint for building your Story Memory Tree",
+        url: "/documents/story-memory-blueprint.html",
+        type: "Interactive Blueprint"
+      },
+      {
+        title: "Lux Codex Story Memory Template JSON",
+        subtitle: "Importable Lux Codex JSON schema for character locks, location rules & continuity scoring",
+        url: "/documents/lux-codex-story-memory-template.json",
+        type: "Memory Template JSON"
+      }
+    );
+    images.push(
+      { title: "Asset-Set Preview — Complete Publishing Package", subtitle: "Full overview of all 5 visual assets, printable blueprint, and JSON schema", imageUrl: "/images/00-asset-set-preview-asa-lana-ep2.png", type: "Asset Set Preview" },
+      { title: "01 — Give the Story a Memory", subtitle: "Episode 2 header thumbnail with Asa and LANA in the Continuity Lab", imageUrl: "/images/01-thumbnail-give-the-story-a-memory.png", type: "Header Thumbnail" },
+      { title: "02 — Scattered Story Fragments", subtitle: "Asa surrounded by disconnected prompts before introducing memory", imageUrl: "/images/02-photo-scattered-story-fragments.png", type: "Photo Blueprint" },
+      { title: "03 — Story Memory Tree", subtitle: "LANA constructing the connected Story Bible, characters, and rules", imageUrl: "/images/03-photo-story-memory-tree.png", type: "Photo Blueprint" },
+      { title: "04 — Continuity Score 98", subtitle: "Pre-render evaluation scoring character locks, props, and timeline logic", imageUrl: "/images/04-photo-continuity-score.png", type: "Photo Blueprint" },
+      { title: "05 — Story Memory System Overview", subtitle: "Complete architectural overview of the Lux Codex Story Memory Engine", imageUrl: "/images/05-story-memory-overview.png", type: "Overview Infographic" }
+    );
+  } else if (article.slug === "new-ollama-update-local-ai-moves-from-models-to-real-work") {
     downloads.push({
       title: "Local AI Agent Readiness Planner",
       subtitle: "Interactive digital & printable two-page readiness worksheet for Ollama agent mode",

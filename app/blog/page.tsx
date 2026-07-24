@@ -91,7 +91,22 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "the-lana-weekly-turning-ideas-into-a-community-rhythm") {
+  if (article.slug === "lux-agent-usb-your-ai-assistant-anywhere") {
+    downloads.push({
+      title: "Lux Agent USB First Workflow Planner",
+      subtitle: "Interactive digital & printable first workflow planning worksheet",
+      url: "/documents/lux-agent-usb-first-workflow-planner.html",
+      type: "Interactive Planner"
+    });
+    images.push(
+      { title: "Asset-Set Preview — Complete Publishing Package", subtitle: "Full overview of all 5 visual assets, printable planner, and copy", imageUrl: "/images/00-asset-set-preview-lux-agent-usb.png", type: "Asset Set Preview" },
+      { title: "01 — Thumbnail Header", subtitle: "Lux Agent USB: Your AI Assistant Anywhere", imageUrl: "/images/01-thumbnail-lux-agent-usb.png", type: "Header Thumbnail" },
+      { title: "02 — Your Assistant in Your Pocket", subtitle: "Portable AI workspace with LANA, memory, and preloaded tools", imageUrl: "/images/02-photo-your-assistant-in-your-pocket.png", type: "Photo Blueprint" },
+      { title: "03 — Work Offline With Confidence", subtitle: "Fast, reliable file transfers without internet dependency", imageUrl: "/images/03-photo-work-offline-with-confidence.png", type: "Photo Blueprint" },
+      { title: "04 — Success Packs For Real Work", subtitle: "Industry-specific starters for restaurants, real estate, trade contractors & music", imageUrl: "/images/04-photo-success-packs-for-real-work.png", type: "Photo Blueprint" },
+      { title: "05 — Lux Agent USB System Overview", subtitle: "Complete system breakdown and portable operating specs", imageUrl: "/images/05-lux-agent-usb-overview.png", type: "Overview Infographic" }
+    );
+  } else if (article.slug === "the-lana-weekly-turning-ideas-into-a-community-rhythm") {
     downloads.push({
       title: "LANA Weekly Community Rhythm Planner",
       subtitle: "Interactive digital & printable newsletter production planner",

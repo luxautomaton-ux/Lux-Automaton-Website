@@ -68,7 +68,18 @@ export default function LuxAiKidsPage(){
   const [activeTab, setActiveTab] = useState<string>("ace");
 
   return <div className="kids-world">
-    <section className="kids-hero">
+    <section className="kids-hero" style={{ position: "relative", overflow: "hidden" }}>
+      <video
+        className="kids-hero-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster={prefixPath("/images/lux-kids-world.png")}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.35, pointerEvents: "none" }}
+      >
+        <source src={prefixPath("/videos/lux-ai-kids-hero-bg.mp4")} type="video/mp4" />
+      </video>
       <div className="kids-cloud cloud-1"/><div className="kids-cloud cloud-2"/>
       <div className="kids-hero-copy">
         <p className="kids-pill">A safe place for bold young minds</p>

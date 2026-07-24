@@ -3094,6 +3094,19 @@ export const LUX_TV_EPISODES: TvEpisode[] = [
 
 export const LUX_TV_KIDS_EPISODES: TvEpisode[] = [
   {
+    slug: "lux-ai-kids-full-demo",
+    audience: "Lux AI Kids",
+    title: "Lux AI Kids World Demo (Coming Soon)",
+    series: "Coming Soon Showcase",
+    duration: "Coming Soon",
+    rating: "Kids & Families",
+    image: "/images/lux-kids-world.png",
+    video: "/videos/lux-ai-kids-demo.mp4",
+    storyUrl: "/lux-ai-kids",
+    description: "Exclusive sneak peek walkthrough of the upcoming Lux AI Kids creative platform, interactive workshops, and Ace AI co-pilot.",
+    tags: ["Coming Soon", "Demo", "AI Basics", "Projects", "Safety"],
+  },
+  {
     slug: "dr-dooleys-smart-health-adventure",
     audience: "Lux AI Kids",
     title: "Dr. Dooley’s Smart Health Adventure",

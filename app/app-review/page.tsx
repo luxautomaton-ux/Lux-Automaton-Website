@@ -5,6 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { prefixPath } from "@/lib/prefix";
 
+function GithubLogoIcon({ size = 18, color = "currentColor" }: { size?: number; color?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline-block", verticalAlign: "middle" }}>
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+      <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+  );
+}
+
 interface AppReviewItem {
   rank: number;
   name: string;
@@ -654,7 +663,6 @@ if __name__ == "__main__":
 export default function AppReviewPage() {
   const [selectedApp, setSelectedApp] = useState<AppReviewItem | null>(null);
   const [activeTab, setActiveTab] = useState<"roundup" | "article" | "money-play" | "grading" | "subscriptions">("roundup");
-  const [activeScriptApp, setActiveScriptApp] = useState<"hermes" | "opencut" | "omniroute" | "deeptutor" | "officecli">("hermes");
   const [copiedScriptId, setCopiedScriptId] = useState<string | null>(null);
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
 
@@ -662,6 +670,10 @@ export default function AppReviewPage() {
     navigator.clipboard.writeText(script.code);
     setCopiedScriptId(script.id);
     setTimeout(() => setCopiedScriptId(null), 2500);
+  };
+
+  const getAppScripts = (slug: "hermes" | "opencut" | "omniroute" | "deeptutor" | "officecli") => {
+    return MONEY_PLAY_SCRIPTS.filter((s) => s.appSlug === slug);
   };
 
   return (
@@ -678,8 +690,9 @@ export default function AppReviewPage() {
                 ❖
               </div>
               <div>
-                <div style={{ fontSize: "0.7rem", fontWeight: 800, letterSpacing: "0.15em", color: "var(--lux-cyan)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                  LUX APP REVIEW • AUTOMATED GITHUB APP INTELLIGENCE
+                <div style={{ fontSize: "0.7rem", fontWeight: 800, letterSpacing: "0.15em", color: "var(--lux-cyan)", textTransform: "uppercase", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "6px" }}>
+                  <GithubLogoIcon size={14} color="var(--lux-cyan)" />
+                  <span>LUX APP REVIEW • AUTOMATED GITHUB APP INTELLIGENCE</span>
                 </div>
                 <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "8px" }}>
                   <span>Home</span> <span>›</span> <span>Rankings</span> <span>›</span> <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>Weekly Roundup</span>
@@ -705,7 +718,8 @@ export default function AppReviewPage() {
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "24px", marginBottom: "28px" }}>
             <div style={{ maxWidth: "800px" }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(0, 212, 255, 0.1)", border: "1px solid rgba(0, 212, 255, 0.3)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 700, color: "var(--lux-cyan)", marginBottom: "12px" }}>
-                <span>🔥</span> Top 5 GitHub Apps to Watch This Week
+                <GithubLogoIcon size={14} color="var(--lux-cyan)" />
+                <span>Top 5 GitHub Apps to Watch This Week</span>
               </div>
               <h1 style={{ fontSize: "clamp(2rem, 3.8vw, 3.2rem)", fontWeight: 900, lineHeight: 1.15, color: "#fff", margin: 0, letterSpacing: "-0.02em" }}>
                 Weekly GitHub App Rankings &amp; Intelligence
@@ -785,7 +799,7 @@ export default function AppReviewPage() {
                 boxShadow: activeTab === "money-play" ? "0 0 16px rgba(255, 215, 0, 0.3)" : "none"
               }}
             >
-              💰 Subscriber Money Play (10 Scripts &amp; Offers)
+              💰 Subscriber Money Play (5 Offers &amp; 10 Embedded Scripts)
             </button>
             <button
               onClick={() => setActiveTab("grading")}
@@ -996,7 +1010,10 @@ export default function AppReviewPage() {
             <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "16px", overflow: "hidden", boxShadow: "0 20px 50px rgba(0,0,0,0.5)", backdropFilter: "blur(20px)" }}>
               <div style={{ padding: "20px 24px", borderBottom: "1px solid rgba(255,255,255,0.08)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "12px" }}>
                 <div>
-                  <h2 style={{ fontSize: "1.2rem", fontWeight: 800, margin: 0, color: "#fff" }}>Weekly Open-Source App Rankings</h2>
+                  <h2 style={{ fontSize: "1.2rem", fontWeight: 800, margin: 0, color: "#fff", display: "flex", alignItems: "center", gap: "8px" }}>
+                    <GithubLogoIcon size={20} color="#fff" />
+                    <span>Weekly Open-Source App Rankings</span>
+                  </h2>
                   <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Updated July 24, 2026 • Evaluated across 7 operational dimensions</div>
                 </div>
                 <div style={{ fontSize: "0.75rem", color: "var(--lux-cyan)", background: "rgba(0, 212, 255, 0.08)", padding: "4px 12px", borderRadius: "20px", border: "1px solid rgba(0, 212, 255, 0.2)" }}>
@@ -1027,8 +1044,11 @@ export default function AppReviewPage() {
                           {app.rank}
                         </td>
                         <td style={{ padding: "16px" }}>
-                          <div style={{ fontWeight: 800, color: "#fff", fontSize: "0.95rem" }}>{app.name}</div>
-                          <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>{app.repo}</div>
+                          <div style={{ fontWeight: 800, color: "#fff", fontSize: "0.95rem", display: "flex", alignItems: "center", gap: "6px" }}>
+                            <GithubLogoIcon size={16} color="var(--lux-cyan)" />
+                            <span>{app.name}</span>
+                          </div>
+                          <a href={app.url} target="_blank" rel="noreferrer" style={{ fontSize: "0.7rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", textDecoration: "none" }}>{app.repo} ↗</a>
                         </td>
                         <td style={{ padding: "16px" }}>
                           <span style={{ background: "rgba(108, 71, 255, 0.15)", border: "1px solid rgba(108, 71, 255, 0.3)", padding: "3px 8px", borderRadius: "12px", fontSize: "0.7rem", color: "#fff", fontWeight: 600 }}>
@@ -1075,31 +1095,46 @@ export default function AppReviewPage() {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px" }}>
                 <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255, 0, 128, 0.3)", borderRadius: "12px", padding: "18px" }}>
                   <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ff0080", fontFamily: "var(--font-mono)" }}>BIGGEST MOMENTUM</div>
-                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0" }}>OpenCut</h4>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0", display: "flex", alignItems: "center", gap: "6px" }}>
+                    <GithubLogoIcon size={16} color="#ff0080" />
+                    <span>OpenCut</span>
+                  </h4>
                   <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>Recorded the strongest independent weekly growth estimate (+7,824 stars/week), but its ground-up rewrite status keeps the verdict pilot-first.</p>
                 </div>
 
                 <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "12px", padding: "18px" }}>
                   <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", fontFamily: "var(--font-mono)" }}>BEST OVERALL PLATFORM</div>
-                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0" }}>Hermes Agent</h4>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0", display: "flex", alignItems: "center", gap: "6px" }}>
+                    <GithubLogoIcon size={16} color="var(--lux-cyan)" />
+                    <span>Hermes Agent</span>
+                  </h4>
                   <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>Receives the highest Lux Score (92/100) because of its persistent memory, scheduling, subagents, multi-surface messaging, and MIT license.</p>
                 </div>
 
                 <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(108, 71, 255, 0.3)", borderRadius: "12px", padding: "18px" }}>
                   <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-indigo)", fontFamily: "var(--font-mono)" }}>BEST INFRASTRUCTURE PLAY</div>
-                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0" }}>OmniRoute</h4>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0", display: "flex", alignItems: "center", gap: "6px" }}>
+                    <GithubLogoIcon size={16} color="var(--lux-indigo)" />
+                    <span>OmniRoute</span>
+                  </h4>
                   <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>Simplifies multi-provider LLM stacks with fallback routing and token compression, but must be hardened like credential-bearing infrastructure.</p>
                 </div>
 
                 <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "12px", padding: "18px" }}>
                   <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-mint)", fontFamily: "var(--font-mono)" }}>BEST EDUCATION OPPORTUNITY</div>
-                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0" }}>DeepTutor</h4>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0", display: "flex", alignItems: "center", gap: "6px" }}>
+                    <GithubLogoIcon size={16} color="var(--lux-mint)" />
+                    <span>DeepTutor</span>
+                  </h4>
                   <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>Provides the strongest personalized-learning architecture with grounded problem solving, learner memory, and research backing.</p>
                 </div>
 
                 <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255, 228, 92, 0.3)", borderRadius: "12px", padding: "18px" }}>
                   <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", fontFamily: "var(--font-mono)" }}>BEST HIDDEN GEM</div>
-                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0" }}>OfficeCLI</h4>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0", display: "flex", alignItems: "center", gap: "6px" }}>
+                    <GithubLogoIcon size={16} color="#ffe45c" />
+                    <span>OfficeCLI</span>
+                  </h4>
                   <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>Targets a narrow but high-value problem: creating, editing, and visually validating Word, Excel, and PPT files without MS Office.</p>
                 </div>
               </div>
@@ -1132,7 +1167,7 @@ export default function AppReviewPage() {
               {/* Verified Source Register */}
               <div style={{ background: "rgba(17, 24, 39, 0.75)", border: "1px solid rgba(0, 212, 255, 0.25)", borderRadius: "16px", padding: "24px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
-                  <span style={{ fontSize: "1.4rem" }}>📚</span>
+                  <GithubLogoIcon size={22} color="var(--lux-cyan)" />
                   <div>
                     <h4 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#fff", margin: 0 }}>Verified Source Register (16 Primary Links)</h4>
                     <span style={{ fontSize: "0.7rem", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)" }}>RESEARCH AUDIT REGISTER</span>
@@ -1239,12 +1274,13 @@ export default function AppReviewPage() {
                     <span style={{ background: "var(--lux-cyan)", color: "#0b0f19", fontWeight: 900, padding: "4px 10px", borderRadius: "8px", fontSize: "0.9rem" }}>
                       #{app.rank}
                     </span>
-                    <h3 style={{ color: "#fff", fontSize: "1.6rem", fontWeight: 800, margin: 0 }}>
-                      {app.name}
+                    <h3 style={{ color: "#fff", fontSize: "1.6rem", fontWeight: 800, margin: 0, display: "flex", alignItems: "center", gap: "8px" }}>
+                      <GithubLogoIcon size={22} color="var(--lux-cyan)" />
+                      <span>{app.name}</span>
                     </h3>
-                    <span style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>
-                      ({app.repo})
-                    </span>
+                    <a href={app.url} target="_blank" rel="noreferrer" style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", textDecoration: "none" }}>
+                      ({app.repo}) ↗
+                    </a>
                   </div>
 
                   <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 212, 255, 0.2)", borderRadius: "12px", padding: "16px 20px", marginBottom: "16px", display: "flex", flexWrap: "wrap", gap: "16px", alignItems: "center" }}>
@@ -1294,7 +1330,7 @@ export default function AppReviewPage() {
           </div>
         )}
 
-        {/* TAB 3: SUBSCRIBER MONEY PLAY (10 CODE ENGINES & OFFERS) */}
+        {/* TAB 3: SUBSCRIBER MONEY PLAY (COMMERCIAL OFFERS WITH EMBEDDED SCRIPTS) */}
         {activeTab === "money-play" && (
           <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
             
@@ -1306,10 +1342,10 @@ export default function AppReviewPage() {
                     <span>👑</span> SUBSCRIBER MONEY PLAY INTELLIGENCE • KIT LAR-W30-2026-0724
                   </div>
                   <h2 style={{ fontSize: "2rem", fontWeight: 900, color: "#fff", margin: 0 }}>
-                    5 High-Ticket Business Money Plays &amp; 10 Code Engine Scripts
+                    5 High-Ticket Commercial Offers with Embedded Implementation Scripts
                   </h2>
                   <p style={{ fontSize: "1rem", color: "var(--text-secondary)", marginTop: "8px", margin: 0, maxWidth: "780px", lineHeight: 1.6 }}>
-                    Turn open-source GitHub repositories into $1,250 – $3,500 setup fees and $349 – $999/mo recurring service retainers. Includes copy-and-paste runnable scripts for each app.
+                    Turn open-source GitHub repositories into $1,250 – $3,500 setup fees and $349 – $999/mo recurring service retainers. Each play below includes 2 copy-and-paste runnable scripts placed directly under the commercial offer.
                   </p>
                 </div>
 
@@ -1325,98 +1361,8 @@ export default function AppReviewPage() {
               </div>
             </div>
 
-            {/* 10 RUNNABLE MONEY PLAY CODE ENGINES (2 PER APP) */}
-            <div style={{ background: "rgba(17, 24, 39, 0.85)", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "20px", padding: "32px", boxShadow: "0 20px 50px rgba(0,0,0,0.5)" }}>
-              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", marginBottom: "20px" }}>
-                <div>
-                  <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>💻 SUBSCRIBER CODE ENGINE (10 SCRIPTS)</span>
-                  <h3 style={{ fontSize: "1.4rem", fontWeight: 900, color: "#fff", margin: "4px 0 0" }}>Money Play Implementation Scripts (2 Per App)</h3>
-                </div>
-
-                {/* App Selector Tabs */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                  {(["hermes", "opencut", "omniroute", "deeptutor", "officecli"] as const).map((slug) => (
-                    <button
-                      key={slug}
-                      onClick={() => setActiveScriptApp(slug)}
-                      style={{
-                        background: activeScriptApp === slug ? "rgba(0, 212, 255, 0.2)" : "rgba(6, 9, 19, 0.6)",
-                        border: activeScriptApp === slug ? "1px solid var(--lux-cyan)" : "1px solid rgba(255,255,255,0.1)",
-                        color: activeScriptApp === slug ? "#fff" : "var(--text-secondary)",
-                        padding: "6px 14px",
-                        borderRadius: "8px",
-                        fontSize: "0.8rem",
-                        fontWeight: 800,
-                        cursor: "pointer",
-                        textTransform: "capitalize"
-                      }}
-                    >
-                      {slug === "hermes" ? "Hermes Agent" : slug === "opencut" ? "OpenCut" : slug === "omniroute" ? "OmniRoute" : slug === "deeptutor" ? "DeepTutor" : "OfficeCLI"}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Render 2 Scripts for Selected App */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-                {MONEY_PLAY_SCRIPTS.filter((s) => s.appSlug === activeScriptApp).map((script) => (
-                  <div key={script.id} style={{ background: "#060913", border: "1px solid rgba(0, 212, 255, 0.25)", borderRadius: "14px", padding: "24px" }}>
-                    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
-                      <div>
-                        <div style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                          <span style={{ background: "var(--lux-cyan)", color: "#0b0f19", fontWeight: 900, padding: "2px 8px", borderRadius: "6px", fontSize: "0.7rem", fontFamily: "var(--font-mono)" }}>
-                            SCRIPT #{script.scriptNumber}
-                          </span>
-                          <span style={{ fontSize: "0.75rem", color: "#ffe45c", fontWeight: 800, fontFamily: "var(--font-mono)" }}>
-                            💰 {script.expectedValue}
-                          </span>
-                        </div>
-                        <h4 style={{ fontSize: "1.2rem", fontWeight: 900, color: "#fff", margin: "6px 0 2px" }}>
-                          {script.title}
-                        </h4>
-                        <div style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>{script.subtitle}</div>
-                      </div>
-
-                      <button
-                        onClick={() => copyCode(script)}
-                        style={{ background: copiedScriptId === script.id ? "var(--lux-mint)" : "rgba(0, 212, 255, 0.15)", border: "1px solid var(--lux-cyan)", color: copiedScriptId === script.id ? "#0b0f19" : "var(--lux-cyan)", padding: "8px 16px", borderRadius: "8px", fontSize: "0.8rem", fontWeight: 800, cursor: "pointer" }}
-                      >
-                        {copiedScriptId === script.id ? "✓ Copied to Clipboard!" : "📋 Copy Code Script"}
-                      </button>
-                    </div>
-
-                    <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "16px", lineHeight: 1.5 }}>
-                      {script.description}
-                    </p>
-
-                    {/* Code Display */}
-                    <div style={{ position: "relative", marginBottom: "16px" }}>
-                      <div style={{ position: "absolute", top: "10px", right: "12px", fontSize: "0.65rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>
-                        {script.filename} ({script.language})
-                      </div>
-                      <pre style={{ background: "rgba(11, 15, 25, 0.95)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "10px", padding: "18px", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", fontSize: "0.82rem", overflowX: "auto", whiteSpace: "pre-wrap", margin: 0, lineHeight: 1.5 }}>
-                        {script.code}
-                      </pre>
-                    </div>
-
-                    {/* Setup Instructions */}
-                    <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: "8px", padding: "12px 16px" }}>
-                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-mono)", marginBottom: "6px" }}>
-                        ⚡ QUICKSTART INSTALL STEPS
-                      </div>
-                      <ol style={{ margin: 0, paddingLeft: "18px", fontSize: "0.8rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                        {script.instructions.map((step, idx) => (
-                          <li key={idx}>{step}</li>
-                        ))}
-                      </ol>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 5 COMMERCIAL MONEY PLAYS OFFER GRID */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            {/* 5 COMMERCIAL MONEY PLAYS OFFER GRID (WITH EMBEDDED SCRIPTS DIRECTLY UNDER EACH PLAY) */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
               
               {/* PLAY 1: HERMES AGENT */}
               <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(0, 212, 255, 0.08)" }}>
@@ -1426,8 +1372,9 @@ export default function AppReviewPage() {
                       🤖
                     </div>
                     <div>
-                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                        PLAY 01 • BASED ON HERMES AGENT (MIT)
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "6px" }}>
+                        <GithubLogoIcon size={14} color="var(--lux-cyan)" />
+                        <span>PLAY 01 • BASED ON HERMES AGENT (MIT)</span>
                       </div>
                       <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
                         Managed AI Operations Desk
@@ -1447,7 +1394,7 @@ export default function AppReviewPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginBottom: "28px" }}>
                   <div>
                     <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-cyan)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
                     <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Small businesses, digital agencies, creators, and busy operations teams.</p>
@@ -1468,6 +1415,41 @@ export default function AppReviewPage() {
                     </ul>
                   </div>
                 </div>
+
+                {/* EMBEDDED SCRIPTS UNDER PLAY 1 */}
+                <div style={{ borderTop: "1px solid rgba(0, 212, 255, 0.2)", paddingTop: "20px" }}>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-cyan)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)", marginBottom: "16px" }}>
+                    💻 PLAY 01 CODE SCRIPTS (HERMES AGENT)
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                    {getAppScripts("hermes").map((script) => (
+                      <div key={script.id} style={{ background: "#060913", border: "1px solid rgba(0, 212, 255, 0.25)", borderRadius: "12px", padding: "20px" }}>
+                        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                          <div>
+                            <span style={{ background: "var(--lux-cyan)", color: "#0b0f19", fontWeight: 900, padding: "2px 8px", borderRadius: "4px", fontSize: "0.65rem", fontFamily: "var(--font-mono)", marginRight: "8px" }}>
+                              SCRIPT #{script.scriptNumber}
+                            </span>
+                            <strong style={{ color: "#fff", fontSize: "1.05rem" }}>{script.title}</strong>
+                            <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>{script.subtitle}</div>
+                          </div>
+                          <button
+                            onClick={() => copyCode(script)}
+                            style={{ background: copiedScriptId === script.id ? "var(--lux-mint)" : "rgba(0, 212, 255, 0.15)", border: "1px solid var(--lux-cyan)", color: copiedScriptId === script.id ? "#0b0f19" : "var(--lux-cyan)", padding: "6px 14px", borderRadius: "6px", fontSize: "0.75rem", fontWeight: 800, cursor: "pointer" }}
+                          >
+                            {copiedScriptId === script.id ? "✓ Copied!" : "📋 Copy Code"}
+                          </button>
+                        </div>
+                        <pre style={{ background: "rgba(11, 15, 25, 0.95)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "14px", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", fontSize: "0.8rem", overflowX: "auto", whiteSpace: "pre-wrap", margin: "0 0 12px", lineHeight: 1.5 }}>
+                          {script.code}
+                        </pre>
+                        <div style={{ fontSize: "0.75rem", color: "var(--text-secondary)" }}>
+                          <strong style={{ color: "#ffe45c" }}>Steps: </strong> {script.instructions.join(" • ")}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
 
               {/* PLAY 2: OPENCUT */}
@@ -1478,8 +1460,9 @@ export default function AppReviewPage() {
                       🎬
                     </div>
                     <div>
-                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-indigo)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                        PLAY 02 • BASED ON OPENCUT (MIT)
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-indigo)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "6px" }}>
+                        <GithubLogoIcon size={14} color="var(--lux-indigo)" />
+                        <span>PLAY 02 • BASED ON OPENCUT (MIT)</span>
                       </div>
                       <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
                         Private Creator Editing Studio
@@ -1499,7 +1482,7 @@ export default function AppReviewPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginBottom: "28px" }}>
                   <div>
                     <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-indigo)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
                     <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Creators, schools, nonprofits, agencies, and privacy-sensitive media teams.</p>
@@ -1520,6 +1503,41 @@ export default function AppReviewPage() {
                     </ul>
                   </div>
                 </div>
+
+                {/* EMBEDDED SCRIPTS UNDER PLAY 2 */}
+                <div style={{ borderTop: "1px solid rgba(108, 71, 255, 0.2)", paddingTop: "20px" }}>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-indigo)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)", marginBottom: "16px" }}>
+                    💻 PLAY 02 CODE SCRIPTS (OPENCUT)
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                    {getAppScripts("opencut").map((script) => (
+                      <div key={script.id} style={{ background: "#060913", border: "1px solid rgba(108, 71, 255, 0.25)", borderRadius: "12px", padding: "20px" }}>
+                        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                          <div>
+                            <span style={{ background: "var(--lux-indigo)", color: "#fff", fontWeight: 900, padding: "2px 8px", borderRadius: "4px", fontSize: "0.65rem", fontFamily: "var(--font-mono)", marginRight: "8px" }}>
+                              SCRIPT #{script.scriptNumber}
+                            </span>
+                            <strong style={{ color: "#fff", fontSize: "1.05rem" }}>{script.title}</strong>
+                            <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>{script.subtitle}</div>
+                          </div>
+                          <button
+                            onClick={() => copyCode(script)}
+                            style={{ background: copiedScriptId === script.id ? "var(--lux-mint)" : "rgba(108, 71, 255, 0.2)", border: "1px solid var(--lux-indigo)", color: copiedScriptId === script.id ? "#0b0f19" : "#fff", padding: "6px 14px", borderRadius: "6px", fontSize: "0.75rem", fontWeight: 800, cursor: "pointer" }}
+                          >
+                            {copiedScriptId === script.id ? "✓ Copied!" : "📋 Copy Code"}
+                          </button>
+                        </div>
+                        <pre style={{ background: "rgba(11, 15, 25, 0.95)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "14px", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", fontSize: "0.8rem", overflowX: "auto", whiteSpace: "pre-wrap", margin: "0 0 12px", lineHeight: 1.5 }}>
+                          {script.code}
+                        </pre>
+                        <div style={{ fontSize: "0.75rem", color: "var(--text-secondary)" }}>
+                          <strong style={{ color: "#ffe45c" }}>Steps: </strong> {script.instructions.join(" • ")}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
 
               {/* PLAY 3: OMNIROUTE */}
@@ -1530,8 +1548,9 @@ export default function AppReviewPage() {
                       ⚡
                     </div>
                     <div>
-                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-mint)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                        PLAY 03 • BASED ON OMNIROUTE (MIT)
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-mint)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "6px" }}>
+                        <GithubLogoIcon size={14} color="var(--lux-mint)" />
+                        <span>PLAY 03 • BASED ON OMNIROUTE (MIT)</span>
                       </div>
                       <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
                         AI Cost-Control &amp; Reliability Gateway
@@ -1551,7 +1570,7 @@ export default function AppReviewPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginBottom: "28px" }}>
                   <div>
                     <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-mint)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
                     <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>AI agencies, development teams, internal innovation groups, multi-model operators.</p>
@@ -1572,6 +1591,41 @@ export default function AppReviewPage() {
                     </ul>
                   </div>
                 </div>
+
+                {/* EMBEDDED SCRIPTS UNDER PLAY 3 */}
+                <div style={{ borderTop: "1px solid rgba(0, 255, 163, 0.2)", paddingTop: "20px" }}>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-mint)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)", marginBottom: "16px" }}>
+                    💻 PLAY 03 CODE SCRIPTS (OMNIROUTE)
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                    {getAppScripts("omniroute").map((script) => (
+                      <div key={script.id} style={{ background: "#060913", border: "1px solid rgba(0, 255, 163, 0.25)", borderRadius: "12px", padding: "20px" }}>
+                        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                          <div>
+                            <span style={{ background: "var(--lux-mint)", color: "#0b0f19", fontWeight: 900, padding: "2px 8px", borderRadius: "4px", fontSize: "0.65rem", fontFamily: "var(--font-mono)", marginRight: "8px" }}>
+                              SCRIPT #{script.scriptNumber}
+                            </span>
+                            <strong style={{ color: "#fff", fontSize: "1.05rem" }}>{script.title}</strong>
+                            <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>{script.subtitle}</div>
+                          </div>
+                          <button
+                            onClick={() => copyCode(script)}
+                            style={{ background: copiedScriptId === script.id ? "var(--lux-mint)" : "rgba(0, 255, 163, 0.15)", border: "1px solid var(--lux-mint)", color: copiedScriptId === script.id ? "#0b0f19" : "var(--lux-mint)", padding: "6px 14px", borderRadius: "6px", fontSize: "0.75rem", fontWeight: 800, cursor: "pointer" }}
+                          >
+                            {copiedScriptId === script.id ? "✓ Copied!" : "📋 Copy Code"}
+                          </button>
+                        </div>
+                        <pre style={{ background: "rgba(11, 15, 25, 0.95)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "14px", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", fontSize: "0.8rem", overflowX: "auto", whiteSpace: "pre-wrap", margin: "0 0 12px", lineHeight: 1.5 }}>
+                          {script.code}
+                        </pre>
+                        <div style={{ fontSize: "0.75rem", color: "var(--text-secondary)" }}>
+                          <strong style={{ color: "#ffe45c" }}>Steps: </strong> {script.instructions.join(" • ")}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
 
               {/* PLAY 4: DEEPTUTOR */}
@@ -1582,8 +1636,9 @@ export default function AppReviewPage() {
                       🎓
                     </div>
                     <div>
-                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                        PLAY 04 • BASED ON DEEPTUTOR (APACHE-2.0)
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "6px" }}>
+                        <GithubLogoIcon size={14} color="#ffe45c" />
+                        <span>PLAY 04 • BASED ON DEEPTUTOR (APACHE-2.0)</span>
                       </div>
                       <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
                         Private AI Learning Portal
@@ -1603,7 +1658,7 @@ export default function AppReviewPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginBottom: "28px" }}>
                   <div>
                     <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
                     <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Tutoring companies, workforce programs, schools, nonprofits, membership communities.</p>
@@ -1624,6 +1679,41 @@ export default function AppReviewPage() {
                     </ul>
                   </div>
                 </div>
+
+                {/* EMBEDDED SCRIPTS UNDER PLAY 4 */}
+                <div style={{ borderTop: "1px solid rgba(255, 228, 92, 0.2)", paddingTop: "20px" }}>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#ffe45c", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)", marginBottom: "16px" }}>
+                    💻 PLAY 04 CODE SCRIPTS (DEEPTUTOR)
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                    {getAppScripts("deeptutor").map((script) => (
+                      <div key={script.id} style={{ background: "#060913", border: "1px solid rgba(255, 228, 92, 0.25)", borderRadius: "12px", padding: "20px" }}>
+                        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                          <div>
+                            <span style={{ background: "#ffe45c", color: "#0b0f19", fontWeight: 900, padding: "2px 8px", borderRadius: "4px", fontSize: "0.65rem", fontFamily: "var(--font-mono)", marginRight: "8px" }}>
+                              SCRIPT #{script.scriptNumber}
+                            </span>
+                            <strong style={{ color: "#fff", fontSize: "1.05rem" }}>{script.title}</strong>
+                            <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>{script.subtitle}</div>
+                          </div>
+                          <button
+                            onClick={() => copyCode(script)}
+                            style={{ background: copiedScriptId === script.id ? "var(--lux-mint)" : "rgba(255, 228, 92, 0.15)", border: "1px solid #ffe45c", color: copiedScriptId === script.id ? "#0b0f19" : "#ffe45c", padding: "6px 14px", borderRadius: "6px", fontSize: "0.75rem", fontWeight: 800, cursor: "pointer" }}
+                          >
+                            {copiedScriptId === script.id ? "✓ Copied!" : "📋 Copy Code"}
+                          </button>
+                        </div>
+                        <pre style={{ background: "rgba(11, 15, 25, 0.95)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "14px", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", fontSize: "0.8rem", overflowX: "auto", whiteSpace: "pre-wrap", margin: "0 0 12px", lineHeight: 1.5 }}>
+                          {script.code}
+                        </pre>
+                        <div style={{ fontSize: "0.75rem", color: "var(--text-secondary)" }}>
+                          <strong style={{ color: "#ffe45c" }}>Steps: </strong> {script.instructions.join(" • ")}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
 
               {/* PLAY 5: OFFICECLI */}
@@ -1634,8 +1724,9 @@ export default function AppReviewPage() {
                       📄
                     </div>
                     <div>
-                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ff6b00", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                        PLAY 05 • BASED ON OFFICECLI (APACHE-2.0)
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ff6b00", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "6px" }}>
+                        <GithubLogoIcon size={14} color="#ff6b00" />
+                        <span>PLAY 05 • BASED ON OFFICECLI (APACHE-2.0)</span>
                       </div>
                       <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
                         Document Automation QuickStart
@@ -1655,7 +1746,7 @@ export default function AppReviewPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginBottom: "28px" }}>
                   <div>
                     <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ff6b00", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
                     <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Consultants, agencies, finance teams, operations groups, software vendors.</p>
@@ -1676,6 +1767,41 @@ export default function AppReviewPage() {
                     </ul>
                   </div>
                 </div>
+
+                {/* EMBEDDED SCRIPTS UNDER PLAY 5 */}
+                <div style={{ borderTop: "1px solid rgba(255, 107, 0, 0.2)", paddingTop: "20px" }}>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#ff6b00", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)", marginBottom: "16px" }}>
+                    💻 PLAY 05 CODE SCRIPTS (OFFICECLI)
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                    {getAppScripts("officecli").map((script) => (
+                      <div key={script.id} style={{ background: "#060913", border: "1px solid rgba(255, 107, 0, 0.25)", borderRadius: "12px", padding: "20px" }}>
+                        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                          <div>
+                            <span style={{ background: "#ff6b00", color: "#fff", fontWeight: 900, padding: "2px 8px", borderRadius: "4px", fontSize: "0.65rem", fontFamily: "var(--font-mono)", marginRight: "8px" }}>
+                              SCRIPT #{script.scriptNumber}
+                            </span>
+                            <strong style={{ color: "#fff", fontSize: "1.05rem" }}>{script.title}</strong>
+                            <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>{script.subtitle}</div>
+                          </div>
+                          <button
+                            onClick={() => copyCode(script)}
+                            style={{ background: copiedScriptId === script.id ? "var(--lux-mint)" : "rgba(255, 107, 0, 0.15)", border: "1px solid #ff6b00", color: copiedScriptId === script.id ? "#0b0f19" : "#ff6b00", padding: "6px 14px", borderRadius: "6px", fontSize: "0.75rem", fontWeight: 800, cursor: "pointer" }}
+                          >
+                            {copiedScriptId === script.id ? "✓ Copied!" : "📋 Copy Code"}
+                          </button>
+                        </div>
+                        <pre style={{ background: "rgba(11, 15, 25, 0.95)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "14px", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", fontSize: "0.8rem", overflowX: "auto", whiteSpace: "pre-wrap", margin: "0 0 12px", lineHeight: 1.5 }}>
+                          {script.code}
+                        </pre>
+                        <div style={{ fontSize: "0.75rem", color: "var(--text-secondary)" }}>
+                          <strong style={{ color: "#ffe45c" }}>Steps: </strong> {script.instructions.join(" • ")}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
 
             </div>
@@ -1824,7 +1950,7 @@ export default function AppReviewPage() {
                   </div>
                   <ul style={{ paddingLeft: "18px", fontSize: "0.85rem", color: "#fff", lineHeight: 1.8 }}>
                     <li><strong>Full Money Play PDF &amp; Service Pricing Guides</strong></li>
-                    <li><strong>10 Commercial Runnable Code Engine Scripts</strong></li>
+                    <li><strong>10 Commercial Runnable Code Engine Scripts Embedded in Plays</strong></li>
                     <li><strong>LANA Client Pitch Proposal Generator Prompt Stack</strong></li>
                     <li>5 Managed High-Ticket Client Offer Playbooks ($1.2k – $3.5k setup)</li>
                     <li>Client Deliverables &amp; SOP Templates</li>
@@ -1857,8 +1983,11 @@ export default function AppReviewPage() {
                 <span style={{ background: "rgba(0, 212, 255, 0.12)", border: "1px solid rgba(0, 212, 255, 0.3)", color: "var(--lux-cyan)", padding: "3px 10px", borderRadius: "12px", fontSize: "0.7rem", fontWeight: 800 }}>
                   RANK #{selectedApp.rank} • {selectedApp.category}
                 </span>
-                <h2 style={{ fontSize: "2rem", fontWeight: 900, color: "#fff", margin: "8px 0 2px" }}>{selectedApp.name}</h2>
-                <div style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>{selectedApp.repo}</div>
+                <h2 style={{ fontSize: "2rem", fontWeight: 900, color: "#fff", margin: "8px 0 2px", display: "flex", alignItems: "center", gap: "10px" }}>
+                  <GithubLogoIcon size={26} color="var(--lux-cyan)" />
+                  <span>{selectedApp.name}</span>
+                </h2>
+                <a href={selectedApp.url} target="_blank" rel="noreferrer" style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", textDecoration: "none" }}>{selectedApp.repo} ↗</a>
               </div>
               <button onClick={() => setSelectedApp(null)} style={{ background: "rgba(255,255,255,0.08)", border: "none", color: "#fff", fontSize: "1.2rem", width: "36px", height: "36px", borderRadius: "50%", cursor: "pointer" }}>✕</button>
             </div>
@@ -1914,9 +2043,10 @@ export default function AppReviewPage() {
                 href={selectedApp.url}
                 target="_blank"
                 rel="noreferrer"
-                style={{ background: "var(--lux-cyan)", color: "#0b0f19", padding: "10px 20px", borderRadius: "10px", fontWeight: 800, textDecoration: "none", fontSize: "0.85rem" }}
+                style={{ background: "var(--lux-cyan)", color: "#0b0f19", padding: "10px 20px", borderRadius: "10px", fontWeight: 800, textDecoration: "none", fontSize: "0.85rem", display: "inline-flex", alignItems: "center", gap: "6px" }}
               >
-                View GitHub Repo ↗
+                <GithubLogoIcon size={16} color="#0b0f19" />
+                <span>View GitHub Repo ↗</span>
               </a>
               <button
                 onClick={() => setSelectedApp(null)}

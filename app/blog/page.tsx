@@ -7,7 +7,7 @@ import { BLOG_ARTICLES, type Audience, type BlogArticle } from "@/lib/luxContent
 import { prefixPath } from "@/lib/prefix";
 import ArticleVisualAssetsDeck, { type VisualAssetItem, type ResourceDownloadItem } from "@/components/ArticleVisualAssetsDeck";
 
-const filters: Array<"All" | Audience> = ["All", "Lux Automaton", "Lux AI Kids"];
+const filters: Array<"All" | Audience> = ["All", "App Review", "Lux Automaton", "Lux AI Kids"];
 
 function StoryMedia({ article, sizes }: { article: BlogArticle; sizes: string }) {
   return article.video ? (

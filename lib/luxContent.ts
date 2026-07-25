@@ -1,4 +1,4 @@
-export type Audience = "Lux Automaton" | "Lux AI Kids";
+export type Audience = "Lux Automaton" | "Lux AI Kids" | "App Review";
 
 export interface BlogArticle {
   slug: string;
@@ -74,12 +74,12 @@ export interface TvEpisode {
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "top-5-github-apps-to-watch-this-week",
-    audience: "Lux Automaton",
+    audience: "App Review",
     title: "Top 5 GitHub Apps to Watch This Week",
     deck: "Open-source tools with real momentum, practical value, and a clear Lux verdict.",
     date: "July 24, 2026",
     readTime: "14 min read",
-    category: "GitHub Apps & Developer Tools",
+    category: "App Review",
     image: "/images/01-thumbnail-top-5-github-apps.png",
     takeaways: [
       "01 — Hermes Agent leads with a 92/100 Lux Score for persistent memory, skills, and multi-channel work.",

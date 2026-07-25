@@ -1243,15 +1243,29 @@ export default function AppReviewPage() {
               </div>
             </div>
 
-            {/* Article Image Banner */}
-            <div style={{ position: "relative", width: "100%", height: "420px", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.3)", boxShadow: "0 20px 40px rgba(0,0,0,0.5)", background: "#060913" }}>
+            {/* Article High-Res Hero Photo Banner */}
+            <div style={{ position: "relative", width: "100%", height: "480px", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.4)", boxShadow: "0 25px 50px rgba(0,0,0,0.6)", background: "#060913" }}>
               <Image 
-                src={prefixPath("/images/01-thumbnail-top-5-github-apps.png")} 
-                alt="Top 5 GitHub Apps to Watch This Week Header" 
+                src={prefixPath("/images/hero.png")} 
+                alt="Top 5 GitHub Apps to Watch This Week Hero Photograph" 
                 fill 
-                style={{ objectFit: "contain" }} 
+                style={{ objectFit: "cover" }} 
                 priority 
               />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6, 9, 19, 0.2) 0%, rgba(6, 9, 19, 0.85) 100%)" }}></div>
+              <div style={{ position: "absolute", bottom: "24px", left: "32px", right: "32px", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+                <div>
+                  <span style={{ background: "var(--lux-cyan)", color: "#0b0f19", fontSize: "0.75rem", fontWeight: 900, padding: "4px 12px", borderRadius: "12px", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                    EDITORIAL HERO PHOTOGRAPH
+                  </span>
+                  <h3 style={{ fontSize: "1.5rem", fontWeight: 900, color: "#fff", margin: "6px 0 0", textShadow: "0 2px 10px rgba(0,0,0,0.8)" }}>
+                    Top 5 GitHub Open-Source Apps Review
+                  </h3>
+                </div>
+                <span style={{ fontSize: "0.8rem", color: "#ffe45c", fontFamily: "var(--font-mono)", background: "rgba(0,0,0,0.6)", padding: "4px 12px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}>
+                  Photo Citation: Lux App Review Kit
+                </span>
+              </div>
             </div>
 
             {/* Main Article Content Card */}
@@ -1265,24 +1279,57 @@ export default function AppReviewPage() {
                 For this week of <strong>July 20–24, 2026</strong> edition, we looked for projects with a combination of practical usefulness, current momentum, active development, understandable documentation, permissive licensing, and a believable path from repository to real-world value.
               </p>
 
-              {/* Executive Summary Photo Showcase Gallery */}
-              <div style={{ margin: "28px 0", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
-                <div style={{ background: "#060913", border: "1px solid rgba(0, 212, 255, 0.35)", borderRadius: "14px", overflow: "hidden", padding: "12px", boxShadow: "0 10px 25px rgba(0,0,0,0.5)" }}>
-                  <div style={{ position: "relative", width: "100%", height: "190px", borderRadius: "8px", overflow: "hidden", background: "#0b0f19" }}>
-                    <Image src={prefixPath("/images/00-asset-set-preview-top-5-github-apps.png")} alt="Lux App Review 88-File Kit Visual Set" fill style={{ objectFit: "contain" }} />
-                  </div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--lux-cyan)", fontWeight: 700, marginTop: "10px", textAlign: "center", fontFamily: "var(--font-mono)" }}>
-                    📷 Asset Set Preview • 88-File Implementation Package
-                  </div>
+              {/* Executive Summary 4-Photo High-Res Gallery */}
+              <div style={{ margin: "32px 0" }}>
+                <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-cyan)", textTransform: "uppercase", letterSpacing: "0.1em", fontFamily: "var(--font-mono)", marginBottom: "14px" }}>
+                  📷 EXECUTIVE SUMMARY EDITORIAL PHOTOGRAPHY &amp; VISUALS
                 </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+                  
+                  {/* Photo 1: Hero Visual */}
+                  <div style={{ background: "#060913", border: "1px solid rgba(0, 212, 255, 0.35)", borderRadius: "16px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.5)" }}>
+                    <div style={{ position: "relative", width: "100%", height: "200px", background: "#0b0f19" }}>
+                      <Image src={prefixPath("/images/hero.png")} alt="Top 5 GitHub Apps Editorial Hero" fill style={{ objectFit: "cover" }} />
+                    </div>
+                    <div style={{ padding: "14px 16px" }}>
+                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>Top 5 GitHub Apps Hero Visual</div>
+                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Primary editorial photograph from the publication kit</div>
+                    </div>
+                  </div>
 
-                <div style={{ background: "#060913", border: "1px solid rgba(108, 71, 255, 0.35)", borderRadius: "14px", overflow: "hidden", padding: "12px", boxShadow: "0 10px 25px rgba(0,0,0,0.5)" }}>
-                  <div style={{ position: "relative", width: "100%", height: "190px", borderRadius: "8px", overflow: "hidden", background: "#0b0f19" }}>
-                    <Image src={prefixPath("/images/score-visual.png")} alt="Lux Score 7-Dimension Rating Framework" fill style={{ objectFit: "contain" }} />
+                  {/* Photo 2: Editorial Workspace */}
+                  <div style={{ background: "#060913", border: "1px solid rgba(108, 71, 255, 0.35)", borderRadius: "16px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.5)" }}>
+                    <div style={{ position: "relative", width: "100%", height: "200px", background: "#0b0f19" }}>
+                      <Image src={prefixPath("/images/editorial-workspace.png")} alt="Lux Editorial Workspace" fill style={{ objectFit: "cover" }} />
+                    </div>
+                    <div style={{ padding: "14px 16px" }}>
+                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>Editorial Research Workspace</div>
+                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Evaluation workflow and research environment</div>
+                    </div>
                   </div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--lux-indigo)", fontWeight: 700, marginTop: "10px", textAlign: "center", fontFamily: "var(--font-mono)" }}>
-                    📊 7-Dimension Rating Framework &amp; Radar Metrics
+
+                  {/* Photo 3: Radar Score System */}
+                  <div style={{ background: "#060913", border: "1px solid rgba(0, 255, 163, 0.35)", borderRadius: "16px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.5)" }}>
+                    <div style={{ position: "relative", width: "100%", height: "200px", background: "#0b0f19" }}>
+                      <Image src={prefixPath("/images/score-visual.png")} alt="Lux Score 7-Dimension Rating Framework" fill style={{ objectFit: "cover" }} />
+                    </div>
+                    <div style={{ padding: "14px 16px" }}>
+                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>7-Dimension Lux Score System</div>
+                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Radar evaluation metrics and weightings</div>
+                    </div>
                   </div>
+
+                  {/* Photo 4: Social Preview */}
+                  <div style={{ background: "#060913", border: "1px solid rgba(255, 215, 0, 0.35)", borderRadius: "16px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.5)" }}>
+                    <div style={{ position: "relative", width: "100%", height: "200px", background: "#0b0f19" }}>
+                      <Image src={prefixPath("/images/social-preview.png")} alt="Lux App Review Social Preview Card" fill style={{ objectFit: "cover" }} />
+                    </div>
+                    <div style={{ padding: "14px 16px" }}>
+                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>Publication &amp; Social Card</div>
+                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Social media and newsletter distribution preview</div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 

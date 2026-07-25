@@ -1271,12 +1271,12 @@ export default function AppReviewPage() {
                 <div style={{ position: "relative", width: "100%", height: "240px", borderRadius: "14px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.4)", boxShadow: "0 10px 30px rgba(0,0,0,0.5)", background: "#060913" }}>
                   <Image 
                     src={prefixPath("/images/lux-app-review-podcast-hosts.jpg")} 
-                    alt="Asa & Dr. Torrey Podcast Studio Hosts - Lux Leadership Podcast" 
+                    alt="LANA &amp; DRE Podcast Studio Hosts - Lux Leadership Podcast" 
                     fill 
                     style={{ objectFit: "cover" }} 
                   />
                   <div style={{ position: "absolute", bottom: "12px", left: "14px", background: "rgba(6, 9, 19, 0.88)", padding: "4px 12px", borderRadius: "8px", border: "1px solid rgba(0, 212, 255, 0.3)", fontSize: "0.7rem", color: "var(--lux-cyan)", fontWeight: 800, fontFamily: "var(--font-mono)" }}>
-                    🎙️ ASA &amp; DR. TORREY • LUX LEADERSHIP STUDIO
+                    🎙️ LANA &amp; DRE • LUX LEADERSHIP STUDIO
                   </div>
                 </div>
 

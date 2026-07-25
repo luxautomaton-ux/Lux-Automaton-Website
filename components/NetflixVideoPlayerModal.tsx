@@ -66,6 +66,7 @@ export default function NetflixVideoPlayerModal({ episode, onClose }: NetflixVid
                   playsInline
                   onTimeUpdate={handlePreviewTimeUpdate}
                   className="netflix-preview-video"
+                  style={episode.zoom ? { transform: "scale(1.10)", transformOrigin: "center center" } : undefined}
                 />
               ) : (
                 <Image src={prefixPath(episode.image)} alt={episode.title} fill className="netflix-preview-fallback" />
@@ -139,6 +140,7 @@ export default function NetflixVideoPlayerModal({ episode, onClose }: NetflixVid
               controls
               autoPlay
               className="cinema-video"
+              style={episode.zoom ? { transform: "scale(1.10)", transformOrigin: "center center" } : undefined}
             />
           </div>
         )}

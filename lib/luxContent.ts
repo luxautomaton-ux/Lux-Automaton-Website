@@ -66,6 +66,7 @@ export interface TvEpisode {
   rating: string;
   image: string;
   video?: string;
+  zoom?: boolean;
   storyUrl?: string;
   description: string;
   tags: string[];
@@ -3424,6 +3425,33 @@ export const KIDS_WORKSHOPS: KidsWorkshop[] = [
 ];
 
 export const LUX_TV_EPISODES: TvEpisode[] = [
+  {
+    slug: "lux-app-review-the-ai-workflow-stack",
+    audience: "App Review",
+    title: "Lux App Review: The AI Workflow Stack (Top 5 GitHub Tools)",
+    series: "Lux App Review",
+    duration: "14m",
+    rating: "A Score",
+    image: "/images/hero.png",
+    video: "/videos/the-ai-workflow-stack-top-5.mp4",
+    zoom: true,
+    storyUrl: "/app-review",
+    description: "The AI Workflow Stack evaluation: NousResearch Hermes Agent, OpenCut video editor, OmniRoute AI gateway, DeepTutor, and OfficeCLI. Evaluated across 7 operational dimensions.",
+    tags: ["Lux App Review", "GitHub Top 5", "Hermes Agent", "OpenCut", "Money Play"],
+  },
+  {
+    slug: "lux-app-review-automated-intelligence",
+    audience: "App Review",
+    title: "Lux App Review: Automated GitHub App Intelligence",
+    series: "Lux App Review",
+    duration: "8m",
+    rating: "App Intelligence",
+    image: "/images/05-top-5-github-apps-overview.png",
+    video: "/videos/lux-app-review-hero.mp4",
+    storyUrl: "/app-review",
+    description: "Automated GitHub app scoring, momentum tracking, security audits, and subscriber money plays by the Lux Intelligence Team.",
+    tags: ["Lux App Review", "GitHub", "Lux Score", "Automated Intelligence"],
+  },
   {
     slug: "asa-lana-ep2-give-the-story-a-memory",
     audience: "Lux Automaton",

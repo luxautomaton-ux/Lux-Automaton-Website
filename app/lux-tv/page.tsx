@@ -9,6 +9,7 @@ import NetflixVideoPlayerModal from "@/components/NetflixVideoPlayerModal";
 
 const rows = [
   { title: "Featured Original Series", match: "ASA + LANA" },
+  { title: "Lux App Reviews & GitHub Intelligence", match: "App Review" },
   { title: "Lux Product Demos & Technical Labs", match: "Lux" },
   { title: "Private AI & Care Operations", match: "Private AI" },
   { title: "Founder Notes & Vision", match: "Founder" },

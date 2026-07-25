@@ -102,6 +102,36 @@ export default function HomePage() {
         <div className="world-status"><span>01</span><p>Scroll to explore</p><i /></div>
       </section>
 
+      {/* Featured Lux App Review Cyber Banner */}
+      <section className="world-app-review-banner-wrap" style={{ padding: "0 4vw", margin: "40px auto 0", maxWidth: "1400px" }}>
+        <Link 
+          href="/app-review" 
+          aria-label="Explore Lux App Review - Open Source Intelligence & Weekly Top Apps"
+          style={{
+            display: "block",
+            position: "relative",
+            borderRadius: "20px",
+            overflow: "hidden",
+            border: "1px solid rgba(0, 240, 255, 0.4)",
+            boxShadow: "0 0 35px rgba(0, 240, 255, 0.2), 0 0 60px rgba(108, 71, 255, 0.15)",
+            background: "linear-gradient(135deg, #090e1a 0%, #050811 100%)",
+            transition: "transform 0.3s ease, box-shadow 0.3s ease",
+          }}
+          className="hover:scale-[1.01] hover:shadow-[0_0_50px_rgba(0,240,255,0.35)]"
+        >
+          <div style={{ position: "relative", width: "100%", height: "auto", display: "flex", alignItems: "center" }}>
+            <Image 
+              src={prefixPath("/images/lux-app-review-banner.png")} 
+              alt="LUX APP REVIEW - Hot Open Source Intelligence, Top Apps, Lux Scores & Money Plays" 
+              width={1400} 
+              height={320} 
+              style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} 
+              priority
+            />
+          </div>
+        </Link>
+      </section>
+
       <section className={`world-command-deck deck-${activeWorld.accent}`} aria-labelledby="world-command-title">
         <div className="command-deck-intro">
           <p>00 / MAKE IT YOURS</p>

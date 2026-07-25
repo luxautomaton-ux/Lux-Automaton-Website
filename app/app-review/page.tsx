@@ -249,17 +249,28 @@ export default function AppReviewPage() {
           </div>
 
           {/* Hero Section */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "24px", alignItems: "center" }}>
-            <div>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(108, 71, 255, 0.12)", border: "1px solid rgba(108, 71, 255, 0.3)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 600, color: "var(--lux-cyan)", marginBottom: "12px" }}>
-                <span>✨</span> Data-Driven Open-Source Evaluation Engine
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "28px", alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+              <div style={{ position: "relative", width: "130px", height: "130px", flexShrink: 0, filter: "drop-shadow(0 0 25px rgba(0, 212, 255, 0.45))" }}>
+                <Image 
+                  src={prefixPath("/images/lux-app-review-logo-official.png")} 
+                  alt="Lux App Review Official Hexagon Emblem" 
+                  fill 
+                  style={{ objectFit: "contain" }}
+                  priority 
+                />
               </div>
-              <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.1, margin: "0 0 16px", color: "#fff" }}>
-                Top 5 GitHub Apps This Week
-              </h1>
-              <p style={{ fontSize: "1.05rem", color: "var(--text-secondary)", maxWidth: "820px", lineHeight: 1.6, margin: 0 }}>
-                Discover the best open-source AI and developer tools making a real impact. Rankings are built from scraped GitHub repositories, official documentation, YouTube creator reviews, and community signals—scored across seven dimensions, not stars alone.
-              </p>
+              <div>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(108, 71, 255, 0.12)", border: "1px solid rgba(108, 71, 255, 0.3)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 600, color: "var(--lux-cyan)", marginBottom: "12px" }}>
+                  <span>✨</span> Data-Driven Open-Source Evaluation Engine
+                </div>
+                <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.1, margin: "0 0 16px", color: "#fff" }}>
+                  Top 5 GitHub Apps This Week
+                </h1>
+                <p style={{ fontSize: "1.05rem", color: "var(--text-secondary)", maxWidth: "820px", lineHeight: 1.6, margin: 0 }}>
+                  Discover the best open-source AI and developer tools making a real impact. Rankings are built from scraped GitHub repositories, official documentation, YouTube creator reviews, and community signals—scored across seven dimensions, not stars alone.
+                </p>
+              </div>
             </div>
           </div>
 

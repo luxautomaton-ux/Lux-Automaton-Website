@@ -206,7 +206,7 @@ const TOP_5_APPS: AppReviewItem[] = [
 
 export default function AppReviewPage() {
   const [selectedApp, setSelectedApp] = useState<AppReviewItem | null>(null);
-  const [activeTab, setActiveTab] = useState<"roundup" | "article" | "grading" | "subscriptions">("roundup");
+  const [activeTab, setActiveTab] = useState<"roundup" | "article" | "money-play" | "grading" | "subscriptions">("roundup");
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
   const [modalOpen, setModalOpen] = useState(false);
   const [userPlan, setUserPlan] = useState<string>("Community");
@@ -307,6 +307,23 @@ export default function AppReviewPage() {
               }}
             >
               📰 Featured Editorial Article
+            </button>
+            <button
+              onClick={() => setActiveTab("money-play")}
+              style={{
+                background: activeTab === "money-play" ? "rgba(255, 215, 0, 0.18)" : "rgba(255, 215, 0, 0.05)",
+                border: activeTab === "money-play" ? "1px solid #ffd700" : "1px solid rgba(255, 215, 0, 0.3)",
+                color: activeTab === "money-play" ? "#fff" : "#ffe45c",
+                padding: "8px 16px",
+                borderRadius: "8px",
+                fontSize: "0.85rem",
+                fontWeight: 800,
+                cursor: "pointer",
+                transition: "all 0.2s",
+                boxShadow: activeTab === "money-play" ? "0 0 16px rgba(255, 215, 0, 0.3)" : "none"
+              }}
+            >
+              💰 Subscriber Money Play (High-Ticket Offers)
             </button>
             <button
               onClick={() => setActiveTab("grading")}
@@ -802,6 +819,437 @@ export default function AppReviewPage() {
               </div>
 
             </div>
+          </div>
+        )}
+
+        {/* TAB: SUBSCRIBER MONEY PLAY (HIGH-TICKET SERVICE OFFERS) */}
+        {activeTab === "money-play" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
+
+            {/* Subscriber Hero Banner */}
+            <div style={{ background: "linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(11, 15, 25, 0.95) 60%, rgba(0, 212, 255, 0.12))", border: "1px solid rgba(255, 215, 0, 0.4)", borderRadius: "20px", padding: "36px", boxShadow: "0 0 30px rgba(255, 215, 0, 0.15)", position: "relative", overflow: "hidden" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "20px", marginBottom: "20px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <span style={{ background: "rgba(255, 215, 0, 0.2)", border: "1px solid #ffd700", color: "#ffe45c", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                    👑 SUBSCRIBER MONEY PLAY INTELLIGENCE
+                  </span>
+                  <span style={{ background: "rgba(0, 212, 255, 0.15)", border: "1px solid rgba(0, 212, 255, 0.3)", color: "var(--lux-cyan)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 700, fontFamily: "var(--font-mono)" }}>
+                    KIT LAR-W30-2026-0724
+                  </span>
+                </div>
+                <a
+                  href="/documents/Lux_App_Review_Money_Play_2026-07-24.pdf"
+                  download
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "linear-gradient(135deg, #ffd700, #ffaa00)", color: "#0b0f19", padding: "10px 20px", borderRadius: "10px", fontWeight: 900, fontSize: "0.85rem", textDecoration: "none", boxShadow: "0 0 20px rgba(255, 215, 0, 0.35)", transition: "all 0.2s" }}
+                >
+                  📥 DOWNLOAD MONEY PLAY PDF (141 KB) ⚡
+                </a>
+              </div>
+
+              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 900, color: "#fff", margin: "0 0 16px", letterSpacing: "-0.01em" }}>
+                Turn Open-Source GitHub Repositories Into Managed High-Ticket Business Systems
+              </h2>
+              <p style={{ fontSize: "1.05rem", color: "var(--text-secondary)", maxWidth: "880px", lineHeight: 1.6, margin: "0 0 24px" }}>
+                Every week, Lux App Review publishes five commercial monetization blueprints for founders, agency owners, and technical consultants. Turn open-source code into high-margin recurring client revenue ($1,250 – $3,500 setup + $349 – $999/mo retainers).
+              </p>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "16px", background: "rgba(6, 9, 19, 0.7)", border: "1px solid rgba(255, 215, 0, 0.2)", borderRadius: "14px", padding: "20px" }}>
+                <div>
+                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-mono)" }}>AVERAGE SETUP VALUE</div>
+                  <div style={{ fontSize: "1.6rem", fontWeight: 900, color: "#ffe45c" }}>$2,149 <span style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontWeight: 500 }}>/ project</span></div>
+                </div>
+                <div>
+                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-mono)" }}>AVERAGE MONTHLY SLA</div>
+                  <div style={{ fontSize: "1.6rem", fontWeight: 900, color: "var(--lux-mint)" }}>$569 <span style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontWeight: 500 }}>/ client / mo</span></div>
+                </div>
+                <div>
+                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-mono)" }}>SUBSCRIBER DELIVERABLES</div>
+                  <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#fff" }}>5 Scopes + Prompts + PDFs</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Disclaimer Bar */}
+            <div style={{ background: "rgba(17, 24, 39, 0.6)", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: "12px", padding: "14px 20px", display: "flex", alignItems: "center", gap: "12px", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+              <span style={{ fontSize: "1.1rem" }}>⚠️</span>
+              <span><strong>Subscriber Disclaimer:</strong> Educational planning examples only. No earnings guarantee. All service offers require appropriate technical testing, client permission, license compliance, and security scoping before commercial deployment.</span>
+            </div>
+
+            {/* 5 COMMERCIAL MONEY PLAYS GRID */}
+            <div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", marginBottom: "24px" }}>
+                <div>
+                  <h3 style={{ fontSize: "1.5rem", fontWeight: 900, color: "#fff", margin: 0 }}>This Week’s 5 High-Ticket Commercial Offers</h3>
+                  <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", margin: "4px 0 0" }}>Complete buyer targeting, pricing breakdown, scope of work, and monthly SLA retainers.</p>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+
+                {/* PLAY 1: HERMES AGENT */}
+                <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(0, 212, 255, 0.08)" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                      <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(0, 212, 255, 0.15)", border: "1px solid var(--lux-cyan)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
+                        🤖
+                      </div>
+                      <div>
+                        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                          PLAY 01 • BASED ON HERMES AGENT (MIT)
+                        </div>
+                        <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                          Managed AI Operations Desk
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
+                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$3,500</div>
+                      </div>
+                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
+                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$999<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                    <div>
+                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-cyan)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
+                      <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Small businesses, agencies, creators, and internal operations teams.</p>
+                      
+                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-cyan)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK & OFFER</h5>
+                      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                        Install and configure Hermes Agent, connect approved messaging channels (Telegram, Slack, Email), build 3 custom business skills, establish persistent memory stores, add scheduled reporting, document permissions, and provide managed 24/7 monitoring.
+                      </p>
+                    </div>
+
+                    <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
+                      <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
+                      <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+                        <li>Hardened Hermes installation on isolated VPS or client server</li>
+                        <li>3 Custom Business Skills (e.g. Lead Intake, Weekly Digest, PDF Summaries)</li>
+                        <li>Configured Messaging Gateway (Slack / Telegram / Email)</li>
+                        <li>Security & Least-Privilege Permission Scoping Document</li>
+                        <li>Monthly Health Check, Log Audit & Skill Optimization</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* PLAY 2: OPENCUT */}
+                <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(108, 71, 255, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(108, 71, 255, 0.08)" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                      <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(108, 71, 255, 0.15)", border: "1px solid var(--lux-indigo)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
+                        🎬
+                      </div>
+                      <div>
+                        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-indigo)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                          PLAY 02 • BASED ON OPENCUT (MIT)
+                        </div>
+                        <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                          Private Creator Editing Studio
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
+                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$1,500</div>
+                      </div>
+                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
+                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$399<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                    <div>
+                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-indigo)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
+                      <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Creators, schools, nonprofits, agencies, and privacy-sensitive media teams.</p>
+                      
+                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-indigo)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK & OFFER</h5>
+                      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                        Deploy a branded private video editing workspace, prepare reusable brand video templates, train the editing team, document local storage and export workflows, and provide monthly software updates and technical support.
+                      </p>
+                    </div>
+
+                    <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
+                      <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
+                      <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+                        <li>Self-hosted or desktop OpenCut deployment with zero recurring seat fees</li>
+                        <li>5 Branded Brand Video Project Templates & Presets</li>
+                        <li>Team Workflow & Local Storage Safety Playbook</li>
+                        <li>Monthly Software Update Patching & Feature Training</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* PLAY 3: OMNIROUTE */}
+                <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(0, 255, 163, 0.08)" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                      <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(0, 255, 163, 0.15)", border: "1px solid var(--lux-mint)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
+                        ⚡
+                      </div>
+                      <div>
+                        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-mint)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                          PLAY 03 • BASED ON OMNIROUTE (MIT)
+                        </div>
+                        <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                          AI Cost-Control & Reliability Gateway
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
+                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$1,997</div>
+                      </div>
+                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
+                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$499<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                    <div>
+                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-mint)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
+                      <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>AI agencies, development teams, internal innovation groups, multi-model operators.</p>
+                      
+                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-mint)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK & OFFER</h5>
+                      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                        Install a hardened OmniRoute gateway, connect approved model providers (OpenAI, Anthropic, Gemini, Ollama), configure fallback routing and token compression, set up monthly token budgets, train staff, and provide a monthly API cost optimization audit.
+                      </p>
+                    </div>
+
+                    <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
+                      <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
+                      <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+                        <li>Single unified endpoint for all client LLM requests</li>
+                        <li>Automated provider fallback to eliminate API downtime</li>
+                        <li>Semantic Caching & Token Compression rules (cut API costs 30-50%)</li>
+                        <li>Monthly Token Spend Audit & Provider Optimization Report</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* PLAY 4: DEEPTUTOR */}
+                <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(255, 228, 92, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(255, 228, 92, 0.08)" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                      <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(255, 228, 92, 0.15)", border: "1px solid #ffe45c", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
+                        🎓
+                      </div>
+                      <div>
+                        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                          PLAY 04 • BASED ON DEEPTUTOR (APACHE-2.0)
+                        </div>
+                        <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                          Private AI Learning Portal
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
+                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$2,500</div>
+                      </div>
+                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
+                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$599<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                    <div>
+                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
+                      <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Tutoring companies, workforce programs, schools, nonprofits, membership communities.</p>
+                      
+                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK & OFFER</h5>
+                      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                        Deploy a private DeepTutor portal, load approved learning materials & custom knowledge bases, configure learner roles and progress tracking, train educators, add content review controls, and provide monthly curriculum and usage reporting.
+                      </p>
+                    </div>
+
+                    <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
+                      <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
+                      <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+                        <li>Custom branded tutoring portal instance</li>
+                        <li>Ingested curriculum docs & verified answer grounding</li>
+                        <li>Learner memory & adaptive question generation setup</li>
+                        <li>Monthly Educator Usage, Completion & Accuracy Report</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* PLAY 5: OFFICECLI */}
+                <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(255, 107, 0, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(255, 107, 0, 0.08)" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                      <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(255, 107, 0, 0.15)", border: "1px solid #ff6b00", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
+                        📄
+                      </div>
+                      <div>
+                        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ff6b00", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                          PLAY 05 • BASED ON OFFICECLI (APACHE-2.0)
+                        </div>
+                        <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                          Document Automation QuickStart
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
+                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$1,250</div>
+                      </div>
+                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
+                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$349<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                    <div>
+                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ff6b00", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
+                      <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Consultants, agencies, finance teams, operations groups, software vendors.</p>
+                      
+                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ff6b00", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK & OFFER</h5>
+                      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                        Install OfficeCLI binary, connect approved AI agents (Hermes / LANA / custom scripts), build 3 Word, Excel, or PowerPoint automated document pipelines, establish quality validation checks, and provide managed template maintenance.
+                      </p>
+                    </div>
+
+                    <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
+                      <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
+                      <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+                        <li>OfficeCLI binary integrated into client server (no MS Office required)</li>
+                        <li>3 Automated Document Workflows (Word Contract, Excel Report, PPT Deck)</li>
+                        <li>Agent Document Template Library & Formatting Guards</li>
+                        <li>Monthly Maintenance & Template Update SLA</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* 4-STEP SUBSCRIBER PLAYBOOK */}
+            <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "18px", padding: "32px" }}>
+              <h3 style={{ fontSize: "1.4rem", fontWeight: 900, color: "#fff", margin: "0 0 8px" }}>The 4-Step Commercial Implementation Playbook</h3>
+              <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", margin: "0 0 28px" }}>Follow this proven framework to convert technical reviews into paid client engagements.</p>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "20px" }}>
+                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 212, 255, 0.2)", borderRadius: "12px", padding: "20px" }}>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-cyan)", fontFamily: "var(--font-mono)" }}>PHASE 01 • DISCOVERY</div>
+                  <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Target Selection & Audit</h4>
+                  <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Identify clients spending over $2k/mo on manual ops, software seats, or fragmented AI tools.</p>
+                </div>
+
+                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "12px", padding: "20px" }}>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-indigo)", fontFamily: "var(--font-mono)" }}>PHASE 02 • SCOPING</div>
+                  <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Fixed Setup + SLA Retainer</h4>
+                  <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Present a fixed 2-week implementation setup + recurring monthly SLA monitoring retainer.</p>
+                </div>
+
+                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 255, 163, 0.2)", borderRadius: "12px", padding: "20px" }}>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-mint)", fontFamily: "var(--font-mono)" }}>PHASE 03 • DEPLOYMENT</div>
+                  <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Hardened Security Setup</h4>
+                  <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Deploy open-source binaries with least-privilege API keys, Docker isolation, and permission logs.</p>
+                </div>
+
+                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255, 215, 0, 0.2)", borderRadius: "12px", padding: "20px" }}>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#ffe45c", fontFamily: "var(--font-mono)" }}>PHASE 04 • RETAINER</div>
+                  <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Monthly Value Reporting</h4>
+                  <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Send automated monthly cost optimization reports showing exact hours & dollars saved.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* COPY-AND-PASTE AGENT PROMPT STACK */}
+            <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 212, 255, 0.25)", borderRadius: "18px", padding: "28px" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "12px", marginBottom: "16px" }}>
+                <div>
+                  <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>⚡ SUBSCRIBER PROMPT STACK</span>
+                  <h4 style={{ fontSize: "1.2rem", fontWeight: 900, color: "#fff", margin: "4px 0 0" }}>LANA Client Pitch Generator Prompt</h4>
+                </div>
+                <button
+                  onClick={() => navigator.clipboard.writeText(`You are an expert technical AI agency consultant. Generate a high-ticket client proposal scope for installing Hermes Agent and OmniRoute for a 20-person business team.`)}
+                  style={{ background: "rgba(0, 212, 255, 0.15)", border: "1px solid var(--lux-cyan)", color: "var(--lux-cyan)", padding: "6px 14px", borderRadius: "8px", fontSize: "0.75rem", fontWeight: 800, cursor: "pointer" }}
+                >
+                  📋 Copy Prompt
+                </button>
+              </div>
+
+              <pre style={{ background: "#060913", border: "1px solid rgba(0,212,255,0.2)", borderRadius: "10px", padding: "16px", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", fontSize: "0.82rem", overflowX: "auto", whiteSpace: "pre-wrap", margin: 0 }}>
+{`Role: Senior AI Infrastructure Consultant & Service Scoper
+Task: Generate a 1-page Client Proposal Scope for deploying open-source AI infrastructure.
+Client Profile: [Insert Client Business Type, e.g. 15-person Digital Agency]
+Selected Stack: Hermes Agent (Ops Agent) + OmniRoute (Cost Gateway)
+Output Required:
+1. Executive Summary (Why open-source beats per-seat SaaS costs)
+2. Setup Scope ($3,500 fixed setup - server install, API keys, 3 custom skills)
+3. Monthly Retainer SLA ($999/mo - 24/7 monitoring, skill updates, monthly cost audit)
+4. Implementation Timeline (Day 1: Audit, Day 5: Deployment, Day 10: Training)
+5. Security & Permission Assurance (Least-privilege API scope, zero data retention)`}
+              </pre>
+            </div>
+
+            {/* DOWNLOAD PDF & PRO TEMPLATE CARDS */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+              <div style={{ background: "linear-gradient(135deg, rgba(255,215,0,0.1), rgba(11,15,25,0.8))", border: "1px solid rgba(255,215,0,0.3)", borderRadius: "16px", padding: "24px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <div>
+                  <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>PDF DOCUMENT</div>
+                  <h4 style={{ fontSize: "1.2rem", fontWeight: 900, color: "#fff", margin: "8px 0" }}>Money Play Full PDF Guide</h4>
+                  <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: "0 0 20px" }}>Printable 6-page subscriber guide containing pricing tables, sales scripts, and risk checklists.</p>
+                </div>
+                <a
+                  href="/documents/Lux_App_Review_Money_Play_2026-07-24.pdf"
+                  download
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ display: "block", textAlign: "center", background: "#ffe45c", color: "#0b0f19", padding: "12px", borderRadius: "10px", fontWeight: 900, fontSize: "0.85rem", textDecoration: "none" }}
+                >
+                  Download Money Play PDF 📥
+                </a>
+              </div>
+
+              <div style={{ background: "linear-gradient(135deg, rgba(0,212,255,0.1), rgba(11,15,25,0.8))", border: "1px solid rgba(0,212,255,0.3)", borderRadius: "16px", padding: "24px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <div>
+                  <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>FULL REVIEW PDF</div>
+                  <h4 style={{ fontSize: "1.2rem", fontWeight: 900, color: "#fff", margin: "8px 0" }}>Top 5 GitHub Apps Full Review PDF</h4>
+                  <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: "0 0 20px" }}>The complete 16-page editorial intelligence report for the week of July 20-24, 2026.</p>
+                </div>
+                <a
+                  href="/documents/Lux_App_Review_Top_5_2026-07-24.pdf"
+                  download
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ display: "block", textAlign: "center", background: "var(--lux-cyan)", color: "#0b0f19", padding: "12px", borderRadius: "10px", fontWeight: 900, fontSize: "0.85rem", textDecoration: "none" }}
+                >
+                  Download Full Review PDF 📥
+                </a>
+              </div>
+            </div>
+
           </div>
         )}
 

@@ -682,14 +682,14 @@ export default function AppReviewPage() {
       {/* Top Banner & Header with Background Video Hero */}
       <section style={{ position: "relative", overflow: "hidden", borderBottom: "1px solid rgba(108, 71, 255, 0.25)", background: "#060913", padding: "40px 0 44px" }}>
         
-        {/* Background Video Hero */}
+        {/* Background Video Hero (10% Zoomed to crop lower-right logo) */}
         <video 
-          src={prefixPath("/videos/lux-app-review-hero.mp4")} 
+          src={prefixPath("/videos/the-ai-workflow-stack-top-5.mp4")} 
           autoPlay 
           loop 
           muted 
           playsInline 
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.38 }} 
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.38, transform: "scale(1.10)", transformOrigin: "center center" }} 
         />
         
         {/* Dark Gradient Overlay for Readability */}
@@ -1339,6 +1339,43 @@ export default function AppReviewPage() {
                 <span style={{ fontSize: "0.8rem", color: "#ffe45c", fontFamily: "var(--font-mono)", background: "rgba(0,0,0,0.6)", padding: "4px 12px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}>
                   Photo Citation: Lux App Review Kit
                 </span>
+              </div>
+            </div>
+
+            {/* FEATURED VIDEO SHOWCASE CARD (10% Zoomed Scale to Crop Lower-Right Logo) */}
+            <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 212, 255, 0.4)", borderRadius: "20px", overflow: "hidden", boxShadow: "0 25px 60px rgba(0,0,0,0.7)" }}>
+              <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", background: "#060913", overflow: "hidden" }}>
+                <video
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  src={prefixPath("/videos/the-ai-workflow-stack-top-5.mp4")}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transform: "scale(1.10)",
+                    transformOrigin: "center center"
+                  }}
+                />
+              </div>
+              <div style={{ padding: "18px 24px", background: "rgba(6, 9, 19, 0.92)", borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "12px" }}>
+                <div>
+                  <span style={{ background: "var(--lux-cyan)", color: "#0b0f19", fontSize: "0.7rem", fontWeight: 900, padding: "3px 10px", borderRadius: "10px", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                    🎥 FEATURED VIDEO EVALUATION
+                  </span>
+                  <h4 style={{ fontSize: "1.2rem", fontWeight: 900, color: "#fff", margin: "4px 0 0" }}>
+                    The AI Workflow Stack: Top 5 GitHub Tools Evaluated
+                  </h4>
+                </div>
+                <div style={{ fontSize: "0.75rem", color: "var(--lux-mint)", fontFamily: "var(--font-mono)", background: "rgba(0, 255, 163, 0.1)", padding: "4px 12px", borderRadius: "20px", border: "1px solid rgba(0, 255, 163, 0.3)" }}>
+                  🔍 10% Zoom Scale Active (Cropped Lower-Right Logo)
+                </div>
               </div>
             </div>
 

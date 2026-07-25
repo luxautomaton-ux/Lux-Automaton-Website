@@ -679,9 +679,23 @@ export default function AppReviewPage() {
   return (
     <div style={{ background: "var(--bg-base)", color: "var(--text-primary)", minHeight: "100vh", paddingTop: "88px", paddingBottom: "80px" }}>
       
-      {/* Top Banner & Header */}
-      <section style={{ borderBottom: "1px solid rgba(108, 71, 255, 0.15)", background: "linear-gradient(180deg, rgba(6, 9, 19, 0.9) 0%, rgba(11, 15, 25, 0.95) 100%)", padding: "32px 0 40px" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+      {/* Top Banner & Header with Background Video Hero */}
+      <section style={{ position: "relative", overflow: "hidden", borderBottom: "1px solid rgba(108, 71, 255, 0.25)", background: "#060913", padding: "40px 0 44px" }}>
+        
+        {/* Background Video Hero */}
+        <video 
+          src={prefixPath("/videos/lux-app-review-hero.mp4")} 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.38 }} 
+        />
+        
+        {/* Dark Gradient Overlay for Readability */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6, 9, 19, 0.65) 0%, rgba(11, 15, 25, 0.92) 100%)", zIndex: 1 }}></div>
+
+        <div style={{ position: "relative", zIndex: 2, maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
           
           {/* Header Bar */}
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", marginBottom: "20px" }}>

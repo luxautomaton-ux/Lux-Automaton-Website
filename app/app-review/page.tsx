@@ -372,8 +372,8 @@ export default function AppReviewPage() {
             {/* Featured Blog Post Card */}
             <div style={{ background: "linear-gradient(135deg, rgba(9, 14, 26, 0.95), rgba(16, 24, 40, 0.95))", border: "1px solid rgba(0, 212, 255, 0.35)", borderRadius: "16px", padding: "24px", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "20px", boxShadow: "0 0 35px rgba(0, 212, 255, 0.15)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-                <div style={{ width: "95px", height: "95px", position: "relative", flexShrink: 0, borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.4)", boxShadow: "0 0 20px rgba(0, 212, 255, 0.2)" }}>
-                  <Image src={prefixPath("/images/01-thumbnail-top-5-github-apps.png")} alt="Top 5 GitHub Apps to Watch This Week" fill style={{ objectFit: "cover" }} />
+                <div style={{ width: "240px", maxWidth: "100%", height: "135px", position: "relative", flexShrink: 0, borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.4)", boxShadow: "0 0 20px rgba(0, 212, 255, 0.2)", background: "#060913" }}>
+                  <Image src={prefixPath("/images/01-thumbnail-top-5-github-apps.png")} alt="Top 5 GitHub Apps to Watch This Week" fill style={{ objectFit: "contain" }} />
                 </div>
                 <div>
                   <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "4px" }}>
@@ -714,12 +714,12 @@ export default function AppReviewPage() {
             </div>
 
             {/* Article Image Banner */}
-            <div style={{ position: "relative", width: "100%", height: "420px", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.3)", boxShadow: "0 20px 40px rgba(0,0,0,0.5)" }}>
+            <div style={{ position: "relative", width: "100%", height: "420px", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.3)", boxShadow: "0 20px 40px rgba(0,0,0,0.5)", background: "#060913" }}>
               <Image 
                 src={prefixPath("/images/01-thumbnail-top-5-github-apps.png")} 
                 alt="Top 5 GitHub Apps to Watch This Week Header" 
                 fill 
-                style={{ objectFit: "cover" }} 
+                style={{ objectFit: "contain" }} 
                 priority 
               />
             </div>

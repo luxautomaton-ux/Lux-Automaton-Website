@@ -1265,6 +1265,27 @@ export default function AppReviewPage() {
                 For this week of <strong>July 20–24, 2026</strong> edition, we looked for projects with a combination of practical usefulness, current momentum, active development, understandable documentation, permissive licensing, and a believable path from repository to real-world value.
               </p>
 
+              {/* Executive Summary Photo Showcase Gallery */}
+              <div style={{ margin: "28px 0", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+                <div style={{ background: "#060913", border: "1px solid rgba(0, 212, 255, 0.35)", borderRadius: "14px", overflow: "hidden", padding: "12px", boxShadow: "0 10px 25px rgba(0,0,0,0.5)" }}>
+                  <div style={{ position: "relative", width: "100%", height: "190px", borderRadius: "8px", overflow: "hidden", background: "#0b0f19" }}>
+                    <Image src={prefixPath("/images/00-asset-set-preview-top-5-github-apps.png")} alt="Lux App Review 88-File Kit Visual Set" fill style={{ objectFit: "contain" }} />
+                  </div>
+                  <div style={{ fontSize: "0.75rem", color: "var(--lux-cyan)", fontWeight: 700, marginTop: "10px", textAlign: "center", fontFamily: "var(--font-mono)" }}>
+                    📷 Asset Set Preview • 88-File Implementation Package
+                  </div>
+                </div>
+
+                <div style={{ background: "#060913", border: "1px solid rgba(108, 71, 255, 0.35)", borderRadius: "14px", overflow: "hidden", padding: "12px", boxShadow: "0 10px 25px rgba(0,0,0,0.5)" }}>
+                  <div style={{ position: "relative", width: "100%", height: "190px", borderRadius: "8px", overflow: "hidden", background: "#0b0f19" }}>
+                    <Image src={prefixPath("/images/score-visual.png")} alt="Lux Score 7-Dimension Rating Framework" fill style={{ objectFit: "contain" }} />
+                  </div>
+                  <div style={{ fontSize: "0.75rem", color: "var(--lux-indigo)", fontWeight: 700, marginTop: "10px", textAlign: "center", fontFamily: "var(--font-mono)" }}>
+                    📊 7-Dimension Rating Framework &amp; Radar Metrics
+                  </div>
+                </div>
+              </div>
+
               <hr style={{ border: "none", borderTop: "1px solid rgba(255,255,255,0.08)", margin: "40px 0" }} />
 
               {/* Review Sections for Each App */}

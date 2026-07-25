@@ -23,6 +23,7 @@ interface AppReviewItem {
   grade: string;
   verdict: string;
   confidence: string;
+  weeklyStars: number;
   scores: {
     usefulness: number;
     health: number;
@@ -57,6 +58,7 @@ const TOP_5_APPS: AppReviewItem[] = [
     grade: "A",
     verdict: "Excellent Choice",
     confidence: "High",
+    weeklyStars: 3513,
     scores: { usefulness: 19, health: 15, momentum: 15, ease: 13, trust: 13, quality: 9, innovation: 8 },
     bestFor: "Operators who want an always-on agent that can remember, schedule, delegate, and work across messaging channels.",
     solves: "Most AI assistants reset every session or live inside one app. Hermes combines persistent memory, reusable skills, scheduled work, tool use, subagents, and messaging access in one open-source runtime.",
@@ -91,6 +93,7 @@ const TOP_5_APPS: AppReviewItem[] = [
     grade: "A-",
     verdict: "Worth Trying",
     confidence: "Medium-High",
+    weeklyStars: 7824,
     scores: { usefulness: 18, health: 13, momentum: 15, ease: 12, trust: 14, quality: 8, innovation: 8 },
     bestFor: "Creators and teams that value local processing, privacy, open formats, and freedom from per-seat editing subscriptions.",
     solves: "Creators often face subscription costs, watermarks, cloud uploads, and closed editing ecosystems. OpenCut is building a local-first editor with a modern web, desktop, mobile, Rust, and automation direction.",
@@ -124,6 +127,7 @@ const TOP_5_APPS: AppReviewItem[] = [
     grade: "A-",
     verdict: "Worth Trying",
     confidence: "Medium-High",
+    weeklyStars: 6240,
     scores: { usefulness: 19, health: 13, momentum: 14, ease: 13, trust: 11, quality: 9, innovation: 8 },
     bestFor: "Developers and teams that use several AI tools or providers and want a single compatible endpoint, fallback logic, and usage visibility.",
     solves: "Using multiple AI providers creates fragmented keys, URLs, quotas, pricing, and failure modes. OmniRoute centralizes connections and exposes an OpenAI-compatible gateway.",
@@ -156,6 +160,7 @@ const TOP_5_APPS: AppReviewItem[] = [
     grade: "A-",
     verdict: "Worth Trying",
     confidence: "Medium-High",
+    weeklyStars: 2814,
     scores: { usefulness: 18, health: 14, momentum: 13, ease: 11, trust: 14, quality: 8, innovation: 8 },
     bestFor: "Educators, tutoring programs, learning communities, and internal training teams willing to supervise an AI learning system.",
     solves: "Generic chatbots rarely maintain a reliable learner model or a structured tutoring loop. DeepTutor combines grounded problem solving with learner memory.",
@@ -188,6 +193,7 @@ const TOP_5_APPS: AppReviewItem[] = [
     grade: "B+",
     verdict: "Promising",
     confidence: "Medium",
+    weeklyStars: 3899,
     scores: { usefulness: 18, health: 13, momentum: 10, ease: 14, trust: 14, quality: 7, innovation: 8 },
     bestFor: "Agents and automation teams that must create or inspect Office files in environments where Microsoft Office is unavailable.",
     solves: "Document agents often produce files without being able to render and inspect the result. OfficeCLI gives agents a command-line path to create and render DOCX, XLSX, and PPTX documents.",
@@ -204,12 +210,459 @@ const TOP_5_APPS: AppReviewItem[] = [
   }
 ];
 
+interface MoneyPlayScript {
+  id: string;
+  appSlug: "hermes" | "opencut" | "omniroute" | "deeptutor" | "officecli";
+  appName: string;
+  scriptNumber: 1 | 2;
+  title: string;
+  subtitle: string;
+  expectedValue: string;
+  language: string;
+  filename: string;
+  description: string;
+  code: string;
+  instructions: string[];
+}
+
+const MONEY_PLAY_SCRIPTS: MoneyPlayScript[] = [
+  {
+    id: "hermes-1",
+    appSlug: "hermes",
+    appName: "Hermes Agent",
+    scriptNumber: 1,
+    title: "Managed Client Ops Desk Daemon",
+    subtitle: "Persistent memory, Telegram/Slack gateways & automated 5 PM summary dispatch",
+    expectedValue: "$3,500 Setup + $999/mo Retainer",
+    language: "python",
+    filename: "hermes_ops_desk.py",
+    description: "Deploys a background daemon script hooking Hermes Agent into client messaging channels with memory retention and daily summary reporting.",
+    code: `# hermes_ops_desk.py - Hermes Agent Client Operations Daemon
+import os, sys, time, json
+from hermes import HermesEngine, MemoryStore, TelegramGateway
+
+# 1. Initialize persistent client memory & messaging gateway
+memory = MemoryStore(client_id="client_corp_01", db_path="./memory.db")
+gateway = TelegramGateway(token=os.getenv("TELEGRAM_BOT_TOKEN"), allowed_chats=[int(os.getenv("CLIENT_CHAT_ID"))])
+hermes = HermesEngine(memory=memory, gateways=[gateway], provider="anthropic/claude-3-5-sonnet")
+
+@hermes.on_message
+def handle_client_request(msg):
+    print(f"[Hermes Ops] Received client prompt: {msg.text}")
+    context = memory.query_relevant_context(msg.text, limit=5)
+    response = hermes.run_subagent_task(prompt=msg.text, context=context)
+    memory.save_interaction(msg.text, response)
+    gateway.send_message(chat_id=msg.chat_id, text=response)
+
+@hermes.scheduled(cron="0 17 * * 1-5")  # Daily 5 PM Client Status Digest
+def send_daily_ops_summary():
+    summary = hermes.generate_summary(days=1)
+    gateway.send_message(chat_id=int(os.getenv("CLIENT_CHAT_ID")), text=f"📊 Daily Business Ops Summary:\\n{summary}")
+
+if __name__ == "__main__":
+    print("🚀 Starting Hermes Managed Ops Desk Daemon ($3,500 setup / $999/mo SLA)...")
+    hermes.start()`,
+    instructions: [
+      "Install dependencies: pip install hermes-agent-sdk python-dotenv",
+      "Set environment variables: TELEGRAM_BOT_TOKEN and CLIENT_CHAT_ID in .env",
+      "Run as systemd daemon service on client VPS: python hermes_ops_desk.py"
+    ]
+  },
+  {
+    id: "hermes-2",
+    appSlug: "hermes",
+    appName: "Hermes Agent",
+    scriptNumber: 2,
+    title: "Client Intake Skill & Payment Verification Webhook",
+    subtitle: "Custom JSON skill schema for Stripe client subscription validation",
+    expectedValue: "Automated Onboarding Engine",
+    language: "json",
+    filename: "hermes_skill_intake.json",
+    description: "Custom skill definition for Hermes Agent that automatically verifies Stripe payment status before creating client workspace folders.",
+    code: `{
+  "name": "client_intake_automation",
+  "version": "1.0.0",
+  "description": "Hermes Agent skill to onboard new client retainers and verify Stripe payment status",
+  "trigger_keywords": ["onboard client", "new retainer", "client intake"],
+  "parameters": {
+    "client_name": { "type": "string", "required": true },
+    "client_email": { "type": "string", "required": true },
+    "retainer_tier": { "type": "string", "enum": ["starter", "pro", "enterprise"], "required": true }
+  },
+  "execution_flow": [
+    { "step": 1, "action": "stripe_verify_subscription", "email": "$client_email" },
+    { "step": 2, "action": "create_client_workspace", "folder": "/clients/$client_name" },
+    { "step": 3, "action": "send_welcome_kit_email", "template": "hermes_onboarding_v1" },
+    { "step": 4, "action": "register_cron_health_checks", "schedule": "daily" }
+  ],
+  "metadata": {
+    "agency_fee": "$3,500 fixed setup",
+    "recurring_sla": "$999/mo"
+  }
+}`,
+    instructions: [
+      "Save file to Hermes Agent skills directory: ~/.hermes/skills/hermes_skill_intake.json",
+      "Register Stripe secret key in Hermes config: hermes config set STRIPE_SECRET_KEY=sk_live_...",
+      "Test skill invocation: hermes run skill client_intake_automation --client_email user@corp.com"
+    ]
+  },
+  {
+    id: "opencut-1",
+    appSlug: "opencut",
+    appName: "OpenCut",
+    scriptNumber: 1,
+    title: "Headless Video Render Engine Pipeline",
+    subtitle: "Automated 4K vertical Shorts/Reels batch export with brand watermarks",
+    expectedValue: "$1,500 Setup + $399/mo Retainer",
+    language: "typescript",
+    filename: "opencut_render_pipeline.ts",
+    description: "Headless TypeScript batch render script utilizing OpenCut core binary to export branded video assets with zero cloud subscription fees.",
+    code: `// opencut_render_pipeline.ts - OpenCut Headless Batch Video Render Engine
+import { OpenCutRenderEngine, BrandPreset } from "@opencut/core";
+import path from "path";
+
+async function renderClientBrandVideo(inputVideo: string, clientBrand: BrandPreset): Promise<string> {
+  console.log(\`🎬 Initializing OpenCut Headless Render for \${clientBrand.name}...\`);
+  
+  const engine = new OpenCutRenderEngine({
+    hardwareAcceleration: "metal", // or 'cuda' on Linux
+    outputFormat: "mp4",
+    aspectRatio: "9:16", // Vertical Reel / Short
+    fps: 60
+  });
+
+  await engine.loadProject({
+    tracks: [
+      { type: "video", source: inputVideo },
+      { type: "watermark", source: clientBrand.logoOverlayPath, opacity: 0.85, position: "top-right" },
+      { type: "captions", style: clientBrand.captionStyle }
+    ],
+    audio: { normLevel: -14, bgMusicTrack: clientBrand.introAudioPath }
+  });
+
+  const outputPath = path.join("./exports", \`\${clientBrand.slug}_export_\${Date.now()}.mp4\`);
+  await engine.exportToFile(outputPath);
+  console.log(\`✅ Video rendered successfully: \${outputPath}\`);
+  return outputPath;
+}
+
+// Run headless batch job
+renderClientBrandVideo("./raw/interview.mp4", {
+  name: "Acme Corp",
+  slug: "acme_corp",
+  logoOverlayPath: "./assets/acme_logo.png",
+  introAudioPath: "./assets/theme.mp3",
+  captionStyle: { font: "Inter", color: "#ffe45c", size: 36 }
+});`,
+    instructions: [
+      "Install OpenCut CLI core: npm install -g @opencut/cli @opencut/core",
+      "Place raw footage in ./raw/ and client logo PNG in ./assets/",
+      "Execute render pipeline: npx ts-node opencut_render_pipeline.ts"
+    ]
+  },
+  {
+    id: "opencut-2",
+    appSlug: "opencut",
+    appName: "OpenCut",
+    scriptNumber: 2,
+    title: "Client Video Branding Preset Injector",
+    subtitle: "Python batch overlay processor for intro/outro watermarks & presets",
+    expectedValue: "Creator Retainer Automation",
+    language: "python",
+    filename: "opencut_preset_injector.py",
+    description: "Automates applying client brand watermarks, animated intros, and custom subtitle presets to batch video uploads.",
+    code: `# opencut_preset_injector.py - Batch Overlay & Watermark Automation
+import os, subprocess, json
+
+def inject_brand_preset(video_dir, brand_config_file):
+    with open(brand_config_file, "r") as f:
+        config = json.load(f)
+    
+    print(f"📦 Processing video folder {video_dir} for client: {config['client_name']}")
+    output_dir = os.path.join(video_dir, "branded_output")
+    os.makedirs(output_dir, exist_ok=True)
+
+    for filename in os.listdir(video_dir):
+        if filename.endswith((".mp4", ".mov")):
+            input_path = os.path.join(video_dir, filename)
+            output_path = os.path.join(output_dir, f"branded_{filename}")
+            
+            # Execute opencut-cli preset overlay command
+            cmd = [
+                "opencut-cli", "process",
+                "--input", input_path,
+                "--output", output_path,
+                "--watermark", config["watermark_path"],
+                "--intro-sec", "2.5",
+                "--preset", config["preset_name"]
+            ]
+            subprocess.run(cmd, check=True)
+            print(f"✨ Branded export complete: {output_path}")
+
+if __name__ == "__main__":
+    inject_brand_preset("./client_uploads/batch_01", "./presets/acme_branding.json")`,
+    instructions: [
+      "Create client branding JSON config in ./presets/",
+      "Run python batch script: python opencut_preset_injector.py",
+      "Deliver branded videos directly to client Dropbox or Google Drive"
+    ]
+  },
+  {
+    id: "omniroute-1",
+    appSlug: "omniroute",
+    appName: "OmniRoute",
+    scriptNumber: 1,
+    title: "Multi-Provider Cost Control & Fallback Proxy Gateway",
+    subtitle: "Token compression, local Ollama routing & zero-downtime provider fallback",
+    expectedValue: "$1,997 Setup + $499/mo Retainer",
+    language: "typescript",
+    filename: "omniroute_cost_router.ts",
+    description: "Deploys a proxy gateway that intercepts LLM calls, routes cheap queries to local open-source models, and falls back to Claude 3.5 / GPT-4o.",
+    code: `// omniroute_cost_router.ts - Cost-Control & Fallback Proxy Gateway
+import express from "express";
+import { OmniRouteGateway } from "@omniroute/sdk";
+
+const app = express();
+app.use(express.json());
+
+const gateway = new OmniRouteGateway({
+  providers: [
+    { name: "ollama", endpoint: "http://localhost:11434/v1", costPerToken: 0 },
+    { name: "anthropic", apiKey: process.env.ANTHROPIC_API_KEY, costPerToken: 0.000015 },
+    { name: "openai", apiKey: process.env.OPENAI_API_KEY, costPerToken: 0.00001 }
+  ],
+  routingStrategy: "cost_optimized", // Cheap Local -> Claude -> GPT-4o
+  tokenCompressor: true,            // Cuts prompt token usage by 35%
+  semanticCache: true               // Serves identical queries instantly from RAM
+});
+
+app.post("/v1/chat/completions", async (req, res) => {
+  try {
+    const response = await gateway.routeRequest(req.body);
+    res.json(response);
+  } catch (err) {
+    console.error("OmniRoute Gateway Error:", err);
+    res.status(500).json({ error: "Routing failure, falling back to backup provider." });
+  }
+});
+
+app.listen(8080, () => console.log("🚀 OmniRoute Cost-Control Proxy live on port 8080 ($1,997 setup / $499/mo)"));`,
+    instructions: [
+      "Install OmniRoute SDK: npm install express @omniroute/sdk dotenv",
+      "Run local Ollama instance: ollama run llama3",
+      "Launch OmniRoute Proxy: npx ts-node omniroute_cost_router.ts"
+    ]
+  },
+  {
+    id: "omniroute-2",
+    appSlug: "omniroute",
+    appName: "OmniRoute",
+    scriptNumber: 2,
+    title: "Client Token Metering & Stripe Invoicing Script",
+    subtitle: "Real-time consumption logger with automated Stripe line items",
+    expectedValue: "Client Usage Billing Engine",
+    language: "typescript",
+    filename: "omniroute_metered_billing.ts",
+    description: "Tracks client API consumption per workspace and logs metered usage records to Stripe for automated monthly invoicing.",
+    code: `// omniroute_metered_billing.ts - Client API Consumption Tracker
+import { OmniRouteLogger } from "@omniroute/analytics";
+import Stripe from "stripe";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2025-01-27" });
+
+OmniRouteLogger.on("request_completed", async (event) => {
+  const { tenantId, totalTokens, costSavedUsd, provider } = event;
+  console.log(\`[OmniRoute Meter] Tenant \${tenantId} consumed \${totalTokens} tokens via \${provider}. Saved $\${costSavedUsd.toFixed(4)}.\`);
+
+  // Send metered usage record to Stripe for recurring retainer billing
+  await stripe.subscriptionItems.createUsageRecord(
+    tenantId, // Stripe Subscription Item ID
+    {
+      quantity: totalTokens,
+      timestamp: Math.floor(Date.now() / 1000),
+      action: "increment"
+    }
+  );
+});`,
+    instructions: [
+      "Import into OmniRoute proxy middleware",
+      "Set STRIPE_SECRET_KEY in production env",
+      "View real-time token savings report in OmniRoute admin dashboard"
+    ]
+  },
+  {
+    id: "deeptutor-1",
+    appSlug: "deeptutor",
+    appName: "DeepTutor",
+    scriptNumber: 1,
+    title: "SOP & PDF Knowledge Ingestion Engine",
+    subtitle: "RAG ingestion script converting manuals into grounded quiz modules",
+    expectedValue: "$2,500 Setup + $599/mo Retainer",
+    language: "python",
+    filename: "deeptutor_rag_ingest.py",
+    description: "Parses corporate SOPs, textbooks, or training manuals into DeepTutor vector memory, generating grounded quiz modules automatically.",
+    code: `# deeptutor_rag_ingest.py - DeepTutor Knowledge Base Ingestion Script
+import os, json
+from deeptutor import TutorEngine, PDFIngester, VectorMemory
+
+def ingest_client_curriculum(pdf_path, course_id):
+    print(f"📖 Ingesting PDF curriculum for DeepTutor: {pdf_path}")
+    memory = VectorMemory(collection=course_id)
+    ingester = PDFIngester(chunk_size=500, overlap=50)
+    
+    chunks = ingester.process(pdf_path)
+    memory.store_chunks(chunks)
+    
+    tutor = TutorEngine(memory=memory)
+    quiz_questions = tutor.generate_grounded_quiz(num_questions=10)
+    
+    print(f"✅ Generated 10 grounded quiz modules for course '{course_id}':")
+    print(json.dumps(quiz_questions, indent=2))
+
+if __name__ == "__main__":
+    ingest_client_curriculum("./curriculum/cybersecurity_sop.pdf", "course_cyber_101")`,
+    instructions: [
+      "Install DeepTutor Python package: pip install deeptutor-ai pypdf langchain",
+      "Place PDF documents in ./curriculum/",
+      "Execute ingestion: python deeptutor_rag_ingest.py"
+    ]
+  },
+  {
+    id: "deeptutor-2",
+    appSlug: "deeptutor",
+    appName: "DeepTutor",
+    scriptNumber: 2,
+    title: "Automated Learner Progress & Mastery Reporter",
+    subtitle: "TypeScript tracker emailing weekly mastery scorecards to parents or managers",
+    expectedValue: "Education SLA Reporting",
+    language: "typescript",
+    filename: "deeptutor_progress_reporter.ts",
+    description: "Queries student mastery metrics and sends automated formatted HTML progress reports to parents or department leaders.",
+    code: `// deeptutor_progress_reporter.ts - Learner Mastery & Weekly Card Generator
+import { DeepTutorAnalytics } from "@deeptutor/analytics";
+import nodemailer from "nodemailer";
+
+async function generateWeeklyLearnerReports(studentId: string, parentEmail: string) {
+  const analytics = new DeepTutorAnalytics(studentId);
+  const stats = await analytics.getWeeklyStats(); // Mastery %, weakest topics, total quiz loops completed
+
+  const htmlReport = \`
+    <div style="font-family: Arial, sans-serif; background: #060913; color: #fff; padding: 24px; border-radius: 12px;">
+      <h2 style="color: #43e6ff;">🎓 DeepTutor Weekly Progress Card</h2>
+      <p>Student ID: <strong>\${studentId}</strong></p>
+      <p>Mastery Level: <span style="color: #00ffa3; font-size: 1.4rem;">\${stats.masteryScore}%</span></p>
+      <p>Weak Topics Identified: \${stats.weakTopics.join(", ")}</p>
+      <p>Recommended Practice Modules: \${stats.recommendedModules.join(", ")}</p>
+    </div>
+  \`;
+
+  const transporter = nodemailer.createTransport({ host: process.env.SMTP_HOST, port: 587 });
+  await transporter.sendMail({
+    from: '"DeepTutor Portal" <reports@deeptutor.ai>',
+    to: parentEmail,
+    subject: \`Weekly Learning Report for Student \${studentId}\`,
+    html: htmlReport
+  });
+
+  console.log(\`📩 Progress report dispatched to \${parentEmail}\`);
+}`,
+    instructions: [
+      "Configure SMTP credentials in server environment",
+      "Schedule script as weekly cron job (Sundays at 8 PM)",
+      "Run: npx ts-node deeptutor_progress_reporter.ts"
+    ]
+  },
+  {
+    id: "officecli-1",
+    appSlug: "officecli",
+    appName: "OfficeCLI",
+    scriptNumber: 1,
+    title: "Headless PDF & Financial Sheet Generator",
+    subtitle: "Node.js wrapper executing single-binary OfficeCLI without Microsoft Office",
+    expectedValue: "$1,250 Setup + $349/mo Retainer",
+    language: "javascript",
+    filename: "officecli_pdf_generator.js",
+    description: "Generates custom Word documents, populates Excel data, and renders clean PDF reports on headless servers using the self-contained OfficeCLI binary.",
+    code: `// officecli_pdf_generator.js - Single Binary Document & PDF Automation
+const { execSync } = require("child_process");
+const fs = require("fs");
+const path = require("path");
+
+function generateClientReport(clientData) {
+  console.log(\`⚙️ Generating Word/PDF Client Report for \${clientData.company}...\`);
+
+  const templatePath = path.join(__dirname, "templates/proposal_template.docx");
+  const jsonInputPath = path.join(__dirname, "temp_data.json");
+  const outputDocx = path.join(__dirname, \`exports/\${clientData.slug}_proposal.docx\`);
+  const outputPdf = path.join(__dirname, \`exports/\${clientData.slug}_proposal.pdf\`);
+
+  fs.writeFileSync(jsonInputPath, JSON.stringify(clientData));
+
+  // Execute single binary OfficeCLI without Microsoft Office
+  execSync(\`officecli fill --template "\${templatePath}" --data "\${jsonInputPath}" --out "\${outputDocx}"\`);
+  execSync(\`officecli render --input "\${outputDocx}" --format pdf --out "\${outputPdf}"\`);
+
+  console.log(\`📄 Generated docx and rendered PDF: \${outputPdf}\`);
+  return outputPdf;
+}
+
+generateClientReport({ company: "Nexus Systems", slug: "nexus", monthlyRetainer: 2500, date: "2026-07-24" });`,
+    instructions: [
+      "Download OfficeCLI binary for Linux/Mac/Windows from GitHub releases",
+      "Add officecli binary to system PATH: sudo mv officecli /usr/local/bin/",
+      "Run script: node officecli_pdf_generator.js"
+    ]
+  },
+  {
+    id: "officecli-2",
+    appSlug: "officecli",
+    appName: "OfficeCLI",
+    scriptNumber: 2,
+    title: "Automated Pitch Deck Builder & Slide Previewer",
+    subtitle: "Python script creating styled PowerPoint (.pptx) decks from JSON data",
+    expectedValue: "Document Automation Retainer",
+    language: "python",
+    filename: "officecli_deck_builder.py",
+    description: "Transforms survey JSON inputs directly into styled PowerPoint pitch decks with HTML visual previews.",
+    code: `# officecli_deck_builder.py - Automated Presentation Deck Builder
+import os, subprocess, json
+
+def build_pitch_deck(survey_json_path, output_pptx_path):
+    print(f"📊 Transforming survey data ({survey_json_path}) into PPTX pitch deck...")
+    
+    cmd = [
+        "officecli", "create-presentation",
+        "--theme", "dark_cyber_glow",
+        "--data", survey_json_path,
+        "--output", output_pptx_path,
+        "--render-html-preview" # Generates instant web preview images
+    ]
+    
+    subprocess.run(cmd, check=True)
+    print(f"🎉 Pitch deck and web preview slides generated at: {output_pptx_path}")
+
+if __name__ == "__main__":
+    build_pitch_deck("./client_data/survey_results.json", "./decks/client_pitch_deck.pptx")`,
+    instructions: [
+      "Ensure officecli binary is executable in environment",
+      "Pass client survey JSON data file",
+      "Run Python deck builder: python officecli_deck_builder.py"
+    ]
+  }
+];
+
 export default function AppReviewPage() {
   const [selectedApp, setSelectedApp] = useState<AppReviewItem | null>(null);
   const [activeTab, setActiveTab] = useState<"roundup" | "article" | "money-play" | "grading" | "subscriptions">("roundup");
+  const [activeScriptApp, setActiveScriptApp] = useState<"hermes" | "opencut" | "omniroute" | "deeptutor" | "officecli">("hermes");
+  const [copiedScriptId, setCopiedScriptId] = useState<string | null>(null);
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
-  const [modalOpen, setModalOpen] = useState(false);
-  const [userPlan, setUserPlan] = useState<string>("Community");
+
+  const copyCode = (script: MoneyPlayScript) => {
+    navigator.clipboard.writeText(script.code);
+    setCopiedScriptId(script.id);
+    setTimeout(() => setCopiedScriptId(null), 2500);
+  };
 
   return (
     <div style={{ background: "var(--bg-base)", color: "var(--text-primary)", minHeight: "100vh", paddingTop: "88px", paddingBottom: "80px" }}>
@@ -248,34 +701,43 @@ export default function AppReviewPage() {
             </div>
           </div>
 
-          {/* Hero Section */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "28px", alignItems: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-              <div style={{ position: "relative", width: "130px", height: "130px", flexShrink: 0, filter: "drop-shadow(0 0 25px rgba(0, 212, 255, 0.45))" }}>
-                <Image 
-                  src={prefixPath("/images/lux-app-review-logo-official.png")} 
-                  alt="Lux App Review Official Hexagon Emblem" 
-                  fill 
-                  style={{ objectFit: "contain" }}
-                  priority 
-                />
+          {/* Title & Subtitle */}
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "24px", marginBottom: "28px" }}>
+            <div style={{ maxWidth: "800px" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(0, 212, 255, 0.1)", border: "1px solid rgba(0, 212, 255, 0.3)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 700, color: "var(--lux-cyan)", marginBottom: "12px" }}>
+                <span>🔥</span> Top 5 GitHub Apps to Watch This Week
               </div>
-              <div>
-                <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(108, 71, 255, 0.12)", border: "1px solid rgba(108, 71, 255, 0.3)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 600, color: "var(--lux-cyan)", marginBottom: "12px" }}>
-                  <span>✨</span> Data-Driven Open-Source Evaluation Engine
-                </div>
-                <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.1, margin: "0 0 16px", color: "#fff" }}>
-                  Top 5 GitHub Apps This Week
-                </h1>
-                <p style={{ fontSize: "1.05rem", color: "var(--text-secondary)", maxWidth: "820px", lineHeight: 1.6, margin: 0 }}>
-                  Discover the best open-source AI and developer tools making a real impact. Rankings are built from scraped GitHub repositories, official documentation, YouTube creator reviews, and community signals—scored across seven dimensions, not stars alone.
-                </p>
-              </div>
+              <h1 style={{ fontSize: "clamp(2rem, 3.8vw, 3.2rem)", fontWeight: 900, lineHeight: 1.15, color: "#fff", margin: 0, letterSpacing: "-0.02em" }}>
+                Weekly GitHub App Rankings &amp; Intelligence
+              </h1>
+              <p style={{ fontSize: "1.05rem", color: "var(--text-secondary)", marginTop: "12px", marginBottom: 0, lineHeight: 1.6 }}>
+                Independent research, operational scoring, and subscriber commercial plays for high-momentum open-source repositories.
+              </p>
+            </div>
+
+            {/* Quick Action Buttons */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+              <a
+                href="/documents/Lux_App_Review_Top_5_2026-07-24.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ background: "linear-gradient(135deg, var(--lux-cyan), var(--lux-indigo))", color: "#fff", padding: "10px 18px", borderRadius: "10px", fontWeight: 800, fontSize: "0.85rem", textDecoration: "none", boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)", display: "inline-flex", alignItems: "center", gap: "8px" }}
+              >
+                <span>Full Review PDF 📥</span>
+              </a>
+              <a
+                href="/documents/Lux_App_Review_Money_Play_2026-07-24.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ background: "rgba(255, 215, 0, 0.12)", border: "1px solid #ffd700", color: "#ffe45c", padding: "10px 18px", borderRadius: "10px", fontWeight: 800, fontSize: "0.85rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "8px" }}
+              >
+                <span>👑 Subscriber Money Play PDF</span>
+              </a>
             </div>
           </div>
 
           {/* Navigation Sub-Tabs */}
-          <div style={{ display: "flex", gap: "12px", marginTop: "28px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "12px", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", overflowX: "auto", gap: "8px", borderBottom: "1px solid rgba(255, 255, 255, 0.08)", paddingBottom: "12px" }}>
             <button
               onClick={() => setActiveTab("roundup")}
               style={{
@@ -290,7 +752,7 @@ export default function AppReviewPage() {
                 transition: "all 0.2s"
               }}
             >
-              🏆 Top 5 Weekly Rankings
+              🏆 Top 5 Weekly Rankings &amp; Charts
             </button>
             <button
               onClick={() => setActiveTab("article")}
@@ -323,7 +785,7 @@ export default function AppReviewPage() {
                 boxShadow: activeTab === "money-play" ? "0 0 16px rgba(255, 215, 0, 0.3)" : "none"
               }}
             >
-              💰 Subscriber Money Play (High-Ticket Offers)
+              💰 Subscriber Money Play (10 Scripts &amp; Offers)
             </button>
             <button
               onClick={() => setActiveTab("grading")}
@@ -355,7 +817,7 @@ export default function AppReviewPage() {
                 transition: "all 0.2s"
               }}
             >
-              👑 Subscriptions & Money Play Access
+              👑 Subscriptions &amp; Money Play Access
             </button>
           </div>
 
@@ -393,6 +855,141 @@ export default function AppReviewPage() {
               >
                 <span>Read Full Article</span> <span>→</span>
               </button>
+            </div>
+
+            {/* ANIMATED GAUGES & CHARTS ROW */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "24px" }}>
+              
+              {/* RADAR CHART CARD (Page 2 PDF) */}
+              <div style={{ background: "rgba(17, 24, 39, 0.75)", border: "1px solid rgba(0, 212, 255, 0.25)", borderRadius: "16px", padding: "24px", backdropFilter: "blur(20px)", boxShadow: "0 15px 35px rgba(0,0,0,0.4)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+                  <div>
+                    <span style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", textTransform: "uppercase", letterSpacing: "0.1em", fontFamily: "var(--font-mono)" }}>7-DIMENSION EVALUATION</span>
+                    <h3 style={{ fontSize: "1.15rem", fontWeight: 800, color: "#fff", margin: "2px 0 0" }}>Lux Score Profiles (Radar Chart)</h3>
+                  </div>
+                  <span style={{ fontSize: "0.75rem", background: "rgba(0, 212, 255, 0.1)", color: "var(--lux-cyan)", padding: "4px 10px", borderRadius: "12px", border: "1px solid rgba(0,212,255,0.3)" }}>
+                    Interactive Vector
+                  </span>
+                </div>
+
+                {/* SVG RADAR GRAPHIC */}
+                <div style={{ position: "relative", width: "100%", height: "260px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                  <svg viewBox="0 0 320 260" style={{ width: "100%", height: "100%" }}>
+                    {/* Concentric Web Rings */}
+                    <polygon points="160,30 240,65 260,140 210,210 110,210 60,140 80,65" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
+                    <polygon points="160,55 220,81 235,140 197,192 122,192 85,140 100,81" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+                    <polygon points="160,80 200,97 210,140 185,175 135,175 110,140 120,97" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+                    
+                    {/* Axis Lines */}
+                    <line x1="160" y1="140" x2="160" y2="30" stroke="rgba(0, 212, 255, 0.25)" strokeDasharray="3 3" />
+                    <line x1="160" y1="140" x2="240" y2="65" stroke="rgba(0, 212, 255, 0.25)" strokeDasharray="3 3" />
+                    <line x1="160" y1="140" x2="260" y2="140" stroke="rgba(0, 212, 255, 0.25)" strokeDasharray="3 3" />
+                    <line x1="160" y1="140" x2="210" y2="210" stroke="rgba(0, 212, 255, 0.25)" strokeDasharray="3 3" />
+                    <line x1="160" y1="140" x2="110" y2="210" stroke="rgba(0, 212, 255, 0.25)" strokeDasharray="3 3" />
+                    <line x1="160" y1="140" x2="60" y2="140" stroke="rgba(0, 212, 255, 0.25)" strokeDasharray="3 3" />
+                    <line x1="160" y1="140" x2="80" y2="65" stroke="rgba(0, 212, 255, 0.25)" strokeDasharray="3 3" />
+
+                    {/* App 1 Polygon: Hermes Agent (Cyan) */}
+                    <polygon points="160,35 235,68 252,140 205,205 115,202 65,140 85,68" fill="rgba(0, 212, 255, 0.18)" stroke="var(--lux-cyan)" strokeWidth="2" />
+                    
+                    {/* App 2 Polygon: OpenCut (Pink) */}
+                    <polygon points="160,40 230,72 250,140 200,200 120,195 62,140 88,72" fill="rgba(255, 0, 128, 0.15)" stroke="#ff0080" strokeWidth="1.5" strokeDasharray="4 2" />
+
+                    {/* Labels */}
+                    <text x="160" y="20" fill="var(--lux-cyan)" fontSize="9" textAnchor="middle" fontWeight="bold">Project Health</text>
+                    <text x="250" y="60" fill="var(--text-muted)" fontSize="8">Momentum</text>
+                    <text x="270" y="143" fill="var(--text-muted)" fontSize="8">Usefulness</text>
+                    <text x="215" y="222" fill="var(--text-muted)" fontSize="8">Innovation</text>
+                    <text x="105" y="222" fill="var(--text-muted)" fontSize="8">Quality</text>
+                    <text x="45" y="143" fill="var(--text-muted)" fontSize="8">Trust &amp; Safety</text>
+                    <text x="70" y="60" fill="var(--text-muted)" fontSize="8">Ease of Use</text>
+                  </svg>
+                </div>
+
+                {/* Radar Legend */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center", marginTop: "12px", fontSize: "0.72rem" }}>
+                  <span style={{ color: "var(--lux-cyan)", display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: "var(--lux-cyan)", borderRadius: "50%" }}></span> Hermes Agent (92)</span>
+                  <span style={{ color: "#ff0080", display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: "#ff0080", borderRadius: "50%" }}></span> OpenCut (88)</span>
+                  <span style={{ color: "var(--lux-indigo)", display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: "var(--lux-indigo)", borderRadius: "50%" }}></span> OmniRoute (87)</span>
+                  <span style={{ color: "var(--lux-mint)", display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: "var(--lux-mint)", borderRadius: "50%" }}></span> DeepTutor (86)</span>
+                  <span style={{ color: "#ffe45c", display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: "#ffe45c", borderRadius: "50%" }}></span> OfficeCLI (84)</span>
+                </div>
+              </div>
+
+              {/* STAR GROWTH BAR CHART CARD (Page 2 PDF) */}
+              <div style={{ background: "rgba(17, 24, 39, 0.75)", border: "1px solid rgba(108, 71, 255, 0.25)", borderRadius: "16px", padding: "24px", backdropFilter: "blur(20px)", boxShadow: "0 15px 35px rgba(0,0,0,0.4)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+                  <div>
+                    <span style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-mint)", textTransform: "uppercase", letterSpacing: "0.1em", fontFamily: "var(--font-mono)" }}>INDEPENDENT MOMENTUM ESTIMATE</span>
+                    <h3 style={{ fontSize: "1.15rem", fontWeight: 800, color: "#fff", margin: "2px 0 0" }}>Estimated Weekly Star Growth</h3>
+                  </div>
+                  <span style={{ fontSize: "0.75rem", background: "rgba(0, 255, 163, 0.1)", color: "var(--lux-mint)", padding: "4px 10px", borderRadius: "12px", border: "1px solid rgba(0,255,163,0.3)" }}>
+                    July 15–22 Snapshot
+                  </span>
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginTop: "12px" }}>
+                  {/* OpenCut */}
+                  <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>
+                      <span>OpenCut (Creator Tool)</span>
+                      <span style={{ color: "#ff0080", fontFamily: "var(--font-mono)" }}>+7,824 stars / wk</span>
+                    </div>
+                    <div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}>
+                      <div style={{ width: "100%", height: "100%", background: "linear-gradient(90deg, #ff0080, #ff66c4)", borderRadius: "7px" }}></div>
+                    </div>
+                  </div>
+
+                  {/* OmniRoute */}
+                  <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>
+                      <span>OmniRoute (AI Infrastructure)</span>
+                      <span style={{ color: "var(--lux-indigo)", fontFamily: "var(--font-mono)" }}>+6,240 stars / wk</span>
+                    </div>
+                    <div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}>
+                      <div style={{ width: "80%", height: "100%", background: "linear-gradient(90deg, var(--lux-indigo), var(--lux-cyan))", borderRadius: "7px" }}></div>
+                    </div>
+                  </div>
+
+                  {/* OfficeCLI */}
+                  <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>
+                      <span>OfficeCLI (Document Automation)</span>
+                      <span style={{ color: "#ffe45c", fontFamily: "var(--font-mono)" }}>+3,899 stars / wk</span>
+                    </div>
+                    <div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}>
+                      <div style={{ width: "50%", height: "100%", background: "linear-gradient(90deg, #ffe45c, #ff9900)", borderRadius: "7px" }}></div>
+                    </div>
+                  </div>
+
+                  {/* Hermes Agent */}
+                  <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>
+                      <span>Hermes Agent (AI Agent)</span>
+                      <span style={{ color: "var(--lux-cyan)", fontFamily: "var(--font-mono)" }}>+3,513 stars / wk</span>
+                    </div>
+                    <div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}>
+                      <div style={{ width: "45%", height: "100%", background: "linear-gradient(90deg, var(--lux-cyan), #00bfff)", borderRadius: "7px" }}></div>
+                    </div>
+                  </div>
+
+                  {/* DeepTutor */}
+                  <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>
+                      <span>DeepTutor (Education AI)</span>
+                      <span style={{ color: "var(--lux-mint)", fontFamily: "var(--font-mono)" }}>+2,814 stars / wk</span>
+                    </div>
+                    <div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}>
+                      <div style={{ width: "36%", height: "100%", background: "linear-gradient(90deg, var(--lux-mint), #00ffaa)", borderRadius: "7px" }}></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "16px", fontStyle: "italic", textAlign: "right" }}>
+                  *Momentum figures are third-party snapshot estimates; repository metrics change continuously.
+                </div>
+              </div>
+
             </div>
 
             {/* Ranking Table Card */}
@@ -448,33 +1045,17 @@ export default function AppReviewPage() {
                             <span style={{ fontSize: "0.75rem", fontWeight: 800, color: app.score >= 90 ? "var(--lux-cyan)" : "var(--lux-mint)" }}>{app.grade}</span>
                           </div>
                         </td>
-                        <td style={{ padding: "16px", color: "#fff", fontWeight: 700, fontFamily: "var(--font-mono)" }}>
-                          ★ {app.stars}
-                        </td>
-                        <td style={{ padding: "16px", color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }}>
-                          ⑂ {app.forks}
-                        </td>
+                        <td style={{ padding: "16px", fontWeight: 700, color: "#fff" }}>{app.stars}</td>
+                        <td style={{ padding: "16px", color: "var(--text-muted)" }}>{app.forks}</td>
                         <td style={{ padding: "16px" }}>
-                          <span style={{ background: "rgba(255,255,255,0.06)", padding: "3px 8px", borderRadius: "4px", fontSize: "0.7rem", color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }}>
-                            {app.language}
-                          </span>
+                          <span style={{ fontSize: "0.75rem", color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }}>{app.language}</span>
                         </td>
                         <td style={{ padding: "16px", textAlign: "right" }}>
                           <button
                             onClick={() => setSelectedApp(app)}
-                            style={{
-                              background: "linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(108, 71, 255, 0.3) 100%)",
-                              border: "1px solid var(--lux-cyan)",
-                              color: "#fff",
-                              padding: "6px 14px",
-                              borderRadius: "6px",
-                              fontSize: "0.75rem",
-                              fontWeight: 700,
-                              cursor: "pointer",
-                              transition: "all 0.2s"
-                            }}
+                            style={{ background: "rgba(0, 212, 255, 0.1)", border: "1px solid rgba(0, 212, 255, 0.3)", color: "var(--lux-cyan)", padding: "6px 12px", borderRadius: "6px", fontSize: "0.75rem", fontWeight: 700, cursor: "pointer", transition: "all 0.2s" }}
                           >
-                            Read Full Review ›
+                            Full Details →
                           </button>
                         </td>
                       </tr>
@@ -484,179 +1065,93 @@ export default function AppReviewPage() {
               </div>
             </div>
 
-            {/* Dashboard Analytics & Score Radar Section */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "24px" }}>
-              
-              {/* Radar Chart & Score Box */}
-              <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "16px", padding: "24px", backdropFilter: "blur(20px)" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
-                  <div>
-                    <h3 style={{ fontSize: "1.05rem", fontWeight: 800, margin: 0, color: "#fff" }}>HOW THE LUX SCORE WORKS</h3>
-                    <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>7-Dimensional Operational Evaluation Model</div>
-                  </div>
-                  <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-mint)", background: "rgba(0,255,163,0.1)", padding: "2px 8px", borderRadius: "4px" }}>Overall Avg: 87/100</span>
+            {/* WEEKLY TAKEAWAYS SECTION (Page 9 PDF) */}
+            <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 212, 255, 0.25)", borderRadius: "18px", padding: "28px" }}>
+              <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", letterSpacing: "0.15em", textTransform: "uppercase", fontFamily: "var(--font-mono)", marginBottom: "4px" }}>
+                EDITORIAL VERDICT HIGHLIGHTS
+              </div>
+              <h3 style={{ fontSize: "1.4rem", fontWeight: 900, color: "#fff", margin: "0 0 20px" }}>Weekly Takeaways &amp; Key Findings</h3>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px" }}>
+                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255, 0, 128, 0.3)", borderRadius: "12px", padding: "18px" }}>
+                  <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ff0080", fontFamily: "var(--font-mono)" }}>BIGGEST MOMENTUM</div>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0" }}>OpenCut</h4>
+                  <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>Recorded the strongest independent weekly growth estimate (+7,824 stars/week), but its ground-up rewrite status keeps the verdict pilot-first.</p>
                 </div>
 
-                {/* SVG Spider Radar Visualization */}
-                <div style={{ display: "flex", justifyContent: "center", margin: "16px 0" }}>
-                  <svg width="220" height="200" viewBox="0 0 200 200">
-                    <polygon points="100,20 170,55 170,135 100,175 30,135 30,55" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-                    <polygon points="100,45 145,70 145,120 100,145 55,120 55,70" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-                    <polygon points="100,70 120,85 120,105 100,120 80,105 80,85" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-                    {/* Spider Net Lines */}
-                    <line x1="100" y1="100" x2="100" y2="20" stroke="rgba(255,255,255,0.1)" />
-                    <line x1="100" y1="100" x2="170" y2="55" stroke="rgba(255,255,255,0.1)" />
-                    <line x1="100" y1="100" x2="170" y2="135" stroke="rgba(255,255,255,0.1)" />
-                    <line x1="100" y1="100" x2="100" y2="175" stroke="rgba(255,255,255,0.1)" />
-                    <line x1="100" y1="100" x2="30" y2="135" stroke="rgba(255,255,255,0.1)" />
-                    <line x1="100" y1="100" x2="30" y2="55" stroke="rgba(255,255,255,0.1)" />
-                    {/* Active Score Polygon */}
-                    <polygon points="100,26 160,60 155,130 100,165 42,128 40,62" fill="rgba(0, 212, 255, 0.25)" stroke="var(--lux-cyan)" strokeWidth="2" />
-                  </svg>
+                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "12px", padding: "18px" }}>
+                  <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", fontFamily: "var(--font-mono)" }}>BEST OVERALL PLATFORM</div>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0" }}>Hermes Agent</h4>
+                  <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>Receives the highest Lux Score (92/100) because of its persistent memory, scheduling, subagents, multi-surface messaging, and MIT license.</p>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", fontSize: "0.75rem" }}>
-                  <div style={{ background: "rgba(255,255,255,0.03)", padding: "6px 10px", borderRadius: "6px", display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ color: "var(--text-muted)" }}>Usefulness</span>
-                    <span style={{ color: "#fff", fontWeight: 700 }}>94/100</span>
-                  </div>
-                  <div style={{ background: "rgba(255,255,255,0.03)", padding: "6px 10px", borderRadius: "6px", display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ color: "var(--text-muted)" }}>Project Health</span>
-                    <span style={{ color: "#fff", fontWeight: 700 }}>88/100</span>
-                  </div>
-                  <div style={{ background: "rgba(255,255,255,0.03)", padding: "6px 10px", borderRadius: "6px", display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ color: "var(--text-muted)" }}>Momentum</span>
-                    <span style={{ color: "#fff", fontWeight: 700 }}>85/100</span>
-                  </div>
-                  <div style={{ background: "rgba(255,255,255,0.03)", padding: "6px 10px", borderRadius: "6px", display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ color: "var(--text-muted)" }}>Ease of Use</span>
-                    <span style={{ color: "#fff", fontWeight: 700 }}>82/100</span>
-                  </div>
-                  <div style={{ background: "rgba(255,255,255,0.03)", padding: "6px 10px", borderRadius: "6px", display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ color: "var(--text-muted)" }}>Trust & Safety</span>
-                    <span style={{ color: "#fff", fontWeight: 700 }}>90/100</span>
-                  </div>
-                  <div style={{ background: "rgba(255,255,255,0.03)", padding: "6px 10px", borderRadius: "6px", display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ color: "var(--text-muted)" }}>Product Quality</span>
-                    <span style={{ color: "#fff", fontWeight: 700 }}>86/100</span>
-                  </div>
+                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(108, 71, 255, 0.3)", borderRadius: "12px", padding: "18px" }}>
+                  <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-indigo)", fontFamily: "var(--font-mono)" }}>BEST INFRASTRUCTURE PLAY</div>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0" }}>OmniRoute</h4>
+                  <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>Simplifies multi-provider LLM stacks with fallback routing and token compression, but must be hardened like credential-bearing infrastructure.</p>
+                </div>
+
+                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "12px", padding: "18px" }}>
+                  <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-mint)", fontFamily: "var(--font-mono)" }}>BEST EDUCATION OPPORTUNITY</div>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0" }}>DeepTutor</h4>
+                  <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>Provides the strongest personalized-learning architecture with grounded problem solving, learner memory, and research backing.</p>
+                </div>
+
+                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255, 228, 92, 0.3)", borderRadius: "12px", padding: "18px" }}>
+                  <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", fontFamily: "var(--font-mono)" }}>BEST HIDDEN GEM</div>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#fff", margin: "6px 0" }}>OfficeCLI</h4>
+                  <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>Targets a narrow but high-value problem: creating, editing, and visually validating Word, Excel, and PPT files without MS Office.</p>
                 </div>
               </div>
-
-              {/* Weekly Snapshot & Metrics Box */}
-              <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "16px", padding: "24px", backdropFilter: "blur(20px)" }}>
-                <h3 style={{ fontSize: "1.05rem", fontWeight: 800, margin: "0 0 16px", color: "#fff" }}>WEEKLY SNAPSHOT</h3>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "20px" }}>
-                  <div style={{ background: "rgba(6, 9, 19, 0.5)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "10px", padding: "12px" }}>
-                    <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase" }}>Apps Analyzed</div>
-                    <div style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--lux-cyan)" }}>247</div>
-                  </div>
-                  <div style={{ background: "rgba(6, 9, 19, 0.5)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "10px", padding: "12px" }}>
-                    <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase" }}>New Apps Detected</div>
-                    <div style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--lux-mint)" }}>38</div>
-                  </div>
-                  <div style={{ background: "rgba(6, 9, 19, 0.5)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "10px", padding: "12px" }}>
-                    <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase" }}>Total Stars Added</div>
-                    <div style={{ fontSize: "1.4rem", fontWeight: 800, color: "#fff" }}>+52.4k</div>
-                  </div>
-                  <div style={{ background: "rgba(6, 9, 19, 0.5)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "10px", padding: "12px" }}>
-                    <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase" }}>Total Forks Added</div>
-                    <div style={{ fontSize: "1.4rem", fontWeight: 800, color: "#fff" }}>+8.7k</div>
-                  </div>
-                </div>
-
-                <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <div style={{ fontSize: "0.8rem", color: "var(--text-secondary)" }}>
-                    Top Category: <span style={{ color: "#fff", fontWeight: 700 }}>AI Tools</span> • Trend: <span style={{ color: "var(--lux-mint)", fontWeight: 700 }}>Up ↗</span>
-                  </div>
-                  <button
-                    onClick={() => setActiveTab("subscriptions")}
-                    style={{ background: "transparent", border: "1px solid var(--lux-cyan)", color: "var(--lux-cyan)", padding: "4px 12px", borderRadius: "6px", fontSize: "0.75rem", fontWeight: 700, cursor: "pointer" }}
-                  >
-                    View Full Snapshot →
-                  </button>
-                </div>
-              </div>
-
-              {/* Download PDF Teaser Card */}
-              <div style={{ background: "linear-gradient(135deg, rgba(108, 71, 255, 0.2) 0%, rgba(0, 212, 255, 0.15) 100%)", border: "1px solid var(--lux-cyan)", borderRadius: "16px", padding: "24px", backdropFilter: "blur(20px)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", textTransform: "uppercase", letterSpacing: "0.1em" }}>COMMUNITY RESOURCE</div>
-                  <h3 style={{ fontSize: "1.2rem", fontWeight: 800, margin: "8px 0 12px", color: "#fff" }}>DOWNLOAD THE TOP 5 WEEKLY PDF</h3>
-                  <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: "0 0 16px" }}>
-                    Get the complete 14-page editorial report, full scorecards, implementation risk cautions, and source notes in a beautifully formatted PDF.
-                  </p>
-                </div>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                  <a
-                    href="/documents/Lux_App_Review_Top_5_2026-07-24.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      background: "linear-gradient(135deg, var(--lux-cyan) 0%, var(--lux-mint) 100%)",
-                      color: "#0b0f19",
-                      padding: "10px 16px",
-                      borderRadius: "8px",
-                      fontSize: "0.85rem",
-                      fontWeight: 800,
-                      textDecoration: "none",
-                      textAlign: "center",
-                      boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)"
-                    }}
-                  >
-                    📄 Download Top 5 Weekly PDF
-                  </a>
-                  <a
-                    href="/documents/Lux_App_Review_Money_Play_2026-07-24.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      background: "rgba(108, 71, 255, 0.2)",
-                      border: "1px solid var(--lux-indigo)",
-                      color: "#fff",
-                      padding: "10px 16px",
-                      borderRadius: "8px",
-                      fontSize: "0.85rem",
-                      fontWeight: 800,
-                      textDecoration: "none",
-                      textAlign: "center"
-                    }}
-                  >
-                    🔒 Subscriber Money Play PDF
-                  </a>
-                </div>
-              </div>
-
             </div>
 
-            {/* Sources Scraped This Week Grid */}
-            <div style={{ background: "rgba(17, 24, 39, 0.5)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "16px", padding: "24px" }}>
-              <h3 style={{ fontSize: "1rem", fontWeight: 800, margin: "0 0 16px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                SOURCES SCRAPED THIS WEEK
-              </h3>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "16px" }}>
-                <div style={{ background: "rgba(6, 9, 19, 0.6)", padding: "14px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.04)" }}>
-                  <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>🐙 GitHub</div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>Search API, Topics & Star Signals</div>
+            {/* SAFE INSTALL CHECKLIST & SOURCE REGISTER (Page 10 PDF) */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px" }}>
+              
+              {/* Safe Install Checklist */}
+              <div style={{ background: "rgba(17, 24, 39, 0.75)", border: "1px solid rgba(0, 255, 163, 0.25)", borderRadius: "16px", padding: "24px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
+                  <span style={{ fontSize: "1.4rem" }}>🛡️</span>
+                  <div>
+                    <h4 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#fff", margin: 0 }}>Safe Install &amp; Hardening Checklist</h4>
+                    <span style={{ fontSize: "0.7rem", color: "var(--lux-mint)", fontFamily: "var(--font-mono)" }}>OPERATIONAL PROTOCOL</span>
+                  </div>
                 </div>
-                <div style={{ background: "rgba(6, 9, 19, 0.6)", padding: "14px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.04)" }}>
-                  <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>🌐 Official Sites</div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>Changelogs, Pricing & Security Docs</div>
+                <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.75 }}>
+                  <li>Confirm exact repository owner and official domain website before cloning.</li>
+                  <li>Read license terms, security policy, and recent release notes carefully.</li>
+                  <li>Inspect installation scripts before executing remote shell commands (`curl | sh`).</li>
+                  <li>Test new tools with non-sensitive data inside isolated Docker containers.</li>
+                  <li>Enforce least-privilege API scopes and dedicated service accounts.</li>
+                  <li>Enable authentication, security logging, backups, and documented rollback plans.</li>
+                  <li>Require explicit human approval before pushing code to production servers.</li>
+                  <li>Refresh repository metrics immediately prior to commercial deployment.</li>
+                </ul>
+              </div>
+
+              {/* Verified Source Register */}
+              <div style={{ background: "rgba(17, 24, 39, 0.75)", border: "1px solid rgba(0, 212, 255, 0.25)", borderRadius: "16px", padding: "24px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
+                  <span style={{ fontSize: "1.4rem" }}>📚</span>
+                  <div>
+                    <h4 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#fff", margin: 0 }}>Verified Source Register (16 Primary Links)</h4>
+                    <span style={{ fontSize: "0.7rem", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)" }}>RESEARCH AUDIT REGISTER</span>
+                  </div>
                 </div>
-                <div style={{ background: "rgba(6, 9, 19, 0.6)", padding: "14px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.04)" }}>
-                  <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>▶ YouTube</div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>Video Demos & Creator Reviews</div>
-                </div>
-                <div style={{ background: "rgba(6, 9, 19, 0.6)", padding: "14px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.04)" }}>
-                  <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>𝕏 / Twitter</div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>Community Buzz & Dev Discussions</div>
-                </div>
-                <div style={{ background: "rgba(6, 9, 19, 0.6)", padding: "14px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.04)" }}>
-                  <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>📰 Blogs & News</div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>Independent Tech Coverage & Audits</div>
+                <div style={{ maxHeight: "210px", overflowY: "auto", fontSize: "0.78rem", display: "flex", flexDirection: "column", gap: "8px", paddingRight: "6px" }}>
+                  <a href="https://github.com/trending" target="_blank" rel="noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "none" }}>1. GitHub Trending Discovery Registry ↗</a>
+                  <a href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "none" }}>2. Hermes Agent Repository (NousResearch) ↗</a>
+                  <a href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "none" }}>3. Hermes Agent Official Documentation &amp; Site ↗</a>
+                  <a href="https://github.com/OpenCut-app/OpenCut" target="_blank" rel="noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "none" }}>4. OpenCut Repository (OpenCut-app) ↗</a>
+                  <a href="https://opencut.app/roadmap" target="_blank" rel="noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "none" }}>5. OpenCut Official Roadmap &amp; Architecture ↗</a>
+                  <a href="https://github.com/diegosouzapw/OmniRoute" target="_blank" rel="noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "none" }}>6. OmniRoute Repository (diegosouzapw) ↗</a>
+                  <a href="https://github.com/HKUDS/DeepTutor" target="_blank" rel="noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "none" }}>7. DeepTutor Repository (HKUDS) ↗</a>
+                  <a href="https://arxiv.org/abs/2604.26962" target="_blank" rel="noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "none" }}>8. DeepTutor Research Paper (arXiv:2604.26962) ↗</a>
+                  <a href="https://github.com/iOfficeAI/OfficeCLI" target="_blank" rel="noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "none" }}>9. OfficeCLI Repository (iOfficeAI) ↗</a>
+                  <a href="https://whatstrending.ai/repos" target="_blank" rel="noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "none" }}>10. Independent Weekly Trend Snapshot ↗</a>
                 </div>
               </div>
+
             </div>
 
           </div>
@@ -690,7 +1185,7 @@ export default function AppReviewPage() {
               <div style={{ background: "rgba(6, 9, 19, 0.7)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "14px", padding: "20px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
                 <div>
                   <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-mint)", textTransform: "uppercase", letterSpacing: "0.08em" }}>OFFICIAL PUBLISHING PACKAGE</div>
-                  <div style={{ fontSize: "0.95rem", fontWeight: 700, color: "#fff", marginTop: "2px" }}>Download Complete PDFs & Implementation Guides</div>
+                  <div style={{ fontSize: "0.95rem", fontWeight: 700, color: "#fff", marginTop: "2px" }}>Download Complete PDFs &amp; Implementation Guides</div>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
                   <a
@@ -699,13 +1194,13 @@ export default function AppReviewPage() {
                     rel="noopener noreferrer"
                     style={{ background: "linear-gradient(135deg, var(--lux-cyan), var(--lux-mint))", color: "#0b0f19", padding: "10px 18px", borderRadius: "8px", fontWeight: 800, fontSize: "0.85rem", textDecoration: "none", boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)" }}
                   >
-                    📄 Download Top 5 PDF
+                    📄 Download Full Review PDF
                   </a>
                   <a
                     href="/documents/Lux_App_Review_Money_Play_2026-07-24.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ background: "rgba(108, 71, 255, 0.2)", border: "1px solid var(--lux-indigo)", color: "#fff", padding: "10px 18px", borderRadius: "8px", fontWeight: 800, fontSize: "0.85rem", textDecoration: "none" }}
+                    style={{ background: "rgba(255, 215, 0, 0.15)", border: "1px solid #ffd700", color: "#ffe45c", padding: "10px 18px", borderRadius: "8px", fontWeight: 800, fontSize: "0.85rem", textDecoration: "none" }}
                   >
                     🔒 Subscriber Money Play PDF
                   </a>
@@ -735,819 +1230,702 @@ export default function AppReviewPage() {
                 For this week of <strong>July 20–24, 2026</strong> edition, we looked for projects with a combination of practical usefulness, current momentum, active development, understandable documentation, permissive licensing, and a believable path from repository to real-world value.
               </p>
 
-              {/* Table */}
-              <div style={{ margin: "32px 0", overflowX: "auto", border: "1px solid rgba(0, 212, 255, 0.2)", borderRadius: "12px", background: "rgba(6, 9, 19, 0.8)" }}>
-                <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.9rem" }}>
-                  <thead>
-                    <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)", background: "rgba(108, 71, 255, 0.15)", color: "#fff" }}>
-                      <th style={{ padding: "14px 16px" }}>Rank</th>
-                      <th style={{ padding: "14px 16px" }}>App</th>
-                      <th style={{ padding: "14px 16px" }}>Category</th>
-                      <th style={{ padding: "14px 16px" }}>Lux Score</th>
-                      <th style={{ padding: "14px 16px" }}>Grade</th>
-                      <th style={{ padding: "14px 16px" }}>Stars</th>
-                      <th style={{ padding: "14px 16px" }}>Forks</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {TOP_5_APPS.map((app) => (
-                      <tr key={app.rank} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                        <td style={{ padding: "14px 16px", fontWeight: 800, color: "var(--lux-cyan)" }}>#{app.rank}</td>
-                        <td style={{ padding: "14px 16px", fontWeight: 800, color: "#fff" }}>{app.name}</td>
-                        <td style={{ padding: "14px 16px", color: "var(--text-secondary)" }}>{app.category.split(" / ")[0]}</td>
-                        <td style={{ padding: "14px 16px", fontWeight: 900, color: "var(--lux-cyan)" }}>{app.score}/100</td>
-                        <td style={{ padding: "14px 16px", fontWeight: 800, color: "var(--lux-mint)" }}>{app.grade}</td>
-                        <td style={{ padding: "14px 16px" }}>{app.stars}</td>
-                        <td style={{ padding: "14px 16px" }}>{app.forks}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              <hr style={{ border: "none", borderTop: "1px solid rgba(255,255,255,0.08)", margin: "40px 0" }} />
 
-              {/* Detailed App Reviews */}
+              {/* Review Sections for Each App */}
               {TOP_5_APPS.map((app) => (
-                <div key={app.rank} style={{ margin: "40px 0", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "28px" }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "12px", marginBottom: "12px" }}>
-                    <h3 style={{ fontSize: "1.6rem", fontWeight: 900, color: "#fff", margin: 0 }}>
-                      #{app.rank} {app.name} — {app.score}/100 ({app.grade})
+                <div key={app.rank} style={{ marginBottom: "48px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
+                    <span style={{ background: "var(--lux-cyan)", color: "#0b0f19", fontWeight: 900, padding: "4px 10px", borderRadius: "8px", fontSize: "0.9rem" }}>
+                      #{app.rank}
+                    </span>
+                    <h3 style={{ color: "#fff", fontSize: "1.6rem", fontWeight: 800, margin: 0 }}>
+                      {app.name}
                     </h3>
-                    <span style={{ background: "rgba(0, 255, 163, 0.12)", border: "1px solid var(--lux-mint)", color: "var(--lux-mint)", padding: "4px 12px", borderRadius: "12px", fontSize: "0.8rem", fontWeight: 800 }}>
-                      {app.verdict}
+                    <span style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>
+                      ({app.repo})
                     </span>
                   </div>
 
-                  <p style={{ fontSize: "0.95rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", marginBottom: "16px" }}>
-                    Repository: <a href={app.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "underline" }}>{app.repo}</a> | Language: {app.language} | License: {app.license} | Stars: {app.stars}
-                  </p>
-
-                  <div style={{ background: "rgba(6, 9, 19, 0.5)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px", marginBottom: "20px" }}>
-                    <strong style={{ color: "#fff", display: "block", marginBottom: "6px" }}>What problem it solves:</strong>
-                    <span>{app.solves}</span>
+                  <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 212, 255, 0.2)", borderRadius: "12px", padding: "16px 20px", marginBottom: "16px", display: "flex", flexWrap: "wrap", gap: "16px", alignItems: "center" }}>
+                    <div>
+                      <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>LUX SCORE: </span>
+                      <strong style={{ color: "var(--lux-cyan)", fontSize: "1.1rem" }}>{app.score}/100 ({app.grade})</strong>
+                    </div>
+                    <div>
+                      <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>VERDICT: </span>
+                      <strong style={{ color: "#fff" }}>{app.verdict}</strong>
+                    </div>
+                    <div>
+                      <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>LICENSE: </span>
+                      <strong style={{ color: "var(--lux-mint)" }}>{app.license}</strong>
+                    </div>
+                    <div>
+                      <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>WEEKLY GROWTH: </span>
+                      <strong style={{ color: "#ffe45c" }}>+{app.weeklyStars.toLocaleString()} stars</strong>
+                    </div>
                   </div>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
-                    <div style={{ background: "rgba(0, 212, 255, 0.05)", border: "1px solid rgba(0, 212, 255, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                      <h4 style={{ color: "var(--lux-cyan)", fontSize: "1rem", fontWeight: 800, margin: "0 0 10px" }}>✨ Why It Stands Out</h4>
-                      <ul style={{ margin: 0, paddingLeft: "20px", fontSize: "0.9rem", lineHeight: 1.6 }}>
-                        {app.standout.map((item, i) => <li key={i} style={{ marginBottom: "6px" }}>{item}</li>)}
-                      </ul>
-                    </div>
+                  <p><strong>What it solves:</strong> {app.solves}</p>
+                  <p><strong>Best fit:</strong> {app.bestFor}</p>
+                  
+                  <div style={{ marginTop: "16px" }}>
+                    <strong style={{ color: "#fff" }}>Why it stands out:</strong>
+                    <ul style={{ marginTop: "8px", paddingLeft: "20px" }}>
+                      {app.standout.map((item, idx) => (
+                        <li key={idx} style={{ marginBottom: "6px" }}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
 
-                    <div style={{ background: "rgba(255, 77, 106, 0.05)", border: "1px solid rgba(255, 77, 106, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                      <h4 style={{ color: "#ff4d6a", fontSize: "1rem", fontWeight: 800, margin: "0 0 10px" }}>⚠️ Risks & Cautions</h4>
-                      <ul style={{ margin: 0, paddingLeft: "20px", fontSize: "0.9rem", lineHeight: 1.6 }}>
-                        {app.risks.map((item, i) => <li key={i} style={{ marginBottom: "6px" }}>{item}</li>)}
-                      </ul>
-                    </div>
+                  <div style={{ marginTop: "16px" }}>
+                    <strong style={{ color: "#ff6b6b" }}>Limitations and risks:</strong>
+                    <ul style={{ marginTop: "8px", paddingLeft: "20px" }}>
+                      {app.risks.map((item, idx) => (
+                        <li key={idx} style={{ marginBottom: "6px", color: "var(--text-secondary)" }}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               ))}
 
-              {/* Conclusion & CTA */}
-              <div style={{ background: "linear-gradient(135deg, rgba(108, 71, 255, 0.2), rgba(0, 212, 255, 0.15))", border: "1px solid var(--lux-cyan)", borderRadius: "16px", padding: "32px", textAlign: "center", marginTop: "40px" }}>
-                <h3 style={{ fontSize: "1.4rem", fontWeight: 900, color: "#fff", margin: "0 0 12px" }}>Ready to Turn Open-Source Apps Into Real Workflows?</h3>
-                <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", maxWidth: "600px", margin: "0 auto 20px" }}>
-                  Join Lux Insider or Lux Operator to access Subscriber Money Play PDFs, agent prompt templates, and commercial deployment packs.
-                </p>
-                <button
-                  onClick={() => setActiveTab("subscriptions")}
-                  style={{ background: "linear-gradient(135deg, var(--lux-cyan), var(--lux-mint))", border: "none", color: "#0b0f19", padding: "12px 28px", borderRadius: "10px", fontWeight: 900, fontSize: "0.9rem", cursor: "pointer", boxShadow: "0 0 20px rgba(0,212,255,0.4)" }}
-                >
-                  View Membership Tiers & Money Plays →
-                </button>
-              </div>
-
             </div>
+
           </div>
         )}
 
-        {/* TAB: SUBSCRIBER MONEY PLAY (HIGH-TICKET SERVICE OFFERS) */}
+        {/* TAB 3: SUBSCRIBER MONEY PLAY (10 CODE ENGINES & OFFERS) */}
         {activeTab === "money-play" && (
           <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
-
+            
             {/* Subscriber Hero Banner */}
-            <div style={{ background: "linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(11, 15, 25, 0.95) 60%, rgba(0, 212, 255, 0.12))", border: "1px solid rgba(255, 215, 0, 0.4)", borderRadius: "20px", padding: "36px", boxShadow: "0 0 30px rgba(255, 215, 0, 0.15)", position: "relative", overflow: "hidden" }}>
-              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "20px", marginBottom: "20px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                  <span style={{ background: "rgba(255, 215, 0, 0.2)", border: "1px solid #ffd700", color: "#ffe45c", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                    👑 SUBSCRIBER MONEY PLAY INTELLIGENCE
-                  </span>
-                  <span style={{ background: "rgba(0, 212, 255, 0.15)", border: "1px solid rgba(0, 212, 255, 0.3)", color: "var(--lux-cyan)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 700, fontFamily: "var(--font-mono)" }}>
-                    KIT LAR-W30-2026-0724
-                  </span>
+            <div style={{ background: "linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(9, 14, 26, 0.95))", border: "1px solid rgba(255, 215, 0, 0.4)", borderRadius: "20px", padding: "32px", boxShadow: "0 0 40px rgba(255, 215, 0, 0.15)" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "20px" }}>
+                <div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255, 215, 0, 0.15)", border: "1px solid #ffd700", color: "#ffe45c", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 800, fontFamily: "var(--font-mono)", marginBottom: "12px" }}>
+                    <span>👑</span> SUBSCRIBER MONEY PLAY INTELLIGENCE • KIT LAR-W30-2026-0724
+                  </div>
+                  <h2 style={{ fontSize: "2rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                    5 High-Ticket Business Money Plays &amp; 10 Code Engine Scripts
+                  </h2>
+                  <p style={{ fontSize: "1rem", color: "var(--text-secondary)", marginTop: "8px", margin: 0, maxWidth: "780px", lineHeight: 1.6 }}>
+                    Turn open-source GitHub repositories into $1,250 – $3,500 setup fees and $349 – $999/mo recurring service retainers. Includes copy-and-paste runnable scripts for each app.
+                  </p>
                 </div>
+
                 <a
                   href="/documents/Lux_App_Review_Money_Play_2026-07-24.pdf"
                   download
                   target="_blank"
                   rel="noreferrer"
-                  style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "linear-gradient(135deg, #ffd700, #ffaa00)", color: "#0b0f19", padding: "10px 20px", borderRadius: "10px", fontWeight: 900, fontSize: "0.85rem", textDecoration: "none", boxShadow: "0 0 20px rgba(255, 215, 0, 0.35)", transition: "all 0.2s" }}
+                  style={{ background: "linear-gradient(135deg, #ffd700, #ff9900)", color: "#0b0f19", padding: "14px 24px", borderRadius: "12px", fontWeight: 900, fontSize: "0.9rem", textDecoration: "none", boxShadow: "0 0 25px rgba(255, 215, 0, 0.3)" }}
                 >
-                  📥 DOWNLOAD MONEY PLAY PDF (141 KB) ⚡
+                  Download Money Play PDF (141 KB) 📥
                 </a>
               </div>
+            </div>
 
-              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 900, color: "#fff", margin: "0 0 16px", letterSpacing: "-0.01em" }}>
-                Turn Open-Source GitHub Repositories Into Managed High-Ticket Business Systems
+            {/* 10 RUNNABLE MONEY PLAY CODE ENGINES (2 PER APP) */}
+            <div style={{ background: "rgba(17, 24, 39, 0.85)", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "20px", padding: "32px", boxShadow: "0 20px 50px rgba(0,0,0,0.5)" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", marginBottom: "20px" }}>
+                <div>
+                  <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>💻 SUBSCRIBER CODE ENGINE (10 SCRIPTS)</span>
+                  <h3 style={{ fontSize: "1.4rem", fontWeight: 900, color: "#fff", margin: "4px 0 0" }}>Money Play Implementation Scripts (2 Per App)</h3>
+                </div>
+
+                {/* App Selector Tabs */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                  {(["hermes", "opencut", "omniroute", "deeptutor", "officecli"] as const).map((slug) => (
+                    <button
+                      key={slug}
+                      onClick={() => setActiveScriptApp(slug)}
+                      style={{
+                        background: activeScriptApp === slug ? "rgba(0, 212, 255, 0.2)" : "rgba(6, 9, 19, 0.6)",
+                        border: activeScriptApp === slug ? "1px solid var(--lux-cyan)" : "1px solid rgba(255,255,255,0.1)",
+                        color: activeScriptApp === slug ? "#fff" : "var(--text-secondary)",
+                        padding: "6px 14px",
+                        borderRadius: "8px",
+                        fontSize: "0.8rem",
+                        fontWeight: 800,
+                        cursor: "pointer",
+                        textTransform: "capitalize"
+                      }}
+                    >
+                      {slug === "hermes" ? "Hermes Agent" : slug === "opencut" ? "OpenCut" : slug === "omniroute" ? "OmniRoute" : slug === "deeptutor" ? "DeepTutor" : "OfficeCLI"}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Render 2 Scripts for Selected App */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+                {MONEY_PLAY_SCRIPTS.filter((s) => s.appSlug === activeScriptApp).map((script) => (
+                  <div key={script.id} style={{ background: "#060913", border: "1px solid rgba(0, 212, 255, 0.25)", borderRadius: "14px", padding: "24px" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
+                      <div>
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                          <span style={{ background: "var(--lux-cyan)", color: "#0b0f19", fontWeight: 900, padding: "2px 8px", borderRadius: "6px", fontSize: "0.7rem", fontFamily: "var(--font-mono)" }}>
+                            SCRIPT #{script.scriptNumber}
+                          </span>
+                          <span style={{ fontSize: "0.75rem", color: "#ffe45c", fontWeight: 800, fontFamily: "var(--font-mono)" }}>
+                            💰 {script.expectedValue}
+                          </span>
+                        </div>
+                        <h4 style={{ fontSize: "1.2rem", fontWeight: 900, color: "#fff", margin: "6px 0 2px" }}>
+                          {script.title}
+                        </h4>
+                        <div style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>{script.subtitle}</div>
+                      </div>
+
+                      <button
+                        onClick={() => copyCode(script)}
+                        style={{ background: copiedScriptId === script.id ? "var(--lux-mint)" : "rgba(0, 212, 255, 0.15)", border: "1px solid var(--lux-cyan)", color: copiedScriptId === script.id ? "#0b0f19" : "var(--lux-cyan)", padding: "8px 16px", borderRadius: "8px", fontSize: "0.8rem", fontWeight: 800, cursor: "pointer" }}
+                      >
+                        {copiedScriptId === script.id ? "✓ Copied to Clipboard!" : "📋 Copy Code Script"}
+                      </button>
+                    </div>
+
+                    <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "16px", lineHeight: 1.5 }}>
+                      {script.description}
+                    </p>
+
+                    {/* Code Display */}
+                    <div style={{ position: "relative", marginBottom: "16px" }}>
+                      <div style={{ position: "absolute", top: "10px", right: "12px", fontSize: "0.65rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>
+                        {script.filename} ({script.language})
+                      </div>
+                      <pre style={{ background: "rgba(11, 15, 25, 0.95)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "10px", padding: "18px", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", fontSize: "0.82rem", overflowX: "auto", whiteSpace: "pre-wrap", margin: 0, lineHeight: 1.5 }}>
+                        {script.code}
+                      </pre>
+                    </div>
+
+                    {/* Setup Instructions */}
+                    <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: "8px", padding: "12px 16px" }}>
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-mono)", marginBottom: "6px" }}>
+                        ⚡ QUICKSTART INSTALL STEPS
+                      </div>
+                      <ol style={{ margin: 0, paddingLeft: "18px", fontSize: "0.8rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
+                        {script.instructions.map((step, idx) => (
+                          <li key={idx}>{step}</li>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 5 COMMERCIAL MONEY PLAYS OFFER GRID */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              
+              {/* PLAY 1: HERMES AGENT */}
+              <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(0, 212, 255, 0.08)" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                    <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(0, 212, 255, 0.15)", border: "1px solid var(--lux-cyan)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
+                      🤖
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                        PLAY 01 • BASED ON HERMES AGENT (MIT)
+                      </div>
+                      <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                        Managed AI Operations Desk
+                      </h4>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                    <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                      <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$3,500</div>
+                    </div>
+                    <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                      <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$999<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                  <div>
+                    <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-cyan)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
+                    <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Small businesses, digital agencies, creators, and busy operations teams.</p>
+                    
+                    <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-cyan)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK &amp; OFFER</h5>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                      Deploy Hermes Agent on private client VPS infrastructure, connect Telegram/Slack/Email gateways, build 3 custom business skill workflows, set up memory retention rules, and maintain 24/7 logging with monthly skill tuning.
+                    </p>
+                  </div>
+
+                  <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
+                    <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
+                    <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+                      <li>Always-on Hermes Agent VPS deployment with zero per-seat SaaS costs</li>
+                      <li>Telegram, Slack, and Email operational messaging gateways</li>
+                      <li>3 Custom Business Automation Skills (Lead Intake, Summary, Scheduling)</li>
+                      <li>Monthly Retainer SLA: 24/7 uptime monitoring &amp; skill updates</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* PLAY 2: OPENCUT */}
+              <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(108, 71, 255, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(108, 71, 255, 0.08)" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                    <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(108, 71, 255, 0.15)", border: "1px solid var(--lux-indigo)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
+                      🎬
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-indigo)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                        PLAY 02 • BASED ON OPENCUT (MIT)
+                      </div>
+                      <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                        Private Creator Editing Studio
+                      </h4>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                    <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                      <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$1,500</div>
+                    </div>
+                    <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                      <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$399<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                  <div>
+                    <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-indigo)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
+                    <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Creators, schools, nonprofits, agencies, and privacy-sensitive media teams.</p>
+                    
+                    <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-indigo)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK &amp; OFFER</h5>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                      Deploy a branded private video editing workspace, prepare reusable brand video templates, train the editing team, document local storage and export workflows, and provide monthly software updates and technical support.
+                    </p>
+                  </div>
+
+                  <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
+                    <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
+                    <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+                      <li>Self-hosted or desktop OpenCut deployment with zero recurring seat fees</li>
+                      <li>5 Branded Brand Video Project Templates &amp; Presets</li>
+                      <li>Team Workflow &amp; Local Storage Safety Playbook</li>
+                      <li>Monthly Software Update Patching &amp; Feature Training</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* PLAY 3: OMNIROUTE */}
+              <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(0, 255, 163, 0.08)" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                    <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(0, 255, 163, 0.15)", border: "1px solid var(--lux-mint)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
+                      ⚡
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-mint)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                        PLAY 03 • BASED ON OMNIROUTE (MIT)
+                      </div>
+                      <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                        AI Cost-Control &amp; Reliability Gateway
+                      </h4>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                    <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                      <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$1,997</div>
+                    </div>
+                    <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                      <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$499<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                  <div>
+                    <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-mint)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
+                    <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>AI agencies, development teams, internal innovation groups, multi-model operators.</p>
+                    
+                    <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-mint)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK &amp; OFFER</h5>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                      Install a hardened OmniRoute gateway, connect approved model providers (OpenAI, Anthropic, Gemini, Ollama), configure fallback routing and token compression, set up monthly token budgets, train staff, and provide a monthly API cost optimization audit.
+                    </p>
+                  </div>
+
+                  <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
+                    <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
+                    <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+                      <li>Single unified endpoint for all client LLM requests</li>
+                      <li>Automated provider fallback to eliminate API downtime</li>
+                      <li>Semantic Caching &amp; Token Compression rules (cut API costs 30-50%)</li>
+                      <li>Monthly Token Spend Audit &amp; Provider Optimization Report</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* PLAY 4: DEEPTUTOR */}
+              <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(255, 228, 92, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(255, 228, 92, 0.08)" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                    <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(255, 228, 92, 0.15)", border: "1px solid #ffe45c", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
+                      🎓
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                        PLAY 04 • BASED ON DEEPTUTOR (APACHE-2.0)
+                      </div>
+                      <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                        Private AI Learning Portal
+                      </h4>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                    <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                      <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$2,500</div>
+                    </div>
+                    <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                      <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$599<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                  <div>
+                    <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
+                    <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Tutoring companies, workforce programs, schools, nonprofits, membership communities.</p>
+                    
+                    <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK &amp; OFFER</h5>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                      Deploy a private DeepTutor portal, load approved learning materials &amp; custom knowledge bases, configure learner roles and progress tracking, train educators, add content review controls, and provide monthly curriculum and usage reporting.
+                    </p>
+                  </div>
+
+                  <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
+                    <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
+                    <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+                      <li>Custom branded tutoring portal instance</li>
+                      <li>Ingested curriculum docs &amp; verified answer grounding</li>
+                      <li>Learner memory &amp; adaptive question generation setup</li>
+                      <li>Monthly Educator Usage, Completion &amp; Accuracy Report</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* PLAY 5: OFFICECLI */}
+              <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(255, 107, 0, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(255, 107, 0, 0.08)" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                    <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(255, 107, 0, 0.15)", border: "1px solid #ff6b00", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
+                      📄
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ff6b00", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                        PLAY 05 • BASED ON OFFICECLI (APACHE-2.0)
+                      </div>
+                      <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                        Document Automation QuickStart
+                      </h4>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                    <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                      <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$1,250</div>
+                    </div>
+                    <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
+                      <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$349<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+                  <div>
+                    <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ff6b00", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
+                    <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Consultants, agencies, finance teams, operations groups, software vendors.</p>
+                    
+                    <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ff6b00", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK &amp; OFFER</h5>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+                      Install OfficeCLI binary, connect approved AI agents (Hermes / LANA / custom scripts), build 3 Word, Excel, or PowerPoint automated document pipelines, establish quality validation checks, and provide managed template maintenance.
+                    </p>
+                  </div>
+
+                  <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
+                    <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
+                    <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+                      <li>OfficeCLI binary integrated into client server (no MS Office required)</li>
+                      <li>3 Automated Document Workflows (Word Contract, Excel Report, PPT Deck)</li>
+                      <li>Agent Document Template Library &amp; Formatting Guards</li>
+                      <li>Monthly Maintenance &amp; Template Update SLA</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        )}
+
+        {/* TAB 4: 7-DIMENSION LUX SCORE GRADING SYSTEM */}
+        {activeTab === "grading" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+            
+            <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(108, 71, 255, 0.3)", borderRadius: "20px", padding: "36px" }}>
+              <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-indigo)", letterSpacing: "0.15em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                HOW THE LUX SCORE WORKS (PAGE 3 PDF)
+              </span>
+              <h2 style={{ fontSize: "2rem", fontWeight: 900, color: "#fff", margin: "8px 0 16px" }}>
+                The 7-Dimension Lux Score Methodology
               </h2>
-              <p style={{ fontSize: "1.05rem", color: "var(--text-secondary)", maxWidth: "880px", lineHeight: 1.6, margin: "0 0 24px" }}>
-                Every week, Lux App Review publishes five commercial monetization blueprints for founders, agency owners, and technical consultants. Turn open-source code into high-margin recurring client revenue ($1,250 – $3,500 setup + $349 – $999/mo retainers).
+              <p style={{ fontSize: "1.05rem", color: "var(--text-secondary)", lineHeight: 1.7, margin: "0 0 28px", maxWidth: "860px" }}>
+                Stars are attention signals — not trust, quality, or security guarantees. Safety overrides prevent an archived, abandoned, unlicensed, suspicious, or materially unsafe project from receiving a top verdict without prominent warnings.
               </p>
 
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "16px", background: "rgba(6, 9, 19, 0.7)", border: "1px solid rgba(255, 215, 0, 0.2)", borderRadius: "14px", padding: "20px" }}>
-                <div>
-                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-mono)" }}>AVERAGE SETUP VALUE</div>
-                  <div style={{ fontSize: "1.6rem", fontWeight: 900, color: "#ffe45c" }}>$2,149 <span style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontWeight: 500 }}>/ project</span></div>
-                </div>
-                <div>
-                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-mono)" }}>AVERAGE MONTHLY SLA</div>
-                  <div style={{ fontSize: "1.6rem", fontWeight: 900, color: "var(--lux-mint)" }}>$569 <span style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontWeight: 500 }}>/ client / mo</span></div>
-                </div>
-                <div>
-                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-mono)" }}>SUBSCRIBER DELIVERABLES</div>
-                  <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#fff" }}>5 Scopes + Prompts + PDFs</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Disclaimer Bar */}
-            <div style={{ background: "rgba(17, 24, 39, 0.6)", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: "12px", padding: "14px 20px", display: "flex", alignItems: "center", gap: "12px", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-              <span style={{ fontSize: "1.1rem" }}>⚠️</span>
-              <span><strong>Subscriber Disclaimer:</strong> Educational planning examples only. No earnings guarantee. All service offers require appropriate technical testing, client permission, license compliance, and security scoping before commercial deployment.</span>
-            </div>
-
-            {/* 5 COMMERCIAL MONEY PLAYS GRID */}
-            <div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", marginBottom: "24px" }}>
-                <div>
-                  <h3 style={{ fontSize: "1.5rem", fontWeight: 900, color: "#fff", margin: 0 }}>This Week’s 5 High-Ticket Commercial Offers</h3>
-                  <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", margin: "4px 0 0" }}>Complete buyer targeting, pricing breakdown, scope of work, and monthly SLA retainers.</p>
-                </div>
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-
-                {/* PLAY 1: HERMES AGENT */}
-                <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(0, 212, 255, 0.08)" }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                      <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(0, 212, 255, 0.15)", border: "1px solid var(--lux-cyan)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
-                        🤖
-                      </div>
-                      <div>
-                        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                          PLAY 01 • BASED ON HERMES AGENT (MIT)
-                        </div>
-                        <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
-                          Managed AI Operations Desk
-                        </h4>
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
-                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
-                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$3,500</div>
-                      </div>
-                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
-                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
-                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$999<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
-                    <div>
-                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-cyan)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
-                      <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Small businesses, agencies, creators, and internal operations teams.</p>
-                      
-                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-cyan)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK & OFFER</h5>
-                      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
-                        Install and configure Hermes Agent, connect approved messaging channels (Telegram, Slack, Email), build 3 custom business skills, establish persistent memory stores, add scheduled reporting, document permissions, and provide managed 24/7 monitoring.
-                      </p>
-                    </div>
-
-                    <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
-                      <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
-                      <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
-                        <li>Hardened Hermes installation on isolated VPS or client server</li>
-                        <li>3 Custom Business Skills (e.g. Lead Intake, Weekly Digest, PDF Summaries)</li>
-                        <li>Configured Messaging Gateway (Slack / Telegram / Email)</li>
-                        <li>Security & Least-Privilege Permission Scoping Document</li>
-                        <li>Monthly Health Check, Log Audit & Skill Optimization</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PLAY 2: OPENCUT */}
-                <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(108, 71, 255, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(108, 71, 255, 0.08)" }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                      <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(108, 71, 255, 0.15)", border: "1px solid var(--lux-indigo)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
-                        🎬
-                      </div>
-                      <div>
-                        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-indigo)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                          PLAY 02 • BASED ON OPENCUT (MIT)
-                        </div>
-                        <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
-                          Private Creator Editing Studio
-                        </h4>
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
-                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
-                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$1,500</div>
-                      </div>
-                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
-                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
-                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$399<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
-                    <div>
-                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-indigo)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
-                      <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Creators, schools, nonprofits, agencies, and privacy-sensitive media teams.</p>
-                      
-                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-indigo)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK & OFFER</h5>
-                      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
-                        Deploy a branded private video editing workspace, prepare reusable brand video templates, train the editing team, document local storage and export workflows, and provide monthly software updates and technical support.
-                      </p>
-                    </div>
-
-                    <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
-                      <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
-                      <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
-                        <li>Self-hosted or desktop OpenCut deployment with zero recurring seat fees</li>
-                        <li>5 Branded Brand Video Project Templates & Presets</li>
-                        <li>Team Workflow & Local Storage Safety Playbook</li>
-                        <li>Monthly Software Update Patching & Feature Training</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PLAY 3: OMNIROUTE */}
-                <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(0, 255, 163, 0.08)" }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                      <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(0, 255, 163, 0.15)", border: "1px solid var(--lux-mint)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
-                        ⚡
-                      </div>
-                      <div>
-                        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-mint)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                          PLAY 03 • BASED ON OMNIROUTE (MIT)
-                        </div>
-                        <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
-                          AI Cost-Control & Reliability Gateway
-                        </h4>
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
-                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
-                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$1,997</div>
-                      </div>
-                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
-                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
-                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$499<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
-                    <div>
-                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-mint)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
-                      <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>AI agencies, development teams, internal innovation groups, multi-model operators.</p>
-                      
-                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--lux-mint)", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK & OFFER</h5>
-                      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
-                        Install a hardened OmniRoute gateway, connect approved model providers (OpenAI, Anthropic, Gemini, Ollama), configure fallback routing and token compression, set up monthly token budgets, train staff, and provide a monthly API cost optimization audit.
-                      </p>
-                    </div>
-
-                    <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
-                      <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
-                      <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
-                        <li>Single unified endpoint for all client LLM requests</li>
-                        <li>Automated provider fallback to eliminate API downtime</li>
-                        <li>Semantic Caching & Token Compression rules (cut API costs 30-50%)</li>
-                        <li>Monthly Token Spend Audit & Provider Optimization Report</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PLAY 4: DEEPTUTOR */}
-                <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(255, 228, 92, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(255, 228, 92, 0.08)" }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                      <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(255, 228, 92, 0.15)", border: "1px solid #ffe45c", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
-                        🎓
-                      </div>
-                      <div>
-                        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                          PLAY 04 • BASED ON DEEPTUTOR (APACHE-2.0)
-                        </div>
-                        <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
-                          Private AI Learning Portal
-                        </h4>
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
-                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
-                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$2,500</div>
-                      </div>
-                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
-                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
-                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$599<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
-                    <div>
-                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
-                      <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Tutoring companies, workforce programs, schools, nonprofits, membership communities.</p>
-                      
-                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK & OFFER</h5>
-                      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
-                        Deploy a private DeepTutor portal, load approved learning materials & custom knowledge bases, configure learner roles and progress tracking, train educators, add content review controls, and provide monthly curriculum and usage reporting.
-                      </p>
-                    </div>
-
-                    <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
-                      <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
-                      <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
-                        <li>Custom branded tutoring portal instance</li>
-                        <li>Ingested curriculum docs & verified answer grounding</li>
-                        <li>Learner memory & adaptive question generation setup</li>
-                        <li>Monthly Educator Usage, Completion & Accuracy Report</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PLAY 5: OFFICECLI */}
-                <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(255, 107, 0, 0.3)", borderRadius: "18px", padding: "28px", backdropFilter: "blur(20px)", boxShadow: "0 0 25px rgba(255, 107, 0, 0.08)" }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "20px", marginBottom: "20px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                      <div style={{ width: "42px", height: "42px", borderRadius: "10px", background: "rgba(255, 107, 0, 0.15)", border: "1px solid #ff6b00", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>
-                        📄
-                      </div>
-                      <div>
-                        <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ff6b00", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
-                          PLAY 05 • BASED ON OFFICECLI (APACHE-2.0)
-                        </div>
-                        <h4 style={{ fontSize: "1.3rem", fontWeight: 900, color: "#fff", margin: 0 }}>
-                          Document Automation QuickStart
-                        </h4>
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255, 215, 0, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
-                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>SETUP FEE</div>
-                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffe45c" }}>$1,250</div>
-                      </div>
-                      <div style={{ background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(0, 255, 163, 0.3)", borderRadius: "10px", padding: "8px 16px", textAlign: "right" }}>
-                        <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>MONTHLY RETAINER</div>
-                        <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "var(--lux-mint)" }}>$349<span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>/mo</span></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
-                    <div>
-                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ff6b00", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🎯 TARGET BUYERS</h5>
-                      <p style={{ fontSize: "0.95rem", color: "#fff", fontWeight: 600, margin: "0 0 16px" }}>Consultants, agencies, finance teams, operations groups, software vendors.</p>
-                      
-                      <h5 style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ff6b00", margin: "0 0 8px", fontFamily: "var(--font-mono)" }}>🛠️ SCOPE OF WORK & OFFER</h5>
-                      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
-                        Install OfficeCLI binary, connect approved AI agents (Hermes / LANA / custom scripts), build 3 Word, Excel, or PowerPoint automated document pipelines, establish quality validation checks, and provide managed template maintenance.
-                      </p>
-                    </div>
-
-                    <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px" }}>
-                      <h5 style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#ffe45c", margin: "0 0 12px", fontFamily: "var(--font-mono)" }}>📋 CLIENT DELIVERABLES</h5>
-                      <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
-                        <li>OfficeCLI binary integrated into client server (no MS Office required)</li>
-                        <li>3 Automated Document Workflows (Word Contract, Excel Report, PPT Deck)</li>
-                        <li>Agent Document Template Library & Formatting Guards</li>
-                        <li>Monthly Maintenance & Template Update SLA</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            {/* 4-STEP SUBSCRIBER PLAYBOOK */}
-            <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "18px", padding: "32px" }}>
-              <h3 style={{ fontSize: "1.4rem", fontWeight: 900, color: "#fff", margin: "0 0 8px" }}>The 4-Step Commercial Implementation Playbook</h3>
-              <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", margin: "0 0 28px" }}>Follow this proven framework to convert technical reviews into paid client engagements.</p>
-
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "20px" }}>
-                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 212, 255, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-cyan)", fontFamily: "var(--font-mono)" }}>PHASE 01 • DISCOVERY</div>
-                  <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Target Selection & Audit</h4>
-                  <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Identify clients spending over $2k/mo on manual ops, software seats, or fragmented AI tools.</p>
-                </div>
-
-                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-indigo)", fontFamily: "var(--font-mono)" }}>PHASE 02 • SCOPING</div>
-                  <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Fixed Setup + SLA Retainer</h4>
-                  <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Present a fixed 2-week implementation setup + recurring monthly SLA monitoring retainer.</p>
-                </div>
-
-                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 255, 163, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-mint)", fontFamily: "var(--font-mono)" }}>PHASE 03 • DEPLOYMENT</div>
-                  <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Hardened Security Setup</h4>
-                  <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Deploy open-source binaries with least-privilege API keys, Docker isolation, and permission logs.</p>
-                </div>
-
-                <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255, 215, 0, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#ffe45c", fontFamily: "var(--font-mono)" }}>PHASE 04 • RETAINER</div>
-                  <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Monthly Value Reporting</h4>
-                  <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>Send automated monthly cost optimization reports showing exact hours & dollars saved.</p>
-                </div>
-              </div>
-            </div>
-
-            {/* COPY-AND-PASTE AGENT PROMPT STACK */}
-            <div style={{ background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(0, 212, 255, 0.25)", borderRadius: "18px", padding: "28px" }}>
-              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "12px", marginBottom: "16px" }}>
-                <div>
-                  <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>⚡ SUBSCRIBER PROMPT STACK</span>
-                  <h4 style={{ fontSize: "1.2rem", fontWeight: 900, color: "#fff", margin: "4px 0 0" }}>LANA Client Pitch Generator Prompt</h4>
-                </div>
-                <button
-                  onClick={() => navigator.clipboard.writeText(`You are an expert technical AI agency consultant. Generate a high-ticket client proposal scope for installing Hermes Agent and OmniRoute for a 20-person business team.`)}
-                  style={{ background: "rgba(0, 212, 255, 0.15)", border: "1px solid var(--lux-cyan)", color: "var(--lux-cyan)", padding: "6px 14px", borderRadius: "8px", fontSize: "0.75rem", fontWeight: 800, cursor: "pointer" }}
-                >
-                  📋 Copy Prompt
-                </button>
+              {/* 7 Dimensions Weights Table (Page 3 PDF) */}
+              <div style={{ overflowX: "auto", marginBottom: "28px" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.85rem" }}>
+                  <thead>
+                    <tr style={{ background: "rgba(6, 9, 19, 0.8)", color: "var(--text-muted)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.08em", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+                      <th style={{ padding: "14px 18px" }}>Dimension</th>
+                      <th style={{ padding: "14px 18px", width: "100px" }}>Weight (Pts)</th>
+                      <th style={{ padding: "14px 18px" }}>What It Measures</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+                      <td style={{ padding: "16px 18px", fontWeight: 800, color: "var(--lux-cyan)" }}>1. Usefulness</td>
+                      <td style={{ padding: "16px 18px", fontWeight: 900, color: "#fff" }}>20 Pts</td>
+                      <td style={{ padding: "16px 18px", color: "var(--text-secondary)" }}>Problem clarity, practical business value, breadth of use.</td>
+                    </tr>
+                    <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+                      <td style={{ padding: "16px 18px", fontWeight: 800, color: "var(--lux-indigo)" }}>2. Project Health</td>
+                      <td style={{ padding: "16px 18px", fontWeight: 900, color: "#fff" }}>15 Pts</td>
+                      <td style={{ padding: "16px 18px", color: "var(--text-secondary)" }}>Commits, release velocity, active maintainers, issue response activity.</td>
+                    </tr>
+                    <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+                      <td style={{ padding: "16px 18px", fontWeight: 800, color: "var(--lux-mint)" }}>3. Community Momentum</td>
+                      <td style={{ padding: "16px 18px", fontWeight: 900, color: "#fff" }}>15 Pts</td>
+                      <td style={{ padding: "16px 18px", color: "var(--text-secondary)" }}>Recent growth velocity and genuine community engagement.</td>
+                    </tr>
+                    <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+                      <td style={{ padding: "16px 18px", fontWeight: 800, color: "#ffe45c" }}>4. Ease of Use</td>
+                      <td style={{ padding: "16px 18px", fontWeight: 900, color: "#fff" }}>15 Pts</td>
+                      <td style={{ padding: "16px 18px", color: "var(--text-secondary)" }}>Setup speed, documentation clarity, examples, onboarding path.</td>
+                    </tr>
+                    <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+                      <td style={{ padding: "16px 18px", fontWeight: 800, color: "#ff0080" }}>5. Trust &amp; Safety</td>
+                      <td style={{ padding: "16px 18px", fontWeight: 900, color: "#fff" }}>15 Pts</td>
+                      <td style={{ padding: "16px 18px", color: "var(--text-secondary)" }}>License clarity, permission scope, security controls, data handling.</td>
+                    </tr>
+                    <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+                      <td style={{ padding: "16px 18px", fontWeight: 800, color: "var(--lux-cyan)" }}>6. Product Quality</td>
+                      <td style={{ padding: "16px 18px", fontWeight: 900, color: "#fff" }}>10 Pts</td>
+                      <td style={{ padding: "16px 18px", color: "var(--text-secondary)" }}>Runtime reliability, UX polishedness, completeness, maintainability.</td>
+                    </tr>
+                    <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+                      <td style={{ padding: "16px 18px", fontWeight: 800, color: "var(--lux-mint)" }}>7. Innovation</td>
+                      <td style={{ padding: "16px 18px", fontWeight: 900, color: "#fff" }}>10 Pts</td>
+                      <td style={{ padding: "16px 18px", color: "var(--text-secondary)" }}>Originality, technical approach, and competitive advantage.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
-              <pre style={{ background: "#060913", border: "1px solid rgba(0,212,255,0.2)", borderRadius: "10px", padding: "16px", color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", fontSize: "0.82rem", overflowX: "auto", whiteSpace: "pre-wrap", margin: 0 }}>
-{`Role: Senior AI Infrastructure Consultant & Service Scoper
-Task: Generate a 1-page Client Proposal Scope for deploying open-source AI infrastructure.
-Client Profile: [Insert Client Business Type, e.g. 15-person Digital Agency]
-Selected Stack: Hermes Agent (Ops Agent) + OmniRoute (Cost Gateway)
-Output Required:
-1. Executive Summary (Why open-source beats per-seat SaaS costs)
-2. Setup Scope ($3,500 fixed setup - server install, API keys, 3 custom skills)
-3. Monthly Retainer SLA ($999/mo - 24/7 monitoring, skill updates, monthly cost audit)
-4. Implementation Timeline (Day 1: Audit, Day 5: Deployment, Day 10: Training)
-5. Security & Permission Assurance (Least-privilege API scope, zero data retention)`}
-              </pre>
-            </div>
-
-            {/* DOWNLOAD PDF & PRO TEMPLATE CARDS */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
-              <div style={{ background: "linear-gradient(135deg, rgba(255,215,0,0.1), rgba(11,15,25,0.8))", border: "1px solid rgba(255,215,0,0.3)", borderRadius: "16px", padding: "24px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>PDF DOCUMENT</div>
-                  <h4 style={{ fontSize: "1.2rem", fontWeight: 900, color: "#fff", margin: "8px 0" }}>Money Play Full PDF Guide</h4>
-                  <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: "0 0 20px" }}>Printable 6-page subscriber guide containing pricing tables, sales scripts, and risk checklists.</p>
-                </div>
-                <a
-                  href="/documents/Lux_App_Review_Money_Play_2026-07-24.pdf"
-                  download
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ display: "block", textAlign: "center", background: "#ffe45c", color: "#0b0f19", padding: "12px", borderRadius: "10px", fontWeight: 900, fontSize: "0.85rem", textDecoration: "none" }}
-                >
-                  Download Money Play PDF 📥
-                </a>
-              </div>
-
-              <div style={{ background: "linear-gradient(135deg, rgba(0,212,255,0.1), rgba(11,15,25,0.8))", border: "1px solid rgba(0,212,255,0.3)", borderRadius: "16px", padding: "24px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>FULL REVIEW PDF</div>
-                  <h4 style={{ fontSize: "1.2rem", fontWeight: 900, color: "#fff", margin: "8px 0" }}>Top 5 GitHub Apps Full Review PDF</h4>
-                  <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: "0 0 20px" }}>The complete 16-page editorial intelligence report for the week of July 20-24, 2026.</p>
-                </div>
-                <a
-                  href="/documents/Lux_App_Review_Top_5_2026-07-24.pdf"
-                  download
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ display: "block", textAlign: "center", background: "var(--lux-cyan)", color: "#0b0f19", padding: "12px", borderRadius: "10px", fontWeight: 900, fontSize: "0.85rem", textDecoration: "none" }}
-                >
-                  Download Full Review PDF 📥
-                </a>
+              {/* Safety Override Alert */}
+              <div style={{ background: "rgba(255, 0, 128, 0.1)", border: "1px solid rgba(255, 0, 128, 0.4)", borderRadius: "12px", padding: "18px", color: "#ff66c4" }}>
+                <strong style={{ color: "#fff", display: "block", marginBottom: "4px" }}>⚠️ Safety &amp; Trust Overrides:</strong>
+                Safety overrides prevent an archived, abandoned, unlicensed, suspicious, or materially unsafe project from receiving a top verdict without prominent warnings.
               </div>
             </div>
 
           </div>
         )}
 
-        {/* TAB 3: 7-DIMENSION LUX SCORE GRADING SYSTEM */}
-        {activeTab === "grading" && (
-          <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "16px", padding: "32px", backdropFilter: "blur(20px)" }}>
-            <h2 style={{ fontSize: "1.6rem", fontWeight: 900, color: "#fff", margin: "0 0 12px" }}>The 7-Dimension Lux Score Model</h2>
-            <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", maxWidth: "800px", lineHeight: 1.6, margin: "0 0 32px" }}>
-              Stars are attention signals—not security audits or production readiness guarantees. Lux App Review evaluates open-source applications across seven weighted operational dimensions to determine true enterprise and founder utility.
-            </p>
-
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
-              <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 212, 255, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                <div style={{ fontSize: "0.8rem", fontWeight: 800, color: "var(--lux-cyan)" }}>01 • USEFULNESS (20 PTS)</div>
-                <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Problem Fit & Breadth</h4>
-                <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", margin: 0 }}>Evaluates how clearly the tool solves a real operational problem and how broadly it applies to business workflows.</p>
-              </div>
-
-              <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                <div style={{ fontSize: "0.8rem", fontWeight: 800, color: "var(--lux-indigo)" }}>02 • PROJECT HEALTH (15 PTS)</div>
-                <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Commits & Maintainers</h4>
-                <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", margin: 0 }}>Measures active commit history, release frequency, issue responsiveness, and maintainer diversity.</p>
-              </div>
-
-              <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 255, 163, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                <div style={{ fontSize: "0.8rem", fontWeight: 800, color: "var(--lux-mint)" }}>03 • MOMENTUM (15 PTS)</div>
-                <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Weekly Growth Trajectory</h4>
-                <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", margin: 0 }}>Tracks star growth, fork velocity, creator coverage, and community adoption rates.</p>
-              </div>
-
-              <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255, 228, 92, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                <div style={{ fontSize: "0.8rem", fontWeight: 800, color: "#ffe45c" }}>04 • EASE OF USE (15 PTS)</div>
-                <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Onboarding & Setup</h4>
-                <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", margin: 0 }}>Assesses documentation quality, Docker/CLI setup speed, sample configs, and troubleshooting paths.</p>
-              </div>
-
-              <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(255, 107, 0, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                <div style={{ fontSize: "0.8rem", fontWeight: 800, color: "#ff6b00" }}>05 • TRUST & SAFETY (15 PTS)</div>
-                <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>License & Security Posture</h4>
-                <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", margin: 0 }}>Verifies OSI open-source licensing, dependency vulnerability scans, permissions, and credential security.</p>
-              </div>
-
-              <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(0, 212, 255, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                <div style={{ fontSize: "0.8rem", fontWeight: 800, color: "var(--lux-cyan)" }}>06 • PRODUCT QUALITY (10 PTS)</div>
-                <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Code Architecture & UX</h4>
-                <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", margin: 0 }}>Inspects codebase organization, test suite coverage, error handling, and interface polish.</p>
-              </div>
-
-              <div style={{ background: "rgba(6, 9, 19, 0.6)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "12px", padding: "20px" }}>
-                <div style={{ fontSize: "0.8rem", fontWeight: 800, color: "var(--lux-indigo)" }}>07 • INNOVATION (10 PTS)</div>
-                <h4 style={{ fontSize: "1.1rem", margin: "8px 0", color: "#fff" }}>Originality & Agent Tech</h4>
-                <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", margin: 0 }}>Evaluates novel architectural patterns like MCP support, A2A protocols, memory loops, and local models.</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 3: SUBSCRIPTIONS & MEMBERSHIP STRUCTURE */}
+        {/* TAB 5: SUBSCRIPTIONS & MONEY PLAY ACCESS */}
         {activeTab === "subscriptions" && (
           <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
             
-            {/* Header & Toggle */}
-            <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto" }}>
-              <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-cyan)", textTransform: "uppercase", letterSpacing: "0.12em" }}>
-                SUBSCRIBER MONEY PLAY & AGENT PROMPTS
+            <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 20px" }}>
+              <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-mint)", letterSpacing: "0.15em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>
+                LUX APP REVIEW MEMBERSHIPS
               </span>
-              <h2 style={{ fontSize: "2.2rem", fontWeight: 900, color: "#fff", margin: "10px 0 14px" }}>
-                Choose Your Lux App Review Access Level
+              <h2 style={{ fontSize: "2.4rem", fontWeight: 900, color: "#fff", margin: "8px 0" }}>
+                Choose Your Access Tier
               </h2>
-              <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                Turn open-source tools into high-margin business systems. Unlock subscriber Money Play PDFs, copy-and-paste agent prompts, JSON schemas, and commercial workflow code.
+              <p style={{ fontSize: "1rem", color: "var(--text-secondary)" }}>
+                Registered Community members receive public review PDFs. Paid subscribers receive the complete Money Play PDF, runnable code engine scripts, sales pitch prompt stack, and commercial delivery SOPs.
               </p>
 
               {/* Billing Toggle */}
-              <div style={{ display: "inline-flex", alignItems: "center", background: "rgba(17, 24, 39, 0.9)", border: "1px solid rgba(108, 71, 255, 0.3)", borderRadius: "30px", padding: "4px", marginTop: "20px" }}>
+              <div style={{ display: "inline-flex", background: "rgba(17, 24, 39, 0.8)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "25px", padding: "4px", marginTop: "16px" }}>
                 <button
                   onClick={() => setBillingCycle("monthly")}
-                  style={{
-                    background: billingCycle === "monthly" ? "var(--lux-indigo)" : "transparent",
-                    color: "#fff",
-                    border: "none",
-                    padding: "8px 20px",
-                    borderRadius: "20px",
-                    fontSize: "0.8rem",
-                    fontWeight: 700,
-                    cursor: "pointer"
-                  }}
+                  style={{ background: billingCycle === "monthly" ? "var(--lux-cyan)" : "transparent", color: billingCycle === "monthly" ? "#0b0f19" : "var(--text-secondary)", border: "none", padding: "6px 18px", borderRadius: "20px", fontWeight: 800, fontSize: "0.8rem", cursor: "pointer" }}
                 >
-                  Monthly Billing
+                  Monthly
                 </button>
                 <button
                   onClick={() => setBillingCycle("yearly")}
-                  style={{
-                    background: billingCycle === "yearly" ? "linear-gradient(135deg, var(--lux-cyan), var(--lux-mint))" : "transparent",
-                    color: billingCycle === "yearly" ? "#0b0f19" : "#fff",
-                    border: "none",
-                    padding: "8px 20px",
-                    borderRadius: "20px",
-                    fontSize: "0.8rem",
-                    fontWeight: 800,
-                    cursor: "pointer"
-                  }}
+                  style={{ background: billingCycle === "yearly" ? "var(--lux-cyan)" : "transparent", color: billingCycle === "yearly" ? "#0b0f19" : "var(--text-secondary)", border: "none", padding: "6px 18px", borderRadius: "20px", fontWeight: 800, fontSize: "0.8rem", cursor: "pointer" }}
                 >
                   Yearly (Save 20%)
                 </button>
               </div>
             </div>
 
-            {/* Pricing Cards Grid */}
+            {/* Pricing Cards */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "24px" }}>
               
-              {/* Tier 1: Lux Community ($0) */}
-              <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "16px", padding: "32px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              {/* Free Tier */}
+              <div style={{ background: "rgba(17, 24, 39, 0.6)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "20px", padding: "32px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
-                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--text-muted)", textTransform: "uppercase" }}>FREE ACCESS</div>
-                  <h3 style={{ fontSize: "1.5rem", fontWeight: 800, margin: "8px 0", color: "#fff" }}>Lux Community</h3>
-                  <div style={{ fontSize: "2rem", fontWeight: 900, color: "#fff", margin: "16px 0" }}>$0 <span style={{ fontSize: "0.9rem", color: "var(--text-muted)", fontWeight: 400 }}>/ forever</span></div>
-                  <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: "0 0 24px" }}>
-                    Perfect for open-source enthusiasts, developers, and builders following weekly app intelligence.
-                  </p>
-
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px", fontSize: "0.85rem", color: "var(--text-secondary)" }}>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-mint)" }}>✓</span> Saved reviews & bookmarks</li>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-mint)" }}>✓</span> Weekly Roundup email dispatch</li>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-mint)" }}>✓</span> Complete Top 5 App Review PDF</li>
+                  <span style={{ fontSize: "0.7rem", fontWeight: 800, color: "var(--text-muted)", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>TIER 01</span>
+                  <h3 style={{ fontSize: "1.5rem", fontWeight: 900, color: "#fff", margin: "4px 0 12px" }}>Community Member</h3>
+                  <div style={{ fontSize: "2.2rem", fontWeight: 900, color: "#fff", marginBottom: "16px" }}>$0 <span style={{ fontSize: "0.9rem", color: "var(--text-muted)", fontWeight: 400 }}>/ forever</span></div>
+                  <ul style={{ paddingLeft: "18px", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.8 }}>
+                    <li>Public Top 5 Weekly Rankings</li>
+                    <li>7-Dimension Lux Score breakdowns</li>
+                    <li>Download public App Review PDF</li>
+                    <li>Weekly email notifications</li>
                   </ul>
                 </div>
-
-                <button
-                  onClick={() => { setUserPlan("Community"); setModalOpen(true); }}
-                  style={{ width: "100%", marginTop: "32px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", padding: "12px", borderRadius: "8px", fontWeight: 700, cursor: "pointer" }}
-                >
-                  Join Free Community
+                <button style={{ width: "100%", background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.15)", padding: "12px", borderRadius: "10px", fontWeight: 800, cursor: "pointer", marginTop: "24px" }}>
+                  Current Plan (Active)
                 </button>
               </div>
 
-              {/* Tier 2: Lux Insider ($19/mo) */}
-              <div style={{ background: "rgba(17, 24, 39, 0.9)", border: "2px solid var(--lux-cyan)", borderRadius: "16px", padding: "32px", display: "flex", flexDirection: "column", justifyContent: "space-between", boxShadow: "0 0 30px rgba(0, 212, 255, 0.15)", position: "relative" }}>
-                <div style={{ position: "absolute", top: "-12px", right: "24px", background: "linear-gradient(135deg, var(--lux-cyan), var(--lux-mint))", color: "#0b0f19", padding: "2px 12px", borderRadius: "12px", fontSize: "0.65rem", fontWeight: 900, textTransform: "uppercase" }}>POPULAR CHOICE</div>
+              {/* Pro Subscriber Tier */}
+              <div style={{ background: "linear-gradient(135deg, rgba(255,215,0,0.12), rgba(11,15,25,0.95))", border: "2px solid #ffd700", borderRadius: "20px", padding: "32px", display: "flex", flexDirection: "column", justifyContent: "space-between", boxShadow: "0 0 35px rgba(255, 215, 0, 0.15)", position: "relative" }}>
+                <div style={{ position: "absolute", top: "-14px", right: "24px", background: "#ffd700", color: "#0b0f19", fontSize: "0.7rem", fontWeight: 900, padding: "4px 12px", borderRadius: "12px", textTransform: "uppercase" }}>
+                  MOST POPULAR FOR AGENCIES
+                </div>
                 <div>
-                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-cyan)", textTransform: "uppercase" }}>INSIDER ALPHA</div>
-                  <h3 style={{ fontSize: "1.5rem", fontWeight: 800, margin: "8px 0", color: "#fff" }}>Lux Insider</h3>
-                  <div style={{ fontSize: "2rem", fontWeight: 900, color: "#fff", margin: "16px 0" }}>
-                    {billingCycle === "monthly" ? "$19" : "$190"} <span style={{ fontSize: "0.9rem", color: "var(--text-muted)", fontWeight: 400 }}>{billingCycle === "monthly" ? "/ month" : "/ year"}</span>
+                  <span style={{ fontSize: "0.7rem", fontWeight: 800, color: "#ffe45c", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>TIER 02</span>
+                  <h3 style={{ fontSize: "1.5rem", fontWeight: 900, color: "#fff", margin: "4px 0 12px" }}>Subscriber Money Play</h3>
+                  <div style={{ fontSize: "2.4rem", fontWeight: 900, color: "#ffe45c", marginBottom: "16px" }}>
+                    {billingCycle === "monthly" ? "$49" : "$39"} <span style={{ fontSize: "0.9rem", color: "var(--text-muted)", fontWeight: 400 }}>/ month</span>
                   </div>
-                  <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: "0 0 24px" }}>
-                    For agency owners, founders, and consultants turning open-source tools into commercial services.
-                  </p>
-
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px", fontSize: "0.85rem", color: "#fff" }}>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-cyan)" }}>✓</span> All Community features</li>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-cyan)" }}>✓</span> Subscriber Money Play PDFs</li>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-cyan)" }}>✓</span> Full archive access</li>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-cyan)" }}>✓</span> Early access to new reviews</li>
+                  <ul style={{ paddingLeft: "18px", fontSize: "0.85rem", color: "#fff", lineHeight: 1.8 }}>
+                    <li><strong>Full Money Play PDF &amp; Service Pricing Guides</strong></li>
+                    <li><strong>10 Commercial Runnable Code Engine Scripts</strong></li>
+                    <li><strong>LANA Client Pitch Proposal Generator Prompt Stack</strong></li>
+                    <li>5 Managed High-Ticket Client Offer Playbooks ($1.2k – $3.5k setup)</li>
+                    <li>Client Deliverables &amp; SOP Templates</li>
                   </ul>
                 </div>
-
-                <button
-                  onClick={() => { setUserPlan("Insider"); setModalOpen(true); }}
-                  style={{ width: "100%", marginTop: "32px", background: "linear-gradient(135deg, var(--lux-cyan) 0%, var(--lux-indigo) 100%)", color: "#fff", border: "none", padding: "12px", borderRadius: "8px", fontWeight: 800, cursor: "pointer", boxShadow: "0 0 16px rgba(0, 212, 255, 0.3)" }}
+                <a
+                  href="https://buy.stripe.com/test_lux_app_review_subscriber"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ display: "block", textAlign: "center", background: "linear-gradient(135deg, #ffd700, #ff9900)", color: "#0b0f19", padding: "14px", borderRadius: "10px", fontWeight: 900, textDecoration: "none", fontSize: "0.95rem", boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)", marginTop: "24px" }}
                 >
-                  Subscribe to Insider
-                </button>
-              </div>
-
-              {/* Tier 3: Lux Operator ($49/mo) */}
-              <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(108, 71, 255, 0.3)", borderRadius: "16px", padding: "32px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-indigo)", textTransform: "uppercase" }}>ENTERPRISE & PROMPT KIT</div>
-                  <h3 style={{ fontSize: "1.5rem", fontWeight: 800, margin: "8px 0", color: "#fff" }}>Lux Operator</h3>
-                  <div style={{ fontSize: "2rem", fontWeight: 900, color: "#fff", margin: "16px 0" }}>
-                    {billingCycle === "monthly" ? "$49" : "$490"} <span style={{ fontSize: "0.9rem", color: "var(--text-muted)", fontWeight: 400 }}>{billingCycle === "monthly" ? "/ month" : "/ year"}</span>
-                  </div>
-                  <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: "0 0 24px" }}>
-                    Complete access for software engineers, systems integrators, and automated business operators.
-                  </p>
-
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px", fontSize: "0.85rem", color: "#fff" }}>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-mint)" }}>✓</span> All Insider access</li>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-mint)" }}>✓</span> Copy-and-paste Agent Prompts</li>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-mint)" }}>✓</span> Full App Review JSON schemas</li>
-                    <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><span style={{ color: "var(--lux-mint)" }}>✓</span> Website Code & Commercial Packs</li>
-                  </ul>
-                </div>
-
-                <button
-                  onClick={() => { setUserPlan("Operator"); setModalOpen(true); }}
-                  style={{ width: "100%", marginTop: "32px", background: "linear-gradient(135deg, var(--lux-indigo) 0%, var(--lux-mint) 100%)", color: "#0b0f19", border: "none", padding: "12px", borderRadius: "8px", fontWeight: 800, cursor: "pointer" }}
-                >
-                  Unlock Operator Stack
-                </button>
+                  Subscribe Now &amp; Unlock Money Plays 🚀
+                </a>
               </div>
 
             </div>
+
           </div>
         )}
 
       </div>
 
-      {/* IN-DEPTH APP REVIEW DETAIL MODAL */}
+      {/* DETAIL MODAL FOR INDIVIDUAL APP REVIEW */}
       {selectedApp && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(6, 9, 19, 0.85)", backdropFilter: "blur(12px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
-          <div style={{ background: "rgba(17, 24, 39, 0.95)", border: "1px solid var(--lux-cyan)", borderRadius: "20px", maxWidth: "760px", width: "100%", maxHeight: "90vh", overflowY: "auto", padding: "32px", boxShadow: "0 25px 60px rgba(0,0,0,0.8)" }}>
+        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)", zIndex: 9999, display: "flex", justifyContent: "center", alignItems: "center", padding: "20px" }} onClick={() => setSelectedApp(null)}>
+          <div style={{ background: "#0b0f19", border: "1px solid rgba(0, 212, 255, 0.35)", borderRadius: "24px", maxWidth: "800px", width: "100%", maxHeight: "90vh", overflowY: "auto", padding: "36px", boxShadow: "0 25px 60px rgba(0,0,0,0.8)" }} onClick={(e) => e.stopPropagation()}>
             
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px" }}>
               <div>
-                <span style={{ background: "rgba(0,212,255,0.1)", border: "1px solid var(--lux-cyan)", color: "var(--lux-cyan)", padding: "2px 8px", borderRadius: "4px", fontSize: "0.7rem", fontWeight: 700 }}>
+                <span style={{ background: "rgba(0, 212, 255, 0.12)", border: "1px solid rgba(0, 212, 255, 0.3)", color: "var(--lux-cyan)", padding: "3px 10px", borderRadius: "12px", fontSize: "0.7rem", fontWeight: 800 }}>
                   RANK #{selectedApp.rank} • {selectedApp.category}
                 </span>
-                <h2 style={{ fontSize: "1.8rem", fontWeight: 900, color: "#fff", margin: "8px 0 4px" }}>{selectedApp.name}</h2>
-                <a href={selectedApp.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-muted)", fontSize: "0.8rem", fontFamily: "var(--font-mono)", textDecoration: "none" }}>
-                  🔗 {selectedApp.repo}
-                </a>
+                <h2 style={{ fontSize: "2rem", fontWeight: 900, color: "#fff", margin: "8px 0 2px" }}>{selectedApp.name}</h2>
+                <div style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>{selectedApp.repo}</div>
               </div>
-              <button onClick={() => setSelectedApp(null)} style={{ background: "transparent", border: "none", color: "var(--text-muted)", fontSize: "1.5rem", cursor: "pointer" }}>✕</button>
+              <button onClick={() => setSelectedApp(null)} style={{ background: "rgba(255,255,255,0.08)", border: "none", color: "#fff", fontSize: "1.2rem", width: "36px", height: "36px", borderRadius: "50%", cursor: "pointer" }}>✕</button>
             </div>
 
-            <div style={{ display: "flex", gap: "16px", background: "rgba(6, 9, 19, 0.6)", padding: "16px", borderRadius: "12px", marginBottom: "24px" }}>
-              <div style={{ borderRight: "1px solid rgba(255,255,255,0.1)", paddingRight: "16px" }}>
-                <div style={{ fontSize: "0.65rem", color: "var(--text-muted)" }}>LUX SCORE</div>
-                <div style={{ fontSize: "1.6rem", fontWeight: 900, color: "var(--lux-cyan)" }}>{selectedApp.score}/100</div>
-              </div>
-              <div style={{ borderRight: "1px solid rgba(255,255,255,0.1)", paddingRight: "16px" }}>
-                <div style={{ fontSize: "0.65rem", color: "var(--text-muted)" }}>VERDICT</div>
-                <div style={{ fontSize: "1rem", fontWeight: 800, color: "var(--lux-mint)" }}>{selectedApp.verdict}</div>
+            <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "14px", padding: "20px", marginBottom: "24px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "16px" }}>
+              <div>
+                <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase" }}>LUX SCORE</div>
+                <div style={{ fontSize: "1.4rem", fontWeight: 900, color: "var(--lux-cyan)" }}>{selectedApp.score}/100 ({selectedApp.grade})</div>
               </div>
               <div>
-                <div style={{ fontSize: "0.65rem", color: "var(--text-muted)" }}>LICENSE</div>
-                <div style={{ fontSize: "1rem", fontWeight: 700, color: "#fff" }}>{selectedApp.license}</div>
+                <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase" }}>STARS</div>
+                <div style={{ fontSize: "1.4rem", fontWeight: 900, color: "#fff" }}>{selectedApp.stars}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase" }}>WEEKLY GROWTH</div>
+                <div style={{ fontSize: "1.4rem", fontWeight: 900, color: "var(--lux-mint)" }}>+{selectedApp.weeklyStars.toLocaleString()}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", textTransform: "uppercase" }}>LICENSE</div>
+                <div style={{ fontSize: "1.4rem", fontWeight: 900, color: "#ffe45c" }}>{selectedApp.license}</div>
               </div>
             </div>
 
-            <div style={{ marginBottom: "20px" }}>
-              <h4 style={{ color: "var(--lux-cyan)", fontSize: "0.9rem", margin: "0 0 6px" }}>WHAT PROBLEM IT SOLVES</h4>
-              <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>{selectedApp.solves}</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "18px", fontSize: "0.95rem", lineHeight: 1.6 }}>
+              <div>
+                <strong style={{ color: "var(--lux-cyan)", display: "block", marginBottom: "4px" }}>What it solves:</strong>
+                <p style={{ margin: 0, color: "var(--text-secondary)" }}>{selectedApp.solves}</p>
+              </div>
+              <div>
+                <strong style={{ color: "var(--lux-mint)", display: "block", marginBottom: "4px" }}>Best fit target:</strong>
+                <p style={{ margin: 0, color: "var(--text-secondary)" }}>{selectedApp.bestFor}</p>
+              </div>
+              <div>
+                <strong style={{ color: "#fff", display: "block", marginBottom: "4px" }}>Why it stands out:</strong>
+                <ul style={{ margin: 0, paddingLeft: "18px", color: "var(--text-secondary)" }}>
+                  {selectedApp.standout.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <strong style={{ color: "#ff6b6b", display: "block", marginBottom: "4px" }}>Limitations and risks:</strong>
+                <ul style={{ margin: 0, paddingLeft: "18px", color: "var(--text-secondary)" }}>
+                  {selectedApp.risks.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div style={{ marginBottom: "20px" }}>
-              <h4 style={{ color: "var(--lux-mint)", fontSize: "0.9rem", margin: "0 0 8px" }}>WHY IT STANDS OUT</h4>
-              <ul style={{ paddingLeft: "20px", margin: 0, fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                {selectedApp.standout.map((item, idx) => <li key={idx}>{item}</li>)}
-              </ul>
-            </div>
-
-            <div style={{ marginBottom: "28px" }}>
-              <h4 style={{ color: "#ff6b00", fontSize: "0.9rem", margin: "0 0 8px" }}>RISKS & CAUTIONS</h4>
-              <ul style={{ paddingLeft: "20px", margin: 0, fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                {selectedApp.risks.map((risk, idx) => <li key={idx}>{risk}</li>)}
-              </ul>
-            </div>
-
-            <div style={{ display: "flex", justifyContent: "flex-end", gap: "12px" }}>
-              <a href={selectedApp.url} target="_blank" rel="noopener noreferrer" style={{ background: "var(--lux-cyan)", color: "#0b0f19", padding: "8px 16px", borderRadius: "6px", fontWeight: 800, fontSize: "0.8rem", textDecoration: "none" }}>
-                View GitHub Repository →
+            <div style={{ marginTop: "28px", display: "flex", gap: "12px", justifyContent: "flex-end" }}>
+              <a
+                href={selectedApp.url}
+                target="_blank"
+                rel="noreferrer"
+                style={{ background: "var(--lux-cyan)", color: "#0b0f19", padding: "10px 20px", borderRadius: "10px", fontWeight: 800, textDecoration: "none", fontSize: "0.85rem" }}
+              >
+                View GitHub Repo ↗
               </a>
-              <button onClick={() => setSelectedApp(null)} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: "#fff", padding: "8px 16px", borderRadius: "6px", fontWeight: 700, fontSize: "0.8rem", cursor: "pointer" }}>
+              <button
+                onClick={() => setSelectedApp(null)}
+                style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "none", padding: "10px 20px", borderRadius: "10px", fontWeight: 700, fontSize: "0.85rem", cursor: "pointer" }}
+              >
                 Close
               </button>
             </div>
 
-          </div>
-        </div>
-      )}
-
-      {/* ONBOARDING & SUBSCRIPTION CHECKOUT MODAL */}
-      {modalOpen && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(6, 9, 19, 0.85)", backdropFilter: "blur(12px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
-          <div style={{ background: "rgba(17, 24, 39, 0.95)", border: "1px solid var(--lux-cyan)", borderRadius: "20px", maxWidth: "520px", width: "100%", padding: "32px", boxShadow: "0 25px 60px rgba(0,0,0,0.8)" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
-              <h3 style={{ fontSize: "1.3rem", fontWeight: 800, margin: 0, color: "#fff" }}>Join Lux App Review — {userPlan} Plan</h3>
-              <button onClick={() => setModalOpen(false)} style={{ background: "transparent", border: "none", color: "var(--text-muted)", fontSize: "1.4rem", cursor: "pointer" }}>✕</button>
-            </div>
-            
-            <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "20px" }}>
-              Create your account profile to complete onboarding and unlock protected downloads.
-            </p>
-
-            <form onSubmit={(e) => { e.preventDefault(); alert(`Account created for ${userPlan} plan! Check your email to complete verification.`); setModalOpen(false); }} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              <div>
-                <label style={{ fontSize: "0.75rem", color: "var(--text-muted)", display: "block", marginBottom: "4px" }}>Display Name</label>
-                <input type="text" required placeholder="e.g. Asa Spade" style={{ width: "100%", padding: "10px", borderRadius: "6px", background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff" }} />
-              </div>
-              <div>
-                <label style={{ fontSize: "0.75rem", color: "var(--text-muted)", display: "block", marginBottom: "4px" }}>Email Address</label>
-                <input type="email" required placeholder="asa@luxautomaton.com" style={{ width: "100%", padding: "10px", borderRadius: "6px", background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff" }} />
-              </div>
-              <div>
-                <label style={{ fontSize: "0.75rem", color: "var(--text-muted)", display: "block", marginBottom: "4px" }}>Professional Role & Company</label>
-                <input type="text" placeholder="Founder, Developer, Agency Owner" style={{ width: "100%", padding: "10px", borderRadius: "6px", background: "rgba(6, 9, 19, 0.8)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff" }} />
-              </div>
-
-              <button
-                type="submit"
-                style={{ marginTop: "12px", background: "linear-gradient(135deg, var(--lux-cyan) 0%, var(--lux-mint) 100%)", color: "#0b0f19", padding: "12px", borderRadius: "8px", fontWeight: 800, border: "none", cursor: "pointer" }}
-              >
-                Complete Registration ({userPlan}) →
-              </button>
-            </form>
           </div>
         </div>
       )}

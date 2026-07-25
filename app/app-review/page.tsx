@@ -206,7 +206,7 @@ const TOP_5_APPS: AppReviewItem[] = [
 
 export default function AppReviewPage() {
   const [selectedApp, setSelectedApp] = useState<AppReviewItem | null>(null);
-  const [activeTab, setActiveTab] = useState<"roundup" | "grading" | "subscriptions">("roundup");
+  const [activeTab, setActiveTab] = useState<"roundup" | "article" | "grading" | "subscriptions">("roundup");
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
   const [modalOpen, setModalOpen] = useState(false);
   const [userPlan, setUserPlan] = useState<string>("Community");
@@ -275,7 +275,7 @@ export default function AppReviewPage() {
           </div>
 
           {/* Navigation Sub-Tabs */}
-          <div style={{ display: "flex", gap: "12px", marginTop: "28px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "12px" }}>
+          <div style={{ display: "flex", gap: "12px", marginTop: "28px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "12px", flexWrap: "wrap" }}>
             <button
               onClick={() => setActiveTab("roundup")}
               style={{
@@ -291,6 +291,22 @@ export default function AppReviewPage() {
               }}
             >
               🏆 Top 5 Weekly Rankings
+            </button>
+            <button
+              onClick={() => setActiveTab("article")}
+              style={{
+                background: activeTab === "article" ? "rgba(0, 212, 255, 0.15)" : "transparent",
+                border: activeTab === "article" ? "1px solid var(--lux-cyan)" : "1px solid transparent",
+                color: activeTab === "article" ? "#fff" : "var(--text-secondary)",
+                padding: "8px 16px",
+                borderRadius: "8px",
+                fontSize: "0.85rem",
+                fontWeight: 700,
+                cursor: "pointer",
+                transition: "all 0.2s"
+              }}
+            >
+              📰 Featured Editorial Article
             </button>
             <button
               onClick={() => setActiveTab("grading")}
@@ -335,6 +351,32 @@ export default function AppReviewPage() {
         {/* TAB 1: WEEKLY RANKING TABLE & DASHBOARD */}
         {activeTab === "roundup" && (
           <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
+
+            {/* Featured Blog Post Card */}
+            <div style={{ background: "linear-gradient(135deg, rgba(9, 14, 26, 0.95), rgba(16, 24, 40, 0.95))", border: "1px solid rgba(0, 212, 255, 0.35)", borderRadius: "16px", padding: "24px", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "20px", boxShadow: "0 0 35px rgba(0, 212, 255, 0.15)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                <div style={{ width: "95px", height: "95px", position: "relative", flexShrink: 0, borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.4)", boxShadow: "0 0 20px rgba(0, 212, 255, 0.2)" }}>
+                  <Image src={prefixPath("/images/01-thumbnail-top-5-github-apps.png")} alt="Top 5 GitHub Apps to Watch This Week" fill style={{ objectFit: "cover" }} />
+                </div>
+                <div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "4px" }}>
+                    <span>📰</span> FEATURED EDITORIAL BLOG ARTICLE • JULY 24, 2026
+                  </div>
+                  <h3 style={{ fontSize: "1.35rem", fontWeight: 900, margin: "0 0 6px", color: "#fff" }}>
+                    Top 5 GitHub Apps to Watch This Week
+                  </h3>
+                  <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: 0, maxWidth: "680px", lineHeight: 1.5 }}>
+                    Open-source tools with real momentum, practical value, and a clear Lux verdict. Read the complete 14-minute editorial review of Hermes Agent, OpenCut, OmniRoute, DeepTutor, and OfficeCLI.
+                  </p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setActiveTab("article")} 
+                style={{ background: "linear-gradient(135deg, var(--lux-cyan), var(--lux-indigo))", border: "none", color: "#fff", padding: "12px 24px", borderRadius: "10px", fontWeight: 800, fontSize: "0.85rem", cursor: "pointer", boxShadow: "0 0 20px rgba(0,212,255,0.3)", display: "flex", alignItems: "center", gap: "8px", transition: "transform 0.2s" }}
+              >
+                <span>Read Full Article</span> <span>→</span>
+              </button>
+            </div>
 
             {/* Ranking Table Card */}
             <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "16px", overflow: "hidden", boxShadow: "0 20px 50px rgba(0,0,0,0.5)", backdropFilter: "blur(20px)" }}>
@@ -603,7 +645,167 @@ export default function AppReviewPage() {
           </div>
         )}
 
-        {/* TAB 2: 7-DIMENSION LUX SCORE GRADING SYSTEM */}
+        {/* TAB 2: FEATURED EDITORIAL BLOG REVIEW ARTICLE */}
+        {activeTab === "article" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+            
+            {/* Article Header Card */}
+            <div style={{ background: "linear-gradient(135deg, rgba(9, 14, 26, 0.95), rgba(17, 24, 39, 0.95))", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "20px", padding: "36px", boxShadow: "0 20px 50px rgba(0,0,0,0.5)" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+                <span style={{ background: "rgba(0, 212, 255, 0.12)", border: "1px solid rgba(0, 212, 255, 0.3)", color: "var(--lux-cyan)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: 800 }}>
+                  APP REVIEW
+                </span>
+                <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>•</span>
+                <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>July 24, 2026</span>
+                <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>•</span>
+                <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>14 min read</span>
+              </div>
+
+              <h1 style={{ fontSize: "clamp(2.2rem, 4vw, 3.4rem)", fontWeight: 900, lineHeight: 1.15, color: "#fff", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+                Top 5 GitHub Apps to Watch This Week
+              </h1>
+              
+              <p style={{ fontSize: "1.2rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: "0 0 28px", maxWidth: "900px" }}>
+                Open-source tools with real momentum, practical value, and a clear Lux verdict. Evaluated by the Lux Automaton Intelligence Team across 7 operational dimensions.
+              </p>
+
+              {/* PDF Downloads Bar */}
+              <div style={{ background: "rgba(6, 9, 19, 0.7)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "14px", padding: "20px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
+                <div>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--lux-mint)", textTransform: "uppercase", letterSpacing: "0.08em" }}>OFFICIAL PUBLISHING PACKAGE</div>
+                  <div style={{ fontSize: "0.95rem", fontWeight: 700, color: "#fff", marginTop: "2px" }}>Download Complete PDFs & Implementation Guides</div>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+                  <a
+                    href="/documents/Lux_App_Review_Top_5_2026-07-24.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ background: "linear-gradient(135deg, var(--lux-cyan), var(--lux-mint))", color: "#0b0f19", padding: "10px 18px", borderRadius: "8px", fontWeight: 800, fontSize: "0.85rem", textDecoration: "none", boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)" }}
+                  >
+                    📄 Download Top 5 PDF
+                  </a>
+                  <a
+                    href="/documents/Lux_App_Review_Money_Play_2026-07-24.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ background: "rgba(108, 71, 255, 0.2)", border: "1px solid var(--lux-indigo)", color: "#fff", padding: "10px 18px", borderRadius: "8px", fontWeight: 800, fontSize: "0.85rem", textDecoration: "none" }}
+                  >
+                    🔒 Subscriber Money Play PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Article Image Banner */}
+            <div style={{ position: "relative", width: "100%", height: "420px", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.3)", boxShadow: "0 20px 40px rgba(0,0,0,0.5)" }}>
+              <Image 
+                src={prefixPath("/images/01-thumbnail-top-5-github-apps.png")} 
+                alt="Top 5 GitHub Apps to Watch This Week Header" 
+                fill 
+                style={{ objectFit: "cover" }} 
+                priority 
+              />
+            </div>
+
+            {/* Main Article Content Card */}
+            <div style={{ background: "rgba(17, 24, 39, 0.75)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "20px", padding: "40px", backdropFilter: "blur(20px)", fontSize: "1.05rem", lineHeight: 1.8, color: "var(--text-secondary)" }}>
+              
+              <h2 style={{ color: "#fff", fontSize: "1.8rem", fontWeight: 800, marginTop: 0, marginBottom: "20px" }}>Executive Summary</h2>
+              <p>
+                Open-source software is moving faster than most businesses can evaluate it. A repository can gain thousands of stars in a week, appear in dozens of videos, and still be too early, too risky, or too complicated for the average team. That is why Lux App Review does not rank projects by stars alone.
+              </p>
+              <p>
+                For this week of <strong>July 20–24, 2026</strong> edition, we looked for projects with a combination of practical usefulness, current momentum, active development, understandable documentation, permissive licensing, and a believable path from repository to real-world value.
+              </p>
+
+              {/* Table */}
+              <div style={{ margin: "32px 0", overflowX: "auto", border: "1px solid rgba(0, 212, 255, 0.2)", borderRadius: "12px", background: "rgba(6, 9, 19, 0.8)" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.9rem" }}>
+                  <thead>
+                    <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)", background: "rgba(108, 71, 255, 0.15)", color: "#fff" }}>
+                      <th style={{ padding: "14px 16px" }}>Rank</th>
+                      <th style={{ padding: "14px 16px" }}>App</th>
+                      <th style={{ padding: "14px 16px" }}>Category</th>
+                      <th style={{ padding: "14px 16px" }}>Lux Score</th>
+                      <th style={{ padding: "14px 16px" }}>Grade</th>
+                      <th style={{ padding: "14px 16px" }}>Stars</th>
+                      <th style={{ padding: "14px 16px" }}>Forks</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {TOP_5_APPS.map((app) => (
+                      <tr key={app.rank} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                        <td style={{ padding: "14px 16px", fontWeight: 800, color: "var(--lux-cyan)" }}>#{app.rank}</td>
+                        <td style={{ padding: "14px 16px", fontWeight: 800, color: "#fff" }}>{app.name}</td>
+                        <td style={{ padding: "14px 16px", color: "var(--text-secondary)" }}>{app.category.split(" / ")[0]}</td>
+                        <td style={{ padding: "14px 16px", fontWeight: 900, color: "var(--lux-cyan)" }}>{app.score}/100</td>
+                        <td style={{ padding: "14px 16px", fontWeight: 800, color: "var(--lux-mint)" }}>{app.grade}</td>
+                        <td style={{ padding: "14px 16px" }}>{app.stars}</td>
+                        <td style={{ padding: "14px 16px" }}>{app.forks}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Detailed App Reviews */}
+              {TOP_5_APPS.map((app) => (
+                <div key={app.rank} style={{ margin: "40px 0", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "28px" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "12px", marginBottom: "12px" }}>
+                    <h3 style={{ fontSize: "1.6rem", fontWeight: 900, color: "#fff", margin: 0 }}>
+                      #{app.rank} {app.name} — {app.score}/100 ({app.grade})
+                    </h3>
+                    <span style={{ background: "rgba(0, 255, 163, 0.12)", border: "1px solid var(--lux-mint)", color: "var(--lux-mint)", padding: "4px 12px", borderRadius: "12px", fontSize: "0.8rem", fontWeight: 800 }}>
+                      {app.verdict}
+                    </span>
+                  </div>
+
+                  <p style={{ fontSize: "0.95rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", marginBottom: "16px" }}>
+                    Repository: <a href={app.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--lux-cyan)", textDecoration: "underline" }}>{app.repo}</a> | Language: {app.language} | License: {app.license} | Stars: {app.stars}
+                  </p>
+
+                  <div style={{ background: "rgba(6, 9, 19, 0.5)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "12px", padding: "20px", marginBottom: "20px" }}>
+                    <strong style={{ color: "#fff", display: "block", marginBottom: "6px" }}>What problem it solves:</strong>
+                    <span>{app.solves}</span>
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+                    <div style={{ background: "rgba(0, 212, 255, 0.05)", border: "1px solid rgba(0, 212, 255, 0.2)", borderRadius: "12px", padding: "20px" }}>
+                      <h4 style={{ color: "var(--lux-cyan)", fontSize: "1rem", fontWeight: 800, margin: "0 0 10px" }}>✨ Why It Stands Out</h4>
+                      <ul style={{ margin: 0, paddingLeft: "20px", fontSize: "0.9rem", lineHeight: 1.6 }}>
+                        {app.standout.map((item, i) => <li key={i} style={{ marginBottom: "6px" }}>{item}</li>)}
+                      </ul>
+                    </div>
+
+                    <div style={{ background: "rgba(255, 77, 106, 0.05)", border: "1px solid rgba(255, 77, 106, 0.2)", borderRadius: "12px", padding: "20px" }}>
+                      <h4 style={{ color: "#ff4d6a", fontSize: "1rem", fontWeight: 800, margin: "0 0 10px" }}>⚠️ Risks & Cautions</h4>
+                      <ul style={{ margin: 0, paddingLeft: "20px", fontSize: "0.9rem", lineHeight: 1.6 }}>
+                        {app.risks.map((item, i) => <li key={i} style={{ marginBottom: "6px" }}>{item}</li>)}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Conclusion & CTA */}
+              <div style={{ background: "linear-gradient(135deg, rgba(108, 71, 255, 0.2), rgba(0, 212, 255, 0.15))", border: "1px solid var(--lux-cyan)", borderRadius: "16px", padding: "32px", textAlign: "center", marginTop: "40px" }}>
+                <h3 style={{ fontSize: "1.4rem", fontWeight: 900, color: "#fff", margin: "0 0 12px" }}>Ready to Turn Open-Source Apps Into Real Workflows?</h3>
+                <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", maxWidth: "600px", margin: "0 auto 20px" }}>
+                  Join Lux Insider or Lux Operator to access Subscriber Money Play PDFs, agent prompt templates, and commercial deployment packs.
+                </p>
+                <button
+                  onClick={() => setActiveTab("subscriptions")}
+                  style={{ background: "linear-gradient(135deg, var(--lux-cyan), var(--lux-mint))", border: "none", color: "#0b0f19", padding: "12px 28px", borderRadius: "10px", fontWeight: 900, fontSize: "0.9rem", cursor: "pointer", boxShadow: "0 0 20px rgba(0,212,255,0.4)" }}
+                >
+                  View Membership Tiers & Money Plays →
+                </button>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: 7-DIMENSION LUX SCORE GRADING SYSTEM */}
         {activeTab === "grading" && (
           <div style={{ background: "rgba(17, 24, 39, 0.7)", border: "1px solid rgba(108, 71, 255, 0.2)", borderRadius: "16px", padding: "32px", backdropFilter: "blur(20px)" }}>
             <h2 style={{ fontSize: "1.6rem", fontWeight: 900, color: "#fff", margin: "0 0 12px" }}>The 7-Dimension Lux Score Model</h2>

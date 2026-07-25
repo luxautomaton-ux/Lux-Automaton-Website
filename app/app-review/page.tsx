@@ -700,8 +700,14 @@ export default function AppReviewPage() {
           {/* Header Bar */}
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", marginBottom: "20px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <div style={{ width: "36px", height: "36px", borderRadius: "8px", background: "linear-gradient(135deg, var(--lux-indigo), var(--lux-cyan))", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1.1rem", color: "#fff", boxShadow: "0 0 16px rgba(0, 212, 255, 0.4)" }}>
-                ❖
+              <div style={{ width: "42px", height: "42px", borderRadius: "10px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.4)", boxShadow: "0 0 20px rgba(0, 212, 255, 0.5)", flexShrink: 0 }}>
+                <Image 
+                  src={prefixPath("/images/lux-app-review-hexagon-logo.png")} 
+                  alt="Lux App Review Official Hexagon Logo" 
+                  width={42} 
+                  height={42} 
+                  style={{ objectFit: "cover" }} 
+                />
               </div>
               <div>
                 <div style={{ fontSize: "0.7rem", fontWeight: 800, letterSpacing: "0.15em", color: "var(--lux-cyan)", textTransform: "uppercase", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "6px" }}>
@@ -1254,6 +1260,60 @@ export default function AppReviewPage() {
                     🔒 Subscriber Money Play PDF
                   </a>
                 </div>
+              </div>
+            </div>
+
+            {/* LUX LEADERSHIP PODCAST CARD WITH HOSTS PHOTO & M4A AUDIO PLAYER */}
+            <div style={{ background: "linear-gradient(135deg, rgba(108, 71, 255, 0.18), rgba(9, 14, 26, 0.95))", border: "1px solid rgba(108, 71, 255, 0.4)", borderRadius: "20px", padding: "28px", boxShadow: "0 20px 50px rgba(0,0,0,0.6)", backdropFilter: "blur(20px)" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "24px", alignItems: "center" }}>
+                
+                {/* Podcast Studio Hosts Photo */}
+                <div style={{ position: "relative", width: "100%", height: "240px", borderRadius: "14px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.4)", boxShadow: "0 10px 30px rgba(0,0,0,0.5)", background: "#060913" }}>
+                  <Image 
+                    src={prefixPath("/images/lux-app-review-podcast-hosts.jpg")} 
+                    alt="Asa & Dr. Torrey Podcast Studio Hosts - Lux Leadership Podcast" 
+                    fill 
+                    style={{ objectFit: "cover" }} 
+                  />
+                  <div style={{ position: "absolute", bottom: "12px", left: "14px", background: "rgba(6, 9, 19, 0.88)", padding: "4px 12px", borderRadius: "8px", border: "1px solid rgba(0, 212, 255, 0.3)", fontSize: "0.7rem", color: "var(--lux-cyan)", fontWeight: 800, fontFamily: "var(--font-mono)" }}>
+                    🎙️ ASA &amp; DR. TORREY • LUX LEADERSHIP STUDIO
+                  </div>
+                </div>
+
+                {/* Podcast Audio Player & Details */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(108, 71, 255, 0.2)", border: "1px solid var(--lux-indigo)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.72rem", fontWeight: 800, color: "#fff", fontFamily: "var(--font-mono)", width: "fit-content" }}>
+                    <span>🎧 OFFICIAL FEATURED PODCAST EPISODE</span>
+                  </div>
+                  
+                  <h3 style={{ fontSize: "1.45rem", fontWeight: 900, color: "#fff", margin: 0, lineHeight: 1.25 }}>
+                    Security Risks of Open-Source AI Agents
+                  </h3>
+                  
+                  <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: 0, lineHeight: 1.5 }}>
+                    Listen to the Lux Leadership Studio episode dissecting prompt injection vectors, least-privilege tool sandbox isolation, credential protection, and risk mitigation when running autonomous open-source agent runtimes in business environments.
+                  </p>
+
+                  {/* HTML5 Audio Player */}
+                  <div style={{ background: "rgba(6, 9, 19, 0.85)", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "12px", padding: "14px 16px", marginTop: "4px" }}>
+                    <audio 
+                      controls 
+                      src={prefixPath("/audio/Security_Risks_of_Open_Source_AI_Agents.m4a")} 
+                      style={{ width: "100%", height: "40px", borderRadius: "8px" }} 
+                    />
+                    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "8px", marginTop: "8px", fontSize: "0.75rem" }}>
+                      <span style={{ color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>📻 Audio: Security_Risks_of_Open_Source_AI_Agents.m4a</span>
+                      <a 
+                        href="/audio/Security_Risks_of_Open_Source_AI_Agents.m4a" 
+                        download 
+                        style={{ color: "var(--lux-cyan)", fontWeight: 800, textDecoration: "none", fontFamily: "var(--font-mono)" }}
+                      >
+                        Download M4A Audio 📥
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
 

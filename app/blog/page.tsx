@@ -121,7 +121,36 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "top-5-github-apps-to-watch-this-week") {
+  if (article.slug === "asa-lana-ep3-asa-must-stay-asa") {
+    downloads.push(
+      {
+        title: "Character Identity Lock Workbook",
+        subtitle: "Interactive digital & printable workbook for locking face, wardrobe, voice & character state",
+        url: "/documents/character-identity-lock-workbook.html",
+        type: "Interactive Workbook"
+      },
+      {
+        title: "Lux Codex Character Identity JSON Template",
+        subtitle: "Importable Lux Codex JSON schema for Reality Memory character continuity",
+        url: "/documents/lux-codex-character-identity-template.json",
+        type: "JSON Template"
+      },
+      {
+        title: "Complete Asa + LANA EP3 Package (ZIP)",
+        subtitle: "Download all 5 visual assets, HTML workbook, JSON template, and episode text files",
+        url: "/documents/asa-lana-ep3-asa-must-stay-asa-complete-package.zip",
+        type: "Complete ZIP Package"
+      }
+    );
+    images.push(
+      { title: "Asset-Set Preview — Complete Publishing Package", subtitle: "Full overview of all 5 visual assets, printable workbook, and JSON template", imageUrl: "/images/00-asset-set-preview-ep3.png", type: "Asset Set Preview" },
+      { title: "01 — Thumbnail Header", subtitle: "Asa Must Stay Asa — Episode 3", imageUrl: "/images/01-thumbnail-asa-must-stay-asa.png", type: "Header Thumbnail" },
+      { title: "02 — Character Identity Drift", subtitle: "A scene can look good while the character quietly changes", imageUrl: "/images/02-photo-character-drift.png", type: "Photo Blueprint" },
+      { title: "03 — Character Identity Lock", subtitle: "Structured record preserving approved reference pack, face, wardrobe & voice", imageUrl: "/images/03-photo-character-identity-lock.png", type: "Photo Blueprint" },
+      { title: "04 — Reality Memory Review", subtitle: "Connecting approved character identity to the current story state", imageUrl: "/images/04-photo-reality-memory-review.png", type: "Photo Blueprint" },
+      { title: "05 — Character Identity Continuity Overview", subtitle: "Complete system breakdown for Reality Memory and change control", imageUrl: "/images/05-character-identity-overview.png", type: "Overview Infographic" }
+    );
+  } else if (article.slug === "top-5-github-apps-to-watch-this-week") {
     downloads.push(
       {
         title: "Lux App Review — Top 5 GitHub Apps PDF",

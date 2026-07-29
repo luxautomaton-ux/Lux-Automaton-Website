@@ -1,0 +1,12 @@
+{
+  "character_id": "ASA-001",
+  "approved_references": [],
+  "physical_identity": {},
+  "voice": {},
+  "wardrobe_history": [],
+  "current_state": {},
+  "change_log": [],
+  "pre_render_check": {
+    "human_approval": false
+  }
+}

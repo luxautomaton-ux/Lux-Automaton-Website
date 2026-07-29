@@ -74,6 +74,58 @@ export interface TvEpisode {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "asa-lana-ep3-asa-must-stay-asa",
+    audience: "Lux Automaton",
+    title: "Asa + LANA EP3: Asa Must Stay Asa",
+    deck: "How the Lux Codex Reality Memory protects character identity, approved references, wardrobe, voice, and story state across AI-generated scenes.",
+    date: "July 27, 2026",
+    readTime: "7 min read",
+    category: "Cinematic AI & Continuity Engine",
+    image: "/images/01-thumbnail-asa-must-stay-asa.png",
+    video: "/videos/asa-lana-ep3-asa-must-stay-asa.mp4",
+    takeaways: [
+      "01 — A scene can look good while the character quietly changes.",
+      "02 — Character identity needs its own locked memory (Identity Lock & approved reference pack).",
+      "03 — Intentional change should be approved, recorded, and carried forward via Reality Memory."
+    ],
+    plannerUrl: "/documents/character-identity-lock-workbook.html",
+    body: [
+      "Episode 2 of **Asa + LANA: The Story Remembers** gave the story a memory. The Story Bible, locations, props, rules, scenes, and timeline became connected.",
+      "Episode 3 exposes the next problem.",
+      "The system may remember the room. It may remember the mission. It may remember what happened in the last scene. But does it still remember **Asa**?",
+      "That question matters because generative video can preserve the general idea of a person while changing the details that make the character recognizable. The scene can remain cinematic. The wardrobe can look professional. The lighting can match the Lux world. Yet the face changes, the glasses shift, the posture changes, or a substitute enters the scene while the production continues as though nothing happened.",
+      "![Character Identity Drift](/images/02-photo-character-drift.png)",
+      "That is not only a cosmetic mistake. It breaks the audience’s relationship with the character.",
+      "Episode 3 introduces the next Lux Codex layer: **Reality Memory**—a system that connects approved character identity to the current story state.",
+      "> **The story should know not only what happened. It should know who it happened to.**",
+      "## 01 — A scene can look good while the character quietly changes",
+      "The episode begins inside the Lux laboratory. Asa and LANA are reviewing the holographic world and the story memory created in the previous episode. Then another figure enters the scene. He occupies the same role, but he is not the approved Asa.",
+      "The model preserved 'a confident Black male technology founder in a Lux laboratory.' That description is not enough. Asa is not a category. He is a specific character with approved references, recognizable features, a role in the story, and a relationship with LANA.",
+      "### Why identity drift happens",
+      "A prompt may say: `Asa and LANA review the continuity engine in the Lux laboratory.`",
+      "The names are present, but the generation system may still be missing the approved face, hair and facial-hair details, glasses, build, wardrobe, voice, gestures, relationship state, and current emotion. The model fills the gaps with something plausible. Plausible is not the same as correct.",
+      "### Identity is more than a face",
+      "A character can drift even when the face is close. Identity also includes voice, vocabulary, movement, wardrobe, role, values, knowledge, relationships, current goal, and emotional state.",
+      "> **Asa’s note:** 'The audience should not have to re-meet the main character every time the model renders a new scene.'",
+      "## 02 — Character identity needs its own locked memory",
+      "![Character Identity Lock](/images/03-photo-character-identity-lock.png)",
+      "A general Story Bible is important, but every central character needs a dedicated **Identity Lock**.",
+      "The Identity Lock is a structured record containing approved evidence and current state:",
+      "1. **Approved Reference Pack:** Front portrait, 3/4 portrait, profile, full-body view, neutral & key expressions, approved wardrobe, lighting references.\n2. **Face & Physical Anchors:** Face shape, beard/mustache, rectangular glasses, hair, skin tone, build.\n3. **Wardrobe History:** Current outfit, change triggers, location appropriateness.\n4. **Voice & Behavior:** Tone, pace, vocabulary, signature phrases, leadership style.\n5. **Role & Purpose:** Human founder, director, vision architect, final approval owner.\n6. **Current Character State:** Knowledge, objectives, emotional state, recent changes.",
+      "## 03 — Intentional change should be approved, recorded, and carried forward",
+      "![Reality Memory Review](/images/04-photo-reality-memory-review.png)",
+      "The goal is not to prevent characters from changing. Characters should change. Asa can change clothes, age, become tired, enter another visual world, or adopt a new role inside a scene. The system must distinguish intentional change from accidental drift.",
+      "### Rejected generations do not update memory",
+      "A rejected scene may contain the wrong face, wardrobe, age, voice, body type, logo, or relationship behavior. None of those changes should become official. The approved result—not the newest result—remains the source of truth.",
+      "### Reality Memory Overview",
+      "![Character Identity Overview](/images/05-character-identity-overview.png)",
+      "Reality Memory maintains the production's approved source of truth: This is Asa. This is LANA. This is how they look and behave. This is what changed. This is what must remain.",
+      "> **“The story can evolve without losing the person at its center.” — Asa Pritchard**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",
+      "## Your next action",
+      "Open the **Character Identity Lock Workbook** (`/documents/character-identity-lock-workbook.html`) and download the **Lux Codex JSON Template** (`/documents/lux-codex-character-identity-template.json`). Complete one character ID, three approved references, five physical anchors, voice rules, current wardrobe, story state, and change-control process. Then test that character in three new scenes."
+    ]
+  },
+  {
     slug: "top-5-github-apps-to-watch-this-week",
     audience: "App Review",
     title: "Top 5 GitHub Apps to Watch This Week",
@@ -3425,6 +3477,19 @@ export const KIDS_WORKSHOPS: KidsWorkshop[] = [
 ];
 
 export const LUX_TV_EPISODES: TvEpisode[] = [
+  {
+    slug: "asa-lana-ep3-asa-must-stay-asa",
+    audience: "Lux Automaton",
+    title: "ASA + LANA: Asa Must Stay Asa — Episode 3",
+    series: "ASA + LANA",
+    duration: "2m",
+    rating: "All builders",
+    image: "/images/01-thumbnail-asa-must-stay-asa.png",
+    video: "/videos/asa-lana-ep3-asa-must-stay-asa.mp4",
+    storyUrl: "/blog",
+    description: "The system remembered the world, but does it still remember Asa? Asa and LANA build Reality Memory to protect character identity, approved references, wardrobe, and voice across renders.",
+    tags: ["ASA + LANA", "Lux Codex", "Identity Lock", "Reality Memory", "Continuity Engine"],
+  },
   {
     slug: "lux-app-review-the-ai-workflow-stack",
     audience: "App Review",

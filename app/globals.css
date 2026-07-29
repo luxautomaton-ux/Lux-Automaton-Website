@@ -2728,18 +2728,24 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 560px;
   position: relative;
   overflow: hidden;
-  background: #090d18;
+  background: #040710;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .academy-player img {
-  object-fit: cover;
+  object-fit: contain !important;
+  background: #040710;
 }
 
 .academy-player-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(4, 7, 16, 0.88), transparent 62%);
+  background: linear-gradient(0deg, rgba(4, 7, 16, 0.4), transparent 70%);
+  pointer-events: none;
 }
 
 .academy-brand-lockup {

@@ -195,7 +195,7 @@ export default function WorkshopsPage() {
                 {selected.video ? (
                   <video src={prefixPath(selected.video)} poster={prefixPath(selected.image)} controls playsInline />
                 ) : (
-                  <Image src={prefixPath(selected.image)} alt={selected.title} fill sizes="(max-width: 980px) 100vw, 58vw" />
+                  <Image src={prefixPath(selected.image)} alt={selected.title} fill sizes="(max-width: 980px) 100vw, 58vw" className="object-contain" />
                 )}
                 <div className="academy-player-shade" />
                 {selected.brandLogo && (

@@ -74,6 +74,41 @@ export interface TvEpisode {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "10-chatgpt-power-words-better-answers-better-lenses",
+    audience: "Lux Automaton",
+    title: "10 ChatGPT Power Words: Better Answers Come From Better Lenses",
+    deck: "Why these viral one-word prompts can be useful—and why clear context still matters more than any so-called secret code.",
+    date: "July 24, 2026",
+    readTime: "8 min read",
+    category: "Prompt Engineering & AI Strategy",
+    image: "/images/01-thumbnail-first-automation-map.png",
+    takeaways: [
+      "01 — Viral power words are prompt lenses, not hidden ChatGPT commands or secret buttons.",
+      "02 — Use prompt shorthand (FIRSTPRINCIPLES, REDTEAM, 80/20, ELI10) to guide perspective, but expand into explicit instructions.",
+      "03 — Build a dependable Lux Prompt Stack: Task + Context + Lens + Constraints + Output Format."
+    ],
+    plannerUrl: "/documents/10-prompt-lenses-practice-planner.html",
+    body: [
+      "The source video opens with a strong promise: type one word into ChatGPT and change the way it answers.",
+      "The ten phrases in the video offer a shortcut: `FIRSTPRINCIPLES`, `YCOMBINATOR`, `GARYVEE`, `ELI10`, `REDTEAM`, `LINDYMODE`, `80/20`, `HUMAN`, `ANTIADVICE`, and `UNLEARN`.",
+      "They work—when they work—because each word suggests a **different lens** for the response. `REDTEAM` asks for opposition. `ELI10` asks for simpler language. `80/20` asks for prioritization.",
+      "> **A strong prompt does not only describe the task. It tells the AI how to examine the task.**",
+      "## 01 — These are prompt lenses, not hidden ChatGPT commands",
+      "ChatGPT does not contain a documented `TRUTHMODE`, `LINDYMODE`, or `YCOMBINATOR` button. The model interprets the word using the surrounding conversation, its training, and the rest of your request.",
+      "### The shortcut version vs the dependable version",
+      "Short version: `REDTEAM my business idea.`\n\nDependable version: Specify goal, context, evaluation criteria, and explicit output requirements.",
+      "> **Asa’s note:** 'The power is not inside the word. The power is knowing which kind of thinking the job needs.'",
+      "## 02 — What the ten power words are trying to do",
+      "1. **FIRSTPRINCIPLES:** Separate facts from assumptions; rebuild from fundamentals.\n2. **YCOMBINATOR:** Early-stage startup lens focusing on painful problems and speed to market.\n3. **GARYVEE:** Direct, action-oriented, volume-friendly messaging focus.\n4. **ELI10:** Explain simply without condescension or unnecessary jargon.\n5. **REDTEAM:** Act as an adversary; identify risks, flaws, and failure modes.\n6. **LINDYMODE:** Focus on durable ideas that stand the test of time over trends.\n7. **80/20:** Focus on the 20% of effort that delivers 80% of business results.\n8. **HUMAN:** Write in conversational, natural language; strip robotic AI-isms.\n9. **ANTIADVICE:** List what NOT to do; highlight common traps and mistakes.\n10. **UNLEARN:** Re-examine traditional practices and test fresh approaches.",
+      "## 03 — Turn shortcuts into dependable business prompts",
+      "Use the **Lux Prompt Stack** for business-critical workflows:",
+      "1. **Task:** What must be done?\n2. **Context:** What information does the AI need?\n3. **Lens:** Which prompt lens applies (e.g. `REDTEAM`, `80/20`)?\n4. **Constraints:** What are the limits or forbidden boundaries?\n5. **Output Format:** Exactly how should the output be structured?",
+      "> **“AI should work for you.” — Asa Pritchard**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",
+      "## Your next action",
+      "Open the **10 Prompt Lenses Practice Planner** (`/documents/10-prompt-lenses-practice-planner.html`) and download the **Lux 10 Prompt Lenses JSON** (`/documents/lux-10-prompt-lenses.json`). Select three prompt lenses for your next project."
+    ]
+  },
+  {
     slug: "laguna-s2-1-long-horizon-coding-model",
     audience: "Lux Automaton",
     title: "Laguna S 2.1: What a Long-Horizon Coding Model Can Actually Build",

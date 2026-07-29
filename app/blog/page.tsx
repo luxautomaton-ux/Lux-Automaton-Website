@@ -121,7 +121,28 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "laguna-s2-1-long-horizon-coding-model") {
+  if (article.slug === "10-chatgpt-power-words-better-answers-better-lenses") {
+    downloads.push(
+      {
+        title: "10 Prompt Lenses Practice Planner",
+        subtitle: "Printable & interactive workbook for mastering prompt shorthand and the Lux Prompt Stack",
+        url: "/documents/10-prompt-lenses-practice-planner.html",
+        type: "Interactive Planner"
+      },
+      {
+        title: "Lux 10 Prompt Lenses JSON Pack",
+        subtitle: "Importable JSON template with expansions, aliases, business uses & prompt stack definitions",
+        url: "/documents/lux-10-prompt-lenses.json",
+        type: "JSON Template Pack"
+      },
+      {
+        title: "Complete 10 ChatGPT Power Words Package (ZIP)",
+        subtitle: "Download all HTML planners, JSON prompt packs, source markdown, and publishing notes",
+        url: "/documents/lux-automaton-chatgpt-power-words-complete-package.zip",
+        type: "Complete ZIP Package"
+      }
+    );
+  } else if (article.slug === "laguna-s2-1-long-horizon-coding-model") {
     downloads.push(
       {
         title: "Laguna S 2.1 Model Pilot Planner",

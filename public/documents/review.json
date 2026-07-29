@@ -1,0 +1,262 @@
+{
+  "review_id": "LAR-VIDEO-CHsKSt4B_Uc-20260729",
+  "research_date": "2026-07-29",
+  "methodology": {
+    "Usefulness": 20,
+    "Project Health": 15,
+    "Community Momentum": 15,
+    "Ease of Use": 15,
+    "Trust & Safety": 15,
+    "Product Quality": 10,
+    "Innovation": 10
+  },
+  "apps": [
+    {
+      "rank": 1,
+      "name": "Open Science",
+      "owner": "aipoch",
+      "repo": "aipoch/open-science",
+      "url": "https://github.com/aipoch/open-science",
+      "category": "AI for Science / Research Workbench",
+      "stars": 861,
+      "forks": 80,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "score": 91,
+      "grade": "A",
+      "verdict": "Excellent Choice",
+      "confidence": "High",
+      "summary": "A local-first, model-agnostic desktop workbench that lets researchers plan, execute, inspect, and preserve AI-assisted scientific work in one workspace.",
+      "solves": "Research workflows are fragmented across chat tools, notebooks, files, databases, code, and reporting. Open Science keeps projects, sessions, artifacts, permissions, notebooks, connectors, and model access in one inspectable desktop environment.",
+      "standout": [
+        "Released desktop installers for macOS, Windows, and Linux",
+        "Local project state with explicit approval controls and inspectable tool activity",
+        "Multiple model-provider paths, including custom gateways and subscription-based backends",
+        "Scientific connectors, notebooks, reusable skills, artifacts, and persistent sessions",
+        "Apache-2.0 licensing and active July 2026 release activity"
+      ],
+      "risks": [
+        "The project is still early and its roadmap says major reproducibility and multi-model capabilities remain under development.",
+        "Researchers remain responsible for methods, interpretation, privacy, and scientific validity.",
+        "Provider credentials, unpublished data, patient identifiers, and sensitive files require careful handling.",
+        "The app has a large and fast-changing capability surface, so version-specific testing matters."
+      ],
+      "scores": {
+        "Usefulness": 19,
+        "Project Health": 14,
+        "Community Momentum": 14,
+        "Ease of Use": 13,
+        "Trust & Safety": 14,
+        "Product Quality": 9,
+        "Innovation": 8
+      },
+      "best_for": "Researchers, analysts, labs, medical-research teams, and technical organizations that want an inspectable AI research workspace."
+    },
+    {
+      "rank": 2,
+      "name": "PGSimCity",
+      "owner": "NikolayS",
+      "repo": "NikolayS/PGSimCity",
+      "url": "https://github.com/NikolayS/PGSimCity",
+      "category": "Database Education / Interactive Visualization",
+      "stars": 339,
+      "forks": 20,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "score": 89,
+      "grade": "A-",
+      "verdict": "Worth Trying",
+      "confidence": "High",
+      "summary": "An explorable 3D city that turns PostgreSQL internals into a visual system you can walk through, inspect, and deliberately stress.",
+      "solves": "PostgreSQL behavior is difficult to understand from diagrams and documentation alone. PGSimCity makes backends, buffers, WAL, checkpoints, autovacuum, replication, locks, storage, and query flow visible and interactive.",
+      "standout": [
+        "No-install live web experience with a 14-chapter guided tour",
+        "234-test suite with explicit correctness claims and specialist review rounds",
+        "Interactive scenarios for cache thrash, checkpoint storms, long transactions, replication lag, and commit behavior",
+        "Clear separation between modeled behavior and optional real PGlite-backed query flow",
+        "Static deployment, minimal external services, and Apache-2.0 licensing"
+      ],
+      "risks": [
+        "It is a 0.x educational model, not a PostgreSQL emulator.",
+        "Numbers are scaled for human observation and should not be treated as production measurements.",
+        "Touch controls were only verified in Chrome mobile emulation at the research snapshot.",
+        "The SimCity-inspired name requires careful trademark disclaimers in marketing."
+      ],
+      "scores": {
+        "Usefulness": 18,
+        "Project Health": 15,
+        "Community Momentum": 11,
+        "Ease of Use": 15,
+        "Trust & Safety": 14,
+        "Product Quality": 8,
+        "Innovation": 8
+      },
+      "best_for": "Developers, DBAs-in-training, educators, onboarding programs, and engineering teams learning PostgreSQL operations."
+    },
+    {
+      "rank": 3,
+      "name": "AgentENV",
+      "owner": "kvcache-ai",
+      "repo": "kvcache-ai/AgentENV",
+      "url": "https://github.com/kvcache-ai/AgentENV",
+      "category": "Agent Infrastructure / Sandboxed Environments",
+      "stars": 882,
+      "forks": 75,
+      "language": "Rust",
+      "license": "MIT",
+      "score": 87,
+      "grade": "A-",
+      "verdict": "Worth Trying",
+      "confidence": "Medium-High",
+      "summary": "A distributed platform for running large numbers of isolated, snapshot-capable AI-agent environments using Firecracker microVMs.",
+      "solves": "Agent training and evaluation need fast, reproducible, isolated environments that can pause, resume, snapshot, fork, and scale without wasting resources.",
+      "standout": [
+        "Sub-100 ms snapshot, pause, resume, and fork goals described by the maintainers",
+        "Firecracker isolation with OCI-compatible images and E2B-compatible API",
+        "Distributed control-plane work, S3-compatible snapshots, warm pools, and storage optimizations",
+        "Strong technical depth across Rust, Go, Firecracker, ublk, OverlayBD, and OpenAPI tooling",
+        "MIT license and active pull-request activity in late July 2026"
+      ],
+      "risks": [
+        "The README explicitly says authorization is not currently supported; the API must not be exposed publicly.",
+        "Requires Linux kernel 6.8+, KVM access, privileged infrastructure, and experienced operators.",
+        "The distributed control plane is described as a prototype.",
+        "No SECURITY.md was detected at the research snapshot."
+      ],
+      "scores": {
+        "Usefulness": 19,
+        "Project Health": 14,
+        "Community Momentum": 13,
+        "Ease of Use": 8,
+        "Trust & Safety": 10,
+        "Product Quality": 11,
+        "Innovation": 12
+      },
+      "best_for": "AI infrastructure teams, agent-evaluation platforms, RL researchers, and organizations operating isolated agent sandboxes at scale."
+    },
+    {
+      "rank": 4,
+      "name": "GodotHub",
+      "owner": "RykoTheDev",
+      "repo": "RykoTheDev/GodotHub",
+      "url": "https://github.com/RykoTheDev/GodotHub",
+      "category": "Game Development / Project Management",
+      "stars": 437,
+      "forks": 15,
+      "language": "TypeScript + Rust",
+      "license": "MIT",
+      "score": 85,
+      "grade": "A-",
+      "verdict": "Worth Trying",
+      "confidence": "Medium-High",
+      "summary": "A desktop project manager that combines Godot version management, project organization, templates, Git workflows, workspaces, and community news.",
+      "solves": "Godot creators often manage engine versions, projects, templates, repositories, terminals, and launch settings through separate tools. GodotHub brings those jobs into one desktop interface.",
+      "standout": [
+        "Project creation, import, clone, search, sorting, categories, pinning, and batch operations",
+        "Godot version browsing, downloading, installing, importing, and cleanup",
+        "Built-in Git staging, commits, branches, stashes, diffs, push, pull, fetch, and undo",
+        "Reusable templates, workspaces, theme customization, news, and quick actions",
+        "Tauri desktop architecture with React/TypeScript frontend and Rust backend"
+      ],
+      "risks": [
+        "The maintainer says the app has only been tested on Windows.",
+        "The repository is still relatively small and has limited contributor breadth.",
+        "Git operations inside a project manager create meaningful file-loss risk if edge cases are not thoroughly tested.",
+        "Cross-platform behavior needs community validation before broad deployment."
+      ],
+      "scores": {
+        "Usefulness": 18,
+        "Project Health": 13,
+        "Community Momentum": 11,
+        "Ease of Use": 14,
+        "Trust & Safety": 13,
+        "Product Quality": 8,
+        "Innovation": 8
+      },
+      "best_for": "Godot developers, game-jam teams, students, indie studios, and creators managing multiple projects and engine versions."
+    },
+    {
+      "rank": 5,
+      "name": "Claude of Duty",
+      "owner": "mshumer",
+      "repo": "mshumer/Claude-of-Duty",
+      "url": "https://github.com/mshumer/Claude-of-Duty",
+      "category": "AI Coding Demonstration / Browser Game",
+      "stars": 2200,
+      "forks": 317,
+      "language": "JavaScript",
+      "license": "MIT",
+      "score": 82,
+      "grade": "B+",
+      "verdict": "Promising",
+      "confidence": "Medium",
+      "summary": "A large browser-based first-person shooter generated through an orchestrated fleet of AI coding agents, with procedural graphics, audio, physics, AI, and performance tooling.",
+      "solves": "The repository demonstrates how a complex interactive product can be decomposed into subsystems, built by coordinated agents, evaluated visually, profiled, and improved through reproducible tests.",
+      "standout": [
+        "Roughly 55,000 lines across 11 subsystems, according to the maintainer",
+        "No external art or audio assets; content is generated procedurally from code",
+        "Reproducible screenshot capture, image-diff gates, gameplay profiling, and scripted playtests",
+        "Detailed performance investigation and transparent before/after measurements",
+        "Unusually honest assessment of visual limits and multi-agent orchestration failures"
+      ],
+      "risks": [
+        "The project has only two commits and no formal release history.",
+        "The maintainer explicitly says it does not achieve modern Call of Duty quality.",
+        "Performance remains around 28-30 fps in the cited Apple-silicon test.",
+        "It is more valuable as an AI-engineering case study than as a production-ready game framework."
+      ],
+      "scores": {
+        "Usefulness": 15,
+        "Project Health": 8,
+        "Community Momentum": 15,
+        "Ease of Use": 12,
+        "Trust & Safety": 14,
+        "Product Quality": 8,
+        "Innovation": 10
+      },
+      "best_for": "AI builders, game developers, agent-orchestration researchers, and teams studying visual regression and performance testing."
+    }
+  ],
+  "sources": [
+    {
+      "title": "AIPOCH Open Science repository",
+      "url": "https://github.com/aipoch/open-science"
+    },
+    {
+      "title": "AIPOCH Open Science roadmap",
+      "url": "https://github.com/aipoch/open-science/blob/main/ROADMAP.md"
+    },
+    {
+      "title": "AIPOCH Open Science release article",
+      "url": "https://www.aipoch.com/blog/open-science-first-three-steps"
+    },
+    {
+      "title": "Claude of Duty repository",
+      "url": "https://github.com/mshumer/Claude-of-Duty"
+    },
+    {
+      "title": "AgentENV repository",
+      "url": "https://github.com/kvcache-ai/AgentENV"
+    },
+    {
+      "title": "AgentENV license",
+      "url": "https://github.com/kvcache-ai/AgentENV/blob/main/LICENSE"
+    },
+    {
+      "title": "AgentENV security page",
+      "url": "https://github.com/kvcache-ai/AgentENV/security"
+    },
+    {
+      "title": "GodotHub repository",
+      "url": "https://github.com/RykoTheDev/GodotHub"
+    },
+    {
+      "title": "PGSimCity repository",
+      "url": "https://github.com/NikolayS/PGSimCity"
+    },
+    {
+      "title": "PGSimCity live demo",
+      "url": "https://nikolays.github.io/PGSimCity/"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "review_id": "LAR-VIDEO-CHsKSt4B_Uc-20260729",
+  "disclaimer": "Educational planning examples only. No earnings guarantee.",
+  "plays": [
+    {
+      "app": "Open Science",
+      "offer": "Private AI Research Workbench Setup",
+      "buyers": "Labs, research teams, medical organizations",
+      "sample_setup_usd": 2500,
+      "sample_monthly_usd": 599
+    },
+    {
+      "app": "PGSimCity",
+      "offer": "PostgreSQL Visual Training Workshop",
+      "buyers": "Engineering teams, bootcamps, internal enablement",
+      "sample_setup_usd": 1500,
+      "sample_monthly_usd": 299
+    },
+    {
+      "app": "AgentENV",
+      "offer": "Agent Sandbox Infrastructure Pilot",
+      "buyers": "AI labs, agent platforms, evaluation teams",
+      "sample_setup_usd": 7500,
+      "sample_monthly_usd": 2499
+    },
+    {
+      "app": "GodotHub",
+      "offer": "Godot Studio Workflow Setup",
+      "buyers": "Indie studios, schools, game-jam teams",
+      "sample_setup_usd": 1200,
+      "sample_monthly_usd": 249
+    },
+    {
+      "app": "Claude of Duty",
+      "offer": "AI Game Build and Evaluation Workshop",
+      "buyers": "AI builders, game teams, schools",
+      "sample_setup_usd": 997,
+      "sample_monthly_usd": 199
+    }
+  ]
+}

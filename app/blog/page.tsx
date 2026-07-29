@@ -121,7 +121,62 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "10-chatgpt-power-words-better-answers-better-lenses") {
+  if (article.slug === "five-github-apps-worth-watching-july-29-2026") {
+    downloads.push(
+      {
+        title: "Lux App Review: Top 5 GitHub Apps Report (PDF)",
+        subtitle: "Complete 100-point evaluation report for Open Science, PGSimCity, AgentENV, GodotHub & Claude of Duty",
+        url: "/documents/Lux_App_Review_Five_GitHub_Apps_2026-07-29.pdf",
+        type: "Full Evaluation PDF"
+      },
+      {
+        title: "Subscriber Money Play Guide (PDF)",
+        subtitle: "Exclusive monetization playbook for turning top open-source tools into high-margin service offers",
+        url: "/documents/Lux_App_Review_Five_GitHub_Apps_Money_Play_2026-07-29.pdf",
+        type: "Subscriber Money Play PDF"
+      },
+      {
+        title: "Editable Word Review Document (DOCX)",
+        subtitle: "Fully editable Word document containing full review text and breakdown",
+        url: "/documents/Lux_App_Review_Five_GitHub_Apps_2026-07-29.docx",
+        type: "Editable DOCX"
+      },
+      {
+        title: "Structured Review Data JSON",
+        subtitle: "Importable review JSON with 7-part Lux Score breakdowns and repository metrics",
+        url: "/documents/review.json",
+        type: "Review Data JSON"
+      },
+      {
+        title: "Money Play Strategy JSON",
+        subtitle: "Structured business opportunities and service offer templates",
+        url: "/documents/money-play.json",
+        type: "Money Play JSON"
+      },
+      {
+        title: "Money Play Agent Prompt (TXT)",
+        subtitle: "Ready-to-use system prompt for executing subscriber Money Plays with LANA or Hermes",
+        url: "/documents/money-play-agent-prompt.txt",
+        type: "Agent System Prompt"
+      },
+      {
+        title: "Responsive Web Page (HTML)",
+        subtitle: "Standalone responsive HTML review page",
+        url: "/documents/lux-app-review-top-5-page.html",
+        type: "Standalone HTML Page"
+      },
+      {
+        title: "Complete App Review Package (ZIP)",
+        subtitle: "Download all PDFs, DOCX, JSON data, HTML page, agent prompts, and high-res images",
+        url: "/documents/Lux_App_Review_Top_5_From_CHsKSt4B_Uc_2026-07-29.zip",
+        type: "Complete ZIP Package"
+      }
+    );
+    images.push(
+      { title: "Top 5 GitHub Apps Hero Visual", subtitle: "Full-resolution 100-point Lux Score roundup infographic", imageUrl: "/images/lux-app-review-top-5-hero.png", type: "Hero Infographic" },
+      { title: "Top 5 GitHub Apps Thumbnail", subtitle: "Official Lux App Review header thumbnail", imageUrl: "/images/lux-app-review-top-5-thumbnail.png", type: "Header Thumbnail" }
+    );
+  } else if (article.slug === "10-chatgpt-power-words-better-answers-better-lenses") {
     downloads.push(
       {
         title: "10 Prompt Lenses Practice Planner",

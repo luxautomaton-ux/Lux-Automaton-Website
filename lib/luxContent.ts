@@ -74,6 +74,42 @@ export interface TvEpisode {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "five-github-apps-worth-watching-july-29-2026",
+    audience: "App Review",
+    title: "Five GitHub Apps Worth Watching: Open Science, Agent Infrastructure, Game Tools, and PostgreSQL in 3D",
+    deck: "Lux App Review scores and ranks Open Science (91/100, A), PGSimCity (89/100, A-), AgentENV (87/100, A-), GodotHub (85/100, A-), and Claude of Duty (82/100, B+).",
+    date: "July 29, 2026",
+    readTime: "15 min read",
+    category: "App Review & GitHub Intelligence",
+    image: "/images/lux-app-review-top-5-thumbnail.png",
+    plannerUrl: "/documents/Lux_App_Review_Five_GitHub_Apps_2026-07-29.pdf",
+    takeaways: [
+      "01 — Open Science (91/100, A) is the #1 pick: an installable, model-agnostic scientific research workspace with persistent projects, notebooks, and permissions.",
+      "02 — PGSimCity (89/100, A-) is the #2 pick: an explorable 3D PostgreSQL city with guided tours, failure scenarios, 234 tests, and live browser demo.",
+      "03 — AgentENV (87/100, A-), GodotHub (85/100, A-), and Claude of Duty (82/100, B+) excel in Firecracker microVM sandboxing, Godot project management, and AI browser FPS experimentation."
+    ],
+    body: [
+      "The five repositories in this roundup cover scientific research, AI-agent infrastructure, game-development workflow, browser-game generation, and interactive database education.",
+      "Lux App Review evaluated each project using our locked 100-point system across Usefulness (20), Project Health (15), Community Momentum (15), Ease of Use (15), Trust & Safety (15), Product Quality (10), and Innovation (10).",
+      "![Lux App Review Top 5 roundup](/images/lux-app-review-top-5-hero.png)",
+      "## Ranking at a glance",
+      "1. **Open Science (91/100, Grade A)** — Top Pick Overall. Local-first, model-agnostic research workspace (861 stars, 80 forks).\n2. **PGSimCity (89/100, Grade A-)** — Best Educational Product. Explorable 3D PostgreSQL city with 234 tests & live PGlite queries.\n3. **AgentENV (87/100, Grade A-)** — Most Technically Ambitious. Firecracker microVM sandboxing with sub-100 ms snapshots & forks.\n4. **GodotHub (85/100, Grade A-)** — Best Creator Workflow Tool. Tauri desktop manager for Godot versions, templates & Git workflow.\n5. **Claude of Duty (82/100, Grade B+)** — Best AI-Engineering Case Study. Browser FPS with procedural graphics, audio & deterministic tests.",
+      "## 1. Open Science — 91/100 (A)",
+      "**Repository:** [aipoch/open-science](https://github.com/aipoch/open-science) | **Category:** AI for Science / Research Workbench\n\nA local-first, model-agnostic desktop workbench that lets researchers plan, execute, inspect, and preserve AI-assisted scientific work in one workspace.",
+      "## 2. PGSimCity — 89/100 (A-)",
+      "**Repository:** [NikolayS/PGSimCity](https://github.com/NikolayS/PGSimCity) | **Category:** Database Education / Interactive Visualization\n\nAn explorable 3D city that turns PostgreSQL internals into a visual system you can walk through, inspect, and deliberately stress.",
+      "## 3. AgentENV — 87/100 (A-)",
+      "**Repository:** [kvcache-ai/AgentENV](https://github.com/kvcache-ai/AgentENV) | **Category:** Agent Infrastructure / Sandboxed Environments\n\nA distributed platform for running large numbers of isolated, snapshot-capable AI-agent environments using Firecracker microVMs.",
+      "## 4. GodotHub — 85/100 (A-)",
+      "**Repository:** [GodotHub/GodotHub](https://github.com/GodotHub/GodotHub) | **Category:** Game Development / Project Management\n\nA modern desktop application that manages Godot engine versions, project workspaces, templates, launch parameters, and Git workflows.",
+      "## 5. Claude of Duty — 82/100 (B+)",
+      "**Repository:** [Claude-of-Duty/Claude-of-Duty](https://github.com/Claude-of-Duty/Claude-of-Duty) | **Category:** AI Coding Demonstration / Browser Game\n\nA browser-based first-person shooter generated using Claude Code, demonstrating procedural asset generation, custom physics, and automated testing.",
+      "> **“AI should work for you.” — Asa Pritchard**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",
+      "## Downloads & Subscriber Playbook",
+      "Download the **Full Review PDF** (`/documents/Lux_App_Review_Five_GitHub_Apps_2026-07-29.pdf`), subscriber **Money Play PDF** (`/documents/Lux_App_Review_Five_GitHub_Apps_Money_Play_2026-07-29.pdf`), editable **Word Review** (`/documents/Lux_App_Review_Five_GitHub_Apps_2026-07-29.docx`), and complete **ZIP Package** (`/documents/Lux_App_Review_Top_5_From_CHsKSt4B_Uc_2026-07-29.zip`)."
+    ]
+  },
+  {
     slug: "10-chatgpt-power-words-better-answers-better-lenses",
     audience: "Lux Automaton",
     title: "10 ChatGPT Power Words: Better Answers Come From Better Lenses",

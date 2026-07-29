@@ -1,0 +1,218 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Lux Automaton Logo Lux Automaton The AI Operating System" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Lux Automaton Logo" [ref=e5]
+        - generic [ref=e6]:
+          - generic [ref=e7]: Lux Automaton
+          - generic [ref=e8]: The AI Operating System
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - button "Products ▼" [ref=e12] [cursor=pointer]:
+          - text: Products
+          - generic [ref=e13]: ▼
+        - button "Solutions ▼" [ref=e15] [cursor=pointer]:
+          - text: Solutions
+          - generic [ref=e16]: ▼
+        - link "Workshops" [ref=e17] [cursor=pointer]:
+          - /url: /workshops/
+        - link "Lux TV" [ref=e18] [cursor=pointer]:
+          - /url: /lux-tv/
+        - link "Kids TV" [ref=e19] [cursor=pointer]:
+          - /url: /lux-tv-kids/
+        - link "Ask LANA" [ref=e20] [cursor=pointer]:
+          - /url: /ask-lana/
+        - link "App Review" [ref=e21] [cursor=pointer]:
+          - /url: /app-review/
+        - link "Blog" [ref=e22] [cursor=pointer]:
+          - /url: /blog/
+        - link "Books" [ref=e23] [cursor=pointer]:
+          - /url: /books/
+        - link "Community" [ref=e24] [cursor=pointer]:
+          - /url: /community/
+        - link "AI Kids" [ref=e25] [cursor=pointer]:
+          - /url: /lux-ai-kids/
+        - link "Start Here" [ref=e26] [cursor=pointer]:
+          - /url: /start-here/
+  - main [ref=e27]:
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - paragraph [ref=e31]: LUX AI KIDS · CONTENT DESK
+          - heading "Make a post. Pick its moment." [level=1] [ref=e32]: Make a post.Pick its moment.
+          - paragraph [ref=e33]: Create website and social copy, select a delivery date, and keep your content calendar in one calm place.
+        - complementary [ref=e34]:
+          - paragraph [ref=e35]: YOUR CONTENT QUEUE
+          - generic [ref=e36]:
+            - generic [ref=e148]: "1"
+            - generic [ref=e149]: scheduled
+          - generic [ref=e37]:
+            - generic [ref=e150]: "1"
+            - generic [ref=e151]: drafts
+          - generic [ref=e38]:
+            - generic [ref=e152]: "0"
+            - generic [ref=e153]: published
+      - generic [ref=e39]:
+        - generic [ref=e154]: ℹ
+        - paragraph [ref=e40]: Saved in this browser. This studio keeps your schedule on this device. It does not automatically deliver to your website, newsletter, or social accounts until those services are connected.
+      - main [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - paragraph [ref=e44]: NEW POST
+            - heading "Write it once. Plan it clearly." [level=2] [ref=e45]
+          - generic [ref=e46]:
+            - generic [ref=e47]:
+              - text: Post title
+              - textbox "Post title" [ref=e48]:
+                - /placeholder: "Example: Saturday’s Robot Builders Lab"
+            - generic [ref=e49]:
+              - text: Where is this for?
+              - combobox "Where is this for?" [ref=e50]:
+                - option "Website" [selected]
+                - option "Instagram"
+                - option "Facebook"
+                - option "Newsletter"
+            - generic [ref=e51]:
+              - text: Post copy
+              - textbox "Post copy" [ref=e52]:
+                - /placeholder: Write the message families, educators, or young creators should see…
+            - generic [ref=e53]:
+              - text: Schedule for (optional)
+              - textbox "Schedule for (optional)" [ref=e54]
+            - button "Save to content calendar →" [ref=e55] [cursor=pointer]
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - paragraph [ref=e58]: CONTENT CALENDAR
+            - heading "Your upcoming work" [level=2] [ref=e59]
+          - generic [ref=e60]:
+            - article [ref=e61]:
+              - generic [ref=e62]:
+                - generic [ref=e155]: Website
+                - generic [ref=e156]: draft
+              - heading "Welcome to the Lux AI Kids Lab" [level=3] [ref=e63]
+              - paragraph [ref=e64]: A new home for young creators, guided questions, and joyful AI projects.
+              - generic [ref=e65]:
+                - generic [ref=e157]: Draft — choose a date when ready
+                - generic [ref=e66]:
+                  - button "Mark published" [ref=e67] [cursor=pointer]
+                  - button "Remove" [ref=e68] [cursor=pointer]
+            - article [ref=e69]:
+              - generic [ref=e70]:
+                - generic [ref=e158]: Instagram
+                - generic [ref=e159]: scheduled
+              - heading "Community Garden AI challenge" [level=3] [ref=e71]
+              - paragraph [ref=e72]: What would you teach a tiny garden helper to notice?
+              - generic [ref=e73]:
+                - generic [ref=e160]: Aug 3, 2026, 10:00 AM
+                - generic [ref=e74]:
+                  - button "Mark published" [ref=e75] [cursor=pointer]
+                  - button "Remove" [ref=e76] [cursor=pointer]
+          - link "← Back to Lux AI Kids" [ref=e77] [cursor=pointer]:
+            - /url: /lux-ai-kids/
+  - contentinfo [ref=e78]:
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - img "Lux Automaton" [ref=e84]
+            - generic [ref=e85]: Lux Automaton
+          - paragraph [ref=e87]: Private AI systems for builders, founders, and small businesses. Automate smarter. Move faster. Own your stack.
+          - generic [ref=e88]: Automate · Innovate · Accelerate
+          - generic [ref=e89]:
+            - link "▶ YouTube Channel" [ref=e90] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCcYnAZw0QnS6dD1n-7vpwdA
+              - generic [ref=e91]: ▶
+              - text: YouTube Channel
+            - link "in LinkedIn Page" [ref=e92] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/lux-automaton-saas/
+              - generic [ref=e93]: in
+              - text: LinkedIn Page
+        - generic [ref=e94]:
+          - generic [ref=e95]: Products
+          - generic [ref=e96]:
+            - link "Lux Codex" [ref=e97] [cursor=pointer]:
+              - /url: /products/lux-codex/
+            - link "Lux Coder" [ref=e98] [cursor=pointer]:
+              - /url: /products/lux-coder/
+            - link "LANA" [ref=e99] [cursor=pointer]:
+              - /url: /products/lana/
+            - link "Lux Agent USB" [ref=e100] [cursor=pointer]:
+              - /url: /products/lux-agent-usb/
+            - link "Lux Business" [ref=e101] [cursor=pointer]:
+              - /url: /products/lux-business/
+            - link "Lux AI Kids" [ref=e102] [cursor=pointer]:
+              - /url: /products/lux-ai-kids/
+            - link "Lux TV" [ref=e103] [cursor=pointer]:
+              - /url: /products/lux-tv/
+            - link "Lux Marketing Studio" [ref=e104] [cursor=pointer]:
+              - /url: /products/lux-marketing-studio/
+            - link "Lux WriteOff" [ref=e105] [cursor=pointer]:
+              - /url: /products/luxwriteoff/
+            - link "Lux Budgeter" [ref=e106] [cursor=pointer]:
+              - /url: /products/lux-budgeter/
+            - link "Success Packs" [ref=e107] [cursor=pointer]:
+              - /url: /products/success-packs/
+        - generic [ref=e108]:
+          - generic [ref=e109]: Solutions
+          - generic [ref=e110]:
+            - link "Lux Care OS" [ref=e111] [cursor=pointer]:
+              - /url: /solutions/lux-care-os/
+            - link "Epic Electric" [ref=e112] [cursor=pointer]:
+              - /url: /solutions/epic-electric/
+            - link "Inland Circle" [ref=e113] [cursor=pointer]:
+              - /url: /solutions/inland-circle/
+            - link "Contractor OS" [ref=e114] [cursor=pointer]:
+              - /url: /solutions/contractor-os/
+            - link "Creator OS" [ref=e115] [cursor=pointer]:
+              - /url: /solutions/creator-os/
+            - link "Small Business OS" [ref=e116] [cursor=pointer]:
+              - /url: /solutions/small-business-os/
+        - generic [ref=e117]:
+          - generic [ref=e118]: Resources
+          - generic [ref=e119]:
+            - link "Lux AI Kids" [ref=e120] [cursor=pointer]:
+              - /url: /lux-ai-kids/
+            - link "Lux TV" [ref=e121] [cursor=pointer]:
+              - /url: /lux-tv/
+            - link "Lux TV Kids" [ref=e122] [cursor=pointer]:
+              - /url: /lux-tv-kids/
+            - link "Blog" [ref=e123] [cursor=pointer]:
+              - /url: /blog/
+            - link "Books by Asa Spade" [ref=e124] [cursor=pointer]:
+              - /url: /books/
+            - link "Community" [ref=e125] [cursor=pointer]:
+              - /url: /community/
+            - link "Start Here" [ref=e126] [cursor=pointer]:
+              - /url: /start-here/
+            - link "Ask LANA" [ref=e127] [cursor=pointer]:
+              - /url: /ask-lana/
+            - link "Who Is LANA?" [ref=e128] [cursor=pointer]:
+              - /url: /who-is-lana/
+            - link "Workshops Hub" [ref=e129] [cursor=pointer]:
+              - /url: /workshops/
+            - link "Problem Library" [ref=e130] [cursor=pointer]:
+              - /url: /library/
+            - link "Question Library" [ref=e131] [cursor=pointer]:
+              - /url: /library/
+            - link "Founder Story" [ref=e132] [cursor=pointer]:
+              - /url: /founders/
+            - link "Weekly Intelligence" [ref=e133] [cursor=pointer]:
+              - /url: "#newsletter"
+            - link "Admin Studio" [ref=e134] [cursor=pointer]:
+              - /url: /admin/
+        - generic [ref=e135]:
+          - generic [ref=e136]: Legal
+          - generic [ref=e137]:
+            - link "Privacy Policy" [ref=e138] [cursor=pointer]:
+              - /url: /privacy/
+            - link "Terms of Service" [ref=e139] [cursor=pointer]:
+              - /url: /terms/
+            - link "Business Registration" [ref=e140] [cursor=pointer]:
+              - /url: https://www.bizapedia.com/or/lux-automaton-llc.html
+      - generic [ref=e141]:
+        - generic [ref=e142]: © 2026 Lux Automaton LLC. All rights reserved.
+        - generic [ref=e143]: All systems operational
+  - button "Toggle Support Chat" [ref=e145] [cursor=pointer]:
+    - img "Lana Support Specialist" [ref=e146]

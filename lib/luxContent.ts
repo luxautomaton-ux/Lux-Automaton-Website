@@ -1341,7 +1341,7 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
     level: "Beginner",
     ageBand: "Ages 6–8",
     duration: "120 minutes (2 hrs)",
-    image: "/images/01_workshop_hero_your_first_video_game.png",
+    image: "/images/printable_workshop_overview_your_first_video_game.png",
     thumbnail: "/images/00_workshop_thumbnail_your_first_video_game.png",
     brandLogo: "/images/lux-ai-kids-logo.png",
     workbookPdfUrl: "/documents/Lux_AI_Kids_Your_First_Video_Game_Kid_Workbook.pdf",

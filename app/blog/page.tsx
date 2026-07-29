@@ -121,7 +121,42 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "asa-lana-ep3-asa-must-stay-asa") {
+  if (article.slug === "how-codex-can-direct-an-ai-explainer-video-factory") {
+    downloads.push(
+      {
+        title: "AI Explainer Video Production Planner",
+        subtitle: "Printable & interactive planning workbook for story beats, visual presets, and approval gates",
+        url: "/documents/ai-explainer-video-production-planner.html",
+        type: "Interactive Planner"
+      },
+      {
+        title: "Lux Codex Explainer Video Workflow JSON",
+        subtitle: "Importable production workflow JSON with 4 human approval gates",
+        url: "/documents/lux-codex-explainer-video-workflow.json",
+        type: "Workflow JSON"
+      },
+      {
+        title: "Sample Beats JSON Project Template",
+        subtitle: "Ready-to-adapt 20-second sample project beat map file",
+        url: "/documents/sample-beats.json",
+        type: "Sample Beats JSON"
+      },
+      {
+        title: "Complete Explainer Video Publishing Package (ZIP)",
+        subtitle: "Download all 5 visual assets, HTML planner, workflow JSON, sample beats, and source text",
+        url: "/documents/lux-automaton-codex-explainer-video-complete-package.zip",
+        type: "Complete ZIP Package"
+      }
+    );
+    images.push(
+      { title: "Asset-Set Preview — Complete Visual Package", subtitle: "Full overview of all 5 visual assets, printable planner, and workflow JSON files", imageUrl: "/images/00-asset-set-preview-explainer.png", type: "Asset Set Preview" },
+      { title: "01 — Thumbnail Header", subtitle: "How Codex Can Direct an AI Explainer Video Factory", imageUrl: "/images/01-thumbnail-codex-explainer-video-factory.png", type: "Header Thumbnail" },
+      { title: "02 — Beat Map & Human Gate 1", subtitle: "One source of truth (beats.json) keeps narration, timing, and direction aligned", imageUrl: "/images/02-photo-beat-map-human-gate.png", type: "Photo Blueprint" },
+      { title: "03 — Style Bake-Off & Human Gate 2", subtitle: "Render the same beat in 3-4 visual themes and choose the final style by eye", imageUrl: "/images/03-photo-style-bake-off.png", type: "Photo Blueprint" },
+      { title: "04 — Motion, Audio, Assembly & Quality Control", subtitle: "Automating keyframes, motion, narration, music ducking, and local FFmpeg assembly", imageUrl: "/images/04-photo-motion-audio-assembly-qc.png", type: "Photo Blueprint" },
+      { title: "05 — Explainer Video Production Overview", subtitle: "Complete system breakdown for Codex video factory, approval gates, and quality control", imageUrl: "/images/05-codex-explainer-video-overview.png", type: "Overview Infographic" }
+    );
+  } else if (article.slug === "asa-lana-ep3-asa-must-stay-asa") {
     downloads.push(
       {
         title: "Character Identity Lock Workbook",

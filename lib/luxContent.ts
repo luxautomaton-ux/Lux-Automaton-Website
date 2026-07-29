@@ -74,6 +74,51 @@ export interface TvEpisode {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "how-codex-can-direct-an-ai-explainer-video-factory",
+    audience: "Lux Automaton",
+    title: "How Codex Can Direct an AI Explainer Video Factory",
+    deck: "A practical guide to turning one topic into story beats, paper-collage keyframes, motion, narration, music, captions, and a finished video.",
+    date: "July 25, 2026",
+    readTime: "8 min read",
+    category: "AI Content Systems & Production",
+    image: "/images/01-thumbnail-codex-explainer-video-factory.png",
+    takeaways: [
+      "01 — One source of truth (beats.json) keeps narration, timing, and visual direction aligned.",
+      "02 — Human Gate 1 approves narrative beats; Human Gate 2 chooses final visual style by eye.",
+      "03 — Automate production stages (keyframes, motion, voice, ducking, FFmpeg assembly), while keeping responsibility human-owned."
+    ],
+    plannerUrl: "/documents/ai-explainer-video-production-planner.html",
+    body: [
+      "The source video begins with an idea that would have sounded unrealistic not long ago: Give Codex one topic and let an AI-agent workflow help turn it into a polished editorial explainer video.",
+      "Not only a script. Not only a generated clip. A complete production path: Narrative beats, paper-collage keyframes, motion, voice-over, background music, captions, watermark, and final MP4.",
+      "The open-source workflow behind the video is called **Vox Director**. Its repository describes an agent skill that can be used by Codex, Claude Code, or another coding agent. Atlas Cloud handles the media-generation APIs, while local `ffmpeg` assembles the final film.",
+      "> **The agent can coordinate the production stages, while the human remains responsible for the story, style, rights, and final publish decision.**",
+      "## A note about 'Vox-style'",
+      "The source video uses the phrase **Vox-style** to describe an editorial paper-collage language: torn paper, cut-out images, tape, halftone dots, archival clippings, bold flat colors, and oversized headlines.",
+      "A company should build its **own** identity. Do not copy another publisher’s logos or signature graphics. Lux Automaton uses the general editorial-collage technique through its own dark navy, cyan, purple, teal, typography, characters, and educational tone.",
+      "## 01 — One source of truth keeps the film aligned",
+      "![Beat Map and Human Gate 1](/images/02-photo-beat-map-human-gate.png)",
+      "The repository organizes each project around one file: `beats.json`. That is the continuity engine for the video.",
+      "One shared beat map gives every production stage the same structure. Script, visual, motion, timing, and captions belong to the same beat object.",
+      "### Human Gate 1: approve the beat map",
+      "The repository intentionally pauses after the beat map. Generating images, video, narration, and music costs time and money. A weak story does not become strong because more models touch it.",
+      "> **Asa’s note:** 'Do not automate uncertainty downstream. Make the story decision before the expensive steps begin.'",
+      "## 02 — Humans should approve the story and the look",
+      "![Style Bake-Off and Human Gate 2](/images/03-photo-style-bake-off.png)",
+      "The second major decision gate is the **style bake-off**. The workflow renders the same beat in three or four visual themes. The creator compares them and chooses the direction by eye.",
+      "The keyframe should already contain the collage DNA: cut-out subjects, paper texture, torn edges, tape, headline typography, and a readable focal point. Motion brings that poster to life; it does not invent the art direction.",
+      "## 03 — The agent can automate production, but not responsibility",
+      "![Motion, Audio Assembly, and QC](/images/04-photo-motion-audio-assembly-qc.png)",
+      "After the two approval gates, the workflow runs the production chain: Keyframes -> Image-to-video animation -> Voice-over -> Music ducking -> Local FFmpeg assembly -> Captions & watermark.",
+      "### Explainer Video Workflow Overview",
+      "![Codex Explainer Video Overview](/images/05-codex-explainer-video-overview.png)",
+      "This structure turns Codex from a one-time video assistant into a production operator that gets better through documented workflows.",
+      "> **“AI should work for you.” — Asa Pritchard**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",
+      "## Your next action",
+      "Open the **AI Explainer Video Production Planner** (`/documents/ai-explainer-video-production-planner.html`), download the **Lux Codex Explainer Video Workflow JSON** (`/documents/lux-codex-explainer-video-workflow.json`), and inspect the **Sample Beats JSON** (`/documents/sample-beats.json`). Choose one 15-30 second topic and build only the beat map today. Approve the story before generating the film."
+    ]
+  },
+  {
     slug: "asa-lana-ep3-asa-must-stay-asa",
     audience: "Lux Automaton",
     title: "Asa + LANA EP3: Asa Must Stay Asa",

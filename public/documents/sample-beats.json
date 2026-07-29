@@ -1,0 +1,44 @@
+{
+  "project": "first-automation-map",
+  "title": "Map the Work Before You Automate",
+  "duration_seconds": 20,
+  "aspect_ratio": "16:9",
+  "beats": [
+    {
+      "id": "beat-01",
+      "purpose": "Present the problem",
+      "narration": "Most businesses buy software before they map the work.",
+      "duration_seconds": 5,
+      "headline": "TOOLS BEFORE CLARITY",
+      "visual": "Overwhelmed owner surrounded by disconnected app and task cut-outs.",
+      "motion": "Slow push-in with paper elements drifting."
+    },
+    {
+      "id": "beat-02",
+      "purpose": "Introduce the method",
+      "narration": "Start with what repeats, where it breaks, and who owns the next step.",
+      "duration_seconds": 5,
+      "headline": "MAP THE REPEATS",
+      "visual": "Four-step paper workflow with three broken handoffs highlighted.",
+      "motion": "Workflow cards enter one at a time."
+    },
+    {
+      "id": "beat-03",
+      "purpose": "Show the first automation",
+      "narration": "Automate the smallest dependable step first.",
+      "duration_seconds": 5,
+      "headline": "START SMALL",
+      "visual": "One task passes through an AI assistant and returns to a human reviewer.",
+      "motion": "Task card moves through the pipeline."
+    },
+    {
+      "id": "beat-04",
+      "purpose": "Close with the result",
+      "narration": "One clear workflow creates the foundation for the next.",
+      "duration_seconds": 5,
+      "headline": "BUILD THE NEXT LOOP",
+      "visual": "A clean Lux operating map expands from one successful workflow.",
+      "motion": "Network grows from the first completed loop."
+    }
+  ]
+}

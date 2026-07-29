@@ -1,0 +1,117 @@
+{
+  "name": "Lux Codex Editorial Explainer Factory",
+  "version": "1.0",
+  "description": "Human-directed agent workflow for paper-collage explainer videos.",
+  "human_gates": [
+    {
+      "id": "GATE-1",
+      "name": "Beat map approval",
+      "required": true
+    },
+    {
+      "id": "GATE-2",
+      "name": "Style bake-off approval",
+      "required": true
+    },
+    {
+      "id": "GATE-3",
+      "name": "Rights and voice approval",
+      "required": true
+    },
+    {
+      "id": "GATE-4",
+      "name": "Final publish approval",
+      "required": true
+    }
+  ],
+  "project": {
+    "topic": "",
+    "audience": "",
+    "duration_seconds": 30,
+    "aspect_ratio": "16:9",
+    "language": "English",
+    "visual_preset": "Lux Editorial Tech",
+    "output_directory": "out/project-slug"
+  },
+  "stages": [
+    {
+      "order": 1,
+      "name": "beat_map",
+      "input": "topic",
+      "output": "beats.json",
+      "human_gate": "GATE-1"
+    },
+    {
+      "order": 2,
+      "name": "style_bakeoff",
+      "themes": 4,
+      "input": "selected beat",
+      "output": "style_options/",
+      "human_gate": "GATE-2"
+    },
+    {
+      "order": 3,
+      "name": "keyframes",
+      "input": "beats.json + approved style",
+      "output": "keyframes/"
+    },
+    {
+      "order": 4,
+      "name": "motion",
+      "input": "approved keyframes",
+      "output": "clips/"
+    },
+    {
+      "order": 5,
+      "name": "voice",
+      "input": "final narration",
+      "output": "audio/narration.wav",
+      "human_gate": "GATE-3"
+    },
+    {
+      "order": 6,
+      "name": "music",
+      "input": "music brief",
+      "output": "audio/music.wav",
+      "human_gate": "GATE-3"
+    },
+    {
+      "order": 7,
+      "name": "assembly",
+      "tool": "ffmpeg",
+      "output": "draft.mp4"
+    },
+    {
+      "order": 8,
+      "name": "captions_watermark_qc",
+      "tools": [
+        "ffmpeg",
+        "ffprobe"
+      ],
+      "output": "final.mp4",
+      "human_gate": "GATE-4"
+    }
+  ],
+  "rights_manifest": {
+    "source_assets": [],
+    "image_models": [],
+    "video_models": [],
+    "voice_source": "",
+    "voice_authorization": "",
+    "music_source": "",
+    "music_license": "",
+    "font_license": "",
+    "brand_approver": ""
+  },
+  "qc": {
+    "expected_duration_seconds": 30,
+    "resolution": "1920x1080",
+    "audio_required": true,
+    "captions_required": true,
+    "watermark_required": true,
+    "safe_area_checked": false,
+    "factual_review_complete": false,
+    "rights_review_complete": false,
+    "human_watchthrough_complete": false
+  }
+}

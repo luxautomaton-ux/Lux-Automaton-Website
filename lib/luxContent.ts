@@ -1299,6 +1299,146 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 
 export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
   {
+    slug: "your-first-video-game",
+    audience: "Lux AI Kids",
+    title: "Your First Video Game: Imagine It. Draw It. Play It!",
+    level: "Beginner",
+    ageBand: "Ages 6–8",
+    duration: "120 minutes (2 hrs)",
+    image: "/images/01_workshop_hero_your_first_video_game.png",
+    thumbnail: "/images/00_workshop_thumbnail_your_first_video_game.png",
+    brandLogo: "/images/lux-ai-kids-logo.png",
+    workbookPdfUrl: "/documents/Lux_AI_Kids_Your_First_Video_Game_Kid_Workbook.pdf",
+    facilitatorDeckPdfUrl: "/documents/Lux_AI_Kids_Your_First_Video_Game_Facilitator_Deck.pdf",
+    fullGuidePdfUrl: "/documents/Lux_AI_Kids_Your_First_Video_Game_Facilitator_Guide.pdf",
+    description: "Children create a real paper video-game prototype using drawing, storytelling, simple rules, and playtesting. Ace helps young game designers invent a hero, draw a level, make simple rules, and playtest a paper game. LANA introduces safe, grown-up-guided AI prompts for game art ideas.",
+    outcome: "Each child leaves with a character card with one power, a paper level map, a four-rule game concept document, two safe AI art prompts, and a playtested paper prototype ready to share.",
+    materials: [
+      "Paper or cardboard",
+      "Crayons and markers",
+      "Child-safe scissors",
+      "Index cards for character cards",
+      "Stickers for game tokens",
+      "A ruler",
+      "Pencil",
+      "Optional: tape or glue"
+    ],
+    learningGoals: [
+      "Name the four basic parts of a game: character, goal, challenge, and rules.",
+      "Choose a theme and tell a one-sentence game story.",
+      "Design a character with one clear power and story.",
+      "Draw a level with a start, path, challenge, and goal.",
+      "Write four simple rules that another child can follow.",
+      "Playtest, listen to feedback, and improve one part of the game.",
+      "Use AI only with a grown-up and without sharing private information."
+    ],
+    prerequisites: [
+      "No coding or video game experience required.",
+      "Brings imagination, curiosity, and eagerness to create!",
+      "A grown-up helper to guide AI prompts and handle digital tools."
+    ],
+    safetyNotes: [
+      "AI helps. People decide. Ask a grown-up first.",
+      "A grown-up handles any AI tool. Children may help write the prompt on paper.",
+      "Never type a child's full name, school, address, phone number, face photo, or private story into an AI tool.",
+      "Use child-safe scissors and provide help when cutting small pieces.",
+      "AI ideas are suggestions. The child stays the game designer and makes the final choices.",
+      "Keep competition friendly. The goal of playtesting is learning, not winning."
+    ],
+    lessons: [
+      {
+        title: "01 — What Makes a Game a Game?",
+        duration: "20 min",
+        activity: "Game Recipe Sort: match picture cards to CHARACTER, GOAL, CHALLENGE, and RULES.",
+        deliverable: "A completed four-part Game Recipe strip.",
+        image: "/images/lesson_01_visual_game_recipe.png",
+        tips: [
+          "Use movement: pose as a hero, point to a goal, step over a pretend obstacle, then freeze for a rule.",
+          "Use familiar games; children do not need video-game experience.",
+          "Keep examples short and concrete."
+        ],
+        checkIn: "What tells the player how to win? (The goal)",
+        aceIntro: "Discover the parts of a game and how they work together!",
+        lanaGuide: "AI helps plan game concepts, but you choose what makes your game fun!"
+      },
+      {
+        title: "02 — Pick Your Theme",
+        duration: "15 min",
+        activity: "Theme Dash: choose a world card, then add one place and one mission.",
+        deliverable: "A theme card and one-sentence game story.",
+        image: "/images/lesson_02_visual_pick_theme.png",
+        tips: [
+          "Offer six choices, not twenty.",
+          "Children may mix two themes, such as Space Jungle.",
+          "Ask sensory questions: What colors, sounds, or shapes belong in this world?"
+        ],
+        checkIn: "What does a theme tell us? (Where the game happens and what it feels like)",
+        aceIntro: "Choose your game world and the big adventure inside it!",
+        lanaGuide: "Brainstorm theme ideas with AI to discover exciting worlds!"
+      },
+      {
+        title: "03 — Design Your Character",
+        duration: "20 min",
+        activity: "Create a two-sided Character Card on an index card: picture on front, name/power/story on back.",
+        deliverable: "A finished character card with one power and a short story.",
+        image: "/images/lesson_03_visual_design_character.png",
+        tips: [
+          "Start with circles, squares, and triangles.",
+          "Make the power useful for the level.",
+          "Use one power first; helpers can be an extension."
+        ],
+        checkIn: "Why should the hero have one clear power? (It's easier to understand and makes the challenge more fun)",
+        aceIntro: "Create your hero, give them powers, and write their story!",
+        lanaGuide: "Use AI art prompts to generate character visual ideas!"
+      },
+      {
+        title: "04 — Draw the Board",
+        duration: "20 min",
+        activity: "Build Level 1 on paper or cardboard using a ruler, crayons, and sticker tokens.",
+        deliverable: "A paper game level with start, path, challenge, special spaces, and goal.",
+        image: "/images/lesson_04_visual_draw_board.png",
+        tips: [
+          "Draw the path lightly in pencil first.",
+          "Keep spaces large enough for a sticker token.",
+          "Make the challenge slow the player, not stop the game forever."
+        ],
+        checkIn: "Why do we test the path with a finger first? (To make sure it's clear and fun to follow)",
+        aceIntro: "Design your level map with obstacles, coins, and more!",
+        lanaGuide: "AI can help layout level obstacles and secret paths!"
+      },
+      {
+        title: "05 — Make the Rules",
+        duration: "20 min",
+        activity: "Write four simple rules on a rules card: start, move, win, and obstacle rules.",
+        deliverable: "A four-rule game card and movement cards.",
+        image: "/images/lesson_05_visual_make_rules.png",
+        tips: [
+          "Four rules are enough for Level 1.",
+          "Read each rule aloud to check if it's fair.",
+          "Use action words like 'Move', 'Stop', 'Collect'."
+        ],
+        checkIn: "What makes a rule fair? (Everyone follows the same rules)",
+        aceIntro: "Write your game rules so everyone knows how to play!",
+        lanaGuide: "AI can suggest rule ideas when you get stuck!"
+      },
+      {
+        title: "06 — Playtest Time!",
+        duration: "25 min",
+        activity: "Play your game with a friend, collect feedback, improve one thing, and present your 30-second pitch.",
+        deliverable: "A playtested game prototype, improvement report, and Game Designer certificate.",
+        image: "/images/lesson_06_visual_playtest.png",
+        tips: [
+          "Watching someone play teaches more than telling them what to do.",
+          "Fix one thing at a time.",
+          "Celebrate every completed game prototype!"
+        ],
+        checkIn: "What do we do when a playtester finds a bug? (Listen, smile, and make the game better!)",
+        aceIntro: "Test your game, get feedback, and make it even better!",
+        lanaGuide: "Great designers test, learn, and polish!"
+      }
+    ]
+  },
+  {
     slug: "ai-foundations-for-founders",
     audience: "Lux Automaton",
     title: "AI Foundations for Founders",

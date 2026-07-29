@@ -1,0 +1,64 @@
+{
+  "name": "Laguna S 2.1 Model Pilot",
+  "version": "1.0",
+  "model": {
+    "checkpoint": "poolside/Laguna-S-2.1",
+    "quantization": "",
+    "runtime": "",
+    "context_target": "",
+    "reasoning_enabled": true,
+    "tool_parser": "",
+    "reasoning_parser": ""
+  },
+  "hardware": {
+    "platform": "",
+    "gpus": [],
+    "unified_or_system_memory_gb": 0,
+    "estimated_weight_memory_gb": 0,
+    "runtime_headroom_gb": 0
+  },
+  "task": {
+    "repository": "",
+    "branch": "laguna-pilot",
+    "goal": "",
+    "allowed_paths": [],
+    "forbidden_paths": [],
+    "allowed_tools": [],
+    "network_policy": "deny_by_default",
+    "credentials": "test_only"
+  },
+  "acceptance": {
+    "tests": [],
+    "performance_target": "",
+    "documentation_required": true,
+    "maximum_review_minutes": 60,
+    "human_approver": ""
+  },
+  "evidence_required": [
+    "plan",
+    "files_changed",
+    "diff_summary",
+    "commands_run",
+    "test_results",
+    "remaining_failures",
+    "risks",
+    "recommended_next_action"
+  ],
+  "recovery": {
+    "backup_confirmed": false,
+    "rollback_method": "",
+    "audit_log_path": "",
+    "kill_switch": ""
+  },
+  "comparison": {
+    "baseline_model": "",
+    "completion_rate": "",
+    "elapsed_minutes": 0,
+    "human_interventions": 0,
+    "review_minutes": 0,
+    "compute_or_api_cost_usd": 0.0,
+    "quality_score_1_to_5": 0,
+    "team_trust_score_1_to_5": 0
+  },
+  "decision": "stop|retest|limited_route|security_review"
+}

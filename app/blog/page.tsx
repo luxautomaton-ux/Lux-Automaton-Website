@@ -121,7 +121,36 @@ function getArticleVisualAssets(article: BlogArticle) {
   const images: VisualAssetItem[] = [];
   const downloads: ResourceDownloadItem[] = [];
 
-  if (article.slug === "how-codex-can-direct-an-ai-explainer-video-factory") {
+  if (article.slug === "laguna-s2-1-long-horizon-coding-model") {
+    downloads.push(
+      {
+        title: "Laguna S 2.1 Model Pilot Planner",
+        subtitle: "Printable & interactive two-page evaluation workbook for testing coding model horizon",
+        url: "/documents/laguna-s2-1-model-pilot-planner.html",
+        type: "Interactive Planner"
+      },
+      {
+        title: "Laguna S 2.1 Pilot Template JSON",
+        subtitle: "Importable JSON template for structuring bounded coding tasks and acceptance criteria",
+        url: "/documents/laguna-s2-1-model-pilot-template.json",
+        type: "Pilot Template JSON"
+      },
+      {
+        title: "Complete Laguna S 2.1 Package (ZIP)",
+        subtitle: "Download all 5 visual assets, HTML planner, JSON template, and source markdown",
+        url: "/documents/lux-automaton-laguna-s2-1-complete-package.zip",
+        type: "Complete ZIP Package"
+      }
+    );
+    images.push(
+      { title: "Asset-Set Preview — Complete Visual Package", subtitle: "Full overview of all 5 visual assets, printable planner, and pilot template JSON", imageUrl: "/images/00-asset-set-preview-laguna.png", type: "Asset Set Preview" },
+      { title: "01 — Thumbnail Header", subtitle: "Laguna S 2.1: Build Longer. Build Locally.", imageUrl: "/images/01-thumbnail-laguna-s2-1.png", type: "Header Thumbnail" },
+      { title: "02 — The Long-Horizon Coding Loop", subtitle: "Inspect, plan, edit, test, examine evidence, recover from mistakes, and continue", imageUrl: "/images/02-photo-long-horizon-coding-loop.png", type: "Photo Blueprint" },
+      { title: "03 — Local Hardware & Model Reality", subtitle: "118B total, 8B active Mixture-of-Experts architecture, VRAM & quantization requirements", imageUrl: "/images/03-photo-local-hardware-reality.png", type: "Photo Blueprint" },
+      { title: "04 — Run a Production Pilot", subtitle: "Safe evaluation framework with test branch, acceptance criteria, logs, and human approval", imageUrl: "/images/04-photo-laguna-production-pilot.png", type: "Photo Blueprint" },
+      { title: "05 — Laguna S 2.1 Model Overview", subtitle: "Complete system architecture breakdown, benchmark context, and deployment routing", imageUrl: "/images/05-laguna-s2-1-overview.png", type: "Overview Infographic" }
+    );
+  } else if (article.slug === "how-codex-can-direct-an-ai-explainer-video-factory") {
     downloads.push(
       {
         title: "AI Explainer Video Production Planner",

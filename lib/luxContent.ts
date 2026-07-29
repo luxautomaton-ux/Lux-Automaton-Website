@@ -74,6 +74,49 @@ export interface TvEpisode {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "laguna-s2-1-long-horizon-coding-model",
+    audience: "Lux Automaton",
+    title: "Laguna S 2.1: What a Long-Horizon Coding Model Can Actually Build",
+    deck: "Poolside’s 118B open-weight model is designed to plan, use tools, recover, and keep working across large software tasks—if the hardware and agent harness are ready.",
+    date: "July 25, 2026",
+    readTime: "8 min read",
+    category: "AI Agent Architecture & Open Models",
+    image: "/images/01-thumbnail-laguna-s2-1.png",
+    takeaways: [
+      "01 — Long-horizon coding is a full agent loop: inspect, plan, edit, test, recover, and deliver evidence.",
+      "02 — '118B total, 8B active' Mixture-of-Experts reduces per-token compute, but BF16 weights still require ~236 GB (or ~71-72 GB for INT4/NVFP4).",
+      "03 — Benchmark scores (70.2% Terminal-Bench 2.1) justify running a pilot—not immediate production approval."
+    ],
+    plannerUrl: "/documents/laguna-s2-1-model-pilot-planner.html",
+    body: [
+      "The source video makes an exciting promise: **build anything with Laguna S 2.1**. That headline captures the direction of modern coding agents, but the practical version deserves more precision.",
+      "Laguna S 2.1 is an open-weight text-to-text model from Poolside designed for **agentic coding, long-horizon software work, and extended tool-use workflows**.",
+      "> **Can this model complete one difficult job in my environment with acceptable quality, review time, hardware cost, and risk?**",
+      "## 01 — Long-horizon coding is more than generating a large answer",
+      "![Long-Horizon Coding Loop](/images/02-photo-long-horizon-coding-loop.png)",
+      "A long-horizon coding agent treats requests as a sequence of connected states: Inspect repo -> Find architecture -> Identify safe boundary -> Plan -> Edit -> Run tests -> Inspect result -> Recover -> Return evidence.",
+      "### Reasoning between tool calls matters",
+      "Poolside's model card supports interleaved reasoning before and between tool calls. It does not blindly execute a fixed plan; it uses action results to decide the next step.",
+      "### One million tokens is context—not guaranteed understanding",
+      "The base model lists a **1,048,576-token** context window. A large context window allows holding deep code and docs, but tools must still direct model attention to the right files.",
+      "## 02 — '118B total, 8B active' changes the hardware conversation",
+      "![Local Hardware & Model Reality](/images/03-photo-local-hardware-reality.png)",
+      "Laguna S 2.1 uses a Mixture-of-Experts (MoE) architecture. The full model contains ~118B parameters, while ~8B are active per token.",
+      "Base BF16 weights require ~236 GB VRAM. Quantized INT4 and NVFP4 variants require ~71–72 GB before runtime overhead and KV cache.",
+      "## 03 — A production pilot matters more than a benchmark victory lap",
+      "![Run a Production Pilot](/images/04-photo-laguna-production-pilot.png)",
+      "Poolside reports 70.2% on Terminal-Bench 2.1 and 78.5% on SWE-bench Multilingual as of July 21, 2026. Benchmarks justify a pilot, not immediate production access.",
+      "### Step-by-step pilot framework",
+      "1. **Choose a bounded task:** Upgrade a library, add one endpoint, or fix a reproducible bug.\n2. **Disposable workspace:** Copy repo, test branch, separate credentials.\n3. **Acceptance criteria:** Passing tests, max review time, rollback method.\n4. **Require evidence:** Plan, diffs, commands executed, test results.\n5. **Keep production human-owned:** A named human approves pull requests and deployments.",
+      "### Laguna S 2.1 System Overview",
+      "![Laguna S 2.1 Overview](/images/05-laguna-s2-1-overview.png)",
+      "Laguna S 2.1 brings serious long-horizon coding into open-weight models. Run a controlled pilot before adopting it as your default engine.",
+      "> **“AI should work for you.” — Asa Pritchard**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",
+      "## Your next action",
+      "Open the **Laguna S 2.1 Model Pilot Planner** (`/documents/laguna-s2-1-model-pilot-planner.html`) and download the **Model Pilot Template JSON** (`/documents/laguna-s2-1-model-pilot-template.json`). Run one test repository task and compare Laguna S 2.1 with your current coding model."
+    ]
+  },
+  {
     slug: "how-codex-can-direct-an-ai-explainer-video-factory",
     audience: "Lux Automaton",
     title: "How Codex Can Direct an AI Explainer Video Factory",

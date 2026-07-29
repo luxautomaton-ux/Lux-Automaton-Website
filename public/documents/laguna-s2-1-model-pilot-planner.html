@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Laguna S 2.1 Model Pilot Planner</title>
+<style>
+body{font-family:Arial;background:#06101f;color:#fff;margin:0;padding:26px}
+.page{max-width:900px;margin:0 auto 24px;background:#0b172a;padding:34px;border:2px solid #00d2ff;border-radius:18px;page-break-after:always}
+h1,h2{color:#00d2ff}.box{border:1px solid #8448ff;border-radius:12px;padding:16px;margin:14px 0}
+.line{height:31px;border-bottom:1px solid #74839b}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.check{margin:7px 0}button{padding:12px 18px;background:#8448ff;color:#fff;border:0;border-radius:8px}
+@media print{body{background:#fff;padding:0}.page{border:0;color:#000;background:#fff;page-break-after:always}button{display:none}h1,h2{color:#111}.box{border-color:#333}}
+</style></head>
+<body>
+<div class="page"><button onclick="window.print()">Print / Save as PDF</button>
+<h1>Laguna S 2.1 Model Pilot Planner</h1>
+<p>Evaluate the model on one real software task before adding it to a production route.</p>
+<div class="box"><h2>1. Business reason</h2><p>We are testing Laguna because:</p><div class="line"></div><div class="line"></div></div>
+<div class="grid">
+<div class="box"><h2>2. Exact model</h2><p>Checkpoint:</p><div class="line"></div><p>Quantization:</p><div class="line"></div><p>Context target:</p><div class="line"></div></div>
+<div class="box"><h2>3. Runtime</h2><div class="check">☐ vLLM</div><div class="check">☐ SGLang</div><div class="check">☐ Transformers</div><div class="check">☐ TRT-LLM</div><div class="check">☐ llama.cpp</div><div class="check">☐ Ollama / compatible app</div></div>
+</div>
+<div class="box"><h2>4. Hardware</h2><p>GPU / unified memory:</p><div class="line"></div><p>Available memory:</p><div class="line"></div><p>Expected weight size and runtime overhead:</p><div class="line"></div></div>
+<div class="box"><h2>5. Bounded task</h2><p>Repository:</p><div class="line"></div><p>Task:</p><div class="line"></div><div class="line"></div><p>Files allowed:</p><div class="line"></div><p>Files forbidden:</p><div class="line"></div></div>
+</div>
+<div class="page">
+<h1>Production Gate and Results</h1>
+<div class="box"><h2>6. Acceptance criteria</h2><div class="check">☐ Required tests identified</div><div class="check">☐ Performance target defined</div><div class="check">☐ Documentation required</div><div class="check">☐ Maximum review time defined</div><div class="check">☐ Human approver named</div></div>
+<div class="grid">
+<div class="box"><h2>7. Safety</h2><div class="check">☐ Test branch or copied repository</div><div class="check">☐ Sample data</div><div class="check">☐ Scoped credentials</div><div class="check">☐ Network limits</div><div class="check">☐ Audit log</div></div>
+<div class="box"><h2>8. Recovery</h2><div class="check">☐ Version control</div><div class="check">☐ Backup</div><div class="check">☐ Rollback command</div><div class="check">☐ Kill switch</div><p>Recovery owner:</p><div class="line"></div></div>
+</div>
+<div class="box"><h2>9. Compare with current model</h2><p>Completion rate:</p><div class="line"></div><p>Total elapsed time:</p><div class="line"></div><p>Human interventions:</p><div class="line"></div><p>Review time:</p><div class="line"></div><p>Cost / compute:</p><div class="line"></div><p>Recovery after failure:</p><div class="line"></div></div>
+<div class="box"><h2>10. Decision</h2><div class="check">☐ Stop</div><div class="check">☐ Change checkpoint or runtime</div><div class="check">☐ Improve prompt and retest</div><div class="check">☐ Approve limited internal route</div><div class="check">☐ Consider production after security review</div><p>Reason:</p><div class="line"></div><div class="line"></div></div>
+<h2>A benchmark earns a pilot. Evidence earns trust.</h2>
+</div>
+</body></html>

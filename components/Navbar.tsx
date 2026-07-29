@@ -9,6 +9,7 @@ import { prefixPath } from "@/lib/prefix";
 const PRODUCTS_ITEMS = [
   { href: "/products/lux-codex", name: "Lux Codex", icon: "🧠", desc: "The Core AI OS" },
   { href: "/products/lux-coder", name: "Lux Coder", icon: "💻", desc: "Developer Agent Terminal" },
+  { href: "/products/lux-jarvis", name: "Lux Jarvis", icon: "✦", desc: "AI Operations Partner" },
   { href: "/products/lana", name: "LANA", icon: "🌌", desc: "Interactive AI Soul & Partner" },
   { href: "/products/lux-agent-usb", name: "Lux Agent USB", icon: "💾", desc: "Portable OS Hardware" },
   { href: "/products/lux-business", name: "Lux Business", icon: "🏢", desc: "All-in-One Enterprise Hub" },

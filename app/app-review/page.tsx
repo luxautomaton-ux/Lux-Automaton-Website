@@ -219,6 +219,22 @@ const TOP_5_APPS: AppReviewItem[] = [
   }
 ];
 
+const JULY_29_TOP_5_APPS: AppReviewItem[] = [
+  { rank: 1, name: "Open Science", owner: "aipoch", repo: "aipoch/open-science", url: "https://github.com/aipoch/open-science", website: "https://github.com/aipoch/open-science", category: "AI for Science / Research Workbench", tags: ["Research", "AI", "Desktop"], description: "Local-first, model-agnostic desktop workbench for planning, inspecting, and preserving AI-assisted scientific work.", stars: "861", forks: "80", language: "TypeScript", license: "Apache-2.0", score: 91, grade: "A", verdict: "Excellent Choice", confidence: "High", weeklyStars: 28, scores: { usefulness: 19, health: 14, momentum: 14, ease: 13, trust: 14, quality: 9, innovation: 8 }, bestFor: "Researchers, analysts, labs, medical-research teams, and technical organizations.", solves: "Keeps projects, sessions, artifacts, permissions, notebooks, connectors, and model access in one inspectable research workspace.", standout: ["Desktop installers for macOS, Windows, and Linux", "Local project state with approval controls", "Scientific connectors, notebooks, reusable skills, and persistent sessions"], risks: ["Still early; major reproducibility and multi-model capabilities remain under development.", "Sensitive data and provider credentials require careful handling."] },
+  { rank: 2, name: "PGSimCity", owner: "NikolayS", repo: "NikolayS/PGSimCity", url: "https://github.com/NikolayS/PGSimCity", website: "https://nikolays.github.io/PGSimCity/", category: "Database Education / Interactive Visualization", tags: ["PostgreSQL", "Education", "3D"], description: "An explorable 3D city that makes PostgreSQL internals visible, interactive, and easier to teach.", stars: "339", forks: "20", language: "TypeScript", license: "Apache-2.0", score: 89, grade: "A-", verdict: "Worth Trying", confidence: "High", weeklyStars: 18, scores: { usefulness: 18, health: 15, momentum: 11, ease: 15, trust: 14, quality: 8, innovation: 8 }, bestFor: "Developers, DBAs-in-training, educators, onboarding programs, and engineering teams.", solves: "Turns PostgreSQL behavior into a visual system you can walk through, inspect, and deliberately stress.", standout: ["14-chapter guided tour", "234-test suite with accuracy boundaries", "Interactive scenarios for replication, cache, checkpoints, and locks"], risks: ["A 0.x educational model, not a PostgreSQL emulator.", "Scaled numbers should not be treated as production measurements."] },
+  { rank: 3, name: "AgentENV", owner: "kvcache-ai", repo: "kvcache-ai/AgentENV", url: "https://github.com/kvcache-ai/AgentENV", website: "https://github.com/kvcache-ai/AgentENV", category: "Agent Infrastructure / Sandboxed Environments", tags: ["Agents", "Firecracker", "Infrastructure"], description: "Distributed, snapshot-capable environments for running and evaluating AI agents in isolation.", stars: "882", forks: "75", language: "Rust", license: "MIT", score: 87, grade: "A-", verdict: "Worth Trying", confidence: "Medium-High", weeklyStars: 31, scores: { usefulness: 19, health: 14, momentum: 13, ease: 8, trust: 10, quality: 11, innovation: 12 }, bestFor: "AI infrastructure teams, agent-evaluation platforms, and RL researchers.", solves: "Provides fast, reproducible environments that can pause, resume, snapshot, fork, and scale.", standout: ["Firecracker isolation and OCI-compatible images", "Snapshot, pause, resume, and fork direction", "Deep Rust, Go, Firecracker, and OpenAPI tooling"], risks: ["Authorization is not currently supported; do not expose the API publicly.", "Requires Linux, KVM access, privileged infrastructure, and experienced operators."] },
+  { rank: 4, name: "GodotHub", owner: "RykoTheDev", repo: "RykoTheDev/GodotHub", url: "https://github.com/RykoTheDev/GodotHub", website: "https://github.com/RykoTheDev/GodotHub", category: "Game Development / Project Management", tags: ["Godot", "Tauri", "Game Dev"], description: "Desktop project manager for Godot versions, projects, templates, Git workflows, and workspaces.", stars: "437", forks: "15", language: "TypeScript + Rust", license: "MIT", score: 85, grade: "A-", verdict: "Worth Trying", confidence: "Medium-High", weeklyStars: 22, scores: { usefulness: 18, health: 13, momentum: 11, ease: 14, trust: 13, quality: 8, innovation: 8 }, bestFor: "Godot developers, game-jam teams, students, indie studios, and creators.", solves: "Brings versions, projects, templates, repositories, terminals, and launch settings into one desktop interface.", standout: ["Project creation, import, clone, search, categories, and batch operations", "Built-in Git workflows", "Tauri desktop architecture with React/TypeScript and Rust"], risks: ["Only tested on Windows according to the maintainer.", "Git operations create meaningful file-loss risk if edge cases are not tested."] },
+  { rank: 5, name: "Claude of Duty", owner: "mshumer", repo: "mshumer/Claude-of-Duty", url: "https://github.com/mshumer/Claude-of-Duty", website: "https://github.com/mshumer/Claude-of-Duty", category: "AI Coding Demonstration / Browser Game", tags: ["Game Dev", "AI Coding", "Testing"], description: "A browser FPS generated by coordinated AI coding agents with procedural graphics, audio, physics, and tests.", stars: "2.2k", forks: "317", language: "JavaScript", license: "MIT", score: 82, grade: "B+", verdict: "Promising", confidence: "Medium", weeklyStars: 45, scores: { usefulness: 15, health: 8, momentum: 15, ease: 12, trust: 14, quality: 8, innovation: 10 }, bestFor: "AI builders, game developers, and teams studying visual regression and performance testing.", solves: "Demonstrates how an interactive product can be decomposed, built by coordinated agents, visually evaluated, profiled, and improved.", standout: ["About 55,000 lines across 11 subsystems, according to the maintainer", "Procedural code-generated art and audio", "Screenshot capture, image-diff gates, and scripted playtests"], risks: ["Only two commits and no formal release history.", "Better as an AI-engineering case study than a production-ready game framework."] },
+];
+
+const JULY_29_MONEY_PLAYS = [
+  ["Open Science", "Private AI Research Workbench Setup", "Labs, research teams, medical organizations", "$2,500 setup", "$599/mo"],
+  ["PGSimCity", "PostgreSQL Visual Training Workshop", "Engineering teams, bootcamps, internal enablement", "$1,500 setup", "$299/mo"],
+  ["AgentENV", "Agent Sandbox Infrastructure Pilot", "AI labs, agent platforms, evaluation teams", "$7,500 setup", "$2,499/mo"],
+  ["GodotHub", "Godot Studio Workflow Setup", "Indie studios, schools, game-jam teams", "$1,200 setup", "$249/mo"],
+  ["Claude of Duty", "AI Game Build & Evaluation Workshop", "AI builders, game teams, schools", "$997 setup", "$199/mo"],
+];
+
 interface MoneyPlayScript {
   id: string;
   appSlug: "hermes" | "opencut" | "omniroute" | "deeptutor" | "officecli";
@@ -662,9 +678,24 @@ if __name__ == "__main__":
 
 export default function AppReviewPage() {
   const [selectedApp, setSelectedApp] = useState<AppReviewItem | null>(null);
+  const [edition, setEdition] = useState<"july-29" | "july-24">("july-29");
   const [activeTab, setActiveTab] = useState<"roundup" | "article" | "money-play" | "grading" | "subscriptions">("roundup");
   const [copiedScriptId, setCopiedScriptId] = useState<string | null>(null);
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
+  const isJuly29 = edition === "july-29";
+  const activeApps = isJuly29 ? JULY_29_TOP_5_APPS : TOP_5_APPS;
+  const maxWeeklyGrowth = Math.max(...activeApps.map((app) => app.weeklyStars));
+  const editionCover = isJuly29 ? "/images/lux-app-review-july-29-cover.png" : "/images/lux-app-review-july-24-cover.png";
+  const featuredThumbnail = editionCover;
+  const podcastAudio = isJuly29 ? "/audio/Five_GitHub_Apps_Taming_Digital_Chaos.m4a" : "/audio/Security_Risks_of_Open_Source_AI_Agents.m4a";
+  const podcastTitle = isJuly29 ? "Five GitHub Apps: Taming Digital Chaos" : "Security Risks of Open-Source AI Agents";
+  const podcastDescription = isJuly29 ? "Listen to the July 29 Lux App Review episode on five open-source projects helping builders bring more order, clarity, and practical leverage to complex digital work." : "Listen to the Lux Leadership Studio episode dissecting prompt injection vectors, least-privilege tool sandbox isolation, credential protection, and risk mitigation when running autonomous open-source agent runtimes in business environments.";
+  const featuredVideo = isJuly29 ? "/videos/The_Builders_Workflow_Blueprint_Top_5_Open_Source_AI_Tools.mp4" : "/videos/the-ai-workflow-stack-top-5.mp4";
+  const featuredVideoTitle = isJuly29 ? "The Builder’s Workflow Blueprint: Top 5 Open-Source AI Tools" : "The AI Workflow Stack: Top 5 GitHub Tools Evaluated";
+  const useFullDashboardLayout = true;
+  const editionDate = isJuly29 ? "July 29, 2026" : "July 20 – 24, 2026";
+  const editionReviewPdf = isJuly29 ? "/documents/Lux_App_Review_Five_GitHub_Apps_2026-07-29.pdf" : "/documents/Lux_App_Review_Top_5_2026-07-24.pdf";
+  const editionMoneyPlayPdf = isJuly29 ? "/documents/Lux_App_Review_Five_GitHub_Apps_Money_Play_2026-07-29.pdf" : "/documents/Lux_App_Review_Money_Play_2026-07-24.pdf";
 
   const copyCode = (script: MoneyPlayScript) => {
     navigator.clipboard.writeText(script.code);
@@ -679,17 +710,16 @@ export default function AppReviewPage() {
   return (
     <div style={{ background: "var(--bg-base)", color: "var(--text-primary)", minHeight: "100vh", paddingTop: "88px", paddingBottom: "80px" }}>
       
-      {/* Top Banner & Header with Background Video Hero */}
+      {/* Top Banner & Header */}
       <section style={{ position: "relative", overflow: "hidden", borderBottom: "1px solid rgba(108, 71, 255, 0.25)", background: "#060913", padding: "40px 0 44px" }}>
-        
-        {/* Background Video Hero (10% Zoomed to crop lower-right logo) */}
-        <video 
-          src={prefixPath("/videos/the-ai-workflow-stack-top-5.mp4")} 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.38, transform: "scale(1.10)", transformOrigin: "center center" }} 
+
+        <Image
+          src={prefixPath(editionCover)}
+          alt={isJuly29 ? "Lux App Review Weekly Picks: Top GitHub Apps Reviews and Rankings" : "Lux App Review Weekly Picks: July 24 Top GitHub Apps Reviews and Rankings"}
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover", zIndex: 0, opacity: 0.5 }}
         />
         
         {/* Dark Gradient Overlay for Readability */}
@@ -725,7 +755,7 @@ export default function AppReviewPage() {
               <div style={{ fontSize: "1.4rem" }}>📅</div>
               <div>
                 <div style={{ fontSize: "0.65rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>WEEK OF</div>
-                <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#fff" }}>July 20 – 24, 2026</div>
+                <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#fff" }}>{editionDate}</div>
               </div>
               <div style={{ borderLeft: "1px solid rgba(255,255,255,0.1)", paddingLeft: "14px" }}>
                 <div style={{ fontSize: "0.65rem", color: "var(--lux-mint)", fontFamily: "var(--font-mono)", fontWeight: 600 }}>NEXT UPDATE</div>
@@ -752,7 +782,7 @@ export default function AppReviewPage() {
             {/* Quick Action Buttons */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
               <a
-                href="/documents/Lux_App_Review_Top_5_2026-07-24.pdf"
+                href={prefixPath(editionReviewPdf)}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ background: "linear-gradient(135deg, var(--lux-cyan), var(--lux-indigo))", color: "#fff", padding: "10px 18px", borderRadius: "10px", fontWeight: 800, fontSize: "0.85rem", textDecoration: "none", boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)", display: "inline-flex", alignItems: "center", gap: "8px" }}
@@ -760,7 +790,7 @@ export default function AppReviewPage() {
                 <span>Full Review PDF 📥</span>
               </a>
               <a
-                href="/documents/Lux_App_Review_Money_Play_2026-07-24.pdf"
+                href={prefixPath(editionMoneyPlayPdf)}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ background: "rgba(255, 215, 0, 0.12)", border: "1px solid #ffd700", color: "#ffe45c", padding: "10px 18px", borderRadius: "10px", fontWeight: 800, fontSize: "0.85rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "8px" }}
@@ -771,6 +801,11 @@ export default function AppReviewPage() {
           </div>
 
           {/* Navigation Sub-Tabs */}
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
+            <span style={{ fontSize: "0.68rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)", fontWeight: 800, letterSpacing: "0.12em" }}>ROUNDUP EDITION</span>
+            <button onClick={() => { setEdition("july-29"); setSelectedApp(null); }} style={{ background: edition === "july-29" ? "linear-gradient(135deg, var(--lux-cyan), var(--lux-indigo))" : "rgba(255,255,255,.04)", border: edition === "july-29" ? "1px solid var(--lux-cyan)" : "1px solid rgba(255,255,255,.16)", color: "#fff", padding: "8px 13px", borderRadius: "8px", fontWeight: 800, cursor: "pointer" }}>July 29 · Open Science &amp; 3D PostgreSQL</button>
+            <button onClick={() => { setEdition("july-24"); setSelectedApp(null); }} style={{ background: edition === "july-24" ? "linear-gradient(135deg, var(--lux-cyan), var(--lux-indigo))" : "rgba(255,255,255,.04)", border: edition === "july-24" ? "1px solid var(--lux-cyan)" : "1px solid rgba(255,255,255,.16)", color: "#fff", padding: "8px 13px", borderRadius: "8px", fontWeight: 800, cursor: "pointer" }}>July 24 · AI Workflow Stack</button>
+          </div>
           <div style={{ display: "flex", overflowX: "auto", gap: "8px", borderBottom: "1px solid rgba(255, 255, 255, 0.08)", paddingBottom: "12px" }}>
             <button
               onClick={() => setActiveTab("roundup")}
@@ -858,7 +893,43 @@ export default function AppReviewPage() {
         </div>
       </section>
 
-      {/* Main Container */}
+      {!useFullDashboardLayout && edition === "july-29" ? (
+        <main style={{ maxWidth: "1280px", margin: "40px auto 0", padding: "0 24px" }}>
+          <section style={{ display: "grid", gridTemplateColumns: "minmax(0,1.3fr) minmax(300px,.7fr)", gap: "24px", marginBottom: "26px" }} className="app-review-edition-hero">
+            <div style={{ position: "relative", minHeight: "420px", overflow: "hidden", borderRadius: "20px", border: "1px solid rgba(0,212,255,.38)", background: "#060913" }}>
+              <Image src={prefixPath("/images/lux-app-review-top-5-hero.png")} alt="July 29 Lux App Review Top 5 GitHub Apps" fill priority style={{ objectFit: "cover" }} />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg,rgba(6,9,19,.88),rgba(6,9,19,.15) 70%)" }} />
+              <div style={{ position: "relative", zIndex: 1, padding: "clamp(24px,5vw,52px)", maxWidth: "590px" }}>
+                <p style={{ color: "var(--lux-cyan)", font: "800 .72rem var(--font-mono)", letterSpacing: ".14em", margin: 0 }}>WEEKLY ROUNDUP · JULY 29, 2026</p>
+                <h1 style={{ color: "#fff", fontSize: "clamp(2.4rem,5.2vw,5.3rem)", lineHeight: .91, letterSpacing: "-.065em", margin: "18px 0" }}>Five GitHub apps worth watching.</h1>
+                <p style={{ color: "#d5ddeb", fontSize: "1.05rem", lineHeight: 1.7, margin: 0 }}>Open Science, agent infrastructure, game tools, a browser game built with AI, and PostgreSQL in 3D—reviewed through the Lux 100-point score.</p>
+              </div>
+            </div>
+            <aside style={{ border: "1px solid rgba(190,100,255,.55)", borderRadius: "20px", padding: "28px", background: "radial-gradient(circle at top right,rgba(123,76,255,.23),transparent 45%),#0b1020" }}>
+              <p style={{ color: "var(--lux-cyan)", font: "800 .7rem var(--font-mono)", letterSpacing: ".12em", margin: 0 }}>TOP PICK OVERALL</p>
+              <h2 style={{ margin: "14px 0 6px", color: "#fff", fontSize: "2rem" }}>Open Science</h2>
+              <div style={{ display: "flex", alignItems: "end", gap: "10px", margin: "22px 0" }}><b style={{ fontSize: "4.7rem", lineHeight: .75, color: "#fff" }}>91</b><span style={{ color: "#a9b3c8", fontSize: "1.4rem" }}>/100</span><strong style={{ color: "var(--lux-mint)", fontSize: "2.6rem" }}>A</strong></div>
+              <p style={{ color: "var(--lux-mint)", margin: 0, fontWeight: 800 }}>Excellent Choice</p>
+              <div style={{ marginTop: "30px", paddingTop: "18px", borderTop: "1px solid rgba(255,255,255,.12)", color: "#b9c4d8", lineHeight: 1.6 }}>The clearest path from repository to daily professional research work.</div>
+            </aside>
+          </section>
+
+          <section style={{ display: "grid", gridTemplateColumns: "minmax(0,1.25fr) minmax(270px,.75fr)", gap: "24px", alignItems: "start" }} className="app-review-edition-grid">
+            <div style={{ border: "1px solid rgba(0,212,255,.3)", borderRadius: "18px", overflow: "hidden", background: "rgba(11,16,30,.84)" }}>
+              <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "16px", padding: "18px 22px", borderBottom: "1px solid rgba(255,255,255,.09)" }}><div><p style={{ color: "var(--lux-cyan)", font: "800 .68rem var(--font-mono)", letterSpacing: ".12em", margin: 0 }}>TOP 5 RANKING</p><h2 style={{ color: "#fff", fontSize: "1.2rem", margin: "6px 0 0" }}>Research snapshot · July 29</h2></div><span style={{ color: "var(--lux-mint)", fontSize: ".78rem", fontWeight: 800 }}>5 SELECTED REPOSITORIES</span></header>
+              {JULY_29_TOP_5_APPS.map((app) => <article key={app.rank} style={{ display: "grid", gridTemplateColumns: "56px minmax(0,1fr) auto", gap: "16px", alignItems: "center", padding: "18px 22px", borderBottom: "1px solid rgba(255,255,255,.08)" }}><b style={{ color: app.rank === 1 ? "var(--lux-mint)" : "var(--lux-cyan)", fontSize: "1.55rem" }}>0{app.rank}</b><div><h3 style={{ margin: 0, color: "#fff", fontSize: "1.12rem" }}>{app.name}</h3><p style={{ margin: "4px 0 0", color: "#9daac0", fontSize: ".83rem", lineHeight: 1.45 }}>{app.description}</p><span style={{ display: "inline-block", marginTop: "8px", color: "#bfb8d6", font: "700 .68rem var(--font-mono)" }}>{app.category}</span></div><div style={{ textAlign: "right" }}><strong style={{ display: "block", color: "var(--lux-mint)", fontSize: "1.5rem" }}>{app.score}<small style={{ color: "#a7b2c8", fontSize: ".7rem" }}>/100</small></strong><span style={{ color: "var(--lux-mint)", fontWeight: 900 }}>{app.grade}</span><button onClick={() => setSelectedApp(app)} style={{ display: "block", marginTop: "8px", border: "1px solid rgba(0,212,255,.45)", background: "transparent", color: "var(--lux-cyan)", padding: "6px 9px", borderRadius: "6px", fontSize: ".68rem", fontWeight: 800, cursor: "pointer" }}>VIEW REVIEW</button></div></article>)}
+            </div>
+            <div style={{ display: "grid", gap: "16px" }}>
+              <section style={{ padding: "24px", border: "1px solid rgba(108,71,255,.52)", borderRadius: "18px", background: "#11162a" }}><p style={{ margin: 0, color: "#d7aaff", font: "800 .68rem var(--font-mono)", letterSpacing: ".11em" }}>THIS WEEK&apos;S HIGHLIGHTS</p><ul style={{ paddingLeft: "19px", margin: "16px 0 0", color: "#c6cedd", lineHeight: 1.7 }}><li>AI tools continue to dominate innovation and productivity.</li><li>Agent evaluation platforms are gaining serious traction.</li><li>Open-source game tools are pushing new boundaries.</li><li>Database-powered simulations make complex systems easier to learn.</li></ul></section>
+              <section style={{ padding: "24px", border: "1px solid rgba(0,212,255,.46)", borderRadius: "18px", background: "#0b1628" }}><p style={{ margin: 0, color: "var(--lux-cyan)", font: "800 .68rem var(--font-mono)", letterSpacing: ".11em" }}>OFFICIAL REVIEW PACKAGE</p><h3 style={{ color: "#fff", margin: "10px 0", fontSize: "1.25rem" }}>Full report &amp; Money Play guide</h3><p style={{ color: "#aebbd0", lineHeight: 1.55, fontSize: ".86rem" }}>Download the July 29 report or the subscriber commercial playbook.</p><div style={{ display: "grid", gap: "9px" }}><a href={prefixPath("/documents/Lux_App_Review_Five_GitHub_Apps_2026-07-29.pdf")} target="_blank" rel="noreferrer" style={{ textAlign: "center", border: "1px solid var(--lux-cyan)", color: "var(--lux-cyan)", padding: "10px", borderRadius: "7px", fontWeight: 800, textDecoration: "none" }}>DOWNLOAD REVIEW PDF</a><a href={prefixPath("/documents/Lux_App_Review_Five_GitHub_Apps_Money_Play_2026-07-29.pdf")} target="_blank" rel="noreferrer" style={{ textAlign: "center", border: "1px solid #d7aaff", color: "#e6c1ff", padding: "10px", borderRadius: "7px", fontWeight: 800, textDecoration: "none" }}>MONEY PLAY PDF</a></div></section>
+            </div>
+          </section>
+          <section style={{ margin: "24px 0", padding: "24px", border: "1px solid rgba(0,212,255,.26)", borderRadius: "18px", background: "linear-gradient(90deg,rgba(0,212,255,.08),rgba(108,71,255,.08))" }}><p style={{ color: "var(--lux-cyan)", font: "800 .7rem var(--font-mono)", letterSpacing: ".12em", margin: 0 }}>THE LUX SCORE</p><div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(135px,1fr))", gap: "14px", marginTop: "15px" }}>{[["20", "Usefulness"], ["15", "Project health"], ["15", "Community momentum"], ["15", "Ease of use"], ["15", "Trust & safety"], ["10", "Product quality"], ["10", "Innovation"]].map(([points, label]) => <div key={label}><b style={{ color: "#fff", fontSize: "1.55rem" }}>{points}</b><span style={{ display: "block", color: "#aab6cb", fontSize: ".78rem" }}>{label}</span></div>)}</div></section>
+          <section style={{ margin: "24px 0", padding: "26px", border: "1px solid rgba(217,170,255,.45)", borderRadius: "18px", background: "linear-gradient(135deg,rgba(40,17,67,.7),rgba(8,16,35,.9))" }}><p style={{ color: "#e0aaff", font: "800 .7rem var(--font-mono)", letterSpacing: ".12em", margin: 0 }}>SUBSCRIBER MONEY PLAYS</p><h2 style={{ color: "#fff", margin: "9px 0", fontSize: "1.7rem" }}>Five practical offers from this week&apos;s research</h2><p style={{ color: "#b9c3d7", margin: "0 0 20px", lineHeight: 1.6 }}>Educational planning examples only. No earnings guarantee.</p><div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: "12px" }}>{JULY_29_MONEY_PLAYS.map(([app, offer, buyers, setup, monthly]) => <article key={app} style={{ padding: "17px", border: "1px solid rgba(255,255,255,.13)", borderRadius: "12px", background: "rgba(4,10,24,.58)" }}><span style={{ color: "var(--lux-cyan)", font: "800 .68rem var(--font-mono)" }}>{app}</span><h3 style={{ color: "#fff", fontSize: "1rem", margin: "8px 0" }}>{offer}</h3><p style={{ color: "#aab7cf", fontSize: ".79rem", minHeight: "38px", lineHeight: 1.45 }}>{buyers}</p><div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}><b style={{ color: "var(--lux-mint)", fontSize: ".78rem" }}>{setup}</b><b style={{ color: "#e0aaff", fontSize: ".78rem" }}>{monthly}</b></div></article>)}</div></section>
+          <section style={{ margin: "24px 0 78px", padding: "26px", border: "1px solid rgba(0,212,255,.34)", borderRadius: "18px", background: "#0a1223" }}><p style={{ color: "var(--lux-cyan)", font: "800 .7rem var(--font-mono)", letterSpacing: ".12em", margin: 0 }}>COMPLETE JULY 29 PUBLISHING PACKAGE</p><h2 style={{ color: "#fff", margin: "9px 0 20px", fontSize: "1.7rem" }}>Every supplied report file, ready to use</h2><div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", gap: "10px" }}>{[["Full review PDF", "/documents/Lux_App_Review_Five_GitHub_Apps_2026-07-29.pdf"], ["Money Play PDF", "/documents/Lux_App_Review_Five_GitHub_Apps_Money_Play_2026-07-29.pdf"], ["Editable Word report", "/documents/lux-app-review-july-29/Lux_App_Review_Five_GitHub_Apps_2026-07-29.docx"], ["Standalone review website", "/documents/lux-app-review-july-29/index.html"], ["Full editorial post", "/documents/lux-app-review-july-29/full-post.md"], ["CMS-ready post", "/documents/lux-app-review-july-29/cms-ready.md"], ["SEO & social copy", "/documents/lux-app-review-july-29/seo-social.md"], ["Review data JSON", "/documents/lux-app-review-july-29/review.json"], ["Money Play data JSON", "/documents/lux-app-review-july-29/money-play.json"], ["Money Play agent prompt", "/documents/lux-app-review-july-29/money-play-agent-prompt.txt"]].map(([label, href]) => <a key={label} href={prefixPath(href)} target="_blank" rel="noreferrer" style={{ display: "flex", justifyContent: "space-between", gap: "12px", alignItems: "center", padding: "12px", border: "1px solid rgba(255,255,255,.13)", borderRadius: "9px", color: "#d8e4f7", textDecoration: "none", fontWeight: 700, fontSize: ".83rem" }}><span>{label}</span><b style={{ color: "var(--lux-cyan)" }}>↗</b></a>)}</div></section>
+        </main>
+      ) : (
+      /* Main Container */
       <div style={{ maxWidth: "1280px", margin: "40px auto 0", padding: "0 24px" }}>
 
         {/* TAB 1: WEEKLY RANKING TABLE & DASHBOARD */}
@@ -869,17 +940,17 @@ export default function AppReviewPage() {
             <div style={{ background: "linear-gradient(135deg, rgba(9, 14, 26, 0.95), rgba(16, 24, 40, 0.95))", border: "1px solid rgba(0, 212, 255, 0.35)", borderRadius: "16px", padding: "24px", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "20px", boxShadow: "0 0 35px rgba(0, 212, 255, 0.15)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
                 <div style={{ width: "240px", maxWidth: "100%", height: "135px", position: "relative", flexShrink: 0, borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.4)", boxShadow: "0 0 20px rgba(0, 212, 255, 0.2)", background: "#060913" }}>
-                  <Image src={prefixPath("/images/01-thumbnail-top-5-github-apps.png")} alt="Top 5 GitHub Apps to Watch This Week" fill style={{ objectFit: "contain" }} />
+                  <Image src={prefixPath(featuredThumbnail)} alt="Top 5 GitHub Apps to Watch This Week" fill style={{ objectFit: "contain" }} />
                 </div>
                 <div>
                   <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "0.7rem", fontWeight: 800, color: "var(--lux-cyan)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "4px" }}>
-                    <span>📰</span> FEATURED EDITORIAL BLOG ARTICLE • JULY 24, 2026
+                    <span>📰</span> FEATURED EDITORIAL BLOG ARTICLE • {editionDate.toUpperCase()}
                   </div>
                   <h3 style={{ fontSize: "1.35rem", fontWeight: 900, margin: "0 0 6px", color: "#fff" }}>
                     Top 5 GitHub Apps to Watch This Week
                   </h3>
                   <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: 0, maxWidth: "680px", lineHeight: 1.5 }}>
-                    Open-source tools with real momentum, practical value, and a clear Lux verdict. Read the complete 14-minute editorial review of Hermes Agent, OpenCut, OmniRoute, DeepTutor, and OfficeCLI.
+                    {isJuly29 ? "Open Science, PGSimCity, AgentENV, GodotHub, and Claude of Duty—five open-source projects evaluated across the Lux seven-dimension score." : "Open-source tools with real momentum, practical value, and a clear Lux verdict. Read the complete 14-minute editorial review of Hermes Agent, OpenCut, OmniRoute, DeepTutor, and OfficeCLI."}
                   </p>
                 </div>
               </div>
@@ -942,11 +1013,7 @@ export default function AppReviewPage() {
 
                 {/* Radar Legend */}
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center", marginTop: "12px", fontSize: "0.72rem" }}>
-                  <span style={{ color: "var(--lux-cyan)", display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: "var(--lux-cyan)", borderRadius: "50%" }}></span> Hermes Agent (92)</span>
-                  <span style={{ color: "#ff0080", display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: "#ff0080", borderRadius: "50%" }}></span> OpenCut (88)</span>
-                  <span style={{ color: "var(--lux-indigo)", display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: "var(--lux-indigo)", borderRadius: "50%" }}></span> OmniRoute (87)</span>
-                  <span style={{ color: "var(--lux-mint)", display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: "var(--lux-mint)", borderRadius: "50%" }}></span> DeepTutor (86)</span>
-                  <span style={{ color: "#ffe45c", display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: "#ffe45c", borderRadius: "50%" }}></span> OfficeCLI (84)</span>
+                  {activeApps.map((app, index) => { const color = ["var(--lux-cyan)", "#ff0080", "var(--lux-indigo)", "var(--lux-mint)", "#ffe45c"][index]; return <span key={app.name} style={{ color, display: "flex", alignItems: "center", gap: "4px" }}><span style={{ width: "8px", height: "8px", background: color, borderRadius: "50%" }}></span> {app.name} ({app.score})</span>; })}
                 </div>
               </div>
 
@@ -958,65 +1025,12 @@ export default function AppReviewPage() {
                     <h3 style={{ fontSize: "1.15rem", fontWeight: 800, color: "#fff", margin: "2px 0 0" }}>Estimated Weekly Star Growth</h3>
                   </div>
                   <span style={{ fontSize: "0.75rem", background: "rgba(0, 255, 163, 0.1)", color: "var(--lux-mint)", padding: "4px 10px", borderRadius: "12px", border: "1px solid rgba(0,255,163,0.3)" }}>
-                    July 15–22 Snapshot
+                    {isJuly29 ? "July 29 signal" : "July 15–22 Snapshot"}
                   </span>
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginTop: "12px" }}>
-                  {/* OpenCut */}
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>
-                      <span>OpenCut (Creator Tool)</span>
-                      <span style={{ color: "#ff0080", fontFamily: "var(--font-mono)" }}>+7,824 stars / wk</span>
-                    </div>
-                    <div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}>
-                      <div style={{ width: "100%", height: "100%", background: "linear-gradient(90deg, #ff0080, #ff66c4)", borderRadius: "7px" }}></div>
-                    </div>
-                  </div>
-
-                  {/* OmniRoute */}
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>
-                      <span>OmniRoute (AI Infrastructure)</span>
-                      <span style={{ color: "var(--lux-indigo)", fontFamily: "var(--font-mono)" }}>+6,240 stars / wk</span>
-                    </div>
-                    <div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}>
-                      <div style={{ width: "80%", height: "100%", background: "linear-gradient(90deg, var(--lux-indigo), var(--lux-cyan))", borderRadius: "7px" }}></div>
-                    </div>
-                  </div>
-
-                  {/* OfficeCLI */}
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>
-                      <span>OfficeCLI (Document Automation)</span>
-                      <span style={{ color: "#ffe45c", fontFamily: "var(--font-mono)" }}>+3,899 stars / wk</span>
-                    </div>
-                    <div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}>
-                      <div style={{ width: "50%", height: "100%", background: "linear-gradient(90deg, #ffe45c, #ff9900)", borderRadius: "7px" }}></div>
-                    </div>
-                  </div>
-
-                  {/* Hermes Agent */}
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>
-                      <span>Hermes Agent (AI Agent)</span>
-                      <span style={{ color: "var(--lux-cyan)", fontFamily: "var(--font-mono)" }}>+3,513 stars / wk</span>
-                    </div>
-                    <div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}>
-                      <div style={{ width: "45%", height: "100%", background: "linear-gradient(90deg, var(--lux-cyan), #00bfff)", borderRadius: "7px" }}></div>
-                    </div>
-                  </div>
-
-                  {/* DeepTutor */}
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>
-                      <span>DeepTutor (Education AI)</span>
-                      <span style={{ color: "var(--lux-mint)", fontFamily: "var(--font-mono)" }}>+2,814 stars / wk</span>
-                    </div>
-                    <div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}>
-                      <div style={{ width: "36%", height: "100%", background: "linear-gradient(90deg, var(--lux-mint), #00ffaa)", borderRadius: "7px" }}></div>
-                    </div>
-                  </div>
+                  {activeApps.map((app, index) => { const color = ["#ff0080", "var(--lux-indigo)", "#ffe45c", "var(--lux-cyan)", "var(--lux-mint)"][index]; const label = isJuly29 ? `+${app.weeklyStars}% momentum signal` : `+${app.weeklyStars.toLocaleString()} stars / wk`; return <div key={app.name}><div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.78rem", fontWeight: 700, color: "#fff", marginBottom: "4px" }}><span>{app.name}</span><span style={{ color, fontFamily: "var(--font-mono)" }}>{label}</span></div><div style={{ width: "100%", height: "14px", background: "rgba(255,255,255,0.06)", borderRadius: "7px", overflow: "hidden" }}><div style={{ width: `${Math.max(18, Math.round((app.weeklyStars / maxWeeklyGrowth) * 100))}%`, height: "100%", background: `linear-gradient(90deg, ${color}, var(--lux-cyan))`, borderRadius: "7px" }}></div></div></div>; })}
                 </div>
 
                 <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "16px", fontStyle: "italic", textAlign: "right" }}>
@@ -1034,7 +1048,7 @@ export default function AppReviewPage() {
                     <GithubLogoIcon size={20} color="#fff" />
                     <span>Weekly Open-Source App Rankings</span>
                   </h2>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Updated July 24, 2026 • Evaluated across 7 operational dimensions</div>
+                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Updated {editionDate} • Evaluated across 7 operational dimensions</div>
                 </div>
                 <div style={{ fontSize: "0.75rem", color: "var(--lux-cyan)", background: "rgba(0, 212, 255, 0.08)", padding: "4px 12px", borderRadius: "20px", border: "1px solid rgba(0, 212, 255, 0.2)" }}>
                   5 Selected Repositories
@@ -1058,7 +1072,7 @@ export default function AppReviewPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {TOP_5_APPS.map((app) => (
+                    {activeApps.map((app) => (
                       <tr key={app.rank} style={{ borderBottom: "1px solid rgba(255,255,255,0.04)", transition: "background 0.2s" }} className="table-row-hover">
                         <td style={{ padding: "16px", fontWeight: 800, fontSize: "1.1rem", color: app.rank === 1 ? "var(--lux-cyan)" : app.rank === 2 ? "var(--lux-mint)" : "var(--text-secondary)" }}>
                           {app.rank}
@@ -1287,24 +1301,24 @@ export default function AppReviewPage() {
                   </div>
                   
                   <h3 style={{ fontSize: "1.45rem", fontWeight: 900, color: "#fff", margin: 0, lineHeight: 1.25 }}>
-                    Security Risks of Open-Source AI Agents
+                    {podcastTitle}
                   </h3>
                   
                   <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: 0, lineHeight: 1.5 }}>
-                    Listen to the Lux Leadership Studio episode dissecting prompt injection vectors, least-privilege tool sandbox isolation, credential protection, and risk mitigation when running autonomous open-source agent runtimes in business environments.
+                    {podcastDescription}
                   </p>
 
                   {/* HTML5 Audio Player */}
                   <div style={{ background: "rgba(6, 9, 19, 0.85)", border: "1px solid rgba(0, 212, 255, 0.3)", borderRadius: "12px", padding: "14px 16px", marginTop: "4px" }}>
                     <audio 
                       controls 
-                      src={prefixPath("/audio/Security_Risks_of_Open_Source_AI_Agents.m4a")} 
+                      src={prefixPath(podcastAudio)}
                       style={{ width: "100%", height: "40px", borderRadius: "8px" }} 
                     />
                     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "8px", marginTop: "8px", fontSize: "0.75rem" }}>
-                      <span style={{ color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>📻 Audio: Security_Risks_of_Open_Source_AI_Agents.m4a</span>
+                      <span style={{ color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>📻 Audio: {podcastAudio.split("/").at(-1)}</span>
                       <a 
-                        href="/audio/Security_Risks_of_Open_Source_AI_Agents.m4a" 
+                        href={prefixPath(podcastAudio)}
                         download 
                         style={{ color: "var(--lux-cyan)", fontWeight: 800, textDecoration: "none", fontFamily: "var(--font-mono)" }}
                       >
@@ -1320,8 +1334,8 @@ export default function AppReviewPage() {
             {/* Article High-Res Hero Photo Banner */}
             <div style={{ position: "relative", width: "100%", height: "480px", borderRadius: "20px", overflow: "hidden", border: "1px solid rgba(0, 212, 255, 0.4)", boxShadow: "0 25px 50px rgba(0,0,0,0.6)", background: "#060913" }}>
               <Image 
-                src={prefixPath("/images/hero.png")} 
-                alt="Top 5 GitHub Apps to Watch This Week Hero Photograph" 
+                src={prefixPath(editionCover)}
+                alt={isJuly29 ? "Lux App Review Weekly Picks: Top GitHub Apps Reviews and Rankings" : "Lux App Review Weekly Picks: July 24 Top GitHub Apps Reviews and Rankings"}
                 fill 
                 style={{ objectFit: "cover" }} 
                 priority 
@@ -1351,7 +1365,7 @@ export default function AppReviewPage() {
                   muted
                   loop
                   playsInline
-                  src={prefixPath("/videos/the-ai-workflow-stack-top-5.mp4")}
+                  src={prefixPath(featuredVideo)}
                   style={{
                     position: "absolute",
                     top: 0,
@@ -1370,11 +1384,11 @@ export default function AppReviewPage() {
                     🎥 FEATURED VIDEO EVALUATION
                   </span>
                   <h4 style={{ fontSize: "1.2rem", fontWeight: 900, color: "#fff", margin: "4px 0 0" }}>
-                    The AI Workflow Stack: Top 5 GitHub Tools Evaluated
+                    {featuredVideoTitle}
                   </h4>
                 </div>
                 <div style={{ fontSize: "0.75rem", color: "var(--lux-mint)", fontFamily: "var(--font-mono)", background: "rgba(0, 255, 163, 0.1)", padding: "4px 12px", borderRadius: "20px", border: "1px solid rgba(0, 255, 163, 0.3)" }}>
-                  🔍 10% Zoom Scale Active (Cropped Lower-Right Logo)
+                  {isJuly29 ? "JULY 29 EDITION" : "🔍 10% Zoom Scale Active (Cropped Lower-Right Logo)"}
                 </div>
               </div>
             </div>
@@ -1400,44 +1414,44 @@ export default function AppReviewPage() {
                   {/* Photo 1: Hero Visual */}
                   <div style={{ background: "#060913", border: "1px solid rgba(0, 212, 255, 0.35)", borderRadius: "16px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.5)" }}>
                     <div style={{ position: "relative", width: "100%", height: "200px", background: "#0b0f19" }}>
-                      <Image src={prefixPath("/images/hero.png")} alt="Top 5 GitHub Apps Editorial Hero" fill style={{ objectFit: "cover" }} />
+                      <Image src={prefixPath(isJuly29 ? "/images/lux-app-review-july-29-studio-01.png" : "/images/hero.png")} alt={isJuly29 ? "Lux App Review July 29 ranking board in the research studio" : "Top 5 GitHub Apps Editorial Hero"} fill style={{ objectFit: "cover" }} />
                     </div>
                     <div style={{ padding: "14px 16px" }}>
-                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>Top 5 GitHub Apps Hero Visual</div>
-                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Primary editorial photograph from the publication kit</div>
+                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>{isJuly29 ? "Research Desk · Ranking Board" : "Top 5 GitHub Apps Hero Visual"}</div>
+                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>{isJuly29 ? "July 29 scorecard in the Lux App Review studio" : "Primary editorial photograph from the publication kit"}</div>
                     </div>
                   </div>
 
                   {/* Photo 2: Editorial Workspace */}
                   <div style={{ background: "#060913", border: "1px solid rgba(108, 71, 255, 0.35)", borderRadius: "16px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.5)" }}>
                     <div style={{ position: "relative", width: "100%", height: "200px", background: "#0b0f19" }}>
-                      <Image src={prefixPath("/images/editorial-workspace.png")} alt="Lux Editorial Workspace" fill style={{ objectFit: "cover" }} />
+                      <Image src={prefixPath(isJuly29 ? "/images/lux-app-review-july-29-studio-02.png" : "/images/editorial-workspace.png")} alt={isJuly29 ? "Lux App Review creator workspace with video review" : "Lux Editorial Workspace"} fill style={{ objectFit: "cover" }} />
                     </div>
                     <div style={{ padding: "14px 16px" }}>
-                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>Editorial Research Workspace</div>
-                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Evaluation workflow and research environment</div>
+                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>{isJuly29 ? "Creator Studio · Review in Motion" : "Editorial Research Workspace"}</div>
+                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>{isJuly29 ? "The scorecard, recording setup, and review video workflow" : "Evaluation workflow and research environment"}</div>
                     </div>
                   </div>
 
                   {/* Photo 3: Radar Score System */}
                   <div style={{ background: "#060913", border: "1px solid rgba(0, 255, 163, 0.35)", borderRadius: "16px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.5)" }}>
                     <div style={{ position: "relative", width: "100%", height: "200px", background: "#0b0f19" }}>
-                      <Image src={prefixPath("/images/score-visual.png")} alt="Lux Score 7-Dimension Rating Framework" fill style={{ objectFit: "cover" }} />
+                      <Image src={prefixPath(isJuly29 ? "/images/lux-app-review-july-29-studio-03.png" : "/images/score-visual.png")} alt={isJuly29 ? "Lux App Review July 29 scorecard displayed on a studio monitor" : "Lux Score 7-Dimension Rating Framework"} fill style={{ objectFit: "cover" }} />
                     </div>
                     <div style={{ padding: "14px 16px" }}>
-                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>7-Dimension Lux Score System</div>
-                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Radar evaluation metrics and weightings</div>
+                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>{isJuly29 ? "Studio Monitor · July 29 Scorecard" : "7-Dimension Lux Score System"}</div>
+                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>{isJuly29 ? "A focused look at this week’s ranked GitHub apps" : "Radar evaluation metrics and weightings"}</div>
                     </div>
                   </div>
 
                   {/* Photo 4: Social Preview */}
                   <div style={{ background: "#060913", border: "1px solid rgba(255, 215, 0, 0.35)", borderRadius: "16px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.5)" }}>
                     <div style={{ position: "relative", width: "100%", height: "200px", background: "#0b0f19" }}>
-                      <Image src={prefixPath("/images/social-preview.png")} alt="Lux App Review Social Preview Card" fill style={{ objectFit: "cover" }} />
+                      <Image src={prefixPath(isJuly29 ? "/images/lux-app-review-july-29-studio-04.png" : "/images/social-preview.png")} alt={isJuly29 ? "Lux App Review July 29 publishing desk and ranking workflow" : "Lux App Review Social Preview Card"} fill style={{ objectFit: "cover" }} />
                     </div>
                     <div style={{ padding: "14px 16px" }}>
-                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>Publication &amp; Social Card</div>
-                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>Social media and newsletter distribution preview</div>
+                      <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#fff" }}>{isJuly29 ? "Publishing Desk · Top 5 Workflow" : "Publication &amp; Social Card"}</div>
+                      <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>{isJuly29 ? "From ranked research to a finished App Review edition" : "Social media and newsletter distribution preview"}</div>
                     </div>
                   </div>
 
@@ -1447,7 +1461,7 @@ export default function AppReviewPage() {
               <hr style={{ border: "none", borderTop: "1px solid rgba(255,255,255,0.08)", margin: "40px 0" }} />
 
               {/* Review Sections for Each App */}
-              {TOP_5_APPS.map((app) => (
+              {activeApps.map((app) => (
                 <div key={app.rank} style={{ marginBottom: "48px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
                     <span style={{ background: "var(--lux-cyan)", color: "#0b0f19", fontWeight: 900, padding: "4px 10px", borderRadius: "8px", fontSize: "0.9rem" }}>
@@ -2151,6 +2165,7 @@ export default function AppReviewPage() {
         )}
 
       </div>
+      )}
 
       {/* DETAIL MODAL FOR INDIVIDUAL APP REVIEW */}
       {selectedApp && (

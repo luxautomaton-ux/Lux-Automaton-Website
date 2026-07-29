@@ -6,6 +6,7 @@ import Link from "next/link";
 import { BLOG_ARTICLES, type Audience, type BlogArticle } from "@/lib/luxContent";
 import { prefixPath } from "@/lib/prefix";
 import ArticleVisualAssetsDeck, { type VisualAssetItem, type ResourceDownloadItem } from "@/components/ArticleVisualAssetsDeck";
+import SocialShare from "@/components/SocialShare";
 
 const filters: Array<"All" | Audience> = ["All", "App Review", "Lux Automaton", "Lux AI Kids"];
 
@@ -307,7 +308,7 @@ function getArticleVisualAssets(article: BlogArticle) {
     );
     images.push(
       { title: "Asset-Set Preview — Complete Publishing Package", subtitle: "Full overview of all visual assets, PDFs, and implementation guides", imageUrl: "/images/00-asset-set-preview-top-5-github-apps.png", type: "Asset Set Preview" },
-      { title: "01 — Top 5 GitHub Apps to Watch This Week", subtitle: "Header thumbnail featuring Hermes, OpenCut, OmniRoute, DeepTutor & OfficeCLI", imageUrl: "/images/01-thumbnail-top-5-github-apps.png", type: "Header Thumbnail" },
+      { title: "01 — Top 5 GitHub Apps to Watch This Week", subtitle: "July 24 weekly-picks cover featuring Hermes, OpenCut, OmniRoute, DeepTutor & OfficeCLI", imageUrl: "/images/lux-app-review-july-24-cover.png", type: "Header Thumbnail" },
       { title: "02 — Lux Score Radar & Category Profiles", subtitle: "100-point scoring breakdown across Usefulness, Health, Momentum & Safety", imageUrl: "/images/05-top-5-github-apps-overview.png", type: "Overview Infographic" },
       { title: "03 — Lux App Review Editorial Workspace", subtitle: "Inside the testing lab evaluating open-source codebases and architecture", imageUrl: "/images/editorial-workspace.png", type: "Editorial Laboratory" }
     );
@@ -657,6 +658,7 @@ export default function BlogPage() {
               <time>{selected.date}</time>
               <span>{selected.readTime}</span>
             </div>
+            <SocialShare title={selected.title} text={selected.deck} />
           </div>
 
           <div className="news-reading-layout">

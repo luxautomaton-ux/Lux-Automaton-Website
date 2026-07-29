@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { prefixPath } from "@/lib/prefix";
 
-const missions = [
-  { icon:"✦", title:"AI Explorer", age:"Ages 7–10", copy:"Meet friendly AI, learn what it can do, and train your first tiny helper.", color:"pink" },
-  { icon:"◉", title:"Art Studio", age:"Ages 8–13", copy:"Turn big imagination into characters, posters, worlds, and visual stories.", color:"blue" },
-  { icon:"▰", title:"Storyteller Lab", age:"Ages 9–14", copy:"Write a hero, direct a scene, and bring an original story to life with video.", color:"purple" },
-  { icon:"⌁", title:"Robot Builders", age:"Ages 10–15", copy:"Design a helpful robot and solve a problem in your home or community.", color:"green" },
+const labs = [
+  { icon:"✦", title:"AI Explorer Lab", age:"Ages 7–10", copy:"Meet friendly AI, learn what it can do, and train your first tiny helper.", color:"pink", href:"/lux-ai-kids/academy#ai-explorer" },
+  { icon:"◉", title:"Art Studio", age:"Ages 8–13", copy:"Turn big imagination into characters, posters, worlds, and visual stories.", color:"blue", href:"/lux-ai-kids/academy#art-studio" },
+  { icon:"▰", title:"Storyteller Lab", age:"Ages 9–14", copy:"Write a hero, direct a scene, and bring an original story to life with video.", color:"purple", href:"/lux-ai-kids/academy#storyteller" },
+  { icon:"⌁", title:"Robot Builders", age:"Ages 10–15", copy:"Design a helpful robot and solve a problem in your home or community.", color:"green", href:"/lux-ai-kids/academy#robot-builders" },
 ];
 
 const characterCards = [
@@ -105,9 +105,10 @@ export default function LuxAiKidsPage(){
     </section>
 
     <nav className="kids-route-ribbon" aria-label="Lux AI Kids sections">
-      <Link href="/lux-ai-kids/workshops"><span>01</span> Workshops</Link>
-      <Link href="/lux-ai-kids/foundation"><span>02</span> Foundation</Link>
-      <Link href="/lux-ai-kids/post-studio"><span>03</span> Post Studio</Link>
+      <Link href="/lux-ai-kids/academy"><span>01</span> Academy Labs</Link>
+      <Link href="/lux-ai-kids/workshops"><span>02</span> Workshops</Link>
+      <Link href="/lux-ai-kids/foundation"><span>03</span> Foundation</Link>
+      <Link href="/lux-ai-kids/post-studio"><span>04</span> Post Studio</Link>
     </nav>
 
     {/* CHARACTER CARDS SECTION */}
@@ -178,20 +179,20 @@ export default function LuxAiKidsPage(){
     {/* MISSIONS SECTION */}
     <section id="missions" className="kids-section">
       <header>
-        <p>CHOOSE YOUR ADVENTURE</p>
-        <h2>What will you make first?</h2>
-        <span>Every workshop ends with something real you can show, share, or improve.</span>
+        <p>LUX AI KIDS ACADEMY</p>
+        <h2>Pick your Lab. Start a mission.</h2>
+        <span>Labs are story-led learning worlds with videos, hands-on makes, family resources, badges, certificates, and a final showcase.</span>
       </header>
       <div className="mission-grid">
-        {missions.map((m,i)=> (
-          <article className={`mission-card ${m.color}`} key={m.title}>
+        {labs.map((m,i)=> (
+          <Link className={`mission-card ${m.color}`} key={m.title} href={m.href}>
             <div className="mission-number">0{i+1}</div>
             <div className="mission-icon">{m.icon}</div>
             <small>{m.age}</small>
             <h3>{m.title}</h3>
             <p>{m.copy}</p>
-            <button type="button">Open mission →</button>
-          </article>
+            <strong>Open Lab →</strong>
+          </Link>
         ))}
       </div>
     </section>
@@ -301,6 +302,84 @@ export default function LuxAiKidsPage(){
             <p>{copy}</p>
           </article>
         ))}
+      </div>
+    </section>
+
+    <section className="kids-learning-paths">
+      <div className="kids-paths-intro">
+        <p>GROW WITH THE LAB</p>
+        <h2>One curious question can become a whole future.</h2>
+        <span>Choose the starting point that feels right today. Each path grows from wonder to real-world confidence.</span>
+      </div>
+      <div className="kids-paths-track">
+        {[
+          ["07–09", "Discover AI", "Curiosity · Creativity · Safety", "Ask big questions, spot patterns, and learn how to use helpful tools wisely."],
+          ["10–12", "Build with AI", "Problem solving · Communication · Projects", "Turn an idea into a game, story, experiment, or family challenge."],
+          ["13–15", "Create with AI", "Coding · Automation · Entrepreneurship", "Make useful systems, tell stronger stories, and build a portfolio of projects."],
+          ["16–18", "Launch your future", "Business · Career skills · Certifications", "Explore pathways to credentials, internships, and work that helps people."],
+        ].map(([age, title, skills, copy], index) => (
+          <article className={`kids-path-card path-${index + 1}`} key={title}>
+            <span className="kids-path-age">AGES {age}</span>
+            <b>0{index + 1}</b>
+            <h3>{title}</h3>
+            <strong>{skills}</strong>
+            <p>{copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section className="kids-resource-library">
+      <div>
+        <p>FOR PARENTS, TEACHERS &amp; COMMUNITY LEADERS</p>
+        <h2>Everything a guided learning day needs.</h2>
+        <span>Use these starting points for a family night, classroom project, library club, youth group, or after-school lab.</span>
+        <Link href="/lux-ai-kids/workshops">Browse ready-to-run workshops →</Link>
+      </div>
+      <div className="kids-resource-list">
+        {["Lesson plans", "Discussion guides", "Printable activities", "Certificates", "Family projects", "Workshop facilitator guides"].map((item, index) => (
+          <div key={item}><b>{String(index + 1).padStart(2, "0")}</b><span>{item}</span><i>→</i></div>
+        ))}
+      </div>
+    </section>
+
+    <section className="kids-future-programs">
+      <header>
+        <p>COMING SOON</p>
+        <h2>More ways to make, meet, and grow.</h2>
+        <span>Programs we&apos;re designing for young innovators and the grown-ups who cheer them on.</span>
+      </header>
+      <div className="kids-programs-grid">
+        {["AI Discovery Camp", "Weekend Innovation Academy", "AI Explorers Club", "Family AI Nights", "AI Reading Club", "Coding Saturdays", "Robotics Lab", "Young Entrepreneur Academy"].map((program, index) => (
+          <article key={program}><span>{["✦", "⌁", "◉", "▰"][index % 4]}</span><h3>{program}</h3><p>In development</p></article>
+        ))}
+      </div>
+    </section>
+
+    <section className="kids-sponsor-section">
+      <div className="kids-sponsor-copy">
+        <p>SPONSOR A FUTURE INNOVATOR</p>
+        <h2>Show what a gift makes possible.</h2>
+        <span>We&apos;re preparing clear, meaningful ways for families, neighbors, and future partners to expand access when the Foundation launches.</span>
+        <Link href="/lux-ai-kids/foundation">Follow the Foundation journey →</Link>
+      </div>
+      <div className="kids-impact-ladder">
+        {[["$25", "Provides a student workbook"], ["$50", "Supports a workshop seat"], ["$100", "Provides learning materials"], ["$250", "Sponsors an AI Camp experience"], ["$500", "Funds multiple student projects"]].map(([amount, impact]) => (
+          <div key={amount}><b>{amount}</b><span>{impact}</span></div>
+        ))}
+      </div>
+    </section>
+
+    <section className="kids-vision-roadmap">
+      <div className="kids-vision-copy">
+        <p>VISION 2035</p>
+        <h2>A decade of learning can change the way a child sees the world.</h2>
+        <p>Imagine a child who begins learning AI at age seven. Over the next decade, they complete books, workshops, community projects, certifications, internships, and eventually launch a career or business that helps people. That&apos;s the future we&apos;re building.</p>
+      </div>
+      <div className="kids-roadmap-grid">
+        <article><span>NOW</span><h3>Build the spark</h3><p>Books · Videos · Workshops · Community</p></article>
+        <article><span>NEXT</span><h3>Open the door</h3><p>Nonprofit launch · Scholarships · School partnerships · Events</p></article>
+        <article><span>FUTURE</span><h3>Grow the runway</h3><p>Lux AI Academy · Labs · Camps · Internships · Career programs</p></article>
       </div>
     </section>
 

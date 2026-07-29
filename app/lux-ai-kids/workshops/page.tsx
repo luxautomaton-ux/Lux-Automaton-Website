@@ -7,6 +7,7 @@ import {
   type KidsWorkshop,
   type WorkshopCategory,
 } from "@/lib/luxContent";
+import SocialShare from "@/components/SocialShare";
 
 const CATEGORIES: { key: WorkshopCategory | "all"; label: string; icon: string }[] = [
   { key: "all", label: "All Workshops", icon: "✦" },
@@ -190,6 +191,7 @@ export default function KidsWorkshopsPage() {
             </p>
             <h3>{selected.title}</h3>
             <p className="kw-detail-desc">{selected.description}</p>
+            <SocialShare title={selected.title} text={selected.tagline} />
 
             {/* What You Make */}
             <div className="kw-detail-block">

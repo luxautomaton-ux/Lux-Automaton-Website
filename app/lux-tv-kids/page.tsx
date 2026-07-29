@@ -6,6 +6,7 @@ import Link from "next/link";
 import { LUX_TV_KIDS_EPISODES, type TvEpisode } from "@/lib/luxContent";
 import { prefixPath } from "@/lib/prefix";
 import NetflixVideoPlayerModal from "@/components/NetflixVideoPlayerModal";
+import SocialShare from "@/components/SocialShare";
 
 const kidsRows = [
   { title: "Parent Guides & AI Safety", tag: "AI Safety" },
@@ -79,6 +80,7 @@ export default function LuxTvKidsPage() {
               📖 Read Story
             </Link>
           </div>
+          <SocialShare title={featured.title} text={featured.description} />
         </div>
       </section>
 

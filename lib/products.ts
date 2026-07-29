@@ -606,6 +606,35 @@ export const PRODUCTS: Product[] = [
 
   // ── SUCCESS PACKS ─────────────────────────────────────
   {
+    id: "lux-jarvis",
+    slug: "lux-jarvis",
+    name: "Lux Jarvis",
+    tagline: "Your AI Operations Partner",
+    description: "A human-guided AI operations partner that helps builders turn ideas into organized, approval-aware action.",
+    icon: "✦",
+    status: "live",
+    accentColor: "var(--lux-cyan)",
+    features: ["Priority and workflow planning", "Context-aware drafting", "Approval-aware actions", "Knowledge and task organization", "Progress visibility", "Private-first operating principles"],
+    prices: [],
+    ctaLabel: "Explore Lux Jarvis",
+    ctaHref: "/products/lux-jarvis",
+    pageHref: "/products/lux-jarvis",
+    logoImage: "/images/lux-jarvis/lux-jarvis-logo.png",
+    heroImage: "/images/lux-jarvis/lux-jarvis-icon.png",
+    bgImage: "/images/lux-jarvis/lux-jarvis-icon.png",
+    videoHero: "/videos/lux-jarvis-introduction.mp4",
+    videoOverview: "/videos/lux-jarvis-introduction.mp4",
+    fiveWH: {
+      who: { headline: "For builders and operators", body: "Founders, creators, and small teams who need an AI partner that helps keep real work moving." },
+      what: { headline: "A human-guided operations partner", body: "Jarvis turns context, priorities, and working knowledge into clear plans, drafts, and next steps." },
+      when: { headline: "When work needs structure", body: "Use Jarvis for daily planning, launch preparation, meeting follow-up, and recurring operational work." },
+      where: { headline: "Across your Lux workflow", body: "Jarvis is designed to work alongside the tools, knowledge, and operating system you already use." },
+      why: { headline: "Because momentum needs clarity", body: "Jarvis helps reduce lost context, unclear ownership, and the operational drag between a good idea and a completed outcome." },
+      how: { headline: "Bring context. Review. Approve.", body: "Jarvis prepares the work, keeps decision points visible, and leaves consequential actions under human control." },
+    },
+  },
+
+  {
     id: "success-packs",
     slug: "success-packs",
     name: "Success Packs",

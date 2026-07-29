@@ -292,7 +292,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "July 24, 2026",
     readTime: "14 min read",
     category: "App Review",
-    image: "/images/01-thumbnail-top-5-github-apps.png",
+    image: "/images/lux-app-review-july-24-cover.png",
     takeaways: [
       "01 — Hermes Agent leads with a 92/100 Lux Score for persistent memory, skills, and multi-channel work.",
       "02 — OpenCut shows massive momentum (+7.8k stars/week) as a private local-first video editor.",
@@ -302,7 +302,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     body: [
       "Open-source software is moving faster than most businesses can evaluate it. A repository can gain thousands of stars in a week, appear in dozens of videos, and still be too early, too risky, or too complicated for the average team. That is why Lux App Review does not rank projects by stars alone.",
       "For this week of July 20-24, 2026 edition, we looked for projects with a combination of practical usefulness, current momentum, active development, understandable documentation, permissive licensing, and a believable path from repository to real-world value. The five selections cover business agents, creator tools, AI infrastructure, personalized education, and document automation.",
-      "![Top 5 GitHub Apps This Week](/images/hero.png)",
+      "![Top 5 GitHub Apps This Week](/images/lux-app-review-july-24-cover.png)",
       "## The ranking at a glance",
       "| Rank | App | Category | Lux Score | Grade | Stars* | Forks* | Language |\n|---:|---|---|---:|:---:|---:|---:|---|\n| 1 | Hermes Agent | AI Agent / Business Automation | 92 | A | 220.0k | 41.8k | Python |\n| 2 | OpenCut | Creator Tool / Video Editing | 88 | A- | 52.0k | 5.6k | TypeScript |\n| 3 | OmniRoute | AI Infrastructure / Model Routing | 87 | A- | 23.6k | 924 | TypeScript |\n| 4 | DeepTutor | Education / Personalized Learning | 86 | A- | 28.8k | 3.3k | Python |\n| 5 | OfficeCLI | Document Automation / AI Agents | 84 | B+ | 5.4k | 445 | C# |",
       "## How the Lux Score works",
@@ -3796,7 +3796,7 @@ export const LUX_TV_EPISODES: TvEpisode[] = [
     series: "Lux App Review",
     duration: "14m",
     rating: "A Score",
-    image: "/images/hero.png",
+    image: "/images/lux-app-review-july-24-cover.png",
     video: "/videos/the-ai-workflow-stack-top-5.mp4",
     zoom: true,
     storyUrl: "/app-review",

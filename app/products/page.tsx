@@ -140,7 +140,7 @@ function ProductsHero() {
           {/* Quick stat row */}
           <div style={{ display: "flex", gap: "48px", flexWrap: "wrap" }}>
             {[
-              { value: "6", label: "AI Products" },
+              { value: "7", label: "AI Products" },
               { value: "2", label: "Live Now" },
               { value: "1", label: "Ecosystem" },
             ].map((s) => (

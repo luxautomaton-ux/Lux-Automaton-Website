@@ -81,7 +81,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "July 24, 2026",
     readTime: "8 min read",
     category: "Prompt Engineering & AI Strategy",
-    image: "/images/01-thumbnail-first-automation-map.png",
+    image: "/images/01-thumbnail-safe-ai-better-questions.png",
     takeaways: [
       "01 — Viral power words are prompt lenses, not hidden ChatGPT commands or secret buttons.",
       "02 — Use prompt shorthand (FIRSTPRINCIPLES, REDTEAM, 80/20, ELI10) to guide perspective, but expand into explicit instructions.",

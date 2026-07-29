@@ -104,6 +104,12 @@ export default function LuxAiKidsPage(){
       <span>CREATE</span><b>✦</b><span>QUESTION</span><b>✦</b><span>BUILD</span><b>✦</b><span>SHARE</span><b>✦</b><span>HELP</span>
     </section>
 
+    <nav className="kids-route-ribbon" aria-label="Lux AI Kids sections">
+      <Link href="/lux-ai-kids/workshops"><span>01</span> Workshops</Link>
+      <Link href="/lux-ai-kids/foundation"><span>02</span> Foundation</Link>
+      <Link href="/lux-ai-kids/post-studio"><span>03</span> Post Studio</Link>
+    </nav>
+
     {/* CHARACTER CARDS SECTION */}
     <section id="characters" className="kids-section kids-squad-section">
       <header>
@@ -267,6 +273,34 @@ export default function LuxAiKidsPage(){
           <li>School, library, and community workshop options</li>
         </ul>
         <Link href="/contact">Bring Lux AI Kids to your community →</Link>
+        <div className="kids-grownups-links">
+          <Link href="/lux-ai-kids/foundation">Explore the upcoming Foundation →</Link>
+          <Link href="/lux-ai-kids/post-studio">Open Post Studio →</Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="kids-section kids-community-projects">
+      <header>
+        <p>MAKE A DIFFERENCE</p>
+        <h2>Small projects. <span>Real help.</span></h2>
+        <span>Use creativity and technology to make life brighter where you live.</span>
+      </header>
+      <div className="kids-project-grid">
+        {[
+          ["🌱", "Community Garden AI", "Design a plant-care helper that makes the garden easier for everyone."],
+          ["🏥", "Healthy Habits Challenge", "Build a kind reminder system for movement, water, rest, and care."],
+          ["♻", "Recycling Detective", "Create a sorting guide that turns everyday trash into a learning mission."],
+          ["🐶", "Animal Shelter Helpers", "Imagine a friendly adoption story and a better way to introduce each pet."],
+          ["📖", "Reading Buddy AI", "Make a prompt-powered reading companion with thoughtful questions."],
+          ["🤖", "Robotics Club", "Invent a helpful robot for a job your school or neighborhood needs."],
+        ].map(([icon, title, copy]) => (
+          <article key={title}>
+            <span>{icon}</span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>
+        ))}
       </div>
     </section>
 
@@ -289,4 +323,3 @@ export default function LuxAiKidsPage(){
     </section>
   </div>
 }
-

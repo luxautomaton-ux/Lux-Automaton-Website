@@ -602,11 +602,6 @@ export default function BlogPage() {
               <time>{selected.date}</time>
               <span>{selected.readTime}</span>
             </div>
-            {selected.image && (
-              <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden mt-6 mb-2 border border-cyan-500/20 shadow-2xl bg-slate-950">
-                <StoryMedia article={selected} sizes="(max-width: 1200px) 100vw, 1200px" />
-              </div>
-            )}
           </div>
 
           <div className="news-reading-layout">

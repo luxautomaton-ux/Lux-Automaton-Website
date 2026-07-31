@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 type Lab = {
@@ -14,6 +15,7 @@ type Lab = {
   story: string;
   badge: string;
   finalProject: string;
+  image: string;
   missions: { title: string; activity: string }[];
   projects: string[];
   downloads: string[];
@@ -25,7 +27,7 @@ const labs: Lab[] = [
   {
     id: "ai-explorer", number: "LAB 01", icon: "✦", title: "AI Explorer Lab", ages: "Ages 7–10", theme: "Meet AI. Become friends with technology. Learn to ask amazing questions.", color: "purple",
     story: "One morning, the lights inside Lux HQ begin blinking. LANA needs Junior AI Explorers to help train tiny AI helpers before they can assist people around the world.",
-    badge: "Junior AI Explorer", finalProject: "My First AI Helper",
+    badge: "Junior AI Explorer", finalProject: "My First AI Helper", image: "/images/lux-ai-kids-academy/ai-explorer-lab.png",
     missions: [
       { title: "What Is AI?", activity: "Meet LANA, spot examples, and complete a sticker activity." },
       { title: "AI Is Everywhere", activity: "Go on a treasure hunt for Alexa, Siri, Maps, Netflix, robots, and more." },
@@ -46,7 +48,7 @@ const labs: Lab[] = [
   {
     id: "art-studio", number: "LAB 02", icon: "◉", title: "Art Studio", ages: "Ages 8–13", theme: "Imagination becomes reality.", color: "blue",
     story: "Ace discovers an empty art museum. Young creators have to fill every room with AI-powered creativity, one original idea at a time.",
-    badge: "Creative AI Artist", finalProject: "Design an entire story universe",
+    badge: "Creative AI Artist", finalProject: "Design an entire story universe", image: "/images/lux-ai-kids-academy/art-studio-lab.png",
     missions: [
       { title: "Drawing Characters", activity: "Turn a tiny sketch into a character with a story." },
       { title: "Character Expressions", activity: "Show feelings through faces, poses, and color." },
@@ -67,7 +69,7 @@ const labs: Lab[] = [
   {
     id: "storyteller", number: "LAB 03", icon: "▰", title: "Storyteller Lab", ages: "Ages 9–14", theme: "Stories change the world.", color: "pink",
     story: "A magical Story Engine has stopped working. Every completed story gives it power again, so young directors must bring characters, scenes, and voices to life.",
-    badge: "Junior Story Director", finalProject: "My First AI Movie",
+    badge: "Junior Story Director", finalProject: "My First AI Movie", image: "/images/lux-ai-kids-academy/storyteller-lab.png",
     missions: [
       { title: "Characters", activity: "Create a character with wants, strengths, and a memorable detail." },
       { title: "Heroes", activity: "Give your hero a brave choice to make." },
@@ -88,7 +90,7 @@ const labs: Lab[] = [
   {
     id: "robot-builders", number: "LAB 04", icon: "⌁", title: "Robot Builders", ages: "Ages 10–15", theme: "Invent robots that solve real problems.", color: "green",
     story: "The Lux Innovation Lab needs new inventors. Each mission makes life a little better for people, animals, schools, and neighborhoods.",
-    badge: "Junior Robotics Engineer", finalProject: "My Helpful Robot",
+    badge: "Junior Robotics Engineer", finalProject: "My Helpful Robot", image: "/images/lux-ai-kids-academy/robot-builders-lab.png",
     missions: [
       { title: "Robot Parts", activity: "Choose the body, tools, and materials your robot needs." },
       { title: "Sensors", activity: "Explore how a robot notices its surroundings." },
@@ -121,6 +123,8 @@ export default function AcademyPage() {
   return (
     <main className="kids-world academy-page">
       <section className="academy-hero">
+        <Image className="academy-hero-image" src="/images/lux-ai-kids-academy/academy-hero-overlay.png" alt="Lux AI Kids guides in a bright AI learning lab" fill priority sizes="100vw" />
+        <div className="academy-hero-overlay" aria-hidden="true" />
         <div>
           <p className="academy-eyebrow">LUX AI KIDS ACADEMY</p>
           <h1>Learn. Build. Create.<br /><span>Imagine. Share.</span></h1>
@@ -144,7 +148,16 @@ export default function AcademyPage() {
           <div><span>{activeLab.number} · {activeLab.ages}</span><h2>{activeLab.title}</h2><p className="academy-theme">{activeLab.theme}</p></div>
           <div className="academy-badge"><b>{activeLab.icon}</b><span>Earn the</span><strong>{activeLab.badge}</strong></div>
         </header>
+        <div className="academy-lab-hero">
+          <Image src={activeLab.image} alt={`${activeLab.title} creative learning world`} fill sizes="(max-width: 900px) 100vw, 1400px" />
+          <div><span>{activeLab.number}</span><b>{activeLab.title}</b><p>{activeLab.theme}</p></div>
+        </div>
         <div className="academy-story"><span>THE STORY MISSION</span><p>{activeLab.story}</p></div>
+        <div className="academy-guides" aria-label="Your Lab guides">
+          <div><Image src="/images/lux-ai-kids-academy/ace-profile.png" alt="Ace, the creative Lab buddy" width={96} height={96} /><span><b>ACE</b>Big ideas and brave questions.</span></div>
+          <div><Image src="/images/lux-ai-kids-academy/lana-profile.png" alt="LANA, the AI mission guide" width={96} height={96} /><span><b>LANA</b>Clear plans and safe next steps.</span></div>
+          <div><Image src="/images/lux-ai-kids-academy/dr-torrey-dooley-profile.png" alt="Dr. Torrey Dooley, the healthy habits guide" width={96} height={96} /><span><b>DR. TORREY</b>Healthy habits for growing creators.</span></div>
+        </div>
         <div className="academy-content-grid">
           <div className="academy-mission-list"><p>12 MISSIONS</p>{activeLab.missions.map((mission, index) => <button key={mission.title} className={activeMission === index ? "active" : ""} onClick={() => setActiveMission(index)}><b>{String(index + 1).padStart(2, "0")}</b><span>{mission.title}</span></button>)}</div>
           <article className="academy-mission-card"><span>MISSION {String(activeMission + 1).padStart(2, "0")}</span><h3>{activeLab.missions[activeMission].title}</h3><p>{activeLab.missions[activeMission].activity}</p><div><b>ACE SAYS</b><span>{activeMission % 2 === 0 ? "Big ideas start with curiosity—let’s build it!" : "What do you think? Your answer is where the next idea begins."}</span></div><button onClick={() => setActiveMission((activeMission + 1) % activeLab.missions.length)}>Next mission →</button></article>

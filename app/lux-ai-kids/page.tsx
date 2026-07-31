@@ -6,10 +6,10 @@ import Link from "next/link";
 import { prefixPath } from "@/lib/prefix";
 
 const labs = [
-  { icon:"✦", title:"AI Explorer Lab", age:"Ages 7–10", copy:"Meet friendly AI, learn what it can do, and train your first tiny helper.", color:"pink", href:"/lux-ai-kids/academy#ai-explorer" },
-  { icon:"◉", title:"Art Studio", age:"Ages 8–13", copy:"Turn big imagination into characters, posters, worlds, and visual stories.", color:"blue", href:"/lux-ai-kids/academy#art-studio" },
-  { icon:"▰", title:"Storyteller Lab", age:"Ages 9–14", copy:"Write a hero, direct a scene, and bring an original story to life with video.", color:"purple", href:"/lux-ai-kids/academy#storyteller" },
-  { icon:"⌁", title:"Robot Builders", age:"Ages 10–15", copy:"Design a helpful robot and solve a problem in your home or community.", color:"green", href:"/lux-ai-kids/academy#robot-builders" },
+  { icon:"✦", title:"AI Explorer Lab", age:"Ages 7–10", copy:"Meet friendly AI, learn what it can do, and train your first tiny helper.", color:"pink", href:"/lux-ai-kids/workshops/ai-explorer-kids" },
+  { icon:"◉", title:"Art Studio", age:"Ages 8–13", copy:"Turn big imagination into characters, posters, worlds, and visual stories.", color:"blue", href:"/lux-ai-kids/workshops/ai-art-studio-kids" },
+  { icon:"▰", title:"Storyteller Lab", age:"Ages 9–14", copy:"Write a hero, direct a scene, and bring an original story to life with video.", color:"purple", href:"/lux-ai-kids/workshops/storyteller-lab-kids" },
+  { icon:"⌁", title:"Robot Builders", age:"Ages 10–15", copy:"Design a helpful robot and solve a problem in your home or community.", color:"green", href:"/lux-ai-kids/workshops/robot-builders-kids" },
 ];
 
 const characterCards = [
@@ -20,7 +20,7 @@ const characterCards = [
     tagline: "The Curiosity Co-Pilot",
     badge: "AI LAB BUDDY",
     color: "pink",
-    image: "/images/ace-character-card.jpg",
+    image: "/images/lux-ai-kids-academy/ace-profile.png",
     personality: "Funny, curious, energetic, positive, playful, loves asking questions and celebrating discoveries. Thinks mistakes are opportunities to learn!",
     bio: "Hey there, future builder! I’m Ace! Think of me as your AI co-pilot, best friend in the lab, and number-one cheerleader. Whenever you’re wondering 'How does a robot think?' or 'Can I build a video game with AI?', I’m right by your side ready to explore!",
     catchphrases: [
@@ -37,13 +37,27 @@ const characterCards = [
     appearance: "Friendly educational puppet with glasses, freckles, expressive eyebrows, black Lux AI Kids hoodie, and Lux cap."
   },
   {
+    id: "lana",
+    name: "LANA",
+    role: "AI Mentor & Mission Guide ✦",
+    tagline: "The Calm Creative Guide",
+    badge: "AI MISSION MENTOR",
+    color: "purple",
+    image: "/images/lux-ai-kids-academy/lana-profile.png",
+    personality: "Warm, thoughtful, organized, and encouraging. LANA helps young creators turn big questions into safe, clear next steps.",
+    bio: "Hi, creator! I’m LANA. I help you plan your ideas, ask smart questions, and make sure your projects are ready to share with a grown-up. You bring the imagination—I’ll help you build the path.",
+    catchphrases: ["“Let’s make a plan.” ✦", "“Your idea matters.” 💜", "“Check, learn, improve.” 🔎", "“Create with care.” 🌈"],
+    rules: ["Keep personal information private.", "Ask a trusted grown-up when a tool or answer feels confusing.", "Use AI to learn, create, and help people."],
+    appearance: "Warm AI mentor with long dark wavy hair, violet educator styling, and a calm, reassuring smile."
+  },
+  {
     id: "dr-dooley",
     name: "DR. TORREY DOOLEY",
     role: "Healthcare Educator & Future Medicine Guide 🩺",
     tagline: "“The Hood Nurse” & AI Health Explorer",
     badge: "AI HEALTH DOCTOR",
     color: "blue",
-    image: "/images/dr-dooley-character-card.jpg",
+    image: "/images/lux-ai-kids-academy/dr-torrey-dooley-profile.png",
     personality: "Energetic, charismatic, compassionate, authentic, funny, and confident. Connects through real conversations and keeps science fun!",
     bio: "What’s up fam! I’m Dr. Torrey Dooley, also known as 'The Hood Nurse.' I’m here to show you how cool healthcare, medical technology, and AI can be! From how your heart pumps to how smart sensors help doctors save lives, I break down big science using everyday examples, laughter, and zero boring lectures.",
     catchphrases: [
@@ -75,7 +89,7 @@ export default function LuxAiKidsPage(){
         muted
         loop
         playsInline
-        poster={prefixPath("/images/lux-kids-world.png")}
+        poster={prefixPath("/images/lux-ai-kids-academy/ace-learning-hero.jpg")}
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.35, pointerEvents: "none" }}
       >
         <source src={prefixPath("/videos/lux-ai-kids-hero-bg.mp4")} type="video/mp4" />
@@ -96,7 +110,7 @@ export default function LuxAiKidsPage(){
         </div>
       </div>
       <div className="kids-hero-art">
-        <Image src={prefixPath("/images/lux-kids-world.png")} alt="Lux AI Kids guide welcoming young creators to an AI lab" fill priority sizes="(max-width: 900px) 100vw, 55vw"/>
+        <Image src={prefixPath("/images/lux-ai-kids-academy/ace-learning-hero.jpg")} alt="Ace introducing young creators to Lux AI Kids" fill priority sizes="(max-width: 900px) 100vw, 55vw"/>
       </div>
     </section>
 
@@ -105,7 +119,7 @@ export default function LuxAiKidsPage(){
     </section>
 
     <nav className="kids-route-ribbon" aria-label="Lux AI Kids sections">
-      <Link href="/lux-ai-kids/academy"><span>01</span> Academy Labs</Link>
+      <Link href="#missions"><span>01</span> Learning Labs</Link>
       <Link href="/lux-ai-kids/workshops"><span>02</span> Workshops</Link>
       <Link href="/lux-ai-kids/foundation"><span>03</span> Foundation</Link>
       <Link href="/lux-ai-kids/post-studio"><span>04</span> Post Studio</Link>
@@ -127,7 +141,7 @@ export default function LuxAiKidsPage(){
             className={`character-tab-btn ${activeTab === c.id ? "active " + c.color : ""}`}
             onClick={() => setActiveTab(c.id)}
           >
-            {c.name} {c.id === "ace" ? "🚀" : "🩺"}
+            {c.name} {c.id === "ace" ? "🚀" : c.id === "lana" ? "✦" : "🩺"}
           </button>
         ))}
       </div>
@@ -179,7 +193,7 @@ export default function LuxAiKidsPage(){
     {/* MISSIONS SECTION */}
     <section id="missions" className="kids-section">
       <header>
-        <p>LUX AI KIDS ACADEMY</p>
+        <p>LUX AI KIDS LEARNING LABS</p>
         <h2>Pick your Lab. Start a mission.</h2>
         <span>Labs are story-led learning worlds with videos, hands-on makes, family resources, badges, certificates, and a final showcase.</span>
       </header>

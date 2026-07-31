@@ -9,7 +9,7 @@ import { fetchWorkshops, workshopRowToProgram } from "@/lib/workshopDb";
 import PdfPreviewDeckModal from "@/components/PdfPreviewDeckModal";
 import ArticleVisualAssetsDeck, { type VisualAssetItem, type ResourceDownloadItem } from "@/components/ArticleVisualAssetsDeck";
 
-const tabs: Array<"All" | Audience> = ["All", "Lux Automaton", "Lux AI Kids"];
+const tabs: Array<"All" | Audience> = ["All", "Lux Automaton"];
 
 function getWorkshopVisualAssets(workshop: WorkshopProgram) {
   const images: VisualAssetItem[] = [];
@@ -262,7 +262,8 @@ export default function WorkshopsPage() {
 
   const allWorkshops = useMemo(() => {
     const dynamicSlugs = new Set(publishedWorkshops.map((workshop) => workshop.slug));
-    return [...publishedWorkshops, ...WORKSHOP_PROGRAMS.filter((workshop) => !dynamicSlugs.has(workshop.slug))];
+    return [...publishedWorkshops, ...WORKSHOP_PROGRAMS.filter((workshop) => !dynamicSlugs.has(workshop.slug))]
+      .filter((workshop) => workshop.audience !== "Lux AI Kids");
   }, [publishedWorkshops]);
 
   useEffect(() => {
@@ -328,7 +329,7 @@ export default function WorkshopsPage() {
         </div>
       )}
 
-      <section className="academy-hero">
+      <section className="workshops-main-hero">
         <video
           className="world-hero-video"
           src={prefixPath("/videos/Lux_Workshop_promo_montage_202607220252.mp4")}
@@ -338,7 +339,7 @@ export default function WorkshopsPage() {
           playsInline
         />
         <div className="world-hero-shade" />
-        <div className="academy-hero-copy">
+        <div className="workshops-main-hero-copy">
           <p>Lux Academy</p>
           <h1>Workshops that turn curiosity into working systems.</h1>
           <span>

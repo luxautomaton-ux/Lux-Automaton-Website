@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   KIDS_WORKSHOPS,
-  type KidsWorkshop,
+  WORKSHOP_PROGRAMS,
   type WorkshopCategory,
 } from "@/lib/luxContent";
-import SocialShare from "@/components/SocialShare";
 
 const CATEGORIES: { key: WorkshopCategory | "all"; label: string; icon: string }[] = [
   { key: "all", label: "All Workshops", icon: "✦" },
@@ -27,7 +27,6 @@ const LEVEL_COLORS: Record<string, string> = {
 
 export default function KidsWorkshopsPage() {
   const [activeCategory, setActiveCategory] = useState<WorkshopCategory | "all">("all");
-  const [selected, setSelected] = useState<KidsWorkshop>(KIDS_WORKSHOPS[0]);
   const [showCount, setShowCount] = useState(10);
 
   const filtered = useMemo(
@@ -39,6 +38,7 @@ export default function KidsWorkshopsPage() {
   );
 
   const visible = filtered.slice(0, showCount);
+  const academyPrograms = WORKSHOP_PROGRAMS.filter((program) => program.audience === "Lux AI Kids");
 
   return (
     <div className="kids-world kw-page">
@@ -82,12 +82,28 @@ export default function KidsWorkshopsPage() {
           </div>
         </div>
         <div className="kw-hero-art">
-          <div className="kw-float kw-float-1">🎮</div>
-          <div className="kw-float kw-float-2">🤖</div>
-          <div className="kw-float kw-float-3">🎬</div>
-          <div className="kw-float kw-float-4">💡</div>
-          <div className="kw-float kw-float-5">🎵</div>
-          <div className="kw-hero-orb" />
+          <Image src="/images/lux-ai-kids-academy/ace-learning-hero.jpg" alt="Ace welcoming young creators to Lux AI Kids workshops" fill priority sizes="(max-width: 950px) 100vw, 42vw" />
+          <span className="kw-hero-art-label">ACE&apos;S WORKSHOP LAB</span>
+        </div>
+      </section>
+
+      <section className="kw-grid-section kids-academy-programs">
+        <div className="kw-grid-header">
+          <p>COMPLETE LUX AI KIDS WORKSHOPS</p>
+          <h2>Full workshops. <span>Made for young builders.</span></h2>
+          <span className="kw-grid-count">{academyPrograms.length} complete workshops</span>
+        </div>
+        <div className="kids-learning-dashboard" aria-label="Workshop learning dashboard">
+          <span><b>01</b> Pick a complete workshop</span><span><b>02</b> Follow the lesson path</span><span><b>03</b> Make and share a project</span>
+        </div>
+        <div className="kw-grid">
+          {academyPrograms.map((program) => (
+            <Link key={program.slug} href={`/lux-ai-kids/workshops/${program.slug}`} className="kw-grid-card kids-academy-program-card">
+              <div className="kw-grid-card-top"><div className="kw-grid-icon">✦</div><span className="kw-shelf-level" style={{ background: "var(--kid-pink)" }}>Workshop</span></div>
+              <div className="kw-grid-card-body"><b>{program.title}</b><p>{program.description}</p></div>
+              <div className="kw-grid-card-foot"><span>{program.ageBand}</span><span>{program.duration}</span><strong>Open workshop →</strong></div>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -110,10 +126,6 @@ export default function KidsWorkshopsPage() {
               onClick={() => {
                 setActiveCategory(cat.key);
                 setShowCount(10);
-                const next = cat.key === "all"
-                  ? KIDS_WORKSHOPS[0]
-                  : KIDS_WORKSHOPS.find((w) => w.category === cat.key);
-                if (next) setSelected(next);
               }}
             >
               <span className="kw-cat-icon">{cat.icon}</span>
@@ -126,7 +138,7 @@ export default function KidsWorkshopsPage() {
       {/* ═══ WORKSHOP GRID ═══ */}
       <section className="kw-grid-section">
         <div className="kw-grid-header">
-          <p>{activeCategory === "all" ? "ALL WORKSHOPS" : CATEGORIES.find((c) => c.key === activeCategory)?.label?.toUpperCase()}</p>
+          <p>{activeCategory === "all" ? "SHORT PROJECT WORKSHOPS" : CATEGORIES.find((c) => c.key === activeCategory)?.label?.toUpperCase()}</p>
           <h2>
             Pick a workshop. <span>Build something real.</span>
           </h2>
@@ -134,10 +146,10 @@ export default function KidsWorkshopsPage() {
         </div>
         <div className="kw-grid">
           {visible.map((w) => (
-            <button
+            <Link
               key={w.slug}
-              className={`kw-grid-card ${selected.slug === w.slug ? "active" : ""}`}
-              onClick={() => setSelected(w)}
+              className="kw-grid-card"
+              href={`/lux-ai-kids/workshops/${w.slug}`}
             >
               <div className="kw-grid-card-top">
                 <div className="kw-grid-icon">{w.icon}</div>
@@ -156,7 +168,7 @@ export default function KidsWorkshopsPage() {
                 <span>{w.ageRange}</span>
                 <span>{w.duration}</span>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
         {showCount < filtered.length && (
@@ -166,91 +178,6 @@ export default function KidsWorkshopsPage() {
             </button>
           </div>
         )}
-      </section>
-
-      {/* ═══ FEATURED WORKSHOP ═══ */}
-      <section className="kw-featured">
-        <div className="kw-featured-main">
-          <div className="kw-featured-stage">
-            <div className="kw-featured-icon">{selected.icon}</div>
-            <div className="kw-featured-meta">
-              <span className="kw-level-badge" style={{ background: LEVEL_COLORS[selected.level] }}>
-                {selected.level}
-              </span>
-              <span className="kw-age-badge">{selected.ageRange}</span>
-              <span className="kw-duration-badge">{selected.duration}</span>
-            </div>
-            <h2>{selected.title}</h2>
-            <p className="kw-featured-tagline">{selected.tagline}</p>
-          </div>
-
-          <div className="kw-featured-detail">
-            <p className="kw-detail-category">
-              {CATEGORIES.find((c) => c.key === selected.category)?.icon}{" "}
-              {CATEGORIES.find((c) => c.key === selected.category)?.label}
-            </p>
-            <h3>{selected.title}</h3>
-            <p className="kw-detail-desc">{selected.description}</p>
-            <SocialShare title={selected.title} text={selected.tagline} />
-
-            {/* What You Make */}
-            <div className="kw-detail-block">
-              <h4>What You Make</h4>
-              <ul className="kw-make-list">
-                {selected.whatYouMake.map((item) => (
-                  <li key={item}>
-                    <span className="kw-check">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Lessons */}
-            <div className="kw-detail-block">
-              <h4>Lessons</h4>
-              <ol className="kw-steps-list">
-                {selected.lessons.map((lesson, i) => (
-                  <li key={lesson.title}>
-                    <span className="kw-step-num">{String(i + 1).padStart(2, "0")}</span>
-                    <div>
-                      <strong>{lesson.title}</strong>
-                      <span className="text-xs opacity-60 ml-2">({lesson.duration})</span>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            {/* Materials */}
-            <div className="kw-detail-block">
-              <h4>Materials</h4>
-              <div className="kw-materials">
-                {selected.materials.map((m) => (
-                  <span key={m} className="kw-material-tag">{m}</span>
-                ))}
-              </div>
-            </div>
-
-            {/* Teacher Quotes */}
-            <div className="kw-teacher-quotes">
-              <div className="kw-quote kw-quote-ace">
-                <span className="kw-quote-icon">⚡</span>
-                <div>
-                  <strong>Ace says:</strong>
-                  <p>&ldquo;{selected.aceSays}&rdquo;</p>
-                </div>
-              </div>
-              <div className="kw-quote kw-quote-lana">
-                <span className="kw-quote-icon">🔮</span>
-                <div>
-                  <strong>Lana says:</strong>
-                  <p>&ldquo;{selected.lanaSays}&rdquo;</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ═══ HOW IT WORKS ═══ */}

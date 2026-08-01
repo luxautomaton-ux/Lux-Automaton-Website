@@ -285,7 +285,7 @@ Optional bottom strip: four simple icon callouts matching the topic: ${template.
 Use the Lux colors only: cyan #00D4FF, violet #7C4DFF, emerald #00FFA3, white, near-black.`;
 }
 
-export default function LuxMarketingPage() {
+export default function LuxMarketingPage({ embedded = false }: { embedded?: boolean }) {
   const [items, setItems] = useState(templates);
   const [activeId, setActiveId] = useState(templates[0].id);
   const [category, setCategory] = useState<Category | "all">("all");
@@ -354,7 +354,7 @@ export default function LuxMarketingPage() {
   }
 
   return (
-    <main className="fixed inset-0 z-[200] overflow-auto bg-[#05070d] text-white">
+    <main className={embedded ? "min-h-screen bg-[#05070d] text-white overflow-auto" : "fixed inset-0 z-[200] overflow-auto bg-[#05070d] text-white"}>
       <div className="min-h-screen xl:grid xl:grid-cols-[240px_minmax(0,1fr)_310px]">
         <aside className="border-b border-white/10 bg-[#070a11] xl:sticky xl:top-0 xl:h-screen xl:border-b-0 xl:border-r">
           <div className="border-b border-white/10 p-5">

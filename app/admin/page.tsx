@@ -121,7 +121,7 @@ export default function AdminPage() {
       {activeTab === "content-inbox" && <ContentBridgeInbox />}
       {activeTab === "scheduler" && <LanaScheduler />}
       {activeTab === "analytics" && <AdminAnalytics />}
-      {activeTab === "marketing" && <div className="admin-marketing-shell"><LuxMarketingPage /></div>}
+      {activeTab === "marketing" && <div className="admin-marketing-shell"><LuxMarketingPage embedded /></div>}
     </main>
   );
 }

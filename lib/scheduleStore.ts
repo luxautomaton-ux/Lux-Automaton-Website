@@ -113,14 +113,12 @@ export function scheduleWorkshop(opts: {
 }
 
 // ── Parse "Month DD, YYYY" → "YYYY-MM-DD" ────────────────────────────────────
-const MONTH_MAP: Record<string, string> = {
-  January: "01", February: "02", March: "03", April: "04",
-  May: "05", June: "06", July: "07", August: "08",
-  September: "09", October: "10", November: "11", December: "12",
-};
-
 function parseDate(human: string): string {
-  // "July 29, 2026" → "2026-07-29"
+  const MONTH_MAP: Record<string, string> = {
+    January: "01", February: "02", March: "03", April: "04",
+    May: "05", June: "06", July: "07", August: "08",
+    September: "09", October: "10", November: "11", December: "12",
+  };
   const m = human.match(/(\w+)\s+(\d+),\s+(\d{4})/);
   if (!m) return "2026-07-01";
   const month = MONTH_MAP[m[1]] ?? "07";

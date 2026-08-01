@@ -354,98 +354,98 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
   }
 
   return (
-    <main className={embedded ? "min-h-screen bg-[#05070d] text-white overflow-auto" : "fixed inset-0 z-[200] overflow-auto bg-[#05070d] text-white"}>
-      <div className="min-h-screen xl:grid xl:grid-cols-[240px_minmax(0,1fr)_310px]">
-        <aside className="border-b border-white/10 bg-[#070a11] xl:sticky xl:top-0 xl:h-screen xl:border-b-0 xl:border-r">
-          <div className="border-b border-white/10 p-5">
+    <main className={embedded ? "bg-[#05070d] text-white" : "fixed inset-0 z-[200] overflow-auto bg-[#05070d] text-white"}>
+      <div className="min-h-screen grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)_300px]">
+        <aside className="border-b border-white/10 bg-[#070a11] lg:border-b-0 lg:border-r">
+          <div className="border-b border-white/10 p-4">
             <div className="flex items-center gap-3">
-              <BrandIcon className="h-12 w-12" />
+              <BrandIcon className="h-10 w-10" />
               <div>
-                <p className="font-black tracking-[.08em]">LUX MARKETING</p>
-                <p className="mt-1 text-xs font-medium"><span className="text-violet-400">Create.</span> <span className="text-cyan-300">Brand.</span> <span className="text-emerald-300">Publish.</span></p>
+                <p className="font-black text-sm tracking-[.08em]">LUX MARKETING</p>
+                <p className="mt-0.5 text-[11px] font-medium"><span className="text-violet-400">Create.</span> <span className="text-cyan-300">Brand.</span> <span className="text-emerald-300">Publish.</span></p>
               </div>
             </div>
-            <div className="relative mt-5">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
-              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search templates..." className="w-full rounded-lg border border-white/10 bg-white/[.035] py-2.5 pl-9 pr-3 text-sm outline-none transition focus:border-violet-400" />
+            <div className="relative mt-4">
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
+              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search templates..." className="w-full rounded-lg border border-white/10 bg-white/[.035] py-2 pl-9 pr-3 text-xs outline-none transition focus:border-violet-400" />
             </div>
           </div>
 
-          <nav aria-label="Template categories" className="flex gap-1 overflow-x-auto p-3 xl:block xl:overflow-visible">
+          <nav aria-label="Template categories" className="flex gap-1 overflow-x-auto p-2 lg:block lg:overflow-visible">
             <CategoryButton active={category === "all"} label="All Templates" count={items.length} icon={<LayoutTemplate className="h-4 w-4" />} onClick={() => selectCategory("all")} />
             {categories.map((item) => (
               <CategoryButton key={item.id} active={category === item.id} label={item.label} count={items.filter((template) => template.category === item.id).length} icon={item.icon} onClick={() => selectCategory(item.id)} />
             ))}
           </nav>
 
-          <div className="m-4 hidden rounded-xl border border-white/10 bg-white/[.035] p-3 xl:absolute xl:bottom-0 xl:block xl:w-[208px]">
-            <div className="flex items-center gap-3">
-              <BrandIcon className="h-9 w-9" />
-              <div className="min-w-0"><p className="truncate text-sm font-bold">Lux Automaton</p><p className="truncate text-[11px] text-slate-500">Brand system active</p></div>
-              <Check className="ml-auto h-4 w-4 text-emerald-300" />
+          <div className="m-3 hidden rounded-xl border border-white/10 bg-white/[.035] p-3 lg:block">
+            <div className="flex items-center gap-2.5">
+              <BrandIcon className="h-8 w-8" />
+              <div className="min-w-0"><p className="truncate text-xs font-bold">Lux Automaton</p><p className="truncate text-[10px] text-slate-500">Brand system active</p></div>
+              <Check className="ml-auto h-3.5 w-3.5 text-emerald-300" />
             </div>
           </div>
         </aside>
 
-        <section className="min-w-0">
-          <header className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-[#05070d]/95 px-5 py-4 backdrop-blur">
-            <div><p className="text-xs uppercase tracking-[.16em] text-slate-500">Campaign</p><h1 className="mt-1 text-lg font-bold">{active.name}</h1></div>
-            <div className="flex items-center gap-3 text-xs text-slate-400"><span>{active.format}</span><button onClick={duplicate} className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 font-semibold text-white hover:border-cyan-300/50"><Plus className="h-4 w-4" /> Duplicate</button></div>
+        <section className="min-w-0 flex flex-col">
+          <header className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-[#05070d]/95 px-4 py-3 backdrop-blur">
+            <div><p className="text-[10px] uppercase tracking-[.16em] text-slate-500">Campaign</p><h1 className="mt-0.5 text-base font-bold">{active.name}</h1></div>
+            <div className="flex items-center gap-3 text-xs text-slate-400"><span>{active.format}</span><button onClick={duplicate} className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-2.5 py-1.5 font-semibold text-white hover:border-cyan-300/50"><Plus className="h-3.5 w-3.5" /> Duplicate</button></div>
           </header>
 
-          <div className="grid min-h-[calc(100vh-73px)] lg:grid-cols-[205px_minmax(0,1fr)]">
-            <aside className="border-b border-white/10 bg-[#080b13] p-3 lg:border-b-0 lg:border-r">
-              <div className="mb-3 flex items-center justify-between px-1"><p className="text-xs font-bold uppercase tracking-[.14em] text-slate-400">{category === "all" ? "All Templates" : categories.find((item) => item.id === category)?.label}</p><span className="text-xs text-slate-600">{filtered.length}</span></div>
-              <div className="flex gap-3 overflow-x-auto pb-1 lg:block lg:max-h-[calc(100vh-132px)] lg:space-y-3 lg:overflow-y-auto lg:pr-1">
+          <div className="grid flex-1 grid-cols-1 md:grid-cols-[180px_minmax(0,1fr)]">
+            <aside className="border-b border-white/10 bg-[#080b13] p-2.5 md:border-b-0 md:border-r">
+              <div className="mb-2 flex items-center justify-between px-1"><p className="text-[10px] font-bold uppercase tracking-[.14em] text-slate-400">{category === "all" ? "All Templates" : categories.find((item) => item.id === category)?.label}</p><span className="text-[10px] text-slate-600">{filtered.length}</span></div>
+              <div className="flex gap-2 overflow-x-auto pb-1 md:block md:max-h-[calc(100vh-180px)] md:space-y-2 md:overflow-y-auto md:pr-1">
                 {filtered.map((item) => <TemplateCard key={item.id} item={item} active={item.id === active.id} onClick={() => setActiveId(item.id)} />)}
-                {!filtered.length && <p className="p-4 text-sm text-slate-500">No matching templates.</p>}
+                {!filtered.length && <p className="p-3 text-xs text-slate-500">No matching templates.</p>}
               </div>
             </aside>
 
-            <div className="relative flex min-h-[640px] items-start justify-center overflow-hidden p-5 lg:p-8">
+            <div className="relative flex min-h-[460px] items-center justify-center overflow-hidden p-4 md:p-6">
               <div aria-hidden className="absolute inset-0 opacity-30" style={{ backgroundImage: "linear-gradient(rgba(0,212,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,.05) 1px, transparent 1px)", backgroundSize: "42px 42px" }} />
-              <div className={`relative flex w-full items-center justify-center ${active.ratio === "9:16" ? "max-w-[360px]" : active.ratio === "4:5" ? "max-w-[560px]" : active.ratio === "1:1" ? "max-w-[650px]" : "max-w-[880px]"}`}>
+              <div className="relative flex w-full items-center justify-center py-2" style={{ maxWidth: active.ratio === "9:16" ? "300px" : active.ratio === "4:5" ? "420px" : active.ratio === "1:1" ? "480px" : "680px" }}>
                 <CreativeCanvas ref={canvasRef} template={active} />
               </div>
             </div>
           </div>
         </section>
 
-        <aside className="border-t border-white/10 bg-[#070a11] p-5 xl:sticky xl:top-0 xl:h-screen xl:overflow-y-auto xl:border-l xl:border-t-0">
+        <aside className="border-t border-white/10 bg-[#070a11] p-4 lg:border-l lg:border-t-0">
           <div className="grid grid-cols-3 border-b border-white/10">
-            {(["edit", "style", "prompt"] as const).map((tab) => <button key={tab} onClick={() => setPanel(tab)} className={`border-b-2 py-3 text-sm font-bold capitalize ${panel === tab ? "border-violet-500 text-white" : "border-transparent text-slate-500"}`}>{tab}</button>)}
+            {(["edit", "style", "prompt"] as const).map((tab) => <button key={tab} onClick={() => setPanel(tab)} className={`border-b-2 py-2.5 text-xs font-bold capitalize ${panel === tab ? "border-violet-500 text-white" : "border-transparent text-slate-500"}`}>{tab}</button>)}
           </div>
 
           {panel === "edit" ? (
-            <div className="mt-5 space-y-4">
+            <div className="mt-4 space-y-3">
               <Field label="Headline" value={active.headline} multiline onChange={(headline) => update({ headline })} />
               <Field label="Description" value={active.description} multiline onChange={(description) => update({ description })} />
               <Field label="Call to action" value={active.cta} onChange={(cta) => update({ cta })} />
               <Field label="Label" value={active.tag} onChange={(tag) => update({ tag })} />
             </div>
           ) : panel === "style" ? (
-            <div className="mt-5 space-y-6">
+            <div className="mt-4 space-y-5">
               <ControlGroup label="Color style">
-                <div className="flex gap-3">{["#7c4dff", "#00d4ff", "#00ffa3", "#f8fafc"].map((color) => <button key={color} aria-label={`Use ${color}`} onClick={() => update({ accent: color })} className={`h-10 w-10 rounded-full border-2 p-1 ${active.accent === color ? "border-white" : "border-transparent"}`}><span className="block h-full w-full rounded-full" style={{ background: color }} /></button>)}</div>
+                <div className="flex gap-2.5">{["#7c4dff", "#00d4ff", "#00ffa3", "#f8fafc"].map((color) => <button key={color} aria-label={`Use ${color}`} onClick={() => update({ accent: color })} className={`h-8 w-8 rounded-full border-2 p-0.5 ${active.accent === color ? "border-white" : "border-transparent"}`}><span className="block h-full w-full rounded-full" style={{ background: color }} /></button>)}</div>
               </ControlGroup>
               <ControlGroup label="Background">
-                <div className="grid grid-cols-2 gap-2">{(["eclipse", "circuit", "prism", "void"] as Backdrop[]).map((name) => <button key={name} onClick={() => update({ backdrop: name })} className={`rounded-lg border p-2 text-left text-xs capitalize ${active.backdrop === name ? "border-violet-400" : "border-white/10"}`}><span className="mb-2 block h-12 rounded-md" style={{ background: backdrops[name] }} />{name}</button>)}</div>
+                <div className="grid grid-cols-2 gap-2">{(["eclipse", "circuit", "prism", "void"] as Backdrop[]).map((name) => <button key={name} onClick={() => update({ backdrop: name })} className={`rounded-lg border p-2 text-left text-[11px] capitalize ${active.backdrop === name ? "border-violet-400" : "border-white/10"}`}><span className="mb-1.5 block h-10 rounded-md" style={{ background: backdrops[name] }} />{name}</button>)}</div>
               </ControlGroup>
             </div>
           ) : (
-            <div className="mt-5 space-y-4">
-              <textarea readOnly value={gptPrompt(active)} className="h-80 w-full resize-none rounded-lg border border-white/10 bg-white/[.035] px-3 py-2.5 text-xs leading-5 text-slate-200 outline-none focus:border-violet-400" />
-              <button onClick={copyPrompt} className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-cyan-300/40 px-4 py-3 text-sm font-black text-white hover:bg-cyan-300/10"><ClipboardCopy className="h-4 w-4" /> {copiedPrompt ? "Copied" : "Copy GPT Prompt"}</button>
-              <button onClick={makeAllUniform} className="w-full rounded-lg border border-violet-400/40 px-4 py-3 text-sm font-black text-violet-100 hover:bg-violet-500/10">Make All Options Uniform</button>
+            <div className="mt-4 space-y-3">
+              <textarea readOnly value={gptPrompt(active)} className="h-64 w-full resize-none rounded-lg border border-white/10 bg-white/[.035] px-3 py-2 text-[11px] leading-4 text-slate-200 outline-none focus:border-violet-400" />
+              <button onClick={copyPrompt} className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-cyan-300/40 px-3 py-2.5 text-xs font-black text-white hover:bg-cyan-300/10"><ClipboardCopy className="h-3.5 w-3.5" /> {copiedPrompt ? "Copied" : "Copy GPT Prompt"}</button>
+              <button onClick={makeAllUniform} className="w-full rounded-lg border border-violet-400/40 px-3 py-2.5 text-xs font-black text-violet-100 hover:bg-violet-500/10">Make All Options Uniform</button>
             </div>
           )}
 
-          <ControlGroup label="Aspect ratio" className="mt-6">
-            <div className="grid grid-cols-4 gap-2">{(["16:9", "1:1", "4:5", "9:16"] as Ratio[]).map((ratio) => <button key={ratio} onClick={() => update({ ratio })} className={`rounded-lg border px-2 py-3 text-xs font-bold ${active.ratio === ratio ? "border-violet-400 bg-violet-500/10" : "border-white/10 text-slate-400"}`}>{ratio}</button>)}</div>
+          <ControlGroup label="Aspect ratio" className="mt-5">
+            <div className="grid grid-cols-4 gap-1.5">{(["16:9", "1:1", "4:5", "9:16"] as Ratio[]).map((ratio) => <button key={ratio} onClick={() => update({ ratio })} className={`rounded-lg border px-1.5 py-2 text-[11px] font-bold ${active.ratio === ratio ? "border-violet-400 bg-violet-500/10 text-white" : "border-white/10 text-slate-400"}`}>{ratio}</button>)}</div>
           </ControlGroup>
 
-          <button onClick={exportPng} disabled={exporting} className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 via-blue-500 to-cyan-400 px-4 py-3 text-sm font-black shadow-[0_0_28px_rgba(0,212,255,.18)] disabled:opacity-50"><Download className="h-4 w-4" /> {exporting ? "Exporting..." : "Export PNG"}</button>
-          <p className="mt-3 text-center text-[11px] text-slate-600">Exports the current design at 2× resolution</p>
+          <button onClick={exportPng} disabled={exporting} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 via-blue-500 to-cyan-400 px-4 py-2.5 text-xs font-black shadow-[0_0_28px_rgba(0,212,255,.18)] disabled:opacity-50"><Download className="h-3.5 w-3.5" /> {exporting ? "Exporting..." : "Export PNG"}</button>
+          <p className="mt-2 text-center text-[10px] text-slate-600">Exports design at 2× resolution</p>
         </aside>
       </div>
     </main>

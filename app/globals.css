@@ -5867,6 +5867,106 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.5;
 }
 
+/* ── WorkshopStudio → LANA Scheduler integration ─────────────────────────── */
+.studio-schedule-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 8px;
+  background: rgba(0,255,163,0.1);
+  border: 1px solid rgba(0,255,163,0.35);
+  color: #00ffa3; font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+}
+.studio-schedule-btn:hover {
+  background: rgba(0,255,163,0.2);
+  box-shadow: 0 0 12px rgba(0,255,163,0.3);
+}
+.studio-sched-panel {
+  margin: 0 0 20px;
+  padding: 20px 24px;
+  border-radius: 14px;
+  background: rgba(0,255,163,0.04);
+  border: 1px solid rgba(0,255,163,0.2);
+  animation: fadeSlideIn 0.25s ease;
+}
+.studio-sched-head {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 18px;
+}
+.studio-sched-head > span {
+  font-size: 1.6rem; flex-shrink: 0; margin-top: 2px;
+}
+.studio-sched-head strong {
+  display: block; font-size: 0.95rem; color: #e8e8f0; margin-bottom: 3px;
+}
+.studio-sched-head small { color: rgba(232,232,240,0.55); font-size: 0.8rem; }
+.studio-sched-row {
+  display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px;
+}
+.studio-sched-label {
+  display: flex; flex-direction: column; gap: 5px;
+  font-size: 0.8rem; color: rgba(232,232,240,0.6);
+  flex: 1; min-width: 140px;
+}
+.studio-sched-input {
+  padding: 7px 10px; border-radius: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #e8e8f0; font-size: 0.85rem;
+  font-family: inherit; outline: none;
+  color-scheme: dark;
+}
+.studio-sched-input:focus { border-color: rgba(0,255,163,0.5); }
+.studio-sched-actions {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+
+/* sched-* additions for new workshop panel and modal */
+.sched-workshop-panel {
+  background: rgba(0,255,163,0.04);
+  border: 1px solid rgba(0,255,163,0.18);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+.sched-ws-form { display: flex; flex-direction: column; gap: 16px; }
+.sched-ws-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.sched-ws-label {
+  display: flex; flex-direction: column; gap: 6px;
+  font-size: 0.8rem; color: rgba(232,232,240,0.6); flex: 1; min-width: 160px;
+}
+.sched-ws-select, .sched-ws-input {
+  padding: 8px 10px; border-radius: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #e8e8f0; font-family: inherit; font-size: 0.85rem;
+  outline: none; color-scheme: dark;
+}
+.sched-ws-select:focus, .sched-ws-input:focus { border-color: rgba(0,255,163,0.5); }
+.sched-ws-hint { font-size: 0.75rem; margin-top: 2px; }
+.sched-ws-preview {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 12px 14px; border-radius: 10px;
+  background: rgba(0,255,163,0.06); border: 1px solid rgba(0,255,163,0.18);
+}
+.sched-ws-preview-type {
+  font-size: 0.75rem; color: #00ffa3;
+  background: rgba(0,255,163,0.12); padding: 2px 8px; border-radius: 20px;
+}
+.sched-ws-preview strong { color: #e8e8f0; font-size: 0.9rem; }
+.sched-ws-preview span { color: rgba(232,232,240,0.5); font-size: 0.8rem; }
+.sched-ws-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.sched-ws-msg { font-size: 0.82rem; padding: 4px 0; }
+.sched-ws-msg.ok { color: #00ffa3; }
+.sched-ws-msg.err { color: #ff9500; }
+.sched-empty { color: rgba(232,232,240,0.4); font-size: 0.85rem; padding: 12px 0; }
+.sched-modal-delete {
+  margin-top: 16px; padding: 8px 16px; border-radius: 8px;
+  background: rgba(255,59,48,0.1); border: 1px solid rgba(255,59,48,0.3);
+  color: #ff3b30; font-size: 0.82rem; cursor: pointer;
+  transition: all 0.2s; width: 100%;
+}
+.sched-modal-delete:hover { background: rgba(255,59,48,0.2); }
+
 /* Admin command bar — prevent overlap with site nav */
 .admin-world .admin-command-bar {
   position: sticky;

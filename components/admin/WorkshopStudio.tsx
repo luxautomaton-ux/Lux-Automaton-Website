@@ -13,6 +13,7 @@ import {
   type WorkshopStatus,
 } from "@/lib/workshopDb";
 import { supabase } from "@/lib/supabase";
+import { scheduleWorkshop, suggestBestTime } from "@/lib/scheduleStore";
 
 type WorkshopForm = {
   title: string;
@@ -536,6 +537,12 @@ export default function WorkshopStudio() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
+  // Schedule panel
+  const [showSched, setShowSched] = useState(false);
+  const [schedDate, setSchedDate] = useState(() => { const d = new Date(); d.setDate(d.getDate() + 3); return d.toISOString().slice(0, 10); });
+  const [schedTime, setSchedTime] = useState(() => suggestBestTime(new Date(Date.now() + 3*86400000).toISOString().slice(0, 10)));
+  const [schedChannel, setSchedChannel] = useState<"Lux Automaton" | "Lux AI Kids">("Lux Automaton");
+  const [schedMsg, setSchedMsg] = useState("");
 
   const selected = useMemo(
     () => workshops.find((workshop) => workshop.id === selectedId) || null,
@@ -704,11 +711,72 @@ export default function WorkshopStudio() {
               {selected && <span className={`studio-status ${selected.status}`}>{selected.status}</span>}
               {selected?.status === "published" && <a href={`/workshops?workshop=${selected.slug}`} target="_blank" rel="noreferrer">View live</a>}
               <button type="button" onClick={() => saveWorkshop("draft")} disabled={saving}>Save draft</button>
+              {selected && (
+                <button type="button" className="studio-schedule-btn" onClick={() => { setShowSched(v => !v); setSchedMsg(""); }}>
+                  📅 Schedule Post
+                </button>
+              )}
               <button type="button" className="studio-primary" onClick={() => saveWorkshop("published")} disabled={saving}>{saving ? "Saving…" : "Publish"}</button>
             </div>
           </div>
 
           {message && <div className={message.includes("saved") || message.includes("published") || message.includes("ready") ? "studio-notice success" : "studio-notice"}>{message}</div>}
+
+          {showSched && selected && (
+            <div className="studio-sched-panel">
+              <div className="studio-sched-head">
+                <span>📅</span>
+                <div>
+                  <strong>Schedule as post</strong>
+                  <small>LANA will add this workshop to the Content Calendar at the optimal time.</small>
+                </div>
+              </div>
+              <div className="studio-sched-row">
+                <label className="studio-sched-label">
+                  Publish Date
+                  <input type="date" value={schedDate}
+                    onChange={e => { setSchedDate(e.target.value); setSchedTime(suggestBestTime(e.target.value)); }}
+                    className="studio-sched-input" />
+                </label>
+                <label className="studio-sched-label">
+                  Publish Time
+                  <input type="time" value={schedTime}
+                    onChange={e => setSchedTime(e.target.value)}
+                    className="studio-sched-input" />
+                  <small style={{ color: schedTime === suggestBestTime(schedDate) ? "#00ffa3" : "#ff9500" }}>
+                    {schedTime === suggestBestTime(schedDate) ? "🔥 LANA best time" : `💡 LANA suggests ${suggestBestTime(schedDate)}`}
+                  </small>
+                </label>
+                <label className="studio-sched-label">
+                  Channel
+                  <select value={schedChannel} onChange={e => setSchedChannel(e.target.value as typeof schedChannel)} className="studio-sched-input">
+                    <option>Lux Automaton</option>
+                    <option>Lux AI Kids</option>
+                  </select>
+                </label>
+              </div>
+              <div className="studio-sched-actions">
+                <button type="button" className="studio-primary" onClick={() => {
+                  scheduleWorkshop({
+                    workshopId: selected.id,
+                    title: selected.title,
+                    slug: selected.slug,
+                    channel: schedChannel,
+                    date: schedDate,
+                    time: schedTime,
+                    tags: ["Workshop", selected.audience, selected.level],
+                  });
+                  setSchedMsg(`✅ "${selected.title}" scheduled for ${schedDate} at ${schedTime} on ${schedChannel}.`);
+                  setShowSched(false);
+                  setMessage(`✅ Workshop scheduled in Content Calendar for ${schedDate}.`);
+                }}>
+                  ✨ Confirm Schedule
+                </button>
+                <button type="button" onClick={() => setShowSched(false)}>Cancel</button>
+                {schedMsg && <span style={{ color: "#00ffa3", fontSize: "0.82rem" }}>{schedMsg}</span>}
+              </div>
+            </div>
+          )}
 
           <section className="studio-card">
             <div className="studio-section-title">

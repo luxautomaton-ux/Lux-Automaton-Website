@@ -499,7 +499,7 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
               <span>{active.format}</span>
               <button
                 type="button"
-                onClick={draftLanaCampaign}
+                onClick={() => draftLanaCampaign()}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",

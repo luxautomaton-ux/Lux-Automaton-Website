@@ -354,10 +354,10 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
   }
 
   return (
-    <main className={embedded ? "bg-[#05070d] text-white" : "fixed inset-0 z-[200] overflow-auto bg-[#05070d] text-white"}>
-      <div className="min-h-screen grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)_300px]">
-        <aside className="border-b border-white/10 bg-[#070a11] lg:border-b-0 lg:border-r">
-          <div className="border-b border-white/10 p-4">
+    <main className={`lux-marketing-root ${embedded ? "embedded" : "standalone"}`}>
+      <div className="lux-marketing-layout">
+        <aside className="lux-marketing-leftnav">
+          <div className="border-b border-white/10 pb-4">
             <div className="flex items-center gap-3">
               <BrandIcon className="h-10 w-10" />
               <div>
@@ -371,14 +371,14 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
             </div>
           </div>
 
-          <nav aria-label="Template categories" className="flex gap-1 overflow-x-auto p-2 lg:block lg:overflow-visible">
+          <nav aria-label="Template categories" className="flex flex-col gap-1">
             <CategoryButton active={category === "all"} label="All Templates" count={items.length} icon={<LayoutTemplate className="h-4 w-4" />} onClick={() => selectCategory("all")} />
             {categories.map((item) => (
               <CategoryButton key={item.id} active={category === item.id} label={item.label} count={items.filter((template) => template.category === item.id).length} icon={item.icon} onClick={() => selectCategory(item.id)} />
             ))}
           </nav>
 
-          <div className="m-3 hidden rounded-xl border border-white/10 bg-white/[.035] p-3 lg:block">
+          <div className="mt-auto rounded-xl border border-white/10 bg-white/[.035] p-3">
             <div className="flex items-center gap-2.5">
               <BrandIcon className="h-8 w-8" />
               <div className="min-w-0"><p className="truncate text-xs font-bold">Lux Automaton</p><p className="truncate text-[10px] text-slate-500">Brand system active</p></div>
@@ -387,44 +387,44 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
           </div>
         </aside>
 
-        <section className="min-w-0 flex flex-col">
-          <header className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-[#05070d]/95 px-4 py-3 backdrop-blur">
+        <section className="lux-marketing-center">
+          <header className="lux-marketing-center-header">
             <div><p className="text-[10px] uppercase tracking-[.16em] text-slate-500">Campaign</p><h1 className="mt-0.5 text-base font-bold">{active.name}</h1></div>
             <div className="flex items-center gap-3 text-xs text-slate-400"><span>{active.format}</span><button onClick={duplicate} className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-2.5 py-1.5 font-semibold text-white hover:border-cyan-300/50"><Plus className="h-3.5 w-3.5" /> Duplicate</button></div>
           </header>
 
-          <div className="grid flex-1 grid-cols-1 md:grid-cols-[180px_minmax(0,1fr)]">
-            <aside className="border-b border-white/10 bg-[#080b13] p-2.5 md:border-b-0 md:border-r">
+          <div className="lux-marketing-center-body">
+            <aside className="lux-marketing-template-list">
               <div className="mb-2 flex items-center justify-between px-1"><p className="text-[10px] font-bold uppercase tracking-[.14em] text-slate-400">{category === "all" ? "All Templates" : categories.find((item) => item.id === category)?.label}</p><span className="text-[10px] text-slate-600">{filtered.length}</span></div>
-              <div className="flex gap-2 overflow-x-auto pb-1 md:block md:max-h-[calc(100vh-180px)] md:space-y-2 md:overflow-y-auto md:pr-1">
+              <div className="space-y-2">
                 {filtered.map((item) => <TemplateCard key={item.id} item={item} active={item.id === active.id} onClick={() => setActiveId(item.id)} />)}
                 {!filtered.length && <p className="p-3 text-xs text-slate-500">No matching templates.</p>}
               </div>
             </aside>
 
-            <div className="relative flex min-h-[460px] items-center justify-center overflow-hidden p-4 md:p-6">
+            <div className="lux-marketing-canvas-viewport">
               <div aria-hidden className="absolute inset-0 opacity-30" style={{ backgroundImage: "linear-gradient(rgba(0,212,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,.05) 1px, transparent 1px)", backgroundSize: "42px 42px" }} />
-              <div className="relative flex w-full items-center justify-center py-2" style={{ maxWidth: active.ratio === "9:16" ? "300px" : active.ratio === "4:5" ? "420px" : active.ratio === "1:1" ? "480px" : "680px" }}>
+              <div className="lux-marketing-canvas-wrapper" style={{ maxWidth: active.ratio === "9:16" ? "300px" : active.ratio === "4:5" ? "400px" : active.ratio === "1:1" ? "460px" : "660px" }}>
                 <CreativeCanvas ref={canvasRef} template={active} />
               </div>
             </div>
           </div>
         </section>
 
-        <aside className="border-t border-white/10 bg-[#070a11] p-4 lg:border-l lg:border-t-0">
-          <div className="grid grid-cols-3 border-b border-white/10">
-            {(["edit", "style", "prompt"] as const).map((tab) => <button key={tab} onClick={() => setPanel(tab)} className={`border-b-2 py-2.5 text-xs font-bold capitalize ${panel === tab ? "border-violet-500 text-white" : "border-transparent text-slate-500"}`}>{tab}</button>)}
+        <aside className="lux-marketing-rightpanel">
+          <div className="grid grid-cols-3 border-b border-white/10 pb-2">
+            {(["edit", "style", "prompt"] as const).map((tab) => <button key={tab} onClick={() => setPanel(tab)} className={`border-b-2 py-2 text-xs font-bold capitalize ${panel === tab ? "border-violet-500 text-white" : "border-transparent text-slate-500"}`}>{tab}</button>)}
           </div>
 
           {panel === "edit" ? (
-            <div className="mt-4 space-y-3">
+            <div className="space-y-3">
               <Field label="Headline" value={active.headline} multiline onChange={(headline) => update({ headline })} />
               <Field label="Description" value={active.description} multiline onChange={(description) => update({ description })} />
               <Field label="Call to action" value={active.cta} onChange={(cta) => update({ cta })} />
               <Field label="Label" value={active.tag} onChange={(tag) => update({ tag })} />
             </div>
           ) : panel === "style" ? (
-            <div className="mt-4 space-y-5">
+            <div className="space-y-5">
               <ControlGroup label="Color style">
                 <div className="flex gap-2.5">{["#7c4dff", "#00d4ff", "#00ffa3", "#f8fafc"].map((color) => <button key={color} aria-label={`Use ${color}`} onClick={() => update({ accent: color })} className={`h-8 w-8 rounded-full border-2 p-0.5 ${active.accent === color ? "border-white" : "border-transparent"}`}><span className="block h-full w-full rounded-full" style={{ background: color }} /></button>)}</div>
               </ControlGroup>
@@ -433,19 +433,18 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
               </ControlGroup>
             </div>
           ) : (
-            <div className="mt-4 space-y-3">
-              <textarea readOnly value={gptPrompt(active)} className="h-64 w-full resize-none rounded-lg border border-white/10 bg-white/[.035] px-3 py-2 text-[11px] leading-4 text-slate-200 outline-none focus:border-violet-400" />
+            <div className="space-y-3">
+              <textarea readOnly value={gptPrompt(active)} className="h-56 w-full resize-none rounded-lg border border-white/10 bg-white/[.035] px-3 py-2 text-[11px] leading-4 text-slate-200 outline-none focus:border-violet-400" />
               <button onClick={copyPrompt} className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-cyan-300/40 px-3 py-2.5 text-xs font-black text-white hover:bg-cyan-300/10"><ClipboardCopy className="h-3.5 w-3.5" /> {copiedPrompt ? "Copied" : "Copy GPT Prompt"}</button>
               <button onClick={makeAllUniform} className="w-full rounded-lg border border-violet-400/40 px-3 py-2.5 text-xs font-black text-violet-100 hover:bg-violet-500/10">Make All Options Uniform</button>
             </div>
           )}
 
-          <ControlGroup label="Aspect ratio" className="mt-5">
+          <ControlGroup label="Aspect ratio">
             <div className="grid grid-cols-4 gap-1.5">{(["16:9", "1:1", "4:5", "9:16"] as Ratio[]).map((ratio) => <button key={ratio} onClick={() => update({ ratio })} className={`rounded-lg border px-1.5 py-2 text-[11px] font-bold ${active.ratio === ratio ? "border-violet-400 bg-violet-500/10 text-white" : "border-white/10 text-slate-400"}`}>{ratio}</button>)}</div>
           </ControlGroup>
 
-          <button onClick={exportPng} disabled={exporting} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 via-blue-500 to-cyan-400 px-4 py-2.5 text-xs font-black shadow-[0_0_28px_rgba(0,212,255,.18)] disabled:opacity-50"><Download className="h-3.5 w-3.5" /> {exporting ? "Exporting..." : "Export PNG"}</button>
-          <p className="mt-2 text-center text-[10px] text-slate-600">Exports design at 2× resolution</p>
+          <button onClick={exportPng} disabled={exporting} className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 via-blue-500 to-cyan-400 px-4 py-2.5 text-xs font-black shadow-[0_0_28px_rgba(0,212,255,.18)] disabled:opacity-50"><Download className="h-3.5 w-3.5" /> {exporting ? "Exporting..." : "Export PNG"}</button>
         </aside>
       </div>
     </main>

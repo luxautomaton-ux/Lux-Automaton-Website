@@ -5990,3 +5990,99 @@ h1, h2, h3, h4, h5, h6 {
   .sched-modal { padding: 24px 20px; }
   .sched-modal-row { flex-direction: column; }
 }
+
+/* ===== LUX MARKETING STUDIO STYLES ===== */
+.lux-marketing-root {
+  background-color: #05070d;
+  color: #f8fafc;
+  min-height: calc(100vh - 120px);
+}
+.lux-marketing-root.standalone {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  overflow-y: auto;
+}
+.lux-marketing-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 300px;
+  min-height: calc(100vh - 120px);
+}
+@media (max-width: 1180px) {
+  .lux-marketing-layout {
+    grid-template-columns: 200px minmax(0, 1fr) 280px;
+  }
+}
+@media (max-width: 900px) {
+  .lux-marketing-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.lux-marketing-leftnav {
+  background-color: #070a11;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.lux-marketing-center {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: #05070d;
+}
+.lux-marketing-center-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(5, 7, 13, 0.95);
+}
+.lux-marketing-center-body {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  flex: 1;
+  min-height: 520px;
+}
+@media (max-width: 768px) {
+  .lux-marketing-center-body {
+    grid-template-columns: 1fr;
+  }
+}
+.lux-marketing-template-list {
+  background-color: #080b13;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+.lux-marketing-canvas-viewport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  background: #05070d;
+  min-height: 480px;
+}
+.lux-marketing-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lux-marketing-rightpanel {
+  background-color: #070a11;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+

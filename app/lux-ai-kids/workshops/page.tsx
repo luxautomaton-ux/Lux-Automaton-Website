@@ -25,6 +25,13 @@ const LEVEL_COLORS: Record<string, string> = {
   Pro: "var(--kid-pink)",
 };
 
+const LAB_PROGRAM_SLUGS = new Set([
+  "ai-explorer-kids",
+  "ai-art-studio-kids",
+  "storyteller-lab-kids",
+  "robot-builders-kids",
+]);
+
 export default function KidsWorkshopsPage() {
   const [activeCategory, setActiveCategory] = useState<WorkshopCategory | "all">("all");
   const [showCount, setShowCount] = useState(10);
@@ -38,7 +45,9 @@ export default function KidsWorkshopsPage() {
   );
 
   const visible = filtered.slice(0, showCount);
-  const academyPrograms = WORKSHOP_PROGRAMS.filter((program) => program.audience === "Lux AI Kids");
+  const kidsPrograms = WORKSHOP_PROGRAMS.filter((program) => program.audience === "Lux AI Kids");
+  const labPrograms = kidsPrograms.filter((program) => LAB_PROGRAM_SLUGS.has(program.slug));
+  const completeWorkshopPrograms = kidsPrograms.filter((program) => !LAB_PROGRAM_SLUGS.has(program.slug));
 
   return (
     <div className="kids-world kw-page">
@@ -83,25 +92,25 @@ export default function KidsWorkshopsPage() {
         </div>
         <div className="kw-hero-art">
           <Image src="/images/lux-ai-kids-academy/ace-learning-hero.jpg" alt="Ace welcoming young creators to Lux AI Kids workshops" fill priority sizes="(max-width: 950px) 100vw, 42vw" />
-          <span className="kw-hero-art-label">ACE&apos;S WORKSHOP LAB</span>
+          <span className="kw-hero-art-label">ACE&apos;S KIDS WORKSHOP STUDIO</span>
         </div>
       </section>
 
-      <section className="kw-grid-section kids-academy-programs">
+      <section className="kw-grid-section kids-academy-programs" id="learning-labs">
         <div className="kw-grid-header">
-          <p>COMPLETE LUX AI KIDS WORKSHOPS</p>
-          <h2>Full workshops. <span>Made for young builders.</span></h2>
-          <span className="kw-grid-count">{academyPrograms.length} complete workshops</span>
+          <p>LUX AI KIDS LEARNING LABS</p>
+          <h2>Four learning worlds. <span>Built for curious minds.</span></h2>
+          <span className="kw-grid-count">{labPrograms.length} Labs</span>
         </div>
-        <div className="kids-learning-dashboard" aria-label="Workshop learning dashboard">
-          <span><b>01</b> Pick a complete workshop</span><span><b>02</b> Follow the lesson path</span><span><b>03</b> Make and share a project</span>
+        <div className="kids-learning-dashboard" aria-label="Lab learning path">
+          <span><b>01</b> Choose a learning world</span><span><b>02</b> Complete its missions</span><span><b>03</b> Earn and share your build</span>
         </div>
         <div className="kw-grid">
-          {academyPrograms.map((program) => (
+          {labPrograms.map((program) => (
             <Link key={program.slug} href={`/lux-ai-kids/workshops/${program.slug}`} className="kw-grid-card kids-academy-program-card">
-              <div className="kw-grid-card-top"><div className="kw-grid-icon">✦</div><span className="kw-shelf-level" style={{ background: "var(--kid-pink)" }}>Workshop</span></div>
+              <div className="kw-grid-card-top"><div className="kw-grid-icon">✦</div><span className="kw-shelf-level" style={{ background: "var(--kid-pink)" }}>Lab</span></div>
               <div className="kw-grid-card-body"><b>{program.title}</b><p>{program.description}</p></div>
-              <div className="kw-grid-card-foot"><span>{program.ageBand}</span><span>{program.duration}</span><strong>Open workshop →</strong></div>
+              <div className="kw-grid-card-foot"><span>{program.ageBand}</span><span>{program.duration}</span><strong>Enter Lab →</strong></div>
             </Link>
           ))}
         </div>
@@ -115,6 +124,26 @@ export default function KidsWorkshopsPage() {
         <span>SHARE</span><b>✦</b>
         <span>REPEAT</span>
       </div>
+
+      <section className="kw-grid-section kids-workshop-programs" id="kids-workshops">
+        <div className="kw-grid-header">
+          <p>COMPLETE KIDS WORKSHOPS</p>
+          <h2>Pick a project. <span>Build something real.</span></h2>
+          <span className="kw-grid-count">{completeWorkshopPrograms.length} complete workshops</span>
+        </div>
+        <div className="kids-learning-dashboard" aria-label="Workshop learning path">
+          <span><b>01</b> Pick your project</span><span><b>02</b> Follow the lesson path</span><span><b>03</b> Make and share it</span>
+        </div>
+        <div className="kw-grid">
+          {completeWorkshopPrograms.map((program) => (
+            <Link key={program.slug} href={`/lux-ai-kids/workshops/${program.slug}`} className="kw-grid-card kids-academy-program-card">
+              <div className="kw-grid-card-top"><div className="kw-grid-icon">★</div><span className="kw-shelf-level" style={{ background: "var(--kid-blue)", color: "var(--kid-navy)" }}>Workshop</span></div>
+              <div className="kw-grid-card-body"><b>{program.title}</b><p>{program.description}</p></div>
+              <div className="kw-grid-card-foot"><span>{program.ageBand}</span><span>{program.duration}</span><strong>Open workshop →</strong></div>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* ═══ CATEGORY FILTER ═══ */}
       <section className="kw-categories">
@@ -138,7 +167,7 @@ export default function KidsWorkshopsPage() {
       {/* ═══ WORKSHOP GRID ═══ */}
       <section className="kw-grid-section">
         <div className="kw-grid-header">
-          <p>{activeCategory === "all" ? "SHORT PROJECT WORKSHOPS" : CATEGORIES.find((c) => c.key === activeCategory)?.label?.toUpperCase()}</p>
+          <p>{activeCategory === "all" ? "MORE KIDS WORKSHOPS" : CATEGORIES.find((c) => c.key === activeCategory)?.label?.toUpperCase()}</p>
           <h2>
             Pick a workshop. <span>Build something real.</span>
           </h2>

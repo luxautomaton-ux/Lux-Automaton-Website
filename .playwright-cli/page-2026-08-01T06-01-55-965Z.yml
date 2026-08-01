@@ -1,0 +1,492 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Lux Automaton Logo Lux Automaton The AI Operating System" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Lux Automaton Logo" [ref=e5]
+        - generic [ref=e6]:
+          - generic [ref=e7]: Lux Automaton
+          - generic [ref=e8]: The AI Operating System
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - button "Products ▼" [ref=e12] [cursor=pointer]:
+          - text: Products
+          - generic [ref=e13]: ▼
+        - button "Solutions ▼" [ref=e15] [cursor=pointer]:
+          - text: Solutions
+          - generic [ref=e16]: ▼
+        - link "Workshops" [ref=e17] [cursor=pointer]:
+          - /url: /workshops/
+        - link "Lux TV" [ref=e18] [cursor=pointer]:
+          - /url: /lux-tv/
+        - link "Kids TV" [ref=e19] [cursor=pointer]:
+          - /url: /lux-tv-kids/
+        - link "Ask LANA" [ref=e20] [cursor=pointer]:
+          - /url: /ask-lana/
+        - link "App Review" [ref=e21] [cursor=pointer]:
+          - /url: /app-review/
+        - link "Blog" [ref=e22] [cursor=pointer]:
+          - /url: /blog/
+        - link "Books" [ref=e23] [cursor=pointer]:
+          - /url: /books/
+        - link "Community" [ref=e24] [cursor=pointer]:
+          - /url: /community/
+        - link "AI Kids" [ref=e25] [cursor=pointer]:
+          - /url: /lux-ai-kids/
+        - link "Start Here" [ref=e26] [cursor=pointer]:
+          - /url: /start-here/
+  - main [ref=e27]:
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - generic [ref=e32]: ✦
+            - generic [ref=e33]: Lux AI Kids Workshop
+          - heading "Learn AI. Build anything. Change the world." [level=1] [ref=e34]: Learn AI. Build anything.Change the world.
+          - paragraph [ref=e35]: Ace and Lana are your guides. Pick a workshop, follow the steps, and come out with something real you can show, share, or improve.
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - generic [ref=e38]: ⚡
+              - generic [ref=e39]:
+                - heading "Ace" [level=3] [ref=e40]
+                - paragraph [ref=e41]: Your creative co-builder. Wild ideas, bold moves, and nonstop energy.
+            - generic [ref=e42]:
+              - generic [ref=e43]: 🔮
+              - generic [ref=e44]:
+                - heading "Lana" [level=3] [ref=e45]
+                - paragraph [ref=e46]: Your smart guide. Plans, safety, and making sure every project works right.
+          - generic [ref=e47]:
+            - generic [ref=e48]: ✓ Age-appropriate
+            - generic [ref=e49]: ✓ Project-based
+            - generic [ref=e50]: ✓ Safety-first
+            - generic [ref=e51]: ✓ Human-guided
+        - generic [ref=e52]:
+          - img "Ace welcoming young creators to Lux AI Kids workshops" [ref=e53]
+          - generic [ref=e54]: ACE'S KIDS WORKSHOP STUDIO
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: LUX AI KIDS LEARNING LABS
+          - heading "Four learning worlds. Built for curious minds." [level=2] [ref=e58]
+          - generic [ref=e59]: 4 Labs
+        - generic "Lab learning path" [ref=e60]:
+          - generic [ref=e61]:
+            - generic [ref=e62]: "01"
+            - text: Choose a learning world
+          - generic [ref=e63]:
+            - generic [ref=e64]: "02"
+            - text: Complete its missions
+          - generic [ref=e65]:
+            - generic [ref=e66]: "03"
+            - text: Earn and share your build
+        - generic [ref=e67]:
+          - link "✦ Lab AI Explorer A playful introduction to AI, patterns, prompts, and using technology to help people. Ages 7-10 75 minutes Enter Lab →" [ref=e68] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/ai-explorer-kids/
+            - generic [ref=e69]:
+              - generic [ref=e70]: ✦
+              - generic [ref=e71]: Lab
+            - generic [ref=e72]:
+              - generic [ref=e73]: AI Explorer
+              - paragraph [ref=e74]: A playful introduction to AI, patterns, prompts, and using technology to help people.
+            - generic [ref=e75]:
+              - generic [ref=e76]: Ages 7-10
+              - generic [ref=e77]: 75 minutes
+              - strong [ref=e78]: Enter Lab →
+          - link "✦ Lab AI Art Studio Kids create characters, worlds, posters, and visual stories while learning prompt clarity. Ages 8-12 90 minutes Enter Lab →" [ref=e79] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/ai-art-studio-kids/
+            - generic [ref=e80]:
+              - generic [ref=e81]: ✦
+              - generic [ref=e82]: Lab
+            - generic [ref=e83]:
+              - generic [ref=e84]: AI Art Studio
+              - paragraph [ref=e85]: Kids create characters, worlds, posters, and visual stories while learning prompt clarity.
+            - generic [ref=e86]:
+              - generic [ref=e87]: Ages 8-12
+              - generic [ref=e88]: 90 minutes
+              - strong [ref=e89]: Enter Lab →
+          - link "✦ Lab Storyteller Lab Write a hero, plan a scene, and turn a story idea into a short video-ready storyboard. Ages 9-14 2 hours Enter Lab →" [ref=e90] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/storyteller-lab-kids/
+            - generic [ref=e91]:
+              - generic [ref=e92]: ✦
+              - generic [ref=e93]: Lab
+            - generic [ref=e94]:
+              - generic [ref=e95]: Storyteller Lab
+              - paragraph [ref=e96]: Write a hero, plan a scene, and turn a story idea into a short video-ready storyboard.
+            - generic [ref=e97]:
+              - generic [ref=e98]: Ages 9-14
+              - generic [ref=e99]: 2 hours
+              - strong [ref=e100]: Enter Lab →
+          - link "✦ Lab Robot Builders Design a helpful robot that solves a real home, school, or neighborhood problem. Ages 10-15 2 hours Enter Lab →" [ref=e101] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/robot-builders-kids/
+            - generic [ref=e102]:
+              - generic [ref=e103]: ✦
+              - generic [ref=e104]: Lab
+            - generic [ref=e105]:
+              - generic [ref=e106]: Robot Builders
+              - paragraph [ref=e107]: Design a helpful robot that solves a real home, school, or neighborhood problem.
+            - generic [ref=e108]:
+              - generic [ref=e109]: Ages 10-15
+              - generic [ref=e110]: 2 hours
+              - strong [ref=e111]: Enter Lab →
+      - generic [ref=e112]:
+        - generic [ref=e113]: LEARN
+        - generic [ref=e114]: ✦
+        - generic [ref=e115]: BUILD
+        - generic [ref=e116]: ✦
+        - generic [ref=e117]: CREATE
+        - generic [ref=e118]: ✦
+        - generic [ref=e119]: SHARE
+        - generic [ref=e120]: ✦
+        - generic [ref=e121]: REPEAT
+      - generic [ref=e122]:
+        - generic [ref=e123]:
+          - paragraph [ref=e124]: COMPLETE KIDS WORKSHOPS
+          - heading "Pick a project. Build something real." [level=2] [ref=e125]
+          - generic [ref=e126]: 2 complete workshops
+        - generic "Workshop learning path" [ref=e127]:
+          - generic [ref=e128]:
+            - generic [ref=e129]: "01"
+            - text: Pick your project
+          - generic [ref=e130]:
+            - generic [ref=e131]: "02"
+            - text: Follow the lesson path
+          - generic [ref=e132]:
+            - generic [ref=e133]: "03"
+            - text: Make and share it
+        - generic [ref=e134]:
+          - 'link "★ Workshop Your First Video Game: Imagine It. Draw It. Play It! Children create a real paper video-game prototype using drawing, storytelling, simple rules, and playtesting. Ace helps young game designers invent a hero, draw a level, make simple rules, and playtest a paper game. LANA introduces safe, grown-up-guided AI prompts for game art ideas. Ages 6–8 120 minutes (2 hrs) Open workshop →" [ref=e135] [cursor=pointer]':
+            - /url: /lux-ai-kids/workshops/your-first-video-game/
+            - generic [ref=e136]:
+              - generic [ref=e137]: ★
+              - generic [ref=e138]: Workshop
+            - generic [ref=e139]:
+              - generic [ref=e140]: "Your First Video Game: Imagine It. Draw It. Play It!"
+              - paragraph [ref=e141]: Children create a real paper video-game prototype using drawing, storytelling, simple rules, and playtesting. Ace helps young game designers invent a hero, draw a level, make simple rules, and playtest a paper game. LANA introduces safe, grown-up-guided AI prompts for game art ideas.
+            - generic [ref=e142]:
+              - generic [ref=e143]: Ages 6–8
+              - generic [ref=e144]: 120 minutes (2 hrs)
+              - strong [ref=e145]: Open workshop →
+          - link "★ Workshop Teen AI Builder Portfolio Teens build a portfolio project using AI for research, planning, design, and responsible presentation. Ages 14-17 4 weeks Open workshop →" [ref=e146] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/teen-ai-builder-portfolio/
+            - generic [ref=e147]:
+              - generic [ref=e148]: ★
+              - generic [ref=e149]: Workshop
+            - generic [ref=e150]:
+              - generic [ref=e151]: Teen AI Builder Portfolio
+              - paragraph [ref=e152]: Teens build a portfolio project using AI for research, planning, design, and responsible presentation.
+            - generic [ref=e153]:
+              - generic [ref=e154]: Ages 14-17
+              - generic [ref=e155]: 4 weeks
+              - strong [ref=e156]: Open workshop →
+      - generic [ref=e158]:
+        - button "✦ All Workshops" [ref=e159] [cursor=pointer]:
+          - generic [ref=e160]: ✦
+          - generic [ref=e161]: All Workshops
+        - button "🎮 Video Games" [ref=e162] [cursor=pointer]:
+          - generic [ref=e163]: 🎮
+          - generic [ref=e164]: Video Games
+        - button "🤖 Robots" [ref=e165] [cursor=pointer]:
+          - generic [ref=e166]: 🤖
+          - generic [ref=e167]: Robots
+        - button "🎬 Cartoons" [ref=e168] [cursor=pointer]:
+          - generic [ref=e169]: 🎬
+          - generic [ref=e170]: Cartoons
+        - button "📚 School Projects" [ref=e171] [cursor=pointer]:
+          - generic [ref=e172]: 📚
+          - generic [ref=e173]: School Projects
+        - button "🏠 Family Projects" [ref=e174] [cursor=pointer]:
+          - generic [ref=e175]: 🏠
+          - generic [ref=e176]: Family Projects
+        - button "🎨 Creative Lab" [ref=e177] [cursor=pointer]:
+          - generic [ref=e178]: 🎨
+          - generic [ref=e179]: Creative Lab
+      - generic [ref=e180]:
+        - generic [ref=e181]:
+          - paragraph [ref=e182]: MORE KIDS WORKSHOPS
+          - heading "Pick a workshop. Build something real." [level=2] [ref=e183]
+          - generic [ref=e184]: 20 workshops
+        - generic [ref=e185]:
+          - link "🎮 Starter Your First Video Game Make a game you can play and share. Ages 6–8 2 hours" [ref=e186] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/your-first-game/
+            - generic [ref=e187]:
+              - generic [ref=e188]: 🎮
+              - generic [ref=e189]: Starter
+            - generic [ref=e190]:
+              - generic [ref=e191]: Your First Video Game
+              - paragraph [ref=e192]: Make a game you can play and share.
+            - generic [ref=e193]:
+              - generic [ref=e194]: Ages 6–8
+              - generic [ref=e195]: 2 hours
+          - link "🕹️ Builder Build a Platformer Game Jump, run, and collect — the classic formula. Ages 9–13 2.5 hours" [ref=e196] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/build-a-platformer/
+            - generic [ref=e197]:
+              - generic [ref=e198]: 🕹️
+              - generic [ref=e199]: Builder
+            - generic [ref=e200]:
+              - generic [ref=e201]: Build a Platformer Game
+              - paragraph [ref=e202]: Jump, run, and collect — the classic formula.
+            - generic [ref=e203]:
+              - generic [ref=e204]: Ages 9–13
+              - generic [ref=e205]: 2.5 hours
+          - link "🧩 Starter Puzzle Game Lab Create brain teasers that stump your friends. Ages 8–12 2 hours" [ref=e206] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/puzzle-game-lab/
+            - generic [ref=e207]:
+              - generic [ref=e208]: 🧩
+              - generic [ref=e209]: Starter
+            - generic [ref=e210]:
+              - generic [ref=e211]: Puzzle Game Lab
+              - paragraph [ref=e212]: Create brain teasers that stump your friends.
+            - generic [ref=e213]:
+              - generic [ref=e214]: Ages 8–12
+              - generic [ref=e215]: 2 hours
+          - link "📖 Pro Story Game Adventure A game where choices change the story. Ages 10–14 3 hours" [ref=e216] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/story-game-adventure/
+            - generic [ref=e217]:
+              - generic [ref=e218]: 📖
+              - generic [ref=e219]: Pro
+            - generic [ref=e220]:
+              - generic [ref=e221]: Story Game Adventure
+              - paragraph [ref=e222]: A game where choices change the story.
+            - generic [ref=e223]:
+              - generic [ref=e224]: Ages 10–14
+              - generic [ref=e225]: 3 hours
+          - link "🤖 Starter Design a Helper Robot Build a robot that makes life better. Ages 7–11 2 hours" [ref=e226] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/design-a-helper-robot/
+            - generic [ref=e227]:
+              - generic [ref=e228]: 🤖
+              - generic [ref=e229]: Starter
+            - generic [ref=e230]:
+              - generic [ref=e231]: Design a Helper Robot
+              - paragraph [ref=e232]: Build a robot that makes life better.
+            - generic [ref=e233]:
+              - generic [ref=e234]: Ages 7–11
+              - generic [ref=e235]: 2 hours
+          - link "⚙️ Builder Robot Engineering Studio From idea to engineering plan. Ages 10–15 3 hours" [ref=e236] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/robot-engineering-studio/
+            - generic [ref=e237]:
+              - generic [ref=e238]: ⚙️
+              - generic [ref=e239]: Builder
+            - generic [ref=e240]:
+              - generic [ref=e241]: Robot Engineering Studio
+              - paragraph [ref=e242]: From idea to engineering plan.
+            - generic [ref=e243]:
+              - generic [ref=e244]: Ages 10–15
+              - generic [ref=e245]: 3 hours
+          - link "🧠 Pro Give Your Robot an AI Brain Teach your robot to think and decide. Ages 11–15 3 hours" [ref=e246] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/robot-ai-brain/
+            - generic [ref=e247]:
+              - generic [ref=e248]: 🧠
+              - generic [ref=e249]: Pro
+            - generic [ref=e250]:
+              - generic [ref=e251]: Give Your Robot an AI Brain
+              - paragraph [ref=e252]: Teach your robot to think and decide.
+            - generic [ref=e253]:
+              - generic [ref=e254]: Ages 11–15
+              - generic [ref=e255]: 3 hours
+          - link "🎨 Starter Design a Cartoon Character Create a character that kids love. Ages 7–11 2 hours" [ref=e256] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/design-a-cartoon-character/
+            - generic [ref=e257]:
+              - generic [ref=e258]: 🎨
+              - generic [ref=e259]: Starter
+            - generic [ref=e260]:
+              - generic [ref=e261]: Design a Cartoon Character
+              - paragraph [ref=e262]: Create a character that kids love.
+            - generic [ref=e263]:
+              - generic [ref=e264]: Ages 7–11
+              - generic [ref=e265]: 2 hours
+          - link "🎬 Builder Build an Animated Short Turn drawings into a moving story. Ages 10–15 3 hours" [ref=e266] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/build-animated-short/
+            - generic [ref=e267]:
+              - generic [ref=e268]: 🎬
+              - generic [ref=e269]: Builder
+            - generic [ref=e270]:
+              - generic [ref=e271]: Build an Animated Short
+              - paragraph [ref=e272]: Turn drawings into a moving story.
+            - generic [ref=e273]:
+              - generic [ref=e274]: Ages 10–15
+              - generic [ref=e275]: 3 hours
+          - link "💥 Builder Comic Book Lab Write, draw, and publish your own comic. Ages 9–15 3 hours" [ref=e276] [cursor=pointer]:
+            - /url: /lux-ai-kids/workshops/comic-book-lab/
+            - generic [ref=e277]:
+              - generic [ref=e278]: 💥
+              - generic [ref=e279]: Builder
+            - generic [ref=e280]:
+              - generic [ref=e281]: Comic Book Lab
+              - paragraph [ref=e282]: Write, draw, and publish your own comic.
+            - generic [ref=e283]:
+              - generic [ref=e284]: Ages 9–15
+              - generic [ref=e285]: 3 hours
+        - button "Show more (10 remaining)" [ref=e287] [cursor=pointer]
+      - generic [ref=e289]:
+        - paragraph [ref=e290]: HOW IT WORKS
+        - heading "Three steps. One real project." [level=2] [ref=e291]
+        - generic [ref=e292]:
+          - generic [ref=e293]:
+            - generic [ref=e294]: "01"
+            - generic [ref=e295]: 🎯
+            - heading "Pick a Workshop" [level=3] [ref=e296]
+            - paragraph [ref=e297]: Choose what excites you most — games, robots, cartoons, school projects, or creative experiments. Every workshop has a clear goal.
+          - generic [ref=e298]:
+            - generic [ref=e299]: "02"
+            - generic [ref=e300]: 🔧
+            - heading "Follow the Steps" [level=3] [ref=e301]
+            - paragraph [ref=e302]: Ace brings the energy and ideas. Lana brings the plan and safety checks. You bring the creativity. Together, you build something real.
+          - generic [ref=e303]:
+            - generic [ref=e304]: "03"
+            - generic [ref=e305]: 🚀
+            - heading "Show What You Made" [level=3] [ref=e306]
+            - paragraph [ref=e307]: Every workshop ends with something you can share, present, or improve. Your project, your name, your achievement.
+      - generic [ref=e309]:
+        - generic [ref=e310]:
+          - paragraph [ref=e311]: YOUR TEACHERS
+          - heading "Meet Ace & Lana" [level=2] [ref=e312]
+          - paragraph [ref=e313]: Two guides who make learning AI fun, safe, and real. Ace is the co-builder with big ideas. Lana is the AI operator who keeps everything on track.
+        - generic [ref=e314]:
+          - generic [ref=e315]:
+            - generic [ref=e316]: ⚡
+            - heading "Ace" [level=3] [ref=e317]
+            - generic [ref=e318]: Creative Co-Builder
+            - list [ref=e319]:
+              - listitem [ref=e320]: ✦ Brings wild ideas and energy to every project
+              - listitem [ref=e321]: ✦ Helps you brainstorm characters, stories, and designs
+              - listitem [ref=e322]: ✦ Makes learning feel like an adventure
+              - listitem [ref=e323]: ✦ Asks the questions nobody else thinks of
+              - listitem [ref=e324]: ✦ Cheers you on when things get tricky
+          - generic [ref=e325]:
+            - generic [ref=e326]: 🔮
+            - heading "Lana" [level=3] [ref=e327]
+            - generic [ref=e328]: AI Operator & Guide
+            - list [ref=e329]:
+              - listitem [ref=e330]: ✦ Turns big ideas into clear, step-by-step plans
+              - listitem [ref=e331]: ✦ Teaches responsible AI use and online safety
+              - listitem [ref=e332]: ✦ Helps organize projects so they actually work
+              - listitem [ref=e333]: ✦ Reviews safety rules and fairness in every build
+              - listitem [ref=e334]: ✦ Makes sure your project is ready to share
+      - generic [ref=e335]:
+        - generic [ref=e336]:
+          - paragraph [ref=e337]: GROWN-UPS' CORNER
+          - heading "Creative confidence, with guardrails." [level=2] [ref=e338]: Creative confidence,with guardrails.
+        - generic [ref=e339]:
+          - paragraph [ref=e340]: Lux AI Kids workshops are designed for guided, age-appropriate learning. Every project emphasizes critical thinking, privacy, consent, source-checking, and using AI to help people — not replace human judgment.
+          - list [ref=e341]:
+            - listitem [ref=e342]: Clear age bands and learning goals for every workshop
+            - listitem [ref=e343]: No unsupervised public publishing
+            - listitem [ref=e344]: Printable activity and conversation guides
+            - listitem [ref=e345]: School, library, and community workshop options
+            - listitem [ref=e346]: Every project reviewed by Ace and Lana for safety
+          - link "Bring Lux AI Kids to your community →" [ref=e347] [cursor=pointer]:
+            - /url: /contact/
+      - generic [ref=e348]:
+        - generic [ref=e349]:
+          - paragraph [ref=e350]: THE LUX LAB LETTER
+          - heading "Projects for curious kids, notes for caring grown-ups." [level=2] [ref=e351]: Projects for curious kids,notes for caring grown-ups.
+        - generic [ref=e352]:
+          - textbox "grownup@email.com" [ref=e353]
+          - button "Join free →" [ref=e354]
+          - generic [ref=e355]: One thoughtful email each week. Unsubscribe anytime.
+  - contentinfo [ref=e356]:
+    - generic [ref=e357]:
+      - generic [ref=e358]:
+        - generic [ref=e359]:
+          - generic [ref=e360]:
+            - img "Lux Automaton" [ref=e362]
+            - generic [ref=e363]: Lux Automaton
+          - paragraph [ref=e365]: Private AI systems for builders, founders, and small businesses. Automate smarter. Move faster. Own your stack.
+          - generic [ref=e366]: Automate · Innovate · Accelerate
+          - generic [ref=e367]:
+            - link "▶ YouTube Channel" [ref=e368] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCcYnAZw0QnS6dD1n-7vpwdA
+              - generic [ref=e369]: ▶
+              - text: YouTube Channel
+            - link "in LinkedIn Page" [ref=e370] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/lux-automaton-saas/
+              - generic [ref=e371]: in
+              - text: LinkedIn Page
+        - generic [ref=e372]:
+          - generic [ref=e373]: Products
+          - generic [ref=e374]:
+            - link "Lux Codex" [ref=e375] [cursor=pointer]:
+              - /url: /products/lux-codex/
+            - link "Lux Coder" [ref=e376] [cursor=pointer]:
+              - /url: /products/lux-coder/
+            - link "LANA" [ref=e377] [cursor=pointer]:
+              - /url: /products/lana/
+            - link "Lux Agent USB" [ref=e378] [cursor=pointer]:
+              - /url: /products/lux-agent-usb/
+            - link "Lux Business" [ref=e379] [cursor=pointer]:
+              - /url: /products/lux-business/
+            - link "Lux AI Kids" [ref=e380] [cursor=pointer]:
+              - /url: /products/lux-ai-kids/
+            - link "Lux TV" [ref=e381] [cursor=pointer]:
+              - /url: /products/lux-tv/
+            - link "Lux Marketing Studio" [ref=e382] [cursor=pointer]:
+              - /url: /products/lux-marketing-studio/
+            - link "Lux WriteOff" [ref=e383] [cursor=pointer]:
+              - /url: /products/luxwriteoff/
+            - link "Lux Budgeter" [ref=e384] [cursor=pointer]:
+              - /url: /products/lux-budgeter/
+            - link "Success Packs" [ref=e385] [cursor=pointer]:
+              - /url: /products/success-packs/
+        - generic [ref=e386]:
+          - generic [ref=e387]: Solutions
+          - generic [ref=e388]:
+            - link "Lux Care OS" [ref=e389] [cursor=pointer]:
+              - /url: /solutions/lux-care-os/
+            - link "Epic Electric" [ref=e390] [cursor=pointer]:
+              - /url: /solutions/epic-electric/
+            - link "Inland Circle" [ref=e391] [cursor=pointer]:
+              - /url: /solutions/inland-circle/
+            - link "Contractor OS" [ref=e392] [cursor=pointer]:
+              - /url: /solutions/contractor-os/
+            - link "Creator OS" [ref=e393] [cursor=pointer]:
+              - /url: /solutions/creator-os/
+            - link "Small Business OS" [ref=e394] [cursor=pointer]:
+              - /url: /solutions/small-business-os/
+        - generic [ref=e395]:
+          - generic [ref=e396]: Resources
+          - generic [ref=e397]:
+            - link "Lux AI Kids" [ref=e398] [cursor=pointer]:
+              - /url: /lux-ai-kids/
+            - link "Lux TV" [ref=e399] [cursor=pointer]:
+              - /url: /lux-tv/
+            - link "Lux TV Kids" [ref=e400] [cursor=pointer]:
+              - /url: /lux-tv-kids/
+            - link "Blog" [ref=e401] [cursor=pointer]:
+              - /url: /blog/
+            - link "Books by Asa Spade" [ref=e402] [cursor=pointer]:
+              - /url: /books/
+            - link "Community" [ref=e403] [cursor=pointer]:
+              - /url: /community/
+            - link "Start Here" [ref=e404] [cursor=pointer]:
+              - /url: /start-here/
+            - link "Ask LANA" [ref=e405] [cursor=pointer]:
+              - /url: /ask-lana/
+            - link "Who Is LANA?" [ref=e406] [cursor=pointer]:
+              - /url: /who-is-lana/
+            - link "Workshops Hub" [ref=e407] [cursor=pointer]:
+              - /url: /workshops/
+            - link "Problem Library" [ref=e408] [cursor=pointer]:
+              - /url: /library/
+            - link "Question Library" [ref=e409] [cursor=pointer]:
+              - /url: /library/
+            - link "Founder Story" [ref=e410] [cursor=pointer]:
+              - /url: /founders/
+            - link "Weekly Intelligence" [ref=e411] [cursor=pointer]:
+              - /url: "#newsletter"
+            - link "Admin Studio" [ref=e412] [cursor=pointer]:
+              - /url: /admin/
+        - generic [ref=e413]:
+          - generic [ref=e414]: Legal
+          - generic [ref=e415]:
+            - link "Privacy Policy" [ref=e416] [cursor=pointer]:
+              - /url: /privacy/
+            - link "Terms of Service" [ref=e417] [cursor=pointer]:
+              - /url: /terms/
+            - link "Business Registration" [ref=e418] [cursor=pointer]:
+              - /url: https://www.bizapedia.com/or/lux-automaton-llc.html
+      - generic [ref=e420]:
+        - generic [ref=e421]: © 2026 Lux Automaton LLC. All rights reserved.
+        - generic [ref=e422]: All systems operational
+  - button "Toggle Support Chat" [ref=e425] [cursor=pointer]:
+    - img "Lana Support Specialist" [ref=e426]
+  - button "Open Next.js Dev Tools" [ref=e433] [cursor=pointer]

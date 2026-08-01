@@ -353,11 +353,28 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
     );
   }
 
+  const ASA_LANA_ASSETS = [
+    { label: "Asa Close", path: asset("/lux-marketing/asa-close.png") },
+    { label: "Asa Office", path: asset("/lux-marketing/asa-office.png") },
+    { label: "Asa Founder", path: asset("/lux-marketing/asa-founder.png") },
+    { label: "Asa Black", path: asset("/lux-marketing/asa-black.png") },
+    { label: "Asa White", path: asset("/lux-marketing/asa-white.png") },
+    { label: "Asa Tie", path: asset("/lux-marketing/asa-tie.png") },
+    { label: "LANA Seated", path: asset("/lux-marketing/lana-seated.png") },
+    { label: "LANA Standing", path: asset("/lux-marketing/lana-standing.png") },
+    { label: "LANA Office", path: asset("/lux-marketing/lana-office.png") },
+    { label: "LANA B&W", path: asset("/lux-marketing/lana-bw.png") },
+    { label: "LANA Full", path: asset("/lux-marketing/lana.png") },
+  ];
+
   function generateFreeAiImage() {
     const seed = Math.floor(Math.random() * 1000000);
     const cleanHeadline = active.headline.replace(/[^a-zA-Z0-9 ]/g, " ");
-    const promptText = `futuristic dark cyber neon blue violet lux automaton business OS ${cleanHeadline} ${active.tag}`;
-    const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptText)}?width=1080&height=1080&nologo=true&seed=${seed}`;
+    const isLana = active.tag.toLowerCase().includes("lana") || active.headline.toLowerCase().includes("lana");
+    const character = isLana ? "beautiful intelligent futuristic female executive AI partner LANA" : "charismatic charismatic founder Asa Pritchard";
+    const promptText = `photorealistic commercial portrait ${character} in dark cyber futuristic glass office lux automaton ${cleanHeadline} neon cyan violet lights ultra high resolution 8k`;
+    const dims = active.ratio === "9:16" ? "width=1080&height=1920" : active.ratio === "4:5" ? "width=1080&height=1350" : active.ratio === "1:1" ? "width=1080&height=1080" : "width=1920&height=1080";
+    const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptText)}?${dims}&nologo=true&seed=${seed}`;
     update({ image: url });
   }
 
@@ -568,8 +585,33 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
 
               <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "12px", marginTop: "4px" }}>
                 <span style={{ fontSize: "11px", fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.05em", display: "block", marginBottom: "6px" }}>
-                  Hero Image
+                  Character & Photography Asset
                 </span>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px", maxHeight: "150px", overflowY: "auto", paddingRight: "2px" }}>
+                  {ASA_LANA_ASSETS.map((imgAsset) => (
+                    <button
+                      key={imgAsset.path}
+                      type="button"
+                      onClick={() => update({ image: imgAsset.path })}
+                      style={{
+                        padding: "6px 4px",
+                        borderRadius: "6px",
+                        border: active.image === imgAsset.path ? "1px solid #00d4ff" : "1px solid rgba(255,255,255,0.1)",
+                        background: active.image === imgAsset.path ? "rgba(0, 212, 255, 0.2)" : "#0c101c",
+                        color: active.image === imgAsset.path ? "#ffffff" : "#94a3b8",
+                        fontSize: "10px",
+                        fontWeight: 600,
+                        cursor: "pointer",
+                        textOverflow: "ellipsis",
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {imgAsset.label}
+                    </button>
+                  ))}
+                </div>
+
                 <button
                   type="button"
                   onClick={generateFreeAiImage}
@@ -587,6 +629,7 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
                     fontSize: "12px",
                     fontWeight: 700,
                     cursor: "pointer",
+                    marginTop: "10px",
                   }}
                 >
                   <Sparkles className="h-3.5 w-3.5" /> 🖼️ Generate Free AI Image (Pollinations.ai)

@@ -353,6 +353,74 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
     );
   }
 
+  function generateFreeAiImage() {
+    const seed = Math.floor(Math.random() * 1000000);
+    const cleanHeadline = active.headline.replace(/[^a-zA-Z0-9 ]/g, " ");
+    const promptText = `futuristic dark cyber neon blue violet lux automaton business OS ${cleanHeadline} ${active.tag}`;
+    const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptText)}?width=1080&height=1080&nologo=true&seed=${seed}`;
+    update({ image: url });
+  }
+
+  function draftLanaCampaign() {
+    const presets = [
+      {
+        name: "Private AI Operating System",
+        headline: "Private AI Systems for Builders and Founders",
+        description: "Run your business operating system locally with 100% data privacy and zero cloud dependency.",
+        cta: "Explore Lux OS",
+        tag: "Lux Automaton",
+        accent: "#00d4ff",
+        backdrop: "circuit" as Backdrop,
+      },
+      {
+        name: "LANA Executive Assistant",
+        headline: "Your Autonomous Executive AI Partner",
+        description: "LANA turns daily business operations into clear, repeatable systems and schedules content automatically.",
+        cta: "Meet LANA",
+        tag: "LANA AI",
+        accent: "#7c4dff",
+        backdrop: "eclipse" as Backdrop,
+      },
+      {
+        name: "Founder Build Loop",
+        headline: "Idea to Prototype to Scale in 30 Days",
+        description: "Turn standard service workflows into productized AI software packs with LANA.",
+        cta: "Start Building",
+        tag: "Founder OS",
+        accent: "#00ffa3",
+        backdrop: "prism" as Backdrop,
+      },
+      {
+        name: "Lux AI Kids Workshop",
+        headline: "Your First Video Game: Imagine. Draw. Play!",
+        description: "Hands-on paper prototyping and AI art guidance for young creators aged 6 to 8.",
+        cta: "Join Workshop",
+        tag: "Lux AI Kids",
+        accent: "#00d4ff",
+        backdrop: "circuit" as Backdrop,
+      },
+    ];
+
+    const pick = presets[Math.floor(Math.random() * presets.length)];
+    const seed = Math.floor(Math.random() * 1000000);
+    const promptText = `cinematic futuristic dark cyber luxury office executive ${pick.headline} lux automaton`;
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptText)}?width=1080&height=1080&nologo=true&seed=${seed}`;
+
+    const newCampaign: Template = {
+      id: crypto.randomUUID(),
+      ...pick,
+      category: "promotion",
+      format: "Campaign / 16:9",
+      image: imageUrl,
+      layout: "campaign",
+      ratio: "16:9",
+    };
+
+    setItems((current) => [newCampaign, ...current]);
+    setActiveId(newCampaign.id);
+    setCategory("all");
+  }
+
   return (
     <main className={`lux-marketing-root ${embedded ? "embedded" : "standalone"}`}>
       <div className="lux-marketing-layout">
@@ -407,6 +475,26 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
             <div><p className="text-[10px] uppercase tracking-[.16em] text-slate-500 m-0">Campaign</p><h1 className="mt-0.5 text-base font-bold text-white m-0">{active.name}</h1></div>
             <div className="flex items-center gap-3 text-xs text-slate-400">
               <span>{active.format}</span>
+              <button
+                type="button"
+                onClick={draftLanaCampaign}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(124, 77, 255, 0.4)",
+                  background: "linear-gradient(135deg, rgba(124, 77, 255, 0.25) 0%, rgba(0, 212, 255, 0.25) 100%)",
+                  padding: "6px 12px",
+                  fontSize: "12px",
+                  fontWeight: 800,
+                  color: "#ffffff",
+                  cursor: "pointer",
+                  boxShadow: "0 0 16px rgba(124,77,255,0.2)",
+                }}
+              >
+                <Sparkles className="h-3.5 w-3.5 text-cyan-300" /> ✨ Draft with LANA
+              </button>
               <button
                 type="button"
                 onClick={duplicate}
@@ -477,6 +565,33 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
               <Field label="Description" value={active.description} multiline onChange={(description) => update({ description })} />
               <Field label="Call to action" value={active.cta} onChange={(cta) => update({ cta })} />
               <Field label="Label" value={active.tag} onChange={(tag) => update({ tag })} />
+
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "12px", marginTop: "4px" }}>
+                <span style={{ fontSize: "11px", fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.05em", display: "block", marginBottom: "6px" }}>
+                  Hero Image
+                </span>
+                <button
+                  type="button"
+                  onClick={generateFreeAiImage}
+                  style={{
+                    width: "100%",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "6px",
+                    borderRadius: "8px",
+                    border: "1px solid rgba(0, 212, 255, 0.4)",
+                    background: "rgba(0, 212, 255, 0.12)",
+                    color: "#00d4ff",
+                    padding: "8px 12px",
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    cursor: "pointer",
+                  }}
+                >
+                  <Sparkles className="h-3.5 w-3.5" /> 🖼️ Generate Free AI Image (Pollinations.ai)
+                </button>
+              </div>
             </div>
           ) : panel === "style" ? (
             <div style={{ display: "grid", gap: "16px" }}>
@@ -535,7 +650,7 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
                 readOnly
                 value={gptPrompt(active)}
                 style={{
-                  height: "220px",
+                  height: "180px",
                   width: "100%",
                   resize: "none",
                   borderRadius: "8px",
@@ -570,23 +685,49 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
               >
                 <ClipboardCopy className="h-3.5 w-3.5" /> {copiedPrompt ? "Copied" : "Copy GPT Prompt"}
               </button>
-              <button
-                type="button"
-                onClick={makeAllUniform}
-                style={{
-                  width: "100%",
-                  borderRadius: "8px",
-                  border: "1px solid rgba(124,77,255,0.4)",
-                  background: "rgba(124,77,255,0.1)",
-                  color: "#ede9fe",
-                  padding: "10px",
-                  fontSize: "12px",
-                  fontWeight: 800,
-                  cursor: "pointer",
-                }}
-              >
-                Make All Options Uniform
-              </button>
+
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "10px" }}>
+                <span style={{ fontSize: "10px", fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: "6px" }}>
+                  Free Image Generators
+                </span>
+                <div style={{ display: "grid", gap: "6px" }}>
+                  <button
+                    type="button"
+                    onClick={generateFreeAiImage}
+                    style={{
+                      padding: "8px",
+                      borderRadius: "6px",
+                      background: "rgba(0,255,163,0.12)",
+                      border: "1px solid rgba(0,255,163,0.3)",
+                      color: "#00ffa3",
+                      fontSize: "11px",
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      textAlign: "center",
+                    }}
+                  >
+                    ⚡ Instant Pollinations.ai (Free - 1 Click)
+                  </button>
+                  <a
+                    href="https://www.bing.com/create"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      padding: "8px",
+                      borderRadius: "6px",
+                      background: "rgba(255,255,255,0.06)",
+                      border: "1px solid rgba(255,255,255,0.12)",
+                      color: "#cbd5e1",
+                      fontSize: "11px",
+                      fontWeight: 600,
+                      textAlign: "center",
+                      textDecoration: "none",
+                    }}
+                  >
+                    🎨 Open Bing Image Creator (Free DALL-E 3)
+                  </a>
+                </div>
+              </div>
             </div>
           )}
 
@@ -734,33 +875,61 @@ function TemplateCard({ item, active, onClick }: { item: Template; active: boole
   );
 }
 
+const getImageStyle = (layout: Layout): React.CSSProperties => {
+  switch (layout) {
+    case "photo":
+      return { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" };
+    case "newsletter":
+      return { position: "absolute", bottom: 0, right: 0, height: "78%", width: "44%", objectFit: "cover", objectPosition: "top", opacity: 0.95 };
+    case "quote":
+      return { position: "absolute", bottom: 0, right: 0, height: "62%", width: "58%", objectFit: "cover", objectPosition: "top", opacity: 0.9 };
+    case "workshop":
+      return { position: "absolute", bottom: 0, right: 0, height: "58%", width: "48%", objectFit: "cover", objectPosition: "top", opacity: 0.75 };
+    case "campaign":
+    default:
+      return {
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+        height: "94%",
+        width: "52%",
+        objectFit: "cover",
+        objectPosition: "top",
+        filter: "grayscale(0.2) brightness(0.88) contrast(1.15)",
+        WebkitMaskImage: "linear-gradient(90deg, transparent, black 24%)",
+        maskImage: "linear-gradient(90deg, transparent, black 24%)",
+      };
+  }
+};
+
 const CreativeCanvas = forwardRef<HTMLDivElement, { template: Template }>(function CreativeCanvas({ template }, ref) {
   return (
-  <div ref={ref} className="relative w-full overflow-hidden bg-[#05070d] shadow-[0_28px_90px_rgba(0,0,0,.55)]" style={{ aspectRatio: ratioStyle[template.ratio], background: backdrops[template.backdrop] }}>
-    <div aria-hidden className="absolute inset-0 opacity-30" style={{ backgroundImage: "linear-gradient(rgba(0,212,255,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,.09) 1px, transparent 1px)", backgroundSize: "48px 48px", maskImage: "linear-gradient(90deg, transparent 36%, black)" }} />
-    {template.layout === "photo" && template.image && <img src={template.image} alt="" className="absolute inset-0 h-full w-full object-cover object-top" />}
-    {template.image && template.layout !== "photo" && template.layout !== "background" && <img src={template.image} alt="" className={`absolute bottom-0 right-0 object-cover object-top ${template.layout === "newsletter" ? "h-[78%] w-[44%] opacity-95" : template.layout === "quote" ? "h-[62%] w-[58%] opacity-90" : template.layout === "workshop" ? "h-[58%] w-[48%] opacity-75" : "h-[94%] w-[52%] grayscale brightness-75 contrast-125"}`} style={template.layout === "campaign" ? { maskImage: "linear-gradient(90deg, transparent, black 24%)" } : undefined} />}
-    <div className={`absolute inset-0 ${template.layout === "photo" ? "bg-gradient-to-t from-black via-black/20 to-transparent" : "bg-gradient-to-r from-[#05070d] via-[#05070d]/80 to-transparent"}`} />
-    <div className="relative z-10 flex h-full flex-col p-[5%]">
-      <div className="flex items-start justify-between gap-4">
-        <img src={BRAND.logo} alt="Lux Automaton" className="h-auto w-[34%] max-w-[270px] object-contain object-left" />
-        <span className="text-[clamp(8px,1.05vw,12px)] font-bold uppercase tracking-[.16em]" style={{ color: template.accent }}>{template.tag}</span>
-      </div>
-      {template.layout === "background" ? (
-        <div className="grid flex-1 place-items-center text-center"><div><BrandIcon size={48} /><h2 className="text-[clamp(25px,5vw,62px)] font-black uppercase leading-[.98] mt-4">{template.headline}</h2><p className="mx-auto mt-5 max-w-xl text-[clamp(11px,1.5vw,18px)] leading-relaxed text-slate-300">{template.description}</p></div></div>
-      ) : template.layout === "newsletter" ? (
-        <div className="mt-[8%] w-[58%]"><h2 className="text-[clamp(24px,4.2vw,52px)] font-black leading-[1.02]">{template.headline}</h2><p className="mt-[5%] text-[clamp(10px,1.35vw,16px)] leading-relaxed text-slate-300">{template.description}</p><div className="mt-[6%] space-y-2 border-t border-white/15 pt-[4%] text-[clamp(9px,1.1vw,13px)]"><p><span style={{ color: template.accent }}>01</span> New AI model releases</p><p><span style={{ color: template.accent }}>02</span> Small-business automation</p><p><span style={{ color: template.accent }}>03</span> Founder intelligence</p></div></div>
-      ) : template.layout === "workshop" ? (
-        <div className="mt-auto w-[64%] pb-[3%]"><Sparkles className="mb-[5%] h-[10%] w-[10%]" style={{ color: template.accent }} /><h2 className="text-[clamp(26px,4.8vw,60px)] font-black leading-[1.02]">{template.headline}</h2><p className="mt-[4%] text-[clamp(10px,1.3vw,16px)] leading-relaxed text-slate-300">{template.description}</p><CanvasButton label={template.cta} accent={template.accent} /></div>
-      ) : template.layout === "quote" ? (
-        <div className="mt-[9%] w-[72%]"><span className="text-[clamp(34px,7vw,90px)] font-black leading-none" style={{ color: template.accent }}>“</span><h2 className="-mt-[3%] text-[clamp(24px,4.6vw,58px)] font-black uppercase leading-[1.02]">{template.headline}</h2><p className="mt-[5%] text-[clamp(10px,1.3vw,16px)] text-slate-300">— {template.tag}</p></div>
-      ) : template.layout === "photo" ? (
-        <div className="mt-auto max-w-[78%]"><h2 className="text-[clamp(28px,5.5vw,68px)] font-black leading-none">{template.headline}</h2><p className="mt-[4%] text-[clamp(10px,1.4vw,17px)] leading-relaxed text-slate-200">{template.description}</p></div>
-      ) : (
-        <div className="mt-auto w-[62%] pb-[4%]"><h2 className="text-[clamp(28px,5.4vw,68px)] font-black uppercase leading-[.96]">{template.headline.split(" ").map((word, index) => <span key={`${word}-${index}`} className="mr-[.18em] inline-block" style={index >= Math.max(1, template.headline.split(" ").length - 2) ? { color: template.accent } : undefined}>{word}</span>)}</h2><div className="my-[5%] h-1 w-[22%] rounded-full" style={{ background: `linear-gradient(90deg,#7c4dff,${template.accent})` }} /><p className="max-w-lg text-[clamp(10px,1.35vw,16px)] leading-relaxed text-slate-300">{template.description}</p><CanvasButton label={template.cta} accent={template.accent} /></div>
+    <div ref={ref} className="relative w-full overflow-hidden bg-[#05070d] shadow-[0_28px_90px_rgba(0,0,0,.55)]" style={{ aspectRatio: ratioStyle[template.ratio], background: backdrops[template.backdrop] }}>
+      <div aria-hidden className="absolute inset-0 opacity-30" style={{ backgroundImage: "linear-gradient(rgba(0,212,255,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,.09) 1px, transparent 1px)", backgroundSize: "48px 48px", maskImage: "linear-gradient(90deg, transparent 36%, black)" }} />
+      {template.image && template.layout !== "background" && (
+        <img src={template.image} alt="" style={getImageStyle(template.layout)} />
       )}
+      <div className={`absolute inset-0 ${template.layout === "photo" ? "bg-gradient-to-t from-black via-black/20 to-transparent" : "bg-gradient-to-r from-[#05070d] via-[#05070d]/80 to-transparent"}`} />
+      <div className="relative z-10 flex h-full flex-col p-[5%]">
+        <div className="flex items-start justify-between gap-4">
+          <img src={BRAND.logo} alt="Lux Automaton" className="h-auto w-[34%] max-w-[270px] object-contain object-left" />
+          <span className="text-[clamp(8px,1.05vw,12px)] font-bold uppercase tracking-[.16em]" style={{ color: template.accent }}>{template.tag}</span>
+        </div>
+        {template.layout === "background" ? (
+          <div className="grid flex-1 place-items-center text-center"><div><BrandIcon size={48} /><h2 className="text-[clamp(25px,5vw,62px)] font-black uppercase leading-[.98] mt-4">{template.headline}</h2><p className="mx-auto mt-5 max-w-xl text-[clamp(11px,1.5vw,18px)] leading-relaxed text-slate-300">{template.description}</p></div></div>
+        ) : template.layout === "newsletter" ? (
+          <div className="mt-[8%] w-[58%]"><h2 className="text-[clamp(24px,4.2vw,52px)] font-black leading-[1.02]">{template.headline}</h2><p className="mt-[5%] text-[clamp(10px,1.35vw,16px)] leading-relaxed text-slate-300">{template.description}</p><div className="mt-[6%] space-y-2 border-t border-white/15 pt-[4%] text-[clamp(9px,1.1vw,13px)]"><p><span style={{ color: template.accent }}>01</span> New AI model releases</p><p><span style={{ color: template.accent }}>02</span> Small-business automation</p><p><span style={{ color: template.accent }}>03</span> Founder intelligence</p></div></div>
+        ) : template.layout === "workshop" ? (
+          <div className="mt-auto w-[64%] pb-[3%]"><Sparkles className="mb-[5%] h-[10%] w-[10%]" style={{ color: template.accent }} /><h2 className="text-[clamp(26px,4.8vw,60px)] font-black leading-[1.02]">{template.headline}</h2><p className="mt-[4%] text-[clamp(10px,1.3vw,16px)] leading-relaxed text-slate-300">{template.description}</p><CanvasButton label={template.cta} accent={template.accent} /></div>
+        ) : template.layout === "quote" ? (
+          <div className="mt-[9%] w-[72%]"><span className="text-[clamp(34px,7vw,90px)] font-black leading-none" style={{ color: template.accent }}>“</span><h2 className="-mt-[3%] text-[clamp(24px,4.6vw,58px)] font-black uppercase leading-[1.02]">{template.headline}</h2><p className="mt-[5%] text-[clamp(10px,1.3vw,16px)] text-slate-300">— {template.tag}</p></div>
+        ) : template.layout === "photo" ? (
+          <div className="mt-auto max-w-[78%]"><h2 className="text-[clamp(28px,5.5vw,68px)] font-black leading-none">{template.headline}</h2><p className="mt-[4%] text-[clamp(10px,1.4vw,17px)] leading-relaxed text-slate-200">{template.description}</p></div>
+        ) : (
+          <div className="mt-auto w-[62%] pb-[4%]"><h2 className="text-[clamp(28px,5.4vw,68px)] font-black uppercase leading-[.96]">{template.headline.split(" ").map((word, index) => <span key={`${word}-${index}`} className="mr-[.18em] inline-block" style={index >= Math.max(1, template.headline.split(" ").length - 2) ? { color: template.accent } : undefined}>{word}</span>)}</h2><div className="my-[5%] h-1 w-[22%] rounded-full" style={{ background: `linear-gradient(90deg,#7c4dff,${template.accent})` }} /><p className="max-w-lg text-[clamp(10px,1.35vw,16px)] leading-relaxed text-slate-300">{template.description}</p><CanvasButton label={template.cta} accent={template.accent} /></div>
+        )}
+      </div>
     </div>
-  </div>
   );
 });
 

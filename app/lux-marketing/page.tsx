@@ -378,64 +378,69 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
     update({ image: url });
   }
 
-  function draftLanaCampaign() {
-    const presets = [
-      {
-        name: "Private AI Operating System",
-        headline: "Private AI Systems for Builders and Founders",
-        description: "Run your business operating system locally with 100% data privacy and zero cloud dependency.",
-        cta: "Explore Lux OS",
-        tag: "Lux Automaton",
-        accent: "#00d4ff",
-        backdrop: "circuit" as Backdrop,
-      },
-      {
-        name: "LANA Executive Assistant",
-        headline: "Your Autonomous Executive AI Partner",
-        description: "LANA turns daily business operations into clear, repeatable systems and schedules content automatically.",
-        cta: "Meet LANA",
-        tag: "LANA AI",
-        accent: "#7c4dff",
-        backdrop: "eclipse" as Backdrop,
-      },
-      {
-        name: "Founder Build Loop",
-        headline: "Idea to Prototype to Scale in 30 Days",
-        description: "Turn standard service workflows into productized AI software packs with LANA.",
-        cta: "Start Building",
-        tag: "Founder OS",
-        accent: "#00ffa3",
-        backdrop: "prism" as Backdrop,
-      },
-      {
-        name: "Lux AI Kids Workshop",
-        headline: "Your First Video Game: Imagine. Draw. Play!",
-        description: "Hands-on paper prototyping and AI art guidance for young creators aged 6 to 8.",
-        cta: "Join Workshop",
-        tag: "Lux AI Kids",
-        accent: "#00d4ff",
-        backdrop: "circuit" as Backdrop,
-      },
+  function generateAllRatios() {
+    const ratios: Array<{ ratio: Ratio; format: string }> = [
+      { ratio: "16:9", format: "Website / Keynote / 16:9" },
+      { ratio: "1:1", format: "Instagram Feed / 1:1" },
+      { ratio: "4:5", format: "Instagram Portrait / 4:5" },
+      { ratio: "9:16", format: "Story / Reel / TikTok / 9:16" },
     ];
 
-    const pick = presets[Math.floor(Math.random() * presets.length)];
-    const seed = Math.floor(Math.random() * 1000000);
-    const promptText = `cinematic futuristic dark cyber luxury office executive ${pick.headline} lux automaton`;
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptText)}?width=1080&height=1080&nologo=true&seed=${seed}`;
-
-    const newCampaign: Template = {
+    const copies: Template[] = ratios.map(({ ratio, format }) => ({
+      ...active,
       id: crypto.randomUUID(),
-      ...pick,
-      category: "promotion",
-      format: "Campaign / 16:9",
-      image: imageUrl,
-      layout: "campaign",
-      ratio: "16:9",
-    };
+      name: `${active.name} (${ratio})`,
+      format,
+      ratio,
+    }));
 
-    setItems((current) => [newCampaign, ...current]);
-    setActiveId(newCampaign.id);
-    setCategory("all");
+    setItems((current) => [...copies, ...current]);
+    setActiveId(copies[0].id);
+  }
+
+  async function draftLanaCampaign(customTopic?: string) {
+    try {
+      const resp = await fetch("/api/marketing/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          category,
+          topic: customTopic || active.headline || "Private AI Operating System",
+          ratio: active.ratio,
+          character: active.tag,
+        }),
+      });
+
+      const data = await resp.json();
+
+      const seed = Math.floor(Math.random() * 1000000);
+      const isLana = data.tag?.toLowerCase().includes("lana") || data.headline?.toLowerCase().includes("lana");
+      const characterDesc = isLana ? "beautiful intelligent futuristic female executive AI partner LANA" : "charismatic founder Asa Pritchard";
+      const promptText = `photorealistic commercial portrait ${characterDesc} in dark cyber futuristic glass office lux automaton ${data.headline} neon cyan violet lights 8k`;
+      const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptText)}?width=1080&height=1080&nologo=true&seed=${seed}`;
+
+      const newCampaign: Template = {
+        id: crypto.randomUUID(),
+        name: data.name || "AI Generated Campaign",
+        category: category === "all" ? "promotion" : category,
+        format: `${data.tag || "Campaign"} / ${active.ratio}`,
+        headline: data.headline || "Build. Automate. Scale.",
+        description: data.description || "Run your business with private AI systems.",
+        cta: data.cta || "Start Here",
+        tag: data.tag || "Lux Automaton",
+        image: data.suggestedPhoto ? asset(`/lux-marketing/${data.suggestedPhoto}.png`) : imageUrl,
+        layout: data.layout || "campaign",
+        ratio: active.ratio,
+        accent: data.accent || "#00d4ff",
+        backdrop: data.backdrop || "circuit",
+      };
+
+      setItems((current) => [newCampaign, ...current]);
+      setActiveId(newCampaign.id);
+    } catch {
+      // Direct fallback
+      duplicate();
+    }
   }
 
   return (
@@ -783,10 +788,10 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
                   onClick={() => update({ ratio })}
                   style={{
                     borderRadius: "6px",
-                    border: active.ratio === ratio ? "1px solid #7c4dff" : "1px solid rgba(255,255,255,0.1)",
-                    background: active.ratio === ratio ? "rgba(124,77,255,0.2)" : "#0c101c",
+                    border: active.ratio === ratio ? "1px solid #00d4ff" : "1px solid rgba(255,255,255,0.1)",
+                    background: active.ratio === ratio ? "rgba(0,212,255,0.2)" : "#0c101c",
                     color: active.ratio === ratio ? "#ffffff" : "#94a3b8",
-                    padding: "8px 0",
+                    padding: "6px 0",
                     fontSize: "11px",
                     fontWeight: 700,
                     cursor: "pointer",
@@ -796,6 +801,25 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
                 </button>
               ))}
             </div>
+            <button
+              type="button"
+              onClick={generateAllRatios}
+              style={{
+                width: "100%",
+                marginTop: "8px",
+                padding: "8px",
+                borderRadius: "6px",
+                border: "1px solid rgba(124, 77, 255, 0.4)",
+                background: "rgba(124, 77, 255, 0.12)",
+                color: "#a78bfa",
+                fontSize: "11px",
+                fontWeight: 700,
+                cursor: "pointer",
+                textAlign: "center",
+              }}
+            >
+              📱 Create All Sizes (16:9, 1:1, 4:5, 9:16)
+            </button>
           </ControlGroup>
 
           <button

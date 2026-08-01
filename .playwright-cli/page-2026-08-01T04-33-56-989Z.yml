@@ -1,0 +1,234 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Lux Automaton Logo Lux Automaton The AI Operating System" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Lux Automaton Logo" [ref=e5]
+        - generic [ref=e6]:
+          - generic [ref=e7]: Lux Automaton
+          - generic [ref=e8]: The AI Operating System
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - button "Products ▼" [ref=e12] [cursor=pointer]:
+          - text: Products
+          - generic [ref=e13]: ▼
+        - button "Solutions ▼" [ref=e15] [cursor=pointer]:
+          - text: Solutions
+          - generic [ref=e16]: ▼
+        - link "Workshops" [ref=e17] [cursor=pointer]:
+          - /url: /workshops/
+        - link "Lux TV" [ref=e18] [cursor=pointer]:
+          - /url: /lux-tv/
+        - link "Kids TV" [ref=e19] [cursor=pointer]:
+          - /url: /lux-tv-kids/
+        - link "Ask LANA" [ref=e20] [cursor=pointer]:
+          - /url: /ask-lana/
+        - link "App Review" [ref=e21] [cursor=pointer]:
+          - /url: /app-review/
+        - link "Blog" [ref=e22] [cursor=pointer]:
+          - /url: /blog/
+        - link "Books" [ref=e23] [cursor=pointer]:
+          - /url: /books/
+        - link "Community" [ref=e24] [cursor=pointer]:
+          - /url: /community/
+        - link "AI Kids" [ref=e25] [cursor=pointer]:
+          - /url: /lux-ai-kids/
+        - link "Start Here" [ref=e26] [cursor=pointer]:
+          - /url: /start-here/
+  - main [ref=e27]:
+    - main [ref=e28]:
+      - generic [ref=e30]:
+        - link "← All workshops" [ref=e31] [cursor=pointer]:
+          - /url: /lux-ai-kids/workshops/
+        - paragraph [ref=e32]: ACE & LANA'S LEARNING LAB
+        - heading "AI Explorer" [level=1] [ref=e33]
+        - generic [ref=e34]: A playful introduction to AI, patterns, prompts, and using technology to help people.
+        - generic [ref=e35]:
+          - generic [ref=e36]: Ages 7-10
+          - generic [ref=e37]: 75 minutes
+          - generic [ref=e38]: Beginner
+      - generic [ref=e40]:
+        - complementary [ref=e41]:
+          - generic [ref=e42]:
+            - generic [ref=e43]: Your path
+            - generic [ref=e44]: 20% complete
+            - emphasis [ref=e193]
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - button "✓ What is AI? Guided activity" [ref=e194]:
+                - generic [ref=e49]: ✓
+                - strong [ref=e50]: What is AI?
+                - generic [ref=e51]: Guided activity
+            - listitem [ref=e52]:
+              - button "02 How patterns work Guided activity" [ref=e53]:
+                - generic [ref=e54]: "02"
+                - strong [ref=e55]: How patterns work
+                - generic [ref=e56]: Guided activity
+            - listitem [ref=e57]:
+              - button "03 Make a helper Guided activity" [ref=e58]:
+                - generic [ref=e59]: "03"
+                - strong [ref=e60]: Make a helper
+                - generic [ref=e61]: Guided activity
+            - listitem [ref=e62]:
+              - button "04 Keep private things private Guided activity" [ref=e63]:
+                - generic [ref=e64]: "04"
+                - strong [ref=e65]: Keep private things private
+                - generic [ref=e66]: Guided activity
+            - listitem [ref=e67]:
+              - button "05 Share your idea Guided activity" [ref=e68]:
+                - generic [ref=e69]: "05"
+                - strong [ref=e70]: Share your idea
+                - generic [ref=e71]: Guided activity
+        - article [ref=e72]:
+          - paragraph [ref=e73]: LESSON 01 OF 05
+          - heading "What is AI?" [level=2] [ref=e74]
+          - generic [ref=e75]:
+            - text: Today's make
+            - paragraph [ref=e76]: Build, test, and share your idea.
+          - generic [ref=e77]:
+            - generic [ref=e78]:
+              - img "Ace" [ref=e79]
+              - paragraph [ref=e80]:
+                - generic [ref=e81]: Ace says
+                - text: Try one brave idea first. You can always improve it after you see what happens!
+            - generic [ref=e82]:
+              - img "Lana" [ref=e83]
+              - paragraph [ref=e84]:
+                - generic [ref=e85]: Lana's guide
+                - text: Work one step at a time, and ask a trusted grown-up before using an AI tool.
+          - generic [ref=e86]:
+            - text: Before you move on
+            - paragraph [ref=e87]: Save one thing you made and describe what you would improve next.
+            - button "Lesson complete ✓" [active] [ref=e195]
+        - complementary [ref=e89]:
+          - generic [ref=e90]:
+            - paragraph [ref=e91]: YOUR PROJECT
+            - heading "What you'll make" [level=2] [ref=e92]
+            - text: A tiny AI helper idea and a poster explaining what it does.
+          - generic [ref=e93]:
+            - paragraph [ref=e94]: GET READY
+            - list [ref=e95]:
+              - listitem [ref=e96]: ✓ Color mission sheet
+              - listitem [ref=e97]: ✓ Prompt cards
+              - listitem [ref=e98]: ✓ Grown-up discussion guide
+          - generic [ref=e99]:
+            - paragraph [ref=e100]: YOU'LL LEARN
+            - list
+          - generic "Share this page" [ref=e101]:
+            - button "↗ Share" [ref=e102] [cursor=pointer]
+            - button "⧉ Copy link" [ref=e103] [cursor=pointer]
+            - button "𝕏" [ref=e104] [cursor=pointer]
+            - button "f" [ref=e105] [cursor=pointer]
+  - contentinfo [ref=e106]:
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - img "Lux Automaton" [ref=e112]
+            - generic [ref=e113]: Lux Automaton
+          - paragraph [ref=e115]: Private AI systems for builders, founders, and small businesses. Automate smarter. Move faster. Own your stack.
+          - generic [ref=e116]: Automate · Innovate · Accelerate
+          - generic [ref=e117]:
+            - link "▶ YouTube Channel" [ref=e118] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCcYnAZw0QnS6dD1n-7vpwdA
+              - generic [ref=e119]: ▶
+              - text: YouTube Channel
+            - link "in LinkedIn Page" [ref=e120] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/lux-automaton-saas/
+              - generic [ref=e121]: in
+              - text: LinkedIn Page
+        - generic [ref=e122]:
+          - generic [ref=e123]: Products
+          - generic [ref=e124]:
+            - link "Lux Codex" [ref=e125] [cursor=pointer]:
+              - /url: /products/lux-codex/
+            - link "Lux Coder" [ref=e126] [cursor=pointer]:
+              - /url: /products/lux-coder/
+            - link "LANA" [ref=e127] [cursor=pointer]:
+              - /url: /products/lana/
+            - link "Lux Agent USB" [ref=e128] [cursor=pointer]:
+              - /url: /products/lux-agent-usb/
+            - link "Lux Business" [ref=e129] [cursor=pointer]:
+              - /url: /products/lux-business/
+            - link "Lux AI Kids" [ref=e130] [cursor=pointer]:
+              - /url: /products/lux-ai-kids/
+            - link "Lux TV" [ref=e131] [cursor=pointer]:
+              - /url: /products/lux-tv/
+            - link "Lux Marketing Studio" [ref=e132] [cursor=pointer]:
+              - /url: /products/lux-marketing-studio/
+            - link "Lux WriteOff" [ref=e133] [cursor=pointer]:
+              - /url: /products/luxwriteoff/
+            - link "Lux Budgeter" [ref=e134] [cursor=pointer]:
+              - /url: /products/lux-budgeter/
+            - link "Success Packs" [ref=e135] [cursor=pointer]:
+              - /url: /products/success-packs/
+        - generic [ref=e136]:
+          - generic [ref=e137]: Solutions
+          - generic [ref=e138]:
+            - link "Lux Care OS" [ref=e139] [cursor=pointer]:
+              - /url: /solutions/lux-care-os/
+            - link "Epic Electric" [ref=e140] [cursor=pointer]:
+              - /url: /solutions/epic-electric/
+            - link "Inland Circle" [ref=e141] [cursor=pointer]:
+              - /url: /solutions/inland-circle/
+            - link "Contractor OS" [ref=e142] [cursor=pointer]:
+              - /url: /solutions/contractor-os/
+            - link "Creator OS" [ref=e143] [cursor=pointer]:
+              - /url: /solutions/creator-os/
+            - link "Small Business OS" [ref=e144] [cursor=pointer]:
+              - /url: /solutions/small-business-os/
+        - generic [ref=e145]:
+          - generic [ref=e146]: Resources
+          - generic [ref=e147]:
+            - link "Lux AI Kids" [ref=e148] [cursor=pointer]:
+              - /url: /lux-ai-kids/
+            - link "Lux TV" [ref=e149] [cursor=pointer]:
+              - /url: /lux-tv/
+            - link "Lux TV Kids" [ref=e150] [cursor=pointer]:
+              - /url: /lux-tv-kids/
+            - link "Blog" [ref=e151] [cursor=pointer]:
+              - /url: /blog/
+            - link "Books by Asa Spade" [ref=e152] [cursor=pointer]:
+              - /url: /books/
+            - link "Community" [ref=e153] [cursor=pointer]:
+              - /url: /community/
+            - link "Start Here" [ref=e154] [cursor=pointer]:
+              - /url: /start-here/
+            - link "Ask LANA" [ref=e155] [cursor=pointer]:
+              - /url: /ask-lana/
+            - link "Who Is LANA?" [ref=e156] [cursor=pointer]:
+              - /url: /who-is-lana/
+            - link "Workshops Hub" [ref=e157] [cursor=pointer]:
+              - /url: /workshops/
+            - link "Problem Library" [ref=e158] [cursor=pointer]:
+              - /url: /library/
+            - link "Question Library" [ref=e159] [cursor=pointer]:
+              - /url: /library/
+            - link "Founder Story" [ref=e160] [cursor=pointer]:
+              - /url: /founders/
+            - link "Weekly Intelligence" [ref=e161] [cursor=pointer]:
+              - /url: "#newsletter"
+            - link "Admin Studio" [ref=e162] [cursor=pointer]:
+              - /url: /admin/
+        - generic [ref=e163]:
+          - generic [ref=e164]: Legal
+          - generic [ref=e165]:
+            - link "Privacy Policy" [ref=e166] [cursor=pointer]:
+              - /url: /privacy/
+            - link "Terms of Service" [ref=e167] [cursor=pointer]:
+              - /url: /terms/
+            - link "Business Registration" [ref=e168] [cursor=pointer]:
+              - /url: https://www.bizapedia.com/or/lux-automaton-llc.html
+      - generic [ref=e170]:
+        - generic [ref=e171]: © 2026 Lux Automaton LLC. All rights reserved.
+        - generic [ref=e172]: All systems operational
+  - generic [ref=e174]:
+    - generic [ref=e187]:
+      - button "✕" [ref=e188] [cursor=pointer]
+      - generic [ref=e189]: Lana Online
+      - generic [ref=e191]: Hi! Ask me anything about our AI systems, solutions, or Asa's books.
+    - button "Toggle Support Chat" [ref=e175] [cursor=pointer]:
+      - img "Lana Support Specialist" [ref=e176]
+  - button "Open Next.js Dev Tools" [ref=e183] [cursor=pointer]
+  - alert [ref=e192]

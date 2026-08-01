@@ -1,0 +1,254 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Lux Automaton Logo Lux Automaton The AI Operating System" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Lux Automaton Logo" [ref=e5]
+        - generic [ref=e6]:
+          - generic [ref=e7]: Lux Automaton
+          - generic [ref=e8]: The AI Operating System
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - button "Products ▼" [ref=e12] [cursor=pointer]:
+          - text: Products
+          - generic [ref=e13]: ▼
+        - button "Solutions ▼" [ref=e15] [cursor=pointer]:
+          - text: Solutions
+          - generic [ref=e16]: ▼
+        - link "Workshops" [ref=e17] [cursor=pointer]:
+          - /url: /workshops/
+        - link "Lux TV" [ref=e18] [cursor=pointer]:
+          - /url: /lux-tv/
+        - link "Kids TV" [ref=e19] [cursor=pointer]:
+          - /url: /lux-tv-kids/
+        - link "Ask LANA" [ref=e20] [cursor=pointer]:
+          - /url: /ask-lana/
+        - link "App Review" [ref=e21] [cursor=pointer]:
+          - /url: /app-review/
+        - link "Blog" [ref=e22] [cursor=pointer]:
+          - /url: /blog/
+        - link "Books" [ref=e23] [cursor=pointer]:
+          - /url: /books/
+        - link "Community" [ref=e24] [cursor=pointer]:
+          - /url: /community/
+        - link "AI Kids" [ref=e25] [cursor=pointer]:
+          - /url: /lux-ai-kids/
+        - link "Start Here" [ref=e26] [cursor=pointer]:
+          - /url: /start-here/
+  - main [ref=e27]:
+    - main [ref=e28]:
+      - generic [ref=e30]:
+        - link "← All workshops" [ref=e31] [cursor=pointer]:
+          - /url: /lux-ai-kids/workshops/
+        - paragraph [ref=e32]: ACE & LANA'S LEARNING LAB
+        - heading "Your First Video Game" [level=1] [ref=e33]
+        - generic [ref=e34]: Ace helps you design a simple game with a character, a goal, and a challenge. Lana shows you how AI can help plan levels and create game art. By the end, you have a game concept and a working prototype sketch.
+        - generic [ref=e35]:
+          - generic [ref=e36]: Ages 6–8
+          - generic [ref=e37]: 2 hours
+          - generic [ref=e38]: Starter
+      - generic [ref=e40]:
+        - complementary [ref=e41]:
+          - generic [ref=e42]:
+            - generic [ref=e43]: Your path
+            - generic [ref=e44]: 0% complete
+            - generic [ref=e45]:
+              - emphasis
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - button "01 What Makes a Game a Game? 20 min" [ref=e48]:
+                - generic [ref=e49]: "01"
+                - strong [ref=e50]: What Makes a Game a Game?
+                - generic [ref=e51]: 20 min
+            - listitem [ref=e52]:
+              - button "02 Pick Your Theme 15 min" [ref=e53]:
+                - generic [ref=e54]: "02"
+                - strong [ref=e55]: Pick Your Theme
+                - generic [ref=e56]: 15 min
+            - listitem [ref=e57]:
+              - button "03 Design Your Character 20 min" [ref=e58]:
+                - generic [ref=e59]: "03"
+                - strong [ref=e60]: Design Your Character
+                - generic [ref=e61]: 20 min
+            - listitem [ref=e62]:
+              - button "04 Draw the Board 20 min" [ref=e63]:
+                - generic [ref=e64]: "04"
+                - strong [ref=e65]: Draw the Board
+                - generic [ref=e66]: 20 min
+            - listitem [ref=e67]:
+              - button "05 Make the Rules 20 min" [ref=e68]:
+                - generic [ref=e69]: "05"
+                - strong [ref=e70]: Make the Rules
+                - generic [ref=e71]: 20 min
+            - listitem [ref=e72]:
+              - button "06 Playtest Time! 25 min" [ref=e73]:
+                - generic [ref=e74]: "06"
+                - strong [ref=e75]: Playtest Time!
+                - generic [ref=e76]: 25 min
+        - article [ref=e77]:
+          - paragraph [ref=e78]: LESSON 01 OF 06
+          - heading "What Makes a Game a Game?" [level=2] [ref=e79]
+          - generic [ref=e80]:
+            - text: Today's make
+            - paragraph [ref=e81]: "Name 3 games you love. For each one, write down: What is the goal? What are the rules? How do you win? Compare with a partner."
+          - generic [ref=e82]:
+            - generic [ref=e83]:
+              - img "Ace" [ref=e84]
+              - paragraph [ref=e85]:
+                - generic [ref=e86]: Ace says
+                - text: Hey! I love games — but did you know every game started as just an idea? Let me show you what makes a game work.
+            - generic [ref=e87]:
+              - img "Lana" [ref=e88]
+              - paragraph [ref=e89]:
+                - generic [ref=e90]: Lana's guide
+                - text: "A game has four parts: a goal, rules, a way to take turns, and a way to win. We are going to learn each one."
+          - generic [ref=e91]:
+            - text: Build tips
+            - list [ref=e92]:
+              - listitem [ref=e93]: "Checkers: goal = capture all pieces, rules = diagonal only"
+              - listitem [ref=e94]: "Mario: goal = finish the level, rules = jump on enemies"
+              - listitem [ref=e95]: "Tag: goal = avoid being 'it', rules = can't tag same person twice"
+          - generic [ref=e96]:
+            - text: Before you move on
+            - paragraph [ref=e97]: Can you explain the 4 parts of a game to Ace?
+            - button "Mark lesson complete" [ref=e98]
+        - complementary [ref=e99]:
+          - generic [ref=e100]:
+            - paragraph [ref=e101]: YOUR PROJECT
+            - heading "What you'll make" [level=2] [ref=e102]
+            - text: A character with powers and a story · A game level layout on paper · A simple game concept document · Game art ideas with AI prompts
+          - generic [ref=e103]:
+            - paragraph [ref=e104]: GET READY
+            - list [ref=e105]:
+              - listitem [ref=e106]: ✓ Paper or cardboard
+              - listitem [ref=e107]: ✓ Crayons and markers
+              - listitem [ref=e108]: ✓ Scissors
+              - listitem [ref=e109]: ✓ Index cards for character cards
+              - listitem [ref=e110]: ✓ Stickers for tokens
+              - listitem [ref=e111]: ✓ A ruler
+          - generic [ref=e112]:
+            - paragraph [ref=e113]: YOU'LL LEARN
+            - list [ref=e114]:
+              - listitem [ref=e115]: ✦ Understand what makes a game a game (rules, goals, turns)
+              - listitem [ref=e116]: ✦ Practice breaking a big idea into smaller steps
+              - listitem [ref=e117]: ✦ Learn that playtesting is how real game designers work
+          - generic "Share this page" [ref=e118]:
+            - button "↗ Share" [ref=e119] [cursor=pointer]
+            - button "⧉ Copy link" [ref=e120] [cursor=pointer]
+            - button "𝕏" [ref=e121] [cursor=pointer]
+            - button "f" [ref=e122] [cursor=pointer]
+      - generic [ref=e123]:
+        - img "Dr. Torrey Dooley" [ref=e124]
+        - generic [ref=e125]:
+          - paragraph [ref=e126]: DR. DOOLEY'S SMART & SAFE CHECK
+          - list [ref=e127]:
+            - listitem [ref=e128]: Scissors should be used with adult supervision
+            - listitem [ref=e129]: Wash hands after using markers
+  - contentinfo [ref=e130]:
+    - generic [ref=e131]:
+      - generic [ref=e132]:
+        - generic [ref=e133]:
+          - generic [ref=e134]:
+            - img "Lux Automaton" [ref=e136]
+            - generic [ref=e137]: Lux Automaton
+          - paragraph [ref=e139]: Private AI systems for builders, founders, and small businesses. Automate smarter. Move faster. Own your stack.
+          - generic [ref=e140]: Automate · Innovate · Accelerate
+          - generic [ref=e141]:
+            - link "▶ YouTube Channel" [ref=e142] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCcYnAZw0QnS6dD1n-7vpwdA
+              - generic [ref=e143]: ▶
+              - text: YouTube Channel
+            - link "in LinkedIn Page" [ref=e144] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/lux-automaton-saas/
+              - generic [ref=e145]: in
+              - text: LinkedIn Page
+        - generic [ref=e146]:
+          - generic [ref=e147]: Products
+          - generic [ref=e148]:
+            - link "Lux Codex" [ref=e149] [cursor=pointer]:
+              - /url: /products/lux-codex/
+            - link "Lux Coder" [ref=e150] [cursor=pointer]:
+              - /url: /products/lux-coder/
+            - link "LANA" [ref=e151] [cursor=pointer]:
+              - /url: /products/lana/
+            - link "Lux Agent USB" [ref=e152] [cursor=pointer]:
+              - /url: /products/lux-agent-usb/
+            - link "Lux Business" [ref=e153] [cursor=pointer]:
+              - /url: /products/lux-business/
+            - link "Lux AI Kids" [ref=e154] [cursor=pointer]:
+              - /url: /products/lux-ai-kids/
+            - link "Lux TV" [ref=e155] [cursor=pointer]:
+              - /url: /products/lux-tv/
+            - link "Lux Marketing Studio" [ref=e156] [cursor=pointer]:
+              - /url: /products/lux-marketing-studio/
+            - link "Lux WriteOff" [ref=e157] [cursor=pointer]:
+              - /url: /products/luxwriteoff/
+            - link "Lux Budgeter" [ref=e158] [cursor=pointer]:
+              - /url: /products/lux-budgeter/
+            - link "Success Packs" [ref=e159] [cursor=pointer]:
+              - /url: /products/success-packs/
+        - generic [ref=e160]:
+          - generic [ref=e161]: Solutions
+          - generic [ref=e162]:
+            - link "Lux Care OS" [ref=e163] [cursor=pointer]:
+              - /url: /solutions/lux-care-os/
+            - link "Epic Electric" [ref=e164] [cursor=pointer]:
+              - /url: /solutions/epic-electric/
+            - link "Inland Circle" [ref=e165] [cursor=pointer]:
+              - /url: /solutions/inland-circle/
+            - link "Contractor OS" [ref=e166] [cursor=pointer]:
+              - /url: /solutions/contractor-os/
+            - link "Creator OS" [ref=e167] [cursor=pointer]:
+              - /url: /solutions/creator-os/
+            - link "Small Business OS" [ref=e168] [cursor=pointer]:
+              - /url: /solutions/small-business-os/
+        - generic [ref=e169]:
+          - generic [ref=e170]: Resources
+          - generic [ref=e171]:
+            - link "Lux AI Kids" [ref=e172] [cursor=pointer]:
+              - /url: /lux-ai-kids/
+            - link "Lux TV" [ref=e173] [cursor=pointer]:
+              - /url: /lux-tv/
+            - link "Lux TV Kids" [ref=e174] [cursor=pointer]:
+              - /url: /lux-tv-kids/
+            - link "Blog" [ref=e175] [cursor=pointer]:
+              - /url: /blog/
+            - link "Books by Asa Spade" [ref=e176] [cursor=pointer]:
+              - /url: /books/
+            - link "Community" [ref=e177] [cursor=pointer]:
+              - /url: /community/
+            - link "Start Here" [ref=e178] [cursor=pointer]:
+              - /url: /start-here/
+            - link "Ask LANA" [ref=e179] [cursor=pointer]:
+              - /url: /ask-lana/
+            - link "Who Is LANA?" [ref=e180] [cursor=pointer]:
+              - /url: /who-is-lana/
+            - link "Workshops Hub" [ref=e181] [cursor=pointer]:
+              - /url: /workshops/
+            - link "Problem Library" [ref=e182] [cursor=pointer]:
+              - /url: /library/
+            - link "Question Library" [ref=e183] [cursor=pointer]:
+              - /url: /library/
+            - link "Founder Story" [ref=e184] [cursor=pointer]:
+              - /url: /founders/
+            - link "Weekly Intelligence" [ref=e185] [cursor=pointer]:
+              - /url: "#newsletter"
+            - link "Admin Studio" [ref=e186] [cursor=pointer]:
+              - /url: /admin/
+        - generic [ref=e187]:
+          - generic [ref=e188]: Legal
+          - generic [ref=e189]:
+            - link "Privacy Policy" [ref=e190] [cursor=pointer]:
+              - /url: /privacy/
+            - link "Terms of Service" [ref=e191] [cursor=pointer]:
+              - /url: /terms/
+            - link "Business Registration" [ref=e192] [cursor=pointer]:
+              - /url: https://www.bizapedia.com/or/lux-automaton-llc.html
+      - generic [ref=e194]:
+        - generic [ref=e195]: © 2026 Lux Automaton LLC. All rights reserved.
+        - generic [ref=e196]: All systems operational
+  - button "Toggle Support Chat" [ref=e199] [cursor=pointer]:
+    - img "Lana Support Specialist" [ref=e200]
+  - button "Open Next.js Dev Tools" [ref=e207] [cursor=pointer]
+  - alert [ref=e211]

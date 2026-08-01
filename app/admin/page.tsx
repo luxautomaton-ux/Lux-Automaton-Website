@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import LuxMarketingPage from "@/app/lux-marketing/page";
 import WorkshopStudio from "@/components/admin/WorkshopStudio";
 import ContentBridgeInbox from "@/components/admin/ContentBridgeInbox";
+import LanaScheduler from "@/components/admin/LanaScheduler";
 import { basePath, prefixPath } from "@/lib/prefix";
 import { LUX_ADMIN_EMAIL, LUX_ADMIN_UID, supabase } from "@/lib/supabase";
 
-type AdminTab = "workshops" | "analytics" | "marketing" | "content-inbox";
+type AdminTab = "workshops" | "analytics" | "marketing" | "content-inbox" | "scheduler";
 type AuthState = "loading" | "signed-out" | "authorized" | "denied";
 
 function AdminLogin() {
@@ -109,6 +110,7 @@ export default function AdminPage() {
         <nav aria-label="Admin workspace">
           <button type="button" className={activeTab === "workshops" ? "active" : ""} onClick={() => setActiveTab("workshops")}>Workshop Studio</button>
           <button type="button" className={activeTab === "content-inbox" ? "active" : ""} onClick={() => setActiveTab("content-inbox")}>Content Inbox</button>
+          <button type="button" className={activeTab === "scheduler" ? "active" : ""} onClick={() => setActiveTab("scheduler")}>✨ LANA Scheduler</button>
           <button type="button" className={activeTab === "analytics" ? "active" : ""} onClick={() => setActiveTab("analytics")}>System Analytics</button>
           <button type="button" className={activeTab === "marketing" ? "active" : ""} onClick={() => setActiveTab("marketing")}>Marketing Studio</button>
         </nav>
@@ -117,6 +119,7 @@ export default function AdminPage() {
 
       {activeTab === "workshops" && <WorkshopStudio />}
       {activeTab === "content-inbox" && <ContentBridgeInbox />}
+      {activeTab === "scheduler" && <LanaScheduler />}
       {activeTab === "analytics" && <AdminAnalytics />}
       {activeTab === "marketing" && <div className="admin-marketing-shell"><LuxMarketingPage /></div>}
     </main>

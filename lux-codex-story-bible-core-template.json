@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "project": {
+    "id": "STORY-001",
+    "title": "",
+    "series_promise": "",
+    "audience": "",
+    "themes": [],
+    "visual_language": [
+      "dark navy",
+      "cyan",
+      "purple",
+      "teal"
+    ],
+    "current_episode": 4
+  },
+  "characters": [
+    {
+      "id": "CHAR-001",
+      "name": "",
+      "role": "",
+      "identity_lock_id": "",
+      "relationships": [],
+      "motivation": "",
+      "knowledge": [],
+      "emotional_state": "",
+      "current_goal": "",
+      "current_location": "",
+      "current_wardrobe": "",
+      "approved_changes": []
+    }
+  ],
+  "worldbuilding": {
+    "regions": [],
+    "locations": [],
+    "factions": [],
+    "technology": [],
+    "cultures": [],
+    "rules": []
+  },
+  "lore": {
+    "audience_known": [],
+    "creator_only": [],
+    "reveals_scheduled": []
+  },
+  "props": [],
+  "timeline": [],
+  "scenes": [],
+  "continuity_checks": [],
+  "global_story_map": {
+    "character_nodes": [],
+    "location_nodes": [],
+    "event_nodes": [],
+    "relationship_edges": [],
+    "audience_touchpoints": []
+  },
+  "approval_ledger": [],
+  "next_episode": {
+    "episode_number": 5,
+    "purpose": "",
+    "required_characters": [],
+    "required_locations": [],
+    "required_memory": [],
+    "canon_changes_requiring_approval": []
+  }
+}

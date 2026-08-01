@@ -54,3 +54,8 @@ next-env.d.ts
 .playwright-cli/
 output/playwright/
 
+
+# Exclude files exceeding 100MB for GitHub limits
+public/documents/*.zip
+public/videos/asa-lana-ep4-building-the-story-bible-core.mp4
+public/videos/asa-lana-ep5-when-the-story-learns-to-see.mp4

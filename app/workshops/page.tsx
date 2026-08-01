@@ -224,6 +224,7 @@ export default function WorkshopsPage() {
   const [activeLesson, setActiveLesson] = useState(0);
   const [completedLessons, setCompletedLessons] = useState<number[]>([]);
   const [activeLessonFile, setActiveLessonFile] = useState(0);
+  const [isLessonView, setIsLessonView] = useState(false);
 
   const allWorkshops = useMemo(() => {
     const dynamicSlugs = new Set(publishedWorkshops.map((workshop) => workshop.slug));
@@ -237,6 +238,7 @@ export default function WorkshopsPage() {
         const programs = (await fetchWorkshops()).map(workshopRowToProgram);
         setPublishedWorkshops(programs);
         const requestedSlug = new URLSearchParams(window.location.search).get("workshop");
+        setIsLessonView(new URLSearchParams(window.location.search).get("mode") === "lesson");
         const requested = programs.find((workshop) => workshop.slug === requestedSlug)
           || WORKSHOP_PROGRAMS.find((workshop) => workshop.slug === requestedSlug);
         if (requested && requested.audience !== "Lux AI Kids") setSelected(requested);
@@ -270,6 +272,13 @@ export default function WorkshopsPage() {
     setActiveLesson(0);
     setCompletedLessons([]);
     setActiveLessonFile(0);
+  }
+
+  function openWorkshop(workshop: WorkshopProgram) {
+    selectWorkshop(workshop);
+    setIsLessonView(true);
+    window.history.pushState({}, "", `${prefixPath("/workshops/")}?workshop=${encodeURIComponent(workshop.slug)}&mode=lesson`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function markLessonComplete(index: number) {
@@ -313,7 +322,7 @@ export default function WorkshopsPage() {
         </div>
       )}
 
-      <section className="automaton-workshop-splash" aria-labelledby="workshop-splash-title">
+      {!isLessonView && <><section className="automaton-workshop-splash" aria-labelledby="workshop-splash-title">
         <video className="automaton-splash-video" src={prefixPath("/videos/Lux_Workshop_promo_montage_202607220252.mp4")} autoPlay muted loop playsInline />
         <div className="automaton-splash-shade" />
         <div className="automaton-splash-grid" aria-hidden="true"><i /><i /><i /><i /><i /></div>
@@ -329,10 +338,11 @@ export default function WorkshopsPage() {
 
       <section className="automaton-splash-workshops" id="choose-workshop" aria-label="All Lux Automaton workshops">
         <div><p className="automaton-kicker">Choose your path</p><h2>Every workshop is built to help you solve something real.</h2></div>
-        <div className="automaton-splash-workshop-grid">{allWorkshops.map((workshop, index) => <button key={workshop.slug} type="button" className={selected.slug === workshop.slug ? "active" : ""} onClick={() => selectWorkshop(workshop)}><span className="automaton-splash-card-number">0{index + 1}</span><Image src={prefixPath(workshop.thumbnail)} alt="" fill sizes="(max-width: 760px) 100vw, 20vw" /><i /><strong>{workshop.title}</strong><small>{workshop.duration} · {workshop.level}</small><em>Open workshop →</em></button>)}</div>
+        <div className="automaton-splash-workshop-grid">{allWorkshops.map((workshop, index) => <button key={workshop.slug} type="button" className={selected.slug === workshop.slug ? "active" : ""} onClick={() => openWorkshop(workshop)}><span className="automaton-splash-card-number">0{index + 1}</span><Image src={prefixPath(workshop.thumbnail)} alt="" fill sizes="(max-width: 760px) 100vw, 20vw" /><i /><strong>{workshop.title}</strong><small>{workshop.duration} · {workshop.level}</small><em>Open workshop →</em></button>)}</div>
       </section>
+      </>}
 
-      <section className="automaton-course-hero">
+      {isLessonView && <><section className="automaton-course-hero">
         <div className="automaton-course-hero-copy">
           <p className="automaton-kicker">Lux Academy · Workshop Studio</p>
           <h1>{selected.title}</h1>
@@ -434,6 +444,7 @@ export default function WorkshopsPage() {
         {!!selected.safetyNotes?.length && <div><h3>Safe practice</h3><ul>{selected.safetyNotes.map((item) => <li key={item}>{item}</li>)}</ul></div>}
         {!!selected.extensionActivities?.length && <div><h3>Keep building</h3><ul>{selected.extensionActivities.map((item) => <li key={item}>{item}</li>)}</ul></div>}
       </section>
+      </>}
     </main>
   );
 }

@@ -537,13 +537,6 @@ export default function BlogPage() {
 
   const topStories = articles.filter((article) => article.slug !== selected.slug).slice(0, 4);
 
-  const chooseStory = (article: BlogArticle, scroll = false) => {
-    setSelected(article);
-    if (scroll) {
-      window.setTimeout(() => articleRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
-    }
-  };
-
   const visualAssets = useMemo(() => getArticleVisualAssets(selected), [selected]);
 
   return (
@@ -582,11 +575,11 @@ export default function BlogPage() {
 
         <div className="news-lead-grid">
           <article className="news-lead-story">
-            <button type="button" className="news-lead-media" onClick={() => chooseStory(selected, true)} aria-label={`Read ${selected.title}`}>
+            <Link href={`/blog/${selected.slug}`} className="news-lead-media" aria-label={`Read ${selected.title}`}>
               <StoryMedia article={selected} sizes="(max-width: 900px) 100vw, 45vw" />
               {selected.video && <span className="news-play-badge" aria-hidden="true">▶</span>}
               <span className="news-media-label">Watch + Read</span>
-            </button>
+            </Link>
             <div className="news-lead-copy">
               <div className="news-story-meta">
                 <span>{selected.category}</span>
@@ -595,9 +588,9 @@ export default function BlogPage() {
               </div>
               <h3>{selected.title}</h3>
               <p>{selected.deck}</p>
-              <button type="button" className="news-read-button" onClick={() => chooseStory(selected, true)}>
+              <Link href={`/blog/${selected.slug}`} className="news-read-button">
                 Read the full story <span aria-hidden="true">→</span>
-              </button>
+              </Link>
             </div>
           </article>
 
@@ -607,13 +600,13 @@ export default function BlogPage() {
               <small>Updated weekly</small>
             </div>
             {topStories.map((article, index) => (
-              <button key={article.slug} type="button" onClick={() => chooseStory(article, true)}>
+              <Link key={article.slug} href={`/blog/${article.slug}`}>
                 <span className="news-rank">{String(index + 1).padStart(2, "0")}</span>
                 <span className="news-top-story-copy">
                   <small>{article.category} · {article.readTime}</small>
                   <strong>{article.title}</strong>
                 </span>
-              </button>
+              </Link>
             ))}
           </aside>
         </div>
@@ -626,10 +619,10 @@ export default function BlogPage() {
           <div className="news-modern-grid">
             {articles.map((article) => (
               <article key={article.slug} className={selected.slug === article.slug ? "active" : ""}>
-                <button type="button" className="news-modern-image" onClick={() => chooseStory(article, true)} aria-label={`Read ${article.title}`}>
+                <Link href={`/blog/${article.slug}`} className="news-modern-image" aria-label={`Read ${article.title}`}>
                   <StoryMedia article={article} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" />
                   {article.video && <span className="news-play-badge" aria-hidden="true">▶</span>}
-                </button>
+                </Link>
                 <div className="news-modern-copy">
                   <div className="news-story-meta">
                     <span>{article.category}</span>
@@ -642,14 +635,14 @@ export default function BlogPage() {
                   )}
                   <h3>{article.title}</h3>
                   <p>{article.deck}</p>
-                  <button type="button" onClick={() => chooseStory(article, true)}>Continue reading <span aria-hidden="true">→</span></button>
+                  <Link href={`/blog/${article.slug}`}>Continue reading <span aria-hidden="true">→</span></Link>
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        <section ref={articleRef} className="news-reading-room" aria-labelledby="selected-article-title">
+        <section ref={articleRef} className="news-reading-room" aria-labelledby="selected-article-title" hidden>
           <div className="news-reading-header">
             <p>{selected.audience} / {selected.category}</p>
             <h2 id="selected-article-title">{selected.title}</h2>

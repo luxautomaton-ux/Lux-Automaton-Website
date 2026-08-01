@@ -1,0 +1,408 @@
+{
+  "workshop": {
+    "title": "Your First Video Game: Imagine It. Draw It. Play It!",
+    "short_title": "Your First Video Game",
+    "slug": "your-first-video-game",
+    "audience": "Lux AI Kids",
+    "age_range": "Ages 6-8",
+    "level": "Beginner",
+    "duration_minutes": 120,
+    "format": "Six short missions; teach in one 2-hour workshop or two 60-minute sessions.",
+    "catalog_description": "Ace helps young game designers invent a hero, draw a level, make simple rules, and playtest a paper game. LANA introduces safe, grown-up-guided AI prompts for game art ideas.",
+    "outcome": "Each child leaves with a character card, a paper level map, a four-rule game concept, two safe AI art prompts, and a playtested paper prototype.",
+    "materials": [
+      "Paper or cardboard",
+      "Crayons and markers",
+      "Child-safe scissors",
+      "Index cards",
+      "Stickers for tokens",
+      "A ruler",
+      "Pencil",
+      "Optional: tape or glue"
+    ],
+    "learning_goals": [
+      "Name the four basic parts of a game: character, goal, challenge, and rules.",
+      "Choose a theme and tell a one-sentence game story.",
+      "Design a character with one clear power.",
+      "Draw a level with a start, path, challenge, and goal.",
+      "Write four simple rules that another child can follow.",
+      "Playtest, listen, and improve one part of the game.",
+      "Use AI only with a grown-up and without sharing private information."
+    ],
+    "safety_notes": [
+      "A grown-up handles any AI tool. Children may help write the prompt on paper.",
+      "Never type a child's full name, school, address, phone number, face photo, or private story into an AI tool.",
+      "Use child-safe scissors and provide help when cutting small pieces.",
+      "AI ideas are suggestions. The child stays the game designer and makes the final choices.",
+      "Keep competition friendly. The goal of playtesting is learning, not winning."
+    ],
+    "modules": [
+      {
+        "title": "Module 1 - Dream the Game",
+        "lessons": [
+          1,
+          2
+        ]
+      },
+      {
+        "title": "Module 2 - Build the Game",
+        "lessons": [
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "title": "Module 3 - Test and Share",
+        "lessons": [
+          6
+        ]
+      }
+    ]
+  },
+  "lessons": [
+    {
+      "number": 1,
+      "title": "What Makes a Game a Game?",
+      "duration": 20,
+      "color": "#00B8FF",
+      "module": "Dream the Game",
+      "big_idea": "Every game needs a character, a goal, a challenge, and rules.",
+      "objectives": [
+        "Point to the four parts of a game.",
+        "Explain what a goal tells the player.",
+        "Build a four-part Game Recipe strip."
+      ],
+      "say": "A game is a tiny world with something to do. A character tries to reach a goal. A challenge makes the trip interesting. Rules tell everyone how to play.",
+      "example": "In a treasure game, the explorer is the character, the treasure chest is the goal, the river is the challenge, and \u201cmove one card each turn\u201d is a rule.",
+      "steps": [
+        "Show the four Game Recipe cards.",
+        "Say and act out each part together.",
+        "Use a familiar game such as tag to find the four parts.",
+        "Kids place or draw the four parts on their worksheet.",
+        "Invite two children to share their recipe."
+      ],
+      "activity": "Game Recipe Sort: match picture cards to CHARACTER, GOAL, CHALLENGE, and RULES.",
+      "deliverable": "A completed four-part Game Recipe strip.",
+      "tips": [
+        "Use movement: pose as a hero, point to a goal, step over a pretend obstacle, then freeze for a rule.",
+        "Use familiar games; children do not need video-game experience.",
+        "Keep examples short and concrete.",
+        "Praise every answer that shows thinking, then gently name the correct game part."
+      ],
+      "mistake": "Starting with lots of decorations before the goal is clear.",
+      "check": "What tells the player how to win?",
+      "answer": "The goal.",
+      "facilitator": "For emerging readers, say the words aloud and let children use the picture icons. For advanced learners, ask them to find the four parts in two different games.",
+      "resource": "Workbook pages 5-6; printable Game Recipe cards; Diagram 1.",
+      "alt": "Ace points to a game controller while four bright cards show a character, a goal, a challenge, and rules."
+    },
+    {
+      "number": 2,
+      "title": "Pick Your Theme",
+      "duration": 15,
+      "color": "#65D94D",
+      "module": "Dream the Game",
+      "big_idea": "A theme tells where the game happens and what kind of adventure it feels like.",
+      "objectives": [
+        "Choose one game world.",
+        "Name a simple mission for that world.",
+        "Finish a one-sentence game story."
+      ],
+      "say": "A theme is the world of your game. It can be space, a jungle, the ocean, a magic castle, Dinosaur Land, Robot City, or a world you invent.",
+      "example": "Theme: Underwater City. Mission: Help a tiny submarine collect three pearls and reach the coral gate.",
+      "steps": [
+        "Spread out the theme cards.",
+        "Let each child point to or draw a favorite world.",
+        "Ask: Who lives there? What could they need?",
+        "Complete the sentence: \u201cIn my game, the player will ___ in ___.\u201d",
+        "Give the game a fun name."
+      ],
+      "activity": "Theme Dash: choose a world card, then add one place and one mission.",
+      "deliverable": "A theme card and one-sentence game story.",
+      "tips": [
+        "Offer six choices, not twenty.",
+        "Children may mix two themes, such as Space Jungle.",
+        "Accept invented spelling on kid pages.",
+        "Ask sensory questions: What colors, sounds, or shapes belong in this world?"
+      ],
+      "mistake": "Choosing so many themes that the game has no clear world.",
+      "check": "What does a theme tell us?",
+      "answer": "Where the game happens and what it feels like.",
+      "facilitator": "Read the theme names aloud. A child may circle a picture instead of writing. Keep this mission moving so there is time to build.",
+      "resource": "Workbook pages 7-8; printable Theme Cards.",
+      "alt": "Three hand-drawn cards show a space adventure, jungle quest, and magic world."
+    },
+    {
+      "number": 3,
+      "title": "Design Your Character",
+      "duration": 20,
+      "color": "#FF9D19",
+      "module": "Build the Game",
+      "big_idea": "A strong game hero has a name, a clear look, one useful power, and a reason to act.",
+      "objectives": [
+        "Draw a simple game hero.",
+        "Choose one power that helps with the goal.",
+        "Tell a one- or two-sentence character story."
+      ],
+      "say": "Your character is the one the player helps. Give the hero one special power. One strong power is easier to understand than ten powers.",
+      "example": "Milo Mooncat glows in dark caves. He wants to return a lost star to the sky before sunrise.",
+      "steps": [
+        "Pick a shape, animal, person, robot, or creature.",
+        "Draw the face and body with big simple shapes.",
+        "Add one color clue or special item.",
+        "Choose one power that helps with the game goal.",
+        "Finish: \u201cMy hero is ___. They can ___. They need to ___.\u201d"
+      ],
+      "activity": "Create a two-sided Character Card on an index card: picture on the front, name/power/story on the back.",
+      "deliverable": "A finished character card with one power and a short story.",
+      "tips": [
+        "Start with circles, squares, and triangles.",
+        "Make the power useful for the level.",
+        "Use one power first; helpers can be an extension.",
+        "Let children dictate the story to an adult if writing slows them down."
+      ],
+      "mistake": "Giving the hero so many powers that no challenge can be difficult.",
+      "check": "Why should the hero have one clear power?",
+      "answer": "It is easier to understand and makes the challenge more fun.",
+      "facilitator": "Model a \u201cgood enough\u201d drawing. This is design, not an art contest. Ask children to explain their choices instead of judging the drawing.",
+      "resource": "Workbook pages 9-10; printable Character Cards; AI Prompt Recipe diagram.",
+      "alt": "A hand draws a friendly caped hero on a character card with stars around the figure."
+    },
+    {
+      "number": 4,
+      "title": "Draw the Board",
+      "duration": 20,
+      "color": "#1677FF",
+      "module": "Build the Game",
+      "big_idea": "A level is a path from START to GOAL with fun choices and challenges along the way.",
+      "objectives": [
+        "Place a start and a goal.",
+        "Draw a clear path with 12-20 spaces.",
+        "Add at least one challenge and three special spaces."
+      ],
+      "say": "Your paper board is a map of the first game level. The player needs a way to start, move, meet a challenge, and reach the goal.",
+      "example": "Start at the treehouse. Follow the river path. A broken bridge sends you back one space. Star spaces give another turn. The goal is the treasure cave.",
+      "steps": [
+        "Draw a large START shape.",
+        "Draw a winding path of 12-20 spaces.",
+        "Add one challenge space.",
+        "Add three star or bonus spaces.",
+        "Draw the GOAL and decorate the world after the path works."
+      ],
+      "activity": "Build Level 1 on paper or cardboard using a ruler, crayons, and sticker tokens.",
+      "deliverable": "A paper game level with start, path, challenge, special spaces, and goal.",
+      "tips": [
+        "Draw the path lightly in pencil first.",
+        "Keep spaces large enough for a sticker token.",
+        "Make the challenge slow the player, not stop the game forever.",
+        "Test the path with a finger before coloring."
+      ],
+      "mistake": "Making the board beautiful but forgetting a clear path to the goal.",
+      "check": "What four things belong in every level path?",
+      "answer": "Start, path, challenge, and goal.",
+      "facilitator": "Offer a pre-drawn path template to children who need motor support. Advanced learners may add a shortcut or secret path.",
+      "resource": "Workbook pages 11-12; blank board template; Diagram 2.",
+      "alt": "A hand draws a colorful square-grid level with a river, trees, a bridge, and a treasure goal."
+    },
+    {
+      "number": 5,
+      "title": "Make the Rules",
+      "duration": 20,
+      "color": "#F354A6",
+      "module": "Build the Game",
+      "big_idea": "Rules make the game clear, fair, and possible to play without the designer explaining every move.",
+      "objectives": [
+        "Write or dictate four easy rules.",
+        "Make three move cards numbered 1, 2, and 3.",
+        "Create two safe AI art prompts with a grown-up."
+      ],
+      "say": "Rules answer four questions: How do we start? What happens on a turn? What do special spaces do? How do we win?",
+      "example": "1. Put your token on START. 2. Draw a move card and move that many spaces. 3. A star gives one extra turn; a cloud sends you back one space. 4. The first player to reach the treasure wins.",
+      "steps": [
+        "Write or dictate the start rule.",
+        "Make move cards 1, 2, and 3.",
+        "Choose what bonus and challenge spaces do.",
+        "Write the winning rule.",
+        "Read the rules aloud and remove extra words.",
+        "With a grown-up, build one character-art prompt and one level-art prompt."
+      ],
+      "activity": "Create a Rules Card and test the rules with a pretend turn.",
+      "deliverable": "A four-rule card, three move cards, and two paper AI prompts.",
+      "tips": [
+        "Use short sentences and one action at a time.",
+        "Use pictures beside rules for early readers.",
+        "Make every player follow the same rules.",
+        "Ask a child who did not write the rules to explain them back."
+      ],
+      "mistake": "Changing rules during the game only to help one player win.",
+      "check": "How do you know a rule is clear?",
+      "answer": "Another player can follow it without extra help.",
+      "facilitator": "The adult handles any AI tool. Children write prompts on paper. Do not enter names, schools, faces, addresses, or private stories.",
+      "resource": "Workbook pages 13-15; move cards; Diagram 4.",
+      "alt": "A hand writes four simple game rules in a notebook beside stars and a treasure chest."
+    },
+    {
+      "number": 6,
+      "title": "Playtest Time!",
+      "duration": 25,
+      "color": "#8C4DFF",
+      "module": "Test and Share",
+      "big_idea": "Game designers learn by watching real players and changing one thing at a time.",
+      "objectives": [
+        "Teach the game in 30 seconds.",
+        "Use the Fun-Fair-Clear check.",
+        "Make one helpful change after playtesting."
+      ],
+      "say": "A playtest is not a test of you. It is a test of the game. If someone gets confused, that is useful information for the designer.",
+      "example": "A player keeps missing the bridge rule. The designer adds a bright orange arrow and changes the rule to \u201cBridge: go back 1.\u201d",
+      "steps": [
+        "Pair up or make groups of three.",
+        "Designer gives a 30-second explanation, then watches quietly.",
+        "Players take a few turns or finish the game.",
+        "Ask: Was it fun? Was it fair? Was it clear?",
+        "Choose one change to make.",
+        "Play one more quick round."
+      ],
+      "activity": "Play, Watch, Ask, Fix, Play Again.",
+      "deliverable": "A completed playtest sheet and one \u201cMake It Better\u201d change ticket.",
+      "tips": [
+        "Watch where players pause or ask questions.",
+        "Change only one thing before trying again.",
+        "Thank the tester, even when feedback is hard to hear.",
+        "Celebrate improvements, not perfect games."
+      ],
+      "mistake": "Explaining every move instead of seeing whether the game and rules are clear.",
+      "check": "What are the three playtest questions?",
+      "answer": "Was it fun, fair, and clear?",
+      "facilitator": "Keep competition gentle. Stop play if frustration grows. Invite children to trade games and give one kind compliment before one suggestion.",
+      "resource": "Workbook pages 16-19; Playtest Loop diagram; Change Tickets.",
+      "alt": "Two smiling children play a colorful handmade board game together at a table."
+    }
+  ],
+  "final_project": {
+    "title": "My First Game Pack",
+    "brief": "Build a small paper game that another child can understand and play. The finished pack shows the game world, hero, level, rules, art ideas, and one improvement from playtesting.",
+    "deliverables": [
+      "Theme and game name",
+      "Character card with one power and story",
+      "Level 1 board with start, path, challenge, and goal",
+      "Four-rule card and move cards 1-3",
+      "Two safe AI art prompts written on paper",
+      "Playtest sheet with one improvement",
+      "30-second game pitch"
+    ],
+    "checklist": [
+      "My game has a clear goal.",
+      "My hero has one useful power.",
+      "My board has a start and goal.",
+      "My rules are short and fair.",
+      "I used no private information in my AI prompts.",
+      "Someone played my game.",
+      "I changed one thing to make it better."
+    ],
+    "rubric": [
+      {
+        "category": "Game Idea",
+        "ready": "Theme, goal, and story are easy to understand.",
+        "almost": "Most parts are clear; one needs help.",
+        "build": "The goal or story is still missing."
+      },
+      {
+        "category": "Playable Level",
+        "ready": "Start, path, challenge, and goal all work.",
+        "almost": "The path works with a little help.",
+        "build": "The player cannot yet reach the goal."
+      },
+      {
+        "category": "Rules",
+        "ready": "Another child can play using the rules.",
+        "almost": "One or two rules need explaining.",
+        "build": "Rules are missing or change during play."
+      },
+      {
+        "category": "Playtest & Improve",
+        "ready": "The designer listened and made one useful change.",
+        "almost": "The game was tested but not changed yet.",
+        "build": "The game still needs a playtest."
+      },
+      {
+        "category": "Safe AI Use",
+        "ready": "Prompts are creative and contain no private information.",
+        "almost": "A grown-up needs to help revise a prompt.",
+        "build": "Private information must be removed before use."
+      }
+    ],
+    "reflection": [
+      "What part of your game makes you smile?",
+      "What was tricky to build?",
+      "What did your playtester teach you?",
+      "What did you change?",
+      "What would happen in Level 2?"
+    ],
+    "advanced": "Create Level 2, add a helper or villain, make a game-box cover, or rebuild the idea in ScratchJr with a grown-up."
+  },
+  "visual_prompts": [
+    {
+      "asset": "Workshop thumbnail",
+      "prompt": "16:9 kid-friendly Lux AI Kids workshop scene. Ace and LANA help diverse children ages 6-8 build a colorful handmade paper video game with character cards, a winding level map, goal flag, obstacles, stars, and sticker tokens. Bright creative classroom, deep navy with cyan and violet glow, playful orange, green, blue, and pink accents. Large simple shapes, joyful expressions, negative space for title, no words, no logos.",
+      "alt": "Ace and LANA help young children draw a hero and a colorful game level on paper."
+    },
+    {
+      "asset": "Workshop hero",
+      "prompt": "Wide cinematic photo-style classroom scene with Ace, LANA, and three children ages 6-8 making a paper game prototype from cardboard, crayons, index cards, stickers, scissors, and a ruler. Friendly, bright, simple, and playful. Group on right, clean dark space on left, no typography or logos.",
+      "alt": "Children create a paper game with Ace and LANA at a classroom table."
+    },
+    {
+      "asset": "Lesson 1 - What Makes a Game a Game?",
+      "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. Ace points to a game controller while four bright cards show a character, a goal, a challenge, and rules. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+      "alt": "Ace points to a game controller while four bright cards show a character, a goal, a challenge, and rules."
+    },
+    {
+      "asset": "Lesson 2 - Pick Your Theme",
+      "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. Three hand-drawn cards show a space adventure, jungle quest, and magic world. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+      "alt": "Three hand-drawn cards show a space adventure, jungle quest, and magic world."
+    },
+    {
+      "asset": "Lesson 3 - Design Your Character",
+      "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. A hand draws a friendly caped hero on a character card with stars around the figure. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+      "alt": "A hand draws a friendly caped hero on a character card with stars around the figure."
+    },
+    {
+      "asset": "Lesson 4 - Draw the Board",
+      "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. A hand draws a colorful square-grid level with a river, trees, a bridge, and a treasure goal. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+      "alt": "A hand draws a colorful square-grid level with a river, trees, a bridge, and a treasure goal."
+    },
+    {
+      "asset": "Lesson 5 - Make the Rules",
+      "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. A hand writes four simple game rules in a notebook beside stars and a treasure chest. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+      "alt": "A hand writes four simple game rules in a notebook beside stars and a treasure chest."
+    },
+    {
+      "asset": "Lesson 6 - Playtest Time!",
+      "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. Two smiling children play a colorful handmade board game together at a table. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+      "alt": "Two smiling children play a colorful handmade board game together at a table."
+    }
+  ],
+  "asset_files": {
+    "logo": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/lux_ai_kids_logo.png",
+    "hero": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/01_workshop_hero_16x9.png",
+    "thumbnail": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/00_workshop_thumbnail_16x9.png",
+    "social": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/social_square_promo.png",
+    "overview": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/printable_workshop_overview.png",
+    "lesson_visuals": {
+      "1": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/lesson_01_visual_16x9.png",
+      "2": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/lesson_02_visual_16x9.png",
+      "3": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/lesson_03_visual_16x9.png",
+      "4": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/lesson_04_visual_16x9.png",
+      "5": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/lesson_05_visual_16x9.png",
+      "6": "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/lesson_06_visual_16x9.png"
+    },
+    "diagrams": [
+      "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/diagram_01_game_recipe.png",
+      "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/diagram_02_level_path.png",
+      "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/diagram_03_playtest_loop.png",
+      "/mnt/data/Your_First_Video_Game_Ages_6_8_Workshop/assets/diagram_04_ai_prompt_recipe.png"
+    ]
+  }
+}

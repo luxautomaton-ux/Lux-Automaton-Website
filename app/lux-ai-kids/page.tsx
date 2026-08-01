@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { prefixPath } from "@/lib/prefix";
+import { BLOG_ARTICLES } from "@/lib/luxContent";
 
 const labs = [
   { icon:"✦", title:"AI Explorer Lab", age:"Ages 7–10", copy:"Meet friendly AI, learn what it can do, and train your first tiny helper.", color:"pink", href:"/lux-ai-kids/academy#ai-explorer" },
@@ -14,27 +15,27 @@ const labs = [
 
 const characterCards = [
   {
-    id: "ace",
-    name: "ACE",
-    role: "LUX AI Kids Mascot & Chief Learning Buddy 🚀",
-    tagline: "The Curiosity Co-Pilot",
-    badge: "AI LAB BUDDY",
+    id: "asa",
+    name: "ASA PRITCHARD",
+    role: "Founder & Chief Builder ✦",
+    tagline: "The Big-Idea Builder",
+    badge: "LUX FOUNDER",
     color: "pink",
-    image: "/images/lux-ai-kids-academy/ace-profile.png",
-    personality: "Funny, curious, energetic, positive, playful, loves asking questions and celebrating discoveries. Thinks mistakes are opportunities to learn!",
-    bio: "Hey there, future builder! I’m Ace! Think of me as your AI co-pilot, best friend in the lab, and number-one cheerleader. Whenever you’re wondering 'How does a robot think?' or 'Can I build a video game with AI?', I’m right by your side ready to explore!",
+    image: "/images/asa-portrait.jpg",
+    personality: "Curious, practical, encouraging, and always ready to turn a big question into a real project.",
+    bio: "Hi, I’m Asa. I started Lux to help people use AI with imagination, care, and real purpose. I’m here to remind every young builder that your questions matter, your ideas can help people, and you do not have to know everything before you begin.",
     catchphrases: [
-      "“Let's build it!” 🛠️",
-      "“What do you think?” 🧠",
-      "“Big ideas start with curiosity!” 💡",
-      "“Code. Create. Change.” ⚡"
+      "“Start with the question.” 💡",
+      "“Let’s build it together.” 🛠️",
+      "“Make something that helps.” 🤝",
+      "“Keep learning out loud.” ✨"
     ],
     rules: [
-      "Mistakes are just clues to the right answer!",
-      "AI is a team sport—always work together and share your discoveries.",
-      "Use technology to help people and make your community awesome!"
+      "Big ideas get better when you ask for help and listen to feedback.",
+      "Use technology to help people—not to trick, hurt, or leave anyone out.",
+      "You can begin with a sketch, a question, or a tiny first try."
     ],
-    appearance: "Friendly educational puppet with glasses, freckles, expressive eyebrows, black Lux AI Kids hoodie, and Lux cap."
+    appearance: "Lux founder and builder in the studio, helping young creators turn curiosity into useful projects."
   },
   {
     id: "lana",
@@ -76,10 +77,18 @@ const characterCards = [
   }
 ];
 
+const kidsJournalStorySlugs = [
+  "safe-ai-learning-starts-with-better-questions",
+  "dr-dooleys-smart-health-lab-episode-2",
+  "the-coolest-ai-careers-may-not-have-names-yet",
+];
+
 export default function LuxAiKidsPage(){
   const [email,setEmail]=useState(""); 
   const [joined,setJoined]=useState(false);
-  const [activeTab, setActiveTab] = useState<string>("ace");
+  const kidsStories = kidsJournalStorySlugs
+    .map((slug) => BLOG_ARTICLES.find((article) => article.slug === slug))
+    .filter((article): article is (typeof BLOG_ARTICLES)[number] => Boolean(article));
 
   return <div className="kids-world">
     <section className="kids-hero" style={{ position: "relative", overflow: "hidden" }}>
@@ -133,28 +142,15 @@ export default function LuxAiKidsPage(){
         <span>Learn who’s helping you code, create, ask big questions, and stay healthy!</span>
       </header>
 
-      <div className="character-tab-buttons">
-        {characterCards.map(c => (
-          <button
-            key={c.id}
-            type="button"
-            className={`character-tab-btn ${activeTab === c.id ? "active " + c.color : ""}`}
-            onClick={() => setActiveTab(c.id)}
-          >
-            {c.name} {c.id === "ace" ? "🚀" : c.id === "lana" ? "✦" : "🩺"}
-          </button>
-        ))}
-      </div>
-
       <div className="character-cards-grid">
-        {characterCards.filter(c => c.id === activeTab || true).map(character => (
+        {characterCards.map(character => (
           <article className={`character-card-item ${character.color}`} key={character.id}>
             <div className="character-card-media">
               <Image
                 src={prefixPath(character.image)}
                 alt={`${character.name} - ${character.role}`}
                 fill
-                sizes="(max-width: 900px) 100vw, 45vw"
+                sizes="(max-width: 720px) 100vw, (max-width: 1120px) 50vw, 33vw"
                 style={{ objectFit: "cover" }}
               />
               <span className="character-badge-pill">{character.badge}</span>
@@ -251,26 +247,21 @@ export default function LuxAiKidsPage(){
       <header style={{ position: "relative", zIndex: 1 }}>
         <p>THE CURIOSITY JOURNAL</p>
         <h2>Big questions. Bright ideas.</h2>
+        <span>Choose a story to open its own full-page reading experience.</span>
       </header>
       <div className="kids-story-grid">
-        <article>
-          <span>AI 101</span>
-          <h3>Can a computer have an imagination?</h3>
-          <p>Ace breaks down patterns, prompts, and where brand-new ideas really begin.</p>
-          <b>Read together →</b>
-        </article>
-        <article>
-          <span>HEALTH &amp; TECH</span>
-          <h3>Dr. Dooley: How AI helps doctors listen to your heart</h3>
-          <p>Learn how smart sensors and friendly tools help nurses and doctors keep families healthy.</p>
-          <b>Start the challenge →</b>
-        </article>
-        <article>
-          <span>FUTURE JOBS</span>
-          <h3>Meet the robot coach, prompt director, and AI safety detective</h3>
-          <p>Tomorrow’s coolest jobs might not have names yet. You could help invent them.</p>
-          <b>Explore careers →</b>
-        </article>
+        {kidsStories.map((story) => (
+          <Link key={story.slug} href={`/blog/${story.slug}`} className="kids-story-card">
+            <span className="kids-story-thumb">
+              <Image src={prefixPath(story.image)} alt="" fill sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw" />
+              {story.video && <i aria-hidden="true">▶</i>}
+            </span>
+            <span className="kids-story-category">{story.category}</span>
+            <h3>{story.title}</h3>
+            <p>{story.deck}</p>
+            <b>Open story →</b>
+          </Link>
+        ))}
       </div>
     </section>
 

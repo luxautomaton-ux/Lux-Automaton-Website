@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "analysis_id": "PERCEPT-EP005-SC001-R1",
+  "scene": {
+    "episode": 5,
+    "scene_id": "",
+    "source_asset": "",
+    "approved_brief_id": ""
+  },
+  "expected_state": {
+    "characters": [],
+    "location": "",
+    "props": [],
+    "actions": [],
+    "dialogue": [],
+    "ending_state": ""
+  },
+  "analysis_config": {
+    "frame_sampling": "opening_closing_key_actions",
+    "checks": [
+      "character_identity",
+      "wardrobe",
+      "environment",
+      "props",
+      "actions",
+      "visible_text",
+      "audio_transcript",
+      "timeline"
+    ],
+    "vision_model": "",
+    "speech_model": ""
+  },
+  "observations": [
+    {
+      "observation_id": "",
+      "category": "character|environment|object|action|text|audio",
+      "description": "",
+      "confidence": 0.0,
+      "evidence": [],
+      "status": "detected"
+    }
+  ],
+  "comparison": {
+    "matches": [],
+    "missing_expected_items": [],
+    "unexpected_items": [],
+    "timing_differences": [],
+    "continuity_risks": []
+  },
+  "human_review": {
+    "reviewer": "Asa",
+    "decision": "pending",
+    "accepted_observations": [],
+    "rejected_observations": [],
+    "canon_updates": [],
+    "notes": ""
+  },
+  "audit": {
+    "created_at": "",
+    "completed_at": "",
+    "source_checksum": "",
+    "approval_record_id": ""
+  }
+}

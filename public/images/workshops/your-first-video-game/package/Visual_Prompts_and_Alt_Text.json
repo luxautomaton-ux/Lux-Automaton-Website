@@ -1,0 +1,42 @@
+[
+  {
+    "asset": "Workshop thumbnail",
+    "prompt": "16:9 kid-friendly Lux AI Kids workshop scene. Ace and LANA help diverse children ages 6-8 build a colorful handmade paper video game with character cards, a winding level map, goal flag, obstacles, stars, and sticker tokens. Bright creative classroom, deep navy with cyan and violet glow, playful orange, green, blue, and pink accents. Large simple shapes, joyful expressions, negative space for title, no words, no logos.",
+    "alt": "Ace and LANA help young children draw a hero and a colorful game level on paper."
+  },
+  {
+    "asset": "Workshop hero",
+    "prompt": "Wide cinematic photo-style classroom scene with Ace, LANA, and three children ages 6-8 making a paper game prototype from cardboard, crayons, index cards, stickers, scissors, and a ruler. Friendly, bright, simple, and playful. Group on right, clean dark space on left, no typography or logos.",
+    "alt": "Children create a paper game with Ace and LANA at a classroom table."
+  },
+  {
+    "asset": "Lesson 1 - What Makes a Game a Game?",
+    "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. Ace points to a game controller while four bright cards show a character, a goal, a challenge, and rules. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+    "alt": "Ace points to a game controller while four bright cards show a character, a goal, a challenge, and rules."
+  },
+  {
+    "asset": "Lesson 2 - Pick Your Theme",
+    "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. Three hand-drawn cards show a space adventure, jungle quest, and magic world. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+    "alt": "Three hand-drawn cards show a space adventure, jungle quest, and magic world."
+  },
+  {
+    "asset": "Lesson 3 - Design Your Character",
+    "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. A hand draws a friendly caped hero on a character card with stars around the figure. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+    "alt": "A hand draws a friendly caped hero on a character card with stars around the figure."
+  },
+  {
+    "asset": "Lesson 4 - Draw the Board",
+    "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. A hand draws a colorful square-grid level with a river, trees, a bridge, and a treasure goal. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+    "alt": "A hand draws a colorful square-grid level with a river, trees, a bridge, and a treasure goal."
+  },
+  {
+    "asset": "Lesson 5 - Make the Rules",
+    "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. A hand writes four simple game rules in a notebook beside stars and a treasure chest. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+    "alt": "A hand writes four simple game rules in a notebook beside stars and a treasure chest."
+  },
+  {
+    "asset": "Lesson 6 - Playtest Time!",
+    "prompt": "Original 16:9 Lux AI Kids lesson visual for ages 6-8. Two smiling children play a colorful handmade board game together at a table. Deep navy creative classroom, cheerful cyan, violet, orange, green, blue, and pink accents, large simple visual hierarchy, no readable interface text, no generated logos, clear area for authentic branding.",
+    "alt": "Two smiling children play a colorful handmade board game together at a table."
+  }
+]

@@ -1,0 +1,27 @@
+LUX AI KIDS - YOUR FIRST VIDEO GAME
+QUALITY ASSURANCE REPORT
+
+Audience: Ages 6-8
+Level: Beginner
+Workshop length: 120 minutes
+
+FILES REVIEWED
+- Facilitator Guide: 22 pages
+- Kid Workbook: 20 pages
+- Facilitator Deck: 34 slides
+- Print-and-Play Pack: 8 pages
+- Printable Workshop Overview: 1 page
+- Original Visual Assets: 1 thumbnail, 1 hero, 6 lesson visuals, 4 diagrams, 1 overview poster, 1 social image
+
+CHECKS COMPLETED
+- All PDFs exported and opened successfully.
+- Representative pages and full-page montages were visually reviewed.
+- Text overlap and emoji-rendering issues were corrected.
+- The DOCX facilitator guide was rendered and inspected.
+- DOCX accessibility audit: 0 high, 0 medium, 0 low findings after fixes.
+- Every mission produces a concrete learner deliverable.
+- The final project uses skills taught in Missions 1-6.
+- AI safety and privacy guidance is included for children, facilitators, and families.
+
+CORE SAFETY MESSAGE
+AI helps. People decide. Ask a grown-up first.

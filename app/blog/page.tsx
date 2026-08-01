@@ -500,10 +500,11 @@ function getArticleVisualAssets(article: BlogArticle) {
     );
   } else if (article.slug === "asa-lana-the-story-remembers-ep1") {
     images.push(
-      { title: "Series Set Preview", subtitle: "Production preview inside Lux Automaton Laboratory", imageUrl: "/images/00_Marketing_Set_Preview.jpg", type: "Poster" },
-      { title: "Asa & LANA Character Duo Poster", subtitle: "Official 4x5 character poster", imageUrl: "/images/05_Character_Duo_Poster_4x5.png", type: "Poster" },
-      { title: "Lux Codex Continuity Engine", subtitle: "Operating memory layer for AI video", imageUrl: "/images/06_Lux_Codex_Continuity_Engine_4x5.png", type: "Architecture Map" },
-      { title: "10-Episode Story Arc Overview", subtitle: "Complete narrative arc overview", imageUrl: "/images/07_Ten_Episode_Story_Arc_4x5.png", type: "Story Arc" }
+      { title: "01 — Episode 1 Poster", subtitle: "ASA + LANA EP1: One Clip is a Seed", imageUrl: "/images/01-thumbnail-asa-lana-ep1.png", type: "Episode Poster" },
+      { title: "02 — Seed Becomes a Story", subtitle: "Turn clips and ideas into connected story threads", imageUrl: "/images/02-photo-seed-becomes-a-story.png", type: "Photo Blueprint" },
+      { title: "03 — Memory Starts to Form", subtitle: "Connecting clues, objectives, and personal history", imageUrl: "/images/03-photo-memory-starts-to-form.png", type: "Photo Blueprint" },
+      { title: "04 — First Idea Takes Shape", subtitle: "Holographic story modeling inside the Lux Lab", imageUrl: "/images/04-photo-first-idea-takes-shape.png", type: "Photo Blueprint" },
+      { title: "05 — From Clip to Living Story", subtitle: "Seed to memory to full cinematic series overview", imageUrl: "/images/05-story-ep1-overview.png", type: "Overview PNG" }
     );
   } else if (article.slug === "private-ai-business-os") {
     images.push(

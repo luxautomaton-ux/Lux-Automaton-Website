@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { prefixPath } from "@/lib/prefix";
+import { APP_REVIEWS } from "@/lib/appReviews";
 
 function GithubLogoIcon({ size = 18, color = "currentColor" }: { size?: number; color?: string }) {
   return (
@@ -683,7 +684,7 @@ export default function AppReviewPage() {
   const [copiedScriptId, setCopiedScriptId] = useState<string | null>(null);
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
   const isJuly29 = edition === "july-29";
-  const activeApps = isJuly29 ? JULY_29_TOP_5_APPS : TOP_5_APPS;
+  const activeApps = isJuly29 ? [...JULY_29_TOP_5_APPS, ...APP_REVIEWS] : [...TOP_5_APPS, ...APP_REVIEWS];
   const maxWeeklyGrowth = Math.max(...activeApps.map((app) => app.weeklyStars));
   const editionCover = isJuly29 ? "/images/lux-app-review-july-29-cover.png" : "/images/lux-app-review-july-24-cover.png";
   const featuredThumbnail = editionCover;

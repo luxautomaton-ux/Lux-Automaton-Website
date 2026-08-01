@@ -15,12 +15,14 @@ interface PdfPreviewDeckProps {
   heading?: string;
   subheading?: string;
   resources: PdfResourceItem[];
+  showPreview?: boolean;
 }
 
 export default function PdfPreviewDeckModal({
   heading = "Workshop Resources & PDF Downloads",
   subheading = "Preview interactive workbooks, facilitator decks, and full guides directly or download them for offline use.",
   resources,
+  showPreview = true,
 }: PdfPreviewDeckProps) {
   const [activePreview, setActivePreview] = useState<PdfResourceItem | null>(null);
 
@@ -47,13 +49,13 @@ export default function PdfPreviewDeckModal({
             {item.size && <span className="pdf-card-meta">File size: {item.size}</span>}
 
             <div className="pdf-card-actions">
-              <button
+              {showPreview && <button
                 type="button"
                 className="pdf-btn preview-btn"
                 onClick={() => setActivePreview(item)}
               >
                 👁️ Preview PDF
-              </button>
+              </button>}
               <a
                 href={prefixPath(item.pdfUrl)}
                 download

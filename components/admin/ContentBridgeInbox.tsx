@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 type Draft = {
   id: string;
-  type: "blog" | "workshop" | "general";
+  type: "blog" | "workshop" | "app_review" | "general";
   title: string;
   summary: string;
   status: "READY_FOR_REVIEW";

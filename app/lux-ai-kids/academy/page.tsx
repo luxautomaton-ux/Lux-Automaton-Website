@@ -155,6 +155,8 @@ export default function AcademyPage() {
 
       <section className="academy-lab-picker" id="labs" aria-label="Choose an Academy Lab">
         {labs.map((lab) => <a href={`#${lab.id}`} key={lab.id} onClick={() => chooseLab(lab.id)} className={`academy-lab-button ${lab.color} ${activeLab.id === lab.id ? "active" : ""}`}>
+          <Image className="academy-lab-button-image" src={lab.image} alt="" fill sizes="(max-width: 700px) 100vw, 25vw" />
+          <span className="academy-lab-button-shade" aria-hidden="true" />
           <small>{lab.number}</small><b>{lab.icon}</b><strong>{lab.title}</strong><span>{lab.ages}</span>
         </a>)}
       </section>

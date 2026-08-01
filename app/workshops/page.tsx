@@ -2,12 +2,12 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { WORKSHOP_PROGRAMS, type Audience, type WorkshopProgram, type WorkshopLesson } from "@/lib/luxContent";
 import { prefixPath } from "@/lib/prefix";
 import { fetchWorkshops, workshopRowToProgram } from "@/lib/workshopDb";
 import PdfPreviewDeckModal from "@/components/PdfPreviewDeckModal";
 import ArticleVisualAssetsDeck, { type VisualAssetItem, type ResourceDownloadItem } from "@/components/ArticleVisualAssetsDeck";
+import SocialShare from "@/components/SocialShare";
 
 const tabs: Array<"All" | Audience> = ["All", "Lux Automaton"];
 
@@ -152,113 +152,78 @@ function getWorkshopVisualAssets(workshop: WorkshopProgram) {
   return { images, downloads };
 }
 
-function LessonCard({ lesson, index }: { lesson: string | WorkshopLesson; index: number }) {
-  const [expanded, setExpanded] = useState(false);
+function normalizeLesson(lesson: string | WorkshopLesson): WorkshopLesson {
+  if (typeof lesson !== "string") return lesson;
+  return {
+    title: lesson,
+    duration: "15–20 min",
+    overview: `In this lesson, you will work on ${lesson.toLowerCase()} one small step at a time.`,
+    content: "You do not need to be a tech expert. Pick one real example from your work. Keep it small and clear. When you finish, you should have something you can use, not just an idea.",
+    activity: "Use one real example. Write your answer down. Then look at it once more and make it easier for the next person to understand.",
+    deliverable: "One clear page or short plan you can use this week.",
+    tips: ["Start small", "Use plain words", "Ask one person to look at your work before you use it"],
+    checkIn: "Can you tell someone what you made, what it is for, and what you will do next?",
+  };
+}
 
-  const normalized: WorkshopLesson = typeof lesson === "string"
-    ? {
-        title: lesson,
-        duration: "15-20 min",
-        overview: `Key lesson module: ${lesson}.`,
-        activity: "Guided practice and application.",
-        deliverable: "Completed worksheet or working draft.",
-        tips: ["Take your time to test each step", "Keep notes on what works best for your workflow"],
-        checkIn: "Ready for the next lesson step.",
-      }
-    : lesson;
+type LessonFile = { label: string; title: string; url: string; instruction: string };
 
-  return (
-    <div className="academy-lesson-card">
-      <button
-        type="button"
-        className="academy-lesson-header"
-        onClick={() => setExpanded(!expanded)}
-        aria-expanded={expanded}
-      >
-        <span className="academy-lesson-num">{String(index + 1).padStart(2, "0")}</span>
-        <div className="academy-lesson-info">
-          <h4>{normalized.title}</h4>
-          <small>{normalized.duration}</small>
-        </div>
-        <span className="academy-lesson-toggle">{expanded ? "−" : "+"}</span>
-      </button>
+const workbookPageMap: Record<string, number[]> = {
+  "ai-foundations-for-founders": [7, 8, 9, 10, 11, 12, 13, 15, 16, 21],
+  "lana-content-command-center": [3, 5, 7, 8, 9, 11, 12, 13, 14, 15],
+};
 
-      {expanded && (
-        <div className="academy-lesson-body">
-          {normalized.moduleTitle && <span className="academy-lesson-module">{normalized.moduleTitle}</span>}
-          {normalized.video && <video className="academy-lesson-media" src={prefixPath(normalized.video)} controls playsInline poster={normalized.image ? prefixPath(normalized.image) : undefined} />}
-          {!normalized.video && normalized.image && <Image className="academy-lesson-media" src={prefixPath(normalized.image)} alt={normalized.title} width={1200} height={675} />}
-          {normalized.overview && <p className="academy-lesson-overview">{normalized.overview}</p>}
+function getLessonFiles(workshop: WorkshopProgram, lessonIndex: number, lesson: WorkshopLesson): LessonFile[] {
+  const page = workbookPageMap[workshop.slug]?.[lessonIndex];
+  const pageHint = page ? `Go to page ${page}.` : `Find the section called “${lesson.title}.”`;
+  const files: LessonFile[] = [];
 
-          {normalized.content && (
-            <div className="academy-lesson-section academy-lesson-content">
-              <h5>Full Lesson</h5>
-              {normalized.content.split("\n").filter(Boolean).map((paragraph, paragraphIndex) => <p key={paragraphIndex}>{paragraph}</p>)}
-            </div>
-          )}
+  if (workshop.workbookPdfUrl) {
+    files.push({
+      label: "Do this now",
+      title: "Open the participant workbook",
+      url: `${workshop.workbookPdfUrl}${page ? `#page=${page}` : ""}`,
+      instruction: `${pageHint} Fill in one box at a time. Use a real example from your work, but never add private information.`,
+    });
+  }
+  if (workshop.fullGuidePdfUrl) {
+    files.push({
+      label: "Need more help?",
+      title: "Open the step-by-step guide",
+      url: workshop.fullGuidePdfUrl,
+      instruction: `Use this if a word or step feels confusing. Read the part with the same lesson name, then come back here.`,
+    });
+  }
+  if (workshop.facilitatorDeckPdfUrl) {
+    files.push({
+      label: "For a group leader",
+      title: "Open the lesson slides",
+      url: workshop.facilitatorDeckPdfUrl,
+      instruction: "Use these slides if you are teaching a group. Pause after each question so people can write their own answer.",
+    });
+  }
+  return files;
+}
 
-          {!!normalized.objectives?.length && (
-            <div className="academy-lesson-section">
-              <h5>Learning Objectives</h5>
-              <ul>
-                {normalized.objectives.map((obj) => (
-                  <li key={obj}>{obj}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {normalized.activity && (
-            <div className="academy-lesson-section">
-              <h5>Activity</h5>
-              <p>{normalized.activity}</p>
-            </div>
-          )}
-
-          {normalized.deliverable && (
-            <div className="academy-lesson-section">
-              <h5>Deliverable</h5>
-              <p className="academy-lesson-deliverable">{normalized.deliverable}</p>
-            </div>
-          )}
-
-          {!!normalized.tips?.length && (
-            <div className="academy-lesson-section">
-              <h5>Tips</h5>
-              <ul className="academy-lesson-tips">
-                {normalized.tips.map((tip) => (
-                  <li key={tip}>{tip}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {normalized.checkIn && (
-            <div className="academy-lesson-checkin">
-              <strong>Check-in:</strong> {normalized.checkIn}
-            </div>
-          )}
-
-          {!!normalized.resources?.length && (
-            <div className="academy-lesson-section">
-              <h5>Resources</h5>
-              <div className="academy-lesson-resources">
-                {normalized.resources.map((resource) => <a key={`${resource.title}-${resource.url}`} href={resource.url} target="_blank" rel="noreferrer">{resource.title || "Open resource"}</a>)}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
+function getSimpleSteps(lesson: WorkshopLesson, hasWorkbook: boolean): string[] {
+  return [
+    hasWorkbook ? "Open the workbook card below. Start on the page shown." : "Get a blank page, note, or simple document ready.",
+    `Pick one real example from your work that fits “${lesson.title}.”`,
+    "Write a short answer. Do not try to make it perfect.",
+    "Read it once. If it is hard to understand, make the words simpler.",
+    "Save it. You will use it again in the next lesson.",
+  ];
 }
 
 export default function WorkshopsPage() {
   const [activeTab, setActiveTab] = useState<"All" | Audience>("All");
-  const [selected, setSelected] = useState<WorkshopProgram>(WORKSHOP_PROGRAMS[0]);
+  const [selected, setSelected] = useState<WorkshopProgram>(() => WORKSHOP_PROGRAMS.find((workshop) => workshop.audience === "Lux Automaton") || WORKSHOP_PROGRAMS[0]);
   const [publishedWorkshops, setPublishedWorkshops] = useState<WorkshopProgram[]>([]);
   const [syncing, setSyncing] = useState(true);
   const [activeFullImage, setActiveFullImage] = useState<string | null>(null);
+  const [activeLesson, setActiveLesson] = useState(0);
+  const [completedLessons, setCompletedLessons] = useState<number[]>([]);
+  const [activeLessonFile, setActiveLessonFile] = useState(0);
 
   const allWorkshops = useMemo(() => {
     const dynamicSlugs = new Set(publishedWorkshops.map((workshop) => workshop.slug));
@@ -274,7 +239,7 @@ export default function WorkshopsPage() {
         const requestedSlug = new URLSearchParams(window.location.search).get("workshop");
         const requested = programs.find((workshop) => workshop.slug === requestedSlug)
           || WORKSHOP_PROGRAMS.find((workshop) => workshop.slug === requestedSlug);
-        if (requested) setSelected(requested);
+        if (requested && requested.audience !== "Lux AI Kids") setSelected(requested);
       } catch (error) {
         console.error("Unable to sync published workshops", error);
       } finally {
@@ -294,8 +259,25 @@ export default function WorkshopsPage() {
     [selected],
   );
 
+  const lessons = useMemo(() => selected.lessons.map(normalizeLesson), [selected]);
+  const lesson = lessons[activeLesson] || lessons[0];
+  const lessonFiles = lesson ? getLessonFiles(selected, activeLesson, lesson) : [];
+  const simpleSteps = lesson ? getSimpleSteps(lesson, lessonFiles.some((file) => file.label === "Do this now")) : [];
+  const completedPercent = lessons.length ? Math.round((completedLessons.length / lessons.length) * 100) : 0;
+
+  function selectWorkshop(workshop: WorkshopProgram) {
+    setSelected(workshop);
+    setActiveLesson(0);
+    setCompletedLessons([]);
+    setActiveLessonFile(0);
+  }
+
+  function markLessonComplete(index: number) {
+    setCompletedLessons((current) => current.includes(index) ? current : [...current, index]);
+  }
+
   return (
-    <main className="academy-world">
+    <main className="automaton-classroom">
       {/* ═══ FULL-RESOLUTION UNCROPPED IMAGE MODAL ═══ */}
       {activeFullImage && (
         <div
@@ -320,39 +302,57 @@ export default function WorkshopsPage() {
             </button>
           </div>
           <div className="relative w-full h-full max-w-7xl max-h-[92vh] flex items-center justify-center">
-            <img
+            <Image
               src={prefixPath(activeFullImage)}
               alt="Full uncropped workshop poster"
-              className="max-w-full max-h-full object-contain rounded-xl shadow-2xl border border-white/10"
+              fill
+              sizes="100vw"
+              className="object-contain rounded-xl shadow-2xl border border-white/10"
             />
           </div>
         </div>
       )}
 
-      <section className="workshops-main-hero">
-        <video
-          className="world-hero-video"
-          src={prefixPath("/videos/Lux_Workshop_promo_montage_202607220252.mp4")}
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-        <div className="world-hero-shade" />
-        <div className="workshops-main-hero-copy">
-          <p>Lux Academy</p>
-          <h1>Workshops that turn curiosity into working systems.</h1>
-          <span>
-            Complete learning programs for founders, small businesses, kids, teens, parents, teachers, and builders. Each one has a clear outcome, detailed lesson path, materials, and a Lux-branded visual identity.
-          </span>
-          <div>
-            <Link href="/lux-tv">Watch Lux TV</Link>
-            <Link href="/lux-tv-kids">Open Kids TV</Link>
+      <section className="automaton-workshop-splash" aria-labelledby="workshop-splash-title">
+        <video className="automaton-splash-video" src={prefixPath("/videos/Lux_Workshop_promo_montage_202607220252.mp4")} autoPlay muted loop playsInline />
+        <div className="automaton-splash-shade" />
+        <div className="automaton-splash-grid" aria-hidden="true"><i /><i /><i /><i /><i /></div>
+        <div className="automaton-splash-copy">
+          <p className="automaton-kicker">Lux Academy · Learn by building</p>
+          <h1 id="workshop-splash-title">Turn a hard problem into a clear next step.</h1>
+          <p>Our workshops help you take one real problem from your work, break it into small pieces, and leave with a plan you can use. You do not need to be a tech expert.</p>
+          <div className="automaton-splash-actions"><a href="#choose-workshop">Choose a workshop <span>↓</span></a><a href="#workshop-path">Continue your lesson</a></div>
+          <div className="automaton-splash-promises"><span><b>1.</b> Pick one real problem</span><span><b>2.</b> Follow simple steps</span><span><b>3.</b> Leave with a plan</span></div>
+        </div>
+        <aside className="automaton-splash-proof"><p>Why this works</p><div><span>Clear lessons</span><small>One small job at a time</small></div><div><span>Real papers</span><small>Workbooks, guides, and examples</small></div><div><span>Human help</span><small>LANA explains the next move</small></div></aside>
+      </section>
+
+      <section className="automaton-splash-workshops" id="choose-workshop" aria-label="All Lux Automaton workshops">
+        <div><p className="automaton-kicker">Choose your path</p><h2>Every workshop is built to help you solve something real.</h2></div>
+        <div className="automaton-splash-workshop-grid">{allWorkshops.map((workshop, index) => <button key={workshop.slug} type="button" className={selected.slug === workshop.slug ? "active" : ""} onClick={() => selectWorkshop(workshop)}><span className="automaton-splash-card-number">0{index + 1}</span><Image src={prefixPath(workshop.thumbnail)} alt="" fill sizes="(max-width: 760px) 100vw, 20vw" /><i /><strong>{workshop.title}</strong><small>{workshop.duration} · {workshop.level}</small><em>Open workshop →</em></button>)}</div>
+      </section>
+
+      <section className="automaton-course-hero">
+        <div className="automaton-course-hero-copy">
+          <p className="automaton-kicker">Lux Academy · Workshop Studio</p>
+          <h1>{selected.title}</h1>
+          <p className="automaton-course-deck">{selected.description}</p>
+          <div className="automaton-course-facts" aria-label="Workshop details">
+            <span>{selected.level}</span><span>{selected.duration}</span><span>{selected.ageBand}</span>
           </div>
+          <a className="automaton-hero-action" href="#workshop-path">Start this workshop <span>↓</span></a>
+        </div>
+        <div className="automaton-course-hero-art">
+          {selected.video ? (
+            <video src={prefixPath(selected.video)} poster={prefixPath(selected.image)} controls playsInline />
+          ) : (
+            <Image src={prefixPath(selected.image)} alt={selected.title} fill priority sizes="(max-width: 900px) 100vw, 56vw" />
+          )}
+          <button type="button" className="automaton-view-art" onClick={() => setActiveFullImage(selected.image)}>View full visual ↗</button>
         </div>
       </section>
 
-      <section className="academy-panel">
+      <section className="automaton-course-library" aria-label="Choose a Lux Automaton workshop">
         <div className="academy-tabs" role="tablist" aria-label="Workshop audience">
           {tabs.map((tab) => (
             <button
@@ -362,7 +362,7 @@ export default function WorkshopsPage() {
               onClick={() => {
                 setActiveTab(tab);
                 const next = tab === "All" ? allWorkshops[0] : allWorkshops.find((workshop) => workshop.audience === tab);
-                if (next) setSelected(next);
+                if (next) selectWorkshop(next);
               }}
             >
               {tab}
@@ -370,182 +370,69 @@ export default function WorkshopsPage() {
           ))}
         </div>
 
-        {selected && (
-          <>
-            <div className="academy-feature">
-              <div
-                className="academy-player group cursor-pointer"
-                onClick={() => !selected.video && setActiveFullImage(selected.image)}
-                title="Click to view full uncropped poster"
-              >
-                {selected.video ? (
-                  <video src={prefixPath(selected.video)} poster={prefixPath(selected.image)} controls playsInline />
-                ) : (
-                  <>
-                    <Image src={prefixPath(selected.image)} alt={selected.title} fill sizes="(max-width: 980px) 100vw, 58vw" className="object-contain" />
-                    <div className="absolute bottom-4 right-4 z-10 bg-slate-950/90 text-amber-300 text-xs font-bold px-3 py-2 rounded-lg border border-amber-500/40 shadow-xl flex items-center gap-1.5 backdrop-blur-md hover:bg-amber-400 hover:text-slate-950 transition">
-                      🔍 View 100% Uncropped Poster
-                    </div>
-                  </>
-                )}
-                <div className="academy-player-shade" />
-                {selected.brandLogo && (
-                  <div className={`academy-brand-lockup ${selected.audience === "Lux AI Kids" ? "kids" : "automaton"}`}>
-                    <Image src={prefixPath(selected.brandLogo)} alt={selected.audience} fill sizes="260px" />
-                  </div>
-                )}
-                {!selected.video && (
-                  <button
-                    type="button"
-                    aria-label={`View uncropped ${selected.title}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveFullImage(selected.image);
-                    }}
-                  >
-                    View
-                  </button>
-                )}
-                <span>{selected.duration}</span>
-              </div>
-              <article className="academy-detail">
-                <p>{selected.audience} / {selected.level}</p>
-                <h2>{selected.title}</h2>
-                <strong>{selected.ageBand}</strong>
-                <span>{selected.description}</span>
-                <div className="academy-outcome">
-                  <b>Outcome</b>
-                  <p>{selected.outcome}</p>
-                </div>
-                {(selected.workbookPdfUrl || selected.facilitatorDeckPdfUrl || selected.fullGuidePdfUrl) && (
-                  <PdfPreviewDeckModal
-                    heading="Workshop Resources & PDF Downloads"
-                    subheading="Preview or download the official participant workbooks, facilitator decks, and full workshop guides."
-                    resources={[
-                      ...(selected.workbookPdfUrl ? [{
-                        title: "Participant Workbook",
-                        subtitle: "Interactive digital & printable PDF workbook",
-                        pdfUrl: selected.workbookPdfUrl,
-                        type: "Participant Workbook",
-                        size: "PDF Document"
-                      }] : []),
-                      ...(selected.facilitatorDeckPdfUrl ? [{
-                        title: "Facilitator Slide Deck",
-                        subtitle: "Presentation deck for workshop leaders & educators",
-                        pdfUrl: selected.facilitatorDeckPdfUrl,
-                        type: "Facilitator Deck",
-                        size: "PDF Presentation"
-                      }] : []),
-                      ...(selected.fullGuidePdfUrl ? [{
-                        title: "Full Workshop Guide",
-                        subtitle: "Complete lesson plans, outcomes & exercises",
-                        pdfUrl: selected.fullGuidePdfUrl,
-                        type: "Full Guide",
-                        size: "PDF Master Guide"
-                      }] : [])
-                    ]}
-                  />
-                )}
-                {!!selected.materials?.length && (
-                  <div className="academy-materials">
-                    {selected.materials.map((item) => <span key={item}>{item}</span>)}
-                  </div>
-                )}
-              </article>
-            </div>
+        <div className="automaton-course-switcher">
+          {syncing && <span className="academy-syncing">Syncing newly published workshops…</span>}
+          {filtered.map((workshop) => (
+            <button key={workshop.slug} type="button" className={selected.slug === workshop.slug ? "active" : ""} onClick={() => selectWorkshop(workshop)}>
+              <span><Image src={prefixPath(workshop.thumbnail)} alt="" fill sizes="160px" /></span>
+              <b>{workshop.title}</b><small>{workshop.level} · {workshop.duration}</small>
+            </button>
+          ))}
+        </div>
+      </section>
 
-            {/* ═══ VISUAL INFOGRAPHIC POSTERS & DOWNLOADABLE KITS GALLERY DECK ═══ */}
-            <ArticleVisualAssetsDeck
-              heading="Visual Infographic Posters, Lesson Maps & Downloadable Kits"
-              subheading="Explore full-resolution workshop blueprints, 6-mission visual cards, concept diagrams, and printable packages."
-              images={visualAssets.images}
-              downloads={visualAssets.downloads}
-            />
+      {lesson && <section className="automaton-workspace" id="workshop-path">
+        <aside className="automaton-runway">
+          <p className="automaton-kicker">Your workshop path</p>
+          <div className="automaton-progress-row"><strong>{completedPercent}% complete</strong><span>{completedLessons.length}/{lessons.length}</span></div>
+          <div className="automaton-progress"><span style={{ width: `${completedPercent}%` }} /></div>
+          <ol>
+            {lessons.map((item, index) => <li key={`${item.title}-${index}`} className={activeLesson === index ? "active" : completedLessons.includes(index) ? "complete" : ""}>
+              <button type="button" onClick={() => { setActiveLesson(index); setActiveLessonFile(0); }}><span>{completedLessons.includes(index) ? "✓" : String(index + 1).padStart(2, "0")}</span><div><b>{item.title}</b><small>{item.duration}</small></div></button>
+            </li>)}
+          </ol>
+        </aside>
 
-            <div className="academy-shelf">
-              {syncing && <span className="academy-syncing">Syncing newly published workshops…</span>}
-              {filtered.map((workshop) => (
-                <button
-                  key={workshop.slug}
-                  type="button"
-                  className={selected.slug === workshop.slug ? "active" : ""}
-                  onClick={() => setSelected(workshop)}
-                >
-                  <span className="academy-thumb">
-                    <Image src={prefixPath(workshop.thumbnail)} alt="" fill sizes="220px" />
-                    {workshop.brandLogo && (
-                      <div className={`academy-thumb-lockup ${workshop.audience === "Lux AI Kids" ? "kids" : "automaton"}`}>
-                        <Image src={prefixPath(workshop.brandLogo)} alt={workshop.audience} fill sizes="145px" />
-                      </div>
-                    )}
-                  </span>
-                  <b>{workshop.title}</b>
-                  <small>{workshop.level} / {workshop.duration}</small>
-                </button>
-              ))}
-            </div>
+        <article className="automaton-lesson-workspace">
+          <p className="automaton-kicker">Lesson {String(activeLesson + 1).padStart(2, "0")} of {String(lessons.length).padStart(2, "0")}{lesson.moduleTitle ? ` · ${lesson.moduleTitle}` : ""}</p>
+          <h2>{lesson.title}</h2>
+          {lesson.overview && <p className="automaton-lesson-overview">{lesson.overview}</p>}
+          {lesson.video && <video className="automaton-lesson-media" src={prefixPath(lesson.video)} poster={lesson.image ? prefixPath(lesson.image) : undefined} controls playsInline />}
+          {!lesson.video && lesson.image && <Image className="automaton-lesson-image" src={prefixPath(lesson.image)} alt={lesson.title} width={1280} height={720} />}
+          <section className="automaton-simple-steps"><p className="automaton-kicker">Simple lesson plan</p><h3>Do these five things</h3><ol>{simpleSteps.map((step, index) => <li key={step}><span>{index + 1}</span>{step}</li>)}</ol></section>
+          {lesson.content && <div className="automaton-lesson-copy"><h3>More about this lesson</h3>{lesson.content.split("\n").filter(Boolean).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>}
+          <section className="automaton-do-card"><span>Make this real</span><p>{lesson.activity}</p>{lesson.deliverable && <small><b>Leave with:</b> {lesson.deliverable}</small>}</section>
+          {!!lesson.objectives?.length && <section className="automaton-objectives"><h3>In this lesson</h3><ul>{lesson.objectives.map((objective) => <li key={objective}>{objective}</li>)}</ul></section>}
+          <details className="automaton-lana-coach">
+            <summary><span className="automaton-lana-avatar">L</span><span><b>LANA’s operator coach</b><small>Guidance for applying this lesson in a live business</small></span><em>+</em></summary>
+            <div><p><b>The outcome:</b> {lesson.adultGuide?.goal || lesson.deliverable || "Turn this lesson into one concrete workflow improvement."}</p><p>{lesson.adultGuide?.explain || lesson.lanaGuide || "Use the smallest realistic example from your work. The objective is not to perfect the system today—it is to make the next action clearer and repeatable."}</p><p><b>Ask yourself:</b> {lesson.adultGuide?.ask || "Where does this show up in your business this week, and who needs the result?"}</p><p><b>If you get stuck:</b> {lesson.adultGuide?.stuck || "Reduce the scope to one customer, task, or decision. Make a useful first version, then test it."}</p></div>
+          </details>
+          {!!lesson.tips?.length && <section className="automaton-tips"><h3>Build notes</h3><ul>{lesson.tips.map((tip) => <li key={tip}>{tip}</li>)}</ul></section>}
+          {!!lesson.resources?.length && <div className="automaton-lesson-resources">{lesson.resources.map((resource) => <a key={`${resource.title}-${resource.url}`} href={resource.url} target="_blank" rel="noreferrer">Open {resource.title || "resource"} ↗</a>)}</div>}
+          <footer className="automaton-checkin"><div><small>Lesson check-in</small><p>{lesson.checkIn}</p></div><button type="button" disabled={completedLessons.includes(activeLesson)} onClick={() => markLessonComplete(activeLesson)}>{completedLessons.includes(activeLesson) ? "Lesson complete ✓" : "Mark lesson complete"}</button></footer>
+          {!!lessonFiles.length && <section className="automaton-document-preview"><div className="automaton-document-preview-heading"><div><p className="automaton-kicker">Lesson paper preview</p><h3>{lessonFiles[activeLessonFile]?.title}</h3><p>{lessonFiles[activeLessonFile]?.instruction}</p></div><a href={prefixPath(lessonFiles[activeLessonFile]?.url || "")} target="_blank" rel="noreferrer">Open full screen ↗</a></div><div className="automaton-document-tabs" role="tablist" aria-label="Lesson documents">{lessonFiles.map((file, index) => <button key={file.title} type="button" role="tab" aria-selected={activeLessonFile === index} className={activeLessonFile === index ? "active" : ""} onClick={() => setActiveLessonFile(index)}>{file.label}: {file.title}</button>)}</div><iframe key={lessonFiles[activeLessonFile]?.url} title={`${lessonFiles[activeLessonFile]?.title} preview`} src={prefixPath(lessonFiles[activeLessonFile]?.url || "")} /></section>}
+        </article>
 
-            <div className="academy-curriculum">
-              <div>
-                <p>Full Curriculum</p>
-                <h2>{selected.title}</h2>
-              </div>
-              {!!selected.lessons?.length && (
-                <div className="academy-lessons">
-                  {selected.lessons.map((lesson, i) => (
-                    <LessonCard key={typeof lesson === "string" ? `${lesson}-${i}` : lesson.title} lesson={lesson} index={i} />
-                  ))}
-                </div>
-              )}
-            </div>
+        <aside className="automaton-resource-kit">
+          <p className="automaton-kicker">Your toolkit</p><h3>What you’ll build</h3><p>{selected.outcome}</p>
+          {!!selected.materials?.length && <section><h4>Bring to the workshop</h4><ul>{selected.materials.map((item) => <li key={item}>{item}</li>)}</ul></section>}
+          {!!selected.learningGoals?.length && <section><h4>You’ll learn</h4><ul>{selected.learningGoals.map((goal) => <li key={goal}>{goal}</li>)}</ul></section>}
+          {(selected.workbookPdfUrl || selected.facilitatorDeckPdfUrl || selected.fullGuidePdfUrl) && <PdfPreviewDeckModal heading="Workshop downloads" subheading="Download the full materials here. The lesson preview is at the bottom of each lesson." showPreview={false} resources={[
+            ...(selected.workbookPdfUrl ? [{ title: "Participant workbook", subtitle: "Interactive digital and printable PDF", pdfUrl: selected.workbookPdfUrl, type: "Workbook", size: "PDF" }] : []),
+            ...(selected.facilitatorDeckPdfUrl ? [{ title: "Facilitator deck", subtitle: "Workshop presentation materials", pdfUrl: selected.facilitatorDeckPdfUrl, type: "Deck", size: "PDF" }] : []),
+            ...(selected.fullGuidePdfUrl ? [{ title: "Full workshop guide", subtitle: "Lesson plans and exercises", pdfUrl: selected.fullGuidePdfUrl, type: "Guide", size: "PDF" }] : [])
+          ]} />}
+          {!!selected.downloadFiles?.length && <section><h4>Files</h4><div className="automaton-file-list">{selected.downloadFiles.map((file) => <a key={file.url} href={prefixPath(file.url)} download>{file.title} <span>↓</span></a>)}</div></section>}
+          <SocialShare className="automaton-share" title={selected.title} text={selected.description} />
+        </aside>
+      </section>}
 
-            <div className="academy-meta">
-              {!!selected.learningGoals?.length && (
-                <div className="academy-meta-section">
-                  <h3>Learning Goals</h3>
-                  <ul>
-                    {selected.learningGoals.map((goal) => (
-                      <li key={goal}>{goal}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+      {(visualAssets.images.length > 0 || visualAssets.downloads.length > 0) && <ArticleVisualAssetsDeck heading="Visual workshop resources" subheading="Open the full visual and downloadable reference materials for this workshop." images={visualAssets.images} downloads={visualAssets.downloads} />}
 
-              {!!selected.prerequisites?.length && (
-                <div className="academy-meta-section">
-                  <h3>Prerequisites</h3>
-                  <ul>
-                    {selected.prerequisites.map((prereq) => (
-                      <li key={prereq}>{prereq}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {!!selected.safetyNotes?.length && (
-                <div className="academy-meta-section">
-                  <h3>Safety Notes</h3>
-                  <ul>
-                    {selected.safetyNotes.map((note) => (
-                      <li key={note}>{note}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {!!selected.extensionActivities?.length && (
-                <div className="academy-meta-section">
-                  <h3>Extension Activities</h3>
-                  <ul>
-                    {selected.extensionActivities.map((activity) => (
-                      <li key={activity}>{activity}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </>
-        )}
+      <section className="automaton-workshop-notes">
+        {!!selected.prerequisites?.length && <div><h3>Before you start</h3><ul>{selected.prerequisites.map((item) => <li key={item}>{item}</li>)}</ul></div>}
+        {!!selected.safetyNotes?.length && <div><h3>Safe practice</h3><ul>{selected.safetyNotes.map((item) => <li key={item}>{item}</li>)}</ul></div>}
+        {!!selected.extensionActivities?.length && <div><h3>Keep building</h3><ul>{selected.extensionActivities.map((item) => <li key={item}>{item}</li>)}</ul></div>}
       </section>
     </main>
   );

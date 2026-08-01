@@ -50,6 +50,7 @@ next-env.d.ts
 !public/videos/*.mp4
 !public/videos/*.mov
 
-
-
+# playwright test outputs
+.playwright-cli/
+output/playwright/
 

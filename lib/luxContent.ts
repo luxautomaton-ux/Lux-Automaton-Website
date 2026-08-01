@@ -27,10 +27,12 @@ export interface WorkshopLesson {
   checkIn: string;
   content?: string;
   image?: string;
+  images?: Array<{ title: string; image: string }>;
   video?: string;
   resources?: Array<{ title: string; url: string; type?: string }>;
   aceIntro?: string;
   lanaGuide?: string;
+  adultGuide?: { goal: string; explain: string; ask: string; stuck: string };
 }
 
 export interface WorkshopProgram {
@@ -43,6 +45,7 @@ export interface WorkshopProgram {
   lessons: Array<string | WorkshopLesson>;
   image: string;
   thumbnail: string;
+  downloadFiles?: Array<{ title: string; url: string }>;
   brandLogo?: string;
   video?: string;
   outcome: string;
@@ -232,7 +235,103 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "Open the **AI Explainer Video Production Planner** (`/documents/ai-explainer-video-production-planner.html`), download the **Lux Codex Explainer Video Workflow JSON** (`/documents/lux-codex-explainer-video-workflow.json`), and inspect the **Sample Beats JSON** (`/documents/sample-beats.json`). Choose one 15-30 second topic and build only the beat map today. Approve the story before generating the film."
     ]
   },
-  {
+      {
+    slug: "asa-lana-ep5-when-the-story-learns-to-see",
+    audience: "Lux Automaton",
+    title: "Asa + LANA EP5: When the Story Learns to See",
+    deck: "How the Lux Codex adds system perception to Story Memory—so the series can inspect scenes, recognize continuity risks, and ask for human judgment before the story changes.",
+    date: "August 4, 2026",
+    readTime: "8 min read",
+    category: "Cinematic AI & Story Perception",
+    image: "/images/01-thumbnail-asa-lana-ep5.png",
+    video: "/videos/asa-lana-ep5-when-the-story-learns-to-see.mp4",
+    takeaways: [
+      "01 — Memory is not enough if the system cannot inspect the scene: prompt records intended state, render provides evidence, human approval decides accepted state.",
+      "02 — Story Perception turns scenes into evidence: inspecting characters, wardrobe, locations, props, actions, text, dialogue, audio, timing, and scene transitions.",
+      "03 — Human judgment decides what the system is allowed to believe: DETECTED → REVIEW REQUIRED → CONFIRMED OR REJECTED → HUMAN DECISION → ACCEPTED AS CANON."
+    ],
+    plannerUrl: "/documents/story-perception-review-workbook.html",
+    body: [
+      "The first four episodes of **Asa + LANA: The Story Remembers** built the memory system behind the series.",
+      "Episode 1 established why a story needs memory.",
+      "Episode 2 connected scenes, locations, props, rules, and timelines through the Story Memory Tree.",
+      "Episode 3 protected the characters through Reality Memory and Character Identity Locks.",
+      "Episode 4 unified those systems into the Story Bible Core and Global Story Map.",
+      "Episode 5 exposes the next vulnerability: memory is not enough if the system cannot inspect the generated scene.",
+      "![System Perception Activates](/images/02-photo-system-perception-activates.png)",
+      "The prompt records what was intended. The rendered scene records what actually happened.",
+      "> **A prompt is an instruction. A render is evidence. Human approval is what turns evidence into canon.**",
+      "## 01 — Memory is not enough if the system cannot inspect the scene",
+      "When a creator requests a new scene, three different states exist:",
+      "1. **Intended State:** What the prompt and Story Bible requested.\n2. **Observed State:** What the generative model actually rendered in the video frames and audio track.\n3. **Accepted State:** What the director approves as official story canon.",
+      "Without perception, the system assumes the render matched the prompt. But visual models drift, props vanish, facial anchors shift, and background details change without warning.",
+      "![Story Vision Vault](/images/03-photo-story-vision-vault.png)",
+      "> **Asa’s note:** 'Do not update story memory from the prompt. Update story memory from what was actually rendered and approved.'",
+      "## 02 — Story Perception turns scenes into evidence",
+      "The Lux Codex Story Perception system inspects rendered scenes across multi-modal channels:",
+      "- **Character Observation:** Face consistency, hair, rectangular glasses, posture, skin tone, facial expression.\n- **Wardrobe Tracking:** Jacket color, shirt style, accessories, wear-and-tear history.\n- **Environment & Location:** Lighting, background geometry, time of day, weather, room assets.\n- **Object & Action Detection:** Held props, key technology items, character movements, spatial positions.\n- **Text & Audio Analysis:** On-screen signage, UI text readability, voice tone, speech pacing, dialogue match.",
+      "![Human Judgment Emergency](/images/04-photo-human-judgment-emergency.png)",
+      "## 03 — Human judgment decides what the system is allowed to believe",
+      "Detection is not automatic approval. The Lux Codex establishes a strict gatekeeper protocol:",
+      "```text\nDETECTED \n→ REVIEW REQUIRED \n→ CONFIRMED OR REJECTED \n→ HUMAN DECISION \n→ ACCEPTED AS CANON\n```",
+      "A detail detected in a render never becomes official story truth until the director explicitly confirms it.",
+      "![Story Perception Overview](/images/05-story-perception-overview.png)",
+      "### Lux Codex Complete Story Loop",
+      "```text\nREMEMBER \n→ PLAN \n→ GENERATE \n→ SEE \n→ COMPARE \n→ APPROVE \n→ UPDATE MEMORY\n```",
+      "The system can see the scene. The creator still decides the story.",
+      "> **“The system can observe, measure, and flag. Only the human can decide what the story means.” — Asa Pritchard**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",
+      "## Your next action",
+      "Open the **Story Perception Review Workbook** (`/documents/story-perception-review-workbook.html`) and download the **Lux Codex Story Perception Template** (`/documents/lux-codex-story-perception-template.json`). Run a perception audit on your latest rendered scene before adding it to canon."
+    ]
+  },
+{
+    slug: "asa-lana-ep4-building-the-story-bible-core",
+    audience: "Lux Automaton",
+    title: "Asa + LANA EP4: Building the Story Bible Core",
+    deck: "How the Lux Codex connects characters, worldbuilding, lore, scenes, timelines, and continuity into one living system that remembers the entire series.",
+    date: "August 1, 2026",
+    readTime: "8 min read",
+    category: "Cinematic AI & Story Architecture",
+    image: "/images/01-thumbnail-asa-lana-ep4.png",
+    video: "/videos/asa-lana-ep4-building-the-story-bible-core.mp4",
+    takeaways: [
+      "01 — A series needs more than clips and prompts: separate notes, images, locations, scene prompts, and timeline events do not automatically form a dependable story system.",
+      "02 — The Story Bible Core turns fragments into connected memory: organizing characters, identity, worldbuilding, lore, continuity, scene memory, timeline, themes, and approval controls.",
+      "03 — A global story map keeps identity, world, and timeline aligned: transforming the Story Bible from a passive reference document into an active production operating system."
+    ],
+    plannerUrl: "/documents/story-bible-core-builder.html",
+    body: [
+      "The first three episodes of **Asa + LANA: The Story Remembers** solved three different continuity problems.",
+      "Episode 1 introduced the central idea: a story needs a memory.",
+      "Episode 2 connected scenes, locations, props, rules, and timelines through the Story Memory Tree.",
+      "Episode 3 protected the people at the center of the series through Reality Memory and the Character Identity Lock.",
+      "Episode 4 brings those systems together into the **Story Bible Core**—the central memory architecture behind the entire world.",
+      "![Scene Fragments to Story Memory](/images/02-photo-scene-fragments-to-story-memory.png)",
+      "This is where a collection of clips becomes a real series.",
+      "> **A series is not only a sequence of scenes. It is a connected system of people, places, history, rules, relationships, and change.**",
+      "## 01 — A series needs more than clips and prompts",
+      "AI video tools are excellent at producing moments: a futuristic laboratory, a dramatic conversation, a glowing city, or a character discovering a secret. Each clip may look impressive, but a series asks harder questions.",
+      "What happened before this scene? What does the main character know now? Which location are they in? What rules govern the world?",
+      "When character notes, location images, prompt lists, and timeline notes stay separated in different folders, the creator has to remember every connection by hand. That leads to character drift, world drift, timeline drift, lore drift, and theme drift.",
+      "![Asa Locks Identity](/images/03-photo-asa-locks-identity.png)",
+      "> **Asa’s note:** 'A prompt can create the next moment. The Story Bible Core preserves the meaning and history behind that moment.'",
+      "## 02 — The Story Bible Core turns fragments into connected memory",
+      "The Story Bible Core organizes the system into connected pillars:",
+      "1. **Characters & Identity Locks:** Profiles, approved reference packs, facial anchors, wardrobe history, voice, and current states.\n2. **Worldbuilding:** Regions, locations, factions, technology rules, and environmental physics.\n3. **Lore Architecture:** Audience-known facts versus creator-only secrets.\n4. **Continuity Engine:** Timelines, events, consistency checks, and canon integrity.\n5. **Scene Memory:** Approved beats, starting/ending states, and context recall.\n6. **Approval Controls:** Human decision ledger ensuring rejected generations never update official memory.",
+      "![Build the Global Story Map](/images/04-photo-global-story-map.png)",
+      "## 03 — A global story map keeps identity, world, and timeline aligned",
+      "Episode 4 expands the continuity engine into a **Global Story Map** connecting characters, regions, locations, relationships, timeline events, lore, audience touchpoints, and production status.",
+      "This transforms the Story Bible from a passive reference document into an active production operating system.",
+      "![Story Bible Core Overview](/images/05-story-bible-core-overview.png)",
+      "### Story Project Memory Architecture",
+      "```text\nStory Project\n├── Story Promise\n├── Themes\n├── Characters\n│   ├── Identity Locks\n│   ├── Relationships\n│   ├── Current States\n│   └── Change Logs\n├── Worldbuilding\n├── Lore\n├── Props\n├── Timeline\n├── Scenes\n├── Continuity Checks\n├── Global Story Map\n├── Approval Ledger\n└── Publishing Memory\n```",
+      "That gives Asa and LANA a system that remembers not only what happened, but who it happened to, where it happened, what the world allows, what the audience knows, and what must happen next.",
+      "> **“Give the series a system that remembers.” — Asa Pritchard**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",
+      "## Your next action",
+      "Open the **Story Bible Core Builder** (`/documents/story-bible-core-builder.html`) and download the **Lux Codex Story Bible Core Template** (`/documents/lux-codex-story-bible-core-template.json`). Fill out your story promise, character identity locks, worldbuilding rules, and global story map before rendering your next scene."
+    ]
+  },
+{
     slug: "asa-lana-ep3-asa-must-stay-asa",
     audience: "Lux Automaton",
     title: "Asa + LANA EP3: Asa Must Stay Asa",
@@ -880,7 +979,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: "July 22, 2026",
     readTime: "6 min read",
     category: "Lux Original Series",
-    image: "/images/04_YouTube_Thumbnail_16x9.png",
+    image: "/images/01-thumbnail-asa-lana-ep1.png",
     video: "/videos/Initial_Scene_-_2026-07-22_202607220124.mp4",
     takeaways: [
       "01 — One clip is just a seed; a series needs a connected soul.",
@@ -890,18 +989,18 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     body: [
       "One clip is just a seed. A series needs a soul.",
       "Welcome to the birth of Lux Codex. Join Asa and LANA inside the Lux Automaton Laboratory as they solve one of AI filmmaking’s greatest challenges: continuity. Across 10 episodes, they move from glitching identities and broken motion to a fully connected, directed cinematic production.",
-      "![ASA + LANA: The Story Remembers Series Preview](/images/00_Marketing_Set_Preview.jpg)",
+      "![A Seed Becomes a Story](/images/02-photo-seed-becomes-a-story.png)",
       "## 01 — Moving Beyond Random Generation",
       "Traditional AI text-to-video tools excel at generating stunning isolated 4-second shots. But when you try to string three shots together into a coherent narrative, the character's face shifts, lighting shifts, and the world loses its rules.",
       "In Episode 1 of *ASA + LANA: The Story Remembers*, Asa Pritchard and LANA demonstrate why raw prompting fails for long-form storytelling. Without a persistent memory engine, every frame is treated as a brand new universe.",
-      "![Character Duo Poster](/images/05_Character_Duo_Poster_4x5.png)",
+      "![Memory Starts to Form](/images/03-photo-memory-starts-to-form.png)",
       "## 02 — The Lux Codex Continuity Engine",
       "Lux Codex was engineered to act as an operating memory layer for creators. By establishing character seeds, environment anchors, and motion vectors, creators maintain absolute visual integrity across entire episodes.",
       "> “We’re moving from random generation to intentional directing—one frame at a time.” — Asa Pritchard",
-      "![Lux Codex Continuity Engine Concept](/images/06_Lux_Codex_Continuity_Engine_4x5.png)",
+      "![The First Idea Takes Shape](/images/04-photo-first-idea-takes-shape.png)",
       "## 03 — The 10-Episode Cinematic Arc",
       "Follow Asa and LANA as they test, debug, and push the boundaries of spatial consistency, voice alignment, and narrative pacing. Watch the full episode now on Lux TV and explore how you can build persistent AI workflows for your own productions.",
-      "![10-Episode Story Arc Overview](/images/07_Ten_Episode_Story_Arc_4x5.png)"
+      "![From One Clip to a Living Story](/images/05-story-ep1-overview.png)"
     ],
   },
   {
@@ -1341,12 +1440,26 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
     level: "Beginner",
     ageBand: "Ages 6–8",
     duration: "120 minutes (2 hrs)",
-    image: "/images/printable_workshop_overview_your_first_video_game.png",
-    thumbnail: "/images/00_workshop_thumbnail_your_first_video_game.png",
+    image: "/images/workshops/your-first-video-game/package/01_workshop_hero_16x9.png",
+    thumbnail: "/images/workshops/your-first-video-game/package/00_workshop_thumbnail_16x9.png",
     brandLogo: "/images/lux-ai-kids-logo.png",
-    workbookPdfUrl: "/documents/Lux_AI_Kids_Your_First_Video_Game_Kid_Workbook.pdf",
-    facilitatorDeckPdfUrl: "/documents/Lux_AI_Kids_Your_First_Video_Game_Facilitator_Deck.pdf",
-    fullGuidePdfUrl: "/documents/Lux_AI_Kids_Your_First_Video_Game_Facilitator_Guide.pdf",
+    workbookPdfUrl: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Kid_Workbook.pdf",
+    facilitatorDeckPdfUrl: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Facilitator_Deck.pdf",
+    fullGuidePdfUrl: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Facilitator_Guide.pdf",
+    downloadFiles: [
+      { title: "Kid Workbook PDF", url: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Kid_Workbook.pdf" },
+      { title: "Kid Workbook PowerPoint", url: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Kid_Workbook.pptx" },
+      { title: "Print-and-Play Pack PDF", url: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Print_and_Play_Pack.pdf" },
+      { title: "Print-and-Play Pack PowerPoint", url: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Print_and_Play_Pack.pptx" },
+      { title: "Facilitator Deck PDF", url: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Facilitator_Deck.pdf" },
+      { title: "Facilitator Deck PowerPoint", url: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Facilitator_Deck.pptx" },
+      { title: "Facilitator Guide PDF", url: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Facilitator_Guide.pdf" },
+      { title: "Facilitator Guide Word", url: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Facilitator_Guide.docx" },
+      { title: "Printable Overview PDF", url: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Printable_Overview.pdf" },
+      { title: "Structured Workshop JSON", url: "/documents/workshops/your-first-video-game/Lux_AI_Kids_Your_First_Video_Game_Workshop.json" },
+      { title: "Package README", url: "/documents/workshops/your-first-video-game/README.txt" },
+      { title: "Quality Assurance Report", url: "/documents/workshops/your-first-video-game/QUALITY_ASSURANCE_REPORT.txt" },
+    ],
     description: "Children create a real paper video-game prototype using drawing, storytelling, simple rules, and playtesting. Ace helps young game designers invent a hero, draw a level, make simple rules, and playtest a paper game. LANA introduces safe, grown-up-guided AI prompts for game art ideas.",
     outcome: "Each child leaves with a character card with one power, a paper level map, a four-rule game concept document, two safe AI art prompts, and a playtested paper prototype ready to share.",
     materials: [
@@ -1387,7 +1500,12 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
         duration: "20 min",
         activity: "Game Recipe Sort: match picture cards to CHARACTER, GOAL, CHALLENGE, and RULES.",
         deliverable: "A completed four-part Game Recipe strip.",
-        image: "/images/lesson_01_visual_game_recipe.png",
+        image: "/images/workshops/your-first-video-game/package/lesson_01_visual_16x9.png",
+        images: [
+          { title: "Game Recipe Diagram", image: "/images/workshops/your-first-video-game/package/diagram_01_game_recipe.png" },
+          { title: "Workshop Overview", image: "/images/workshops/your-first-video-game/workshop-overview.png" },
+          { title: "Printable Workshop Overview", image: "/images/workshops/your-first-video-game/package/printable_workshop_overview.png" },
+        ],
         tips: [
           "Use movement: pose as a hero, point to a goal, step over a pretend obstacle, then freeze for a rule.",
           "Use familiar games; children do not need video-game experience.",
@@ -1395,14 +1513,21 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
         ],
         checkIn: "What tells the player how to win? (The goal)",
         aceIntro: "Discover the parts of a game and how they work together!",
-        lanaGuide: "AI helps plan game concepts, but you choose what makes your game fun!"
+        lanaGuide: "AI helps plan game concepts, but you choose what makes your game fun!",
+        adultGuide: {
+          goal: "Help the child recognize the four parts of a game: character, goal, challenge, and rules.",
+          explain: "A game is like a simple recipe. The character acts, the goal says what success looks like, the challenge makes it interesting, and the rules tell everyone what they can do.",
+          ask: "In a game you already love, who is the character and what are they trying to do?",
+          stuck: "Name a familiar game together and point out one part at a time. Let the child move or draw each answer instead of requiring a long explanation."
+        }
       },
       {
         title: "02 — Pick Your Theme",
         duration: "15 min",
         activity: "Theme Dash: choose a world card, then add one place and one mission.",
         deliverable: "A theme card and one-sentence game story.",
-        image: "/images/lesson_02_visual_pick_theme.png",
+        image: "/images/workshops/your-first-video-game/package/lesson_02_visual_16x9.png",
+        images: [{ title: "Six-Mission Workshop Board", image: "/images/workshops/your-first-video-game/workshop-mission-board.png" }],
         tips: [
           "Offer six choices, not twenty.",
           "Children may mix two themes, such as Space Jungle.",
@@ -1410,14 +1535,21 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
         ],
         checkIn: "What does a theme tell us? (Where the game happens and what it feels like)",
         aceIntro: "Choose your game world and the big adventure inside it!",
-        lanaGuide: "Brainstorm theme ideas with AI to discover exciting worlds!"
+        lanaGuide: "Brainstorm theme ideas with AI to discover exciting worlds!",
+        adultGuide: {
+          goal: "Help the child choose a setting and describe the feeling of their game world.",
+          explain: "A theme answers two questions: Where are we, and what kind of adventure happens there?",
+          ask: "If you could open a door into your game, what would you see, hear, and discover?",
+          stuck: "Offer two choices, such as space or jungle. They can combine both. There is no wrong theme if the child can imagine a story inside it."
+        }
       },
       {
         title: "03 — Design Your Character",
         duration: "20 min",
         activity: "Create a two-sided Character Card on an index card: picture on front, name/power/story on back.",
         deliverable: "A finished character card with one power and a short story.",
-        image: "/images/lesson_03_visual_design_character.png",
+        image: "/images/workshops/your-first-video-game/package/lesson_03_visual_16x9.png",
+        images: [{ title: "Safe AI Prompt Recipe", image: "/images/workshops/your-first-video-game/package/diagram_04_ai_prompt_recipe.png" }],
         tips: [
           "Start with circles, squares, and triangles.",
           "Make the power useful for the level.",
@@ -1425,14 +1557,21 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
         ],
         checkIn: "Why should the hero have one clear power? (It's easier to understand and makes the challenge more fun)",
         aceIntro: "Create your hero, give them powers, and write their story!",
-        lanaGuide: "Use AI art prompts to generate character visual ideas!"
+        lanaGuide: "Use AI art prompts to generate character visual ideas!",
+        adultGuide: {
+          goal: "Help the child create one memorable hero with one useful power and a short story.",
+          explain: "A strong character does not need many powers. One clear power creates better choices and makes the game easier to understand.",
+          ask: "What problem can your hero's special power help solve?",
+          stuck: "Begin with circles, squares, and triangles. Ask the child to choose a color, one power, and one thing the hero cares about."
+        }
       },
       {
         title: "04 — Draw the Board",
         duration: "20 min",
         activity: "Build Level 1 on paper or cardboard using a ruler, crayons, and sticker tokens.",
         deliverable: "A paper game level with start, path, challenge, special spaces, and goal.",
-        image: "/images/lesson_04_visual_draw_board.png",
+        image: "/images/workshops/your-first-video-game/package/lesson_04_visual_16x9.png",
+        images: [{ title: "Level Path Diagram", image: "/images/workshops/your-first-video-game/package/diagram_02_level_path.png" }],
         tips: [
           "Draw the path lightly in pencil first.",
           "Keep spaces large enough for a sticker token.",
@@ -1440,14 +1579,20 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
         ],
         checkIn: "Why do we test the path with a finger first? (To make sure it's clear and fun to follow)",
         aceIntro: "Design your level map with obstacles, coins, and more!",
-        lanaGuide: "AI can help layout level obstacles and secret paths!"
+        lanaGuide: "AI can help layout level obstacles and secret paths!",
+        adultGuide: {
+          goal: "Help the child turn an idea into a playable path with a start, challenge, and goal.",
+          explain: "A level is a trip. Players need to know where they begin, where they can move, what gets in the way, and where they finish.",
+          ask: "Can you trace the whole level with your finger without getting lost?",
+          stuck: "Draw the START and GOAL first. Connect them with one simple path, then add only one obstacle and one surprise."
+        }
       },
       {
         title: "05 — Make the Rules",
         duration: "20 min",
         activity: "Write four simple rules on a rules card: start, move, win, and obstacle rules.",
         deliverable: "A four-rule game card and movement cards.",
-        image: "/images/lesson_05_visual_make_rules.png",
+        image: "/images/workshops/your-first-video-game/package/lesson_05_visual_16x9.png",
         tips: [
           "Four rules are enough for Level 1.",
           "Read each rule aloud to check if it's fair.",
@@ -1455,14 +1600,25 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
         ],
         checkIn: "What makes a rule fair? (Everyone follows the same rules)",
         aceIntro: "Write your game rules so everyone knows how to play!",
-        lanaGuide: "AI can suggest rule ideas when you get stuck!"
+        lanaGuide: "AI can suggest rule ideas when you get stuck!",
+        adultGuide: {
+          goal: "Help the child write four short, fair rules another player can follow without extra explanation.",
+          explain: "Rules are friendly instructions. Good rules tell everyone how to start, move, handle obstacles, and win.",
+          ask: "If I played without you explaining, would I know exactly what to do next?",
+          stuck: "Use four sentence starters: Start by…, Move by…, When you land on…, You win when…. Read each rule aloud together."
+        }
       },
       {
         title: "06 — Playtest Time!",
         duration: "25 min",
         activity: "Play your game with a friend, collect feedback, improve one thing, and present your 30-second pitch.",
         deliverable: "A playtested game prototype, improvement report, and Game Designer certificate.",
-        image: "/images/lesson_06_visual_playtest.png",
+        image: "/images/workshops/your-first-video-game/package/lesson_06_visual_16x9.png",
+        images: [
+          { title: "Playtest Loop Diagram", image: "/images/workshops/your-first-video-game/package/diagram_03_playtest_loop.png" },
+          { title: "Full Lesson Map", image: "/images/workshops/your-first-video-game/workshop-lesson-map.png" },
+          { title: "Share Your Finished Workshop", image: "/images/workshops/your-first-video-game/package/social_square_promo.png" },
+        ],
         tips: [
           "Watching someone play teaches more than telling them what to do.",
           "Fix one thing at a time.",
@@ -1470,7 +1626,13 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
         ],
         checkIn: "What do we do when a playtester finds a bug? (Listen, smile, and make the game better!)",
         aceIntro: "Test your game, get feedback, and make it even better!",
-        lanaGuide: "Great designers test, learn, and polish!"
+        lanaGuide: "Great designers test, learn, and polish!",
+        adultGuide: {
+          goal: "Help the child see feedback as useful information and improve one part of the game.",
+          explain: "Playtesting is not a grade. It is how designers watch what happens, notice confusion, and make the next version better.",
+          ask: "What did your player enjoy, where did they pause, and what one thing will you improve?",
+          stuck: "Play one short round. The adult should observe instead of fixing. Celebrate one success, name one confusing moment, and let the child choose one change."
+        }
       }
     ]
   },
@@ -2055,8 +2217,8 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
     level: "Beginner",
     ageBand: "Ages 7-10",
     duration: "75 minutes",
-    image: "/images/lux-kids-world.png",
-    thumbnail: "/images/lux-kids-poster.png",
+    image: "/images/lux-ai-kids-academy/ai-explorer-lab.png",
+    thumbnail: "/images/lux-ai-kids-academy/ai-explorer-lab.png",
     description: "A playful introduction to AI, patterns, prompts, and using technology to help people.",
     outcome: "A tiny AI helper idea and a poster explaining what it does.",
     materials: ["Color mission sheet", "Prompt cards", "Grown-up discussion guide"],
@@ -2069,8 +2231,8 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
     level: "Beginner",
     ageBand: "Ages 8-12",
     duration: "90 minutes",
-    image: "/images/lux-kids-poster.png",
-    thumbnail: "/images/lux-kids-world.png",
+    image: "/images/lux-ai-kids-academy/art-studio-lab.png",
+    thumbnail: "/images/lux-ai-kids-academy/art-studio-lab.png",
     description: "Kids create characters, worlds, posters, and visual stories while learning prompt clarity.",
     outcome: "A mini character sheet and story poster.",
     materials: ["Character worksheet", "Color palette sheet", "Prompt recipe cards"],
@@ -2083,8 +2245,8 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
     level: "Intermediate",
     ageBand: "Ages 9-14",
     duration: "2 hours",
-    image: "/images/lux-kids-world.png",
-    thumbnail: "/images/page-hero-waves.png",
+    image: "/images/lux-ai-kids-academy/storyteller-lab.png",
+    thumbnail: "/images/lux-ai-kids-academy/storyteller-lab.png",
     description: "Write a hero, plan a scene, and turn a story idea into a short video-ready storyboard.",
     outcome: "A six-panel AI story storyboard.",
     materials: ["Hero builder", "Scene cards", "Video prompt sheet"],
@@ -2097,8 +2259,8 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
     level: "Intermediate",
     ageBand: "Ages 10-15",
     duration: "2 hours",
-    image: "/images/lux-kids-poster.png",
-    thumbnail: "/images/page-hero-circuit-dark.png",
+    image: "/images/lux-ai-kids-academy/robot-builders-lab.png",
+    thumbnail: "/images/lux-ai-kids-academy/robot-builders-lab.png",
     description: "Design a helpful robot that solves a real home, school, or neighborhood problem.",
     outcome: "A robot concept card with mission, safety rules, and prototype sketch.",
     materials: ["Robot mission card", "Safety checklist", "Prototype worksheet"],
@@ -3776,7 +3938,33 @@ export const KIDS_WORKSHOPS: KidsWorkshop[] = [
 ];
 
 export const LUX_TV_EPISODES: TvEpisode[] = [
-  {
+      {
+    slug: "asa-lana-ep5-when-the-story-learns-to-see",
+    audience: "Lux Automaton",
+    title: "ASA + LANA: When the Story Learns to See — Episode 5",
+    series: "ASA + LANA",
+    duration: "2m",
+    rating: "All builders",
+    image: "/images/01-thumbnail-asa-lana-ep5.png",
+    video: "/videos/asa-lana-ep5-when-the-story-learns-to-see.mp4",
+    storyUrl: "/blog",
+    description: "How the Lux Codex adds system perception to Story Memory—so the series can inspect scenes, recognize continuity risks, and ask for human judgment before the story changes.",
+    tags: ["ASA + LANA", "Lux Codex", "Story Perception", "Visual Continuity", "Human Judgment"],
+  },
+{
+    slug: "asa-lana-ep4-building-the-story-bible-core",
+    audience: "Lux Automaton",
+    title: "ASA + LANA: Building the Story Bible Core — Episode 4",
+    series: "ASA + LANA",
+    duration: "2m",
+    rating: "All builders",
+    image: "/images/01-thumbnail-asa-lana-ep4.png",
+    video: "/videos/asa-lana-ep4-building-the-story-bible-core.mp4",
+    storyUrl: "/blog",
+    description: "How the Lux Codex connects characters, worldbuilding, lore, scenes, timelines, and continuity into one living system that remembers the entire series.",
+    tags: ["ASA + LANA", "Lux Codex", "Story Bible Core", "Global Story Map", "Continuity Engine"],
+  },
+{
     slug: "asa-lana-ep3-asa-must-stay-asa",
     audience: "Lux Automaton",
     title: "ASA + LANA: Asa Must Stay Asa — Episode 3",
@@ -3811,7 +3999,7 @@ export const LUX_TV_EPISODES: TvEpisode[] = [
     duration: "8m",
     rating: "App Intelligence",
     image: "/images/05-top-5-github-apps-overview.png",
-    video: "/videos/lux-app-review-hero.mp4",
+    video: "/videos/The_Builders_Workflow_Blueprint_Top_5_Open_Source_AI_Tools.mp4",
     storyUrl: "/app-review",
     description: "Automated GitHub app scoring, momentum tracking, security audits, and subscriber money plays by the Lux Intelligence Team.",
     tags: ["Lux App Review", "GitHub", "Lux Score", "Automated Intelligence"],
@@ -3836,7 +4024,7 @@ export const LUX_TV_EPISODES: TvEpisode[] = [
     series: "ASA + LANA",
     duration: "10m",
     rating: "All builders",
-    image: "/images/04_YouTube_Thumbnail_16x9.png",
+    image: "/images/01-thumbnail-asa-lana-ep1.png",
     video: "/videos/Initial_Scene_-_2026-07-22_202607220124.mp4",
     storyUrl: "/blog",
     description: "One clip is just a seed. A series needs a soul. Welcome to the birth of Lux Codex and cinematic AI continuity.",

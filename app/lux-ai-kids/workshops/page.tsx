@@ -32,6 +32,15 @@ const LAB_PROGRAM_SLUGS = new Set([
   "robot-builders-kids",
 ]);
 
+const WORKSHOP_CATEGORY_IMAGES: Record<WorkshopCategory, string> = {
+  "video-games": "/images/workshops/your-first-video-game/package/00_workshop_thumbnail_16x9.png",
+  robots: "/images/lux-ai-kids-academy/robot-builders-lab.png",
+  cartoons: "/images/lux-ai-kids-academy/storyteller-lab.png",
+  "school-projects": "/images/lux-ai-kids-academy/ai-explorer-lab.png",
+  "family-projects": "/images/lux-ai-kids-academy/ace-learning-hero.jpg",
+  "creative-lab": "/images/lux-ai-kids-academy/art-studio-lab.png",
+};
+
 export default function KidsWorkshopsPage() {
   const [activeCategory, setActiveCategory] = useState<WorkshopCategory | "all">("all");
   const [showCount, setShowCount] = useState(10);
@@ -108,6 +117,7 @@ export default function KidsWorkshopsPage() {
         <div className="kw-grid">
           {labPrograms.map((program) => (
             <Link key={program.slug} href={`/lux-ai-kids/workshops/${program.slug}`} className="kw-grid-card kids-academy-program-card">
+              <div className="kids-program-thumbnail"><Image src={program.thumbnail} alt={`${program.title} Lab`} fill sizes="(max-width: 700px) 100vw, 25vw" /></div>
               <div className="kw-grid-card-top"><div className="kw-grid-icon">✦</div><span className="kw-shelf-level" style={{ background: "var(--kid-pink)" }}>Lab</span></div>
               <div className="kw-grid-card-body"><b>{program.title}</b><p>{program.description}</p></div>
               <div className="kw-grid-card-foot"><span>{program.ageBand}</span><span>{program.duration}</span><strong>Enter Lab →</strong></div>
@@ -137,6 +147,7 @@ export default function KidsWorkshopsPage() {
         <div className="kw-grid">
           {completeWorkshopPrograms.map((program) => (
             <Link key={program.slug} href={`/lux-ai-kids/workshops/${program.slug}`} className="kw-grid-card kids-academy-program-card">
+              <div className="kids-program-thumbnail kids-workshop-thumbnail"><Image src={program.thumbnail} alt={`${program.title} workshop thumbnail`} fill sizes="(max-width: 700px) 100vw, 42vw" /></div>
               <div className="kw-grid-card-top"><div className="kw-grid-icon">★</div><span className="kw-shelf-level" style={{ background: "var(--kid-blue)", color: "var(--kid-navy)" }}>Workshop</span></div>
               <div className="kw-grid-card-body"><b>{program.title}</b><p>{program.description}</p></div>
               <div className="kw-grid-card-foot"><span>{program.ageBand}</span><span>{program.duration}</span><strong>Open workshop →</strong></div>
@@ -180,6 +191,9 @@ export default function KidsWorkshopsPage() {
               className="kw-grid-card"
               href={`/lux-ai-kids/workshops/${w.slug}`}
             >
+              <div className="kids-program-thumbnail">
+                <Image src={WORKSHOP_CATEGORY_IMAGES[w.category]} alt={`${w.title} workshop`} fill sizes="(max-width: 700px) 100vw, 25vw" />
+              </div>
               <div className="kw-grid-card-top">
                 <div className="kw-grid-icon">{w.icon}</div>
                 <span

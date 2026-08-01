@@ -168,6 +168,30 @@ function buildRealPosts(): ScheduledPost[] {
 
     // ── Lux Automaton Blog Posts ─────────────────────────────────────────────
     {
+      id: "blog-asa-ep5",
+      slug: "asa-lana-ep5-when-the-story-learns-to-see",
+      title: "Asa + LANA EP5: When the Story Learns to See",
+      type: "blog",
+      status: "scheduled",
+      date: parseDate("August 4, 2026"),
+      time: "09:00",
+      channel: "Lux Automaton",
+      tags: ["Cinematic AI", "Story Perception", "Series"],
+      seoScore: 94,
+    },
+    {
+      id: "blog-asa-ep4",
+      slug: "asa-lana-ep4-building-the-story-bible-core",
+      title: "Asa + LANA EP4: Building the Story Bible Core",
+      type: "blog",
+      status: "scheduled",
+      date: parseDate("August 1, 2026"),
+      time: "09:00",
+      channel: "Lux Automaton",
+      tags: ["Cinematic AI", "Story Bible Core", "Series"],
+      seoScore: 92,
+    },
+    {
       id: "blog-asa-ep3",
       slug: "asa-lana-ep3-asa-must-stay-asa",
       title: "Asa + LANA EP3: Asa Must Stay Asa",

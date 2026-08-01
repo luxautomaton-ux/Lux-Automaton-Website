@@ -359,15 +359,30 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
         <aside className="lux-marketing-leftnav">
           <div className="border-b border-white/10 pb-4">
             <div className="flex items-center gap-3">
-              <BrandIcon className="h-10 w-10" />
+              <BrandIcon size={38} />
               <div>
-                <p className="font-black text-sm tracking-[.08em]">LUX MARKETING</p>
-                <p className="mt-0.5 text-[11px] font-medium"><span className="text-violet-400">Create.</span> <span className="text-cyan-300">Brand.</span> <span className="text-emerald-300">Publish.</span></p>
+                <p className="font-black text-sm tracking-[.08em] text-white m-0">LUX MARKETING</p>
+                <p className="mt-0.5 text-[11px] font-medium m-0"><span className="text-violet-400">Create.</span> <span className="text-cyan-300">Brand.</span> <span className="text-emerald-300">Publish.</span></p>
               </div>
             </div>
             <div className="relative mt-4">
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
-              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search templates..." className="w-full rounded-lg border border-white/10 bg-white/[.035] py-2 pl-9 pr-3 text-xs outline-none transition focus:border-violet-400" />
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search templates..."
+                style={{
+                  width: "100%",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  background: "#0c101c",
+                  color: "#f8fafc",
+                  padding: "8px 12px 8px 34px",
+                  fontSize: "12px",
+                  outline: "none",
+                  boxSizing: "border-box",
+                }}
+              />
             </div>
           </div>
 
@@ -378,10 +393,10 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
             ))}
           </nav>
 
-          <div className="mt-auto rounded-xl border border-white/10 bg-white/[.035] p-3">
+          <div className="mt-auto rounded-xl border border-white/10 bg-[#0c101c] p-3">
             <div className="flex items-center gap-2.5">
-              <BrandIcon className="h-8 w-8" />
-              <div className="min-w-0"><p className="truncate text-xs font-bold">Lux Automaton</p><p className="truncate text-[10px] text-slate-500">Brand system active</p></div>
+              <BrandIcon size={28} />
+              <div className="min-w-0"><p className="truncate text-xs font-bold text-white m-0">Lux Automaton</p><p className="truncate text-[10px] text-slate-500 m-0">Brand system active</p></div>
               <Check className="ml-auto h-3.5 w-3.5 text-emerald-300" />
             </div>
           </div>
@@ -389,13 +404,34 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
 
         <section className="lux-marketing-center">
           <header className="lux-marketing-center-header">
-            <div><p className="text-[10px] uppercase tracking-[.16em] text-slate-500">Campaign</p><h1 className="mt-0.5 text-base font-bold">{active.name}</h1></div>
-            <div className="flex items-center gap-3 text-xs text-slate-400"><span>{active.format}</span><button onClick={duplicate} className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-2.5 py-1.5 font-semibold text-white hover:border-cyan-300/50"><Plus className="h-3.5 w-3.5" /> Duplicate</button></div>
+            <div><p className="text-[10px] uppercase tracking-[.16em] text-slate-500 m-0">Campaign</p><h1 className="mt-0.5 text-base font-bold text-white m-0">{active.name}</h1></div>
+            <div className="flex items-center gap-3 text-xs text-slate-400">
+              <span>{active.format}</span>
+              <button
+                type="button"
+                onClick={duplicate}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  background: "rgba(255,255,255,0.06)",
+                  padding: "6px 12px",
+                  fontSize: "12px",
+                  fontWeight: 600,
+                  color: "#ffffff",
+                  cursor: "pointer",
+                }}
+              >
+                <Plus className="h-3.5 w-3.5" /> Duplicate
+              </button>
+            </div>
           </header>
 
           <div className="lux-marketing-center-body">
             <aside className="lux-marketing-template-list">
-              <div className="mb-2 flex items-center justify-between px-1"><p className="text-[10px] font-bold uppercase tracking-[.14em] text-slate-400">{category === "all" ? "All Templates" : categories.find((item) => item.id === category)?.label}</p><span className="text-[10px] text-slate-600">{filtered.length}</span></div>
+              <div className="mb-2 flex items-center justify-between px-1"><p className="text-[10px] font-bold uppercase tracking-[.14em] text-slate-400 m-0">{category === "all" ? "All Templates" : categories.find((item) => item.id === category)?.label}</p><span className="text-[10px] text-slate-600">{filtered.length}</span></div>
               <div className="space-y-2">
                 {filtered.map((item) => <TemplateCard key={item.id} item={item} active={item.id === active.id} onClick={() => setActiveId(item.id)} />)}
                 {!filtered.length && <p className="p-3 text-xs text-slate-500">No matching templates.</p>}
@@ -412,39 +448,197 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
         </section>
 
         <aside className="lux-marketing-rightpanel">
-          <div className="grid grid-cols-3 border-b border-white/10 pb-2">
-            {(["edit", "style", "prompt"] as const).map((tab) => <button key={tab} onClick={() => setPanel(tab)} className={`border-b-2 py-2 text-xs font-bold capitalize ${panel === tab ? "border-violet-500 text-white" : "border-transparent text-slate-500"}`}>{tab}</button>)}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: "8px" }}>
+            {(["edit", "style", "prompt"] as const).map((tab) => (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => setPanel(tab)}
+                style={{
+                  padding: "6px 0",
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  textTransform: "capitalize",
+                  background: "transparent",
+                  color: panel === tab ? "#ffffff" : "#64748b",
+                  border: "none",
+                  borderBottom: panel === tab ? "2px solid #7c4dff" : "2px solid transparent",
+                  cursor: "pointer",
+                }}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
 
           {panel === "edit" ? (
-            <div className="space-y-3">
+            <div style={{ display: "grid", gap: "12px" }}>
               <Field label="Headline" value={active.headline} multiline onChange={(headline) => update({ headline })} />
               <Field label="Description" value={active.description} multiline onChange={(description) => update({ description })} />
               <Field label="Call to action" value={active.cta} onChange={(cta) => update({ cta })} />
               <Field label="Label" value={active.tag} onChange={(tag) => update({ tag })} />
             </div>
           ) : panel === "style" ? (
-            <div className="space-y-5">
+            <div style={{ display: "grid", gap: "16px" }}>
               <ControlGroup label="Color style">
-                <div className="flex gap-2.5">{["#7c4dff", "#00d4ff", "#00ffa3", "#f8fafc"].map((color) => <button key={color} aria-label={`Use ${color}`} onClick={() => update({ accent: color })} className={`h-8 w-8 rounded-full border-2 p-0.5 ${active.accent === color ? "border-white" : "border-transparent"}`}><span className="block h-full w-full rounded-full" style={{ background: color }} /></button>)}</div>
+                <div style={{ display: "flex", gap: "10px" }}>
+                  {["#7c4dff", "#00d4ff", "#00ffa3", "#f8fafc"].map((color) => (
+                    <button
+                      key={color}
+                      type="button"
+                      aria-label={`Use ${color}`}
+                      onClick={() => update({ accent: color })}
+                      style={{
+                        width: "32px",
+                        height: "32px",
+                        borderRadius: "50%",
+                        border: active.accent === color ? "2px solid #ffffff" : "2px solid transparent",
+                        padding: "2px",
+                        background: "transparent",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <span style={{ display: "block", width: "100%", height: "100%", borderRadius: "50%", background: color }} />
+                    </button>
+                  ))}
+                </div>
               </ControlGroup>
               <ControlGroup label="Background">
-                <div className="grid grid-cols-2 gap-2">{(["eclipse", "circuit", "prism", "void"] as Backdrop[]).map((name) => <button key={name} onClick={() => update({ backdrop: name })} className={`rounded-lg border p-2 text-left text-[11px] capitalize ${active.backdrop === name ? "border-violet-400" : "border-white/10"}`}><span className="mb-1.5 block h-10 rounded-md" style={{ background: backdrops[name] }} />{name}</button>)}</div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
+                  {(["eclipse", "circuit", "prism", "void"] as Backdrop[]).map((name) => (
+                    <button
+                      key={name}
+                      type="button"
+                      onClick={() => update({ backdrop: name })}
+                      style={{
+                        borderRadius: "8px",
+                        border: active.backdrop === name ? "1px solid #7c4dff" : "1px solid rgba(255,255,255,0.1)",
+                        background: "#0c101c",
+                        padding: "8px",
+                        textAlign: "left",
+                        color: active.backdrop === name ? "#ffffff" : "#94a3b8",
+                        fontSize: "11px",
+                        textTransform: "capitalize",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <span style={{ display: "block", height: "36px", borderRadius: "6px", background: backdrops[name], marginBottom: "6px" }} />
+                      {name}
+                    </button>
+                  ))}
+                </div>
               </ControlGroup>
             </div>
           ) : (
-            <div className="space-y-3">
-              <textarea readOnly value={gptPrompt(active)} className="h-56 w-full resize-none rounded-lg border border-white/10 bg-white/[.035] px-3 py-2 text-[11px] leading-4 text-slate-200 outline-none focus:border-violet-400" />
-              <button onClick={copyPrompt} className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-cyan-300/40 px-3 py-2.5 text-xs font-black text-white hover:bg-cyan-300/10"><ClipboardCopy className="h-3.5 w-3.5" /> {copiedPrompt ? "Copied" : "Copy GPT Prompt"}</button>
-              <button onClick={makeAllUniform} className="w-full rounded-lg border border-violet-400/40 px-3 py-2.5 text-xs font-black text-violet-100 hover:bg-violet-500/10">Make All Options Uniform</button>
+            <div style={{ display: "grid", gap: "12px" }}>
+              <textarea
+                readOnly
+                value={gptPrompt(active)}
+                style={{
+                  height: "220px",
+                  width: "100%",
+                  resize: "none",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  background: "#0c101c",
+                  color: "#cbd5e1",
+                  padding: "10px",
+                  fontSize: "11px",
+                  lineHeight: "1.4",
+                  outline: "none",
+                  boxSizing: "border-box",
+                }}
+              />
+              <button
+                type="button"
+                onClick={copyPrompt}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  width: "100%",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(0,212,255,0.4)",
+                  background: "rgba(0,212,255,0.1)",
+                  color: "#ffffff",
+                  padding: "10px",
+                  fontSize: "12px",
+                  fontWeight: 800,
+                  cursor: "pointer",
+                }}
+              >
+                <ClipboardCopy className="h-3.5 w-3.5" /> {copiedPrompt ? "Copied" : "Copy GPT Prompt"}
+              </button>
+              <button
+                type="button"
+                onClick={makeAllUniform}
+                style={{
+                  width: "100%",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(124,77,255,0.4)",
+                  background: "rgba(124,77,255,0.1)",
+                  color: "#ede9fe",
+                  padding: "10px",
+                  fontSize: "12px",
+                  fontWeight: 800,
+                  cursor: "pointer",
+                }}
+              >
+                Make All Options Uniform
+              </button>
             </div>
           )}
 
           <ControlGroup label="Aspect ratio">
-            <div className="grid grid-cols-4 gap-1.5">{(["16:9", "1:1", "4:5", "9:16"] as Ratio[]).map((ratio) => <button key={ratio} onClick={() => update({ ratio })} className={`rounded-lg border px-1.5 py-2 text-[11px] font-bold ${active.ratio === ratio ? "border-violet-400 bg-violet-500/10 text-white" : "border-white/10 text-slate-400"}`}>{ratio}</button>)}</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "6px" }}>
+              {(["16:9", "1:1", "4:5", "9:16"] as Ratio[]).map((ratio) => (
+                <button
+                  key={ratio}
+                  type="button"
+                  onClick={() => update({ ratio })}
+                  style={{
+                    borderRadius: "6px",
+                    border: active.ratio === ratio ? "1px solid #7c4dff" : "1px solid rgba(255,255,255,0.1)",
+                    background: active.ratio === ratio ? "rgba(124,77,255,0.2)" : "#0c101c",
+                    color: active.ratio === ratio ? "#ffffff" : "#94a3b8",
+                    padding: "8px 0",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    cursor: "pointer",
+                  }}
+                >
+                  {ratio}
+                </button>
+              ))}
+            </div>
           </ControlGroup>
 
-          <button onClick={exportPng} disabled={exporting} className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 via-blue-500 to-cyan-400 px-4 py-2.5 text-xs font-black shadow-[0_0_28px_rgba(0,212,255,.18)] disabled:opacity-50"><Download className="h-3.5 w-3.5" /> {exporting ? "Exporting..." : "Export PNG"}</button>
+          <button
+            type="button"
+            onClick={exportPng}
+            disabled={exporting}
+            style={{
+              width: "100%",
+              padding: "10px 16px",
+              borderRadius: "8px",
+              background: "linear-gradient(135deg, #7c4dff 0%, #00d4ff 100%)",
+              color: "#ffffff",
+              fontWeight: 900,
+              fontSize: "12px",
+              border: "none",
+              cursor: exporting ? "not-allowed" : "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              marginTop: "auto",
+              boxShadow: "0 0 20px rgba(0,212,255,0.2)",
+              opacity: exporting ? 0.6 : 1,
+            }}
+          >
+            <Download className="h-3.5 w-3.5" /> {exporting ? "Exporting..." : "Export PNG"}
+          </button>
         </aside>
       </div>
     </main>
@@ -452,16 +646,92 @@ export default function LuxMarketingPage({ embedded = false }: { embedded?: bool
 }
 
 function CategoryButton({ active, label, count, icon, onClick }: { active: boolean; label: string; count: number; icon: React.ReactNode; onClick: () => void }) {
-  return <button onClick={onClick} className={`mb-1 flex shrink-0 items-center gap-3 rounded-lg border-l-2 px-3 py-2.5 text-left text-sm transition xl:w-full ${active ? "border-violet-500 bg-white/[.06] text-white" : "border-transparent text-slate-400 hover:bg-white/[.035] hover:text-white"}`}>{icon}<span className="whitespace-nowrap">{label}</span><span className="ml-auto hidden text-[10px] text-slate-600 xl:inline">{count}</span></button>;
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+        width: "100%",
+        padding: "8px 12px",
+        borderRadius: "8px",
+        borderLeft: active ? "3px solid #7c4dff" : "3px solid transparent",
+        background: active ? "rgba(124, 77, 255, 0.18)" : "transparent",
+        color: active ? "#ffffff" : "#94a3b8",
+        fontSize: "13px",
+        fontWeight: active ? 700 : 500,
+        textAlign: "left",
+        cursor: "pointer",
+        transition: "all 0.15s ease",
+        marginBottom: "2px",
+        borderTop: "none",
+        borderRight: "none",
+        borderBottom: "none",
+      }}
+    >
+      {icon}
+      <span style={{ flex: 1, whiteSpace: "nowrap" }}>{label}</span>
+      <span style={{ fontSize: "10px", opacity: 0.7, background: "rgba(255,255,255,0.08)", padding: "2px 6px", borderRadius: "10px" }}>{count}</span>
+    </button>
+  );
 }
 
 function TemplateCard({ item, active, onClick }: { item: Template; active: boolean; onClick: () => void }) {
-  return <button onClick={onClick} className={`relative h-32 w-44 shrink-0 overflow-hidden rounded-lg border text-left transition lg:h-auto lg:w-full lg:aspect-[4/3] ${active ? "border-violet-400 shadow-[0_0_20px_rgba(124,77,255,.2)]" : "border-white/10 hover:border-white/30"}`} style={{ background: backdrops[item.backdrop] }}>
-    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
-    {item.image && <img src={item.image} alt="" className="absolute bottom-0 right-0 h-[88%] w-[64%] object-cover object-top opacity-80 grayscale brightness-75 contrast-125" />}
-    <div className="absolute inset-x-0 bottom-0 p-3"><p className="text-[9px] font-bold uppercase tracking-wider" style={{ color: item.accent }}>{item.tag}</p><p className="mt-1 line-clamp-2 text-xs font-black leading-tight">{item.headline}</p></div>
-    {active && <span className="absolute right-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-violet-500"><Check className="h-3 w-3" /></span>}
-  </button>;
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "90px",
+        borderRadius: "8px",
+        overflow: "hidden",
+        border: active ? "2px solid #7c4dff" : "1px solid rgba(255,255,255,0.12)",
+        boxShadow: active ? "0 0 16px rgba(124,77,255,0.3)" : "none",
+        background: backdrops[item.backdrop],
+        textAlign: "left",
+        cursor: "pointer",
+        transition: "all 0.15s ease",
+        marginBottom: "8px",
+        display: "block",
+      }}
+    >
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)" }} />
+      {item.image && (
+        <img
+          src={item.image}
+          alt=""
+          style={{
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            height: "85%",
+            width: "60%",
+            objectFit: "cover",
+            objectPosition: "top",
+            opacity: 0.8,
+            filter: "grayscale(0.3) brightness(0.8)",
+          }}
+        />
+      )}
+      <div style={{ position: "absolute", inset: 0, padding: "8px 10px", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+        <p style={{ fontSize: "9px", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: item.accent, margin: 0 }}>
+          {item.tag}
+        </p>
+        <p style={{ fontSize: "11px", fontWeight: 800, color: "#ffffff", margin: "2px 0 0", lineHeight: "1.2", overflow: "hidden", textOverflow: "ellipsis", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
+          {item.headline}
+        </p>
+      </div>
+      {active && (
+        <span style={{ position: "absolute", top: "6px", right: "6px", width: "18px", height: "18px", borderRadius: "50%", background: "#7c4dff", display: "grid", placeItems: "center" }}>
+          <Check style={{ width: "12px", height: "12px", color: "#fff" }} />
+        </span>
+      )}
+    </button>
+  );
 }
 
 const CreativeCanvas = forwardRef<HTMLDivElement, { template: Template }>(function CreativeCanvas({ template }, ref) {
@@ -477,7 +747,7 @@ const CreativeCanvas = forwardRef<HTMLDivElement, { template: Template }>(functi
         <span className="text-[clamp(8px,1.05vw,12px)] font-bold uppercase tracking-[.16em]" style={{ color: template.accent }}>{template.tag}</span>
       </div>
       {template.layout === "background" ? (
-        <div className="grid flex-1 place-items-center text-center"><div><BrandIcon className="mx-auto mb-5 h-20 w-20" /><h2 className="text-[clamp(25px,5vw,62px)] font-black uppercase leading-[.98]">{template.headline}</h2><p className="mx-auto mt-5 max-w-xl text-[clamp(11px,1.5vw,18px)] leading-relaxed text-slate-300">{template.description}</p></div></div>
+        <div className="grid flex-1 place-items-center text-center"><div><BrandIcon size={48} /><h2 className="text-[clamp(25px,5vw,62px)] font-black uppercase leading-[.98] mt-4">{template.headline}</h2><p className="mx-auto mt-5 max-w-xl text-[clamp(11px,1.5vw,18px)] leading-relaxed text-slate-300">{template.description}</p></div></div>
       ) : template.layout === "newsletter" ? (
         <div className="mt-[8%] w-[58%]"><h2 className="text-[clamp(24px,4.2vw,52px)] font-black leading-[1.02]">{template.headline}</h2><p className="mt-[5%] text-[clamp(10px,1.35vw,16px)] leading-relaxed text-slate-300">{template.description}</p><div className="mt-[6%] space-y-2 border-t border-white/15 pt-[4%] text-[clamp(9px,1.1vw,13px)]"><p><span style={{ color: template.accent }}>01</span> New AI model releases</p><p><span style={{ color: template.accent }}>02</span> Small-business automation</p><p><span style={{ color: template.accent }}>03</span> Founder intelligence</p></div></div>
       ) : template.layout === "workshop" ? (
@@ -498,15 +768,85 @@ function CanvasButton({ label, accent }: { label: string; accent: string }) {
   return <span className="mt-[6%] inline-block rounded-md px-[5%] py-[2.5%] text-[clamp(9px,1.1vw,14px)] font-black text-black" style={{ background: `linear-gradient(120deg,#7c4dff,${accent})`, color: accent === "#f8fafc" ? "#05070d" : "white" }}>{label}</span>;
 }
 
-function BrandIcon({ className }: { className: string }) {
-  return <span role="img" aria-label="Lux Automaton" className={`relative block shrink-0 overflow-hidden rounded-xl ${className}`}><img src={BRAND.icon} alt="" className="absolute max-w-none" style={{ width: "171%", left: "-37%", top: "-17%" }} /></span>;
+function BrandIcon({ size = 36 }: { size?: number }) {
+  return (
+    <span
+      role="img"
+      aria-label="Lux Automaton"
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+        position: "relative",
+        display: "block",
+        flexShrink: 0,
+        overflow: "hidden",
+        borderRadius: "10px",
+        background: "#111625",
+        border: "1px solid rgba(255,255,255,0.1)",
+      }}
+    >
+      <img
+        src={BRAND.icon}
+        alt=""
+        style={{
+          position: "absolute",
+          width: "170%",
+          left: "-35%",
+          top: "-15%",
+          objectFit: "contain",
+        }}
+      />
+    </span>
+  );
 }
 
 function Field({ label, value, onChange, multiline = false }: { label: string; value: string; onChange: (value: string) => void; multiline?: boolean }) {
-  const className = "w-full rounded-lg border border-white/10 bg-white/[.035] px-3 py-2.5 text-sm leading-6 outline-none transition focus:border-violet-400";
-  return <label className="block"><span className="mb-2 block text-xs font-semibold text-slate-400">{label}</span>{multiline ? <textarea rows={4} value={value} onChange={(event) => onChange(event.target.value)} className={`${className} resize-none`} /> : <input value={value} onChange={(event) => onChange(event.target.value)} className={className} />}</label>;
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    borderRadius: "8px",
+    border: "1px solid rgba(255, 255, 255, 0.15)",
+    background: "#0c101c",
+    color: "#f8fafc",
+    padding: "8px 12px",
+    fontSize: "12px",
+    lineHeight: "1.4",
+    outline: "none",
+    marginTop: "4px",
+    display: "block",
+    boxSizing: "border-box",
+  };
+
+  return (
+    <label style={{ display: "block" }}>
+      <span style={{ fontSize: "11px", fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.05em", display: "block" }}>
+        {label}
+      </span>
+      {multiline ? (
+        <textarea
+          rows={3}
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          style={{ ...inputStyle, resize: "none" }}
+        />
+      ) : (
+        <input
+          type="text"
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          style={inputStyle}
+        />
+      )}
+    </label>
+  );
 }
 
 function ControlGroup({ label, className = "", children }: { label: string; className?: string; children: React.ReactNode }) {
-  return <section className={className}><h2 className="mb-3 text-xs font-semibold text-slate-400">{label}</h2>{children}</section>;
+  return (
+    <section className={className} style={{ marginTop: "12px" }}>
+      <h2 style={{ fontSize: "11px", fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "8px", marginTop: 0 }}>
+        {label}
+      </h2>
+      {children}
+    </section>
+  );
 }

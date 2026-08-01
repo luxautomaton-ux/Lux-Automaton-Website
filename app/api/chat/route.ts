@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-static";
+
 const PROXY_URL = process.env.LANA_PROXY_URL || "http://127.0.0.1:3307";
 
 function proxyHeaders(): HeadersInit {

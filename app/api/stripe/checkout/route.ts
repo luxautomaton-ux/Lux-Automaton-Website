@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-static";
+
 /**
  * POST /api/stripe/checkout
  * Creates a Stripe Checkout session and returns the redirect URL.

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -110,13 +110,29 @@ const labs: Lab[] = [
   },
 ];
 
+function subscribeToLabHash(onChange: () => void) {
+  window.addEventListener("hashchange", onChange);
+  return () => window.removeEventListener("hashchange", onChange);
+}
+
+function getLabFromHash() {
+  const id = window.location.hash.replace(/^#/, "");
+  return labs.some((lab) => lab.id === id) ? id : labs[0].id;
+}
+
+function getDefaultLab() {
+  return labs[0].id;
+}
+
 export default function AcademyPage() {
-  const [activeLabId, setActiveLabId] = useState(labs[0].id);
+  const linkedLabId = useSyncExternalStore(subscribeToLabHash, getLabFromHash, getDefaultLab);
+  const [chosenLabId, setChosenLabId] = useState<string | null>(null);
   const [activeMission, setActiveMission] = useState(0);
+  const activeLabId = chosenLabId ?? linkedLabId;
   const activeLab = labs.find((lab) => lab.id === activeLabId) ?? labs[0];
 
   const chooseLab = (id: string) => {
-    setActiveLabId(id);
+    setChosenLabId(id);
     setActiveMission(0);
   };
 

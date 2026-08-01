@@ -6,10 +6,10 @@ import Link from "next/link";
 import { prefixPath } from "@/lib/prefix";
 
 const labs = [
-  { icon:"✦", title:"AI Explorer Lab", age:"Ages 7–10", copy:"Meet friendly AI, learn what it can do, and train your first tiny helper.", color:"pink", href:"/lux-ai-kids/workshops/ai-explorer-kids" },
-  { icon:"◉", title:"Art Studio", age:"Ages 8–13", copy:"Turn big imagination into characters, posters, worlds, and visual stories.", color:"blue", href:"/lux-ai-kids/workshops/ai-art-studio-kids" },
-  { icon:"▰", title:"Storyteller Lab", age:"Ages 9–14", copy:"Write a hero, direct a scene, and bring an original story to life with video.", color:"purple", href:"/lux-ai-kids/workshops/storyteller-lab-kids" },
-  { icon:"⌁", title:"Robot Builders", age:"Ages 10–15", copy:"Design a helpful robot and solve a problem in your home or community.", color:"green", href:"/lux-ai-kids/workshops/robot-builders-kids" },
+  { icon:"✦", title:"AI Explorer Lab", age:"Ages 7–10", copy:"Meet friendly AI, learn what it can do, and train your first tiny helper.", color:"pink", href:"/lux-ai-kids/academy#ai-explorer" },
+  { icon:"◉", title:"Art Studio", age:"Ages 8–13", copy:"Turn big imagination into characters, posters, worlds, and visual stories.", color:"blue", href:"/lux-ai-kids/academy#art-studio" },
+  { icon:"▰", title:"Storyteller Lab", age:"Ages 9–14", copy:"Write a hero, direct a scene, and bring an original story to life with video.", color:"purple", href:"/lux-ai-kids/academy#storyteller" },
+  { icon:"⌁", title:"Robot Builders", age:"Ages 10–15", copy:"Design a helpful robot and solve a problem in your home or community.", color:"green", href:"/lux-ai-kids/academy#robot-builders" },
 ];
 
 const characterCards = [
@@ -101,7 +101,7 @@ export default function LuxAiKidsPage(){
         <p>Creative workshops, joyful videos, smart stories, and real-world challenges for the next generation of builders.</p>
         <div className="kids-actions">
           <a href="#characters">Meet your guides ✦</a>
-          <a href="#missions">Pick a mission</a>
+          <Link href="/lux-ai-kids/academy">Explore the Labs</Link>
         </div>
         <div className="kids-trust">
           <span>✓ Project-based</span>
@@ -119,7 +119,7 @@ export default function LuxAiKidsPage(){
     </section>
 
     <nav className="kids-route-ribbon" aria-label="Lux AI Kids sections">
-      <Link href="#missions"><span>01</span> Learning Labs</Link>
+      <Link href="/lux-ai-kids/academy"><span>01</span> Learning Labs</Link>
       <Link href="/lux-ai-kids/workshops"><span>02</span> Workshops</Link>
       <Link href="/lux-ai-kids/foundation"><span>03</span> Foundation</Link>
       <Link href="/lux-ai-kids/post-studio"><span>04</span> Post Studio</Link>

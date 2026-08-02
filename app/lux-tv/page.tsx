@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { LUX_TV_EPISODES, type TvEpisode } from "@/lib/luxContent";
+import { LUX_TV_EPISODES, getPublishedTvEpisodes, type TvEpisode } from "@/lib/luxContent";
 import { prefixPath } from "@/lib/prefix";
 import NetflixVideoPlayerModal from "@/components/NetflixVideoPlayerModal";
 
@@ -17,7 +17,8 @@ const rows = [
 
 export default function LuxTvPage() {
   const [selectedEpisode, setSelectedEpisode] = useState<TvEpisode | null>(null);
-  const featured = LUX_TV_EPISODES[0];
+  const publishedEpisodes = getPublishedTvEpisodes();
+  const featured = publishedEpisodes[0] || LUX_TV_EPISODES[0];
 
   return (
     <main className="tv-world">
@@ -88,14 +89,14 @@ export default function LuxTvPage() {
       <section className="tv-rows" aria-label="Lux TV episode shelves">
         {rows.map((row) => {
           const episodes = row.match
-            ? LUX_TV_EPISODES.filter(
+            ? publishedEpisodes.filter(
                 (episode) =>
                   episode.series.toLowerCase().includes(row.match.toLowerCase()) ||
                   episode.tags.some((tag) => tag.toLowerCase().includes(row.match.toLowerCase()))
               )
-            : LUX_TV_EPISODES;
+            : publishedEpisodes;
           
-          const displayEpisodes = episodes.length > 0 ? episodes : LUX_TV_EPISODES;
+          const displayEpisodes = episodes.length > 0 ? episodes : publishedEpisodes;
 
           return (
             <div className="tv-row" key={row.title}>

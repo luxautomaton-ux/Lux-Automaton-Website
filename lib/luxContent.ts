@@ -13,6 +13,8 @@ export interface BlogArticle {
   plannerUrl?: string;
   takeaways: string[];
   body: string[];
+  status?: "published" | "scheduled" | "draft";
+  draft?: boolean;
 }
 
 export interface WorkshopLesson {
@@ -73,6 +75,30 @@ export interface TvEpisode {
   storyUrl?: string;
   description: string;
   tags: string[];
+  status?: "published" | "scheduled" | "draft";
+  draft?: boolean;
+}
+
+export function isArticlePublished(article: BlogArticle): boolean {
+  if (article.status === "scheduled" || article.status === "draft" || article.draft) {
+    return false;
+  }
+  return true;
+}
+
+export function isTvEpisodePublished(episode: TvEpisode): boolean {
+  if (episode.status === "scheduled" || episode.status === "draft" || episode.draft) {
+    return false;
+  }
+  return true;
+}
+
+export function getPublishedArticles(): BlogArticle[] {
+  return BLOG_ARTICLES.filter(isArticlePublished);
+}
+
+export function getPublishedTvEpisodes(): TvEpisode[] {
+  return LUX_TV_EPISODES.filter(isTvEpisodePublished);
 }
 
 export const BLOG_ARTICLES: BlogArticle[] = [
@@ -239,6 +265,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "asa-lana-ep5-when-the-story-learns-to-see",
     audience: "Lux Automaton",
     title: "Asa + LANA EP5: When the Story Learns to See",
+    status: "scheduled",
     deck: "How the Lux Codex adds system perception to Story Memory—so the series can inspect scenes, recognize continuity risks, and ask for human judgment before the story changes.",
     date: "August 4, 2026",
     readTime: "8 min read",
@@ -288,6 +315,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "asa-lana-ep4-building-the-story-bible-core",
     audience: "Lux Automaton",
     title: "Asa + LANA EP4: Building the Story Bible Core",
+    status: "scheduled",
     deck: "How the Lux Codex connects characters, worldbuilding, lore, scenes, timelines, and continuity into one living system that remembers the entire series.",
     date: "August 1, 2026",
     readTime: "8 min read",
@@ -3942,6 +3970,7 @@ export const LUX_TV_EPISODES: TvEpisode[] = [
     slug: "asa-lana-ep5-when-the-story-learns-to-see",
     audience: "Lux Automaton",
     title: "ASA + LANA: When the Story Learns to See — Episode 5",
+    status: "scheduled",
     series: "ASA + LANA",
     duration: "2m",
     rating: "All builders",
@@ -3955,6 +3984,7 @@ export const LUX_TV_EPISODES: TvEpisode[] = [
     slug: "asa-lana-ep4-building-the-story-bible-core",
     audience: "Lux Automaton",
     title: "ASA + LANA: Building the Story Bible Core — Episode 4",
+    status: "scheduled",
     series: "ASA + LANA",
     duration: "2m",
     rating: "All builders",

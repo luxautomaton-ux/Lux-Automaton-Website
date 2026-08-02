@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BLOG_ARTICLES, type Audience, type BlogArticle } from "@/lib/luxContent";
+import { BLOG_ARTICLES, getPublishedArticles, type Audience, type BlogArticle } from "@/lib/luxContent";
 import { prefixPath } from "@/lib/prefix";
 import ArticleVisualAssetsDeck, { type VisualAssetItem, type ResourceDownloadItem } from "@/components/ArticleVisualAssetsDeck";
 import SocialShare from "@/components/SocialShare";
@@ -526,13 +526,14 @@ function getArticleVisualAssets(article: BlogArticle) {
 }
 
 export default function BlogPage() {
+  const publishedArticles = useMemo(() => getPublishedArticles(), []);
   const [activeFilter, setActiveFilter] = useState<"All" | Audience>("All");
-  const [selected, setSelected] = useState<BlogArticle>(BLOG_ARTICLES[0]);
+  const [selected, setSelected] = useState<BlogArticle>(publishedArticles[0] || BLOG_ARTICLES[0]);
   const articleRef = useRef<HTMLElement>(null);
 
   const articles = useMemo(
-    () => activeFilter === "All" ? BLOG_ARTICLES : BLOG_ARTICLES.filter((article) => article.audience === activeFilter),
-    [activeFilter],
+    () => activeFilter === "All" ? publishedArticles : publishedArticles.filter((article) => article.audience === activeFilter),
+    [activeFilter, publishedArticles],
   );
 
   const topStories = articles.filter((article) => article.slug !== selected.slug).slice(0, 4);
@@ -564,7 +565,7 @@ export default function BlogPage() {
               className={activeFilter === filter ? "active" : ""}
               onClick={() => {
                 setActiveFilter(filter);
-                const next = filter === "All" ? BLOG_ARTICLES[0] : BLOG_ARTICLES.find((article) => article.audience === filter);
+                const next = filter === "All" ? publishedArticles[0] : publishedArticles.find((article) => article.audience === filter);
                 if (next) setSelected(next);
               }}
             >

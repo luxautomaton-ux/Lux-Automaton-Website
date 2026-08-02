@@ -1,0 +1,30 @@
+{
+  "name": "Lux 3D Scroll Experience",
+  "version": "1.0",
+  "beats": [
+    "arrival",
+    "reveal",
+    "explanation",
+    "transformation",
+    "resolution"
+  ],
+  "fallbacks": {
+    "mobile": "",
+    "reduced_motion": "",
+    "unsupported_browser": "static_poster"
+  },
+  "quality": {
+    "desktop": false,
+    "mobile": false,
+    "keyboard": false,
+    "reduced_motion": false,
+    "performance": false
+  },
+  "approval_gates": [
+    "story",
+    "scene",
+    "prototype",
+    "qa",
+    "launch"
+  ]
+}

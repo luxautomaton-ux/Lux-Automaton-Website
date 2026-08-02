@@ -115,6 +115,51 @@ export function getPublishedTvEpisodes(): TvEpisode[] {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "claude-design-3d-scrolling-animations",
+    audience: "Lux Automaton",
+    title: "Claude Design 3.0: How to Build Cinematic 3D Scrolling Animations",
+    deck: "A practical Lux Automaton guide to turning scroll into a controlled 3D story—using Claude Code, scroll timelines, 3D scenes, fallbacks, and human quality review.",
+    date: "August 5, 2026",
+    readTime: "9 min read",
+    category: "3D Web Development & Motion Engineering",
+    image: "/images/01-thumbnail-claude-design-3d-scrolling.png",
+    plannerUrl: "/documents/3d-scroll-experience-planner.html",
+    status: "scheduled",
+    takeaways: [
+      "01 — Design the scroll narrative before writing animation code (Arrival → Reveal → Explanation → Transformation → Resolution).",
+      "02 — Separate semantic content, 3D scene, timeline, and controller architecture.",
+      "03 — Cinematic motion requires mobile, accessibility, and performance fallbacks."
+    ],
+    body: [
+      "The source video, **Claude Design 3.0 (3D Scrolling Animations)**, focuses on a powerful direction in modern web design: allowing the visitor’s scroll to control a cinematic 3D sequence.",
+      "The page no longer behaves like a stack of static sections. A product can rotate, a camera can move through a scene, layers can separate, and the final state can resolve into a product benefit or call to action.",
+      "Claude Code can help inspect a project, implement multi-file changes, run commands, and work through a development workflow. Anthropic describes it as an agentic coding tool that reads codebases, edits files, runs commands, and integrates with development tools.",
+      "The browser also supports several approaches to scroll-linked animation. CSS scroll-driven animations can connect animation progress to scroll or view timelines rather than elapsed time. The Web Animations API also includes `ScrollTimeline`. Because browser support varies, a production site needs a fallback.",
+      "> **Turn the visitor’s scroll into a controlled story without making the website harder to use.**",
+      "![Claude Design 3.0 3D Scrolling Thumbnail](/images/01-thumbnail-claude-design-3d-scrolling.png)",
+      "## 01 — Design the scroll narrative before writing animation code",
+      "A cinematic scroll experience is not a collection of random effects. It needs a beginning, progression, and resolution.",
+      "Start with the business message. A product website might show the complete product, separate its layers, highlight a technical advantage, reassemble it, and end with the primary action.",
+      "### Build a five-beat storyboard",
+      "1. **Arrival** — The object or environment appears.\n2. **Reveal** — The object rotates, opens, or changes perspective.\n3. **Explanation** — Text and visual state connect.\n4. **Transformation** — The scene changes into the next meaningful state.\n5. **Resolution** — The page releases the pinned scene and presents the action.",
+      "![Scroll Storyboard](/images/02-photo-scroll-storyboard.png)",
+      "## 02 — Separate the 3D scene from the scroll controller",
+      "A dependable build separates five concerns: Semantic Content, 3D Scene, Timeline, Controller, and Fallbacks.",
+      "![3D Scroll Architecture](/images/03-photo-3d-scroll-architecture.png)",
+      "### Give Claude Code a production brief",
+      "Ask Claude to inspect the architecture, propose the smallest plan, identify performance and accessibility risks, preserve semantic content outside the canvas, create desktop and mobile paths, respect reduced motion, lazy-load the 3D bundle, clean up WebGL resources, and document QA steps.",
+      "## 03 — Cinematic motion still needs mobile, accessibility, and performance gates",
+      "The effect is not finished when it works on one laptop. Measure frame stability, layout shifts, 3D bundle size, and touch scrolling response.",
+      "![Scroll Animation QA](/images/04-photo-scroll-animation-qa.png)",
+      "### Accessibility & Reduced Motion",
+      "When `prefers-reduced-motion: reduce` is active, remove large camera moves and continuous rotation. Replace scrubbed sequences with clear static states while preserving all information and call-to-actions.",
+      "![3D Scroll Overview](/images/05-3d-scroll-animation-overview.png)",
+      "> **“The visitor controls the pace. We control the meaning.” — Asa Pritchard**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",
+      "## Downloads & Subscriber Tools",
+      "Download the **3D Scroll Experience Planner** (`/documents/3d-scroll-experience-planner.html`), **Workflow JSON** (`/documents/lux-3d-scroll-experience-workflow.json`), **HTML Edition** (`/documents/claude-design-3d-scrolling-animations.html`), and **Markdown Source** (`/documents/claude-design-3d-scrolling-animations.md`)."
+    ]
+  },
+  {
     slug: "claude-design-higgsfield-build-premium-ai-websites",
     audience: "Lux Automaton",
     title: "Claude Design 3.0 + Higgsfield: How to Build $5K+ AI Websites",

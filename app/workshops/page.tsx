@@ -338,7 +338,7 @@ export default function WorkshopsPage() {
 
       <section className="automaton-splash-workshops" id="choose-workshop" aria-label="All Lux Automaton workshops">
         <div><p className="automaton-kicker">Choose your path</p><h2>Every workshop is built to help you solve something real.</h2></div>
-        <div className="automaton-splash-workshop-grid">{allWorkshops.map((workshop, index) => <button key={workshop.slug} type="button" className={selected.slug === workshop.slug ? "active" : ""} onClick={() => openWorkshop(workshop)}><span className="automaton-splash-card-number">0{index + 1}</span><Image src={prefixPath(workshop.thumbnail)} alt="" fill sizes="(max-width: 760px) 100vw, 20vw" /><i /><strong>{workshop.title}</strong><small>{workshop.duration} · {workshop.level}</small><em>Open workshop →</em></button>)}</div>
+        <div className="automaton-splash-workshop-grid">{allWorkshops.map((workshop, index) => <button key={workshop.slug} type="button" className={selected.slug === workshop.slug ? "active" : ""} onClick={() => openWorkshop(workshop)}><span className="automaton-splash-card-media"><Image src={prefixPath(workshop.thumbnail)} alt={`${workshop.title} workshop thumbnail`} fill sizes="(max-width: 760px) 86vw, (max-width: 1120px) 150px, 20vw" /></span><span className="automaton-splash-card-number">0{index + 1}</span><strong>{workshop.title}</strong><small>{workshop.duration} · {workshop.level}</small><em>Open workshop →</em></button>)}</div>
       </section>
       </>}
 

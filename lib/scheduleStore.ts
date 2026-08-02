@@ -208,6 +208,18 @@ function buildRealPosts(): ScheduledPost[] {
       seoScore: 94,
     },
     {
+      id: "blog-claude-design-3d-scrolling",
+      slug: "claude-design-3d-scrolling-animations",
+      title: "Claude Design 3.0: How to Build Cinematic 3D Scrolling Animations",
+      type: "blog",
+      status: "scheduled",
+      date: parseDate("August 5, 2026"),
+      time: "09:00",
+      channel: "Lux Automaton",
+      tags: ["Claude Design", "3D Animation", "Scroll Engine", "Web Development"],
+      seoScore: 95,
+    },
+    {
       id: "blog-asa-ep4",
       slug: "asa-lana-ep4-building-the-story-bible-core",
       title: "Asa + LANA EP4: Building the Story Bible Core",

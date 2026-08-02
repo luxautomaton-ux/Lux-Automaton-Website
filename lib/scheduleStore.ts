@@ -172,6 +172,18 @@ function buildRealPosts(): ScheduledPost[] {
 
     // ── Lux Automaton Blog Posts ─────────────────────────────────────────────
     {
+      id: "blog-claude-design-higgsfield",
+      slug: "claude-design-higgsfield-build-premium-ai-websites",
+      title: "Claude Design 3.0 + Higgsfield: How to Build $5K+ AI Websites",
+      type: "blog",
+      status: "scheduled",
+      date: parseDate("August 2, 2026"),
+      time: "09:00",
+      channel: "Lux Automaton",
+      tags: ["Claude Design", "Higgsfield", "Web Development", "AI Agency"],
+      seoScore: 95,
+    },
+    {
       id: "blog-asa-ep5",
       slug: "asa-lana-ep5-when-the-story-learns-to-see",
       title: "Asa + LANA EP5: When the Story Learns to See",

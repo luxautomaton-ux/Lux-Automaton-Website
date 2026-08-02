@@ -115,6 +115,53 @@ export function getPublishedTvEpisodes(): TvEpisode[] {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "claude-design-higgsfield-build-premium-ai-websites",
+    audience: "Lux Automaton",
+    title: "Claude Design 3.0 + Higgsfield: How to Build $5K+ AI Websites",
+    deck: "Learn how Claude Design, Claude Code, and Higgsfield turn client research, original AI visuals, responsive development, and human QA into a premium website service.",
+    date: "August 2, 2026",
+    readTime: "12 min read",
+    category: "AI Web Development & Creative Automation",
+    image: "/images/01-thumbnail-claude-design-higgsfield.png",
+    plannerUrl: "/documents/premium-ai-website-client-planner.html",
+    status: "scheduled",
+    takeaways: [
+      "01 — A premium website starts with business truth, not an AI visual effect.",
+      "02 — Claude Code plans and implements the system while Higgsfield generates original visual assets.",
+      "03 — A $5K+ offer requires professional browser testing, accessibility QA, human approval, and clear client handoff."
+    ],
+    body: [
+      "The source video presents an exciting workflow: use Higgsfield with Claude Code and Claude Design to build websites that feel custom, cinematic, and valuable enough to sell as premium client work.",
+      "The headline focuses on **$5K+ websites**.",
+      "The deeper opportunity is not a guaranteed price. It is a different production model.",
+      "Instead of beginning with a generic template, the creator can begin with real client research, customer language, custom AI-generated visuals, agentic coding workflows, responsive browser testing, and human quality review.",
+      "Claude Code acts as the development and orchestration layer—reading codebases, editing files, running commands, and coordinating multi-file web applications. Higgsfield provides the connected visual generation layer for hero artwork, product scenes, textures, and video assets.",
+      "> **The premium website is not the AI output. It is the complete business result.**",
+      "![Claude Design 3.0 + Higgsfield Workflow](/images/01-thumbnail-claude-design-higgsfield.png)",
+      "## 01 — A premium website starts with business truth, not an AI effect",
+      "A website can look expensive and still fail if visitors don't understand who it's for, what problem it solves, why to trust it, or what action to take next.",
+      "### Start with real discovery",
+      "Collect real business services, ideal customer profiles, strongest offers, customer reviews, FAQs, competitors, and privacy requirements. AI should organize this information—not invent missing proof or fake testimonials.",
+      "![Client Research and Design System](/images/02-photo-client-research-design-system.png)",
+      "### Use the customer's real language",
+      "Reviews reveal how customers describe the result. Translate corporate phrasing into real outcomes that resonate with prospective clients while maintaining full permission and truthfulness.",
+      "## 02 — Claude plans the system while Higgsfield creates the visual world",
+      "The strongest workflow separates responsibilities:\n\n- **Claude Code:** Repository inspection, site architecture, component planning, responsive implementation, animation logic, accessibility, and refactoring.\n- **Claude Design:** Mood boards, visual concepts, layout hierarchy, and presentation-ready client review artifacts.\n- **Higgsfield:** Original hero imagery, product scenes, background plates, motion clips, graphic textures, and social launch assets.",
+      "![Claude and Higgsfield Production Loop](/images/03-photo-claude-higgsfield-production-loop.png)",
+      "### Design images for exact placement",
+      "Specify container aspect ratios, text overlay zones, desktop/mobile crops, and brand palettes directly in asset generation prompts to ensure visuals integrate seamlessly into the site code.",
+      "## 03 — A $5K+ offer needs testing, proof, delivery, and human responsibility",
+      "Clients buy outcomes, not prompt outputs. A complete website service includes positioning strategy, custom visual packs, responsive engineering, analytics, SEO, accessibility review, training, and launch support.",
+      "![Premium Website Quality QA](/images/04-photo-premium-website-qa.png)",
+      "### Run a complete Quality Gate",
+      "Verify visual consistency, responsive breakpoints (desktop, tablet, mobile), color contrast, keyboard navigation, Lighthouse speed scores, and business accuracy before client handoff.",
+      "![Claude Design Premium Website Overview](/images/05-claude-design-premium-website-overview.png)",
+      "> **“AI should work for you.” — Asa Pritchard**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",
+      "## Downloads & Subscriber Tools",
+      "Download the **Client Planner** (`/documents/premium-ai-website-client-planner.html`), **Workflow JSON** (`/documents/lux-premium-ai-website-workflow.json`), **HTML Edition** (`/documents/claude-design-higgsfield-build-premium-ai-websites.html`), and **Markdown Source** (`/documents/claude-design-higgsfield-build-premium-ai-websites.md`)."
+    ]
+  },
+  {
     slug: "five-github-apps-worth-watching-july-29-2026",
     audience: "App Review",
     title: "Five GitHub Apps Worth Watching: Open Science, Agent Infrastructure, Game Tools, and PostgreSQL in 3D",

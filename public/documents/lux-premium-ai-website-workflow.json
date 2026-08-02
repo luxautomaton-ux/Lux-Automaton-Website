@@ -1,0 +1,89 @@
+{
+  "name": "Lux Premium AI Website Production",
+  "version": "1.0",
+  "client": {
+    "business": "",
+    "primary_service": "",
+    "audience": "",
+    "location": "",
+    "approved_claims": [],
+    "review_quotes": []
+  },
+  "strategy": {
+    "primary_conversion": "",
+    "page_map": [],
+    "objections": [],
+    "proof": []
+  },
+  "visual_direction": {
+    "personality": [],
+    "palette": [],
+    "typography": "",
+    "photography": "",
+    "motion": "",
+    "avoid": []
+  },
+  "assets": [
+    {
+      "role": "hero",
+      "ratio": "16:9",
+      "desktop_crop": "",
+      "mobile_crop": "",
+      "prompt": "",
+      "model": "",
+      "approved": false
+    }
+  ],
+  "build": {
+    "repository": "",
+    "framework": "",
+    "components": [],
+    "integrations": [],
+    "cms": "",
+    "analytics": ""
+  },
+  "quality": {
+    "desktop": false,
+    "tablet": false,
+    "mobile": false,
+    "accessibility": false,
+    "performance": false,
+    "business_truth": false,
+    "conversion": false
+  },
+  "approval_gates": [
+    {
+      "gate": 1,
+      "name": "Research brief",
+      "approved": false
+    },
+    {
+      "gate": 2,
+      "name": "Page strategy",
+      "approved": false
+    },
+    {
+      "gate": 3,
+      "name": "Visual direction",
+      "approved": false
+    },
+    {
+      "gate": 4,
+      "name": "Working website",
+      "approved": false
+    },
+    {
+      "gate": 5,
+      "name": "Production launch",
+      "approved": false
+    }
+  ],
+  "delivery": {
+    "source_files": true,
+    "asset_manifest": true,
+    "documentation": true,
+    "training": true,
+    "backup": true,
+    "support_plan": ""
+  }
+}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/products";
 import { prefixPath } from "@/lib/prefix";
+import LuxBusinessLaunchBanner from "@/components/LuxBusinessLaunchBanner";
 
 const pathways = [
   { label: "Build", title: "AI systems that belong to you", copy: "Private agents, coding environments, business operating systems, and portable local intelligence.", href: "/products", tone: "cyan" },
@@ -101,6 +102,8 @@ export default function HomePage() {
         </div>
         <div className="world-status"><span>01</span><p>Scroll to explore</p><i /></div>
       </section>
+
+      <LuxBusinessLaunchBanner />
 
       {/* Featured Lux App Review Cyber Banner */}
       <section className="world-app-review-banner-wrap" style={{ padding: "0 4vw", margin: "40px auto 0", maxWidth: "1400px" }}>

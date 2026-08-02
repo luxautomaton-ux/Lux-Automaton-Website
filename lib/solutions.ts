@@ -34,6 +34,32 @@ export interface Solution {
 
 export const SOLUTIONS: Solution[] = [
   {
+    slug: 'lux-business-launch-os',
+    name: 'Lux Business Launch OS',
+    category: 'Business Formation / Corporate Governance',
+    tagline: 'Build the Company. Keep the Record.',
+    accentColor: '#20d9ff',
+    bgImage: '/images/lux-business-launch-os/dashboard.png',
+    description: 'Lux Business Launch OS turns a newly formed company into a professionally organized, continuously maintained business—with LANA guiding the records, approvals, deadlines, and next steps.',
+    problem: 'Formation services file the company, then founders are left with scattered documents, unclear responsibilities, renewal dates, and governance work they may not know how to maintain.',
+    useCases: ['Guided launch setup', 'Company identity governance', 'Corporate Record Book', 'Operating agreements and resolutions', 'Ownership and company registers', 'Compliance and renewal tracking', 'Secure document organization', 'Intellectual property records', 'AI governance records', 'Exportable company launch packs'],
+    features: ['LANA briefings', 'Corporate Book', 'Company identity studio', 'Resolution drafts', 'Human approval controls', 'Registers', 'Compliance calendar', 'Knowledge vault', 'Deadline tracking', 'Branded PDF exports'],
+    audience: ['New founders', 'LLC owners', 'Small businesses', 'Startups', 'Solo operators', 'Business advisors'],
+    ecosystemConnection: 'Launch OS connects LANA guidance, Lux Business workflows, document generation, company identity, governed knowledge, and optional professional review into one founder-friendly operating system.',
+    disclaimer: 'Lux Business Launch OS provides organizational tools and draft support. It is not a law firm, accounting firm, tax advisor, registered agent, or filing authority. Requirements vary by jurisdiction, and consequential actions require human and professional review.',
+    primaryCta: { label: 'Start Your Business Launch', href: '/contact' },
+    secondaryCta: { label: 'See Inside Launch OS', href: '/solutions/lux-business-launch-os#inside-launch-os' },
+    fiveWH: {
+      who: { headline: 'For Founders Building the Company Behind the Idea', body: 'New LLC owners, startups, solo operators, and small teams that need more than a formation receipt. Launch OS gives founders a structured foundation without requiring them to become corporate-record experts.' },
+      what: { headline: 'A Guided Company Foundation and Record System', body: 'A connected workspace for company identity, launch setup, Corporate Book records, resolutions, registers, documents, deadlines, compliance, knowledge, and LANA-guided next actions.' },
+      when: { headline: 'From the First Filing Through Every Company Change', body: 'Use it at launch, during annual reviews, before banking or insurance updates, when ownership changes, when the company makes a decision, and whenever the record needs to prove what happened.' },
+      where: { headline: 'One Governed Home for the Company Record', body: 'Instead of searching email, folders, portals, and memory, founders see the company foundation in one organized workspace that can be reviewed, maintained, and exported.' },
+      why: { headline: 'Because Filing Is Only the Beginning', body: 'A healthy business needs traceable decisions, current records, visible deadlines, and clear responsibilities. Launch OS turns administrative uncertainty into a repeatable operating rhythm.' },
+      how: { headline: 'Capture. Organize. Review. Maintain.', body: 'Add the formation facts and existing documents. Launch OS builds the record structure, LANA explains each next step, drafts remain review-first, and dashboards keep renewals and unfinished work visible.' },
+    },
+    icon: '◈',
+  },
+  {
     slug: 'lux-care-os',
     name: 'Lux Care OS',
     category: 'Healthcare / Care Operations',

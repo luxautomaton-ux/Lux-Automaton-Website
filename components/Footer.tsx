@@ -20,6 +20,7 @@ const FOOTER_LINKS = {
     { label: "Success Packs", href: "/products/success-packs" },
   ],
   Solutions: [
+    { label: "Lux Business Launch OS", href: "/solutions/lux-business-launch-os" },
     { label: "Lux Care OS", href: "/solutions/lux-care-os" },
     { label: "Epic Electric", href: "/solutions/epic-electric" },
     { label: "Inland Circle", href: "/solutions/inland-circle" },

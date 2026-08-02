@@ -22,6 +22,7 @@ const PRODUCTS_ITEMS = [
 ];
 
 const SOLUTIONS_ITEMS = [
+  { href: "/solutions/lux-business-launch-os", name: "Lux Business Launch OS", icon: "◈", desc: "Formation & Corporate Governance" },
   { href: "/solutions/lux-care-os", name: "Lux Care OS", icon: "🏥", desc: "Clinics & Care Providers" },
   { href: "/solutions/epic-electric", name: "Epic Electric", icon: "⚡", desc: "Electrical & Field Trade" },
   { href: "/solutions/inland-circle", name: "Inland Circle", icon: "🌐", desc: "Community & Nonprofit Ops" },

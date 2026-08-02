@@ -83,6 +83,10 @@ export function removePost(id: string): void {
   notify();
 }
 
+export function publishPostNow(id: string): void {
+  updatePost(id, { status: "published" });
+}
+
 /** Upsert a workshop-type post (called from WorkshopStudio when scheduling) */
 export function scheduleWorkshop(opts: {
   workshopId: number;

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import {
   BEST_HOURS,
   getPosts,
+  publishPostNow,
   removePost,
   scheduleWorkshop,
   subscribe,
@@ -12,6 +13,35 @@ import {
   type ScheduledPost,
 } from "@/lib/scheduleStore";
 import { fetchWorkshops, type WorkshopRow } from "@/lib/workshopDb";
+
+// ─── Helpers ───────────────────────────────────────────────────────────────────
+
+function getPostCountdown(dateStr: string, timeStr: string, status: string) {
+  if (status === "published") return { type: "published", label: "🚀 Published Live" };
+  const target = new Date(`${dateStr}T${timeStr}:00`);
+  const now = new Date();
+  const diff = target.getTime() - now.getTime();
+  if (diff > 0) {
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+    const parts = [];
+    if (days > 0) parts.push(`${days}d`);
+    if (hours > 0 || days > 0) parts.push(`${hours}h`);
+    parts.push(`${mins}m`);
+    parts.push(`${secs}s`);
+    return { type: "future", label: `⏳ Launches in ${parts.join(" ")}` };
+  } else {
+    const pastDiff = Math.abs(diff);
+    const hours = Math.floor(pastDiff / (1000 * 60 * 60));
+    const mins = Math.floor((pastDiff % (1000 * 60 * 60)) / (1000 * 60));
+    return {
+      type: "overdue",
+      label: `⚠️ Scheduled for ${timeStr} (Overdue by ${hours > 0 ? `${hours}h ` : ""}${mins}m — Ready to Publish)`,
+    };
+  }
+}
 
 // ─── Constants ─────────────────────────────────────────────────────────────────
 
@@ -289,8 +319,20 @@ function LanaAutoPanel({
 
 // ─── Post Detail Modal ─────────────────────────────────────────────────────────
 
-function PostModal({ post, onClose, onDelete }: { post: ScheduledPost; onClose: () => void; onDelete: (id: string) => void }) {
+function PostModal({
+  post,
+  onClose,
+  onDelete,
+  onPublishNow,
+}: {
+  post: ScheduledPost;
+  onClose: () => void;
+  onDelete: (id: string) => void;
+  onPublishNow: (id: string, title: string) => void;
+}) {
   const meta = TYPE_META[post.type];
+  const countdown = getPostCountdown(post.date, post.time, post.status);
+
   return (
     <div className="sched-modal-overlay" onClick={onClose}>
       <div className="sched-modal" onClick={e => e.stopPropagation()}>
@@ -303,6 +345,21 @@ function PostModal({ post, onClose, onDelete }: { post: ScheduledPost; onClose: 
           <span>📡 {post.channel}</span>
           {post.slug && <span>🔗 /{post.slug}</span>}
         </div>
+
+        {/* Live Countdown Badge */}
+        <div style={{
+          padding: "10px 16px",
+          borderRadius: "8px",
+          background: countdown.type === "published" ? "rgba(0,255,163,0.12)" : countdown.type === "overdue" ? "rgba(255,149,0,0.15)" : "rgba(0,212,255,0.12)",
+          border: `1px solid ${countdown.type === "published" ? "rgba(0,255,163,0.3)" : countdown.type === "overdue" ? "rgba(255,149,0,0.4)" : "rgba(0,212,255,0.3)"}`,
+          color: countdown.type === "published" ? "#00ffa3" : countdown.type === "overdue" ? "#ff9500" : "#00d4ff",
+          fontWeight: 700,
+          fontSize: "0.85rem",
+          margin: "12px 0 20px"
+        }}>
+          {countdown.label}
+        </div>
+
         <div className="sched-modal-row">
           <SeoGauge score={post.seoScore} />
           <div className="sched-modal-details">
@@ -336,14 +393,45 @@ function PostModal({ post, onClose, onDelete }: { post: ScheduledPost; onClose: 
             🔗 Live at <strong>/workshops?workshop={post.slug}</strong>
           </div>
         )}
-        {post.status !== "published" && (
-          <button
-            className="sched-modal-delete"
-            onClick={() => { onDelete(post.id); onClose(); }}
-          >
-            🗑 Remove from schedule
-          </button>
-        )}
+        
+        <div style={{ display: "flex", gap: "12px", marginTop: "24px", flexWrap: "wrap" }}>
+          {post.status !== "published" && (
+            <button
+              onClick={() => {
+                onPublishNow(post.id, post.title);
+                onClose();
+              }}
+              style={{
+                flex: 1,
+                padding: "12px 20px",
+                background: "#00ffa3",
+                color: "#000000",
+                fontWeight: 800,
+                borderRadius: "8px",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "0.9rem",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                boxShadow: "0 0 16px rgba(0, 255, 163, 0.4)",
+              }}
+            >
+              🚀 Post Now (Publish Live)
+            </button>
+          )}
+
+          {post.status !== "published" && (
+            <button
+              className="sched-modal-delete"
+              onClick={() => { onDelete(post.id); onClose(); }}
+              style={{ margin: 0 }}
+            >
+              🗑 Remove
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -360,6 +448,13 @@ export default function LanaScheduler() {
   const [filter, setFilter] = useState<PostType | "all">("all");
   const [lanaMsg, setLanaMsg] = useState<string | null>(null);
   const [showSchedulePanel, setShowSchedulePanel] = useState(false);
+  const [now, setNow] = useState(() => new Date());
+
+  // Live clock tick
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Subscribe to shared store
   useEffect(() => subscribe(setPosts), []);
@@ -385,6 +480,12 @@ export default function LanaScheduler() {
   };
 
   const handleDelete = (id: string) => removePost(id);
+
+  const handlePublishNow = (id: string, title: string) => {
+    publishPostNow(id);
+    setLanaMsg(`🚀 "${title}" has been published live!`);
+    setTimeout(() => setLanaMsg(null), 5000);
+  };
 
   return (
     <div className="sched-world">
@@ -416,6 +517,46 @@ export default function LanaScheduler() {
           >
             📅 Schedule Workshop
           </button>
+        </div>
+      </div>
+
+      {/* PST System Time & Launch Clock Banner */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          background: "rgba(0, 212, 255, 0.07)",
+          border: "1px solid rgba(0, 212, 255, 0.25)",
+          borderRadius: "12px",
+          padding: "16px 24px",
+          marginBottom: "24px",
+          gap: "16px",
+          flexWrap: "wrap",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+          <span style={{ fontSize: "1.6rem" }}>🕒</span>
+          <div>
+            <div style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#00d4ff" }}>
+              PST System Time &amp; Launch Engine
+            </div>
+            <div style={{ fontSize: "1.2rem", fontWeight: 900, color: "#ffffff", fontFamily: "'JetBrains Mono', monospace" }}>
+              {now.toLocaleTimeString("en-US", { timeZone: "America/Los_Angeles" })} PST
+              <span style={{ fontSize: "0.85rem", color: "var(--text-secondary)", fontWeight: 500, marginLeft: "12px" }}>
+                {now.toLocaleDateString("en-US", { timeZone: "America/Los_Angeles", weekday: "long", month: "long", day: "numeric", year: "numeric" })}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: "0.7rem", color: "var(--text-secondary)" }}>Auto-publishing Queue</div>
+            <strong style={{ color: "#00ffa3", fontSize: "0.95rem" }}>
+              {posts.filter((p) => p.status === "scheduled").length} Scheduled Posts
+            </strong>
+          </div>
         </div>
       </div>
 
@@ -486,24 +627,66 @@ export default function LanaScheduler() {
               .slice(0, 8)
               .map(p => {
                 const meta = TYPE_META[p.type];
+                const countdown = getPostCountdown(p.date, p.time, p.status);
                 return (
-                  <button key={p.id} className="sched-upcoming-item" onClick={() => setSelected(p)}>
-                    <span className="sched-upcoming-icon" style={{ color: meta.color }}>{meta.icon}</span>
-                    <div className="sched-upcoming-info">
-                      <span className="sched-upcoming-title">{p.title}</span>
-                      <span className="sched-upcoming-date">{p.date} · {p.time} · {p.channel}</span>
+                  <div
+                    key={p.id}
+                    className="sched-upcoming-item"
+                    style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", width: "100%", padding: "12px 16px" }}
+                  >
+                    <div
+                      onClick={() => setSelected(p)}
+                      style={{ display: "flex", alignItems: "center", gap: "12px", flex: 1, cursor: "pointer", overflow: "hidden" }}
+                    >
+                      <span className="sched-upcoming-icon" style={{ color: meta.color, flexShrink: 0 }}>{meta.icon}</span>
+                      <div className="sched-upcoming-info" style={{ overflow: "hidden" }}>
+                        <span className="sched-upcoming-title" style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "block" }}>{p.title}</span>
+                        <span className="sched-upcoming-date" style={{ fontSize: "0.75rem", color: "var(--text-secondary)" }}>
+                          {p.date} · {p.time} · {p.channel}
+                        </span>
+                        <div style={{ fontSize: "0.72rem", fontWeight: 700, color: countdown.type === "overdue" ? "#ff9500" : "#00d4ff", marginTop: "2px" }}>
+                          {countdown.label}
+                        </div>
+                      </div>
                     </div>
-                    <div className="sched-upcoming-right">
-                      <span className="sched-status-badge"
-                        style={{ color: p.status==="scheduled"?"#00d4ff":"#ff9500", borderColor: p.status==="scheduled"?"#00d4ff44":"#ff950044" }}>
-                        {p.status}
-                      </span>
-                      <span className="sched-seo-mini"
-                        style={{ color: p.seoScore>=85?"#00ffa3":p.seoScore>=65?"#00d4ff":"#ff9500" }}>
-                        SEO {p.seoScore}
-                      </span>
+
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handlePublishNow(p.id, p.title);
+                        }}
+                        style={{
+                          padding: "6px 14px",
+                          borderRadius: "6px",
+                          background: "#00ffa3",
+                          color: "#000000",
+                          fontWeight: 800,
+                          fontSize: "0.75rem",
+                          border: "none",
+                          cursor: "pointer",
+                          whiteSpace: "nowrap",
+                          boxShadow: "0 0 10px rgba(0,255,163,0.3)",
+                        }}
+                      >
+                        🚀 Post Now
+                      </button>
+                      <button
+                        onClick={() => setSelected(p)}
+                        style={{
+                          padding: "6px 10px",
+                          borderRadius: "6px",
+                          background: "rgba(255,255,255,0.06)",
+                          color: "var(--text-secondary)",
+                          fontSize: "0.75rem",
+                          border: "1px solid var(--border-subtle)",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Details
+                      </button>
                     </div>
-                  </button>
+                  </div>
                 );
               })}
             {filteredPosts.filter(p => p.status !== "published").length === 0 && (
@@ -514,7 +697,14 @@ export default function LanaScheduler() {
       </div>
 
       {/* Modal */}
-      {selected && <PostModal post={selected} onClose={() => setSelected(null)} onDelete={handleDelete} />}
+      {selected && (
+        <PostModal
+          post={selected}
+          onClose={() => setSelected(null)}
+          onDelete={handleDelete}
+          onPublishNow={handlePublishNow}
+        />
+      )}
     </div>
   );
 }

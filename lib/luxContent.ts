@@ -79,7 +79,14 @@ export interface TvEpisode {
   draft?: boolean;
 }
 
+import { getPosts } from "@/lib/scheduleStore";
+
 export function isArticlePublished(article: BlogArticle): boolean {
+  const storePosts = getPosts();
+  const matched = storePosts.find((p) => p.slug === article.slug);
+  if (matched) {
+    return matched.status === "published";
+  }
   if (article.status === "scheduled" || article.status === "draft" || article.draft) {
     return false;
   }
@@ -87,6 +94,11 @@ export function isArticlePublished(article: BlogArticle): boolean {
 }
 
 export function isTvEpisodePublished(episode: TvEpisode): boolean {
+  const storePosts = getPosts();
+  const matched = storePosts.find((p) => p.slug === episode.slug);
+  if (matched) {
+    return matched.status === "published";
+  }
   if (episode.status === "scheduled" || episode.status === "draft" || episode.draft) {
     return false;
   }

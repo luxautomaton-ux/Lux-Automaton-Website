@@ -1521,6 +1521,88 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 
 export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
   {
+    slug: "ai-ugc-studio",
+    audience: "Lux Automaton",
+    title: "AI UGC Studio: Build AI UGC Systems. Scale Content. Grow Brands.",
+    level: "Intermediate",
+    ageBand: "Creators, Marketers & Founders",
+    duration: "120 minutes (2 hrs)",
+    image: "/images/01-thumbnail-ai-ugc-studio.jpg",
+    thumbnail: "/images/01-thumbnail-ai-ugc-studio.jpg",
+    brandLogo: "/images/lux-automaton-logo.png",
+    workbookPdfUrl: "/documents/AI_UGC_Studio_Participant_Workbook.docx",
+    facilitatorDeckPdfUrl: "/documents/AI_UGC_Studio_Facilitator_Deck.pptx",
+    fullGuidePdfUrl: "/documents/AI_UGC_Studio_Full_Workshop_Guide.pdf",
+    downloadFiles: [
+      { title: "Full Workshop Guide (PDF)", url: "/documents/AI_UGC_Studio_Full_Workshop_Guide.pdf" },
+      { title: "Participant Workbook (DOCX)", url: "/documents/AI_UGC_Studio_Participant_Workbook.docx" },
+      { title: "Facilitator Deck (PPTX)", url: "/documents/AI_UGC_Studio_Facilitator_Deck.pptx" },
+      { title: "Workshop Architecture (JSON)", url: "/documents/AI_UGC_Studio_Workshop.json" },
+    ],
+    description: "Build realistic AI Creator videos, UGC advertising pipelines, character consistency systems, and automated video workflows without prompt-engineering friction. Asa Pritchard and LANA lead this hands-on creator studio.",
+    outcome: "Complete AI UGC video ad script, consistent AI creator character profile, scene planner, prompt library, and a multi-platform content distribution pipeline.",
+    materials: [
+      "Lux Creator Studio Workspace",
+      "Character DNA Worksheet",
+      "Product Story Builder Template",
+      "Scene & Motion Planner",
+      "Master Prompt Builder Matrix"
+    ],
+    learningGoals: [
+      "Define AI UGC character consistency systems without facial distortion.",
+      "Structure high-converting 15-second and 30-second AI creator video ads.",
+      "Connect AI script generation, voice cloning, and motion synthesis tools.",
+      "Build multi-platform distribution campaigns for TikTok, Reels, and Shorts.",
+      "Apply human quality review and brand compliance standards."
+    ],
+    prerequisites: [
+      "Basic understanding of social media video formats.",
+      "Access to a computer browser with internet connectivity."
+    ],
+    safetyNotes: [
+      "Always obtain proper rights and consent for voice models and likenesses.",
+      "Maintain clear brand transparency for synthetic AI spokespersons.",
+      "Verify product claims against real business evidence before ad deployment."
+    ],
+    lessons: [
+      {
+        title: "Module 1 — AI UGC Architecture & Character DNA",
+        duration: "25 min",
+        activity: "Design an AI creator character profile and brand voice consistency template.",
+        tips: ["Focus on realistic skin textures and lighting consistency.", "Lock prompt seeds for repeatable character generation."],
+        checkIn: "Does your character look consistent across 3 distinct camera angles?"
+      },
+      {
+        title: "Module 2 — High-Converting Product Scripting & Hooks",
+        duration: "25 min",
+        activity: "Draft 3 visual hooks and a 30-second UGC ad script using problem-solution frameworks.",
+        tips: ["Hook the viewer in the first 1.5 seconds.", "Use natural pauses and speech cadences."],
+        checkIn: "Does the hook isolate a real customer problem?"
+      },
+      {
+        title: "Module 3 — Scene Planning & Motion Generation",
+        duration: "30 min",
+        activity: "Generate 5 core video scenes with lip-sync, micro-expressions, and product cutaways.",
+        tips: ["Match lighting direction between character plates and product plates.", "Use subtle camera movement."],
+        checkIn: "Do the character movements feel natural and grounded?"
+      },
+      {
+        title: "Module 4 — Voice Synthesis & Multi-Track Assembly",
+        duration: "20 min",
+        activity: "Synthesize vocal tracks, add background ambient sound, and synchronize captions.",
+        tips: ["Normalize audio volume across scenes.", "Use auto-highlighted captions for mobile views."],
+        checkIn: "Is the voice pacing natural and clear?"
+      },
+      {
+        title: "Module 5 — Campaign Launch & Distribution Automation",
+        duration: "20 min",
+        activity: "Export final video renders and set up automated multi-channel posting schedules.",
+        tips: ["Test 3 variant thumbnails per video.", "Track 3-second hook retention metrics."],
+        checkIn: "Is your video ready for ad placement and organic posting?"
+      }
+    ]
+  },
+  {
     slug: "your-first-video-game",
     audience: "Lux AI Kids",
     title: "Your First Video Game: Imagine It. Draw It. Play It!",

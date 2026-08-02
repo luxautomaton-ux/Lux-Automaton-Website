@@ -184,6 +184,18 @@ function buildRealPosts(): ScheduledPost[] {
       seoScore: 95,
     },
     {
+      id: "workshop-ai-ugc-studio",
+      slug: "ai-ugc-studio",
+      title: "AI UGC Studio: Build Realistic AI Creator Videos Without Writing Prompts",
+      type: "workshop",
+      status: "scheduled",
+      date: parseDate("August 3, 2026"),
+      time: "09:00",
+      channel: "Lux Automaton",
+      tags: ["AI UGC", "Creator Lab", "Workshop", "Video Ads"],
+      seoScore: 96,
+    },
+    {
       id: "blog-asa-ep5",
       slug: "asa-lana-ep5-when-the-story-learns-to-see",
       title: "Asa + LANA EP5: When the Story Learns to See",

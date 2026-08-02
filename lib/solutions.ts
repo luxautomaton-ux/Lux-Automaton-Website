@@ -271,6 +271,278 @@ export const SOLUTIONS: Solution[] = [
     },
     icon: '🌐',
   },
+  {
+    slug: 'inland-circle',
+    name: 'Inland Circle Program OS',
+    category: 'Community / Nonprofit Program Operations',
+    tagline: 'Community Work Needs a Real Operating System.',
+    accentColor: 'var(--cyan)',
+    bgImage: '/images/inland-circle-hero.png',
+    description:
+      'Inland Circle Program OS is a program operations system designed to support community-based organizations. It helps organize participants, outreach, staff tasks, events, resources, volunteer workflows, and reporting in one connected structure.',
+    problem:
+      'Community programs often carry serious responsibilities with limited staff, limited time, and too many disconnected tools. Program OS brings structure to the daily work so teams can support people more consistently.',
+    useCases: [
+      'Participant intake tracking',
+      'Outreach tracking',
+      'Resource directory management',
+      'Staff task workflows',
+      'Event planning',
+      'Volunteer coordination',
+      'Program reporting',
+      'Grant/funder update support',
+      'Community communication',
+      'Internal SOPs',
+      'Follow-up reminders',
+    ],
+    features: [
+      'Participant workflow support',
+      'Staff task structure',
+      'Event planning',
+      'Resource directory',
+      'Volunteer coordination',
+      'Reporting support',
+      'SOP library',
+      'AI assistant guidance',
+      'Program dashboard',
+      'Success Pack compatibility',
+      'Custom role workflows',
+    ],
+    audience: [
+      'Nonprofits',
+      'Community programs',
+      'Outreach teams',
+      'Youth support programs',
+      'Housing support programs',
+      'Reentry programs',
+      'Mentorship programs',
+      'Resource navigation teams',
+      'Program administrators',
+    ],
+    ecosystemConnection:
+      'Program OS uses Lux Agent to guide staff workflows, Lux Coder to build custom tools, Lux Agent USB for local-first operations, and Success Packs for repeatable program playbooks.',
+    primaryCta: { label: 'Explore Program OS', href: '/contact' },
+    secondaryCta: { label: 'Book a Community Systems Demo', href: '/contact' },
+    fiveWH: {
+      who: {
+        headline: 'For Community Organizations Doing Critical Work with Limited Resources',
+        body: 'Nonprofits, outreach teams, youth support programs, housing programs, reentry programs, mentorship organizations, and resource navigation teams — any mission-driven organization that serves people and needs a better way to track, coordinate, and execute the work.',
+      },
+      what: {
+        headline: 'An AI-Assisted Program Operations System for Community Organizations',
+        body: 'Program OS organizes the operational infrastructure of community programs. Participant intake, outreach tracking, staff tasks, event coordination, resource directories, volunteer workflows, and funder reporting — all structured and AI-guided in one connected system.',
+      },
+      when: {
+        headline: 'Every Day Your Team Shows Up to Serve the Community',
+        body: 'Intake sessions. Outreach visits. Event planning. Volunteer coordination. Funder reporting deadlines. Staff onboarding. Program OS supports your team through every operational moment — so no one falls through the cracks and nothing important gets forgotten.',
+      },
+      where: {
+        headline: 'In Your Community, In Your Office, In the Field',
+        body: 'Program OS works wherever your team works. Office-based administrators access dashboards and reports. Field staff use mobile-accessible workflows. Lux Agent USB supports local-first operations for teams without reliable internet. The system meets your team where they are.',
+      },
+      why: {
+        headline: 'Because the People You Serve Deserve an Organized Team Behind Them',
+        body: 'Disorganization in community programs is not just inefficient — it affects the people you serve. Missed follow-ups, duplicated outreach, and lost referrals have real consequences. Program OS brings structure and consistency to your operations so your impact matches your intention.',
+      },
+      how: {
+        headline: 'Configure. Deploy. Serve Better.',
+        body: 'Partner with Lux Automaton to build your Program OS system. Define your participant workflows, staff roles, event templates, and reporting structure. Load your Success Pack with your program SOPs. Lux Agent guides daily execution. Your team follows the system — the system serves the mission.',
+      },
+    },
+    icon: '🌐',
+  },
+  {
+    slug: 'contractor-os',
+    name: 'Contractor OS',
+    category: 'Field Trades / Independent Contractors',
+    tagline: 'Trade Operations & Field Workflow Automation.',
+    accentColor: 'var(--amber)',
+    bgImage: '/images/epic-electric-hero.png',
+    description:
+      'Contractor OS is an AI-powered field operations system designed for electricians, plumbers, HVAC technicians, roofers, and general contractors to manage leads, quotes, job notes, customer communication, and invoicing.',
+    problem:
+      'Field contractors spend up to 15 hours a week managing quotes, texts, receipts, phone calls, and dispatch paperwork instead of focusing on billed trade work.',
+    useCases: [
+      'Lead intake & smart dispatching',
+      'Instant job estimates & quote builder',
+      'Field service checklists & photo logs',
+      'Automated customer SMS updates',
+      'Invoice generation & payment follow-up',
+      'Review & referral automation',
+    ],
+    features: [
+      'Contractor CRM pipeline',
+      'Job photo & notes archive',
+      'Offline-capable Lux Agent USB integration',
+      'Custom invoice playbooks',
+      'Customer review automation',
+    ],
+    audience: [
+      'Independent contractors',
+      'Field service technicians',
+      'Electricians, plumbers & HVAC pros',
+      'Small trade crews',
+    ],
+    ecosystemConnection:
+      'Contractor OS uses Lux Agent USB for offline field operations, Lux Agent for automated customer follow-ups, and Success Packs for standardized quote and job templates.',
+    primaryCta: { label: 'Explore Contractor OS', href: '/contact' },
+    secondaryCta: { label: 'Book Field Systems Demo', href: '/contact' },
+    fiveWH: {
+      who: {
+        headline: 'Built for Independent Contractors and Trade Crews',
+        body: 'Trade professionals who want to eliminate administrative drag and run a professional, high-margin field business.',
+      },
+      what: {
+        headline: 'An AI-Powered Operations Backbone for Field Trades',
+        body: 'Organizes quotes, scheduling, job logs, client communication, and payments into one seamless mobile workflow.',
+      },
+      when: {
+        headline: 'From First Client Lead to Final Payment',
+        body: 'Runs continuously behind your field work — logging job notes on site and generating quotes before you leave the driveway.',
+      },
+      where: {
+        headline: 'In Your Truck, On Job Sites, On Your Phone',
+        body: 'Works anywhere on mobile or offline via Lux Agent USB.',
+      },
+      why: {
+        headline: 'Never Lose a Job to Delayed Quotes or Forgotten Follow-Ups',
+        body: 'Speeds up estimate delivery by 80% and ensures every completed job triggers a review request.',
+      },
+      how: {
+        headline: 'Deploy. Load Success Pack. Run Your Trade.',
+        body: 'Configure your trade pricing, load your job checklists, and let Lux Agent handle field administration.',
+      },
+    },
+    icon: '🛠️',
+  },
+  {
+    slug: 'creator-os',
+    name: 'Creator OS',
+    category: 'Media Production / AI Studio Engine',
+    tagline: 'Turn Ideas Into Production-Ready Explainer & Video Operations.',
+    accentColor: 'var(--purple)',
+    bgImage: '/images/baoyu-comic-illustrator-hero.png',
+    description:
+      'Creator OS is an AI video and content production operating system. It connects story bibles, beat maps, visual continuity locks, script generation, and multi-platform publishing into a synchronized creator pipeline.',
+    problem:
+      'Video creators and production teams struggle with character visual drift, scattered script drafts, manual video planning, and slow publishing cadence.',
+    useCases: [
+      'Story Bible Core & Character Identity Locks',
+      'AI explainer video beat maps',
+      'Visual asset & prompt generation',
+      'Multi-channel script formatting',
+      'Production perception audits',
+      'Automated episode publishing',
+    ],
+    features: [
+      'Lux Codex story architecture integration',
+      'Explainer video production planner',
+      'Visual perception audit engine',
+      'Content bridge distribution workflows',
+      'Multi-modal prompt memory',
+    ],
+    audience: [
+      'YouTube creators & video producers',
+      'EdTech & course builders',
+      'Digital media studios',
+      'Brand storytelling teams',
+    ],
+    ecosystemConnection:
+      'Creator OS connects Lux Agent for narrative planning, Lux Coder for automated video pipelines, and Lux Codex schemas for character and story continuity.',
+    primaryCta: { label: 'Explore Creator OS', href: '/contact' },
+    secondaryCta: { label: 'See Explainer Factory', href: '/blog/how-codex-can-direct-an-ai-explainer-video-factory' },
+    fiveWH: {
+      who: {
+        headline: 'Built for High-Velocity Content Creators and Studios',
+        body: 'Producers, creators, and agencies who want to produce consistent, high-grade AI series without losing visual continuity or creative control.',
+      },
+      what: {
+        headline: 'An AI Video Factory & Narrative Operating System',
+        body: 'Synchronizes your story bibles, character identity locks, scene beat maps, and video publishing pipelines.',
+      },
+      when: {
+        headline: 'From Concept Brainstorm to Scheduled Episode Release',
+        body: 'Powers your studio production cycle daily, keeping character memory and lore locked across episodes.',
+      },
+      where: {
+        headline: 'In Your Local Studio or Cloud Pipeline',
+        body: 'Runs in your production workspace with local asset safety.',
+      },
+      why: {
+        headline: 'Eliminate Character Drift and Production Bottlenecks',
+        body: 'Scale video output 5x while maintaining director-level artistic control and episode continuity.',
+      },
+      how: {
+        headline: 'Connect Story Bible. Map Beats. Publish Series.',
+        body: 'Use Lux Codex templates to define characters, generate beat maps, and run perception audits before publishing.',
+      },
+    },
+    icon: '🎨',
+  },
+  {
+    slug: 'small-business-os',
+    name: 'Small Business OS',
+    category: 'Retail / Local Commerce Operations',
+    tagline: 'Automate Local Commerce, Inventory & Customer Systems.',
+    accentColor: 'var(--blue)',
+    bgImage: '/images/page-hero-waves.png',
+    description:
+      'Small Business OS is an all-in-one operational system for retail stores, boutique services, local shops, and e-commerce brands to manage customer inquiries, local marketing, inventory workflows, and daily sales reviews.',
+    problem:
+      'Small business owners spend their days context-switching between customer messages, social media posts, inventory checks, vendor emails, and staff schedules.',
+    useCases: [
+      'Local customer message automation',
+      'Social content & local SEO generator',
+      'Inventory reorder alerts & supplier tracking',
+      'Staff shift checklists & daily briefings',
+      'Customer loyalty & review workflows',
+      'Weekly financial & operational reviews',
+    ],
+    features: [
+      'Omnichannel inbox assistant',
+      'Local SEO & Google Business optimizer',
+      'Automated customer follow-up playbooks',
+      'Daily operating dashboards',
+      'Success Pack retail templates',
+    ],
+    audience: [
+      'Retail store owners',
+      'Local boutique services',
+      'E-commerce brands',
+      'Small business founders',
+    ],
+    ecosystemConnection:
+      'Small Business OS uses Lux Agent for customer support automation, Lux Budgeter for scenario forecasting, and Success Packs for retail SOPs.',
+    primaryCta: { label: 'Explore Small Business OS', href: '/contact' },
+    secondaryCta: { label: 'Book Business Systems Demo', href: '/contact' },
+    fiveWH: {
+      who: {
+        headline: 'Built for Busy Main-Street Merchants and Local Founders',
+        body: 'Store owners and local service businesses who need enterprise-level operational efficiency without enterprise complexity.',
+      },
+      what: {
+        headline: 'An Operational System for Local Commerce',
+        body: 'Automates customer communications, local marketing, inventory workflows, and staff SOPs.',
+      },
+      when: {
+        headline: 'Every Business Day',
+        body: 'Handles customer inquiries 24/7 and generates morning staff briefings and end-of-day sales reviews automatically.',
+      },
+      where: {
+        headline: 'At Your Register, On Your Phone, In Store',
+        body: 'Accessible across desktop, tablet, and mobile devices.',
+      },
+      why: {
+        headline: 'Reclaim 10+ Hours a Week Spent on Manual Store Admin',
+        body: 'Drive more repeat visits, capture 5-star Google reviews, and keep daily store operations running smoothly.',
+      },
+      how: {
+        headline: 'Connect Channels. Load Playbooks. Grow Commerce.',
+        body: 'Set up your store channels, load retail Success Packs, and let LANA guide your daily operations.',
+      },
+    },
+    icon: '🏬',
+  },
 ];
 
 export default SOLUTIONS;

@@ -13,6 +13,10 @@ const POWERED_BY_MAP: Record<string, string[]> = {
   "lux-care-os": ["Lux Agent", "Lux Coder", "Success Packs"],
   "epic-electric": ["Lux Agent USB", "Lux Agent", "Success Packs", "Lux Coder"],
   "inland-circle-program-o": ["Lux Agent", "Lux Coder", "Lux Agent USB", "Success Packs"],
+  "inland-circle": ["Lux Agent", "Lux Coder", "Lux Agent USB", "Success Packs"],
+  "contractor-os": ["Lux Agent USB", "Lux Agent", "Success Packs"],
+  "creator-os": ["Lux Agent", "Lux Coder", "Lux Codex"],
+  "small-business-os": ["Lux Agent", "Lux Budgeter", "Success Packs"],
 };
 
 export default function SolutionCard({ solution, layout = "grid" }: SolutionCardProps) {

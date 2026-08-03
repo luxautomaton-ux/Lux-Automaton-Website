@@ -1,0 +1,98 @@
+{
+  "title": "Build a Platformer Game",
+  "slug": "build-a-platformer-game",
+  "audience": "Lux AI Kids",
+  "age_range": "9-13",
+  "level": "Builder",
+  "duration": "2.5 hours",
+  "tagline": "Jump. Build. Collect. Create Your Own World.",
+  "guiding_rule": "AI helps. People create. Ask a grown-up first.",
+  "outcome": [
+    "Platformer game concept",
+    "Hero design",
+    "Two level blueprints",
+    "Power-up system",
+    "Sprite ideas",
+    "Game pitch",
+    "Creator certificate"
+  ],
+  "missions": [
+    {
+      "n": "01",
+      "title": "Anatomy of a Platformer",
+      "time": "20 min",
+      "kids": "Discover the parts of a platformer: hero, platforms, goal, danger, and rewards.",
+      "make": "Platformer Parts Map",
+      "color": "#8A45FF"
+    },
+    {
+      "n": "02",
+      "title": "Design Your Hero",
+      "time": "20 min",
+      "kids": "Create a hero with a name, skills, personality, and mission.",
+      "make": "Hero Design Card",
+      "color": "#67D84D"
+    },
+    {
+      "n": "03",
+      "title": "Level 1: The Tutorial",
+      "time": "25 min",
+      "kids": "Build a safe first level that teaches the player how to play.",
+      "make": "Tutorial Level Blueprint",
+      "color": "#00A8FF"
+    },
+    {
+      "n": "04",
+      "title": "Level 2: The Challenge",
+      "time": "25 min",
+      "kids": "Add harder jumps, surprises, traps, enemies, and better rewards.",
+      "make": "Challenge Level Blueprint",
+      "color": "#FF4F7A"
+    },
+    {
+      "n": "05",
+      "title": "Power-Ups and Collectibles",
+      "time": "15 min",
+      "kids": "Design coins, hearts, shields, keys, and special boosts.",
+      "make": "Power-Up Cards",
+      "color": "#FF9F1C"
+    },
+    {
+      "n": "06",
+      "title": "Sprite Design Workshop",
+      "time": "25 min",
+      "kids": "Draw hero, enemy, item, and background sprites frame by frame.",
+      "make": "Sprite Studio Sheet",
+      "color": "#00B8B8"
+    },
+    {
+      "n": "07",
+      "title": "Game Pitch and Blueprint",
+      "time": "15 min",
+      "kids": "Explain your game idea like a young game designer.",
+      "make": "Game Pitch Sheet",
+      "color": "#4159FF"
+    }
+  ],
+  "materials": [
+    "Kid workbook",
+    "Print-and-play activity pack",
+    "Pencils",
+    "Markers",
+    "Scissors",
+    "Index cards",
+    "Stickers or tokens",
+    "Optional laptop/tablet"
+  ],
+  "files": {
+    "kid_workbook_pdf": "Kid_Materials/Lux_AI_Kids_Build_A_Platformer_Game_Kid_Workbook.pdf",
+    "kid_workbook_pptx": "Kid_Materials/Lux_AI_Kids_Build_A_Platformer_Game_Kid_Workbook.pptx",
+    "print_play_pdf": "Kid_Materials/Lux_AI_Kids_Build_A_Platformer_Print_and_Play_Pack.pdf",
+    "print_play_pptx": "Kid_Materials/Lux_AI_Kids_Build_A_Platformer_Print_and_Play_Pack.pptx",
+    "facilitator_guide_pdf": "Teaching_Materials/Lux_AI_Kids_Build_A_Platformer_Game_Facilitator_Guide.pdf",
+    "facilitator_guide_docx": "Teaching_Materials/Lux_AI_Kids_Build_A_Platformer_Game_Facilitator_Guide.docx",
+    "teaching_deck_pptx": "Teaching_Materials/Lux_AI_Kids_Build_A_Platformer_Game_Teaching_Deck.pptx",
+    "teaching_deck_pdf": "Teaching_Materials/Lux_AI_Kids_Build_A_Platformer_Game_Teaching_Deck.pdf",
+    "visual_assets": "Visual_Assets/"
+  }
+}

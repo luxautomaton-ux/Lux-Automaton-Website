@@ -220,6 +220,18 @@ function buildRealPosts(): ScheduledPost[] {
       seoScore: 95,
     },
     {
+      id: "workshop-build-a-platformer-game",
+      slug: "build-a-platformer-game",
+      title: "Build a Platformer Game: Jump. Build. Collect. Create Your Own World.",
+      type: "workshop",
+      status: "scheduled",
+      date: parseDate("August 6, 2026"),
+      time: "09:00",
+      channel: "Lux AI Kids",
+      tags: ["Platformer Game", "Lux AI Kids", "Game Design", "Builder Level"],
+      seoScore: 97,
+    },
+    {
       id: "blog-asa-ep4",
       slug: "asa-lana-ep4-building-the-story-bible-core",
       title: "Asa + LANA EP4: Building the Story Bible Core",

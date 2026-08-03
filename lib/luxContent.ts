@@ -1566,6 +1566,111 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 
 export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
   {
+    slug: "build-a-platformer-game",
+    audience: "Lux AI Kids",
+    title: "Build a Platformer Game: Jump. Build. Collect. Create Your Own World.",
+    level: "Intermediate",
+    ageBand: "Ages 9–13",
+    duration: "150 minutes (2.5 hrs)",
+    image: "/images/01-thumbnail-build-a-platformer.jpg",
+    thumbnail: "/images/01-thumbnail-build-a-platformer.jpg",
+    brandLogo: "/images/lux-ai-kids-logo.png",
+    workbookPdfUrl: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Kid_Workbook.pdf",
+    facilitatorDeckPdfUrl: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Teaching_Deck.pdf",
+    fullGuidePdfUrl: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Facilitator_Guide.pdf",
+    downloadFiles: [
+      { title: "Kid Workbook (PDF)", url: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Kid_Workbook.pdf" },
+      { title: "Kid Workbook (PPTX)", url: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Kid_Workbook.pptx" },
+      { title: "Print-and-Play Activity Pack (PDF)", url: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Print_and_Play_Pack.pdf" },
+      { title: "Print-and-Play Activity Pack (PPTX)", url: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Print_and_Play_Pack.pptx" },
+      { title: "Facilitator Guide (PDF)", url: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Facilitator_Guide.pdf" },
+      { title: "Facilitator Guide (DOCX)", url: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Facilitator_Guide.docx" },
+      { title: "Teaching Deck (PDF)", url: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Teaching_Deck.pdf" },
+      { title: "Teaching Deck (PPTX)", url: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Teaching_Deck.pptx" },
+      { title: "Printable Overview (PDF)", url: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Printable_Overview.pdf" },
+      { title: "Structured Workshop (JSON)", url: "/documents/workshops/build-a-platformer-game/Lux_AI_Kids_Build_A_Platformer_Game_Workshop.json" },
+    ],
+    description: "Young creators design, draw, and playtest a complete 2D platformer video game system across 7 epic missions. Guided by Ace and LANA, kids create their hero, level blueprints, power-ups, sprite animations, and pitch their game idea.",
+    outcome: "Each child leaves with a completed Hero Design Card, Tutorial Level Blueprint, Challenge Level Blueprint, Power-Up & Collectibles Cards, Sprite Studio Sheet, Game Pitch Blueprint, and Platformer Creator Certificate.",
+    materials: [
+      "Kid Workbook & Print-and-Play Pack",
+      "Pencils, markers, and child-safe scissors",
+      "Index cards for hero and power-up cards",
+      "Stickers or tokens for coins and rewards",
+      "Optional tablet or computer browser"
+    ],
+    learningGoals: [
+      "Identify the 5 core parts of a platformer game: hero, platforms, goal, danger, and rewards.",
+      "Design a hero character with unique jump skills, backstory, and personality.",
+      "Map out a safe Level 1 Tutorial blueprint to teach new players controls.",
+      "Build a Level 2 Challenge blueprint with traps, enemies, and obstacles.",
+      "Design power-up cards, collectibles, and frame-by-frame sprite animation sheets.",
+      "Pitch a completed game blueprint like a junior game creator."
+    ],
+    prerequisites: [
+      "No programming or game development experience required.",
+      "Imagination, curiosity, and eagerness to create!",
+      "A grown-up helper to guide activities and digital tools."
+    ],
+    safetyNotes: [
+      "AI helps. People create. Ask a grown-up first.",
+      "Never type full name, school, address, phone number, or private details into AI tools.",
+      "Use child-safe scissors and request adult assistance when cutting small cards.",
+      "AI prompt ideas are suggestions; the child remains the master game designer."
+    ],
+    lessons: [
+      {
+        title: "Mission 1 — Anatomy of a Platformer",
+        duration: "20 min",
+        activity: "Discover the parts of a platformer: hero, platforms, goal, danger, and rewards.",
+        tips: ["Look at classic 2D platformers for level inspiration."],
+        checkIn: "Can you point to your game's start point, hazard, and exit flag?"
+      },
+      {
+        title: "Mission 2 — Design Your Hero",
+        duration: "20 min",
+        activity: "Create your hero with a name, special jump skills, personality, and mission.",
+        tips: ["Give your hero one main skill like double jump or dash."],
+        checkIn: "What is your hero's name and special power?"
+      },
+      {
+        title: "Mission 3 — Level 1: The Tutorial",
+        duration: "25 min",
+        activity: "Build a safe first level that teaches the player how to jump and collect rewards.",
+        tips: ["Start easy with wide platforms before adding gaps."],
+        checkIn: "Does Level 1 teach movement without killing the player instantly?"
+      },
+      {
+        title: "Mission 4 — Level 2: The Challenge",
+        duration: "25 min",
+        activity: "Add harder jumps, moving platforms, traps, enemies, and secret rewards.",
+        tips: ["Place coins or health boosts before tough jump challenges."],
+        checkIn: "Is Level 2 challenging but still fun and fair?"
+      },
+      {
+        title: "Mission 5 — Power-Ups & Collectibles",
+        duration: "15 min",
+        activity: "Design coins, hearts, shields, speed boosts, and special keys.",
+        tips: ["Use distinct colors so players instantly recognize power-ups."],
+        checkIn: "What does your primary power-up item do when collected?"
+      },
+      {
+        title: "Mission 6 — Sprite Design Workshop",
+        duration: "25 min",
+        activity: "Draw hero, enemy, item, and background sprites frame-by-frame on grid sheets.",
+        tips: ["Draw idle, run, and jump poses for your hero."],
+        checkIn: "Does your sprite animation show clear motion?"
+      },
+      {
+        title: "Mission 7 — Game Pitch & Blueprint",
+        duration: "15 min",
+        activity: "Assemble your game blueprint and present your game pitch to the class or family.",
+        tips: ["Explain your story in two fun sentences."],
+        checkIn: "Are you ready to share your game pitch and receive your Creator Certificate?"
+      }
+    ]
+  },
+  {
     slug: "ai-ugc-studio",
     audience: "Lux Automaton",
     title: "AI UGC Studio: Build AI UGC Systems. Scale Content. Grow Brands.",

@@ -60,6 +60,9 @@ export interface WorkshopProgram {
   workbookPdfUrl?: string;
   facilitatorDeckPdfUrl?: string;
   fullGuidePdfUrl?: string;
+  date?: string;
+  status?: "published" | "scheduled" | "draft";
+  draft?: boolean;
 }
 
 export interface TvEpisode {
@@ -75,21 +78,24 @@ export interface TvEpisode {
   storyUrl?: string;
   description: string;
   tags: string[];
+  date?: string;
   status?: "published" | "scheduled" | "draft";
   draft?: boolean;
 }
 
-import { getPosts } from "@/lib/scheduleStore";
+import { getPosts, isPostDue } from "@/lib/scheduleStore";
 
 export function isArticlePublished(article: BlogArticle): boolean {
   const storePosts = getPosts();
   const matched = storePosts.find((p) => p.slug === article.slug);
   if (matched) {
-    return matched.status === "published";
-  }
-  if (article.status === "scheduled" || article.status === "draft" || article.draft) {
+    if (matched.status === "published") return true;
+    if (matched.status === "scheduled") return isPostDue(matched.date, matched.time);
     return false;
   }
+  if (article.status === "published") return true;
+  if (article.status === "scheduled") return isPostDue(article.date, "09:00");
+  if (article.status === "draft" || article.draft) return false;
   return true;
 }
 
@@ -97,11 +103,27 @@ export function isTvEpisodePublished(episode: TvEpisode): boolean {
   const storePosts = getPosts();
   const matched = storePosts.find((p) => p.slug === episode.slug);
   if (matched) {
-    return matched.status === "published";
-  }
-  if (episode.status === "scheduled" || episode.status === "draft" || episode.draft) {
+    if (matched.status === "published") return true;
+    if (matched.status === "scheduled") return isPostDue(matched.date, matched.time);
     return false;
   }
+  if (episode.status === "published") return true;
+  if (episode.status === "scheduled") return isPostDue(episode.date, "09:00");
+  if (episode.status === "draft" || episode.draft) return false;
+  return true;
+}
+
+export function isWorkshopPublished(workshop: WorkshopProgram): boolean {
+  const storePosts = getPosts();
+  const matched = storePosts.find((p) => p.slug === workshop.slug);
+  if (matched) {
+    if (matched.status === "published") return true;
+    if (matched.status === "scheduled") return isPostDue(matched.date, matched.time);
+    return false;
+  }
+  if (workshop.status === "published") return true;
+  if (workshop.status === "scheduled") return isPostDue(workshop.date, "09:00");
+  if (workshop.status === "draft") return false;
   return true;
 }
 
@@ -111,6 +133,10 @@ export function getPublishedArticles(): BlogArticle[] {
 
 export function getPublishedTvEpisodes(): TvEpisode[] {
   return LUX_TV_EPISODES.filter(isTvEpisodePublished);
+}
+
+export function getPublishedWorkshops(): WorkshopProgram[] {
+  return WORKSHOP_PROGRAMS.filter(isWorkshopPublished);
 }
 
 export const BLOG_ARTICLES: BlogArticle[] = [

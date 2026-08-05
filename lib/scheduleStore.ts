@@ -47,6 +47,30 @@ export function isBestTime(dateStr: string, timeStr: string): boolean {
   return (BEST_HOURS[day] ?? []).includes(hour);
 }
 
+export function isPostDue(dateStr?: string, timeStr: string = "09:00"): boolean {
+  if (!dateStr) return true;
+  try {
+    let year: number, month: number, day: number;
+    if (dateStr.includes("-")) {
+      const parts = dateStr.split("-").map(Number);
+      year = parts[0];
+      month = parts[1];
+      day = parts[2];
+    } else {
+      const d = new Date(dateStr);
+      if (isNaN(d.getTime())) return true;
+      year = d.getFullYear();
+      month = d.getMonth() + 1;
+      day = d.getDate();
+    }
+    const [hours, minutes] = (timeStr || "09:00").split(":").map(Number);
+    const target = new Date(year, month - 1, day, hours || 9, minutes || 0);
+    return target.getTime() <= Date.now();
+  } catch {
+    return true;
+  }
+}
+
 // ── Store ─────────────────────────────────────────────────────────────────────
 
 type Listener = (posts: ScheduledPost[]) => void;
@@ -65,6 +89,15 @@ export function subscribe(fn: Listener): () => void {
 }
 
 export function getPosts(): ScheduledPost[] {
+  let changed = false;
+  posts = posts.map((p) => {
+    if (p.status === "scheduled" && isPostDue(p.date, p.time)) {
+      changed = true;
+      return { ...p, status: "published" };
+    }
+    return p;
+  });
+  if (changed) notify();
   return [...posts];
 }
 
@@ -610,8 +643,13 @@ function buildRealPosts(): ScheduledPost[] {
     },
   ];
 
-  return raw.map((item) => ({
-    ...item,
-    bestTime: isBestTime(item.date, item.time),
-  }));
+  return raw.map((item) => {
+    const due = isPostDue(item.date, item.time);
+    const effectiveStatus: PostStatus = (item.status === "scheduled" && due) ? "published" : item.status;
+    return {
+      ...item,
+      status: effectiveStatus,
+      bestTime: isBestTime(item.date, item.time),
+    };
+  });
 }

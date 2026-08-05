@@ -115,6 +115,51 @@ export function getPublishedTvEpisodes(): TvEpisode[] {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "asa-lana-ep8-the-story-remembers",
+    audience: "Lux Automaton",
+    title: "Asa + LANA EP8: The Story Remembers",
+    deck: "How the Lux Codex turns every choice, consequence, boundary, and approval into a living narrative memory that protects continuity without taking control away from the creator.",
+    date: "August 7, 2026",
+    readTime: "9 min read",
+    category: "Cinematic AI & Narrative Engineering",
+    image: "/images/01-thumbnail-asa-lana-ep8.png",
+    video: "/videos/asa-lana-ep8-the-story-remembers.mp4",
+    plannerUrl: "/documents/narrative-core-decision-workbook.html",
+    status: "scheduled",
+    takeaways: [
+      "01 — A living story needs more than saved scenes: Narrative Core connects memory nodes, origin events, decision points, narrative threads, and consequences.",
+      "02 — Boundaries protect memory from becoming control: story, memory, and action boundaries isolate unapproved fragments and contain breaches.",
+      "03 — Human approval keeps the future aligned: intent, ethics, impact, continuity, authority, and reversibility checks ensure only human-approved choices become canon."
+    ],
+    body: [
+      "Episode 8 brings the central promise of **Asa + LANA: The Story Remembers** into focus.",
+      "The Lux Codex can now preserve characters, locations, scenes, timelines, perception records, world state, and approved changes. But memory alone is not the final goal. A story system must also understand relationships between moments—recognizing that one decision changes what becomes possible next.",
+      "Episode 8 introduces the **Narrative Core**—the layer where memory, judgment, continuity, boundaries, and outcomes meet.",
+      "> **The story remembers because every accepted choice becomes part of what the future must respect.**",
+      "![Asa + LANA Episode 8 Poster](/images/01-thumbnail-asa-lana-ep8.png)",
+      "## 01 — A living story needs more than saved scenes",
+      "A folder of scenes is an archive. A narrative memory is a connected model of what happened, why it mattered, and what changed because of it.",
+      "Earlier episodes established Story Memory, Character Identity Locks, Reality Memory, Story Bible Core, Story Perception, Global Story Map, and the Canon Decision Ledger. Episode 8 connects those systems through the Narrative Core.",
+      "![Asa and LANA Memory Web](/images/02-photo-memory-web.png)",
+      "### Origin events and decision points",
+      "An origin event creates a new branch in the story. A decision point is the moment when the story could move in more than one direction. The system preserves options considered, risks, recommended paths, rejected paths, human decisions, reasons, and actual outcomes.",
+      "## 02 — Boundaries protect the difference between memory and control",
+      "Episode 8 introduces one of the most important ideas in the series: **a system needs limits around what it is allowed to remember, change, and influence.**",
+      "![Story Boundary Breach](/images/03-photo-story-boundary-breach.png)",
+      "### Story, Memory, and Action Boundaries",
+      "The story boundary defines what belongs inside the project. The memory boundary defines what can become durable (allowing approved scene outcomes while forbidding credentials or private client data). The action boundary ensures LANA flags risks and isolates fragments without independently publishing or overriding human decisions.",
+      "## 03 — Human approval keeps the future aligned with intent",
+      "Episode 8 ends where the Lux system must always return: human judgment. The Narrative Core can show memory, risks, outcomes, and recommended paths, but it cannot replace creator responsibility.",
+      "![Human Approval Gate](/images/04-photo-human-approval-gate.png)",
+      "### Approval is more than permission",
+      "A strong approval evaluates Intent, Ethics, Impact, Continuity, Authority, and Reversibility. The system compares expected and actual outcomes so the story learns from every choice.",
+      "![Asa + LANA Episode 8 Overview](/images/05-story-remembers-overview.png)",
+      "> **“The story remembers the choice. The creator remains responsible for what comes next.” — Asa Pritchard**\n\n**Learn AI. Build Tomorrow. Change the World. — LANA**",
+      "## Downloads & Subscriber Tools",
+      "Download the **Narrative Core Decision Workbook** (`/documents/narrative-core-decision-workbook.html`), **Lux Codex JSON Template** (`/documents/lux-codex-narrative-core-template.json`), **HTML Edition** (`/documents/asa-lana-ep8-the-story-remembers.html`), and **Markdown Source** (`/documents/asa-lana-ep8-the-story-remembers.md`)."
+    ]
+  },
+  {
     slug: "claude-design-3d-scrolling-animations",
     audience: "Lux Automaton",
     title: "Claude Design 3.0: How to Build Cinematic 3D Scrolling Animations",
@@ -1562,6 +1607,53 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "When the pieces connect, the site stops feeling like a brochure. It becomes a place where the community can learn, build, and come back next week."
     ],
   },
+{
+  slug: "how-local-ai-models-help-small-businesses-create-content-without-anoth",
+  audience: "Lux Automaton",
+  title: "How Local AI Models Help Small Businesses Create Content Without Another Monthly Subscription",
+  deck: "# How Local AI Models Help Small Businesses Create Content Without Another Monthly Subscription",
+  date: "August 4, 2026",
+  readTime: "1 min read",
+  category: "Lux Automaton · Auto Editorial",
+  image: "/images/blog-hero-backdrop.jpg",
+  takeaways: [
+    "How Local AI Models Help Small Businesses Create Content Without Another Monthly Subscription",
+    "How local AI models enable small businesses to automate content creation and workflows cleanly without recurring SaaS subscriptions.",
+    "1. The Hidden Cost of Recurring AI Subscriptions\nSmall businesses often spend hundreds of dollars per month on scattered AI SaaS tools... Local Ollama and Hermes models allow running powerful LLMs directly on local hardware."
+  ],
+  body: [
+    "# How Local AI Models Help Small Businesses Create Content Without Another Monthly Subscription",
+    "How local AI models enable small businesses to automate content creation and workflows cleanly without recurring SaaS subscriptions.",
+    "## 1. The Hidden Cost of Recurring AI Subscriptions\nSmall businesses often spend hundreds of dollars per month on scattered AI SaaS tools... Local Ollama and Hermes models allow running powerful LLMs directly on local hardware.",
+    "## 2. Setting Up Your Local Content Engine\nUsing Lux Codex with local models gives you complete privacy, zero monthly fees, and continuous availability.",
+    "## 3. Workflow Automation & Governance\nDrafting, reviewing, and publishing become streamlined when local models work alongside human approval."
+  ],
+}
+,
+
+{
+  slug: "how-local-ai-models-help-small-businesses-create-content-without-anoth",
+  audience: "Lux Automaton",
+  title: "How Local AI Models Help Small Businesses Create Content Without Another Monthly Subscription",
+  deck: "# How Local AI Models Help Small Businesses Create Content Without Another Monthly Subscription",
+  date: "August 4, 2026",
+  readTime: "1 min read",
+  category: "Lux Automaton · Auto Editorial",
+  image: "/images/blog-hero-backdrop.jpg",
+  takeaways: [
+    "How Local AI Models Help Small Businesses Create Content Without Another Monthly Subscription",
+    "How local AI models enable small businesses to automate content creation and workflows cleanly without recurring SaaS subscriptions.",
+    "1. The Hidden Cost of Recurring AI Subscriptions\nSmall businesses often spend hundreds of dollars per month on scattered AI SaaS tools... Local Ollama and Hermes models allow running powerful LLMs directly on local hardware."
+  ],
+  body: [
+    "# How Local AI Models Help Small Businesses Create Content Without Another Monthly Subscription",
+    "How local AI models enable small businesses to automate content creation and workflows cleanly without recurring SaaS subscriptions.",
+    "## 1. The Hidden Cost of Recurring AI Subscriptions\nSmall businesses often spend hundreds of dollars per month on scattered AI SaaS tools... Local Ollama and Hermes models allow running powerful LLMs directly on local hardware.",
+    "## 2. Setting Up Your Local Content Engine\nUsing Lux Codex with local models gives you complete privacy, zero monthly fees, and continuous availability.",
+    "## 3. Workflow Automation & Governance\nDrafting, reviewing, and publishing become streamlined when local models work alongside human approval."
+  ],
+}
+
 ];
 
 export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
@@ -2599,6 +2691,53 @@ export const WORKSHOP_PROGRAMS: WorkshopProgram[] = [
     materials: ["Portfolio template", "Research tracker", "Reflection guide"],
     lessons: ["Choose a project", "Research with source checks", "Build a prototype", "Document the process", "Present and reflect"],
   },
+{
+  slug: "build-your-local-ai-content-system",
+  audience: "Lux Automaton",
+  title: "Build Your Local AI Content System",
+  level: "Beginner",
+  ageBand: "All ages",
+  duration: "Self-paced · 60 minutes",
+  image: "/images/00_workshop_hero.png",
+  thumbnail: "/images/00_workshop_thumbnail_your_first_video_game.png",
+  description: "# Workshop: Build Your Local AI Content System",
+  outcome: "# Workshop: Build Your Local AI Content System",
+  materials: [],
+  lessons: [
+    {
+    title: "Core session",
+    duration: "60 minutes",
+    activity: "# Workshop: Build Your Local AI Content System\n\nComprehensive workshop for building and operating your local AI content system.\n\n## Facilitator Notes\nDuration: 2.5 Hours.\nTarget Audience: Business Owners, Developers & Operations Leads.\n\n## Module Structure\n- Module 1: Local Model Setup & Hardware Requirements\n- Module 2: Prompt Engineering & Template Generation\n- Module 3: Persistent Scheduling & SQLite Storage\n- Module 4: Governed Approvals & Local Site Publishing",
+    tips: [],
+    checkIn: "",
+  }
+  ],
+}
+,
+
+{
+  slug: "build-your-local-ai-content-system",
+  audience: "Lux Automaton",
+  title: "Build Your Local AI Content System",
+  level: "Beginner",
+  ageBand: "All ages",
+  duration: "Self-paced · 60 minutes",
+  image: "/images/00_workshop_hero.png",
+  thumbnail: "/images/00_workshop_thumbnail_your_first_video_game.png",
+  description: "# Workshop: Build Your Local AI Content System",
+  outcome: "# Workshop: Build Your Local AI Content System",
+  materials: [],
+  lessons: [
+    {
+    title: "Core session",
+    duration: "60 minutes",
+    activity: "# Workshop: Build Your Local AI Content System\n\nComprehensive workshop for building and operating your local AI content system.\n\n## Facilitator Notes\nDuration: 2.5 Hours.\nTarget Audience: Business Owners, Developers & Operations Leads.\n\n## Module Structure\n- Module 1: Local Model Setup & Hardware Requirements\n- Module 2: Prompt Engineering & Template Generation\n- Module 3: Persistent Scheduling & SQLite Storage\n- Module 4: Governed Approvals & Local Site Publishing",
+    tips: [],
+    checkIn: "",
+  }
+  ],
+}
+
 ];
 
 /* ──── LUX AI KIDS WORKSHOP — Ace & Lana Teaching Lab ──── */
@@ -4257,7 +4396,21 @@ export const KIDS_WORKSHOPS: KidsWorkshop[] = [
 ];
 
 export const LUX_TV_EPISODES: TvEpisode[] = [
-      {
+  {
+    slug: "asa-lana-ep8-the-story-remembers",
+    audience: "Lux Automaton",
+    title: "ASA + LANA: The Story Remembers — Episode 8",
+    status: "scheduled",
+    series: "ASA + LANA",
+    duration: "2m 20s",
+    rating: "All builders",
+    image: "/images/01-thumbnail-asa-lana-ep8.png",
+    video: "/videos/asa-lana-ep8-the-story-remembers.mp4",
+    storyUrl: "/blog/asa-lana-ep8-the-story-remembers",
+    description: "Asa + LANA Episode 8 introduces the Narrative Core: a Lux Codex system for connecting choices, boundaries, approvals, consequences, and outcomes into living story memory.",
+    tags: ["ASA + LANA", "Lux Codex", "Narrative Core", "Memory Boundaries", "Human Approval"],
+  },
+  {
     slug: "asa-lana-ep5-when-the-story-learns-to-see",
     audience: "Lux Automaton",
     title: "ASA + LANA: When the Story Learns to See — Episode 5",

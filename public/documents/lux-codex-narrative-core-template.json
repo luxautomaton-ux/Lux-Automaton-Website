@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "decision_id": "DEC-EP008-001",
+  "origin_event": {
+    "event_id": "",
+    "description": "",
+    "evidence": []
+  },
+  "active_memory": {
+    "characters": [],
+    "events": [],
+    "rules": [],
+    "boundaries": [],
+    "previous_approvals": []
+  },
+  "paths": [
+    {
+      "id": "A",
+      "description": "",
+      "benefits": [],
+      "risks": [],
+      "expected_outcomes": []
+    },
+    {
+      "id": "B",
+      "description": "",
+      "benefits": [],
+      "risks": [],
+      "expected_outcomes": []
+    },
+    {
+      "id": "C",
+      "description": "",
+      "benefits": [],
+      "risks": [],
+      "expected_outcomes": []
+    }
+  ],
+  "boundary_checks": {
+    "intent": false,
+    "ethics": false,
+    "impact": false,
+    "continuity": false,
+    "authority": false,
+    "reversibility": false
+  },
+  "recommendation": {
+    "path_id": "",
+    "reason": "",
+    "confidence": 0.0,
+    "evidence": []
+  },
+  "human_decision": {
+    "owner": "Asa",
+    "status": "pending",
+    "selected_path": "",
+    "notes": "",
+    "approved_at": ""
+  },
+  "execution": {
+    "allowed": false,
+    "actions": [],
+    "blocked_actions": []
+  },
+  "outcome_review": {
+    "expected": [],
+    "actual": [],
+    "differences": [],
+    "lessons": []
+  },
+  "memory_update": {
+    "approved_nodes": [],
+    "rejected_nodes": [],
+    "quarantined_nodes": [],
+    "next_requirements": []
+  }
+}

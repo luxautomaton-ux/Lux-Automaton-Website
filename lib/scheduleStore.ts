@@ -232,6 +232,18 @@ function buildRealPosts(): ScheduledPost[] {
       seoScore: 97,
     },
     {
+      id: "blog-asa-ep8",
+      slug: "asa-lana-ep8-the-story-remembers",
+      title: "Asa + LANA EP8: The Story Remembers",
+      type: "blog",
+      status: "scheduled",
+      date: parseDate("August 7, 2026"),
+      time: "09:00",
+      channel: "Lux Automaton",
+      tags: ["Cinematic AI", "Narrative Core", "Episode 8", "Series"],
+      seoScore: 96,
+    },
+    {
       id: "blog-asa-ep4",
       slug: "asa-lana-ep4-building-the-story-bible-core",
       title: "Asa + LANA EP4: Building the Story Bible Core",

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { PRODUCTS } from "@/lib/products";
 import { prefixPath } from "@/lib/prefix";
 import LuxBusinessLaunchBanner from "@/components/LuxBusinessLaunchBanner";
+import LuxAgentDNAMap from "@/components/LuxAgentDNAMap";
 
 const pathways = [
   { label: "Build", title: "AI systems that belong to you", copy: "Private agents, coding environments, business operating systems, and portable local intelligence.", href: "/products", tone: "cyan" },
@@ -104,6 +105,83 @@ export default function HomePage() {
       </section>
 
       <LuxBusinessLaunchBanner />
+
+      <section
+        id="agent-dna"
+        className="world-section"
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          paddingTop: "96px",
+          paddingBottom: "96px",
+          background:
+            "radial-gradient(circle at 50% 28%, rgba(44, 170, 255, 0.09), transparent 35%), radial-gradient(circle at 74% 58%, rgba(131, 71, 255, 0.08), transparent 36%)",
+        }}
+      >
+        <header className="world-section-head" style={{ alignItems: "end", marginBottom: "28px" }}>
+          <div>
+            <p>NEW / THE INTELLIGENCE LAYER</p>
+            <h2>
+              Meet Lux Agent <em>DNA™.</em>
+            </h2>
+            <span
+              style={{
+                display: "block",
+                maxWidth: "760px",
+                marginTop: "18px",
+                color: "#8ea8be",
+                fontSize: "1rem",
+                lineHeight: 1.7,
+              }}
+            >
+              We are engineering the identity, persona, voice, skills, memory, permissions, safeguards,
+              human approvals, recovery, and verification before the agent meets the messy parts of real work.
+            </span>
+          </div>
+          <Link href="/products/lux-agent-dna">Explore Lux Agent DNA™ ↗</Link>
+        </header>
+
+        <LuxAgentDNAMap compact />
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+            gap: "10px",
+            marginTop: "16px",
+          }}
+          className="home-dna-formula"
+        >
+          {[
+            ["Agent Pack™", "WHO is on your team"],
+            ["Success Pack™", "HOW your team works"],
+            ["Memory Pack™", "WHAT your team knows"],
+            ["Voice Pack™", "HOW your team sounds"],
+          ].map(([label, copy]) => (
+            <div
+              key={label}
+              style={{
+                padding: "15px 16px",
+                border: "1px solid rgba(75, 211, 255, 0.14)",
+                borderRadius: "12px",
+                background: "rgba(5, 17, 36, 0.72)",
+              }}
+            >
+              <b style={{ display: "block", color: "#edf7ff", fontSize: ".78rem" }}>{label}</b>
+              <span style={{ display: "block", marginTop: "4px", color: "#6f8ca6", fontSize: ".7rem" }}>{copy}</span>
+            </div>
+          ))}
+        </div>
+
+        <style>{`
+          @media (max-width: 780px) {
+            .home-dna-formula { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          }
+          @media (max-width: 480px) {
+            .home-dna-formula { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
+      </section>
 
       {/* Featured Lux App Review Cyber Banner */}
       <section className="world-app-review-banner-wrap" style={{ padding: "0 4vw", margin: "40px auto 0", maxWidth: "1400px" }}>

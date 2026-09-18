@@ -19,6 +19,59 @@ export default function ProductsPage() {
     <div style={{ paddingTop: "72px" }}>
       <ProductsHero />
       <EcosystemOverview />
+      <section style={{ padding: "0 24px 86px", background: "var(--bg-void)" }}>
+        <Link
+          href="/products/lux-agent-dna"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1.2fr) minmax(280px, .8fr)",
+            gap: "28px",
+            alignItems: "center",
+            maxWidth: "1280px",
+            margin: "0 auto",
+            padding: "34px",
+            border: "1px solid rgba(76, 213, 255, 0.24)",
+            borderRadius: "22px",
+            textDecoration: "none",
+            background:
+              "radial-gradient(circle at 72% 50%, rgba(139, 73, 255, 0.18), transparent 35%), linear-gradient(135deg, rgba(5, 25, 47, .96), rgba(10, 7, 35, .96))",
+            boxShadow: "0 22px 70px rgba(0,0,0,.36), 0 0 70px rgba(76,213,255,.06)",
+          }}
+          className="products-dna-banner"
+        >
+          <div>
+            <span style={{ color: "#5ce4ff", fontSize: ".64rem", fontWeight: 850, letterSpacing: ".18em" }}>
+              NEW / LUX AGENT DNA™
+            </span>
+            <h2 style={{ margin: "11px 0 12px", color: "#f3f9ff", fontSize: "clamp(2rem,3.6vw,3.4rem)", lineHeight: .96, letterSpacing: "-.05em" }}>
+              The intelligence layer behind business-ready Lux agents.
+            </h2>
+            <p style={{ margin: 0, maxWidth: "700px", color: "#8da8be", fontSize: ".95rem", lineHeight: 1.7 }}>
+              Identity. Persona. Voice. Skills. Memory. Permissions. Unknown-state handling. Recovery. Human approvals.
+              Receipts. Lux Verify. See how the pieces work together before the agent enters the real world.
+            </p>
+          </div>
+          <div style={{ display: "grid", gap: "8px" }}>
+            {[
+              ["Agent Pack™", "WHO"],
+              ["Success Pack™", "HOW"],
+              ["Memory Pack™", "WHAT IT KNOWS"],
+              ["Voice Pack™", "HOW IT SOUNDS"],
+            ].map(([name, meaning]) => (
+              <div key={name} style={{ display: "flex", justifyContent: "space-between", gap: "12px", padding: "11px 13px", border: "1px solid rgba(255,255,255,.08)", borderRadius: "10px", background: "rgba(255,255,255,.025)" }}>
+                <b style={{ color: "#eef8ff", fontSize: ".75rem" }}>{name}</b>
+                <span style={{ color: "#b177ff", fontSize: ".65rem", fontWeight: 850, letterSpacing: ".08em" }}>{meaning}</span>
+              </div>
+            ))}
+            <b style={{ marginTop: "7px", color: "#59e3ff", fontSize: ".76rem" }}>Explore Lux Agent DNA™ →</b>
+          </div>
+          <style>{`
+            @media (max-width: 760px) {
+              .products-dna-banner { grid-template-columns: 1fr !important; padding: 24px !important; }
+            }
+          `}</style>
+        </Link>
+      </section>
       <LiveProductsSection products={liveProducts} />
       <ComingSoonSection products={comingSoonProducts} />
       <EcosystemValueSection />

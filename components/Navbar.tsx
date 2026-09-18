@@ -12,6 +12,7 @@ const PRODUCTS_ITEMS = [
   { href: "/products/lux-jarvis", name: "Lux Jarvis", icon: "✦", desc: "AI Operations Partner" },
   { href: "/products/lana", name: "LANA", icon: "🌌", desc: "Interactive AI Soul & Partner" },
   { href: "/products/lux-agent-usb", name: "Lux Agent USB", icon: "💾", desc: "Portable OS Hardware" },
+  { href: "/products/lux-agent-dna", name: "Lux Agent DNA™", icon: "🧬", desc: "Identity, Voice, Judgment & Proof" },
   { href: "/products/lux-business", name: "Lux Business", icon: "🏢", desc: "All-in-One Enterprise Hub" },
   { href: "/products/lux-ai-kids", name: "Lux AI Kids", icon: "🌈", desc: "Kids AI Learning Platform" },
   { href: "/products/lux-tv", name: "Lux TV", icon: "▶", desc: "Video Network" },

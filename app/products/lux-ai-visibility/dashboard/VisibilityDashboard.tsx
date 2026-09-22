@@ -54,7 +54,18 @@ const initial: VisibilityAuditResult = {
   summary: "Sample preview data. Run your business below for a free, non-billable profile-completeness audit.",
 };
 
-const navItems = [\n  { icon: Gauge, label: "Overview", href: "#dashboard" },\n  { icon: Search, label: "Audit", href: "#audit-form" },\n  { icon: Building2, label: "Competitors", href: "#dashboard" },\n  { icon: TrendingUp, label: "Opportunities", href: "#dashboard" },\n  { icon: WandSparkles, label: "Content Fixes", href: "#dashboard" },\n  { icon: Bot, label: "LANA", href: "#dashboard" },\n  { icon: ShieldCheck, label: "Verify", href: "#dashboard" },\n  { icon: BarChart3, label: "Reports", href: "#dashboard" },\n];\n\nconst scoreMeta = [
+const navItems = [
+  { icon: Gauge, label: "Overview", href: "#dashboard" },
+  { icon: Search, label: "Audit", href: "#audit-form" },
+  { icon: Building2, label: "Competitors", href: "#dashboard" },
+  { icon: TrendingUp, label: "Opportunities", href: "#dashboard" },
+  { icon: WandSparkles, label: "Content Fixes", href: "#dashboard" },
+  { icon: Bot, label: "LANA", href: "#dashboard" },
+  { icon: ShieldCheck, label: "Verify", href: "#dashboard" },
+  { icon: BarChart3, label: "Reports", href: "#dashboard" },
+];
+
+const scoreMeta = [
   ["AI Visibility", "visibility", Gauge],
   ["GEO Score", "geo", Globe2],
   ["SEO Score", "seo", Search],

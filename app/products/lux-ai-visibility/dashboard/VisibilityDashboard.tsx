@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties, type FormEvent } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -54,7 +54,7 @@ const initial: VisibilityAuditResult = {
   summary: "Sample preview data. Run your business below for a free, non-billable profile-completeness audit.",
 };
 
-const scoreMeta = [
+const navItems = [\n  { icon: Gauge, label: "Overview", href: "#dashboard" },\n  { icon: Search, label: "Audit", href: "#audit-form" },\n  { icon: Building2, label: "Competitors", href: "#dashboard" },\n  { icon: TrendingUp, label: "Opportunities", href: "#dashboard" },\n  { icon: WandSparkles, label: "Content Fixes", href: "#dashboard" },\n  { icon: Bot, label: "LANA", href: "#dashboard" },\n  { icon: ShieldCheck, label: "Verify", href: "#dashboard" },\n  { icon: BarChart3, label: "Reports", href: "#dashboard" },\n];\n\nconst scoreMeta = [
   ["AI Visibility", "visibility", Gauge],
   ["GEO Score", "geo", Globe2],
   ["SEO Score", "seo", Search],
@@ -83,7 +83,7 @@ export default function VisibilityDashboard() {
     }).join(" ");
   }, [result.trend]);
 
-  async function submitAudit(event: React.FormEvent) {
+  async function submitAudit(event: FormEvent) {
     event.preventDefault();
     if (!form.businessName || !form.industry || !form.location) return;
     setLoading(true);
@@ -107,14 +107,9 @@ export default function VisibilityDashboard() {
           <span><b>LUX AUTOMATON</b><small>AI VISIBILITY</small></span>
         </Link>
         <nav>
-          {[
-            [Gauge, "Overview"], [Search, "Audit"], [Building2, "Competitors"],
-            [TrendingUp, "Opportunities"], [WandSparkles, "Content Fixes"],
-            [Bot, "LANA"], [ShieldCheck, "Verify"], [BarChart3, "Reports"],
-          ].map(([Icon,label], index) => (
-            <a className={index === 0 ? "active" : ""} href={index === 1 ? "#audit-form" : "#dashboard"} key={label as string}>
-              {/* @ts-expect-error icon tuple */}
-              <Icon size={17}/><span>{label as string}</span>
+          {navItems.map(({ icon: Icon, label, href }, index) => (
+            <a className={index === 0 ? "active" : ""} href={href} key={label}>
+              <Icon size={17}/><span>{label}</span>
             </a>
           ))}
         </nav>
@@ -146,7 +141,7 @@ export default function VisibilityDashboard() {
               <article className="lav-score-card" key={key}>
                 <div className="lav-card-label"><Icon size={17}/>{label}</div>
                 <div className="lav-score-content">
-                  <div className="lav-score-ring" style={{"--score": score} as React.CSSProperties}>
+                  <div className="lav-score-ring" style={{"--score": score} as CSSProperties}>
                     <strong>{score}</strong><small>OUT OF 100</small>
                   </div>
                   <div><b>{score >= 80 ? "Strong performance" : score >= 65 ? "Improving" : "Opportunity"}</b><p>Current readiness baseline for this category.</p></div>

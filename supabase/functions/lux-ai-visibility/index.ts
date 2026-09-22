@@ -33,7 +33,7 @@ Deno.serve(async (req) => {
 
   if (!geminiKey || !freeOnly) {
     return Response.json(
-      { error: "Live audit is intentionally disabled until a verified free-tier Gemini key is configured.", mode: "preview" },
+      { error: "Live audit is intentionally disabled until a verified free-tier Gemini key and model are configured and explicitly confirmed.", mode: "preview" },
       { status: 503, headers: cors(origin) }
     );
   }

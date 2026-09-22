@@ -15,6 +15,7 @@ const FOOTER_LINKS = {
     { label: "Lux AI Kids", href: "/products/lux-ai-kids" },
     { label: "Lux TV", href: "/products/lux-tv" },
     { label: "Lux Marketing Studio", href: "/products/lux-marketing-studio" },
+    { label: "Lux AI Visibility", href: "/products/lux-ai-visibility" },
     { label: "Lux WriteOff", href: "/products/luxwriteoff" },
     { label: "Lux Budgeter", href: "/products/lux-budgeter" },
     { label: "Success Packs", href: "/products/success-packs" },

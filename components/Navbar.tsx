@@ -17,6 +17,7 @@ const PRODUCTS_ITEMS = [
   { href: "/products/lux-ai-kids", name: "Lux AI Kids", icon: "🌈", desc: "Kids AI Learning Platform" },
   { href: "/products/lux-tv", name: "Lux TV", icon: "▶", desc: "Video Network" },
   { href: "/products/lux-marketing-studio", name: "Lux Marketing Studio", icon: "◆", desc: "Campaign OS" },
+  { href: "/products/lux-ai-visibility", name: "Lux AI Visibility", icon: "◉", desc: "AI Search & Discovery Audit" },
   { href: "/products/luxwriteoff", name: "Lux WriteOff", icon: "💸", desc: "Tax & Expense Deduction OS" },
   { href: "/products/lux-budgeter", name: "Lux Budgeter", icon: "📈", desc: "Financial Scenario Forecaster" },
   { href: "/products/success-packs", name: "Success Packs", icon: "📦", desc: "Done-For-You Workflow Kits" },

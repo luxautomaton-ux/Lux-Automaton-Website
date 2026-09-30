@@ -1,0 +1,10 @@
+STOP DOING MULTI-AGENT CUSTOMER FLOW THE HARD WAY
+
+Most teams jump straight to tools. I would start with the operating problem. With multi-agent customer flow, the customer should still experience one company. Handoffs matter more than the number of agents. The fastest path is usually to map the customer journey before assigning agents.
+
+Follow the build — I’m testing these ideas in public.
+
+#CustomerExperience #AIAutomation #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-12-11 10:00 Pacific
+CTA: Follow the build — I’m testing these ideas in public.

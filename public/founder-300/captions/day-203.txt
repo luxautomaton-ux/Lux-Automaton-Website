@@ -1,0 +1,10 @@
+AUDIT YOUR LUX READER
+
+Quick audit for lux reader: Can you see the owner? Can you see the next action? Can you see the approval point? Can you see the evidence? If not, the automation is probably harder to trust than it needs to be. Turn one document into searchable operating knowledge.
+
+Follow the build — I’m testing these ideas in public.
+
+#KnowledgeManagement #LuxReader #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-04-20 12:00 Pacific
+CTA: Follow the build — I’m testing these ideas in public.

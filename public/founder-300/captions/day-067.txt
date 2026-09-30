@@ -1,0 +1,10 @@
+3 MOVES FOR DATABASE OPERATIONS
+
+When I think about database operations, I keep coming back to three moves: 1) define the real outcome, 2) make the handoffs visible, 3) decide what still requires human judgment. The database is part of the operating system. Separate durable records from temporary chat context.
+
+Comment SYSTEM if you want the workflow broken down.
+
+#DataOps #AIBusiness #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-12-05 11:00 Pacific
+CTA: Comment SYSTEM if you want the workflow broken down.

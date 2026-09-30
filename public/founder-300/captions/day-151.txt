@@ -1,0 +1,10 @@
+HERE’S MY MODEL ROUTING WORKFLOW
+
+My current model routing map is straightforward: INPUT → CONTEXT → WORK → CHECK → HANDOFF. The details change, but the discipline does not. Routing is an operating decision. Start by trying to send each task to the model that fits the work.
+
+Save this if you’re building AI into a real business.
+
+#LLMRouting #AIInfrastructure #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-02-27 11:00 Pacific
+CTA: Save this if you’re building AI into a real business.

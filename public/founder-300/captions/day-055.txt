@@ -1,0 +1,10 @@
+3 MOVES FOR LUX VERIFY
+
+When I think about lux verify, I keep coming back to three moves: 1) define the real outcome, 2) make the handoffs visible, 3) decide what still requires human judgment. Separation between generation and verification improves accountability. Make the verifier prove what it checked.
+
+Comment MAP if you want the framework in a follow-up post.
+
+#LuxVerify #AIVerification #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-11-23 09:00 Pacific
+CTA: Comment MAP if you want the framework in a follow-up post.

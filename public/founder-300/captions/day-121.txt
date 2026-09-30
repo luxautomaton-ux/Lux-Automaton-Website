@@ -1,0 +1,10 @@
+WHAT I LEARNED ABOUT MODEL ROUTING
+
+Building model routing taught me this: speed, cost and quality change by job. The shiny feature is rarely the whole story. Routing is an operating decision. That is the standard I keep bringing back into Lux.
+
+Save this if you’re building AI into a real business.
+
+#LLMRouting #AIInfrastructure #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-01-28 09:00 Pacific
+CTA: Save this if you’re building AI into a real business.

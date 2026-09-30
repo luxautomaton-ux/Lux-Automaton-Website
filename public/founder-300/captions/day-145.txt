@@ -1,0 +1,10 @@
+HERE’S MY LUX VERIFY WORKFLOW
+
+My current lux verify map is straightforward: INPUT → CONTEXT → WORK → CHECK → HANDOFF. The details change, but the discipline does not. Separation between generation and verification improves accountability. Start by trying to make the verifier prove what it checked.
+
+Comment MAP if you want the framework in a follow-up post.
+
+#LuxVerify #AIVerification #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-02-21 10:00 Pacific
+CTA: Comment MAP if you want the framework in a follow-up post.

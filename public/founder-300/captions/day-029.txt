@@ -1,0 +1,10 @@
+I BUILT MEMORY & CONTEXT
+
+I learned that good AI needs the right memory, not all memory. The part that matters is what happened after the demo: too much context can be as bad as too little. My rule is simple — retrieval should be intentional and task-specific. If you are building something similar, store what changes decisions, not every word.
+
+Send this to somebody building more than a chatbot.
+
+#AIMemory #KnowledgeSystems #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-10-28 12:00 Pacific
+CTA: Send this to somebody building more than a chatbot.

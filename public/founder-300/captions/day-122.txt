@@ -1,0 +1,10 @@
+WHAT I LEARNED ABOUT VOICE AGENTS
+
+Building voice agents taught me this: latency and turn-taking shape trust. The shiny feature is rarely the whole story. The best voice feature disappears into the interaction. That is the standard I keep bringing back into Lux.
+
+Comment SYSTEM if you want the workflow broken down.
+
+#VoiceAI #AIAgents #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-01-29 14:00 Pacific
+CTA: Comment SYSTEM if you want the workflow broken down.

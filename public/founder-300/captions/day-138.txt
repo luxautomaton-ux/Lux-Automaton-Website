@@ -1,0 +1,10 @@
+HERE’S MY RESILIENT AI STACK WORKFLOW
+
+My current resilient ai stack map is straightforward: INPUT → CONTEXT → WORK → CHECK → HANDOFF. The details change, but the discipline does not. Routing, memory, tools, approval and fallback are the real stack. Start by trying to design the system so one vendor can fail.
+
+Follow the build — I’m testing these ideas in public.
+
+#AIStack #Resilience #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-02-14 20:00 Pacific
+CTA: Follow the build — I’m testing these ideas in public.

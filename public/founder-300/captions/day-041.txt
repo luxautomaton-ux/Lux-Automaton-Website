@@ -1,0 +1,10 @@
+3 MOVES FOR AI TEAM ARCHITECTURE
+
+When I think about ai team architecture, I keep coming back to three moves: 1) define the real outcome, 2) make the handoffs visible, 3) decide what still requires human judgment. Clear ownership beats one giant prompt. Define one role before adding another.
+
+Save this if you’re building AI into a real business.
+
+#AIAgents #BusinessOS #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-11-09 12:00 Pacific
+CTA: Save this if you’re building AI into a real business.

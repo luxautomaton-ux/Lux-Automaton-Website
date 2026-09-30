@@ -1,0 +1,10 @@
+AUDIT YOUR MEMORY & CONTEXT
+
+Quick audit for memory & context: Can you see the owner? Can you see the next action? Can you see the approval point? Can you see the evidence? If not, the automation is probably harder to trust than it needs to be. Store what changes decisions, not every word.
+
+Send this to somebody building more than a chatbot.
+
+#AIMemory #KnowledgeSystems #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-04-26 12:00 Pacific
+CTA: Send this to somebody building more than a chatbot.

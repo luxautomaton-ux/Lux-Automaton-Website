@@ -1,0 +1,10 @@
+WHAT I LEARNED ABOUT RESILIENT AI STACK
+
+Building resilient ai stack taught me this: providers change but operating layers should survive. The shiny feature is rarely the whole story. Routing, memory, tools, approval and fallback are the real stack. That is the standard I keep bringing back into Lux.
+
+Follow the build — I’m testing these ideas in public.
+
+#AIStack #Resilience #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-01-15 20:00 Pacific
+CTA: Follow the build — I’m testing these ideas in public.

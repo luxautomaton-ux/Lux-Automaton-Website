@@ -1,0 +1,10 @@
+STOP DOING LUX READER THE HARD WAY
+
+Most teams jump straight to tools. I would start with the operating problem. With lux reader, reading is only useful if the system can retrieve the right detail later. Knowledge needs structure, not just storage. The fastest path is usually to turn one document into searchable operating knowledge.
+
+Follow the build — I’m testing these ideas in public.
+
+#KnowledgeManagement #LuxReader #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-12-21 12:00 Pacific
+CTA: Follow the build — I’m testing these ideas in public.

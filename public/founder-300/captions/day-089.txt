@@ -1,0 +1,10 @@
+STOP DOING MEMORY & CONTEXT THE HARD WAY
+
+Most teams jump straight to tools. I would start with the operating problem. With memory & context, too much context can be as bad as too little. Retrieval should be intentional and task-specific. The fastest path is usually to store what changes decisions, not every word.
+
+Send this to somebody building more than a chatbot.
+
+#AIMemory #KnowledgeSystems #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-12-27 15:00 Pacific
+CTA: Send this to somebody building more than a chatbot.

@@ -1,0 +1,10 @@
+3 MOVES FOR VERIFICATION
+
+When I think about verification, I keep coming back to three moves: 1) define the real outcome, 2) make the handoffs visible, 3) decide what still requires human judgment. Verification belongs inside the workflow. Add a check before the output reaches a customer.
+
+Comment MAP if you want the framework in a follow-up post.
+
+#AIVerification #ResponsibleAI #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-11-13 20:00 Pacific
+CTA: Comment MAP if you want the framework in a follow-up post.

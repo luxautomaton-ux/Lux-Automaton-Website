@@ -1,0 +1,10 @@
+WHAT I LEARNED ABOUT OFFLINE-READY AI
+
+Building offline-ready ai taught me this: continuity is part of product quality. The shiny feature is rarely the whole story. Local fallback changes what a system can survive. That is the standard I keep bringing back into Lux.
+
+Comment MAP if you want the framework in a follow-up post.
+
+#OfflineAI #LocalFirst #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-01-27 17:00 Pacific
+CTA: Comment MAP if you want the framework in a follow-up post.

@@ -4,7 +4,7 @@ import { prefixPath } from "@/lib/prefix";
 
 export const metadata: Metadata = {
   title: "Lux Foundation — Lux Automaton",
-  description: "The community-impact side of Lux Automaton: access, learning, opportunity, and practical AI education.",
+  description: "The planned Lux Foundation community-impact initiative: access, learning, mentorship, opportunity, and practical AI education."
 };
 
 const pillars = [
@@ -34,11 +34,11 @@ export default function FoundationPage() {
         </video>
         <div className="luxa-grain" />
         <div className="luxa-container">
-          <span className="luxa-kicker">Lux Foundation / Community impact</span>
+          <span className="luxa-kicker">Lux Foundation / Planned community-impact initiative</span>
           <h1 className="luxa-display">Build access.<br /><span className="luxa-outline">Create opportunity.</span></h1>
           <p className="luxa-copy">
-            Lux Foundation is the impact side of the Lux mission: expanding access to practical AI learning,
-            creative technology, and opportunities for people and communities to build what comes next.
+            Lux Foundation is the planned impact initiative within the Lux mission: expanding access to practical AI learning,
+            creative technology, mentorship, and opportunities for people and communities to build what comes next.
           </p>
         </div>
       </section>
@@ -104,7 +104,7 @@ export default function FoundationPage() {
         <div className="luxa-final-copy">
           <span className="luxa-kicker">Lux Foundation</span>
           <h2 className="luxa-display">A brighter tomorrow<br />takes participation.</h2>
-          <p className="luxa-copy">Program details can grow here as each community initiative is finalized.</p>
+          <p className="luxa-copy">Lux Foundation is being developed as a future community-impact initiative and is not presented here as an active nonprofit.</p>
           <div className="luxa-actions" style={{ justifyContent: "center" }}>
             <Link className="luxa-button primary" href="/contact">Connect with Lux Automaton ↗</Link>
           </div>

@@ -1,717 +1,182 @@
 import Image from "next/image";
 import Link from "next/link";
-import { prefixPath } from "@/lib/prefix";
 import type { Metadata } from "next";
-import { PRODUCTS } from "@/lib/products";
-import ProductCard from "@/components/ProductCard";
+import { Database, Monitor, ShieldCheck, Sparkles, Usb, Workflow } from "lucide-react";
+import { prefixPath } from "@/lib/prefix";
 
 export const metadata: Metadata = {
   title: "Products — Lux Automaton",
-  description:
-    "Explore the full Lux Automaton AI product ecosystem: Lux Agent USB, Lux Coder, Lux Agent, Lux WriteOff, Lux Budgeter, and Success Packs. Private AI tools for founders and businesses.",
+  description: "Explore the Lux Agent workspace, portable USB companion, packs, automation, verification, training, and connected Lux systems.",
 };
 
+const catalog = [
+  {
+    name: "Lux Agent Desktop",
+    line: "Your full AI workspace.",
+    copy: "LANA, your AI team, files, workflows, tools, approvals, and business context in one command center.",
+    image: "/images/lux-agent-hero.png",
+    href: "/products/lux-agent",
+    tags: ["AI Team", "Workflows", "Private Control"],
+  },
+  {
+    name: "Lux Agent USB",
+    line: "Your AI team on the go.",
+    copy: "A portable travel companion for selected tools, files, agents, and business context on compatible computers.",
+    image: "/images/lux-agent-usb-thumbnail.png",
+    href: "/products/lux-agent-usb",
+    tags: ["Portable", "Private", "Travel Ready"],
+  },
+  {
+    name: "Memory Packs",
+    line: "Remember more. Do more.",
+    copy: "Give Lux Agent structured context, preferences, operating knowledge, and continuity across the work.",
+    image: "/images/ecosystem/memory-packs-hero.png",
+    href: "/products#memory-packs",
+    tags: ["Context", "Knowledge", "Continuity"],
+  },
+  {
+    name: "Success Packs",
+    line: "Templates. Tools. Real results.",
+    copy: "Role and industry playbooks, workflows, prompts, resources, and training that make the system useful faster.",
+    image: "/images/ecosystem/success-packs-hero.png",
+    href: "/products/success-packs",
+    tags: ["Playbooks", "Templates", "Training"],
+  },
+  {
+    name: "Lux Flow",
+    line: "Build. Connect. Automate.",
+    copy: "Design visible workflows, approvals, handoffs, and run history across the work your business repeats.",
+    image: "/images/ecosystem/lux-flow-logo-dark.png",
+    href: "/services#automation",
+    tags: ["Workflows", "Approvals", "Automation"],
+  },
+  {
+    name: "Lux Verify",
+    line: "Audit. Verify. Trust.",
+    copy: "Evidence-backed testing, readiness checks, QA, remediation loops, and clear proof before work is called done.",
+    image: "/images/ecosystem/lux-verify-icon.png",
+    href: "/services#verify",
+    tags: ["QA", "Evidence", "Readiness"],
+  },
+  {
+    name: "Lux WarmConnect",
+    line: "Know the connection. Start the conversation.",
+    copy: "Relationship intelligence and outreach support for finding the right people and managing meaningful follow-up.",
+    image: "/images/lux-warmconnect/wordmark.png",
+    href: "/products/lux-warmconnect",
+    tags: ["Relationships", "Outreach", "Follow-Up"],
+  },
+  {
+    name: "AI Toolkit Club",
+    line: "Learn. Build. Launch.",
+    copy: "Reusable tools, templates, guides, and practical resources for founders and teams building with AI.",
+    image: "/images/ecosystem/toolkit-club-logo.png",
+    href: "/workshops",
+    tags: ["Tools", "Templates", "Learning"],
+  },
+  {
+    name: "Business Launch OS",
+    line: "Start smart. Build right.",
+    copy: "A guided operating system for company setup, governance, records, approvals, deadlines, and founder visibility.",
+    image: "/images/ecosystem/business-launch-logo-dark.png",
+    href: "/solutions/lux-business-launch-os",
+    tags: ["Formation", "Governance", "Records"],
+  },
+];
+
+const platform = [
+  ["LANA", "The executive intelligence layer that helps coordinate the customer experience."],
+  ["Agent Builder", "Create governed agents with purpose, skills, memory, permissions, and clear boundaries."],
+  ["Lux Connect", "Connect people, systems, and collaboration around the same operating environment."],
+  ["Lux Voice", "Voice-first assistance and communication experiences across the Lux ecosystem."],
+  ["Lux Messages", "AI-assisted communication with owner control and structured follow-up."],
+  ["Lux World", "Map, monitor, and operate travel, places, routes, and real-world business context."],
+];
+
 export default function ProductsPage() {
-  const liveProducts = PRODUCTS.filter((p) => p.status === "live");
-  const comingSoonProducts = PRODUCTS.filter((p) => p.status === "coming-soon");
-
   return (
-    <div style={{ paddingTop: "72px" }}>
-      <ProductsHero />
-      <EcosystemOverview />
-      <section style={{ padding: "0 24px 86px", background: "var(--bg-void)" }}>
-        <Link
-          href="/products/lux-agent-dna"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1.2fr) minmax(280px, .8fr)",
-            gap: "28px",
-            alignItems: "center",
-            maxWidth: "1280px",
-            margin: "0 auto",
-            padding: "34px",
-            border: "1px solid rgba(76, 213, 255, 0.24)",
-            borderRadius: "22px",
-            textDecoration: "none",
-            background:
-              "radial-gradient(circle at 72% 50%, rgba(139, 73, 255, 0.18), transparent 35%), linear-gradient(135deg, rgba(5, 25, 47, .96), rgba(10, 7, 35, .96))",
-            boxShadow: "0 22px 70px rgba(0,0,0,.36), 0 0 70px rgba(76,213,255,.06)",
-          }}
-          className="products-dna-banner"
-        >
+    <main className="lux26-products">
+      <section className="lux26-products-hero">
+        <video className="lux26-hero-film" autoPlay muted loop playsInline poster={prefixPath("/images/lux-agent-hero-bg.jpg")}>
+          <source src={prefixPath("/videos/lux-agent-usb-trailer.mp4")} type="video/mp4" />
+        </video>
+        <div className="lux26-hero-shade" />
+        <div className="lux26-site-width lux26-products-hero-grid">
           <div>
-            <span style={{ color: "#5ce4ff", fontSize: ".64rem", fontWeight: 850, letterSpacing: ".18em" }}>
-              NEW / LUX AGENT DNA™
-            </span>
-            <h2 style={{ margin: "11px 0 12px", color: "#f3f9ff", fontSize: "clamp(2rem,3.6vw,3.4rem)", lineHeight: .96, letterSpacing: "-.05em" }}>
-              The intelligence layer behind business-ready Lux agents.
-            </h2>
-            <p style={{ margin: 0, maxWidth: "700px", color: "#8da8be", fontSize: ".95rem", lineHeight: 1.7 }}>
-              Identity. Persona. Voice. Skills. Memory. Permissions. Unknown-state handling. Recovery. Human approvals.
-              Receipts. Lux Verify. See how the pieces work together before the agent enters the real world.
+            <span className="lux26-eyebrow">PRODUCTS</span>
+            <h1>Explore the<br />Lux <em>Ecosystem.</em></h1>
+            <p>
+              One connected product family built around Lux Agent. Start with the full Desktop experience,
+              extend it with USB, and add the capabilities your work actually needs.
             </p>
-          </div>
-          <div style={{ display: "grid", gap: "8px" }}>
-            {[
-              ["Agent Pack™", "WHO"],
-              ["Success Pack™", "HOW"],
-              ["Memory Pack™", "WHAT IT KNOWS"],
-              ["Voice Pack™", "HOW IT SOUNDS"],
-            ].map(([name, meaning]) => (
-              <div key={name} style={{ display: "flex", justifyContent: "space-between", gap: "12px", padding: "11px 13px", border: "1px solid rgba(255,255,255,.08)", borderRadius: "10px", background: "rgba(255,255,255,.025)" }}>
-                <b style={{ color: "#eef8ff", fontSize: ".75rem" }}>{name}</b>
-                <span style={{ color: "#b177ff", fontSize: ".65rem", fontWeight: 850, letterSpacing: ".08em" }}>{meaning}</span>
-              </div>
-            ))}
-            <b style={{ marginTop: "7px", color: "#59e3ff", fontSize: ".76rem" }}>Explore Lux Agent DNA™ →</b>
-          </div>
-          <style>{`
-            @media (max-width: 760px) {
-              .products-dna-banner { grid-template-columns: 1fr !important; padding: 24px !important; }
-            }
-          `}</style>
-        </Link>
-      </section>
-      <LiveProductsSection products={liveProducts} />
-      <ComingSoonSection products={comingSoonProducts} />
-      <EcosystemValueSection />
-      <ProductsBottomCTA />
-    </div>
-  );
-}
-
-// ─── HERO ─────────────────────────────────────────────────────
-function ProductsHero() {
-  return (
-    <section
-      style={{
-        padding: "90px 24px 100px",
-        backgroundImage: `linear-gradient(to right, rgba(3, 5, 18, 0.92) 0%, rgba(3, 5, 18, 0.82) 60%, rgba(3, 5, 18, 0.55) 100%), url(${prefixPath("/images/page-hero-circuit.png")})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Circuit grid */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "linear-gradient(rgba(0, 229, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.025) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-          pointerEvents: "none",
-        }}
-      />
-      {/* Glow orbs */}
-      <div
-        style={{
-          position: "absolute",
-          top: "20%",
-          right: "8%",
-          width: "500px",
-          height: "500px",
-          background: "radial-gradient(circle, rgba(0, 229, 255, 0.06) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "10%",
-          left: "5%",
-          width: "350px",
-          height: "350px",
-          background: "radial-gradient(circle, rgba(26, 109, 255, 0.05) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          position: "relative",
-          zIndex: 1,
-          display: "grid",
-          gridTemplateColumns: "1fr 500px",
-          gap: "80px",
-          alignItems: "center",
-        }}
-        className="products-hero-grid"
-      >
-        {/* Left copy */}
-        <div>
-          <div className="section-label" style={{ marginBottom: "24px", display: "inline-flex" }}>
-            The Ecosystem
-          </div>
-          <h1
-            style={{
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
-              fontWeight: 900,
-              color: "var(--text-primary)",
-              letterSpacing: "-0.02em",
-              lineHeight: 1.05,
-              marginBottom: "24px",
-            }}
-          >
-            Powerful AI Tools.{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, var(--electric), var(--cyan), var(--blue-bright))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              One Connected System.
-            </span>
-          </h1>
-          <p
-            style={{
-              color: "var(--text-secondary)",
-              fontSize: "1.1rem",
-              lineHeight: 1.8,
-              maxWidth: "540px",
-              marginBottom: "44px",
-            }}
-          >
-            Each product is built to stand alone or work together. Your AI stack compounds the more you use it.
-            Start with one tool. Build your full operating system over time.
-          </p>
-
-          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "56px" }}>
-            <Link href="/contact" className="btn-primary">
-              Get in Touch
-            </Link>
-            <Link href="/contact" className="btn-outline">
-              Book a Demo
-            </Link>
-          </div>
-
-          {/* Quick stat row */}
-          <div style={{ display: "flex", gap: "48px", flexWrap: "wrap" }}>
-            {[
-              { value: "7", label: "AI Products" },
-              { value: "2", label: "Live Now" },
-              { value: "1", label: "Ecosystem" },
-            ].map((s) => (
-              <div key={s.label}>
-                <div
-                  style={{
-                    fontSize: "2.2rem",
-                    fontWeight: 900,
-                    color: "var(--cyan)",
-                    lineHeight: 1,
-                    textShadow: "0 0 20px rgba(0,229,255,0.4)",
-                  }}
-                >
-                  {s.value}
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.65rem",
-                    color: "var(--text-muted)",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    marginTop: "4px",
-                  }}
-                >
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Right — Lux Coder card image */}
-        <div
-          style={{
-            borderRadius: "20px",
-            overflow: "hidden",
-            border: "1px solid var(--border-subtle)",
-            boxShadow: "0 0 60px rgba(0, 229, 255, 0.08)",
-          }}
-          className="products-hero-image"
-        >
-          <Image
-            src={prefixPath("/images/lux-coder-card.png")}
-            alt="Lux Coder — AI coding suite"
-            width={800}
-            height={500}
-            style={{ width: "100%", height: "auto", display: "block" }}
-            priority
-          />
-        </div>
-      </div>
-
-      <style>{`
-        @media (max-width: 960px) {
-          .products-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .products-hero-image { display: none !important; }
-        }
-      `}</style>
-    </section>
-  );
-}
-
-// ─── ECOSYSTEM OVERVIEW ────────────────────────────────────────
-function EcosystemOverview() {
-  const items = [
-    { icon: "💾", name: "Lux Agent USB", role: "Portable AI business OS for productivity anywhere" },
-    { icon: "</>", name: "Lux Coder", role: "Code faster. Build smarter. Ship everything." },
-    { icon: "🤖", name: "Lux Agent", role: "Your personal AI assistant for work and life" },
-    { icon: "💰", name: "Lux WriteOff", role: "Maximize deductions. Automate tax write-offs." },
-    { icon: "📊", name: "Lux Budgeter", role: "Budget smarter. See cash flow. Stay in control." },
-    { icon: "📦", name: "Success Packs", role: "Done-for-you systems, SOPs, and playbooks." },
-  ];
-
-  return (
-    <section
-      style={{
-        padding: "60px 24px",
-        background: "var(--bg-base)",
-        borderTop: "1px solid var(--border-subtle)",
-      }}
-    >
-      <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "48px" }}>
-          <div className="section-label" style={{ display: "inline-flex", marginBottom: "16px" }}>
-            Our Ecosystem
-          </div>
-          <h2
-            style={{
-              fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
-              fontWeight: 900,
-              color: "var(--text-primary)",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Powerful AI Tools. One Connected System.
-          </h2>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(6, 1fr)",
-            gap: "16px",
-          }}
-          className="ecosystem-overview-grid"
-        >
-          {items.map((item) => (
-            <div
-              key={item.name}
-              className="glass-card"
-              style={{
-                padding: "24px 16px",
-                textAlign: "center",
-                display: "flex",
-                flexDirection: "column",
-                gap: "12px",
-                alignItems: "center",
-              }}
-            >
-              <div
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  borderRadius: "12px",
-                  background: "rgba(0, 229, 255, 0.08)",
-                  border: "1px solid rgba(0, 229, 255, 0.2)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "20px",
-                }}
-              >
-                {item.icon}
-              </div>
-              <div
-                style={{
-                  fontSize: "0.8rem",
-                  fontWeight: 800,
-                  color: "var(--text-primary)",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                {item.name}
-              </div>
-              <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", lineHeight: 1.5 }}>
-                {item.role}
-              </div>
-              <Link
-                href="#products"
-                style={{
-                  fontSize: "0.65rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--cyan)",
-                  textDecoration: "none",
-                }}
-              >
-                Learn more →
-              </Link>
+            <div className="lux26-home-actions">
+              <Link className="lux26-primary-cta" href="/start-here">Find Your Starting Point <b>→</b></Link>
+              <Link className="lux26-secondary-cta" href="/solutions">See Solutions</Link>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <style>{`
-        @media (max-width: 1100px) {
-          .ecosystem-overview-grid { grid-template-columns: repeat(3, 1fr) !important; }
-        }
-        @media (max-width: 600px) {
-          .ecosystem-overview-grid { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-      `}</style>
-    </section>
-  );
-}
-
-// ─── LIVE PRODUCTS ────────────────────────────────────────────
-function LiveProductsSection({ products }: { products: ReturnType<typeof PRODUCTS.filter> }) {
-  return (
-    <section
-      id="products"
-      className="circuit-grid"
-      style={{ padding: "100px 24px", background: "var(--bg-surface)" }}
-    >
-      <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-        <div style={{ marginBottom: "56px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
-            <div className="status-dot" />
-            <span
-              style={{
-                fontSize: "0.65rem",
-                fontWeight: 700,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "var(--green)",
-              }}
-            >
-              Live Now · Available Today
-            </span>
           </div>
-          <h2
-            style={{
-              fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-              fontWeight: 900,
-              color: "var(--text-primary)",
-              letterSpacing: "-0.02em",
-              marginBottom: "12px",
-            }}
-          >
-            Start Here
-          </h2>
-          <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", maxWidth: "500px", lineHeight: 1.7 }}>
-            These products are live, tested, and ready to use right now.
-          </p>
-        </div>
-
-        <div
-          className="product-grid-2"
-          style={{
-            gap: "20px",
-          }}
-        >
-
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} featured />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── COMING SOON ──────────────────────────────────────────────
-function ComingSoonSection({ products }: { products: ReturnType<typeof PRODUCTS.filter> }) {
-  return (
-    <section style={{ padding: "80px 24px 100px", background: "var(--bg-base)", borderTop: "1px solid var(--border-subtle)" }}>
-      <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-        <div style={{ marginBottom: "56px" }}>
-          <div className="section-label" style={{ display: "inline-flex", marginBottom: "14px" }}>
-            On the Roadmap
-          </div>
-          <h2
-            style={{
-              fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-              fontWeight: 900,
-              color: "var(--text-primary)",
-              letterSpacing: "-0.02em",
-              marginBottom: "12px",
-            }}
-          >
-            Coming Soon
-          </h2>
-          <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", maxWidth: "540px", lineHeight: 1.7 }}>
-            The rest of the ecosystem is in active development. Join the waitlist for early access.
-          </p>
-        </div>
-
-        <div
-          className="product-grid-2"
-          style={{
-            gap: "20px",
-          }}
-        >
-
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── ECOSYSTEM VALUE SECTION ──────────────────────────────────
-function EcosystemValueSection() {
-  return (
-    <section
-      style={{
-        padding: "100px 24px",
-        background: "var(--bg-surface)",
-        borderTop: "1px solid var(--border-subtle)",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "60px" }}>
-          <div className="section-label" style={{ display: "inline-flex", marginBottom: "16px" }}>
-            Ecosystem Value
-          </div>
-          <h2
-            style={{
-              fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-              fontWeight: 900,
-              color: "var(--text-primary)",
-              letterSpacing: "-0.02em",
-              marginBottom: "16px",
-            }}
-          >
-            Built to Scale.{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, var(--cyan), var(--blue-bright))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Built to Last.
-            </span>
-          </h2>
-          <p
-            style={{
-              color: "var(--text-secondary)",
-              maxWidth: "560px",
-              margin: "0 auto",
-              lineHeight: 1.7,
-              fontSize: "0.95rem",
-            }}
-          >
-            The Lux Automaton ecosystem represents thousands of hours of focused development and real-world business value.
-          </p>
-        </div>
-
-        {/* Ecosystem value infographic */}
-        <div
-          style={{
-            borderRadius: "20px",
-            overflow: "hidden",
-            border: "1px solid var(--border-subtle)",
-            boxShadow: "0 0 60px rgba(0, 229, 255, 0.08)",
-            marginBottom: "60px",
-          }}
-        >
-          <Image
-            src={prefixPath("/images/ecosystem-value.png")}
-            alt="Lux Automaton Ecosystem Value — development hours, build value, and estimated sale value"
-            width={1280}
-            height={720}
-            style={{ width: "100%", height: "auto", display: "block" }}
-          />
-        </div>
-
-        {/* Value stats */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "20px",
-          }}
-        >
-          {[
-            { label: "Total Dev Hours", value: "3,700–5,100+", icon: "⏱", color: "var(--cyan)" },
-            { label: "Total Build Value", value: "$472K–$920K", icon: "💎", color: "var(--blue-bright)" },
-            { label: "Ecosystem Sale Value", value: "$1.2M–$2.5M", icon: "📈", color: "var(--green)" },
-            { label: "Products in Ecosystem", value: "6 Tools", icon: "⚡", color: "var(--orange)" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="glass-card"
-              style={{ padding: "28px 24px", textAlign: "center" }}
-            >
-              <div style={{ fontSize: "28px", marginBottom: "12px" }}>{stat.icon}</div>
-              <div
-                style={{
-                  fontSize: "1.5rem",
-                  fontWeight: 900,
-                  color: stat.color,
-                  textShadow: `0 0 20px ${stat.color}66`,
-                  marginBottom: "6px",
-                  lineHeight: 1,
-                }}
-              >
-                {stat.value}
-              </div>
-              <div
-                style={{
-                  fontSize: "0.7rem",
-                  color: "var(--text-muted)",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                }}
-              >
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <p
-          style={{
-            textAlign: "center",
-            fontSize: "0.7rem",
-            color: "var(--text-muted)",
-            marginTop: "24px",
-            fontStyle: "italic",
-          }}
-        >
-          ✦ All figures shown are strategic estimates for branding and planning purposes.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-// ─── WHY LUX AUTOMATON ────────────────────────────────────────
-function ProductsBottomCTA() {
-  const reasons = [
-    { icon: "🔒", title: "Local-first control", body: "Your data stays private and under your control." },
-    { icon: "🧠", title: "Multi-model flexibility", body: "Use the best AI models for every task, on your terms." },
-    { icon: "⚡", title: "Business workflow automation", body: "Automate repetitive work and scale with confidence." },
-    { icon: "🚀", title: "Client-ready delivery", body: "Deliver real value to clients faster with AI systems." },
-  ];
-
-  return (
-    <>
-      {/* Why section */}
-      <section
-        className="circuit-grid"
-        style={{ padding: "100px 24px", background: "var(--bg-void)", borderTop: "1px solid var(--border-subtle)" }}
-      >
-        <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div style={{ textAlign: "center", marginBottom: "60px" }}>
-            <div className="section-label" style={{ display: "inline-flex", marginBottom: "16px" }}>
-              Why Lux Automaton
-            </div>
-            <h2
-              style={{
-                fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-                fontWeight: 900,
-                color: "var(--text-primary)",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              AI That Works the Way You Do.
-            </h2>
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: "20px",
-              marginBottom: "80px",
-            }}
-          >
-            {reasons.map((r) => (
-              <div key={r.title} className="glass-card" style={{ padding: "32px 28px", display: "flex", gap: "20px" }}>
-                <div
-                  style={{
-                    width: "44px",
-                    height: "44px",
-                    borderRadius: "10px",
-                    background: "rgba(0, 229, 255, 0.08)",
-                    border: "1px solid rgba(0, 229, 255, 0.2)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "20px",
-                    flexShrink: 0,
-                  }}
-                >
-                  {r.icon}
-                </div>
-                <div>
-                  <div style={{ fontSize: "0.95rem", fontWeight: 800, color: "var(--text-primary)", marginBottom: "8px" }}>
-                    {r.title}
-                  </div>
-                  <div style={{ fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                    {r.body}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Final CTA */}
-          <div
-            style={{
-              textAlign: "center",
-              padding: "60px 40px",
-              background: "rgba(255,255,255,0.02)",
-              border: "1px solid var(--border-subtle)",
-              borderRadius: "20px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)",
-                fontWeight: 900,
-                color: "var(--text-primary)",
-                letterSpacing: "-0.02em",
-                marginBottom: "16px",
-              }}
-            >
-              Not sure where to start?
-            </h2>
-            <p
-              style={{
-                color: "var(--text-secondary)",
-                marginBottom: "36px",
-                lineHeight: 1.7,
-                maxWidth: "480px",
-                margin: "0 auto 36px",
-                fontSize: "0.95rem",
-              }}
-            >
-              Talk to us. We&apos;ll help you map your workflow to the right combination of tools.
-            </p>
-            <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/contact" className="btn-primary" style={{ fontSize: "0.9rem", padding: "14px 32px" }}>
-                Book a Strategy Call →
-              </Link>
-            </div>
+          <div className="lux26-products-lana">
+            <Image src={prefixPath("/images/lana-executive-office.jpg")} alt="LANA — Lux Automaton AI Executive Assistant" width={1100} height={900} priority />
+            <span><Sparkles size={15}/> LANA · AI Executive Assistant</span>
           </div>
         </div>
       </section>
-    </>
+
+      <section className="lux26-catalog-shell">
+        <div className="lux26-site-width">
+          <div className="lux26-filter-strip" aria-label="Product categories">
+            {["All Products","AI Workspace","Automation","Memory","Training","Communication","Portable"].map((label,index)=>
+              <span className={index===0?"active":""} key={label}>{label}</span>
+            )}
+          </div>
+
+          <div className="lux26-catalog-grid">
+            {catalog.map((item)=>(
+              <Link href={item.href} className="lux26-catalog-card" key={item.name}>
+                <div className="lux26-catalog-media">
+                  <Image src={prefixPath(item.image)} alt="" width={900} height={650}/>
+                </div>
+                <h2>{item.name}</h2>
+                <strong>{item.line}</strong>
+                <p>{item.copy}</p>
+                <div className="lux26-tag-row">{item.tags.map(tag=><span key={tag}>{tag}</span>)}</div>
+                <b>Learn More →</b>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="lux26-product-platform">
+        <div className="lux26-site-width">
+          <header className="lux26-section-heading">
+            <span>THE DEEPER PLATFORM</span>
+            <h2>One front door.<br /><em>More capability behind it.</em></h2>
+            <p>
+              Not every capability needs to become a competing storefront. These systems strengthen the
+              Lux Agent experience and are surfaced where they make sense.
+            </p>
+          </header>
+          <div className="lux26-platform-grid">
+            {platform.map(([name,copy],index)=>(
+              <article key={name}>
+                <span>{String(index+1).padStart(2,"0")}</span>
+                <h3>{name}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="lux26-benefit-bar">
+        <div className="lux26-site-width">
+          <div><Monitor size={34}/><span><strong>Desktop Home Base</strong><small>The full Lux Agent experience.</small></span></div>
+          <div><Usb size={34}/><span><strong>Portable Companion</strong><small>Take the essentials with you.</small></span></div>
+          <div><Workflow size={34}/><span><strong>Connected Workflows</strong><small>Automate with visibility.</small></span></div>
+          <div><Database size={34}/><span><strong>Business Memory</strong><small>Keep context useful.</small></span></div>
+          <div><ShieldCheck size={34}/><span><strong>Human Control</strong><small>Approvals stay visible.</small></span></div>
+        </div>
+      </section>
+    </main>
   );
 }

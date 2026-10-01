@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./lux-rebrand.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LanaChatWidget from "@/components/LanaChatWidget";
@@ -7,19 +8,20 @@ import LanaChatWidget from "@/components/LanaChatWidget";
 import { prefixPath } from "@/lib/prefix";
 
 export const metadata: Metadata = {
-  title: "Lux Automaton - Private AI Systems for Builders and Founders",
-  description: "Lux Automaton is the AI Operating System company providing private, secure AI agents, coding environments, and automated business operating systems for builders, founders, and small businesses.",
-  applicationName: "Lux Automaton - Private AI Systems for Builders and Founders",
+  title: "Lux Automaton — Automate | Innovate | Accelerate",
+  description: "Lux Automaton builds connected AI systems for business, automation, verification, learning, and real-world impact — with Lux Agent as the customer-facing platform at the center.",
+  applicationName: "Lux Automaton",
   keywords: [
-    "AI Operating System",
-    "Lux OS",
-    "Private AI Agents",
+    "Lux Automaton",
+    "Lux Agent",
+    "Lux Agent Desktop",
+    "Lux Agent USB",
     "LANA AI",
-    "Lux Codex",
-    "Lux Coder",
     "Business Automation",
-    "Founder Productivity",
-    "Small Business AI",
+    "AI Agents",
+    "Lux Flow",
+    "Lux Verify",
+    "AI Training",
   ],
   icons: {
     icon: [

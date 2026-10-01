@@ -1,425 +1,154 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { BarChart3, Bot, CheckCircle2, MessageSquareText, ShieldCheck, Workflow } from "lucide-react";
 import { SOLUTIONS } from "@/lib/solutions";
-import SolutionCard from "@/components/SolutionCard";
 import { prefixPath } from "@/lib/prefix";
 
 export const metadata: Metadata = {
   title: "Solutions — Lux Automaton",
-  description:
-    "Real-world AI operating systems built on the Lux Automaton stack. Lux Care OS, Epic Electric, Inland Circle Program OS, and custom AI systems for any business vertical.",
+  description: "Real solutions for founders, teams, consultants, agencies, growing businesses, and custom operating environments.",
 };
 
-// ─────────────────────────────────────────────
-// SOLUTIONS PAGE
-// ─────────────────────────────────────────────
+const useCases = [
+  {
+    eyebrow:"FOR FOUNDERS",
+    title:"AI Team Operations",
+    copy:"Go from idea to execution with LANA, agents, workflows, approvals, and a visible command center.",
+    icon:Bot,
+    href:"/services#agents",
+  },
+  {
+    eyebrow:"FOR TEAMS",
+    title:"Sales & Follow-Up",
+    copy:"Organize outreach, communication, follow-up rhythms, and handoffs without losing owner control.",
+    icon:MessageSquareText,
+    href:"/services#automation",
+  },
+  {
+    eyebrow:"FOR CONSULTANTS",
+    title:"Knowledge & Documents",
+    copy:"Bring files, operating knowledge, research, and client deliverables into a more useful AI workflow.",
+    icon:ShieldCheck,
+    href:"/services#deployment",
+  },
+  {
+    eyebrow:"FOR AGENCIES",
+    title:"Messaging & Outreach",
+    copy:"Use WarmConnect, Messages, and governed agents to support relationships and repeatable outreach.",
+    icon:MessageSquareText,
+    href:"/services#automation",
+  },
+  {
+    eyebrow:"FOR GROWING BUSINESSES",
+    title:"Workflow Automation",
+    copy:"Map repetitive work into Lux Flow with visible steps, approvals, evidence, and run history.",
+    icon:Workflow,
+    href:"/services#automation",
+  },
+  {
+    eyebrow:"FOR EVERYWHERE",
+    title:"Desktop + Travel",
+    copy:"Use Lux Agent Desktop as the home base and Lux Agent USB as the optional portable companion.",
+    icon:BarChart3,
+    href:"/products/lux-agent-usb",
+  },
+];
 
-export default function SolutionsPage() {
+export default function SolutionsPage(){
   return (
-    <div style={{ paddingTop: "72px" }}>
-      <SolutionsHero />
-      <SolutionsGrid />
-      <EcosystemConnectionSection />
-      <CustomSystemsSection />
-      <SolutionsCTA />
-    </div>
-  );
-}
-
-// ─── HERO ────────────────────────────────────
-function SolutionsHero() {
-  return (
-    <section
-      style={{
-        padding: "100px 24px 80px",
-        backgroundImage: `linear-gradient(to right, rgba(3, 5, 18, 0.92) 0%, rgba(3, 5, 18, 0.82) 60%, rgba(3, 5, 18, 0.55) 100%), url(${prefixPath("/images/page-hero-waves.png")})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        position: "relative",
-        overflow: "hidden",
-        borderBottom: "1px solid var(--border-subtle)",
-      }}
-    >
-      {/* Grid overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "linear-gradient(rgba(0, 229, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.025) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* Glow orb */}
-      <div
-        style={{
-          position: "absolute",
-          top: "40%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "700px",
-          height: "400px",
-          background: "radial-gradient(ellipse, rgba(26, 109, 255, 0.08) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      <div style={{ maxWidth: "860px", margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
-        <div className="section-label" style={{ marginBottom: "24px", display: "inline-flex" }}>
-          Solutions
-        </div>
-
-        <h1
-          style={{
-            fontSize: "clamp(2.8rem, 5.5vw, 4.5rem)",
-            fontWeight: 900,
-            letterSpacing: "-0.03em",
-            lineHeight: 1.05,
-            color: "var(--text-primary)",
-            marginBottom: "28px",
-          }}
-        >
-          AI Systems That{" "}
-          <span
-            style={{
-              background: "linear-gradient(135deg, var(--electric), var(--cyan), var(--blue-bright))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            Solve Real Problems
-          </span>
-        </h1>
-
-        <p
-          style={{
-            fontSize: "clamp(1rem, 1.8vw, 1.15rem)",
-            color: "var(--text-secondary)",
-            lineHeight: 1.8,
-            maxWidth: "680px",
-            margin: "0 auto 48px",
-          }}
-        >
-          Lux Automaton is not just a collection of apps. It is a connected ecosystem for building custom AI
-          operating systems around real work — clinics, contractors, community programs, creators, agencies,
-          and small businesses.
-        </p>
-
-        <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
-          <Link href="/contact" className="btn-primary">
-            Book a Demo →
-          </Link>
-          <Link href="/products" className="btn-outline">
-            View Products
-          </Link>
-          <Link href="/partners" className="btn-outline">
-            Become a Partner
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── SOLUTIONS GRID ──────────────────────────
-function SolutionsGrid() {
-  return (
-    <section
-      style={{ padding: "100px 24px", background: "var(--bg-base)" }}
-    >
-      <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "64px" }}>
-          <div className="section-label" style={{ marginBottom: "16px", display: "inline-flex" }}>
-            Featured Systems Built with Lux Automaton
-          </div>
-          <h2
-            style={{
-              fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)",
-              fontWeight: 900,
-              color: "var(--text-primary)",
-              letterSpacing: "-0.02em",
-              marginBottom: "16px",
-            }}
-          >
-            Real-world AI operating systems, built for real work.
-          </h2>
-          <p style={{ color: "var(--text-secondary)", maxWidth: "560px", margin: "0 auto", lineHeight: 1.7, fontSize: "0.95rem" }}>
-            Powered by Lux Agent, Lux Coder, Success Packs, and the full Lux Automaton workflow stack.
-          </p>
-        </div>
-
-        <div
-          className="solutions-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "28px",
-          }}
-        >
-          {SOLUTIONS.map((solution) => (
-            <SolutionCard key={solution.slug} solution={solution} layout="full" />
-          ))}
-        </div>
-      </div>
-
-      <style>{`
-        @media (max-width: 1024px) {
-          .solutions-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 680px) {
-          .solutions-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
-    </section>
-  );
-}
-
-// ─── ECOSYSTEM CONNECTION ─────────────────────
-function EcosystemConnectionSection() {
-  const connections = [
-    { product: "Lux Coder", role: "Builds the software, dashboards, and tools." },
-    { product: "Lux Agent", role: "Guides the user and helps execute tasks daily." },
-    { product: "Lux Agent USB", role: "Makes the system portable and local-first." },
-    { product: "Success Packs", role: "Installs the business operating recipe." },
-    { product: "Lux WriteOff", role: "Organizes deductions and expense workflows." },
-    { product: "Lux Budgeter", role: "Supports budgeting and cash flow visibility." },
-  ];
-
-  return (
-    <section
-      className="circuit-grid"
-      style={{
-        padding: "100px 24px",
-        background: "var(--bg-surface)",
-        borderTop: "1px solid var(--border-subtle)",
-      }}
-    >
-      <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 1 }}>
-        <div style={{ textAlign: "center", marginBottom: "60px" }}>
-          <div className="section-label" style={{ marginBottom: "16px", display: "inline-flex" }}>
-            Product Ecosystem Connection
-          </div>
-          <h2
-            style={{
-              fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)",
-              fontWeight: 900,
-              color: "var(--text-primary)",
-              letterSpacing: "-0.02em",
-              marginBottom: "16px",
-            }}
-          >
-            Lux Automaton Products{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, var(--cyan), var(--blue-bright))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Work Together
-            </span>
-          </h2>
-          <p style={{ color: "var(--text-secondary)", maxWidth: "540px", margin: "0 auto", lineHeight: 1.7 }}>
-            Custom systems like Lux Care OS, Epic Electric, and Inland Circle Program OS show how the ecosystem
-            can be applied to real-world operations.
-          </p>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "16px",
-          }}
-        >
-          {connections.map((item) => (
-            <div
-              key={item.product}
-              className="glass-card"
-              style={{ padding: "24px", display: "flex", gap: "16px", alignItems: "flex-start" }}
-            >
-              <div
-                style={{
-                  width: "8px",
-                  height: "8px",
-                  borderRadius: "50%",
-                  background: "var(--cyan)",
-                  boxShadow: "0 0 8px var(--cyan)",
-                  flexShrink: 0,
-                  marginTop: "6px",
-                }}
-              />
-              <div>
-                <div
-                  style={{
-                    fontSize: "0.9rem",
-                    fontWeight: 800,
-                    color: "var(--text-primary)",
-                    marginBottom: "4px",
-                  }}
-                >
-                  {item.product}
-                </div>
-                <div style={{ fontSize: "0.8rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                  {item.role}
-                </div>
-              </div>
+    <main className="lux26-solutions">
+      <section className="lux26-solutions-hero">
+        <video className="lux26-hero-film" autoPlay muted loop playsInline poster={prefixPath("/images/lux-business-office.jpg")}>
+          <source src={prefixPath("/videos/lux-business-launch-os-launch-film.mp4")} type="video/mp4"/>
+        </video>
+        <div className="lux26-hero-shade"/>
+        <div className="lux26-site-width lux26-solutions-hero-grid">
+          <div>
+            <span className="lux26-eyebrow">SOLUTIONS</span>
+            <h1>Real Solutions<br/>for Real <em>Progress.</em></h1>
+            <p>
+              Lux Automaton helps founders, teams, consultants, agencies, and growing businesses
+              turn AI into visible systems for real work.
+            </p>
+            <div className="lux26-home-actions">
+              <Link href="/products" className="lux26-primary-cta">See All Products <b>→</b></Link>
+              <Link href="/contact" className="lux26-secondary-cta">Talk With Us</Link>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── CUSTOM SYSTEMS ───────────────────────────
-function CustomSystemsSection() {
-  return (
-    <section
-      style={{
-        padding: "100px 24px",
-        background: "var(--bg-base)",
-        borderTop: "1px solid var(--border-subtle)",
-      }}
-    >
-      <div style={{ maxWidth: "860px", margin: "0 auto", textAlign: "center" }}>
-        <div
-          className="glass-card neon-border-anim"
-          style={{ padding: "60px 56px" }}
-        >
-          <div className="section-label" style={{ marginBottom: "24px", display: "inline-flex" }}>
-            Custom AI Systems
           </div>
 
-          <h2
-            style={{
-              fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-              fontWeight: 900,
-              color: "var(--text-primary)",
-              letterSpacing: "-0.02em",
-              marginBottom: "20px",
-              lineHeight: 1.15,
-            }}
-          >
-            Need a System Built Around{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, var(--electric), var(--cyan))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Your Business?
-            </span>
-          </h2>
-
-          <p
-            style={{
-              color: "var(--text-secondary)",
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              maxWidth: "560px",
-              margin: "0 auto 40px",
-            }}
-          >
-            Lux Automaton can help design a custom AI operating system for your business, program, clinic,
-            agency, creative company, or local service operation. We combine Lux Agent, Lux Coder, Lux Agent USB,
-            Success Packs, CRM workflows, and automation tools into one connected system.
-          </p>
-
-          <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" className="btn-primary" style={{ fontSize: "0.9rem", padding: "14px 32px" }}>
-              Book a Custom Setup →
-            </Link>
-            <Link href="/partners" className="btn-outline" style={{ fontSize: "0.9rem", padding: "14px 32px" }}>
-              Partner With Us
-            </Link>
+          <div className="lux26-solution-assistant">
+            <Image src={prefixPath("/images/lana-executive-office.jpg")} alt="LANA" width={1000} height={900} priority/>
+            <div className="lux26-solution-panel">
+              <span>Hi, I&apos;m LANA.</span>
+              <strong>I&apos;ll help you find the right Lux solution for your goals.</strong>
+              {["Grow my business","Automate my work","Improve follow-ups","Build a custom system"].map(x=><small key={x}>{x}</small>)}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-// ─── FINAL CTA ────────────────────────────────
-function SolutionsCTA() {
-  return (
-    <section
-      style={{
-        padding: "100px 24px",
-        background: "var(--bg-void)",
-        borderTop: "1px solid var(--border-subtle)",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "900px",
-          height: "300px",
-          background: "radial-gradient(ellipse, rgba(0, 229, 255, 0.06) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      <div style={{ maxWidth: "760px", margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
-        <h2
-          style={{
-            fontSize: "clamp(2rem, 4vw, 3rem)",
-            fontWeight: 900,
-            color: "var(--text-primary)",
-            letterSpacing: "-0.02em",
-            marginBottom: "20px",
-            lineHeight: 1.1,
-          }}
-        >
-          Your Business Does Not Need Another App.{" "}
-          <span
-            style={{
-              background: "linear-gradient(135deg, var(--electric), var(--cyan), var(--blue-bright))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            It Needs a System.
-          </span>
-        </h2>
-
-        <p
-          style={{
-            color: "var(--text-secondary)",
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            maxWidth: "540px",
-            margin: "0 auto 48px",
-          }}
-        >
-          Lux Automaton builds connected AI systems that help people organize work, automate follow-up,
-          create deliverables, manage money, and scale operations with more confidence.
-        </p>
-
-        <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
-          <Link href="/contact" className="btn-primary" style={{ fontSize: "0.95rem", padding: "15px 36px" }}>
-            Book a Demo →
-          </Link>
-          <Link href="/products" className="btn-outline" style={{ fontSize: "0.95rem", padding: "15px 36px" }}>
-            Explore the Ecosystem
-          </Link>
-          <Link href="/partners" className="btn-outline" style={{ fontSize: "0.95rem", padding: "15px 36px" }}>
-            Become a Partner
-          </Link>
+      <section className="lux26-usecases">
+        <div className="lux26-site-width">
+          <header className="lux26-section-heading compact">
+            <span>USE CASES</span>
+            <h2>Built for How <em>You Work.</em></h2>
+            <p>Different goals. Same connected Lux system.</p>
+          </header>
+          <div className="lux26-usecase-grid">
+            {useCases.map(({eyebrow,title,copy,icon:Icon,href})=>(
+              <Link href={href} className="lux26-usecase-card" key={title}>
+                <span>{eyebrow}</span>
+                <Icon size={38} strokeWidth={1.6}/>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+                <ul>
+                  <li><CheckCircle2 size={14}/> Visible workflows</li>
+                  <li><CheckCircle2 size={14}/> Human approvals</li>
+                  <li><CheckCircle2 size={14}/> Real operating context</li>
+                </ul>
+                <b>Learn More →</b>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="lux26-built-systems">
+        <div className="lux26-site-width">
+          <header className="lux26-section-heading">
+            <span>BUILT WITH LUX AUTOMATON</span>
+            <h2>Custom operating systems.<br/><em>Real-world environments.</em></h2>
+            <p>
+              These are examples of how the Lux stack can be configured around a specific business,
+              program, or operating model.
+            </p>
+          </header>
+          <div className="lux26-system-grid">
+            {SOLUTIONS.map(solution=>(
+              <Link href={"/solutions/"+solution.slug} className="lux26-system-card" key={solution.slug}>
+                {solution.bgImage ? <Image src={prefixPath(solution.bgImage)} alt="" width={1000} height={700}/> : null}
+                <div>
+                  <span>{solution.category}</span>
+                  <h3>{solution.name}</h3>
+                  <p>{solution.tagline}</p>
+                  <b>Explore System →</b>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="lux26-benefit-bar">
+        <div className="lux26-site-width">
+          <div><Bot size={34}/><span><strong>Built for People</strong><small>AI supports the work.</small></span></div>
+          <div><Workflow size={34}/><span><strong>Real Workflows</strong><small>Visible steps and handoffs.</small></span></div>
+          <div><BarChart3 size={34}/><span><strong>Real Results</strong><small>Measure what changed.</small></span></div>
+          <div><ShieldCheck size={34}/><span><strong>Private & Secure</strong><small>Your data. Your control.</small></span></div>
+          <div><Link href="/contact" className="lux26-mini-cta">Find Your Solution →</Link></div>
+        </div>
+      </section>
+    </main>
   );
 }

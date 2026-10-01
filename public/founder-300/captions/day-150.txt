@@ -1,0 +1,10 @@
+HERE’S MY OFFLINE-READY AI WORKFLOW
+
+My current offline-ready ai map is straightforward: INPUT → CONTEXT → WORK → CHECK → HANDOFF. The details change, but the discipline does not. Local fallback changes what a system can survive. Start by trying to design one useful offline mode.
+
+Comment MAP if you want the framework in a follow-up post.
+
+#OfflineAI #LocalFirst #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-02-26 20:00 Pacific
+CTA: Comment MAP if you want the framework in a follow-up post.

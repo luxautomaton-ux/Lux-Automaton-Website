@@ -1,0 +1,10 @@
+STOP DOING MODEL ROUTING THE HARD WAY
+
+Most teams jump straight to tools. I would start with the operating problem. With model routing, speed, cost and quality change by job. Routing is an operating decision. The fastest path is usually to send each task to the model that fits the work.
+
+Save this if you’re building AI into a real business.
+
+#LLMRouting #AIInfrastructure #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-12-29 09:00 Pacific
+CTA: Save this if you’re building AI into a real business.

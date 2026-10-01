@@ -1,0 +1,10 @@
+I BUILT MODEL ROUTING
+
+I do not believe one model should handle every task. The part that matters is what happened after the demo: speed, cost and quality change by job. My rule is simple — routing is an operating decision. If you are building something similar, send each task to the model that fits the work.
+
+Save this if you’re building AI into a real business.
+
+#LLMRouting #AIInfrastructure #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-10-30 10:00 Pacific
+CTA: Save this if you’re building AI into a real business.

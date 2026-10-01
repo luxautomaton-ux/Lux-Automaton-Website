@@ -1,0 +1,10 @@
+AUDIT YOUR AGENT BUILDER
+
+Quick audit for agent builder: Can you see the owner? Can you see the next action? Can you see the approval point? Can you see the evidence? If not, the automation is probably harder to trust than it needs to be. Define the job before choosing the model.
+
+Follow the build — I’m testing these ideas in public.
+
+#AgentBuilder #AIAgents #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-04-25 10:00 Pacific
+CTA: Follow the build — I’m testing these ideas in public.

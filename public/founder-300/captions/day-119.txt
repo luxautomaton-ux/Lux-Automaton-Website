@@ -1,0 +1,10 @@
+WHAT I LEARNED ABOUT MEMORY & CONTEXT
+
+Building memory & context taught me this: too much context can be as bad as too little. The shiny feature is rarely the whole story. Retrieval should be intentional and task-specific. That is the standard I keep bringing back into Lux.
+
+Send this to somebody building more than a chatbot.
+
+#AIMemory #KnowledgeSystems #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-01-26 12:00 Pacific
+CTA: Send this to somebody building more than a chatbot.

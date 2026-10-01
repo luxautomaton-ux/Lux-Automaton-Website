@@ -1,0 +1,10 @@
+AUDIT YOUR LUX VERIFY
+
+Quick audit for lux verify: Can you see the owner? Can you see the next action? Can you see the approval point? Can you see the evidence? If not, the automation is probably harder to trust than it needs to be. Make the verifier prove what it checked.
+
+Comment MAP if you want the framework in a follow-up post.
+
+#LuxVerify #AIVerification #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-04-22 09:00 Pacific
+CTA: Comment MAP if you want the framework in a follow-up post.

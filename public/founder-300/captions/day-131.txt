@@ -1,0 +1,10 @@
+HERE’S MY AI TEAM ARCHITECTURE WORKFLOW
+
+My current ai team architecture map is straightforward: INPUT → CONTEXT → WORK → CHECK → HANDOFF. The details change, but the discipline does not. Clear ownership beats one giant prompt. Start by trying to define one role before adding another.
+
+Save this if you’re building AI into a real business.
+
+#AIAgents #BusinessOS #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-02-07 15:00 Pacific
+CTA: Save this if you’re building AI into a real business.

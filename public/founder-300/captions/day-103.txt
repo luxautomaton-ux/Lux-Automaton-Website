@@ -1,0 +1,10 @@
+WHAT I LEARNED ABOUT MULTI-AGENT CUSTOMER FLOW
+
+Building multi-agent customer flow taught me this: the customer should still experience one company. The shiny feature is rarely the whole story. Handoffs matter more than the number of agents. That is the standard I keep bringing back into Lux.
+
+Follow the build — I’m testing these ideas in public.
+
+#CustomerExperience #AIAutomation #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-01-10 10:00 Pacific
+CTA: Follow the build — I’m testing these ideas in public.

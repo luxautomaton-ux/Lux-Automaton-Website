@@ -1,0 +1,10 @@
+3 MOVES FOR OFFLINE-READY AI
+
+When I think about offline-ready ai, I keep coming back to three moves: 1) define the real outcome, 2) make the handoffs visible, 3) decide what still requires human judgment. Local fallback changes what a system can survive. Design one useful offline mode.
+
+Comment MAP if you want the framework in a follow-up post.
+
+#OfflineAI #LocalFirst #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-11-28 21:00 Pacific
+CTA: Comment MAP if you want the framework in a follow-up post.

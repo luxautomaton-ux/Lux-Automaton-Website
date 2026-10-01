@@ -1,0 +1,10 @@
+3 MOVES FOR MODEL ROUTING
+
+When I think about model routing, I keep coming back to three moves: 1) define the real outcome, 2) make the handoffs visible, 3) decide what still requires human judgment. Routing is an operating decision. Send each task to the model that fits the work.
+
+Save this if you’re building AI into a real business.
+
+#LLMRouting #AIInfrastructure #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-11-29 10:00 Pacific
+CTA: Save this if you’re building AI into a real business.

@@ -1,0 +1,10 @@
+STOP DOING AUTONOMY BOUNDARIES THE HARD WAY
+
+Most teams jump straight to tools. I would start with the operating problem. With autonomy boundaries, routine autonomy and consequential judgment are different. Leverage should not erase accountability. The fastest path is usually to write down what AI may do without asking.
+
+Send this to somebody building more than a chatbot.
+
+#Automation #HumanInTheLoop #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-12-17 09:00 Pacific
+CTA: Send this to somebody building more than a chatbot.

@@ -1,0 +1,16 @@
+HERE IS THE ACTUAL STACK BEHIND LUX
+
+The interesting part of an AI stack is not the logo wall.
+
+It is how the pieces hand work to each other.
+
+The layers I care about: model routing, memory, tools, approval gates, verification and local fallback.
+
+Models will change. Providers will change. The operating system should survive that.
+
+Comment STACK and I’ll break down each layer.
+
+#AIStack #AIAutomation #LocalAI #FounderNotes #LuxAutomaton
+
+Scheduled: 2026-10-08 18:00 Pacific
+CTA: Comment STACK for the layer-by-layer breakdown.

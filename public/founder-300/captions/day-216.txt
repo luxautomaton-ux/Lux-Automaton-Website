@@ -1,0 +1,10 @@
+AUDIT YOUR CONTENT ENGINE
+
+Quick audit for content engine: Can you see the owner? Can you see the next action? Can you see the approval point? Can you see the evidence? If not, the automation is probably harder to trust than it needs to be. Measure the hook before changing the whole strategy.
+
+Save this if you’re building AI into a real business.
+
+#ContentStrategy #CreatorAI #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-05-03 18:00 Pacific
+CTA: Save this if you’re building AI into a real business.

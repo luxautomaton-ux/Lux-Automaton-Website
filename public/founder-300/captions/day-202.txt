@@ -1,0 +1,10 @@
+AUDIT YOUR LUX MESSAGES
+
+Quick audit for lux messages: Can you see the owner? Can you see the next action? Can you see the approval point? Can you see the evidence? If not, the automation is probably harder to trust than it needs to be. Attach the conversation to the actual next action.
+
+Comment SYSTEM if you want the workflow broken down.
+
+#BusinessMessaging #AIAgents #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-04-19 09:00 Pacific
+CTA: Comment SYSTEM if you want the workflow broken down.

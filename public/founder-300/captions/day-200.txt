@@ -1,0 +1,10 @@
+AUDIT YOUR LUX AGENT DESKTOP
+
+Quick audit for lux agent desktop: Can you see the owner? Can you see the next action? Can you see the approval point? Can you see the evidence? If not, the automation is probably harder to trust than it needs to be. Make work visible instead of hiding it in prompts.
+
+Comment MAP if you want the framework in a follow-up post.
+
+#AgentDesktop #AIWork #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-04-17 15:00 Pacific
+CTA: Comment MAP if you want the framework in a follow-up post.

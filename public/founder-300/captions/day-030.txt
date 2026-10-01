@@ -1,0 +1,10 @@
+I BUILT OFFLINE-READY AI
+
+I still care about AI that works when the cloud is unavailable. The part that matters is what happened after the demo: continuity is part of product quality. My rule is simple — local fallback changes what a system can survive. If you are building something similar, design one useful offline mode.
+
+Comment MAP if you want the framework in a follow-up post.
+
+#OfflineAI #LocalFirst #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-10-29 18:00 Pacific
+CTA: Comment MAP if you want the framework in a follow-up post.

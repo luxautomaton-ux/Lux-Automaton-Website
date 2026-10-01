@@ -1,0 +1,10 @@
+HERE’S MY VOICE AGENTS WORKFLOW
+
+My current voice agents map is straightforward: INPUT → CONTEXT → WORK → CHECK → HANDOFF. The details change, but the discipline does not. The best voice feature disappears into the interaction. Start by trying to test the first ten seconds of the call.
+
+Comment SYSTEM if you want the workflow broken down.
+
+#VoiceAI #AIAgents #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-02-28 15:00 Pacific
+CTA: Comment SYSTEM if you want the workflow broken down.

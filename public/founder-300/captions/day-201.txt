@@ -1,0 +1,10 @@
+AUDIT YOUR LUX FLOW
+
+Quick audit for lux flow: Can you see the owner? Can you see the next action? Can you see the approval point? Can you see the evidence? If not, the automation is probably harder to trust than it needs to be. Draw the flow before automating it.
+
+Save this if you’re building AI into a real business.
+
+#LuxFlow #WorkflowAutomation #LuxAutomaton #FounderBuilds
+
+Scheduled: 2027-04-18 20:00 Pacific
+CTA: Save this if you’re building AI into a real business.

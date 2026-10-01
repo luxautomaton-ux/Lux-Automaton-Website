@@ -1,0 +1,10 @@
+3 MOVES FOR RESILIENT AI STACK
+
+When I think about resilient ai stack, I keep coming back to three moves: 1) define the real outcome, 2) make the handoffs visible, 3) decide what still requires human judgment. Routing, memory, tools, approval and fallback are the real stack. Design the system so one vendor can fail.
+
+Follow the build — I’m testing these ideas in public.
+
+#AIStack #Resilience #LuxAutomaton #FounderBuilds
+
+Scheduled: 2026-11-16 18:00 Pacific
+CTA: Follow the build — I’m testing these ideas in public.

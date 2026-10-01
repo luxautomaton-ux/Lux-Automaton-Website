@@ -1,33 +1,27 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { prefixPath } from "@/lib/prefix";
 
 export const metadata: Metadata = {
   title: "Lux Foundation — Lux Automaton",
-  description: "The planned Lux AI Kids Foundation initiative: AI education access, technology access, community workshops, mentorship, and future opportunity.",
+  description: "The planned Lux Foundation community-impact initiative: access, learning, mentorship, opportunity, and practical AI education."
 };
 
 const pillars = [
   {
     number: "01",
     title: "Access",
-    copy: "Help more people get meaningful exposure to modern AI tools, practical workflows, and opportunities to build.",
+    copy: "Help more people get hands-on exposure to useful AI tools, practical learning, and the systems shaping the future of work.",
   },
   {
     number: "02",
-    title: "Learning",
-    copy: "Support hands-on education that turns curiosity into confidence through workshops, projects, and guided practice.",
+    title: "Education",
+    copy: "Connect community learning with Lux AI Kids, workshops, training, and approachable experiences that turn curiosity into capability.",
   },
   {
     number: "03",
-    title: "Youth",
-    copy: "Create safe, creative pathways for young builders through Lux AI Kids and community-centered learning experiences.",
-  },
-  {
-    number: "04",
     title: "Opportunity",
-    copy: "Connect education to real creation: entrepreneurship, technology skills, problem-solving, and pathways into future work.",
+    copy: "Create pathways for builders, families, entrepreneurs, and communities to use technology to create, learn, work, and grow.",
   },
 ];
 
@@ -35,26 +29,17 @@ export default function FoundationPage() {
   return (
     <div className="luxa-shell">
       <section className="luxa-page-hero">
-        <Image
-          className="luxa-video-bg"
-          src={prefixPath("/images/lux-ai-kids-brand/lux-learning-team.png")}
-          alt=""
-          width={1600}
-          height={1000}
-          priority
-        />
+        <video className="luxa-video-bg" autoPlay muted loop playsInline poster={prefixPath("/images/lux-kids-team.jpg")}>
+          <source src={prefixPath("/videos/Lux_Workshop_promo_montage_202607220252.mp4")} type="video/mp4" />
+        </video>
         <div className="luxa-grain" />
         <div className="luxa-container">
-          <span className="luxa-kicker">Lux Foundation / Planned community initiative</span>
-          <h1 className="luxa-display">Build access.<br /><span className="luxa-outline">Build confidence.</span></h1>
+          <span className="luxa-kicker">Lux Foundation / Planned community-impact initiative</span>
+          <h1 className="luxa-display">Build access.<br /><span className="luxa-outline">Create opportunity.</span></h1>
           <p className="luxa-copy">
-            The planned Lux AI Kids Foundation is designed to expand access to human-guided AI education,
-            technology, community workshops, mentorship, and future opportunity for young creators.
+            Lux Foundation is the planned impact initiative within the Lux mission: expanding access to practical AI learning,
+            creative technology, mentorship, and opportunities for people and communities to build what comes next.
           </p>
-          <div className="luxa-actions">
-            <Link className="luxa-button primary" href="/lux-ai-kids/foundation">See the Foundation plan ↗</Link>
-            <Link className="luxa-button" href="/lux-ai-kids">Explore Lux AI Kids</Link>
-          </div>
         </div>
       </section>
 
@@ -62,19 +47,18 @@ export default function FoundationPage() {
         <div className="luxa-container">
           <header className="luxa-section-head">
             <div>
-              <span className="luxa-kicker">The mission / Make the future reachable</span>
-              <h2 className="luxa-display">Technology should create<br /><span className="luxa-outline">more doors.</span></h2>
+              <span className="luxa-kicker">Impact / Education / Community</span>
+              <h2 className="luxa-display">Technology should<br /><span className="luxa-outline">move people forward.</span></h2>
             </div>
             <p className="luxa-copy">
-              This page gives the planned Foundation a clear home in the broader Lux family while the detailed
-              Lux AI Kids Foundation page continues to explain the initiative, focus areas, and early-interest pathway.
+              The Foundation connects the broader Lux ecosystem to education and community impact without changing
+              the commercial focus of Lux Automaton’s product business.
             </p>
           </header>
-
-          <div className="luxa-card-grid">
+          <div className="luxa-simple-grid">
             {pillars.map((pillar) => (
-              <article className="luxa-card" key={pillar.number}>
-                <span className="num">{pillar.number} / FOUNDATION</span>
+              <article className="luxa-simple-card" key={pillar.number}>
+                <span>{pillar.number}</span>
                 <h3>{pillar.title}</h3>
                 <p>{pillar.copy}</p>
               </article>
@@ -85,39 +69,44 @@ export default function FoundationPage() {
 
       <section className="luxa-section luxa-dark-band">
         <div className="luxa-container">
-          <div className="luxa-impact-grid">
-            <Link className="luxa-impact-card" href="/lux-ai-kids">
-              <Image src={prefixPath("/images/lux-kids-world.png")} alt="" width={1200} height={800} />
-              <div className="luxa-impact-copy">
-                <span>Youth / Creative AI</span>
-                <h3>Lux AI Kids</h3>
-                <p>Safety-first projects, stories, labs, workshops, and creative learning for the next generation.</p>
-              </div>
-            </Link>
-            <Link className="luxa-impact-card" href="/workshops">
-              <Image src={prefixPath("/images/ai-foundations-for-founders-poster.jpg")} alt="" width={1200} height={800} />
-              <div className="luxa-impact-copy">
-                <span>Community / Practical learning</span>
-                <h3>Workshops</h3>
-                <p>Hands-on experiences that help people understand AI by building, practicing, and solving real problems.</p>
-              </div>
-            </Link>
+          <header className="luxa-section-head">
+            <div>
+              <span className="luxa-kicker">Connected initiatives</span>
+              <h2 className="luxa-display">Learn. Create.<br /><span className="luxa-outline">Give back.</span></h2>
+            </div>
+            <p className="luxa-copy">
+              Lux AI Kids, workshops, training, Lux TV, and future community programs are natural bridges between
+              the technology Lux builds and the people it can help.
+            </p>
+          </header>
+          <div className="luxa-card-grid">
+            {[
+              ["Lux AI Kids", "Creative and safety-first AI learning for the next generation.", "/lux-ai-kids"],
+              ["Workshops", "Hands-on learning for founders, teams, families, and communities.", "/workshops"],
+              ["Lux TV", "Stories, explainers, build sessions, and practical AI media.", "/lux-tv"],
+              ["Community", "A place to connect learning, builders, ideas, and opportunity.", "/community"],
+            ].map(([title, copy, href], index) => (
+              <Link className="luxa-card" href={href} key={title}>
+                <span className="num">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+                <b>Explore ↗</b>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="luxa-final">
-        <video className="luxa-video-bg" autoPlay muted loop playsInline poster={prefixPath("/images/lux-kids-team.jpg")}>
-          <source src={prefixPath("/videos/Lux_Workshop_promo_montage_202607220252.mp4")} type="video/mp4" />
+        <video className="luxa-video-bg" autoPlay muted loop playsInline poster={prefixPath("/images/lux-kids-world.png")}>
+          <source src={prefixPath("/videos/lux-ai-kids-promo.mp4")} type="video/mp4" />
         </video>
         <div className="luxa-final-copy">
           <span className="luxa-kicker">Lux Foundation</span>
-          <h2 className="luxa-display">Opportunity grows<br />when access grows.</h2>
-          <p className="luxa-copy">
-            The Lux AI Kids Foundation is an upcoming initiative and is not yet an active nonprofit.
-          </p>
+          <h2 className="luxa-display">A brighter tomorrow<br />takes participation.</h2>
+          <p className="luxa-copy">Lux Foundation is being developed as a future community-impact initiative and is not presented here as an active nonprofit.</p>
           <div className="luxa-actions" style={{ justifyContent: "center" }}>
-            <Link className="luxa-button primary" href="/lux-ai-kids/foundation">View the planned Foundation ↗</Link>
+            <Link className="luxa-button primary" href="/contact">Connect with Lux Automaton ↗</Link>
           </div>
         </div>
       </section>

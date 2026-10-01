@@ -1,60 +1,109 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  BarChart3,
+  Bot,
+  BriefcaseBusiness,
+  Monitor,
+  Settings2,
+  ShieldCheck,
+  Sparkles,
+  Usb,
+  Workflow,
+} from "lucide-react";
 import { prefixPath } from "@/lib/prefix";
 
-const services = [
+const products = [
   {
-    number: "01 / DEPLOY",
-    title: "AI setup & deployment",
-    copy: "Turn the tools you already use into one coordinated AI workspace, configured around the way your business actually runs.",
-    href: "/services#deployment",
+    name: "Lux Agent Desktop",
+    line: "Your full AI workspace.",
+    image: "/images/lux-agent-hero.png",
+    href: "/products/lux-agent",
   },
   {
-    number: "02 / AUTOMATE",
-    title: "Workflow automation",
-    copy: "Connect repetitive work across sales, operations, support, research, content, and follow-up so your team can move faster.",
-    href: "/services#automation",
+    name: "Lux Agent USB",
+    line: "Your AI team on the go.",
+    image: "/images/lux-agent-usb-thumbnail.png",
+    href: "/products/lux-agent-usb",
   },
   {
-    number: "03 / BUILD",
-    title: "Build it for me",
-    copy: "Need a custom internal tool, workflow, agent experience, or customer-facing system? We can build the working version with you.",
-    href: "/services#build",
+    name: "Memory Packs",
+    line: "Remember more. Do more.",
+    image: "/images/ecosystem/memory-packs-hero.png",
+    href: "/products#memory-packs",
   },
   {
-    number: "04 / TRAIN",
-    title: "Training & workshops",
-    copy: "Practical sessions for founders, teams, families, and young builders who want to understand AI by actually using it.",
-    href: "/services#training",
+    name: "Success Packs",
+    line: "Templates for real results.",
+    image: "/images/ecosystem/success-packs-hero.png",
+    href: "/products/success-packs",
+  },
+  {
+    name: "Lux Flow",
+    line: "Build. Connect. Automate.",
+    image: "/images/ecosystem/lux-flow-logo-dark.png",
+    href: "/products#lux-flow",
+  },
+  {
+    name: "Warm Connect",
+    line: "People. Opportunities. Growth.",
+    image: "/images/lux-warmconnect/wordmark.png",
+    href: "/products/lux-warmconnect",
+  },
+  {
+    name: "Lux Verify",
+    line: "Audit. Verify. Trust.",
+    image: "/images/ecosystem/lux-verify-icon.png",
+    href: "/products#lux-verify",
+  },
+  {
+    name: "Business Launch OS",
+    line: "Start smart. Build right.",
+    image: "/images/ecosystem/business-launch-logo-dark.png",
+    href: "/solutions/lux-business-launch-os",
+  },
+  {
+    name: "Lux AI Kids",
+    line: "Learn AI. Build tomorrow.",
+    image: "/images/lux-ai-kids-brand/lux-ai-kids-logo.png",
+    href: "/lux-ai-kids",
   },
 ];
 
-const impact = [
+const benefits = [
+  { title: "AI Team", body: "A real team for real work.", Icon: Bot },
+  { title: "Automate", body: "Eliminate busywork.", Icon: Settings2 },
+  { title: "Grow", body: "Turn ideas into results.", Icon: BarChart3 },
+  { title: "Private & Secure", body: "Your data. Your control.", Icon: ShieldCheck },
+  { title: "Desktop + Travel", body: "Work anywhere.", Icon: Monitor },
+];
+
+const companyWorlds = [
   {
-    label: "LEARN / BUILD",
+    eyebrow: "LEARN + BUILD",
     title: "Workshops",
-    copy: "Hands-on AI education built around useful outcomes instead of hype.",
+    text: "Hands-on sessions, complete workshop packs, and practical AI training.",
     image: "/images/ai-foundations-for-founders-poster.jpg",
     href: "/workshops",
   },
   {
-    label: "WATCH / DISCOVER",
+    eyebrow: "WATCH + DISCOVER",
     title: "Lux TV",
-    copy: "Build sessions, founder conversations, explainers, experiments, and stories from inside the Lux ecosystem.",
+    text: "Product walkthroughs, founder media, tutorials, and the stories behind the systems.",
     image: "/images/lana-banner.jpg",
     href: "/lux-tv",
   },
   {
-    label: "NEXT GENERATION",
+    eyebrow: "NEXT GENERATION",
     title: "Lux AI Kids",
-    copy: "Creative, safety-first AI learning for kids, parents, teachers, and community programs.",
+    text: "A colorful, safety-first world for kids, parents, teachers, and young creators.",
     image: "/images/lux-kids-world.png",
     href: "/lux-ai-kids",
   },
   {
-    label: "ACCESS / IMPACT",
+    eyebrow: "ACCESS + IMPACT",
     title: "Lux Foundation",
-    copy: "The community-impact side of Lux: access, learning, opportunity, and programs that help more people build with technology.",
+    text: "Education, access, mentorship, and opportunity for the communities we want to help grow.",
     image: "/images/lux-ai-kids-brand/lux-learning-team.png",
     href: "/foundation",
   },
@@ -62,10 +111,10 @@ const impact = [
 
 export default function HomePage() {
   return (
-    <div className="luxa-shell">
-      <section className="luxa-hero">
+    <main className="lux26-home">
+      <section className="lux26-home-hero">
         <video
-          className="luxa-hero-video"
+          className="lux26-hero-film"
           autoPlay
           muted
           loop
@@ -74,145 +123,120 @@ export default function HomePage() {
         >
           <source src={prefixPath("/videos/lux-automaton-intro.mp4")} type="video/mp4" />
         </video>
-        <div className="luxa-hero-wash" />
-        <div className="luxa-grain" />
-        <div className="luxa-container">
-          <div className="luxa-hero-copy">
-            <span className="luxa-kicker">Lux Automaton / Portland, Oregon</span>
-            <h1 className="luxa-display">
-              Build the future.<br />
-              <span className="luxa-outline">Own the system.</span>
+        <div className="lux26-hero-shade" />
+
+        <div className="lux26-home-hero-grid lux26-site-width">
+          <div className="lux26-home-copy">
+            <span className="lux26-eyebrow">AI FOR A BRIGHTER TOMORROW</span>
+            <h1>
+              Your AI Team.<br />
+              Your <em>Business OS.</em>
             </h1>
-            <p className="luxa-copy">
-              Lux Automaton builds private AI workspaces, portable agent systems, automation,
-              education, and media for people creating real businesses and real opportunities.
+            <p>
+              Lux Automaton builds connected AI systems, agents, automations, training,
+              and business tools so people can work smarter, move faster, and go further.
             </p>
-            <div className="luxa-actions">
-              <Link className="luxa-button primary" href="/products">Explore what we build ↗</Link>
-              <Link className="luxa-button" href="/services">Put AI to work in your business</Link>
+
+            <div className="lux26-feature-chips">
+              <span><Bot size={18} /> AI Team</span>
+              <span><Workflow size={18} /> Automate</span>
+              <span><BarChart3 size={18} /> Grow</span>
+              <span><ShieldCheck size={18} /> Private &amp; Secure</span>
+            </div>
+
+            <div className="lux26-home-actions">
+              <Link href="/products" className="lux26-primary-cta">Explore Lux Agent <b>→</b></Link>
+              <Link href="/lux-tv" className="lux26-secondary-cta"><span>▶</span> Watch Video</Link>
+            </div>
+
+            <div className="lux26-platform-line">
+              <span></span>
+              <span>⊞</span>
+              <b>Mac + Windows</b>
+              <i />
+              <Usb size={16} />
+              <b>Optional USB Travel Edition</b>
+            </div>
+          </div>
+
+          <div className="lux26-lana-card">
+            <Image
+              src={prefixPath("/images/lana-executive-office.jpg")}
+              alt="LANA, Lux Automaton AI Executive Assistant"
+              width={1100}
+              height={900}
+              priority
+            />
+            <div className="lux26-lana-live"><i /> LIVE</div>
+            <div className="lux26-lana-copy">
+              <small>LANA</small>
+              <strong>Your AI Executive Assistant.</strong>
+              <span><Sparkles size={15} /> Strategy · Tasks · Ideas · Results</span>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="luxa-signal" aria-label="Lux principles">
-        <span>Private by design</span><i />
-        <span>Built for real work</span><i />
-        <span>Local-first options</span><i />
-        <span>Human-guided</span>
-      </div>
-
-      <section className="luxa-section" id="lux-agent-desktop">
-        <div className="luxa-container">
-          <div className="luxa-product-grid">
-            <div className="luxa-product-copy">
-              <span className="luxa-kicker">Flagship / Lux Agent Desktop</span>
-              <h2 className="luxa-display">
-                Your AI team.<br />
-                <span className="luxa-outline">One command center.</span>
-              </h2>
-              <p className="luxa-copy">
-                Lux Agent Desktop is the home-base experience: LANA at the center, specialist agents
-                around her, and the business tools, context, workflows, approvals, and intelligence
-                they need to help get work done.
-              </p>
-              <div className="luxa-specs">
-                <div><strong>One workspace</strong><span>Chat, tools, files, workflows, and team context.</span></div>
-                <div><strong>Specialist agents</strong><span>Bring the right AI lane into the work.</span></div>
-                <div><strong>Business memory</strong><span>Build around your operating context and rules.</span></div>
-                <div><strong>Human control</strong><span>Keep approvals and judgment where they belong.</span></div>
-              </div>
-              <div className="luxa-actions">
-                <Link className="luxa-button primary" href="/products#lux-agent">Explore Lux Agent ↗</Link>
-                <Link className="luxa-button" href="/services">See services</Link>
-              </div>
-            </div>
-
-            <div className="luxa-screen-stack" aria-label="Lux Agent Desktop product screens">
-              <div className="luxa-screen one">
-                <Image src={prefixPath("/images/lux-agent-desktop/build.png")} alt="Lux Agent Desktop build workspace" width={1400} height={900} />
-              </div>
-              <div className="luxa-screen two">
-                <Image src={prefixPath("/images/lux-agent-desktop/chat.png")} alt="Lux Agent Desktop LANA chat" width={1400} height={900} />
-              </div>
-              <div className="luxa-screen three">
-                <Image src={prefixPath("/images/lux-agent-desktop/vitals.png")} alt="Lux Agent Desktop system vitals" width={1400} height={900} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="luxa-dark-band">
-        <div className="luxa-section luxa-container">
-          <div className="luxa-cinematic-card">
-            <video className="luxa-video-bg" autoPlay muted loop playsInline poster={prefixPath("/images/lux-agent-usb-lana.jpg")}>
-              <source src={prefixPath("/videos/lux-agent-usb-commercial.mp4")} type="video/mp4" />
-            </video>
-            <div className="luxa-cinematic-copy">
-              <span className="luxa-kicker">Portable / Lux Agent USB</span>
-              <h2 className="luxa-display">
-                Take the team<br />
-                <span className="luxa-outline">with you.</span>
-              </h2>
-              <p className="luxa-copy">
-                Lux Agent USB extends the experience beyond the main computer with a portable,
-                travel-ready version of your agents, selected business context, and essential workflows.
-              </p>
-              <div className="luxa-actions">
-                <Link className="luxa-button primary" href="/products/lux-agent-usb">Explore Lux Agent USB ↗</Link>
-                <Link className="luxa-button" href="/products">Compare the ecosystem</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="luxa-section" id="services">
-        <div className="luxa-container">
-          <header className="luxa-section-head">
+      <section className="lux26-product-band">
+        <div className="lux26-site-width">
+          <div className="lux26-band-head">
             <div>
-              <span className="luxa-kicker">Services / From idea to operating system</span>
-              <h2 className="luxa-display">Don’t just buy AI.<br /><span className="luxa-outline">Put it to work.</span></h2>
+              <span>THE LUX ECOSYSTEM</span>
+              <h2>A Complete AI Workspace for <em>Real Results.</em></h2>
             </div>
-            <p className="luxa-copy">
-              Our services now center on the work we are already building and using: agent workspaces,
-              automation, deployment, practical training, and custom systems.
+            <p>
+              Start with Lux Agent, add the tools you need, and keep the rest of the
+              company—Workshops, TV, Kids, Foundation, and services—connected around it.
             </p>
-          </header>
-          <div className="luxa-card-grid">
-            {services.map((service) => (
-              <Link href={service.href} className="luxa-card" key={service.number}>
-                <span className="num">{service.number}</span>
-                <h3>{service.title}</h3>
-                <p>{service.copy}</p>
-                <b>Explore service ↗</b>
+            <Link href="/products">Explore All Products <b>→</b></Link>
+          </div>
+
+          <div className="lux26-product-rail">
+            {products.map((product) => (
+              <Link href={product.href} className="lux26-product-tile" key={product.name}>
+                <div className="lux26-product-media">
+                  <Image src={prefixPath(product.image)} alt="" width={560} height={420} />
+                </div>
+                <strong>{product.name}</strong>
+                <span>{product.line}</span>
+                <b>Learn More →</b>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="luxa-section luxa-dark-band">
-        <div className="luxa-container">
-          <header className="luxa-section-head">
-            <div>
-              <span className="luxa-kicker">Beyond products / Learn · watch · give back</span>
-              <h2 className="luxa-display">The company is bigger<br /><span className="luxa-outline">than software.</span></h2>
+      <section className="lux26-benefit-bar">
+        <div className="lux26-site-width">
+          {benefits.map(({ title, body, Icon }) => (
+            <div key={title}>
+              <Icon size={34} strokeWidth={1.7} />
+              <span><strong>{title}</strong><small>{body}</small></span>
             </div>
-            <p className="luxa-copy">
-              Lux Automaton also creates education, media, youth experiences, and community programs
-              that make AI more useful, understandable, and accessible.
+          ))}
+        </div>
+      </section>
+
+      <section className="lux26-company-worlds">
+        <div className="lux26-site-width">
+          <header>
+            <span>MORE THAN SOFTWARE</span>
+            <h2>One company. <em>More ways to move forward.</em></h2>
+            <p>
+              Keep everything already built into Lux Automaton—Workshops, Lux TV, Lux AI Kids,
+              and the Foundation—inside one branded experience.
             </p>
           </header>
-          <div className="luxa-impact-grid">
-            {impact.map((item) => (
-              <Link className="luxa-impact-card" href={item.href} key={item.title}>
-                <Image src={prefixPath(item.image)} alt="" width={1200} height={800} />
-                <div className="luxa-impact-copy">
-                  <span>{item.label}</span>
+
+          <div className="lux26-world-grid">
+            {companyWorlds.map((item) => (
+              <Link href={item.href} className="lux26-world-card" key={item.title}>
+                <Image src={prefixPath(item.image)} alt="" width={900} height={650} />
+                <div>
+                  <span>{item.eyebrow}</span>
                   <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
+                  <p>{item.text}</p>
+                  <b>Explore →</b>
                 </div>
               </Link>
             ))}
@@ -220,22 +244,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="luxa-final">
-        <video className="luxa-video-bg" autoPlay muted loop playsInline poster={prefixPath("/images/lana-executive-office.jpg")}>
-          <source src={prefixPath("/videos/lux-automaton-intro.mp4")} type="video/mp4" />
+      <section className="lux26-home-cta">
+        <video
+          className="lux26-hero-film"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={prefixPath("/images/lux-business-office.jpg")}
+        >
+          <source src={prefixPath("/videos/lux-business-launch-os-launch-film.mp4")} type="video/mp4" />
         </video>
-        <div className="luxa-final-copy">
-          <span className="luxa-kicker">Lux Automaton</span>
-          <h2 className="luxa-display">Build what comes next.</h2>
-          <p className="luxa-copy">
-            Start with Lux Agent, bring us a business problem, or come learn with the community.
-          </p>
-          <div className="luxa-actions" style={{ justifyContent: "center" }}>
-            <Link className="luxa-button primary" href="/products">Explore Lux Agent ↗</Link>
-            <Link className="luxa-button" href="/contact">Talk with Lux Automaton</Link>
+        <div className="lux26-hero-shade" />
+        <div className="lux26-site-width">
+          <span>BUILD · AUTOMATE · VERIFY · GROW</span>
+          <h2>Bring us the goal.<br />We&apos;ll help build the system.</h2>
+          <div>
+            <Link href="/start-here" className="lux26-primary-cta">Get Started <b>→</b></Link>
+            <Link href="/contact" className="lux26-secondary-cta"><BriefcaseBusiness size={18} /> Talk with Lux Automaton</Link>
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

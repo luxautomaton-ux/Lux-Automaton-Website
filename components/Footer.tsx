@@ -2,40 +2,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { prefixPath } from "@/lib/prefix";
 
-const groups = [
+const columns = [
   {
     title: "Products",
     links: [
       ["Lux Agent Desktop", "/products#lux-agent-desktop"],
       ["Lux Agent USB", "/products/lux-agent-usb"],
-      ["Lux Agent", "/products/lux-agent"],
       ["Success Packs", "/products/success-packs"],
+      ["Explore Ecosystem", "/products"],
     ],
   },
   {
-    title: "Services",
-    links: [
-      ["AI Setup & Deployment", "/services#deployment"],
-      ["Workflow Automation", "/services#automation"],
-      ["Build It For Me", "/services#build"],
-      ["Training", "/services#training"],
-    ],
-  },
-  {
-    title: "Learn & Impact",
+    title: "Learn",
     links: [
       ["Workshops", "/workshops"],
       ["Lux TV", "/lux-tv"],
       ["Lux AI Kids", "/lux-ai-kids"],
-      ["Lux Foundation", "/foundation"],
+      ["Blog", "/blog"],
     ],
   },
   {
     title: "Company",
     links: [
       ["Founders", "/founders"],
-      ["Blog", "/blog"],
-      ["Ask LANA", "/ask-lana"],
+      ["Lux Foundation", "/foundation"],
+      ["Partners", "/partners"],
       ["Contact", "/contact"],
     ],
   },
@@ -43,33 +34,44 @@ const groups = [
 
 export default function Footer() {
   return (
-    <footer className="luxa-footer">
-      <div className="luxa-container">
-        <div className="luxa-footer-grid">
-          <div className="luxa-footer-brand">
-            <Image
-              src={prefixPath("/images/lux-automaton-brand/lux-automaton-logo.png")}
-              alt="Lux Automaton"
-              width={72}
-              height={72}
-            />
-            <p>
-              Lux Automaton builds private AI systems, portable agent experiences, practical automation,
-              education, and media for people creating what comes next.
-            </p>
-          </div>
-          {groups.map((group) => (
-            <div key={group.title}>
-              <h4>{group.title}</h4>
-              {group.links.map(([label, href]) => (
-                <Link key={href + label} href={href}>{label}</Link>
-              ))}
-            </div>
-          ))}
-        </div>
-        <div className="luxa-footer-bottom">
-          <span>© {new Date().getFullYear()} Lux Automaton LLC. All rights reserved.</span>
+    <footer className="lux26-footer">
+      <div className="lux26-footer-top lux26-site-width">
+        <div className="lux26-footer-brand">
+          <Image
+            src={prefixPath("/images/logo-horizontal.png")}
+            alt="Lux Automaton"
+            width={500}
+            height={132}
+          />
+          <p>
+            Connected AI systems for business, automation, learning, and real-world impact.
+            Built to help people work smarter, move faster, and own more of their technology.
+          </p>
           <span>Automate · Innovate · Accelerate</span>
+        </div>
+
+        {columns.map((column) => (
+          <div className="lux26-footer-column" key={column.title}>
+            <h4>{column.title}</h4>
+            {column.links.map(([label, href]) => (
+              <Link key={href + label} href={href}>{label}</Link>
+            ))}
+          </div>
+        ))}
+
+        <div className="lux26-footer-cta">
+          <span>AI for a brighter tomorrow</span>
+          <h3>Ready to build what&apos;s next?</h3>
+          <Link href="/start-here">Get Started <b>→</b></Link>
+        </div>
+      </div>
+
+      <div className="lux26-footer-bottom lux26-site-width">
+        <span>© {new Date().getFullYear()} Lux Automaton LLC. All rights reserved.</span>
+        <div>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
+          <Link href="/contact">Support</Link>
         </div>
       </div>
     </footer>

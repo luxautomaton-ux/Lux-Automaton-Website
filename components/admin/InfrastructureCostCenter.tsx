@@ -106,7 +106,7 @@ const SERVICES: Service[] = [
     where: "Current public Lux website deployment.",
   },
   {
-    name: "Cloudflare Pages",
+    name: "Cloudflare Static Assets",
     layer: "Production web edge",
     now: "$0 while preparing",
     launch: "$0 static requests / bandwidth",
@@ -114,7 +114,7 @@ const SERVICES: Service[] = [
     owner: "Dre",
     purpose: "Global website delivery, SSL, caching, DNS, and edge protection.",
     where: "Public Internet layer in front of Lux.",
-    source: "https://developers.cloudflare.com/pages/functions/pricing/",
+    source: "https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/",
   },
   {
     name: "Cloudflare Workers",
@@ -208,7 +208,7 @@ const SETUP_STEPS = [
   { id: "inventory", title: "Inventory the stack", detail: "Track every recurring or usage-based Lux service before enabling a paid plan." },
   { id: "github", title: "GitHub source is connected", detail: "Keep website and app code versioned in the Lux Automaton repository." },
   { id: "supabaseDev", title: "Supabase development backend is connected", detail: "Keep building/testing without forcing a production upgrade." },
-  { id: "cloudflare", title: "Create and connect Cloudflare", detail: "Add Pages, DNS, SSL, and edge configuration. Keep the initial tier free." },
+  { id: "cloudflare", title: "Create and connect Cloudflare", detail: "Add Workers Static Assets, DNS, SSL, and edge configuration. Keep the initial tier free." },
   { id: "dns", title: "Point production domain DNS", detail: "GoDaddy can remain the registrar; DNS points the Lux domain to the production host." },
   { id: "supabasePro", title: "Activate Supabase Pro at launch", detail: "Make this a launch gate, not a build-stage expense." },
   { id: "stripe", title: "Verify Stripe live payments", detail: "Confirm live checkout, webhooks, taxes/settings, refunds, and settlement before launch." },

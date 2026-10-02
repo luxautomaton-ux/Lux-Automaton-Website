@@ -2,11 +2,12 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const isProd = process.env.NODE_ENV === "production";
+const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? (isProd ? "/Lux-Automaton-Website" : "");
 
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
-  basePath: isProd ? "/Lux-Automaton-Website" : "",
+  basePath: siteBasePath,
   images: {
     unoptimized: true,
     remotePatterns: [

@@ -43,7 +43,7 @@ Primary planned fixed infrastructure expense:
 
 - Supabase Pro: $25/month baseline.
 
-Cloudflare Pages can begin on free static delivery. Workers remain on the free tier unless measured requirements justify the paid plan.
+Cloudflare Workers Static Assets is the preferred new-project deployment path. Static asset requests are free and unlimited; Worker code stays on the free tier unless measured requirements justify the paid plan.
 
 ### Stage 3 — Usage growth
 
@@ -130,7 +130,7 @@ LANA should be able to answer the founders in plain language:
 
 ## Production cutover checklist
 
-- Cloudflare account and production Pages project connected.
+- Cloudflare account and production Workers Static Assets deployment connected.
 - Production custom domain/DNS validated.
 - HTTPS validated.
 - Supabase production plan approved and activated at launch.
@@ -146,6 +146,7 @@ LANA should be able to answer the founders in plain language:
 Pricing changes. LANA/Tyrone should verify these sources before approving material spend:
 
 - Supabase: https://supabase.com/pricing
+- Cloudflare Static Assets: https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/
 - Cloudflare Workers: https://developers.cloudflare.com/workers/platform/pricing/
 - Cloudflare R2: https://developers.cloudflare.com/r2/pricing/
 - Cloudflare Stream: https://developers.cloudflare.com/stream/pricing/

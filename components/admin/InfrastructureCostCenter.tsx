@@ -217,7 +217,7 @@ const SETUP_STEPS = [
 
 const TEAM = [
   { who: "Asa", role: "Founder approval", job: "Approves new recurring spend, budget changes, production upgrades, and vendor changes." },
-  { who: "Tori", role: "Founder budget visibility", job: "Reviews the monthly operating picture and understands what changed and why." },
+  { who: "Torrey", role: "Founder budget visibility", job: "Reviews the monthly operating picture and understands what changed and why." },
   { who: "LANA", role: "Cost Center operator", job: "Maintains the checklist, explains the stack, flags variance, and prepares founder-ready cost summaries." },
   { who: "Dre", role: "Technical owner", job: "Owns hosting, DNS implementation, deployment, backend connectivity, backups, and technical migrations." },
   { who: "Tyrone", role: "Ops + cost control", job: "Reconciles vendor costs, renewal dates, API usage, support burden, and operating-cost changes." },
@@ -563,7 +563,7 @@ export default function InfrastructureCostCenter() {
           <div><p>Who / What / When / Why / Where / How</p><h2>5W + H = Success</h2></div>
         </div>
         <div className={styles.sixGrid}>
-          <article><b>WHO</b><h3>Asa + Tori + LANA + Dre + Tyrone</h3><p>Founders see the money; LANA operates the system; Dre owns technical delivery; Tyrone owns cost/ops reconciliation.</p></article>
+          <article><b>WHO</b><h3>Asa + Torrey + LANA + Dre + Tyrone</h3><p>Founders see the money; LANA operates the system; Dre owns technical delivery; Tyrone owns cost/ops reconciliation.</p></article>
           <article><b>WHAT</b><h3>One shared Lux foundation</h3><p>Source control, web edge, production backend, payments, media, and private local infrastructure—without buying a separate stack for every app.</p></article>
           <article><b>WHEN</b><h3>Free while building; pay at triggers</h3><p>Supabase Pro at customer launch. Workers, R2, and Stream only when production needs or measured usage justify them.</p></article>
           <article><b>WHY</b><h3>Keep fixed costs low</h3><p>Spend follows revenue and usage while Lux keeps ownership, security, backups, and a clear migration path.</p></article>

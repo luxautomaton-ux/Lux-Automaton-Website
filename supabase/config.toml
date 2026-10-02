@@ -1,2 +1,11 @@
+[functions.lana-workshop-generator]
+verify_jwt = true
+
 [functions.lux-ai-visibility]
+verify_jwt = false
+
+[functions.lux-agent-checkout]
+verify_jwt = false
+
+[functions.lux-agent-stripe-webhook]
 verify_jwt = false

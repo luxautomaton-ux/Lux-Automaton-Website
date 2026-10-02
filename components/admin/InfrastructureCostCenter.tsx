@@ -31,6 +31,21 @@ type CostCenterState = {
   checklist: Record<string, boolean>;
 };
 
+type WebProperty = {
+  site_key: string;
+  display_name: string;
+  repo_full_name: string;
+  website_kind: string;
+  current_host: string;
+  target_host: string;
+  backend_strategy: string;
+  stage: string;
+  monthly_fixed_cost: number | string;
+  paid_trigger: string;
+  owner: string;
+  notes: string;
+};
+
 type Service = {
   name: string;
   layer: string;
@@ -45,6 +60,15 @@ type Service = {
 
 const STORAGE_KEY = "lux-admin-cost-center-v1";
 const PRICING_CHECKED = "October 2, 2026";
+
+const DEFAULT_WEB_PROPERTIES: WebProperty[] = [
+  { site_key: "lux-automaton", display_name: "Lux Automaton", repo_full_name: "luxautomaton-ux/Lux-Automaton-Website", website_kind: "Company / admin", current_host: "GitHub Pages", target_host: "Cloudflare Workers Static Assets", backend_strategy: "Shared Lux Supabase production backend", stage: "live-free", monthly_fixed_cost: 0, paid_trigger: "Supabase Pro at customer production; Workers paid only when measured need exists", owner: "Dre + LANA", notes: "Primary company website." },
+  { site_key: "lux-agent", display_name: "Lux Agent", repo_full_name: "luxautomaton-ux/lux-agent-website", website_kind: "Product marketing", current_host: "GitHub Pages", target_host: "Cloudflare Workers Static Assets", backend_strategy: "Shared backend for common customer/account services", stage: "live-free", monthly_fixed_cost: 0, paid_trigger: "No paid hosting before production requirement", owner: "Dre + LANA", notes: "Customer-facing Lux Agent website." },
+  { site_key: "lux-care-os", display_name: "Lux Care OS", repo_full_name: "luxautomaton-ux/lux-care-os-website", website_kind: "Product marketing", current_host: "GitHub Pages", target_host: "Cloudflare Workers Static Assets", backend_strategy: "Shared marketing services only; clinical/health data stays isolated", stage: "live-free", monthly_fixed_cost: 0, paid_trigger: "No paid hosting before production requirement", owner: "Dre + LANA", notes: "Healthcare data isolation remains mandatory." },
+  { site_key: "lux-coder", display_name: "Lux Coder", repo_full_name: "luxautomaton-ux/lux-coder-website", website_kind: "Static product / downloads", current_host: "GitHub Pages", target_host: "Cloudflare Workers Static Assets", backend_strategy: "Static-first; shared backend only for approved account/payment needs", stage: "live-free", monthly_fixed_cost: 0, paid_trigger: "No paid hosting before measured requirement", owner: "Dre + LANA", notes: "Static site with downloads." },
+  { site_key: "lux-studio", display_name: "Lux Studio", repo_full_name: "luxautomaton-ux/lux-studio-website", website_kind: "Static product marketing", current_host: "GitHub Pages", target_host: "Cloudflare Workers Static Assets", backend_strategy: "Static-first", stage: "live-free", monthly_fixed_cost: 0, paid_trigger: "No paid hosting before measured requirement", owner: "Dre + LANA", notes: "Keep static and free unless requirements change." },
+  { site_key: "lux-store", display_name: "Lux Store", repo_full_name: "luxautomaton-ux/lux-store", website_kind: "Storefront", current_host: "GitHub Pages", target_host: "Cloudflare Workers Static Assets", backend_strategy: "Shared Supabase + Stripe for approved commerce flows", stage: "live-free", monthly_fixed_cost: 0, paid_trigger: "Payment fees only when sales occur; paid infra requires founder approval", owner: "Dre + Tyrone", notes: "Storefront uses the shared Lux cost model." },
+];
 
 const DEFAULT_EXPENSES: ExpenseRow[] = [
   { id: "github", name: "GitHub + current Pages hosting", category: "Code / Hosting", owner: "Dre", monthly: 0 },
@@ -268,6 +292,7 @@ export default function InfrastructureCostCenter() {
   });
   const [notice, setNotice] = useState("Private local backup active · connecting Supabase sync…");
   const [remoteReady, setRemoteReady] = useState(false);
+  const [webProperties, setWebProperties] = useState<WebProperty[]>(DEFAULT_WEB_PROPERTIES);
   const importRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -298,6 +323,14 @@ export default function InfrastructureCostCenter() {
       if (data?.state && typeof data.state === "object") {
         setState((current) => mergeCostState(current, data.state as Partial<CostCenterState>));
       }
+      const { data: fleetData } = await supabase
+        .from("lux_web_properties")
+        .select("site_key, display_name, repo_full_name, website_kind, current_host, target_host, backend_strategy, stage, monthly_fixed_cost, paid_trigger, owner, notes")
+        .order("display_name");
+      if (active && Array.isArray(fleetData) && fleetData.length) {
+        setWebProperties(fleetData as WebProperty[]);
+      }
+
       setNotice("Private Supabase sync active · local backup also enabled.");
       setRemoteReady(true);
     });
@@ -328,6 +361,11 @@ export default function InfrastructureCostCenter() {
 
     return () => window.clearTimeout(timer);
   }, [remoteReady, state]);
+
+  const webHostingMonthly = useMemo(
+    () => webProperties.reduce((sum, site) => sum + Number(site.monthly_fixed_cost || 0), 0),
+    [webProperties],
+  );
 
   const currentMonthly = useMemo(
     () => state.expenses.reduce((sum, row) => sum + (Number.isFinite(row.monthly) ? row.monthly : 0), 0),
@@ -531,6 +569,45 @@ export default function InfrastructureCostCenter() {
           <div className={styles.flowSub}>Mac mini = private LANA, agents, local models, testing, automation, and internal services. Static assets do not execute the current Next.js /api handlers; production server routes must use an approved Supabase Edge Function or Cloudflare Worker boundary.</div>
         </article>
       </div>
+
+      <section className={styles.panel}>
+        <div className={styles.sectionHeading}>
+          <div><p>Zero-dollar web fleet</p><h2>{webProperties.length} Lux sites · {money(webHostingMonthly)} monthly hosting</h2></div>
+          <span className={styles.setupCount}>VERIFIED FREE</span>
+        </div>
+        <p className={styles.helper}>All listed sites are currently on GitHub Pages at no new monthly hosting cost. Cloudflare Workers Static Assets is the prepared target when domain cutover is ready; no Hostinger subscription is required.</p>
+        <div className={styles.serviceGrid}>
+          {webProperties.map((site) => (
+            <article key={site.site_key}>
+              <div className={styles.serviceTop}>
+                <div><b>{site.display_name}</b><span>{site.website_kind}</span></div>
+                <strong>{money(Number(site.monthly_fixed_cost || 0))}/mo</strong>
+              </div>
+              <dl>
+                <div><dt>Now</dt><dd>{site.current_host} · {site.stage}</dd></div>
+                <div><dt>Next</dt><dd>{site.target_host}</dd></div>
+                <div><dt>Backend</dt><dd>{site.backend_strategy}</dd></div>
+                <div><dt>Trigger</dt><dd>{site.paid_trigger}</dd></div>
+                <div><dt>Owner</dt><dd>{site.owner}</dd></div>
+              </dl>
+              <a href={"https://github.com/" + site.repo_full_name} target="_blank" rel="noreferrer">Open repository ↗</a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.panel}>
+        <div className={styles.sectionHeading}>
+          <div><p>Bootstrap cost ladder</p><h2>Spend only after value is proven</h2></div>
+          <span className={styles.lockedBadge}>ZERO SALES = ZERO NEW INFRA SPEND</span>
+        </div>
+        <div className={styles.metricGrid}>
+          <article><span>Stage 0 · Build + zero sales</span><strong>$0</strong><small>Six free-hosted sites + Supabase Free + Mac mini you already own.</small></article>
+          <article><span>Stage 1 · Customer production</span><strong>$25</strong><small>Supabase Pro becomes the first planned infrastructure gate.</small></article>
+          <article><span>Stage 2 · + founder Plus</span><strong>$45</strong><small>Supabase Pro + ChatGPT Plus if Plus is counted as a Lux operating tool.</small></article>
+          <article><span>Stage 3 · + paid Workers</span><strong>$50</strong><small>Only if Workers Free is no longer enough. Variable usage remains separate.</small></article>
+        </div>
+      </section>
 
       <div className={styles.twoColumn}>
         <section className={styles.panel}>

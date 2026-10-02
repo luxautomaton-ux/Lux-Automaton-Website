@@ -28,13 +28,18 @@ create index if not exists lux_agent_checkout_sessions_claimed_workspace_idx
   on public.lux_agent_checkout_sessions(claimed_workspace_id)
   where claimed_workspace_id is not null;
 
-do $$
+do $
+declare
+  legacy_has_rows boolean := false;
 begin
-  if to_regclass('public.lux_agent_entitlements') is not null
-     and exists (select 1 from public.lux_agent_entitlements limit 1) then
-    raise exception 'Legacy lux_agent_entitlements contains rows and requires explicit workspace reconciliation before removal';
+  if to_regclass('public.lux_agent_entitlements') is not null then
+    execute 'select exists (select 1 from public.lux_agent_entitlements limit 1)'
+      into legacy_has_rows;
+    if legacy_has_rows then
+      raise exception 'Legacy lux_agent_entitlements contains rows and requires explicit workspace reconciliation before removal';
+    end if;
   end if;
 end
-$$;
+$;
 
 drop table if exists public.lux_agent_entitlements;

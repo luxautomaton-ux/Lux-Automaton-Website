@@ -21,7 +21,7 @@ This file intentionally contains **no private invoices, payment details, secrets
 ## Core architecture
 
 1. **GitHub** is the source of truth for Lux website/application code.
-2. **Cloudflare** is the planned production web edge for Pages, DNS, SSL, caching, Workers, R2, and Stream when those services are needed.
+2. **Cloudflare** is the planned production web edge for Workers Static Assets, DNS, SSL, caching, Workers, R2, and Stream when those services are needed.
 3. **Supabase** is the shared managed production backend for customer-facing database, authentication, and application data.
 4. **Stripe** is the payment processor. Its cost follows successful payment volume.
 5. **Mac mini** remains the private Lux infrastructure for LANA, agents, testing, local models, automation, and internal services.
@@ -49,7 +49,7 @@ Cloudflare Workers Static Assets is the preferred new-project deployment path. S
 
 Add only when needed:
 
-- Cloudflare Workers paid: $5/month minimum.
+- Cloudflare Workers paid: $5/month minimum if paid capacity is needed; server endpoints can begin on the Worker Free plan.
 - R2: first 10 GB-month of standard storage is free, then standard storage is currently $0.015/GB-month, plus operations when applicable.
 - Stream: $5/month per 1,000 minutes of stored-video capacity and $1 per 1,000 minutes delivered.
 - Stripe Standard domestic cards: 2.9% + $0.30 per successful transaction.
@@ -97,7 +97,7 @@ Keep fixed expenses low, avoid duplicate subscriptions, preserve uptime and secu
 
 ### HOW
 
-Code change → review/test → deployment → production edge → shared backend → payment/media services as needed.
+Code change → review/test → deployment → static production edge → approved Worker/Edge-Function runtime for server routes → shared backend → payment/media services as needed.
 
 All recurring services are entered into the ledger. Every paid upgrade has an owner, reason, trigger, and rollback/exit path.
 
@@ -136,6 +136,7 @@ LANA should be able to answer the founders in plain language:
 - Supabase production plan approved and activated at launch.
 - Database backups and restore procedure verified.
 - Stripe live-mode configuration verified.
+- Existing server routes reviewed: Stripe checkout points to the Supabase Edge Function; LANA/chat and marketing server logic have an approved authenticated Worker/Edge-Function home. Static hosting alone is not treated as an API runtime.
 - Paid workshop video path chosen only if private video is required.
 - Monitoring and rollback owner assigned.
 - Current recurring costs entered into the private Cost Center ledger.

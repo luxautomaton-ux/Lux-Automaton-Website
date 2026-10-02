@@ -71,7 +71,7 @@ async function updateCheckout(id: string, patch: Record<string, unknown>) {
 
 async function checkoutRecord(id: string) {
   const query = new URLSearchParams({
-    select: "id,customer_email,setup,setup_hash,status",
+    select: "id,customer_email,setup,setup_hash,status,stripe_session_id,stripe_payment_intent_id,claimed_workspace_id",
     id: `eq.${id}`,
     limit: "1",
   });
@@ -79,8 +79,20 @@ async function checkoutRecord(id: string) {
   if (!result.ok) throw new Error("CHECKOUT_READ_FAILED");
   return (await result.json() as Array<{
     id: string; customer_email: string; setup: Record<string, unknown>;
-    setup_hash: string; status: string;
+    setup_hash: string; status: string; stripe_session_id: string | null;
+    stripe_payment_intent_id: string | null; claimed_workspace_id: string | null;
   }>)[0] ?? null;
+}
+
+async function checkoutByPaymentIntent(paymentIntentId: string) {
+  const query = new URLSearchParams({
+    select: "id",
+    stripe_payment_intent_id: `eq.${paymentIntentId}`,
+    limit: "1",
+  });
+  const result = await rest(`lux_agent_checkout_sessions?${query}`);
+  if (!result.ok) throw new Error("CHECKOUT_READ_FAILED");
+  return (await result.json() as Array<{ id: string }>)[0]?.id ?? null;
 }
 
 async function recordEvent(event: Record<string, unknown>, checkoutId: string | null, bodyHash: string) {
@@ -98,24 +110,6 @@ async function recordEvent(event: Record<string, unknown>, checkoutId: string | 
   if (!result.ok) throw new Error("EVENT_RECORD_FAILED");
   const rows = await result.json() as unknown[];
   return rows.length > 0;
-}
-
-async function ensureEntitlement(checkout: {
-  id: string; customer_email: string; setup: Record<string, unknown>; setup_hash: string;
-}, session: Record<string, unknown>) {
-  const result = await rest("lux_agent_entitlements?on_conflict=checkout_id", {
-    method: "POST",
-    headers: { Prefer: "resolution=ignore-duplicates,return=minimal" },
-    body: JSON.stringify({
-      checkout_id: checkout.id,
-      customer_email: checkout.customer_email,
-      setup: checkout.setup,
-      setup_hash: checkout.setup_hash,
-      stripe_session_id: String(session.id ?? ""),
-      status: "paid_pending_signature",
-    }),
-  });
-  if (!result.ok) throw new Error("ENTITLEMENT_CREATE_FAILED");
 }
 
 Deno.serve(async request => {
@@ -138,14 +132,19 @@ Deno.serve(async request => {
   const data = (event.data ?? {}) as Record<string, unknown>;
   const object = (data.object ?? {}) as Record<string, unknown>;
   const metadata = (object.metadata ?? {}) as Record<string, unknown>;
-  const checkoutId = String(metadata.checkout_id ?? object.client_reference_id ?? "").trim() || null;
+  let checkoutId = String(metadata.checkout_id ?? object.client_reference_id ?? "").trim() || null;
+  const type = String(event.type ?? "");
   const bodyHash = await digest(rawBody);
 
   try {
+    if (!checkoutId && type === "charge.refunded") {
+      const paymentIntentId = String(object.payment_intent ?? "").trim();
+      if (paymentIntentId) checkoutId = await checkoutByPaymentIntent(paymentIntentId);
+    }
+
     const fresh = await recordEvent(event, checkoutId, bodyHash);
     if (!fresh) return response({ ok: true, duplicate: true });
 
-    const type = String(event.type ?? "");
     if (!checkoutId) return response({ ok: true, ignored: "NO_CHECKOUT_ID" });
     const checkout = await checkoutRecord(checkoutId);
     if (!checkout) return response({ ok: true, ignored: "CHECKOUT_NOT_FOUND" });
@@ -175,7 +174,6 @@ Deno.serve(async request => {
         error_code: null,
         error_detail: null,
       });
-      await ensureEntitlement(checkout, object);
     } else if (type === "checkout.session.expired") {
       await updateCheckout(checkout.id, { status: "expired" });
     } else if (type === "checkout.session.async_payment_failed") {
@@ -185,13 +183,22 @@ Deno.serve(async request => {
         error_detail: "Stripe reported that the asynchronous payment failed.",
       });
     } else if (type === "charge.refunded") {
-      const query = new URLSearchParams({
-        checkout_id: `eq.${checkout.id}`,
+      await updateCheckout(checkout.id, {
+        status: "refunded",
+        error_code: null,
+        error_detail: null,
       });
-      await rest(`lux_agent_entitlements?${query}`, {
-        method: "PATCH",
-        body: JSON.stringify({ status: "refunded", updated_at: new Date().toISOString() }),
-      });
+      if (checkout.stripe_session_id) {
+        const query = new URLSearchParams({
+          source: "eq.stripe",
+          source_ref: `eq.${checkout.stripe_session_id}`,
+        });
+        const revoke = await rest(`lux_entitlements?${query}`, {
+          method: "PATCH",
+          body: JSON.stringify({ status: "canceled", updated_at: new Date().toISOString() }),
+        });
+        if (!revoke.ok) throw new Error("ENTITLEMENT_REVOKE_FAILED");
+      }
     }
 
     return response({ ok: true });

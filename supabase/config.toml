@@ -9,3 +9,9 @@ verify_jwt = false
 
 [functions.lux-agent-stripe-webhook]
 verify_jwt = false
+
+[functions.lux-agent-claim-order]
+verify_jwt = false
+
+[functions.lux-agent-signed-setup]
+verify_jwt = false

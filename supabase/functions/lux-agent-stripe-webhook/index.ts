@@ -2,43 +2,14 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
-const WEBHOOK_SECRET = Deno.env.get("STRIPE_WEBHOOK_SECRET") ?? "";
+const SIGNING_SECRET = Deno.env.get("STRIPE_WEBHOOK_SIGNING_SECRET") ?? "";
 const TOLERANCE_SECONDS = 300;
 
-async function digest(value: string) {
-  const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
-  return Array.from(new Uint8Array(bytes)).map(byte => byte.toString(16).padStart(2, "0")).join("");
-}
-
-async function hmac(secret: string, value: string) {
-  const key = await crypto.subtle.importKey(
-    "raw",
-    new TextEncoder().encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"],
-  );
-  const signature = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(value));
-  return Array.from(new Uint8Array(signature)).map(byte => byte.toString(16).padStart(2, "0")).join("");
-}
-
-function safeEqual(a: string, b: string) {
-  if (a.length !== b.length) return false;
-  let out = 0;
-  for (let i = 0; i < a.length; i++) out |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  return out === 0;
-}
-
-async function verifySignature(header: string, body: string) {
-  if (!WEBHOOK_SECRET) return false;
-  const parts = header.split(",");
-  const timestamp = Number(parts.find(part => part.startsWith("t="))?.slice(2));
-  const signatures = parts.filter(part => part.startsWith("v1=")).map(part => part.slice(3));
-  if (!Number.isFinite(timestamp) || signatures.length === 0) return false;
-  const age = Math.abs(Math.floor(Date.now() / 1000) - timestamp);
-  if (age > TOLERANCE_SECONDS) return false;
-  const expected = await hmac(WEBHOOK_SECRET, `${timestamp}.${body}`);
-  return signatures.some(signature => safeEqual(signature, expected));
+function json(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
+  });
 }
 
 async function rest(path: string, init: RequestInit = {}) {
@@ -54,149 +25,215 @@ async function rest(path: string, init: RequestInit = {}) {
   });
 }
 
-function response(body: unknown, status = 200) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
-  });
+async function sha256Hex(value: string) {
+  const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(bytes)).map(byte => byte.toString(16).padStart(2, "0")).join("");
 }
 
-async function updateCheckout(id: string, patch: Record<string, unknown>) {
-  const result = await rest(`lux_agent_checkout_sessions?id=eq.${encodeURIComponent(id)}`, {
-    method: "PATCH",
-    body: JSON.stringify({ ...patch, updated_at: new Date().toISOString() }),
-  });
-  if (!result.ok) throw new Error("CHECKOUT_UPDATE_FAILED");
+function parseSignature(header: string) {
+  const parts = header.split(",").map(part => part.trim());
+  let timestamp = 0;
+  const signatures: string[] = [];
+  for (const part of parts) {
+    const [key, value] = part.split("=", 2);
+    if (key === "t") timestamp = Number(value);
+    if (key === "v1" && value) signatures.push(value);
+  }
+  return { timestamp, signatures };
 }
 
-async function checkoutRecord(id: string) {
+function constantTimeEqualHex(a: string, b: string) {
+  if (!/^[a-f0-9]+$/i.test(a) || !/^[a-f0-9]+$/i.test(b) || a.length !== b.length) return false;
+  let diff = 0;
+  for (let index = 0; index < a.length; index++) {
+    diff |= a.charCodeAt(index) ^ b.charCodeAt(index);
+  }
+  return diff === 0;
+}
+
+async function verifyStripeSignature(body: string, header: string) {
+  if (!SIGNING_SECRET) return false;
+  const { timestamp, signatures } = parseSignature(header);
+  if (!timestamp || !signatures.length) return false;
+  const age = Math.abs(Math.floor(Date.now() / 1000) - timestamp);
+  if (age > TOLERANCE_SECONDS) return false;
+
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(SIGNING_SECRET),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const signature = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    new TextEncoder().encode(`${timestamp}.${body}`),
+  );
+  const expected = Array.from(new Uint8Array(signature))
+    .map(byte => byte.toString(16).padStart(2, "0"))
+    .join("");
+  return signatures.some(candidate => constantTimeEqualHex(candidate, expected));
+}
+
+async function checkoutRow(checkoutId: string) {
   const query = new URLSearchParams({
-    select: "id,customer_email,setup,setup_hash,status",
-    id: `eq.${id}`,
+    select: "id,status,customer_email,setup,setup_hash,stripe_session_id",
+    id: `eq.${checkoutId}`,
     limit: "1",
   });
-  const result = await rest(`lux_agent_checkout_sessions?${query}`);
-  if (!result.ok) throw new Error("CHECKOUT_READ_FAILED");
-  return (await result.json() as Array<{
-    id: string; customer_email: string; setup: Record<string, unknown>;
-    setup_hash: string; status: string;
-  }>)[0] ?? null;
+  const response = await rest(`lux_agent_checkout_sessions?${query}`);
+  if (!response.ok) throw new Error("CHECKOUT_READ_FAILED");
+  return (await response.json() as Array<Record<string, unknown>>)[0] ?? null;
 }
 
-async function recordEvent(event: Record<string, unknown>, checkoutId: string | null, bodyHash: string) {
-  const result = await rest("lux_agent_stripe_events?on_conflict=event_id", {
-    method: "POST",
-    headers: { Prefer: "resolution=ignore-duplicates,return=representation" },
-    body: JSON.stringify({
-      event_id: String(event.id ?? ""),
-      event_type: String(event.type ?? ""),
-      checkout_id: checkoutId,
-      payload_hash: bodyHash,
-      livemode: Boolean(event.livemode),
-    }),
-  });
-  if (!result.ok) throw new Error("EVENT_RECORD_FAILED");
-  const rows = await result.json() as unknown[];
-  return rows.length > 0;
-}
-
-async function ensureEntitlement(checkout: {
-  id: string; customer_email: string; setup: Record<string, unknown>; setup_hash: string;
-}, session: Record<string, unknown>) {
-  const result = await rest("lux_agent_entitlements?on_conflict=checkout_id", {
+async function recordEvent(input: {
+  eventId: string;
+  eventType: string;
+  checkoutId?: string | null;
+  payloadHash: string;
+  livemode?: boolean | null;
+  note?: string;
+}) {
+  const response = await rest("lux_agent_stripe_events?on_conflict=event_id", {
     method: "POST",
     headers: { Prefer: "resolution=ignore-duplicates,return=minimal" },
     body: JSON.stringify({
-      checkout_id: checkout.id,
-      customer_email: checkout.customer_email,
-      setup: checkout.setup,
-      setup_hash: checkout.setup_hash,
-      stripe_session_id: String(session.id ?? ""),
-      status: "paid_pending_signature",
+      event_id: input.eventId,
+      event_type: input.eventType,
+      checkout_id: input.checkoutId ?? null,
+      payload_hash: input.payloadHash,
+      livemode: input.livemode ?? null,
+      note: input.note ?? null,
     }),
   });
-  if (!result.ok) throw new Error("ENTITLEMENT_CREATE_FAILED");
+  if (!response.ok) throw new Error("EVENT_RECORD_FAILED");
+}
+
+async function handleCompleted(event: Record<string, unknown>, bodyHash: string) {
+  const data = event.data as Record<string, unknown> | undefined;
+  const object = data?.object as Record<string, unknown> | undefined;
+  if (!object) throw new Error("MISSING_SESSION_OBJECT");
+
+  const metadata = object.metadata as Record<string, unknown> | undefined;
+  const checkoutId = String(metadata?.checkout_id ?? "");
+  const setupHash = String(metadata?.setup_hash ?? "");
+  const stripeSessionId = String(object.id ?? "");
+  if (!/^[0-9a-f-]{36}$/i.test(checkoutId) || !/^[a-f0-9]{64}$/i.test(setupHash) || !stripeSessionId) {
+    throw new Error("INVALID_SESSION_METADATA");
+  }
+
+  const row = await checkoutRow(checkoutId);
+  if (!row) throw new Error("CHECKOUT_NOT_FOUND");
+  if (String(row.setup_hash ?? "") !== setupHash) throw new Error("SETUP_HASH_MISMATCH");
+  if (row.stripe_session_id && String(row.stripe_session_id) !== stripeSessionId) {
+    throw new Error("SESSION_ID_MISMATCH");
+  }
+
+  const paid = object.payment_status === "paid" || object.status === "complete";
+  if (!paid) throw new Error("SESSION_NOT_PAID");
+
+  const now = new Date().toISOString();
+  const update = await rest(`lux_agent_checkout_sessions?id=eq.${checkoutId}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      status: "paid",
+      stripe_session_id: stripeSessionId,
+      stripe_payment_intent_id: object.payment_intent ? String(object.payment_intent) : null,
+      stripe_customer_id: object.customer ? String(object.customer) : null,
+      amount_total: typeof object.amount_total === "number" ? object.amount_total : null,
+      currency: object.currency ? String(object.currency) : null,
+      livemode: Boolean(event.livemode),
+      paid_at: now,
+      updated_at: now,
+      error_code: null,
+      error_detail: null,
+    }),
+  });
+  if (!update.ok) throw new Error("CHECKOUT_UPDATE_FAILED");
+
+  await recordEvent({
+    eventId: String(event.id),
+    eventType: String(event.type),
+    checkoutId,
+    payloadHash: bodyHash,
+    livemode: Boolean(event.livemode),
+    note: "checkout paid; ready for authenticated workspace claim",
+  });
+}
+
+async function handleExpired(event: Record<string, unknown>, bodyHash: string) {
+  const data = event.data as Record<string, unknown> | undefined;
+  const object = data?.object as Record<string, unknown> | undefined;
+  const metadata = object?.metadata as Record<string, unknown> | undefined;
+  const checkoutId = String(metadata?.checkout_id ?? "");
+  if (/^[0-9a-f-]{36}$/i.test(checkoutId)) {
+    await rest(`lux_agent_checkout_sessions?id=eq.${checkoutId}`, {
+      method: "PATCH",
+      body: JSON.stringify({ status: "expired", updated_at: new Date().toISOString() }),
+    });
+  }
+  await recordEvent({
+    eventId: String(event.id),
+    eventType: String(event.type),
+    checkoutId: /^[0-9a-f-]{36}$/i.test(checkoutId) ? checkoutId : null,
+    payloadHash: bodyHash,
+    livemode: Boolean(event.livemode),
+    note: "checkout session expired",
+  });
 }
 
 Deno.serve(async request => {
-  if (request.method !== "POST") return response({ error: "METHOD_NOT_ALLOWED" }, 405);
-  if (!WEBHOOK_SECRET) return response({ error: "WEBHOOK_NOT_ACTIVATED" }, 503);
+  if (request.method === "GET") {
+    return json({
+      enabled: Boolean(SIGNING_SECRET),
+      signingSecretConfigured: Boolean(SIGNING_SECRET),
+      acceptsCharges: false,
+    });
+  }
+  if (request.method !== "POST") return json({ error: "METHOD_NOT_ALLOWED" }, 405);
+  if (!SIGNING_SECRET) return json({ error: "WEBHOOK_NOT_ACTIVATED" }, 503);
 
-  const rawBody = await request.text();
+  const body = await request.text();
   const signature = request.headers.get("Stripe-Signature") ?? "";
-  if (!(await verifySignature(signature, rawBody))) {
-    return response({ error: "INVALID_SIGNATURE" }, 400);
+  if (!await verifyStripeSignature(body, signature)) {
+    return json({ error: "INVALID_SIGNATURE" }, 400);
   }
 
   let event: Record<string, unknown>;
   try {
-    event = JSON.parse(rawBody) as Record<string, unknown>;
+    event = JSON.parse(body) as Record<string, unknown>;
   } catch {
-    return response({ error: "INVALID_EVENT" }, 400);
+    return json({ error: "INVALID_JSON" }, 400);
   }
 
-  const data = (event.data ?? {}) as Record<string, unknown>;
-  const object = (data.object ?? {}) as Record<string, unknown>;
-  const metadata = (object.metadata ?? {}) as Record<string, unknown>;
-  const checkoutId = String(metadata.checkout_id ?? object.client_reference_id ?? "").trim() || null;
-  const bodyHash = await digest(rawBody);
+  const eventId = String(event.id ?? "");
+  const eventType = String(event.type ?? "");
+  if (!eventId || !eventType) return json({ error: "INVALID_EVENT" }, 400);
+
+  const bodyHash = await sha256Hex(body);
+  const existing = await rest(`lux_agent_stripe_events?select=event_id&event_id=eq.${encodeURIComponent(eventId)}&limit=1`);
+  if (existing.ok && (await existing.json() as unknown[]).length) {
+    return json({ received: true, duplicate: true });
+  }
 
   try {
-    const fresh = await recordEvent(event, checkoutId, bodyHash);
-    if (!fresh) return response({ ok: true, duplicate: true });
-
-    const type = String(event.type ?? "");
-    if (!checkoutId) return response({ ok: true, ignored: "NO_CHECKOUT_ID" });
-    const checkout = await checkoutRecord(checkoutId);
-    if (!checkout) return response({ ok: true, ignored: "CHECKOUT_NOT_FOUND" });
-
-    if (type === "checkout.session.completed" || type === "checkout.session.async_payment_succeeded") {
-      const paymentStatus = String(object.payment_status ?? "");
-      if (paymentStatus !== "paid") {
-        return response({ ok: true, pending: true });
-      }
-      if (String(metadata.setup_hash ?? "") !== checkout.setup_hash) {
-        await updateCheckout(checkout.id, {
-          status: "failed",
-          error_code: "SETUP_HASH_MISMATCH",
-          error_detail: "Paid Stripe session metadata did not match the stored Lux setup.",
-        });
-        return response({ error: "SETUP_HASH_MISMATCH" }, 409);
-      }
-      await updateCheckout(checkout.id, {
-        status: "paid",
-        stripe_session_id: String(object.id ?? ""),
-        stripe_payment_intent_id: String(object.payment_intent ?? "") || null,
-        stripe_customer_id: String(object.customer ?? "") || null,
-        amount_total: Number(object.amount_total ?? 0),
-        currency: String(object.currency ?? "") || null,
+    if (eventType === "checkout.session.completed") {
+      await handleCompleted(event, bodyHash);
+    } else if (eventType === "checkout.session.expired") {
+      await handleExpired(event, bodyHash);
+    } else {
+      await recordEvent({
+        eventId,
+        eventType,
+        payloadHash: bodyHash,
         livemode: Boolean(event.livemode),
-        paid_at: new Date().toISOString(),
-        error_code: null,
-        error_detail: null,
-      });
-      await ensureEntitlement(checkout, object);
-    } else if (type === "checkout.session.expired") {
-      await updateCheckout(checkout.id, { status: "expired" });
-    } else if (type === "checkout.session.async_payment_failed") {
-      await updateCheckout(checkout.id, {
-        status: "failed",
-        error_code: "ASYNC_PAYMENT_FAILED",
-        error_detail: "Stripe reported that the asynchronous payment failed.",
-      });
-    } else if (type === "charge.refunded") {
-      const query = new URLSearchParams({
-        checkout_id: `eq.${checkout.id}`,
-      });
-      await rest(`lux_agent_entitlements?${query}`, {
-        method: "PATCH",
-        body: JSON.stringify({ status: "refunded", updated_at: new Date().toISOString() }),
+        note: "event acknowledged; no Lux state change required",
       });
     }
-
-    return response({ ok: true });
+    return json({ received: true });
   } catch (error) {
     console.error(error);
-    return response({ error: "WEBHOOK_PROCESSING_FAILED" }, 500);
+    return json({ error: "WEBHOOK_PROCESSING_FAILED" }, 500);
   }
 });

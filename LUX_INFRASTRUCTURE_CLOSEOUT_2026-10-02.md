@@ -25,6 +25,8 @@ This file defines what is complete in the free-first infrastructure phase and wh
 - Lux Cost Center data has an admin-only Supabase table plus browser-local fallback.
 - Lux web fleet registry is admin-only.
 - Lux Agent checkout tables are browser-blocked and service-role-only.
+- Canonical customer cloud core is present: workspaces, members, profiles, contacts, desk records, billing customers/events, and workspace entitlements.
+- Paid Build My Lux orders are claimed into a customer workspace through the authenticated `lux-agent-claim-order` Edge Function.
 - Lux Agent checkout Edge Function is deployed and non-charging until launch configuration is supplied.
 - Lux Agent Stripe webhook Edge Function is deployed and non-processing until a webhook secret is supplied.
 - Lux AI Visibility Edge Function is deployed; without a verified free Gemini key it intentionally returns Preview mode.

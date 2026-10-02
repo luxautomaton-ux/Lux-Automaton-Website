@@ -241,34 +241,33 @@ function cloneDefaults(): CostCenterState {
 }
 
 export default function InfrastructureCostCenter() {
-  const [state, setState] = useState<CostCenterState>(cloneDefaults);
-  const [hydrated, setHydrated] = useState(false);
+  const [state, setState] = useState<CostCenterState>(() => {
+    const defaults = cloneDefaults();
+    if (typeof window === "undefined") return defaults;
+    try {
+      const raw = window.localStorage.getItem(STORAGE_KEY);
+      if (!raw) return defaults;
+      const saved = JSON.parse(raw) as Partial<CostCenterState>;
+      return {
+        ...defaults,
+        ...saved,
+        expenses: Array.isArray(saved.expenses) ? saved.expenses : defaults.expenses,
+        checklist: { ...defaults.checklist, ...(saved.checklist || {}) },
+      };
+    } catch {
+      return defaults;
+    }
+  });
   const [notice, setNotice] = useState("Private local mode · actual bills stay in this browser.");
   const importRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const saved = JSON.parse(raw) as Partial<CostCenterState>;
-        setState((current) => ({
-          ...current,
-          ...saved,
-          expenses: Array.isArray(saved.expenses) ? saved.expenses : current.expenses,
-          checklist: { ...current.checklist, ...(saved.checklist || {}) },
-        }));
-      }
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     } catch {
-      setNotice("Local cost snapshot could not be loaded. Defaults are shown.");
-    } finally {
-      setHydrated(true);
+      // The dashboard still works if browser storage is blocked.
     }
-  }, []);
-
-  useEffect(() => {
-    if (!hydrated) return;
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  }, [hydrated, state]);
+  }, [state]);
 
   const currentMonthly = useMemo(
     () => state.expenses.reduce((sum, row) => sum + (Number.isFinite(row.monthly) ? row.monthly : 0), 0),

@@ -28,7 +28,7 @@ create index if not exists lux_agent_checkout_sessions_claimed_workspace_idx
   on public.lux_agent_checkout_sessions(claimed_workspace_id)
   where claimed_workspace_id is not null;
 
-do $
+do $reconcile$
 declare
   legacy_has_rows boolean := false;
 begin
@@ -40,6 +40,6 @@ begin
     end if;
   end if;
 end
-$;
+$reconcile$;
 
 drop table if exists public.lux_agent_entitlements;

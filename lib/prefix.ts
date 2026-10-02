@@ -1,5 +1,5 @@
 const isProd = process.env.NODE_ENV === "production";
-export const basePath = isProd ? "/Lux-Automaton-Website" : "";
+export const basePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? (isProd ? "/Lux-Automaton-Website" : "");
 
 export function prefixPath(src: string): string {
   if (!src) return "";

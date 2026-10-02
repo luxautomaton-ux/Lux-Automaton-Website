@@ -6,7 +6,7 @@ Last pricing review: October 2, 2026
 
 This document is the durable operating guide behind the private **Costs & Hosting** tab in Lux OS Admin Workspace.
 
-The goal is simple: Asa, Tori, LANA, Dre, and Tyrone should always be able to answer:
+The goal is simple: Asa, Torrey, LANA, Dre, and Tyrone should always be able to answer:
 
 - What services run Lux Automaton?
 - What are we paying right now?
@@ -65,7 +65,7 @@ Separate databases, larger compute, extra production projects, enterprise contro
 ### WHO
 
 - **Asa** — founder approval gate for recurring spend, production upgrades, and vendor changes.
-- **Tori** — founder-level budget visibility and monthly cost review.
+- **Torrey** — founder-level budget visibility and monthly cost review.
 - **LANA** — operates the Cost Center, maintains the checklist, explains the architecture, and flags budget variance.
 - **Dre** — technical owner for hosting, DNS implementation, deployment, backend connectivity, backups, and migrations.
 - **Tyrone** — operating-cost owner for invoices, renewals, usage, support burden, and vendor reconciliation.

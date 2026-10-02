@@ -27,6 +27,8 @@ This file defines what is complete in the free-first infrastructure phase and wh
 - Lux Agent checkout tables are browser-blocked and service-role-only.
 - Canonical customer cloud core is present: workspaces, members, profiles, contacts, desk records, billing customers/events, and workspace entitlements.
 - Paid Build My Lux orders are claimed into a customer workspace through the authenticated `lux-agent-claim-order` Edge Function.
+- Signed customer setups use an Ed25519 signing seed generated inside Supabase Vault; the private seed is not committed to GitHub. The public verification key is initialized by `lux-agent-signed-setup` and stored in the signing-key registry.
+- Setup-signing issuances are service-only and audited in `lux_agent_setup_issuances`.
 - Lux Agent checkout Edge Function is deployed and non-charging until launch configuration is supplied.
 - Lux Agent Stripe webhook Edge Function is deployed and non-processing until a webhook secret is supplied.
 - Lux AI Visibility Edge Function is deployed; without a verified free Gemini key it intentionally returns Preview mode.
@@ -46,7 +48,7 @@ The live checkout status reports:
 A direct checkout POST returns `503 CHECKOUT_NOT_ACTIVATED`.
 A direct webhook POST returns `503 WEBHOOK_NOT_ACTIVATED`.
 
-This is intentional. No Stripe charge can be created from the prepared Lux Agent checkout until the founder launch gate is completed.
+This is intentional. No Stripe charge can be created from the prepared Lux Agent checkout until the founder launch gate is completed. The signing layer is operational independently of Stripe: its Vault seed and public verification key are present, but signed customer setup issuance still requires a legitimately paid and claimed order.
 
 ## Launch gates that must remain pending
 

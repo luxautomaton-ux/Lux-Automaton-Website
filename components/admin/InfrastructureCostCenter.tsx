@@ -2,6 +2,7 @@
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./InfrastructureCostCenter.module.css";
+import { supabase } from "@/lib/supabase";
 
 type ExpenseRow = {
   id: string;
@@ -242,6 +243,16 @@ function cloneDefaults(): CostCenterState {
   };
 }
 
+function mergeCostState(base: CostCenterState, saved?: Partial<CostCenterState> | null): CostCenterState {
+  if (!saved) return base;
+  return {
+    ...base,
+    ...saved,
+    expenses: Array.isArray(saved.expenses) ? saved.expenses : base.expenses,
+    checklist: { ...base.checklist, ...(saved.checklist || {}) },
+  };
+}
+
 export default function InfrastructureCostCenter() {
   const [state, setState] = useState<CostCenterState>(() => {
     const defaults = cloneDefaults();
@@ -250,18 +261,49 @@ export default function InfrastructureCostCenter() {
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (!raw) return defaults;
       const saved = JSON.parse(raw) as Partial<CostCenterState>;
-      return {
-        ...defaults,
-        ...saved,
-        expenses: Array.isArray(saved.expenses) ? saved.expenses : defaults.expenses,
-        checklist: { ...defaults.checklist, ...(saved.checklist || {}) },
-      };
+      return mergeCostState(defaults, saved);
     } catch {
       return defaults;
     }
   });
-  const [notice, setNotice] = useState("Private local mode · actual bills stay in this browser.");
+  const [notice, setNotice] = useState("Private local backup active · connecting Supabase sync…");
+  const [remoteReady, setRemoteReady] = useState(false);
   const importRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    let active = true;
+    void supabase.auth.getSession().then(async ({ data: sessionData }) => {
+      const userId = sessionData.session?.user.id;
+      if (!userId) {
+        if (active) {
+          setNotice("Private local backup active · sign in to enable Supabase sync.");
+          setRemoteReady(true);
+        }
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("lux_cost_center_state")
+        .select("state, updated_at")
+        .eq("id", "lux-company")
+        .maybeSingle();
+
+      if (!active) return;
+      if (error) {
+        setNotice("Private local backup active · Supabase sync is temporarily unavailable.");
+        setRemoteReady(true);
+        return;
+      }
+
+      if (data?.state && typeof data.state === "object") {
+        setState((current) => mergeCostState(current, data.state as Partial<CostCenterState>));
+      }
+      setNotice("Private Supabase sync active · local backup also enabled.");
+      setRemoteReady(true);
+    });
+
+    return () => { active = false; };
+  }, []);
 
   useEffect(() => {
     try {
@@ -269,7 +311,23 @@ export default function InfrastructureCostCenter() {
     } catch {
       // The dashboard still works if browser storage is blocked.
     }
-  }, [state]);
+
+    if (!remoteReady) return;
+    const timer = window.setTimeout(() => {
+      void supabase.auth.getSession().then(async ({ data: sessionData }) => {
+        const userId = sessionData.session?.user.id;
+        if (!userId) return;
+        await supabase.from("lux_cost_center_state").upsert({
+          id: "lux-company",
+          state,
+          updated_by: userId,
+          updated_at: new Date().toISOString(),
+        }, { onConflict: "id" });
+      });
+    }, 700);
+
+    return () => window.clearTimeout(timer);
+  }, [remoteReady, state]);
 
   const currentMonthly = useMemo(
     () => state.expenses.reduce((sum, row) => sum + (Number.isFinite(row.monthly) ? row.monthly : 0), 0),
@@ -480,7 +538,7 @@ export default function InfrastructureCostCenter() {
             <div><p>What are we paying now?</p><h2>Current spend ledger</h2></div>
             <button type="button" className={styles.primaryButton} onClick={addExpense}>+ Add expense</button>
           </div>
-          <p className={styles.helper}>Enter the real monthly amount from invoices or convert annual charges to a monthly equivalent. These values stay in this browser.</p>
+          <p className={styles.helper}>Enter the real monthly amount from invoices or convert annual charges to a monthly equivalent. Signed-in admin changes sync privately to Supabase and keep a local browser backup.</p>
           <div className={styles.expenseTable}>
             <div className={styles.expenseHeader}><span>Service</span><span>Owner</span><span>Monthly</span><span /></div>
             {state.expenses.map((row) => (

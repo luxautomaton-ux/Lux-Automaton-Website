@@ -7,7 +7,6 @@ import {
   Monitor,
   Settings2,
   ShieldCheck,
-  Sparkles,
   Usb,
   Workflow,
 } from "lucide-react";
@@ -17,58 +16,58 @@ const products = [
   {
     name: "Lux Agent Desktop",
     line: "Your full AI workspace.",
-    image: "/images/lux-agent-hero.png",
+    image: "/images/home-product-packages-v2/agent-desktop.webp",
     href: "/products/lux-agent",
   },
   {
     name: "Lux Agent USB",
     line: "Your AI team on the go.",
-    image: "/images/lux-agent-usb-thumbnail.png",
+    image: "/images/home-product-packages-v2/agent-usb.webp",
     href: "/products/lux-agent-usb",
   },
   {
     name: "Memory Packs",
     line: "Remember more. Do more.",
-    image: "/images/ecosystem/memory-packs-hero.png",
+    image: "/images/home-product-packages-v2/memory-packs.webp",
     href: "/products#memory-packs",
   },
   {
     name: "Success Packs",
     line: "Templates for real results.",
-    image: "/images/ecosystem/success-packs-hero.png",
+    image: "/images/home-product-packages-v2/success-packs.webp",
     href: "/products/success-packs",
   },
   {
     name: "Lux Flow",
     line: "Build. Connect. Automate.",
-    image: "/images/ecosystem/lux-flow-logo-dark.png",
+    image: "/images/home-product-packages-v2/flow.webp",
     href: "/products#lux-flow",
-  },
-  {
-    name: "Warm Connect",
-    line: "People. Opportunities. Growth.",
-    image: "/images/lux-warmconnect/wordmark.png",
-    href: "/products/lux-warmconnect",
   },
   {
     name: "Lux Verify",
     line: "Audit. Verify. Trust.",
-    image: "/images/ecosystem/lux-verify-icon.png",
+    image: "/images/home-product-packages-v2/verify.webp",
     href: "/products#lux-verify",
+  },
+  {
+    name: "Warm Connect",
+    line: "People. Opportunities. Growth.",
+    image: "/images/home-product-packages-v2/warmconnect.webp",
+    href: "/products/lux-warmconnect",
   },
   {
     name: "Business Launch OS",
     line: "Start smart. Build right.",
-    image: "/images/ecosystem/business-launch-logo-dark.png",
+    image: "/images/home-product-packages-v2/business-launch.webp",
     href: "/solutions/lux-business-launch-os",
   },
   {
     name: "Lux AI Kids",
     line: "Learn AI. Build tomorrow.",
-    image: "/images/lux-ai-kids-brand/lux-ai-kids-logo.png",
+    image: "/images/home-product-packages-v2/ai-kids.webp",
     href: "/lux-ai-kids",
   },
-];
+]
 
 const benefits = [
   { title: "AI Team", body: "A real team for real work.", Icon: Bot },
@@ -81,30 +80,30 @@ const benefits = [
 const companyWorlds = [
   {
     eyebrow: "LEARN + BUILD",
-    title: "Workshops",
+    title: "Lux Training",
     text: "Hands-on sessions, complete workshop packs, and practical AI training.",
-    image: "/images/ai-foundations-for-founders-poster.jpg",
+    image: "/images/home-worlds/home-lux-training.jpg",
     href: "/workshops",
   },
   {
     eyebrow: "WATCH + DISCOVER",
     title: "Lux TV",
     text: "Product walkthroughs, founder media, tutorials, and the stories behind the systems.",
-    image: "/images/lana-banner.jpg",
+    image: "/images/home-worlds/home-lux-tv.jpg",
     href: "/lux-tv",
   },
   {
     eyebrow: "NEXT GENERATION",
     title: "Lux AI Kids",
     text: "A colorful, safety-first world for kids, parents, teachers, and young creators.",
-    image: "/images/lux-kids-world.png",
+    image: "/images/home-worlds/home-lux-ai-kids.jpg",
     href: "/lux-ai-kids",
   },
   {
     eyebrow: "ACCESS + IMPACT",
     title: "Lux Foundation",
     text: "Education, access, mentorship, and opportunity for the communities we want to help grow.",
-    image: "/images/lux-ai-kids-brand/lux-learning-team.png",
+    image: "/images/home-worlds/home-lux-foundation.jpg",
     href: "/foundation",
   },
 ];
@@ -121,7 +120,7 @@ export default function HomePage() {
           playsInline
           poster={prefixPath("/images/lux-world-hero.png")}
         >
-          <source src={prefixPath("/videos/lux-automaton-intro.mp4")} type="video/mp4" />
+          <source src={prefixPath("/videos/web/lux-automaton-intro.web.mp4")} type="video/mp4" />
         </video>
         <div className="lux26-hero-shade" />
 
@@ -159,21 +158,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="lux26-lana-card">
-            <Image
-              src={prefixPath("/images/lana-executive-office.jpg")}
-              alt="LANA, Lux Automaton AI Executive Assistant"
-              width={1100}
-              height={900}
-              priority
-            />
-            <div className="lux26-lana-live"><i /> LIVE</div>
-            <div className="lux26-lana-copy">
-              <small>LANA</small>
-              <strong>Your AI Executive Assistant.</strong>
-              <span><Sparkles size={15} /> Strategy · Tasks · Ideas · Results</span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -195,7 +179,7 @@ export default function HomePage() {
             {products.map((product) => (
               <Link href={product.href} className="lux26-product-tile" key={product.name}>
                 <div className="lux26-product-media">
-                  <Image src={prefixPath(product.image)} alt="" width={560} height={420} />
+                  <Image src={prefixPath(product.image)} alt={product.name + " product package"} width={560} height={700} unoptimized />
                 </div>
                 <strong>{product.name}</strong>
                 <span>{product.line}</span>
@@ -223,7 +207,7 @@ export default function HomePage() {
             <span>MORE THAN SOFTWARE</span>
             <h2>One company. <em>More ways to move forward.</em></h2>
             <p>
-              Keep everything already built into Lux Automaton—Workshops, Lux TV, Lux AI Kids,
+              Keep everything already built into Lux Automaton—Lux Training, Lux TV, Lux AI Kids,
               and the Foundation—inside one branded experience.
             </p>
           </header>
@@ -253,7 +237,7 @@ export default function HomePage() {
           playsInline
           poster={prefixPath("/images/lux-business-office.jpg")}
         >
-          <source src={prefixPath("/videos/lux-business-launch-os-launch-film.mp4")} type="video/mp4" />
+          <source src={prefixPath("/videos/web/lux-business-launch-os-launch-film.web.mp4")} type="video/mp4" />
         </video>
         <div className="lux26-hero-shade" />
         <div className="lux26-site-width">

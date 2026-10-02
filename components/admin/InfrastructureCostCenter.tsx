@@ -79,6 +79,7 @@ const DEFAULT_STATE: CostCenterState = {
     dns: false,
     supabasePro: false,
     stripe: false,
+    apiRuntime: false,
     backups: false,
   },
 };
@@ -121,7 +122,7 @@ const SERVICES: Service[] = [
     layer: "Server-side edge logic",
     now: "Free tier",
     launch: "Free first; $5/mo minimum paid plan if needed",
-    trigger: "Upgrade only when free limits or production requirements justify it.",
+    trigger: "Use the free Worker tier first for designated server endpoints; upgrade only when limits or production requirements justify it.",
     owner: "Dre + Tyrone",
     purpose: "Run edge functions and server-side logic without hosting a full server.",
     where: "Cloudflare edge.",
@@ -212,6 +213,7 @@ const SETUP_STEPS = [
   { id: "dns", title: "Point production domain DNS", detail: "GoDaddy can remain the registrar; DNS points the Lux domain to the production host." },
   { id: "supabasePro", title: "Activate Supabase Pro at launch", detail: "Make this a launch gate, not a build-stage expense." },
   { id: "stripe", title: "Verify Stripe live payments", detail: "Confirm live checkout, webhooks, taxes/settings, refunds, and settlement before launch." },
+  { id: "apiRuntime", title: "Verify production API runtime", detail: "Static hosting cannot execute the current Next.js /api routes. Route checkout through the Supabase Edge Function and place approved LANA/AI server logic behind a secure Worker or Edge Function without exposing secrets or the Mac mini." },
   { id: "backups", title: "Lock backup + recovery procedure", detail: "Document who restores the website, database, and private Lux services if something fails." },
 ];
 
@@ -468,7 +470,7 @@ export default function InfrastructureCostCenter() {
             <span>Supabase<br /><small>production brain</small></span><b>→</b>
             <span>R2 / Stream<br /><small>media</small></span>
           </div>
-          <div className={styles.flowSub}>Mac mini = private LANA, agents, local models, testing, automation, and internal services.</div>
+          <div className={styles.flowSub}>Mac mini = private LANA, agents, local models, testing, automation, and internal services. Static assets do not execute the current Next.js /api handlers; production server routes must use an approved Supabase Edge Function or Cloudflare Worker boundary.</div>
         </article>
       </div>
 

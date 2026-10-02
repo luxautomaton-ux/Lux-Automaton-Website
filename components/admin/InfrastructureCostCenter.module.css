@@ -1,0 +1,937 @@
+.shell {
+  width: min(1760px, 100%);
+  margin: 0 auto;
+  padding: clamp(34px, 5vw, 72px) clamp(16px, 3vw, 42px) 110px;
+  color: #f7fbff;
+}
+
+.hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 36px;
+  padding: 10px 0 44px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.eyebrow,
+.sectionHeading p,
+.flowCard > p {
+  margin: 0 0 10px;
+  color: #43e6ff;
+  font: 800 0.68rem/1 "JetBrains Mono", monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 1040px;
+  margin: 0 0 18px;
+  font: 850 clamp(2.7rem, 5.7vw, 6.6rem)/0.88 "Montserrat", sans-serif;
+  letter-spacing: -0.064em;
+}
+
+.hero > div:first-child > span {
+  display: block;
+  max-width: 900px;
+  color: #9eacbf;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.heroBadge {
+  flex: 0 0 auto;
+  min-width: 220px;
+  padding: 17px 18px;
+  border: 1px solid rgba(85, 231, 173, 0.28);
+  background: rgba(85, 231, 173, 0.07);
+  text-align: right;
+}
+
+.heroBadge strong,
+.heroBadge small {
+  display: block;
+}
+
+.heroBadge strong {
+  color: #75f2bb;
+  font: 850 0.73rem/1 "JetBrains Mono", monospace;
+  letter-spacing: 0.11em;
+}
+
+.heroBadge small {
+  margin-top: 8px;
+  color: #8492a6;
+  font-size: 0.66rem;
+}
+
+.privacyBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 20px 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(67, 230, 255, 0.18);
+  background: rgba(67, 230, 255, 0.055);
+}
+
+.privacyBar b,
+.privacyBar span {
+  display: block;
+}
+
+.privacyBar b {
+  color: #dffaff;
+  font-size: 0.76rem;
+}
+
+.privacyBar span {
+  margin-top: 4px;
+  color: #8290a4;
+  font-size: 0.67rem;
+}
+
+.actionRow {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.actionRow button,
+.primaryButton {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #c9d4e1;
+  font: 750 0.64rem/1 "JetBrains Mono", monospace;
+  cursor: pointer;
+}
+
+.actionRow button:hover,
+.primaryButton:hover {
+  border-color: #43e6ff;
+  color: white;
+}
+
+.primaryButton {
+  border-color: rgba(67, 230, 255, 0.35);
+  background: rgba(67, 230, 255, 0.09);
+  color: #84efff;
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.metricGrid article,
+.calcResults article {
+  min-height: 150px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.105);
+  background:
+    radial-gradient(circle at 100% 0, rgba(67, 230, 255, 0.08), transparent 35%),
+    rgba(6, 10, 19, 0.88);
+}
+
+.metricGrid span,
+.calcResults span {
+  display: block;
+  color: #7f8ea2;
+  font-size: 0.67rem;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.metricGrid strong,
+.calcResults strong {
+  display: block;
+  margin: 18px 0 8px;
+  color: white;
+  font: 820 clamp(1.85rem, 3vw, 3rem)/1 "Montserrat", sans-serif;
+  letter-spacing: -0.055em;
+}
+
+.metricGrid small,
+.calcResults small {
+  color: #758399;
+  font-size: 0.69rem;
+  line-height: 1.45;
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.7fr) minmax(0, 1.3fr);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.panel,
+.budgetCard,
+.flowCard,
+.calculator {
+  border: 1px solid rgba(255, 255, 255, 0.105);
+  background: rgba(5, 9, 18, 0.9);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+}
+
+.panel,
+.budgetCard,
+.flowCard,
+.calculator {
+  padding: clamp(22px, 3vw, 36px);
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.sectionHeading h2 {
+  margin: 0;
+  font: 820 clamp(1.5rem, 2.6vw, 2.7rem)/1 "Montserrat", sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.sectionHeading > strong {
+  flex: 0 0 auto;
+}
+
+.green,
+.amber,
+.red {
+  padding: 8px 10px;
+  border-radius: 999px;
+  font: 850 0.72rem/1 "JetBrains Mono", monospace;
+}
+
+.green {
+  color: #65edb0;
+  background: rgba(85, 231, 173, 0.1);
+}
+
+.amber {
+  color: #ffc563;
+  background: rgba(255, 181, 63, 0.1);
+}
+
+.red {
+  color: #ff8383;
+  background: rgba(255, 93, 93, 0.11);
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field > span {
+  color: #8795a9;
+  font-size: 0.65rem;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.field > input,
+.moneyInput,
+.textInput {
+  min-height: 43px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
+  background: #050912;
+  color: white;
+}
+
+.field > input,
+.textInput {
+  width: 100%;
+  padding: 0 12px;
+  outline: none;
+}
+
+.field > input:focus,
+.textInput:focus,
+.moneyInput:focus-within,
+.inlineMoney:focus-within {
+  border-color: #43e6ff;
+  box-shadow: 0 0 0 3px rgba(67, 230, 255, 0.07);
+}
+
+.moneyInput {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+}
+
+.moneyInput b,
+.inlineMoney b {
+  color: #55e7ad;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.moneyInput input,
+.inlineMoney input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: white;
+  font: inherit;
+  outline: 0;
+}
+
+.progressTrack {
+  height: 7px;
+  margin: 19px 0 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.progressTrack span {
+  display: block;
+  height: 100%;
+  padding: 0;
+  border-radius: 0;
+  transition: width 0.35s ease;
+}
+
+.progressTrack span.green {
+  background: #55e7ad;
+}
+
+.progressTrack span.amber {
+  background: #ffc563;
+}
+
+.progressTrack span.red {
+  background: #ff6f6f;
+}
+
+.budgetCard > small {
+  color: #77859a;
+  line-height: 1.5;
+}
+
+.flowCard {
+  background:
+    radial-gradient(circle at 88% 20%, rgba(123, 83, 255, 0.13), transparent 34%),
+    rgba(5, 9, 18, 0.92);
+}
+
+.flow {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.flow > span {
+  min-width: 120px;
+  padding: 16px;
+  border: 1px solid rgba(67, 230, 255, 0.22);
+  background: rgba(67, 230, 255, 0.055);
+  color: #eafcff;
+  font: 800 0.75rem/1.25 "JetBrains Mono", monospace;
+  text-align: center;
+}
+
+.flow > span small {
+  color: #718196;
+  font-size: 0.6rem;
+}
+
+.flow > b {
+  color: #7849ff;
+  font-size: 1.25rem;
+}
+
+.flowSub {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #8795a8;
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(340px, 0.75fr);
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.helper {
+  margin: -8px 0 18px;
+  color: #77869a;
+  font-size: 0.73rem;
+  line-height: 1.6;
+}
+
+.expenseTable {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.expenseHeader,
+.expenseRow {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.5fr) minmax(110px, 0.6fr) minmax(115px, 0.5fr) 34px;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 13px;
+}
+
+.expenseHeader {
+  background: rgba(255, 255, 255, 0.035);
+  color: #718096;
+  font: 800 0.58rem/1 "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.expenseRow {
+  min-height: 62px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.expenseRow > div:first-child b,
+.expenseRow > div:first-child small {
+  display: block;
+}
+
+.expenseRow > div:first-child b {
+  color: #e8f0f9;
+  font-size: 0.75rem;
+}
+
+.expenseRow > div:first-child small {
+  margin-top: 4px;
+  color: #6e7d91;
+  font-size: 0.62rem;
+}
+
+.expenseRow > span {
+  color: #97a5b8;
+  font-size: 0.68rem;
+}
+
+.inlineMoney {
+  display: flex;
+  align-items: center;
+  min-height: 37px;
+  gap: 4px;
+  padding: 0 9px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #050912;
+}
+
+.textInput {
+  min-height: 37px;
+}
+
+.deleteButton {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 94, 94, 0.22);
+  background: rgba(255, 94, 94, 0.06);
+  color: #ff8b8b;
+  cursor: pointer;
+}
+
+.switchList {
+  display: grid;
+  gap: 10px;
+}
+
+.switchList label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.085);
+  background: rgba(255, 255, 255, 0.025);
+  cursor: pointer;
+}
+
+.switchList input {
+  margin-top: 3px;
+  accent-color: #43e6ff;
+}
+
+.switchList b,
+.switchList small {
+  display: block;
+}
+
+.switchList b {
+  color: #e9f5ff;
+  font-size: 0.76rem;
+}
+
+.switchList small {
+  margin-top: 4px;
+  color: #76859a;
+  font-size: 0.66rem;
+  line-height: 1.45;
+}
+
+.scenarioSummary {
+  display: grid;
+  gap: 1px;
+  margin-top: 18px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.scenarioSummary div {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 13px;
+  background: #070b13;
+}
+
+.scenarioSummary span {
+  color: #7d8ba0;
+  font-size: 0.68rem;
+}
+
+.scenarioSummary b {
+  color: #dffcff;
+  font-size: 0.7rem;
+}
+
+.calculator {
+  margin: 12px 0;
+  background:
+    radial-gradient(circle at 0 0, rgba(67, 230, 255, 0.08), transparent 28%),
+    radial-gradient(circle at 100% 0, rgba(120, 73, 255, 0.09), transparent 28%),
+    rgba(5, 9, 18, 0.93);
+}
+
+.calculatorBadge,
+.lockedBadge,
+.setupCount {
+  padding: 8px 10px;
+  border: 1px solid rgba(120, 73, 255, 0.25);
+  background: rgba(120, 73, 255, 0.08);
+  color: #d8cfff;
+  font: 800 0.58rem/1 "JetBrains Mono", monospace;
+  letter-spacing: 0.07em;
+}
+
+.calcGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.calcResults {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.calcResults article {
+  min-height: 126px;
+  padding: 16px;
+}
+
+.calcResults strong {
+  font-size: clamp(1.35rem, 2vw, 2rem);
+}
+
+.ratioLine {
+  display: flex;
+  gap: 10px 24px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #7e8da2;
+  font-size: 0.69rem;
+}
+
+.ratioLine b {
+  color: #a8f4ff;
+}
+
+.panel {
+  margin: 12px 0;
+}
+
+.sixGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sixGrid article {
+  min-height: 190px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.sixGrid article > b {
+  color: #43e6ff;
+  font: 850 0.64rem/1 "JetBrains Mono", monospace;
+  letter-spacing: 0.13em;
+}
+
+.sixGrid h3 {
+  margin: 18px 0 10px;
+  color: #f5faff;
+  font: 800 1.05rem/1.2 "Montserrat", sans-serif;
+}
+
+.sixGrid p {
+  margin: 0;
+  color: #8392a5;
+  font-size: 0.75rem;
+  line-height: 1.65;
+}
+
+.checklist {
+  display: grid;
+  gap: 8px;
+}
+
+.checklist label {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 13px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.022);
+  cursor: pointer;
+}
+
+.checklist label.done {
+  border-color: rgba(85, 231, 173, 0.18);
+  background: rgba(85, 231, 173, 0.04);
+}
+
+.checklist input {
+  accent-color: #55e7ad;
+}
+
+.stepNumber {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(67, 230, 255, 0.18);
+  color: #71eaff;
+  font: 800 0.63rem/1 "JetBrains Mono", monospace;
+}
+
+.checklist b,
+.checklist small {
+  display: block;
+}
+
+.checklist b {
+  color: #e9f1fa;
+  font-size: 0.76rem;
+}
+
+.checklist small {
+  margin-top: 4px;
+  color: #758399;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.setupCount {
+  color: #83f0bd;
+  border-color: rgba(85, 231, 173, 0.2);
+  background: rgba(85, 231, 173, 0.06);
+}
+
+.rules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.rules article {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 13px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.rules article > b {
+  color: #7849ff;
+  font: 900 0.8rem/1 "JetBrains Mono", monospace;
+}
+
+.rules span {
+  color: #8997aa;
+  font-size: 0.73rem;
+  line-height: 1.55;
+}
+
+.rules strong {
+  color: #edf6ff;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.teamGrid article {
+  display: flex;
+  gap: 12px;
+  padding: 17px;
+  border: 1px solid rgba(255, 255, 255, 0.085);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.teamGrid article > span {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgba(67, 230, 255, 0.25);
+  background: rgba(67, 230, 255, 0.06);
+  color: #64e9ff;
+  font-weight: 900;
+}
+
+.teamGrid b,
+.teamGrid small {
+  display: block;
+}
+
+.teamGrid b {
+  font-size: 0.78rem;
+}
+
+.teamGrid small {
+  margin-top: 3px;
+  color: #55e7ad;
+  font-size: 0.61rem;
+}
+
+.teamGrid p {
+  margin: 10px 0 0;
+  color: #78869a;
+  font-size: 0.67rem;
+  line-height: 1.5;
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.serviceGrid > article {
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.085);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.serviceTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.serviceTop b,
+.serviceTop span {
+  display: block;
+}
+
+.serviceTop b {
+  font: 800 0.9rem/1.2 "Montserrat", sans-serif;
+}
+
+.serviceTop span {
+  margin-top: 4px;
+  color: #748399;
+  font-size: 0.63rem;
+}
+
+.serviceTop strong {
+  color: #70eafd;
+  font: 750 0.58rem/1 "JetBrains Mono", monospace;
+  white-space: nowrap;
+}
+
+.serviceGrid dl {
+  display: grid;
+  gap: 9px;
+  margin: 14px 0;
+}
+
+.serviceGrid dl > div {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 8px;
+}
+
+.serviceGrid dt {
+  color: #657489;
+  font: 800 0.57rem/1.45 "JetBrains Mono", monospace;
+  text-transform: uppercase;
+}
+
+.serviceGrid dd {
+  margin: 0;
+  color: #9aa8ba;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.serviceGrid a {
+  color: #43e6ff;
+  font-size: 0.65rem;
+  text-decoration: none;
+}
+
+.serviceGrid a:hover {
+  text-decoration: underline;
+}
+
+.footerNote {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 181, 63, 0.18);
+  background: rgba(255, 181, 63, 0.05);
+  color: #9c917d;
+  font-size: 0.7rem;
+  line-height: 1.55;
+}
+
+.footerNote b {
+  color: #ffc563;
+  font-family: "JetBrains Mono", monospace;
+}
+
+@media (max-width: 1280px) {
+  .metricGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .calcResults {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .serviceGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .privacyBar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .heroBadge {
+    text-align: left;
+  }
+
+  .actionRow {
+    justify-content: flex-start;
+  }
+
+  .statusGrid,
+  .twoColumn {
+    grid-template-columns: 1fr;
+  }
+
+  .flow {
+    grid-template-columns: 1fr;
+  }
+
+  .flow > b {
+    transform: rotate(90deg);
+    text-align: center;
+  }
+
+  .calcGrid,
+  .sixGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .shell {
+    padding-inline: 12px;
+  }
+
+  .metricGrid,
+  .calcGrid,
+  .calcResults,
+  .sixGrid,
+  .rules,
+  .teamGrid,
+  .serviceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeading {
+    flex-direction: column;
+  }
+
+  .expenseTable {
+    border: 0;
+  }
+
+  .expenseHeader {
+    display: none;
+  }
+
+  .expenseRow {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .expenseRow > div:last-child {
+    justify-self: end;
+  }
+
+  .calculatorBadge,
+  .lockedBadge,
+  .setupCount {
+    align-self: flex-start;
+  }
+}

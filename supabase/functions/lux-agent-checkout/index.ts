@@ -156,7 +156,7 @@ Deno.serve(async request => {
     }
 
     const setupJson = JSON.stringify(setup);
-    const setuHash = await digest(setupJson);
+    const setupHash = await digest(setupJson);
     const insert = await rest("lux_agent_checkout_sessions", {
       method: "POST",
       headers: { Prefer: "return=representation" },

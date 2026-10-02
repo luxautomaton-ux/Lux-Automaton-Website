@@ -108,22 +108,98 @@ function fromB64(value: string) {
   return Uint8Array.from(raw, char => char.charCodeAt(0));
 }
 
-function toB64(bytes: ArrayBuffer) {
-  const view = new Uint8Array(bytes);
+function fromB64Url(value: string) {
+  let normalized = value.replace(/-/g, "+").replace(/_/g, "/");
+  normalized = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, "=");
+  return fromB64(normalized);
+}
+
+function hexBytes(value: string) {
+  const parts = value.match(/.{2}/g) ?? [];
+  return Uint8Array.from(parts.map(part => Number.parseInt(part, 16)));
+}
+
+function joinBytes(...chunks: Uint8Array[]) {
+  const size = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+  const out = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) {
+    out.set(chunk, offset);
+    offset += chunk.length;
+  }
+  return out;
+}
+
+function toB64(bytes: ArrayBuffer | Uint8Array) {
+  const view = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
   let binary = "";
   for (const byte of view) binary += String.fromCharCode(byte);
   return btoa(binary);
+}
+
+async function signingMaterial() {
+  const seed = fromB64(await signingSecret());
+  if (seed.length !== 32) throw new Error("SIGNING_KEY_UNAVAILABLE");
+
+  const pkcs8 = joinBytes(
+    hexBytes("302e020100300506032b657004220420"),
+    seed,
+  );
+  const key = await crypto.subtle.importKey(
+    "pkcs8",
+    pkcs8,
+    { name: "Ed25519" },
+    true,
+    ["sign"],
+  );
+  const jwk = await crypto.subtle.exportKey("jwk", key);
+  if (!jwk.x) throw new Error("SIGNING_PUBLIC_KEY_UNAVAILABLE");
+
+  const publicRaw = fromB64Url(jwk.x);
+  const spki = joinBytes(
+    hexBytes("302a300506032b6570032100"),
+    publicRaw,
+  );
+
+  return {
+    key,
+    publicKeySpkiB64: toB64(spki),
+  };
+}
+
+async function ensurePublicKey(publicKeySpkiB64: string) {
+  const response = await rest("lux_agent_signing_keys?on_conflict=key_id", {
+    method: "POST",
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify({
+      key_id: KEY_ID,
+      algorithm: "Ed25519",
+      public_key_spki_b64: publicKeySpkiB64,
+      active: true,
+      retired_at: null,
+    }),
+  });
+  if (!response.ok) throw new Error("SIGNING_PUBLIC_KEY_WRITE_FAILED");
 }
 
 async function digest(value: string) {
   const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
   return Array.from(new Uint8Array(bytes)).map(byte => byte.toString(16).padStart(2, "0")).join("");
 }
-async function sign(payloadJson: string) {
-  const privatePkcs8 = fromB64(await signingSecret());
-  const key = await crypto.subtle.importKey("pkcs8", privatePkcs8, { name: "Ed25519" }, false, ["sign"]);
+
+async function sign(key: CryptoKey, payloadJson: string) {
   const signature = await crypto.subtle.sign("Ed25519", key, new TextEncoder().encode(payloadJson));
   return toB64(signature);
+}
+
+async function publicKeyResponse() {
+  const material = await signingMaterial();
+  await ensurePublicKey(material.publicKeySpkiB64);
+  return json({
+    keyId: KEY_ID,
+    algorithm: "Ed25519",
+    publicKeySpkiB64: material.publicKeySpkiB64,
+  });
 }
 
 async function recordIssuance(checkoutId: string, workspaceId: string, setupHash: string, payloadHash: string) {
@@ -142,6 +218,14 @@ async function recordIssuance(checkoutId: string, workspaceId: string, setupHash
 }
 
 Deno.serve(async request => {
+  if (request.method === "GET") {
+    try {
+      return await publicKeyResponse();
+    } catch (error) {
+      console.error(error);
+      return json({ error: "SIGNING_KEY_UNAVAILABLE" }, 503);
+    }
+  }
   if (request.method !== "POST") return json({ error: "METHOD_NOT_ALLOWED" }, 405);
   const user = await authUser(request.headers.get("Authorization") ?? "");
   if (!user?.id || !user.email) return json({ error: "AUTHENTICATION_REQUIRED" }, 401);
@@ -188,7 +272,9 @@ Deno.serve(async request => {
       issuedAt: new Date().toISOString(),
     };
     const payloadJson = JSON.stringify(payload);
-    const signatureB64 = await sign(payloadJson);
+    const material = await signingMaterial();
+    await ensurePublicKey(material.publicKeySpkiB64);
+    const signatureB64 = await sign(material.key, payloadJson);
     const payloadHash = await digest(payloadJson);
     await recordIssuance(checkoutId, workspaceId, order.setup_hash, payloadHash);
 

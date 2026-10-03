@@ -46,6 +46,26 @@ type WebProperty = {
   notes: string;
 };
 
+type DomainRecord = {
+  domain: string;
+  product_name: string;
+  repo_full_name: string | null;
+  registrar: string;
+  auto_renew: boolean;
+  renewal_date: string | null;
+  renewal_cost: number | string | null;
+  currency: string;
+  current_dns_status: string;
+  current_web_status: string;
+  current_destination: string | null;
+  target_host: string;
+  target_route: string | null;
+  launch_gate: string;
+  owner: string;
+  notes: string;
+  last_checked_at: string | null;
+};
+
 type Service = {
   name: string;
   layer: string;
@@ -293,6 +313,7 @@ export default function InfrastructureCostCenter() {
   const [notice, setNotice] = useState("Private local backup active · connecting Supabase sync…");
   const [remoteReady, setRemoteReady] = useState(false);
   const [webProperties, setWebProperties] = useState<WebProperty[]>(DEFAULT_WEB_PROPERTIES);
+  const [domains, setDomains] = useState<DomainRecord[]>([]);
   const importRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -329,6 +350,14 @@ export default function InfrastructureCostCenter() {
         .order("display_name");
       if (active && Array.isArray(fleetData) && fleetData.length) {
         setWebProperties(fleetData as WebProperty[]);
+      }
+
+      const { data: domainData } = await supabase
+        .from("lux_domains")
+        .select("domain, product_name, repo_full_name, registrar, auto_renew, renewal_date, renewal_cost, currency, current_dns_status, current_web_status, current_destination, target_host, target_route, launch_gate, owner, notes, last_checked_at")
+        .order("renewal_date");
+      if (active && Array.isArray(domainData)) {
+        setDomains(domainData as DomainRecord[]);
       }
 
       setNotice("Private Supabase sync active · local backup also enabled.");
@@ -569,6 +598,33 @@ export default function InfrastructureCostCenter() {
           <div className={styles.flowSub}>Mac mini = private LANA, agents, local models, testing, automation, and internal services. Static assets do not execute the current Next.js /api handlers; production server routes must use an approved Supabase Edge Function or Cloudflare Worker boundary.</div>
         </article>
       </div>
+
+      <section className={styles.panel}>
+        <div className={styles.sectionHeading}>
+          <div><p>Domain portfolio</p><h2>{domains.length} owned domains tracked</h2></div>
+          <span className={styles.setupCount}>AUTO-RENEW TRACKED</span>
+        </div>
+        <p className={styles.helper}>Renewal dates come from the founder domain inventory. Renewal prices stay blank until a real registrar invoice is entered, so the Cost Center does not invent domain spend.</p>
+        <div className={styles.serviceGrid}>
+          {domains.map((domain) => (
+            <article key={domain.domain}>
+              <div className={styles.serviceTop}>
+                <div><b>{domain.domain}</b><span>{domain.product_name}</span></div>
+                <strong>{domain.auto_renew ? "AUTO-RENEW" : "MANUAL"}</strong>
+              </div>
+              <dl>
+                <div><dt>Renew</dt><dd>{domain.renewal_date ? new Date(domain.renewal_date + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "Not recorded"}</dd></div>
+                <div><dt>Cost</dt><dd>{domain.renewal_cost == null ? "Awaiting real invoice" : money(Number(domain.renewal_cost))}</dd></div>
+                <div><dt>DNS</dt><dd>{domain.current_dns_status}</dd></div>
+                <div><dt>Now</dt><dd>{domain.current_web_status}{domain.current_destination ? " · " + domain.current_destination : ""}</dd></div>
+                <div><dt>Target</dt><dd>{domain.target_route || domain.target_host}</dd></div>
+                <div><dt>Gate</dt><dd>{domain.launch_gate}</dd></div>
+              </dl>
+              {domain.repo_full_name && <a href={"https://github.com/" + domain.repo_full_name} target="_blank" rel="noreferrer">Open mapped repository ↗</a>}
+            </article>
+          ))}
+        </div>
+      </section>
 
       <section className={styles.panel}>
         <div className={styles.sectionHeading}>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 export function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -27,11 +28,8 @@ export function NewsletterSignup() {
       const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
       if (!supabaseUrl || !supabaseAnonKey) {
-        // Neutral response fallback for offline/preview
-        setStatus("success");
-        setMessage("Thank you for subscribing! Please check your inbox to confirm your email address.");
-        setEmail("");
-        setConsent(false);
+        setStatus("error");
+        setMessage("Newsletter signup is not connected in this preview.");
         return;
       }
 
@@ -40,29 +38,28 @@ export function NewsletterSignup() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${supabaseAnonKey}`,
+          apikey: supabaseAnonKey,
         },
         body: JSON.stringify({
           email,
           consent: true,
           consentLanguageVersion: "v2026.1",
+          source: window.location.hostname || "luxautomaton.com",
         }),
       });
 
       if (res.ok) {
         setStatus("success");
-        setMessage("Thank you for subscribing! Please check your inbox to confirm your email address.");
+        setMessage("You're on the Lux Automaton list. Email delivery will begin only when the newsletter service is activated.");
         setEmail("");
         setConsent(false);
       } else {
-        // Neutral response on duplicate or edge response
-        setStatus("success");
-        setMessage("Thank you for subscribing! Please check your inbox to confirm your email address.");
-        setEmail("");
-        setConsent(false);
+        setStatus("error");
+        setMessage("Newsletter signup is temporarily unavailable. Please try again later.");
       }
     } catch {
-      setStatus("success");
-      setMessage("Thank you for subscribing! Please check your inbox to confirm your email address.");
+      setStatus("error");
+      setMessage("Newsletter signup is temporarily unavailable. Please try again later.");
       setEmail("");
       setConsent(false);
     }
@@ -115,9 +112,9 @@ export function NewsletterSignup() {
             />
             <label htmlFor="newsletter-consent" style={{ fontSize: "0.75rem", color: "#9ca3af", lineHeight: "1.4" }}>
               I agree to receive weekly updates from Lux Automaton. You can unsubscribe at any time using the link in the email footer. Read our{" "}
-              <a href="/privacy" style={{ color: "#a78bfa", textDecoration: "underline" }}>
+              <Link href="/privacy" style={{ color: "#a78bfa", textDecoration: "underline" }}>
                 Privacy Policy
-              </a>
+              </Link>
               .
             </label>
           </div>
@@ -146,7 +143,7 @@ export function NewsletterSignup() {
       )}
 
       <div style={{ marginTop: "16px", fontSize: "0.75rem", color: "#6b7280", textAlign: "center" }}>
-        Already subscribed? <a href="/unsubscribe" style={{ color: "#9ca3af", textDecoration: "underline" }}>Unsubscribe or manage preferences</a>
+        Already subscribed? <Link href="/unsubscribe" style={{ color: "#9ca3af", textDecoration: "underline" }}>Unsubscribe or manage preferences</Link>
       </div>
     </div>
   );

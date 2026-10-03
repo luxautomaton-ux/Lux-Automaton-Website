@@ -11,7 +11,8 @@
     "scrape-linkedin": "python3 lib/scripts/scrape_linkedin.py",
     "scrape-linkedin-interactive": "python3 lib/scripts/scrape_interactive.py",
     "build:cloudflare": "NEXT_PUBLIC_SITE_BASE_PATH= NEXT_PUBLIC_SITE_URL=https://luxautomaton.com next build",
-    "deploy:cloudflare": "npm run build:cloudflare && npx --yes wrangler@4.34.0 deploy"
+    "deploy:cloudflare": "npm run build:cloudflare && npx --yes wrangler@4.34.0 deploy",
+    "deploy:domain-router": "npx --yes wrangler@4.34.0 deploy -c wrangler.domains.jsonc"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.8",

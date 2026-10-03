@@ -1,6 +1,10 @@
 {
   "name": "lux-automaton-website",
   "compatibility_date": "2026-10-02",
+  "routes": [
+    { "pattern": "luxautomaton.com", "custom_domain": true },
+    { "pattern": "www.luxautomaton.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./out",
     "not_found_handling": "404-page",

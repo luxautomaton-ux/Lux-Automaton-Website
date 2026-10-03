@@ -1,10 +1,14 @@
 const DOMAIN_DESTINATIONS: Record<string, string> = {
   "luxwarmconnect.com": "https://myluxagent.com/products/warm-connect",
   "www.luxwarmconnect.com": "https://myluxagent.com/products/warm-connect",
-  "lawcheckai.com": "https://luxautomaton.com/products/lawcheck-ai",
-  "www.lawcheckai.com": "https://luxautomaton.com/products/lawcheck-ai",
+  "joinluxconnect.com": "https://luxautomaton.com/lux-connect",
+  "www.joinluxconnect.com": "https://luxautomaton.com/lux-connect",
+  "lawcheckai.com": "https://luxautomaton.com/lawcheck-ai",
+  "www.lawcheckai.com": "https://luxautomaton.com/lawcheck-ai",
   "luxverifyai.com": "https://myluxagent.com/products/verify",
   "www.luxverifyai.com": "https://myluxagent.com/products/verify",
+  "luxcareeros.com": "https://luxautomaton.com/lux-career-os",
+  "www.luxcareeros.com": "https://luxautomaton.com/lux-career-os",
   "luxaikids.com": "https://luxautomaton.com/lux-ai-kids",
   "www.luxaikids.com": "https://luxautomaton.com/lux-ai-kids",
 }

@@ -1,21 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type State = "idle" | "working" | "success" | "error";
 
 export default function UnsubscribePage() {
-  const [token, setToken] = useState("");
   const [state, setState] = useState<State>("idle");
   const [message, setMessage] = useState("Use the unsubscribe link included in a Lux Automaton newsletter email.");
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setToken(params.get("token") ?? "");
-  }, []);
-
   const unsubscribe = async () => {
+    const token = new URLSearchParams(window.location.search).get("token") ?? "";
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     if (!token) {

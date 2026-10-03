@@ -6,6 +6,10 @@ This file defines what is complete in the free-first infrastructure phase and wh
 
 ### Complete now
 
+- Six founder-owned domains are now tracked in the private `lux_domains` registry with product mapping, renewal date, registrar/DNS state, current routing, and Cloudflare target route.
+- Domain renewal dates recorded from the founder inventory: joinluxconnect.com, lawcheckai.com, luxverifyai.com, luxcareeros.com, and luxaikids.com renew October 2, 2027; luxautomaton.com renews March 29, 2028. Renewal prices remain blank until a real registrar invoice is entered.
+- Current DNS audit shows the five non-Lux-Automaton apex domains still land on GoDaddy landers; several do not yet have valid apex HTTPS. luxautomaton.com currently uses GoDaddy frame forwarding to GitHub Pages. These are explicit DNS cutover items, not hidden launch-ready claims.
+- Newsletter signup is backed by a private service-role-only Supabase table and live Edge Function. Subscribe and tokenized unsubscribe paths passed end-to-end acceptance. Public Privacy and Newsletter Preferences pages now exist.
 - Six public Lux sites are live on GitHub Pages at $0 new monthly hosting cost:
   - Lux Automaton
   - Lux Agent

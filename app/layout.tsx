@@ -36,13 +36,13 @@ export const metadata: Metadata = {
     description: "Lux Automaton is the AI Operating System company providing private, secure AI agents, coding environments, and automated business operating systems.",
     type: "website",
     url: "https://luxautomaton-ux.github.io/Lux-Automaton-Website/",
-    images: [{ url: "https://luxautomaton-ux.github.io/Lux-Automaton-Website/og.png", width: 1200, height: 630, alt: "Lux Automaton — Build the future with AI" }],
+    images: [{ url: "https://luxautomaton-ux.github.io/Lux-Automaton-Website/lux-automaton-social-20261002.jpg", width: 1200, height: 630, alt: "Lux Automaton — Build the future with AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lux Automaton - Private AI Systems for Builders and Founders",
     description: "Private AI Operating Systems and secure agents for builders, founders, and small businesses.",
-    images: ["https://luxautomaton-ux.github.io/Lux-Automaton-Website/og.png"],
+    images: ["https://luxautomaton-ux.github.io/Lux-Automaton-Website/lux-automaton-social-20261002.jpg"],
   }
 };
 

@@ -27,11 +27,8 @@ export function NewsletterSignup() {
       const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
       if (!supabaseUrl || !supabaseAnonKey) {
-        // Neutral response fallback for offline/preview
-        setStatus("success");
-        setMessage("You're on the Lux Automaton list. Email delivery will begin only when the newsletter service is activated.");
-        setEmail("");
-        setConsent(false);
+        setStatus("error");
+        setMessage("Newsletter signup is not connected in this preview.");
         return;
       }
 

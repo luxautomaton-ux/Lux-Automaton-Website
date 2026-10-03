@@ -5,10 +5,14 @@
   "routes": [
     { "pattern": "luxwarmconnect.com", "custom_domain": true },
     { "pattern": "www.luxwarmconnect.com", "custom_domain": true },
+    { "pattern": "joinluxconnect.com", "custom_domain": true },
+    { "pattern": "www.joinluxconnect.com", "custom_domain": true },
     { "pattern": "lawcheckai.com", "custom_domain": true },
     { "pattern": "www.lawcheckai.com", "custom_domain": true },
     { "pattern": "luxverifyai.com", "custom_domain": true },
     { "pattern": "www.luxverifyai.com", "custom_domain": true },
+    { "pattern": "luxcareeros.com", "custom_domain": true },
+    { "pattern": "www.luxcareeros.com", "custom_domain": true },
     { "pattern": "luxaikids.com", "custom_domain": true },
     { "pattern": "www.luxaikids.com", "custom_domain": true }
   ]

@@ -3,6 +3,8 @@
 
 const allowedOrigins = new Set([
   "https://luxautomaton-ux.github.io",
+  "https://luxautomaton.com",
+  "https://www.luxautomaton.com",
   "http://localhost:3000",
   "http://127.0.0.1:3000",
 ]);

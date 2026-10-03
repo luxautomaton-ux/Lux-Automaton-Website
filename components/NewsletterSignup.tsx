@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 export function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -111,9 +112,9 @@ export function NewsletterSignup() {
             />
             <label htmlFor="newsletter-consent" style={{ fontSize: "0.75rem", color: "#9ca3af", lineHeight: "1.4" }}>
               I agree to receive weekly updates from Lux Automaton. You can unsubscribe at any time using the link in the email footer. Read our{" "}
-              <a href="/privacy" style={{ color: "#a78bfa", textDecoration: "underline" }}>
+              <Link href="/privacy" style={{ color: "#a78bfa", textDecoration: "underline" }}>
                 Privacy Policy
-              </a>
+              </Link>
               .
             </label>
           </div>
@@ -142,7 +143,7 @@ export function NewsletterSignup() {
       )}
 
       <div style={{ marginTop: "16px", fontSize: "0.75rem", color: "#6b7280", textAlign: "center" }}>
-        Already subscribed? <a href="/unsubscribe" style={{ color: "#9ca3af", textDecoration: "underline" }}>Unsubscribe or manage preferences</a>
+        Already subscribed? <Link href="/unsubscribe" style={{ color: "#9ca3af", textDecoration: "underline" }}>Unsubscribe or manage preferences</Link>
       </div>
     </div>
   );

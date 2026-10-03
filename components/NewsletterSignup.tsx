@@ -29,7 +29,7 @@ export function NewsletterSignup() {
       if (!supabaseUrl || !supabaseAnonKey) {
         // Neutral response fallback for offline/preview
         setStatus("success");
-        setMessage("Thank you for subscribing! Please check your inbox to confirm your email address.");
+        setMessage("You're on the Lux Automaton list. Email delivery will begin only when the newsletter service is activated.");
         setEmail("");
         setConsent(false);
         return;
@@ -40,29 +40,28 @@ export function NewsletterSignup() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${supabaseAnonKey}`,
+          apikey: supabaseAnonKey,
         },
         body: JSON.stringify({
           email,
           consent: true,
           consentLanguageVersion: "v2026.1",
+          source: window.location.hostname || "luxautomaton.com",
         }),
       });
 
       if (res.ok) {
         setStatus("success");
-        setMessage("Thank you for subscribing! Please check your inbox to confirm your email address.");
+        setMessage("You're on the Lux Automaton list. Email delivery will begin only when the newsletter service is activated.");
         setEmail("");
         setConsent(false);
       } else {
-        // Neutral response on duplicate or edge response
-        setStatus("success");
-        setMessage("Thank you for subscribing! Please check your inbox to confirm your email address.");
-        setEmail("");
-        setConsent(false);
+        setStatus("error");
+        setMessage("Newsletter signup is temporarily unavailable. Please try again later.");
       }
     } catch {
-      setStatus("success");
-      setMessage("Thank you for subscribing! Please check your inbox to confirm your email address.");
+      setStatus("error");
+      setMessage("Newsletter signup is temporarily unavailable. Please try again later.");
       setEmail("");
       setConsent(false);
     }

@@ -1,0 +1,15 @@
+{
+  "name": "lux-domain-router",
+  "main": "./cloudflare/domain-router.ts",
+  "compatibility_date": "2026-10-02",
+  "routes": [
+    { "pattern": "luxwarmconnect.com", "custom_domain": true },
+    { "pattern": "www.luxwarmconnect.com", "custom_domain": true },
+    { "pattern": "lawcheckai.com", "custom_domain": true },
+    { "pattern": "www.lawcheckai.com", "custom_domain": true },
+    { "pattern": "luxverifyai.com", "custom_domain": true },
+    { "pattern": "www.luxverifyai.com", "custom_domain": true },
+    { "pattern": "luxaikids.com", "custom_domain": true },
+    { "pattern": "www.luxaikids.com", "custom_domain": true }
+  ]
+}

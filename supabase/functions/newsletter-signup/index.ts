@@ -37,6 +37,23 @@ function validEmail(email: string) {
   return email.length <= 320 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function validToken(token: string) {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(token);
+}
+
+async function rest(path: string, init: RequestInit = {}) {
+  if (!SUPABASE_URL || !SERVICE_KEY) throw new Error("BACKEND_NOT_CONFIGURED");
+  return fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    ...init,
+    headers: {
+      apikey: SERVICE_KEY,
+      Authorization: `Bearer ${SERVICE_KEY}`,
+      "Content-Type": "application/json",
+      ...(init.headers ?? {}),
+    },
+  });
+}
+
 Deno.serve(async request => {
   const origin = request.headers.get("Origin");
   if (request.method === "OPTIONS") {
@@ -46,11 +63,38 @@ Deno.serve(async request => {
   if (origin && !ALLOWED_ORIGINS.has(origin)) return json({ error: "ORIGIN_NOT_ALLOWED" }, 403, origin);
   if (!SUPABASE_URL || !SERVICE_KEY) return json({ error: "BACKEND_NOT_CONFIGURED" }, 503, origin);
 
-  let body: { email?: unknown; consent?: unknown; consentLanguageVersion?: unknown; source?: unknown };
+  let body: {
+    action?: unknown;
+    email?: unknown;
+    consent?: unknown;
+    consentLanguageVersion?: unknown;
+    source?: unknown;
+    token?: unknown;
+  };
   try {
     body = await request.json();
   } catch {
     return json({ error: "INVALID_REQUEST" }, 400, origin);
+  }
+
+  const action = String(body.action ?? "subscribe").trim().toLowerCase();
+
+  if (action === "unsubscribe") {
+    const token = String(body.token ?? "").trim();
+    if (!validToken(token)) return json({ error: "INVALID_MANAGE_TOKEN" }, 400, origin);
+
+    const query = new URLSearchParams({ manage_token: `eq.${token}` });
+    const response = await rest(`newsletter_subscribers?${query}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: "unsubscribed",
+        unsubscribed_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      }),
+    });
+
+    if (!response.ok) return json({ error: "UNSUBSCRIBE_UNAVAILABLE" }, 503, origin);
+    return json({ ok: true }, 200, origin);
   }
 
   const email = normalizeEmail(body.email);
@@ -62,27 +106,19 @@ Deno.serve(async request => {
     return json({ error: "INVALID_SUBSCRIPTION" }, 400, origin);
   }
 
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/newsletter_subscribers?on_conflict=email`,
-    {
-      method: "POST",
-      headers: {
-        apikey: SERVICE_KEY,
-        Authorization: `Bearer ${SERVICE_KEY}`,
-        "Content-Type": "application/json",
-        Prefer: "resolution=merge-duplicates,return=minimal",
-      },
-      body: JSON.stringify({
-        email,
-        status: "subscribed",
-        consent: true,
-        consent_language_version: consentLanguageVersion,
-        source,
-        unsubscribed_at: null,
-        updated_at: new Date().toISOString(),
-      }),
-    },
-  );
+  const response = await rest("newsletter_subscribers?on_conflict=email", {
+    method: "POST",
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify({
+      email,
+      status: "subscribed",
+      consent: true,
+      consent_language_version: consentLanguageVersion,
+      source,
+      unsubscribed_at: null,
+      updated_at: new Date().toISOString(),
+    }),
+  });
 
   if (!response.ok) {
     console.error("newsletter insert failed", response.status, await response.text());

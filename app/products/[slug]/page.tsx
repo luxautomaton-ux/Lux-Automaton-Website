@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { prefixPath } from "@/lib/prefix";
 import { PRODUCTS } from "@/lib/products";
+import { seoCanonical } from "@/lib/seoCanonical";
 import { getProductPreviews } from "@/lib/productPreviews";
 import ProductShowcaseGallery from "@/components/ProductShowcaseGallery";
 import EcosystemBanner from "@/components/EcosystemBanner";
@@ -21,7 +22,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = PRODUCTS.find((item) => item.slug === slug);
-  return product ? { title: `${product.name} — Lux Automaton`, description: product.description } : {};
+  return product ? {
+    title: `${product.name} — Lux Automaton`,
+    description: product.description,
+    alternates: { canonical: seoCanonical(`products/${product.slug}`) },
+  } : {};
 }
 
 export default async function ProductDetailPage({ params }: Props) {

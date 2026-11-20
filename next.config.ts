@@ -6,7 +6,8 @@ const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? (isProd ? "/Lux-A
 
 const nextConfig: NextConfig = {
   output: "export",
-  trailingSlash: true,
+  // GitHub Pages serves static .html routes; Cloudflare uses trailing-slash directories.
+  trailingSlash: siteBasePath === "",
   basePath: siteBasePath,
   images: {
     unoptimized: true,

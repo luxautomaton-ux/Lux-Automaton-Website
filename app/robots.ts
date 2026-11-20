@@ -15,7 +15,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: route(""),
+        allow: `${sitePath}/`,
         disallow: [
           route("admin"),
           route("chat"),

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { prefixPath } from "@/lib/prefix";
+import { seoCanonical } from "@/lib/seoCanonical";
 
 export const metadata: Metadata = {
+  alternates: { canonical: seoCanonical("services") },
   title: "Services — Lux Automaton",
   description: "AI setup, deployment, workflow automation, custom builds, and practical training from Lux Automaton.",
 };

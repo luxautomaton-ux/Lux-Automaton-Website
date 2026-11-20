@@ -2,8 +2,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Check, Laptop, PackageCheck, Settings2, Usb } from "lucide-react";
 import { prefixPath } from "@/lib/prefix";
+import { seoCanonical } from "@/lib/seoCanonical";
 
 export const metadata: Metadata = {
+  alternates: { canonical: seoCanonical("pricing") },
   title: "Pricing & Access — Lux Automaton",
   description: "Choose the Lux Automaton starting point that fits your business: Lux Agent, portable access, Success Packs, or a custom implementation.",
 };

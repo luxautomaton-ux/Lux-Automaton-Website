@@ -3,8 +3,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Database, Monitor, ShieldCheck, Usb, Workflow } from "lucide-react";
 import { prefixPath } from "@/lib/prefix";
+import { seoCanonical } from "@/lib/seoCanonical";
 
 export const metadata: Metadata = {
+  alternates: { canonical: seoCanonical("products") },
   title: "Products — Lux Automaton",
   description: "Explore the Lux Agent workspace, portable USB companion, packs, automation, verification, training, and connected Lux systems.",
 };

@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import { seoCanonical } from "@/lib/seoCanonical";
 import Link from "next/link";
 import {
   BarChart3,
@@ -11,6 +13,10 @@ import {
   Workflow,
 } from "lucide-react";
 import { prefixPath } from "@/lib/prefix";
+
+export const metadata: Metadata = {
+  alternates: { canonical: seoCanonical() },
+};
 
 const products = [
   {

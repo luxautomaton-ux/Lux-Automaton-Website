@@ -14,9 +14,6 @@ const socialImage = `${siteUrl}lux-automaton-social-20261002.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  alternates: {
-    canonical: siteUrl,
-  },
   title: "Lux Automaton — Automate | Innovate | Accelerate",
   description: "Lux Automaton builds connected AI systems for business, automation, verification, learning, and real-world impact — with Lux Agent as the customer-facing platform at the center.",
   applicationName: "Lux Automaton",

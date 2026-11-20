@@ -3,9 +3,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { BarChart3, Bot, CheckCircle2, MessageSquareText, ShieldCheck, Workflow } from "lucide-react";
 import { SOLUTIONS } from "@/lib/solutions";
+import { seoCanonical } from "@/lib/seoCanonical";
 import { prefixPath } from "@/lib/prefix";
 
 export const metadata: Metadata = {
+  alternates: { canonical: seoCanonical("solutions") },
   title: "Solutions — Lux Automaton",
   description: "Real solutions for founders, teams, consultants, agencies, growing businesses, and custom operating environments.",
 };
